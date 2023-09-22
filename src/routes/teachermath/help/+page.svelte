@@ -11,6 +11,12 @@ import {Icons} from '$lib/util';
 const list = [
   { title: "Fraction", code: "\\frac{3}{2}" },
   { title: "Raise to Power", code: "2^5 3^9" },
+  { title: "Over Line", code: "\\overline{AB}" },
+  { title: "Over Line small", code: "\\bar{AB}" },
+  { title: "Degrees", code: "90^{\\circ}" },
+  { title: "Approximately", code: "a \\approx b" },
+  { title: "Lessthan or Equal", code: "a \\leq b" },
+  { title: "Greaterthan or Equal", code: "a \\geq b" },
   { title: "Square Root", code: "\\sqrt{4}" },
   { title: "Subscript", code: "H_2O" },
   { title: "Superscript", code: "x^2" },
@@ -46,7 +52,7 @@ import Nav from '../Nav.svelte';
 {#each list as li,index}
 <div class="flex justify-center w-full  p-2 ">
 
-<div class="w-2/12 bg-gray-900 p-4 m-1 rounded-lg text-center">
+<div class="w-2/12 bg-gray-900 p-4 m-1 rounded-lg text-left ">
 {index+1}.{li.title}</div>
 
 <div class="w-5/12 bg-gray-900 p-4 m-1 rounded-lg text-md text-center">

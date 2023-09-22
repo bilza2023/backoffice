@@ -30,6 +30,11 @@ onMount(async () => {
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Teachers Hub</HdgWithIcon>
 </div>
 <br>
+<div class='flex flex-col justify-center'>
+<p class="bg-gray-700 p-1 m-1 mx-4"><u>New Additions : </u></p>
+<p class="bg-gray-700 p-1 m-1 mx-4">New Items added to Help. Please check</p>
+<p class="bg-gray-700 p-1 m-1 mx-4">Login system fixed</p>
+</div>
 
 <br>
 <br>
