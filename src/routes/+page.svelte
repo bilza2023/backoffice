@@ -1,4 +1,3 @@
-./teachermath/store.js
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon} from  '$lib/cmp';

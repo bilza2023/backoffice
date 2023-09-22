@@ -14,7 +14,7 @@ export let toggleFS;
 
 <div class="flex justify-start bg-stone-500 w-full p-1 m-1 mb-3 gap-1">
 
-<button on:click={addEq} class="bg-green-900 text-white p-1 text-xs rounded-md">Add</button>
+<button on:click={()=>addEq(i)} class="bg-green-900 text-white p-1 text-xs rounded-md">Add</button>
 
 <button on:click={()=>toggleSP(i)} class="bg-green-700 text-white p-1 text-xs rounded-md">SideBar</button>
 

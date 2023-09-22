@@ -55,9 +55,10 @@ function delEq(index) {
   eqs = [...eqs];
 }
 
-function addEq() {
-  eqs = [...eqs, getEqData()];
-  console.log("eqs",eqs);
+function addEq(i) {
+   eqs.splice(i+1, 0, getEqData());
+  eqs = [...eqs];
+  // console.log("eqs",eqs);
 }
 let question;
 let eqs = [];

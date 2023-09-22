@@ -28,7 +28,7 @@ function statusIcons(){
     <div class='flex'>
     
     {#if isLogin}
-    <Logo url='/teachermath' />
+    <Logo url='/' />
     {:else}
     <Logo url='/teachermath/login' />
     {/if}
