@@ -16,12 +16,6 @@ import TeacherPanelSyllabus from './TeacherPanelSyllabus.svelte';
 let questions;
 onMount(async () => {
       try{
-      // debugger;
-      // const teacher_token = localStorage.getItem('teacher_token');  
-      // if (!teacher_token){
-      // goto('/teachermath/login');
-      // return;
-      // }
         if (!isLogin){
       goto('/teachermath/login');
       return;

@@ -97,7 +97,9 @@ onMount(async () => {
 </script>
 <Nav />
 <PageWrapper>
-<Toolbar  {addEq}/>
+{#if question}
+<Toolbar  {addEq} {question}/>
+{/if}
 <PageHeading/>
 
 <div class="m-4 p-0">
