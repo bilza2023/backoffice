@@ -64,7 +64,7 @@ async function setFakeTimes(question) {
             time +=5; 
           }
     eq.eqEndTime = time;
-    time += 5; // for next iteration
+    // time += 5; // for next iteration
   }
 
 }
