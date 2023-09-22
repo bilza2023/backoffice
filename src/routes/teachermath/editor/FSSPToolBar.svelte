@@ -1,0 +1,43 @@
+<script>
+//@ts-nocheck
+export let theArray;
+export let arrayName;
+export let redraw;
+
+
+const addTable = ()=>{
+  const tblData ={ code: `[["",""],["",""]]`, type: 'table' };
+ theArray.push(tblData);
+ redraw(); 
+}
+function addTxtCodeImg(textOrCode = "text"){
+ // debugger;
+  let newItem;
+  if (textOrCode == "code"){
+    newItem = { code: "2^2", type: 'code' };
+  }
+  if (textOrCode == "text"){
+    newItem = { code: "text", type: 'text' };
+  }
+  if (textOrCode == "img"){
+    newItem = { code: "math", type: 'img' };
+  }
+  theArray.push(newItem);
+  redraw();
+  console.log(theArray);
+}
+</script>
+
+<div class='flex justify-center gap-1'>
+
+<div class="bg-stone-950 text-white rounded-xl m-1 p-1 text-xs">{arrayName}</div>
+
+<button on:click={()=>addTxtCodeImg("text")} class="bg-green-700 text-white p-1 text-xs rounded-md">Text</button>
+
+<button on:click={()=>addTxtCodeImg("code")} class="bg-yellow-600 text-white p-1 text-xs rounded-md">Code</button>
+
+<button on:click={()=>addTxtCodeImg("img")} class="bg-green-600 text-white p-1 text-xs rounded-md">Image</button>
+
+<button on:click={()=>addTable("table")} class="bg-yellow-900 text-white p-1 text-xs rounded-md">Table</button>
+
+</div>

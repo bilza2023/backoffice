@@ -1,0 +1,149 @@
+<svelt:head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+</svelt:head>
+
+<script>
+//@ts-nocheck
+import { PageWrapper } from '$lib/cmp';
+import { onMount,toast,goto } from '$lib/util';
+import { BASE_URL } from '../config';
+import save from './save';
+import Toolbar from './Toolbar.svelte';
+import Titlebar from './Titlebar.svelte';
+import EqPart from './EqPart.svelte';
+import AdminPanel from './AdminPanel.svelte';
+import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
+import SPFSPart from './SPFSPart/SPFSPart.svelte';
+import PageHeading from './PageHeading.svelte';
+import getEqData from './extra/eqData';
+  import Nav from '../Nav.svelte';
+import { isLoginStore, isAdminStore } from '../store.js';
+    import TeacherPanel from './TeacherPanel.svelte';
+  $: isLogin = $isLoginStore;
+  $: isAdmin = $isAdminStore;  
+////////////////////////////////////////////////////////
+ function redraw(){eqs = [...eqs];}
+function toggleSP(index){
+ eqs[index].spVisibility = !eqs[index].spVisibility; 
+ eqs[index].fsVisibility = false; 
+ eqs = [...eqs];
+}
+function toggleFS(index){
+ eqs[index].fsVisibility = !eqs[index].fsVisibility; 
+ eqs[index].spVisibility = false;
+ eqs = [...eqs];
+}
+
+function moveUpEq(index) {
+  if (index > 0) {
+    const eqToMove = eqs[index];
+    eqs.splice(index, 1);
+    eqs.splice(index - 1, 0, eqToMove);
+  }
+ eqs = [...eqs]; 
+}
+function moveDownEq(index) {
+  if (index < eqs.length - 1) {
+    const eqToMove = eqs[index];
+    eqs.splice(index, 1);
+    eqs.splice(index + 1, 0, eqToMove);
+  }
+  eqs = [...eqs];
+}
+function delEq(index) {
+  eqs.splice(index, 1);
+  eqs = [...eqs];
+}
+
+function addEq() {
+  eqs = [...eqs, getEqData()];
+  console.log("eqs",eqs);
+}
+let question;
+let eqs = [];
+onMount(async () => {
+  try {
+    if (!isLogin){
+      goto('/teachermath/login');
+      return;
+      }
+   //http://localhost/math?id=6508bff7c970727df5e0ac85
+      let  id = new URLSearchParams(location.search).get("id"); 
+      const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer 000`,
+        }
+      });
+  
+    if (resp.ok) {
+        // debugger;
+        const data = await resp.json();
+        question  = data.mathQuestion //===> important
+        eqs = question.eqs;
+        questionDetails = question.filename;
+
+    } else {
+        const data = await resp.json();
+        toast.push(data.message);
+    }
+  } catch (error) {
+    // toast.push('Unknown Error');
+    // console.error(error);
+  }
+});
+
+</script>
+<Nav />
+<PageWrapper>
+<Toolbar  {addEq}/>
+<PageHeading/>
+
+<div class="m-4 p-0">
+  <Titlebar />
+  {#each eqs as eq, i}
+      <EqPart  {eq} {i}/>
+      <EqPartLowerToolBar {eq} {i} {addEq} {moveUpEq} {moveDownEq} {delEq} {toggleSP} {toggleFS}/>
+
+        {#if eq.spVisibility}
+          <SPFSPart clr="bg-yellow-900"  arrayName='Side Panel' theArray={eq.sp}  {redraw} {i} />
+        {/if}
+        {#if eq.fsVisibility}
+          <SPFSPart clr="bg-stone-700"  arrayName='Full Screen' theArray={eq.fs}  {redraw} {i} />
+        {/if}
+
+  {/each}
+</div>
+
+
+<!-- <AdminPanel {question} {redraw}/> -->
+
+<br>
+<br>
+
+{#if question }
+  {#if isAdmin }
+    <AdminPanel {question} {redraw}/>
+  {:else}  
+    <TeacherPanel {question} {redraw} />
+  {/if}
+{/if}
+<br>
+
+<div class="flex justify-center">
+<button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,eqs)}>Save</button>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</PageWrapper>
