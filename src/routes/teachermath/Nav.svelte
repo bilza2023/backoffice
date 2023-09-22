@@ -2,8 +2,8 @@
 //@ts-nocheck
 import {NavBtn,NavBtn2} from '$lib/cmp';
 import Logo from './Logo.svelte';
-import {Icons,goto, toast} from '$lib/util';
-import { isLoginStore, isAdminStore } from './store.js';
+import {Icons,goto, toast,onMount} from '$lib/util';
+import { isLoginStore, isAdminStore } from '../../lib/util/appStore.js';
 
   // Use the store values directly with the $ prefix
   $: isLogin = $isLoginStore;
@@ -12,7 +12,9 @@ import { isLoginStore, isAdminStore } from './store.js';
 function logout(){
     isLoginStore.set(false);
     isAdminStore.set(false);
-    goto('/teachermath/login');
+    localStorage.removeItem('teacher_token');
+    localStorage.removeItem('teacher_status');
+    goto('login');
 }
 function statusIcons(){
   if (isAdmin){
@@ -21,6 +23,17 @@ function statusIcons(){
     return Icons.STUDENTCAP;
   }
 } 
+
+// onMount(async () => {
+//   try {
+//       //  if (!chqLogin()){
+//       //   goto('/login');
+//       //  }
+//   }catch (e) {
+//   toast.push("unknown error"); 
+//   }
+// });
+
 </script>
 
 <div class='flex justify-between items-center   p-0  px-1 m-0 bg-gray-700'>
@@ -30,7 +43,7 @@ function statusIcons(){
     {#if isLogin}
     <Logo url='/' />
     {:else}
-    <Logo url='/teachermath/login' />
+    <Logo url='/login' />
     {/if}
     </div>
             <!-- ******************************** -->
@@ -46,7 +59,7 @@ function statusIcons(){
     
     {:else}
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/teachermath/help'/>
-    <NavBtn title='Login' icon ='🔑'  url='/teachermath/login'/>
+    <NavBtn title='Login' icon ='🔑'  url='/login'/>
     {/if}
     </div>
 </div><!--outer most div-->

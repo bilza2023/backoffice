@@ -5,8 +5,8 @@
 <script>
 //@ts-nocheck
 import { PageWrapper } from '$lib/cmp';
-import { onMount,toast,goto } from '$lib/util';
-import { BASE_URL } from '../config';
+import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
+
 import save from './save';
 import Toolbar from './Toolbar.svelte';
 import Titlebar from './Titlebar.svelte';
@@ -16,9 +16,10 @@ import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
 import SPFSPart from './SPFSPart/SPFSPart.svelte';
 import PageHeading from './PageHeading.svelte';
 import getEqData from './extra/eqData';
-  import Nav from '../Nav.svelte';
-import { isLoginStore, isAdminStore } from '../store.js';
-    import TeacherPanel from './TeacherPanel.svelte';
+import Nav from '../Nav.svelte';
+import TeacherPanel from './TeacherPanel.svelte';
+
+import { isLoginStore, isAdminStore } from '../../../lib/util/appStore.js';
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;  
 ////////////////////////////////////////////////////////
@@ -64,8 +65,9 @@ let question;
 let eqs = [];
 onMount(async () => {
   try {
-    if (!isLogin){
-      goto('/teachermath/login');
+  //  debugger;
+       if (!chqLogin()){
+      goto('/login');
       return;
       }
    //http://localhost/math?id=6508bff7c970727df5e0ac85

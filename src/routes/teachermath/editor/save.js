@@ -1,7 +1,7 @@
 //@ts-nocheck
 import {toast,get} from "$lib/util";
-import { BASE_URL } from '../config';
-import { isLoginStore, isAdminStore } from '../store.js';
+import { BASE_URL } from '../../../lib/util/config';
+import { isLoginStore, isAdminStore } from '../../../lib/util/appStore.js';
 
 export  default async function save(question , eqs){
       try {

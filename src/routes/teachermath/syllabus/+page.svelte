@@ -2,10 +2,9 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon } from '$lib/cmp';
-import { onMount,toast,Icons,goto } from '$lib/util';
-import { BASE_URL } from '../config.js';
+import { BASE_URL,onMount,toast,Icons,goto,chqLogin } from '$lib/util';
 import Nav from '../Nav.svelte';
-import { isLoginStore, isAdminStore } from '../store.js';
+import { isLoginStore, isAdminStore } from '../../../lib/util/appStore.js';
 import AdminPanelSyllabus from './AdminPanelSyllabus.svelte';
 import TeacherPanelSyllabus from './TeacherPanelSyllabus.svelte';
 
@@ -15,27 +14,32 @@ import TeacherPanelSyllabus from './TeacherPanelSyllabus.svelte';
 
 let questions;
 onMount(async () => {
-      try{
-        if (!isLogin){
-      goto('/teachermath/login');
-      return;
-      }
-       //http://localhost/math?id=6508bff7c970727df5e0ac85
-    //   let  id = new URLSearchParams(location.search).get("id"); 
-      const resp = await fetch( `${BASE_URL}/math_syllabus/empty`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer 000`,
+  try{
+    // debugger;
+    if (!chqLogin()){
+    goto('/login');
+    return;
+    }  
+    //=============================  
+    const math_syllabus =  JSON.parse(localStorage.getItem('math_syllabus'));
+        if (math_syllabus !== null){
+            questions = math_syllabus;
+        }else {
+            const resp = await fetch( `${BASE_URL}/math_syllabus/empty`, {
+            method: 'GET',
+            headers: {
+            'Authorization': `Bearer 000`,
+            }
+            });
+            if (resp.ok){
+              const data = await resp.json();
+              questions = data.questions;
+              localStorage.setItem('math_syllabus',JSON.stringify(questions));
+            }else {
+              toast.push('failed to load');
+              throw new Exception("failed to load")
+            }
         }
-      });
-
-    if (resp.ok){
-      const data = await resp.json();
-      questions = data.questions;
-    //   console.log( 'list'  ,questions);
-    }else {
-        toast.push('failed to load');
-    }
   } catch (e) {
        toast.push('failed to load');
   }      
