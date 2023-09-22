@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import {NavBtn,NavBtn2} from '$lib/cmp';
-import Logo from '$lib/appComp/Logo.svelte';
+import Logo from './Logo.svelte';
 import {Icons,goto, toast} from '$lib/util';
 import { isLoginStore, isAdminStore } from './store.js';
 

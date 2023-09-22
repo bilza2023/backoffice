@@ -6,9 +6,6 @@ import { fade } from 'svelte/transition';
 import { get } from 'svelte/store';
 import { goto } from '$app/navigation';
 import Icons from './icons';
-import ajaxPost from './ajaxPost';
-import ajaxGet from './ajaxGet';
-import Agent from './Agent';
 
             export {
                     onMount,
@@ -18,9 +15,6 @@ import Agent from './Agent';
                     goto,
                     browser,
                     Icons,
-                    ajaxPost,
-                    ajaxGet,
-                    Agent
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */
