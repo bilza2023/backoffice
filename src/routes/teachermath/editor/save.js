@@ -52,9 +52,10 @@ export  default async function save(question , eqs){
 
 async function setFakeTimes(question) {
   let time = 0;
-  for (let i = 0; i < question.length; i++) {
-    const eq = question[i];
-    eq.startTime = time;
+  for (let i = 0; i < question.eqs.length; i++) {
+    const eq = question.eqs[i];
+    eq.eqStartTime = time;
+    eq.eqEndTime = time + 10;
     time += 10;
   }
 
