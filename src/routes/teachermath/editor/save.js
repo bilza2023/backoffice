@@ -25,13 +25,12 @@ export  default async function save(question , eqs){
   return;
   }
   if (question.status == 'fill' ){
-    await assignSteps(question);
-    await setFakeTimes(question);
+    assignSteps(question);
+    setFakeTimes(question);
   }
   if (question.status == 'final' ){
-    await assignSteps(question);
-    //--add fs timings also in check final times
-    await checkFinalTimes(question.eqs);
+    assignSteps(question);
+    checkFinalTimings(question.eqs);
   }
         const response = await fetch(`${BASE_URL}/upload_math`, {
             method: 'POST',
@@ -53,7 +52,7 @@ export  default async function save(question , eqs){
 }
 //////////////////////////////////////////////////////
 
-async function setFakeTimes(question) {
+function setFakeTimes(question) {
   let time = 0;
   for (let i = 0; i < question.eqs.length; i++) {
     const eq = question.eqs[i];
@@ -68,25 +67,57 @@ async function setFakeTimes(question) {
   }
 
 }
-async function assignSteps(question) {
+function assignSteps(question) {
   for (let i = 0; i < question.eqs.length; i++) {
     const eq = question.eqs[i];
     eq.step = i +1;
   }
 
 }
-async function checkFinalStartTimes(eqs) {
-  eqs[0].eqStartTime = 0;
-  // Iterate through the eqs and validate times
-  for (let i = 1; i < eqs.length; i++) {
-    const currentStartTime = parseFloat(eqs[i].eqStartTime);
-    const previousStartTime = parseFloat(eqs[i - 1].eqStartTime);
 
-    if (isNaN(currentStartTime) || isNaN(previousStartTime) || currentStartTime < previousStartTime) {
-      toast.push(`StartTime at Step ${i + 1} is smaller than the previous startTime`);
-      throw new Error(`StartTime at Step ${i + 1} is smaller than the previous startTime`);
+function checkFinalTimings(eqs) {
+  // Rule 1: Ensure eqStartTime of the first step is always 0
+  eqs[0].eqStartTime = 0;
+
+  // Loop through the array to check other rules starting with index 1
+  for (let i = 1; i < eqs.length; i++) {
+    const currentStep = eqs[i];
+    const previousStep = eqs[i - 1];
+
+    // Rule 2: Check if the start time of the current step is equal to the end time of the previous step
+    if (currentStep.eqStartTime !== previousStep.eqEndTime) {
+      toast.push(`Validation error at step ${i + 1}: Start time does not match the end time of the previous step.`);
+      return;
+    }
+
+    // Rule 3: Check if eqStartTime is not smaller than eqEndTime
+    if (currentStep.eqStartTime >= currentStep.eqEndTime) {
+      toast.push(`Validation error at step ${i + 1}: eqStartTime is greater than or equal to eqEndTime.`);
+      return;
+    }
+
+    // Rule 4: Check if fsStartTime and fsEndTime fall within eqStartTime and eqEndTime
+    if (
+      currentStep.fsStartTime < currentStep.eqStartTime ||
+      currentStep.fsEndTime > currentStep.eqEndTime
+    ) {
+      toast.push(`Validation error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
+      return;
+    }
+
+    // Rule 5: Check if fsStartTime is smaller than fsEndTime
+    if (currentStep.fsStartTime >= currentStep.fsEndTime) {
+      toast.push(`Validation error at step ${i + 1}: fsStartTime is greater than or equal to fsEndTime.`);
+      return;
+    }
+
+    // Rule 6: Check if fs.length is 0, set fsStartTime and fsEndTime to null
+    if (currentStep.fs.length === 0) {
+      currentStep.fsStartTime = null;
+      currentStep.fsEndTime = null;
     }
   }
+
+  // All rules passed
+  return true;
 }
-
-
