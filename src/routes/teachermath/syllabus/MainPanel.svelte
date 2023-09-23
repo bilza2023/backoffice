@@ -27,17 +27,17 @@ function setQuestionStatus(status){
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.BOOK}>Exercise &nbsp&nbsp&nbsp{selectedEx}</HdgWithIcon>
 </div>
 
-{#if isAdmin == true}
+<!-- {#if isAdmin == true}
 <AdminPanelSyllabus {questions} {setQuestionStatus}/>
 {:else}
 <TeacherPanelSyllabus {questions} {setQuestionStatus} />
 {/if}
-<br>
+<br> -->
 
     <div class='flex  w-full justify-center  flex-wrap'>
 {#each questions as question,index}
     
-    {#if question.exercise == selectedEx && question.status == questionStatus}
+    {#if question.exercise == selectedEx }
 
         <div class='w-3/12'>
         <Card
