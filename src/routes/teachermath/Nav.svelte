@@ -3,11 +3,11 @@
 import {NavBtn,NavBtn2} from '$lib/cmp';
 import Logo from './Logo.svelte';
 import {Icons,goto, toast,onMount} from '$lib/util';
-import { isLoginStore, isAdminStore } from '../../lib/util/appStore.js';
-
+import { isLoginStore, isAdminStore,teacherNameStore } from '../../lib/util/appStore.js';
   // Use the store values directly with the $ prefix
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;
+  $: teacherName = $teacherNameStore;
 ///////////////////////////////////
 function logout(){
     isLoginStore.set(false);
@@ -15,7 +15,15 @@ function logout(){
     localStorage.removeItem('teacher_token');
     localStorage.removeItem('teacher_status');
     localStorage.removeItem('math_syllabus');
-    goto('login');
+    goto('/login');
+}
+function extractEmailPrefix(email) {
+    let atIndex = email.indexOf('@');
+    if (atIndex !== -1) {
+        return email.substring(0, atIndex);
+    } else {
+        return 'name not found';
+    }
 }
 function statusIcons(){
   if (isAdmin){
@@ -24,16 +32,6 @@ function statusIcons(){
     return Icons.STUDENTCAP;
   }
 } 
-
-// onMount(async () => {
-//   try {
-//       //  if (!chqLogin()){
-//       //   goto('/login');
-//       //  }
-//   }catch (e) {
-//   toast.push("unknown error"); 
-//   }
-// });
 
 </script>
 
@@ -53,7 +51,7 @@ function statusIcons(){
     <!-- <NavBtn title='Templates' icon ='📜' url='/templates'/> -->
     
 
-    <NavBtn2 title='Status' icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
+    <NavBtn2 title={extractEmailPrefix(teacherName)} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
     <NavBtn title='Syllabus' icon ='📜' url='/teachermath/syllabus'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/teachermath/help'/>
     <NavBtn2 title='Logout' icon ={Icons.LOCK}    clk={logout}/>

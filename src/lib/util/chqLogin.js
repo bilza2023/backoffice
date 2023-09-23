@@ -1,15 +1,17 @@
 
-import { isLoginStore, isAdminStore } from './appStore';
+import { isLoginStore, isAdminStore,teacherNameStore } from './appStore';
 
 
 export default function chqLogin(){
  const teacher_token = localStorage.getItem('teacher_token');
  const teacher_status = localStorage.getItem('teacher_status');
+ const teacher_name = localStorage.getItem('teacher_name');
  
-      if ( teacher_token==null || teacher_status==null ){
+      if ( teacher_token==null || teacher_status==null || teacher_name ==null){
       return false;
       }else {
         isLoginStore.set(true);
+        teacherNameStore.set(teacher_name)
                 if (teacher_status == 'admin'){
                     isAdminStore.set(true)
                 }else{
