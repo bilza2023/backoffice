@@ -22,10 +22,10 @@ onMount(async () => {
     return;
     }  
     //=============================  
-    const math_syllabus =  JSON.parse(localStorage.getItem('math_syllabus'));
-        if (math_syllabus !== null){
-            questions = math_syllabus;
-        }else {
+    // const math_syllabus =  JSON.parse(localStorage.getItem('math_syllabus'));
+    //     if (math_syllabus !== null){
+    //         questions = math_syllabus;
+    //     }else {
             const resp = await fetch( `${BASE_URL}/math_fbise`, {
             method: 'GET',
             headers: {
@@ -40,7 +40,7 @@ onMount(async () => {
               toast.push('failed to load');
               throw new Exception("failed to load")
             }
-        }
+        // }
   } catch (e) {
        toast.push('failed to load');
   }      
