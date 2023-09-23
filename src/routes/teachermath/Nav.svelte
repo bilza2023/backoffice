@@ -14,6 +14,7 @@ function logout(){
     isAdminStore.set(false);
     localStorage.removeItem('teacher_token');
     localStorage.removeItem('teacher_status');
+    localStorage.removeItem('math_syllabus');
     goto('login');
 }
 function statusIcons(){

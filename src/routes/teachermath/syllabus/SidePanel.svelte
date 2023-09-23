@@ -3,8 +3,14 @@
 import { HdgWithIcon } from '$lib/cmp';
 import {Icons } from '$lib/util';
 export let questions;
-export let setSelectedEx;
 
+
+import { selectedExStore } from '../../../lib/util/appStore.js';
+  $: selectedEx = $selectedExStore;
+
+function setSelectedEx(ex){
+  selectedExStore.set(ex)
+}
 
 let uniqueChapters = [];
 let selectedChapter;

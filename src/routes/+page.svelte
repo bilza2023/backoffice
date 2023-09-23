@@ -35,7 +35,8 @@ onMount(async () => {
 <p class="bg-gray-700 p-1 m-1 mx-4">New Items added to Help. Please check</p>
 <p class="bg-gray-700 p-1 m-1 mx-4">Login system fixed</p>
 <p class="bg-gray-700 p-1 m-1 mx-4">Check out the new Syllabus Page</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Get Empty Get Fill not working</p>
+<p class="bg-gray-700 p-1 m-1 mx-4">Get Empty Get Fill working</p>
+<p class="bg-gray-700 p-1 m-1 mx-4">Selected Exercise stay when you navigate to other pages.</p>
 </div>
 
 <br>

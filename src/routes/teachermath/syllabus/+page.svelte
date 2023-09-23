@@ -26,7 +26,7 @@ onMount(async () => {
         if (math_syllabus !== null){
             questions = math_syllabus;
         }else {
-            const resp = await fetch( `${BASE_URL}/math_syllabus/empty`, {
+            const resp = await fetch( `${BASE_URL}/math_fbise`, {
             method: 'GET',
             headers: {
             'Authorization': `Bearer 000`,
