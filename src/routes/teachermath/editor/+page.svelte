@@ -120,23 +120,20 @@ onMount(async () => {
   {/each}
 </div>
 
-
-<!-- <AdminPanel {question} {redraw}/> -->
-
 <br>
 <br>
 
-{#if question }
+<!-- {#if question }
   {#if isAdmin }
     <AdminPanel {question} {redraw}/>
   {:else}  
     <TeacherPanel {question} {redraw} />
   {/if}
-{/if}
+{/if} -->
 <br>
 
 <div class="flex justify-center">
-<button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,eqs)}>Save</button>
+  <button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,eqs)}>Save</button>
 </div>
 
 <br>

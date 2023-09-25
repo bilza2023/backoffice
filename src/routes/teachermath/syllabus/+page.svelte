@@ -8,6 +8,7 @@ import MainPanel from './MainPanel.svelte';
   import SidePanel from './SidePanel.svelte';
 
 let questions;
+let total_questions;
 
 let selectedEx ="1.1";
 
@@ -31,6 +32,7 @@ onMount(async () => {
             if (resp.ok){
               const data = await resp.json();
               questions = data.questions;
+              total_questions = data.total_questions;
               localStorage.setItem('math_syllabus',JSON.stringify(questions));
             }else {
               toast.push('failed to load');
@@ -51,10 +53,14 @@ onMount(async () => {
       <SidePanel {questions} {setSelectedEx}/>
   </div>
   <div class="w-10/12">
-    <MainPanel {questions}  {selectedEx}/>
+    <MainPanel {questions}  {selectedEx} {total_questions}/>
     <!-- code here -->
   </div>
 
+</div>
+{:else}
+<div class='flex justify-center   p-2 '>
+ <HdgWithIcon bgColor='bg-stone-600' icon={Icons.COMPUTER}>Loading Please Wait...</HdgWithIcon>
 </div>
 {/if}
 <br>

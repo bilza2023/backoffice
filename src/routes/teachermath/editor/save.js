@@ -1,37 +1,39 @@
 //@ts-nocheck
 import {toast,get} from "$lib/util";
 import { BASE_URL } from '../../../lib/util/config';
-import { isLoginStore, isAdminStore } from '../../../lib/util/appStore.js';
+import { isLoginStore, isAdminStore,teacherNameStore } from '../../../lib/util/appStore.js';
 
 export  default async function save(question , eqs){
-      try {
-  debugger;    
-  question.eqs = eqs;
+  try {
+        if ( get(isLoginStore) == false){
+        toast.push("Please login")
+        return;
+        }
+        if ( !get(get(teacherNameStore)) ){
+        toast.push("Please login")
+        return;
+        }
 
-  if ( get(isAdminStore) == false && question.staus == "final"){
-      toast.push("Only Admin can mark a question final please.")
-      return;
-  }
-  if ( get(isAdminStore) == false){
-    question.free = false;
-    // question.status = 'fill'; ////??? check again later
-  }
-  if ( get(isLoginStore) == false){
-  toast.push("Please login")
-  return;
-  }
-  if (question.eqs.length < 1 ){
-  toast.push("No Equation inserted")
-  return;
-  }
-  if (question.status == 'fill' ){
-    assignSteps(question);
-    setFakeTimes(question);
-  }
-  if (question.status == 'final' ){
-    assignSteps(question);
-    checkFinalTimings(question.eqs);
-  }
+ //==MUst 3 steps
+  question.eqs = eqs;
+  //--since teacher name status : fill are the same why not to use just one , any one with no filledBy is considered empty
+  question.filledBy = get(teacherNameStore);
+  question.status = 'fill';
+  assignSteps(question);
+  setFakeTimes(question);
+  
+  // if ( get(isAdminStore) == false && question.staus == "final"){
+  //     toast.push("Only Admin can mark a question final please.")
+  //     return;
+  // }
+  // if ( get(isAdminStore) == false){
+  //   question.free = false;
+  //   // question.status = 'fill'; ////??? check again later
+  // }
+  // if (question.status == 'final' ){
+  //   assignSteps(question);
+  //   checkFinalTimings(question.eqs);
+  // }
         const response = await fetch(`${BASE_URL}/upload_math`, {
             method: 'POST',
             headers: {

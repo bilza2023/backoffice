@@ -43,7 +43,7 @@ import Nav from '../teachermath/Nav.svelte';
             <div class='flex justify-center pt-1'>
                 <div class='w-6/12 text-center'>
                     
-                <input type="text" class="w-full bg-gray-700 color-white p-2 m-1 rounded-md"
+                <input type="password" class="w-full bg-gray-700 color-white p-2 m-1 rounded-md"
                 bind:value={password} 
                 required
                 >
