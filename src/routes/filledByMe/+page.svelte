@@ -54,7 +54,7 @@ onMount(async () => {
 <br>
 
 {#if questions}
-<div class="bg-stone-700 text-sm text-gray-300 w-5/12 p-2 m-1 rounded-md ">{` Questions filled by you are : ${questions.length}`}</div>
+  <div class="bg-stone-700 text-sm text-gray-300 w-5/12 p-2 m-1 rounded-md ">{`Questions filled by you are : ${questions.length}`}</div>
 {/if}
 
 

@@ -5,10 +5,12 @@ import { isLoginStore, isAdminStore,teacherNameStore } from '../../../lib/util/a
 
 export  default async function save(question , eqs){
   try {
-        if ( get(isLoginStore) == false){
+    const token = localStorage.getItem('token');
+        if ( !token){
         toast.push("Please login")
         return;
         }
+        //---add teacher name at back end but for now its ok
         if ( !get(get(teacherNameStore)) ){
         toast.push("Please login")
         return;
@@ -16,30 +18,19 @@ export  default async function save(question , eqs){
 
  //==MUst 3 steps
   question.eqs = eqs;
-  //--since teacher name status : fill are the same why not to use just one , any one with no filledBy is considered empty
-  question.filledBy = get(teacherNameStore);
-  question.status = 'fill';
+  //--do not over write filledBy once it is entered and no need for status here
+  if (!question.filledBy || question.filledBy == ""){
+    question.filledBy = get(teacherNameStore);
+  }
+
   assignSteps(question);
-  setFakeTimes(question);
-  
-  // if ( get(isAdminStore) == false && question.staus == "final"){
-  //     toast.push("Only Admin can mark a question final please.")
-  //     return;
-  // }
-  // if ( get(isAdminStore) == false){
-  //   question.free = false;
-  //   // question.status = 'fill'; ////??? check again later
-  // }
-  // if (question.status == 'final' ){
-  //   assignSteps(question);
-  //   checkFinalTimings(question.eqs);
-  // }
+ 
         const response = await fetch(`${BASE_URL}/upload_math`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({question})
+            body: JSON.stringify({token,question})
         });
 
         if (response.ok) {

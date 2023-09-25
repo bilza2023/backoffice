@@ -123,13 +123,11 @@ onMount(async () => {
 <br>
 <br>
 
-<!-- {#if question }
+{#if question }
   {#if isAdmin }
     <AdminPanel {question} {redraw}/>
-  {:else}  
-    <TeacherPanel {question} {redraw} />
   {/if}
-{/if} -->
+{/if}
 <br>
 
 <div class="flex justify-center">

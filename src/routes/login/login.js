@@ -36,7 +36,7 @@ const response = await fetch( `${BASE_URL}/teacher_login` ,{
         
     // debugger;
         // console.log("data",data);
-        localStorage.setItem("teacher_token", data.token);
+        localStorage.setItem("token", data.token);
         localStorage.setItem("teacher_status", data.status);
         localStorage.setItem("teacher_name", data.teacher_name);
         isLoginStore.set(true);
