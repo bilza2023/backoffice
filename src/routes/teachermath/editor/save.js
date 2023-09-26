@@ -20,6 +20,7 @@ export  default async function save(question , eqs){
 
  //==MUst 3 steps
   question.eqs = eqs;
+  assignSteps(question);
   //--do not over write filledBy once it is entered and no need for status here
   //-filledby once filled cann ot bechanged- no need so far ||====>
   if (!question.filledBy || question.filledBy == ""){
@@ -29,8 +30,10 @@ export  default async function save(question , eqs){
   if ( question.status !== "locked" &&  question.status !== "final"  ){
       setFakeTimes(question);
   }
+  if ( question.status == "locked" || question.status == "final"  ){
+      setEndTimes(question);
+  }
 
-  assignSteps(question);
  
         const response = await fetch(`${BASE_URL}/upload_math`, {
             method: 'POST',
@@ -49,6 +52,13 @@ export  default async function save(question , eqs){
       }
 }
 //////////////////////////////////////////////////////
+function setEndTimes(question) {
+debugger;
+  for (let i = 0; i < question.eqs.length - 1; i++) {
+    const eq = question.eqs[i];
+    eq.eqEndTime = question.eqs[i+1].eqStartTime;
+  }
+}
 
 function setFakeTimes(question) {
   let time = 0;
