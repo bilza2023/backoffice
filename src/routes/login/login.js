@@ -46,7 +46,7 @@ const response = await fetch( `${BASE_URL}/teacher_login` ,{
               isAdminStore.set(true);
             }
 
-        goto("/teachermath/syllabus");
+        goto("/");
   } else {
     isLoginStore.set(false);
     const data = await response.json();

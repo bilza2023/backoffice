@@ -2,6 +2,8 @@
 //@ts-nocheck
 export let addEq;
 export let question;
+export let closeAllSP;
+export let setSPTrue;
 
 </script>
 
@@ -12,5 +14,13 @@ export let question;
 <button id="saveBtn" class="bg-green-800 p-1   rounded-sm"
 on:click={addEq}
 >Add Eq</button>
+&nbsp;
+<button  class="bg-blue-800 p-1   rounded-sm"
+on:click={setSPTrue}>Show Sp</button>
+&nbsp;
+<button  class="bg-orange-800 p-1   rounded-sm"
+on:click={closeAllSP}
+>Hide SP</button>
+&nbsp;
 <span class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</span>
 </div>

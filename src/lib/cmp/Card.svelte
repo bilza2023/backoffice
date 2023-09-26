@@ -18,7 +18,7 @@ border-4  border-blue-700 text-center
 hover:border-blue-200"><!--outer -div-->
 
 <a  class="hover:bg-gray-300  rounded-lg" 
- href={url} >
+ href={url} target="_blank">
 
 <div class="flex flex-col"><!--inner -div-->
     <!-- //icon -->

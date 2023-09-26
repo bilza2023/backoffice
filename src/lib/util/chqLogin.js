@@ -3,11 +3,11 @@ import { isLoginStore, isAdminStore,teacherNameStore } from './appStore';
 
 
 export default function chqLogin(){
- const teacher_token = localStorage.getItem('teacher_token');
+ const token = localStorage.getItem('token');
  const teacher_status = localStorage.getItem('teacher_status');
  const teacher_name = localStorage.getItem('teacher_name');
  
-      if ( teacher_token==null || teacher_status==null || teacher_name ==null){
+      if ( token==null || teacher_status==null || teacher_name ==null){
       return false;
       }else {
         isLoginStore.set(true);

@@ -21,12 +21,21 @@ export  default async function save(question , eqs){
  //==MUst 3 steps
   question.eqs = eqs;
   assignSteps(question);
-  //--do not over write filledBy once it is entered and no need for status here
-  //-filledby once filled cann ot bechanged- no need so far ||====>
+  /**
+  filledBy rules
+  - filledBy is for teacher not admin. Admin can open and save a question many times and it will not effect the filledBy
+  -if admin wants he can mark a question as empty and remove the filledBy both but seperately.
+  -do not over write filledBy once it is entered and no need for status here
+  -filledby once filled cann ot bechanged- no need so far ||====>
+   */
   if (!question.filledBy || question.filledBy == ""){
-   //MUST NOT REMOVE- 
-    question.filledBy = get(teacherNameStore);
+     //-don not mark filled for Admin
+     if ( !get(isAdminStore) ){
+        //MUST NOT REMOVE- 
+        question.filledBy = get(teacherNameStore);
+     } 
   }
+  /////////////////////////////
   if ( question.status !== "locked" &&  question.status !== "final"  ){
       setFakeTimes(question);
   }
