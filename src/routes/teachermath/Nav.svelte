@@ -56,6 +56,7 @@ function statusIcons(){
     <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/>
     {/if}
     
+    <NavBtn title='Notes' icon ={Icons.MESSAGE} url='/fbiseMath9th'/>
     <NavBtn title='9th Syllbus' icon ='📜' url='/teachermath/syllabus'/>
     <NavBtn title='Filled By Me' icon ={Icons.PENCIL} url='/filledByMe'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/teachermath/help'/>
