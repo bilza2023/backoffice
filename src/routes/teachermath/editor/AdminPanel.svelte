@@ -6,8 +6,8 @@ export let redraw;
 
 <div class='flex justify-center  w-10/12 mx-auto bg-gray-700 p-2   rounded-md   text-center '>
    
-<button on:click={()=>{question.status = "none" ;redraw()}}
-class='bg-blue-800 rounded-md p-1 mx-2 m-1'>None</button>
+<button on:click={()=>{question.status = "fill" ;redraw()}}
+class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Fill</button>
 
 <button on:click={()=>{question.status = "locked" ;redraw()}}
 class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Locked</button>

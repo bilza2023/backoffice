@@ -5,11 +5,12 @@ import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
 import Nav from '../teachermath/Nav.svelte';
 
 import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
+    import Allfilled from './Allfilled.svelte';
   // Use the store values directly with the $ prefix
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;
   
-
+let allfilled = false; 
 onMount(async () => {
   try{
     if (!isLogin || !isAdmin){
@@ -33,6 +34,10 @@ onMount(async () => {
 </div>
 <br>
 
+<button on:click={()=>allfilled = !allfilled}>All Filled</button>
+{#if allfilled}
+<Allfilled />
+{/if}
 
 <br>
 <br>

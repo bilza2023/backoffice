@@ -5,13 +5,14 @@ import { isLoginStore, isAdminStore,teacherNameStore } from '../../../lib/util/a
 
 export  default async function save(question , eqs){
   try {
+    debugger;
     const token = localStorage.getItem('token');
         if ( !token){
         toast.push("Please login")
         return;
         }
         //---add teacher name at back end but for now its ok
-        if ( !get(get(teacherNameStore)) ){
+        if ( !get(teacherNameStore) ){
         toast.push("Please login")
         return;
         }
@@ -19,8 +20,13 @@ export  default async function save(question , eqs){
  //==MUst 3 steps
   question.eqs = eqs;
   //--do not over write filledBy once it is entered and no need for status here
+  //-filledby once filled cann ot bechanged- no need so far ||====>
   if (!question.filledBy || question.filledBy == ""){
+   //MUST NOT REMOVE- 
     question.filledBy = get(teacherNameStore);
+  }
+  if ( question.status !== "final"){
+      setFakeTimes();
   }
 
   assignSteps(question);
@@ -32,12 +38,10 @@ export  default async function save(question , eqs){
             },
             body: JSON.stringify({token,question})
         });
-
         if (response.ok) {
             toast.push('Data uploaded successfully');
         }else {
               toast.push('Response not ok');
-        
         } 
       }catch (e) {
               toast.push('Unknown Error');
