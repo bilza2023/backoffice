@@ -5,7 +5,8 @@ import { isLoginStore, isAdminStore,teacherNameStore } from '../../../lib/util/a
 
 export  default async function save(question , eqs){
   try {
-    debugger;
+    // debugger;
+    question.eqs = eqs;
     const token = localStorage.getItem('token');
         if ( !token){
         toast.push("Please login")
@@ -25,8 +26,8 @@ export  default async function save(question , eqs){
    //MUST NOT REMOVE- 
     question.filledBy = get(teacherNameStore);
   }
-  if ( question.status !== "final"){
-      setFakeTimes();
+  if ( question.status !== "locked" &&  question.status !== "final"  ){
+      setFakeTimes(question);
   }
 
   assignSteps(question);
