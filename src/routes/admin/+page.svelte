@@ -32,7 +32,6 @@ onMount(async () => {
 <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Admin Panel</HdgWithIcon>
 </div>
-<br>
 
 <button on:click={()=>allfilled = !allfilled}>All Filled</button>
 {#if allfilled}
