@@ -34,7 +34,14 @@ function toggleFS(index){
  eqs[index].spVisibility = false;
  eqs = [...eqs];
 }
-
+function setStatus(status){
+question.status = status;
+redraw();
+}
+function setFree(free){
+question.free = free;
+redraw();
+}
 function moveUpEq(index) {
   if (index > 0) {
     const eqToMove = eqs[index];
@@ -60,7 +67,7 @@ function setSPTrue(){
     eqs[i].spVisibility = true; 
   }
     eqs = [...eqs];
-}
+} 
 function closeAllSP(){
   // debugger;
   for (let i = 0; i < eqs.length; i++) {
@@ -120,7 +127,7 @@ onMount(async () => {
 <div class="m-4 p-0">
   <Titlebar />
   {#each eqs as eq, i}
-      <EqPart  {eq} {i}/>
+      <EqPart  {eq} {i} status ={question.status}/>
       <EqPartLowerToolBar {eq} {i} {addEq} {moveUpEq} {moveDownEq} {delEq} {toggleSP} {toggleFS}/>
 
         {#if eq.spVisibility}
@@ -154,7 +161,7 @@ onMount(async () => {
 <br>
 
   {#if isAdmin }
-    <AdminPanel {question} {redraw}/>
+    <AdminPanel {question} {setFree} {setStatus}/>
   {/if}
 {/if}
 <br>

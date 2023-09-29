@@ -27,20 +27,23 @@ export  default async function save(question , eqs){
   -if admin wants he can mark a question as empty and remove the filledBy both but seperately.
   -do not over write filledBy once it is entered and no need for status here
   -filledby once filled cann ot bechanged- no need so far ||====>
+  - Admin must not over write BUT if there is no filledBy then the admin is the filler
    */
   if (!question.filledBy || question.filledBy == ""){
      //-don not mark filled for Admin
-     if ( !get(isAdminStore) ){
+    //  if ( !get(isAdminStore) ){
         //MUST NOT REMOVE- 
         question.filledBy = get(teacherNameStore);
-     } 
+    //  } 
   }
   /////////////////////////////
-  if ( question.status !== "locked" &&  question.status !== "final"  ){
+  //--in locked we do not allow edit - its set by admin.
+  //--the status = inlocked , locked (both we do not allow to insert time). when status  == final we allow to insert time and check it
+  if ( question.status !== "final" ){
       setFakeTimes(question);
-  }
-  if ( question.status == "locked" || question.status == "final"  ){
+  }else{
       setEndTimes(question);
+      checkFinalTimings(question.eqs)
   }
 
  
@@ -62,7 +65,7 @@ export  default async function save(question , eqs){
 }
 //////////////////////////////////////////////////////
 function setEndTimes(question) {
-debugger;
+// debugger;
   for (let i = 0; i < question.eqs.length - 1; i++) {
     const eq = question.eqs[i];
     eq.eqEndTime = question.eqs[i+1].eqStartTime;
@@ -113,19 +116,23 @@ function checkFinalTimings(eqs) {
       return;
     }
 
-    // Rule 4: Check if fsStartTime and fsEndTime fall within eqStartTime and eqEndTime
+    // Rule 4: Check if fsStartTime and fsEndTime fall within eqStartTime and eqEndTime. BUT check only if fs has some thing
+    if (currentStep.fs.length > 0){
     if (
       currentStep.fsStartTime < currentStep.eqStartTime ||
       currentStep.fsEndTime > currentStep.eqEndTime
     ) {
-      toast.push(`Validation error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
+      toast.push(`FS timings error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
       return;
+    }
     }
 
     // Rule 5: Check if fsStartTime is smaller than fsEndTime
+    if (currentStep.fs.length > 0){
     if (currentStep.fsStartTime >= currentStep.fsEndTime) {
       toast.push(`Validation error at step ${i + 1}: fsStartTime is greater than or equal to fsEndTime.`);
       return;
+    }
     }
 
     // Rule 6: Check if fs.length is 0, set fsStartTime and fsEndTime to null

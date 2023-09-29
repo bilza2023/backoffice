@@ -1,19 +1,20 @@
 <script>
 //@ts-nocheck
 export let question;
-export let redraw;
+export let setFree;
+export let setStatus;
 </script>
 
 <div class='flex justify-center  w-10/12 mx-auto bg-gray-700 p-2   rounded-md   text-center '>
    
-<button on:click={()=>{question.status = "fill" ;redraw()}}
-class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Fill</button>
+<button on:click={()=>setStatus("unlocked")}
+class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Unlocked</button>
 
-<button on:click={()=>{question.status = "locked" ;redraw()}}
+<button on:click={()=>setStatus("locked")}
 class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Locked</button>
 
 
-<button on:click={()=>{question.status = "final";redraw()}}
+<button on:click={()=>setStatus("final")}
 class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Final</button>
 
 <div class="bg-gray-900 rounded-xl p-1 m-1">Status:&nbsp;&nbsp;{question.status}</div>
@@ -22,7 +23,7 @@ class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Final</button>
 
 
 <div class='flex justify-center  w-10/12 mx-auto bg-gray-700 p-2   rounded-md   text-center '>
-<button on:click={()=>{question.free = !question.free;redraw()}}
+<button on:click={()=>setFree(!question.free)}
 class='bg-green-800 rounded-md p-1 mx-2 m-1'>Free</button>
 
 <div class="bg-gray-900 rounded-xl p-1 m-1">{question.free}</div>
