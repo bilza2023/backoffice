@@ -1,8 +1,5 @@
 // @ts-nocheck
-import {toast} from '$lib/util';
-import { BASE_URL } from '../../lib/util/config';
-import { goto } from "$app/navigation";
-import {isLoginStore , isAdminStore} from '../../lib/util/appStore';
+import {isLoginStore , isAdminStore, goto,BASE_URL,toast} from '$lib/util';
 import validateString from "./validateString"
 import validateEmail from "./validateEmail"
 
@@ -34,8 +31,6 @@ const response = await fetch( `${BASE_URL}/teacher_login` ,{
     if (response.ok) {
         const data = await response.json();
         
-    // debugger;
-        // console.log("data",data);
         localStorage.setItem("token", data.token);
         localStorage.setItem("teacher_status", data.status);
         localStorage.setItem("teacher_name", data.teacher_name);
@@ -45,12 +40,12 @@ const response = await fetch( `${BASE_URL}/teacher_login` ,{
             }else {
               isAdminStore.set(true);
             }
-
         goto("/");
   } else {
     isLoginStore.set(false);
+    isAdminStore.set(false);
     const data = await response.json();
-    toast.push(data.msg);
+    toast.push(data.message);
   } 
   }
 

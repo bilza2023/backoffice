@@ -3,7 +3,7 @@
 import {PageWrapper,HdgWithIcon,Centre,SectionHead,FormRow,InputElm,NumberElm,Comment,BtnWIconSm , BtnWIcon,FormElm,Lbl} from '$lib/cmp';
 import { Icons } from '$lib/util';
 
-import loginFn from './login.js';
+import loginFn from '$lib/loginFns/loginFn';
 
 let email ="";
 let password =""; 

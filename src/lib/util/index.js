@@ -5,11 +5,14 @@ import { toast } from '@zerodevx/svelte-toast';
 import { fade } from 'svelte/transition';
 import { get } from 'svelte/store';
 import { goto } from '$app/navigation';
+import { BASE_URL } from './config';
+import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
 import chqLogin from './chqLogin';
-import {BASE_URL} from './config';
 
             export {
+            isLoginStore,isAdminStore,
+            BASE_URL,
                     onMount,
                     toast,
                     fade,
@@ -17,7 +20,6 @@ import {BASE_URL} from './config';
                     goto,
                     browser,
                     Icons,
-                    BASE_URL,
                     chqLogin
             }
 
