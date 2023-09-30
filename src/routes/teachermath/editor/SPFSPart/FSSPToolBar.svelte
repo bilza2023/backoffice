@@ -10,6 +10,11 @@ const addTable = ()=>{
  theArray.push(tblData);
  redraw(); 
 }
+const addTableCode = ()=>{
+  const tblData ={ code: `[["",""],["",""]]`, type: 'tableCode' };
+ theArray.push(tblData);
+ redraw(); 
+}
 function addTxtCodeImg(textOrCode = "text"){
  // debugger;
   let newItem;
@@ -38,6 +43,8 @@ function addTxtCodeImg(textOrCode = "text"){
 
 <button on:click={()=>addTxtCodeImg("img")} class="bg-green-600 text-white p-1 text-xs rounded-md">Image</button>
 
-<button on:click={()=>addTable("table")} class="bg-yellow-900 text-white p-1 text-xs rounded-md">Table</button>
+<button on:click={()=>addTable()} class="bg-green-900 text-white p-1 text-xs rounded-md">Table</button>
+
+<button on:click={()=>addTableCode()} class="bg-red-900 text-white p-1 text-xs rounded-md">Code Table</button>
 
 </div>

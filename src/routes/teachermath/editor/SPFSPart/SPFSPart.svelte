@@ -4,6 +4,7 @@
 import CodeTxt from '../CodeTxt.svelte';
 import VerticalBtns from './VerticalBtns.svelte';
 import Table from './Table.svelte';
+import TableCode from './TableCode.svelte';
 // import SpToolBar from './SPToolBar.svelte';
 import FSSPToolBar from './FSSPToolBar.svelte';
 
@@ -94,6 +95,12 @@ console.log(theArray[j]);
     <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1">
           <Table item = {sp.code} {moveUp} {moveDown}{updateTableData} {del}{redraw} {j}/>
     </div>
+    {/if}
+    
+    {#if (sp.type == 'tableCode' )}
+    <!-- <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1"> -->
+          <TableCode item = {sp.code} {moveUp} {moveDown}{updateTableData} {del}{redraw} {j}/>
+    <!-- </div> -->
     {/if}
 
  
