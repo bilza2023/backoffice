@@ -45,26 +45,21 @@ const handleInputChange = (newValue, rowIndex, colIndex) => {
     updateTableData(j,JSON.stringify(parsedData));
     redraw();
   }
-  // Function to delete the last row
 const delRow = () => {
   if (parsedData.length > 0) {
     parsedData.pop(); // Remove the last row
-    item = JSON.stringify(parsedData);
-    parsedData = [...parsedData];
+    updateTableData(j,JSON.stringify(parsedData));
     redraw();
+    
   }
 }
-
-// Function to delete the last column
 const delCol = () => {
   if (parsedData.length > 0 && parsedData[0].length > 0) {
     parsedData.forEach(row => row.pop()); // Remove the last column from each row
-    item = JSON.stringify(parsedData);
-    parsedData = [...parsedData];
+   updateTableData(j,JSON.stringify(parsedData));
     redraw();
   }
 }
-
 </script>
 
 <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1">

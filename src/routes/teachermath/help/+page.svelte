@@ -22,6 +22,7 @@ const list = [
   { title: "Large Space", code: "One\\qquad two \\qquad three " },
   { title: "Text Color", code: "\\textcolor{red}{Red \\quad Word}" },
   { title: "Approximately", code: "a \\approx b" },
+  { title: "Divide", code: "8 \\div 4" },
   { title: "Lessthan or Equal", code: "a \\leq b" },
   { title: "Congruent", code: "a \\cong b" },
   { title: "Greaterthan or Equal", code: "a \\geq b" },
