@@ -142,6 +142,7 @@ onMount(async () => {
 <div class="mx-8">
   
   {#if isAdmin }
+  
   <p class="p-1 m-1 text-xs">Teacher Comments</p>
   <p class="w-full p-2 bg-gray-900 border-2 border-gray-500" >{question.teacherComments}</p>
 
@@ -166,7 +167,7 @@ onMount(async () => {
 {/if}
 <br>
 
-
+   
 <div class="flex justify-center">
   <button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,eqs)}>Save</button>
 </div>

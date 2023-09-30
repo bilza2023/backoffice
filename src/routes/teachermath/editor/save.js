@@ -70,6 +70,8 @@ function setEndTimes(question) {
     const eq = question.eqs[i];
     eq.eqEndTime = question.eqs[i+1].eqStartTime;
   }
+  //--set the last time very high so that it does not create problems in checking for now and before play we can set it equal to narration length.
+  question.eqs[question.eqs.length-1].eqEndTime = 50000;
 }
 
 function setFakeTimes(question) {

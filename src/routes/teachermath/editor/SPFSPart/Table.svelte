@@ -1,41 +1,47 @@
 <script>
 //@ts-nocheck
-    import { onMount } from "svelte";
+    // import { onMount } from "svelte";
 import VerticalBtnsTbl from './VerticalBtnsTbl.svelte';
-  export let item;
+
+export let item;
+export let redraw;
 export let moveUp;
 export let moveDown;
 export let del;
 export let j;
+export let updateTableData;
 
 let parsedData=[];
-
-onMount(()=>{
+$: {
   parsedData = JSON.parse(item);
-  console.log(parsedData);
-});
+}
+// onMount(()=>{
+//   parsedData = JSON.parse(item);
+//   // console.log(parsedData);
+// });
 
 
 // Function to handle input change
 const handleInputChange = (newValue, rowIndex, colIndex) => {
-  parsedData[rowIndex][colIndex] = newValue.code.replace(/\s+|\n/g, '');
-  item = JSON.stringify(parsedData);
-  // console.log(item);
+  parsedData[rowIndex][colIndex] = newValue;
+  updateTableData(j,JSON.stringify(parsedData));
 }
  // Function to add a new row
   const addRow = () => {
     const newRow = Array(parsedData[0].length).fill('');
     parsedData.push(newRow);
-    item = JSON.stringify(parsedData);
-    parsedData = [...parsedData];
+    // item = JSON.stringify(parsedData);
+    // parsedData = [...parsedData];
+    updateTableData(j,JSON.stringify(parsedData));
     redraw();
   }
 
   // Function to add a new column
   const addCol = () => {
     parsedData.forEach(row => row.push(''));
-    item = JSON.stringify(parsedData);
-    parsedData = [...parsedData];
+    // item = JSON.stringify(parsedData);
+    // parsedData = [...parsedData];
+    updateTableData(j,JSON.stringify(parsedData));
     redraw();
   }
   // Function to delete the last row

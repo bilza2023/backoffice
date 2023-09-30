@@ -5,9 +5,10 @@ import CodeTxt from '../CodeTxt.svelte';
 import VerticalBtns from './VerticalBtns.svelte';
 import Table from './Table.svelte';
 // import SpToolBar from './SPToolBar.svelte';
-import FSSPToolBar from '../FSSPToolBar.svelte';
+import FSSPToolBar from './FSSPToolBar.svelte';
 
-export let theArray;
+//theArray = eq.sp or eq.fs
+export let theArray; 
 export let clr;
 export let arrayName;
 export let redraw;
@@ -31,6 +32,13 @@ function del(j) {
     theArray.splice(j, 1);
   redraw();
 }
+//-in svelte data updated in child comp does not automatically update the parent item data Unless bind is used. incase of table bind is not used.
+function updateTableData(j,data){
+// debugger;
+// theArray[j] = {code :data , type:"table"};
+theArray[j].code = data;
+console.log(theArray[j]);
+}
 </script> 
 
 
@@ -50,7 +58,7 @@ function del(j) {
         <div class="bg-stone-900 rounded-md w-5/12 mx-auto">
         <CodeTxt eq={sp}/>
         </div>
-
+ 
         <div class='w-2/12'>
             <VerticalBtns  {moveUp} {moveDown} {del} {j}/>
         </div>
@@ -84,7 +92,7 @@ function del(j) {
     
     {#if (sp.type == 'table' || sp.type == 'tbl' )}
     <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1">
-          <Table item = {sp.code} {moveUp} {moveDown} {del} {j}/>
+          <Table item = {sp.code} {moveUp} {moveDown}{updateTableData} {del}{redraw} {j}/>
     </div>
     {/if}
 

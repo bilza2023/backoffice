@@ -14,13 +14,13 @@ function addTxtCodeImg(textOrCode = "text"){
  // debugger;
   let newItem;
   if (textOrCode == "code"){
-    newItem = { code: "2^2", type: 'code' };
+    newItem = { code: "", type: 'code' };
   }
   if (textOrCode == "text"){
-    newItem = { code: "text", type: 'text' };
+    newItem = { code: "", type: 'text' };
   }
   if (textOrCode == "img"){
-    newItem = { code: "math", type: 'img' };
+    newItem = { code: "", type: 'img' };
   }
   theArray.push(newItem);
   redraw();

@@ -22,5 +22,6 @@ on:click={setSPTrue}>Show Sp</button>
 on:click={closeAllSP}
 >Hide SP</button>
 &nbsp;
-<span class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</span>
+<a href={`https://skillzaa.com/math?id=${question._id}`} target="_blank" 
+class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</a>
 </div>
