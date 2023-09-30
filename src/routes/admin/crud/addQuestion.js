@@ -12,7 +12,7 @@ exercise,
 questionNo,
 part,
 filename : `${"FBISE".toLowerCase()}_cl_${9}_ch_${chapter}_ex_${exercise}_q_${questionNo}_pt_${part}`,
-status : "empty",
+status : "unlocked",
 free : false
 }
 
