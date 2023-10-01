@@ -3,6 +3,16 @@
 export let handleClick;
 export let rows;
 export let grid;
+
+function borderColor(tf){
+// debugger;
+    if (tf==true){
+        return "black"
+    }else{
+        return "red";
+        // return grid.bgColor;
+    }
+}
 </script>
 <!-- great learning style="background-color : {grid.bgColor}"> no ${}-->
 <table class=" p-0 m-0 border-collapse">
@@ -13,14 +23,17 @@ export let grid;
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div
-        style="background-color : {grid.bgColor}"
+        class=  "p-2 m-0 hover:cursor-pointer   border-2"
+        style= {`
+            border-left-color : ${borderColor(col.bl)};
+            border-top-color : ${borderColor(col.bt)};
+            border-right-color : ${borderColor(col.br)};
+            border-bottom-color : ${borderColor(col.bb)};
+        `}
+        
+        
         id={`${rowIndex}-${colIndex}`}
-          class={`p-2 m-0 hover:cursor-pointer   border-2
-          ${col.bl ? "border-l-red-500" : "{grid.bgColor}"}
-          ${col.bt ? "border-t-red-500" : "{grid.bgColor}"}
-          ${col.br ? "border-r-red-500" : "{grid.bgColor}"}
-          ${col.bb ? "border-b-red-500" : "{grid.bgColor}"}
-          `}
+          
           on:click={handleClick}
         >
             {col.content}

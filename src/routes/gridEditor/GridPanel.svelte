@@ -4,8 +4,11 @@ import AddDelBtns from "./AddDelBtns.svelte";
 import Grid from "./Grid.svelte";
 import getNewCol from "./getNewCol.js";
 import ControlPanel from "./ControlPanel.svelte";
+import { onMount } from "svelte";
+import {toast} from "$lib/util";
+
 let rows = [[]]; //[[]]
-let grid = {bgColor: "gray", fontSize: 1, padding: 2,margin:2 }
+let grid = {bgColor: "green", fontSize: 1, padding: 2,margin:2 }
 rows[0].push(getNewCol());
             
 let selectedTd = null;
@@ -19,6 +22,8 @@ function handleBorder(event,border){
     const [rowIndex, colIndex] = selectedTd.split('-');
     rows[rowIndex][colIndex][border] = !rows[rowIndex][colIndex][border];
     console.log(rows[rowIndex][colIndex]);
+ }else {
+    toast.push("No item selected");
  }
     redraw();
 }
@@ -61,6 +66,9 @@ function handleEndTimeInput(event) {
     console.log(rows[rowIndex][colIndex]);
 }
 }
+onMount(()=>{
+// console.log(grid.bgColor);
+})
 ///////////////////////////////////////        
 </script>
 
@@ -70,7 +78,7 @@ function handleEndTimeInput(event) {
     <div class="flex justify-center w-8/12" 
     style="background-color : {grid.bgColor}"
     >
-    <Grid bind:rows={rows} {grid} {handleClick} />
+    <Grid {rows} {grid} {handleClick} />
     </div>
 
     <div class="flex flex-col p-1 m-1 bg-stone-700 w-3/12 justify-start ">
