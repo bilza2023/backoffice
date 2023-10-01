@@ -1,5 +1,7 @@
 <script>
+//@ts-nocheck
 export let showPanel;
+
 </script>
 
 
@@ -13,4 +15,6 @@ class="bg-yellow-800 p-1 m-1 w-3/12 rounded-sm">SideBar Panel</button>
 
 <button on:click={()=>showPanel= "globalPanel"}
 class="bg-blue-800 p-1 m-1 w-3/12 rounded-sm">Global Panel</button>
+
+
 </div>

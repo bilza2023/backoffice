@@ -3,14 +3,24 @@
 export let handleClick;
 export let rows;
 export let grid;
+import {runningTime} from "./store";
+
+$:rTime = $runningTime;
+function getColor(startTime,endTime){
+    if (startTime < rTime ){
+        return "red";
+    }else {
+        return grid.bgColor;
+    }
+    
+}
 
 function borderColor(tf){
 // debugger;
     if (tf==true){
-        return "black"
+        return grid.cellBorderColor;
     }else{
-        return "red";
-        // return grid.bgColor;
+        return grid.bgColor;
     }
 }
 </script>
@@ -29,6 +39,10 @@ function borderColor(tf){
             border-top-color : ${borderColor(col.bt)};
             border-right-color : ${borderColor(col.br)};
             border-bottom-color : ${borderColor(col.bb)};
+            font-size : ${grid.fontSize}em;
+            margin : ${grid.margin}px;
+            padding : ${grid.padding}px;
+            color : ${getColor(col.startTime,col.endTime)};
         `}
         
         
