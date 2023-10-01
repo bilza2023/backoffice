@@ -68,22 +68,25 @@ if (selectedTd !== null) {
 <AddDelBtns bind:rows={rows} {redraw}/>
 <div class="flex w-full">
 <div class="flex justify-center w-8/12">
-<table class="bg-gray-800 p-1 m-1" >
+<table class="bg-gray-800 p-0 m-0 border-collapse" style="table-layout: fixed;">
 {#each rows as row, rowIndex}
-    <tr>
+    <tr class="m-0 p-0">
     {#each row as col, colIndex}
-        <td
+        <td class="m-0 p-0 border-2 border-gray-800">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div
         id={`${rowIndex}-${colIndex}`}
-          class={`p-4 pt-4 pl-4 mt-8 ml-8 hover:cursor-pointer bg-gray-700  border-2
-          ${col.bl ? "border-l-red-500" : "border-l-green-800"}
-          ${col.bt ? "border-t-red-500" : "border-t-green-800"}
-          ${col.br ? "border-r-red-500" : "border-r-green-800"}
-          ${col.bb ? "border-b-red-500" : "border-b-green-800"}
+          class={`p-2 m-0 hover:cursor-pointer bg-gray-700  border-2
+          ${col.bl ? "border-l-red-500" : "border-l-gray-800"}
+          ${col.bt ? "border-t-red-500" : "border-t-gray-800"}
+          ${col.br ? "border-r-red-500" : "border-r-gray-800"}
+          ${col.bb ? "border-b-red-500" : "border-b-gray-800"}
           `}
-           
           on:click={handleClick}
-          >
-         {col.content}
+        >
+            {col.content}
+           </div>
         </td>
 
     {/each}
