@@ -1,12 +1,14 @@
 <script>
 //@ts-nocheck
 // export let addRow;
+import getNewCol from "./getNewCol.js";
 export let rows;
 export let redraw;
 
+
 const addRow = () => {
 // Row must have atleast 1 item or the Array.fill will not work
-const newRow = Array(rows[0].length).fill({startTime : 0,endTime : 100 ,content : "A",bl:false,bt:false,br:false,bb:false});
+const newRow = Array(rows[0].length).fill(getNewCol());
     rows.push(newRow);
     redraw();
     console.log("rows" , rows);
@@ -14,7 +16,7 @@ const newRow = Array(rows[0].length).fill({startTime : 0,endTime : 100 ,content 
 const addCol = () => {
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
-    row.push({startTime:0, endTime: 100, content:"A",bl:false,bt:false,br:false,bb:false});
+    row.push(getNewCol());
   }
   console.log("rows", rows);
   redraw();
