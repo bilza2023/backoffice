@@ -6,9 +6,9 @@ import getNewCol from "./getNewCol.js";
 import ControlPanel from "./ControlPanel.svelte";
 import { onMount } from "svelte";
 import {toast} from "$lib/util";
-import {runningTime} from "./store";
+import {runningTime,isPlaying} from "./store";
 import {get} from "$lib/util";
-
+$:isPlay = $isPlaying;
 let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:0,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let selectedTd = null; 
 let rows = [[]]; //[[]]
@@ -27,22 +27,25 @@ rTime;
          col.brc = borderColor(col.br);
          col.bbc = borderColor(col.bb);
          //--
-         col.color = getColor(col.startTime);
+         col.color = getColor(col.startTime,col.content);
       }
    }
    rows = [...rows];
 }
 ////////////////////////////////           
 
-function getColor(startTime) {
-    if (startTime <= rTime) {
-            return grid.cellFontColor;
+function getColor(startTime,content) {
+   if (!isPlay && content !== "@"){
+         return grid.cellFontColor;
+      }
+    if (startTime <=  rTime) {
+            if (content == "@"){
+               return grid.bgColor;
+            }else {
+               return grid.cellFontColor;
+            }
     }else {
-         if (rTime ==0){ //so that we can see gray numbers when not playing
-            return "gray"
-         }else {
             return grid.bgColor; 
-         }
     }
 }
 
