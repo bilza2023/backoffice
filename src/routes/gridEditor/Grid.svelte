@@ -3,30 +3,10 @@
 export let handleClick;
 export let rows;
 export let grid;
-import {runningTime} from "./store";
 
-$:rTime = $runningTime;
-
-function getColor(startTime) {
-    if (startTime < rTime) {
-      return "red";
-    }else {
-      return "white"  
-    }
-}
-
-
-function borderColor(tf){
-// debugger;
-    if (tf==true){
-        return grid.cellBorderColor;
-    }else{
-        return grid.bgColor;
-    }
-}
 </script>
 <!-- great learning style="background-color : {grid.bgColor}"> no ${}-->
-<table class=" p-0 m-0 border-collapse">
+<table class=" p-0 m-0 border-collapse" >
 {#each rows as row, rowIndex}
     <tr class="m-0 p-0">
     {#each row as col, colIndex}
@@ -36,14 +16,14 @@ function borderColor(tf){
         <div
         class=  "p-2 m-0 hover:cursor-pointer   border-2"
         style= {`
-            border-left-color : ${borderColor(col.bl)};
-            border-top-color : ${borderColor(col.bt)};
-            border-right-color : ${borderColor(col.br)};
-            border-bottom-color : ${borderColor(col.bb)};
+            border-left-color : ${col.blc};
+            border-top-color : ${col.btc};
+            border-right-color : ${col.brc};
+            border-bottom-color : ${col.bbc};
             font-size : ${grid.fontSize}em;
             margin : ${grid.margin}px;
             padding : ${grid.padding}px;
-            color : ${getColor(col.startTime)};
+            color : ${col.color};
         `}
         
         

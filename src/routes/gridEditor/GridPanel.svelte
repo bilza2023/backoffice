@@ -6,13 +6,58 @@ import getNewCol from "./getNewCol.js";
 import ControlPanel from "./ControlPanel.svelte";
 import { onMount } from "svelte";
 import {toast} from "$lib/util";
+import {runningTime} from "./store";
+import {get} from "$lib/util";
 
+let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:0,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+let selectedTd = null; 
 let rows = [[]]; //[[]]
-let grid = {bgColor: "#1F2937", fontSize: 2, padding: 2,margin:0,cellBorderColor:"#e52222" }
 rows[0].push(getNewCol());
-            
-let selectedTd = null;
 
+$:rTime = $runningTime;
+
+$:{
+rTime;
+   for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      for (let j = 0; j < row.length; j++) {
+         const col = row[j];
+         col.blc = borderColor(col.bl);
+         col.btc = borderColor(col.bt);
+         col.brc = borderColor(col.br);
+         col.bbc = borderColor(col.bb);
+         //--
+         col.color = getColor(col.startTime);
+      }
+   }
+   rows = [...rows];
+}
+////////////////////////////////           
+
+function getColor(startTime) {
+    if (startTime <= rTime) {
+            return grid.cellFontColor;
+    }else {
+         if (rTime ==0){ //so that we can see gray numbers when not playing
+            return "gray"
+         }else {
+            return grid.bgColor; 
+         }
+    }
+}
+
+function borderColor(tf){
+ // debugger;
+    if (tf==true){
+        return grid.cellBorderColor;
+    }else{
+        if (grid.showGrid == true){
+         return grid.gridColor;
+        }else {
+         return grid.bgColor;
+        } 
+    }
+}
 function redraw(){rows = [...rows]}
 
 function handleBorder(event,border){
@@ -21,7 +66,7 @@ function handleBorder(event,border){
  if (selectedTd !== null) {
     const [rowIndex, colIndex] = selectedTd.split('-');
     rows[rowIndex][colIndex][border] = !rows[rowIndex][colIndex][border];
-    console.log(rows[rowIndex][colIndex]);
+   //  console.log(rows[rowIndex][colIndex]);
  }else {
     toast.push("No item selected");
  }
@@ -76,7 +121,7 @@ function handleEndTimeInput(event) {
     <div class="flex justify-center w-8/12" 
     style="background-color : {grid.bgColor}"
     >
-    <Grid {rows} {grid} {handleClick} />
+    <Grid {rows} {grid} {handleClick}/>
     </div>
 
     <div class="flex flex-col p-1 m-1 bg-stone-700 w-3/12 justify-start ">
