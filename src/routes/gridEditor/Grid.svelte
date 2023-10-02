@@ -6,16 +6,18 @@ export let grid;
 
 </script>
 <!-- great learning style="background-color : {grid.bgColor}"> no ${}-->
-<table class=" p-0 m-0 border-collapse" >
+<table class=" p-0 m-0" >
 {#each rows as row, rowIndex}
     <tr class="m-0 p-0">
     {#each row as col, colIndex}
-        <td class="m-0 p-0 " >
+        <td class="m-0 p-0  " >
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div
-        class=  "p-2 m-0 hover:cursor-pointer   border-2"
+        class=  "hover:cursor-pointer   border-2 "
         style= {`
+            min-width: 70px;
+            min-height: 70px;
             border-left-color : ${col.blc};
             border-top-color : ${col.btc};
             border-right-color : ${col.brc};

@@ -6,7 +6,6 @@ export let rows;
 export let redraw;
 import {runningTime} from "./store";
 import {start,stop} from "./main.js";
-import {get} from "$lib/util";
 
 $: rTime = $runningTime;
 const addRow = () => {
@@ -25,11 +24,23 @@ const addCol = () => {
   redraw();
 }
 const delRow = () => {
-
+    if (rows.length > 0) {
+        rows.pop(); // Remove the last row
+        redraw();
+        console.log("rows", rows);
+    }
 }
+
 const delCol = () => {
-
+    if (rows.length > 0 && rows[0].length > 0) {
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].pop(); // Remove the last element from each row
+        }
+        redraw();
+        console.log("rows", rows);
+    }
 }
+
 
 </script>
 

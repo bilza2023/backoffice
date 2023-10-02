@@ -17,7 +17,7 @@ rows[0].push(getNewCol());
 $:rTime = $runningTime;
 
 $:{
-rTime;
+ rTime;
    for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
       for (let j = 0; j < row.length; j++) {
@@ -35,18 +35,15 @@ rTime;
 ////////////////////////////////           
 
 function getColor(startTime,content) {
-   if (!isPlay && content !== "@"){
+   if (!isPlay ){
          return grid.cellFontColor;
-      }
-    if (startTime <=  rTime) {
-            if (content == "@"){
-               return grid.bgColor;
-            }else {
+   }else {
+          if (startTime <=  rTime) {
                return grid.cellFontColor;
-            }
-    }else {
+         }else {
             return grid.bgColor; 
-    }
+         }
+   }
 }
 
 function borderColor(tf){
@@ -121,7 +118,7 @@ function handleEndTimeInput(event) {
 
 <AddDelBtns bind:rows={rows} {redraw} />
 <div class="flex w-full">
-    <div class="flex justify-center w-8/12" 
+    <div class="flex justify-center items-center p-4 w-8/12" 
     style="background-color : {grid.bgColor}"
     >
     <Grid {rows} {grid} {handleClick}/>
