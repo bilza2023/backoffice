@@ -1,8 +1,10 @@
 <script>
 //@ts-nocheck
+import Katex from "svelte-katex";
 export let handleClick;
 export let rows;
 export let grid;
+export let equationMode;
 
 </script>
 <!-- great learning style="background-color : {grid.bgColor}"> no ${}-->
@@ -14,7 +16,7 @@ export let grid;
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div
-        class=  "hover:cursor-pointer   border-2 "
+        class=  "hover:cursor-pointer   border-2 text-center"
         style= {`
             min-width: 70px;
             min-height: 70px;
@@ -33,7 +35,11 @@ export let grid;
           
           on:click={handleClick}
         >
+            {#if equationMode}
+            <Katex>{col.content}</Katex>
+            {:else}
             {col.content}
+            {/if}
            </div>
         </td>
 

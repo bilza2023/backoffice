@@ -9,8 +9,14 @@ import {toast} from "$lib/util";
 import {runningTime,isPlaying} from "./store";
 import {get} from "$lib/util";
 $:isPlay = $isPlaying;
-let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:0,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let selectedTd = null; 
+let equationMode = false;
+
+function toggleEquationMode(){
+   equationMode = !equationMode;
+   redraw();
+} 
 let rows = [[]]; //[[]]
 rows[0].push(getNewCol());
 
@@ -116,12 +122,12 @@ function handleEndTimeInput(event) {
 </script>
 
 
-<AddDelBtns bind:rows={rows} {redraw} />
+<AddDelBtns bind:rows={rows} {redraw} {toggleEquationMode}/>
 <div class="flex w-full">
     <div class="flex justify-center items-center p-4 w-8/12" 
     style="background-color : {grid.bgColor}"
     >
-    <Grid {rows} {grid} {handleClick}/>
+    <Grid {rows} {grid} {handleClick} {equationMode}/>
     </div>
 
     <div class="flex flex-col p-1 m-1 bg-stone-700 w-3/12 justify-start ">

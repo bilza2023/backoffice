@@ -27,8 +27,8 @@ $:{
 
 <div class="flex w-full ">
 <span class="m-1 p-1 w-4/12">Content</span>
-<input id="tdInput" class="bg-gray-600 mx-2 my-1 w-8/12" type="text"
- on:input={handleInput}>
+<textarea id="tdInput" class="bg-gray-600 mx-2 my-1 w-8/12" type="text"
+ on:input={handleInput} />
 </div>
 
 <div class="flex w-full ">
