@@ -11,7 +11,7 @@ import ThreeButtons from "./ThreeButtons.svelte";
 import GridPanel from "./GridPanel.svelte";
 import GlobalPanel from "./GlobalPanel.svelte";
 import SPPanel from "./SPPanel.svelte";
-
+let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let showPanel = "gridPanel"
 let data = {};
 let rows = [];
@@ -25,16 +25,15 @@ let rows = [];
 <ThreeButtons bind:showPanel={showPanel} />
 
 <div>
-{#if showPanel == "gridPanel"}
-<GridPanel  />
-{/if}
-
 {#if showPanel == "globalPanel"}
-<GlobalPanel />
+<GlobalPanel bind:grid={grid} />
 {/if}
 {#if showPanel == "SBPanel"}
 <SPPanel />
 {/if}
+
+<GridPanel  {grid}/>
+
 </div>
 
 

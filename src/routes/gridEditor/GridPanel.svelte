@@ -9,7 +9,7 @@ import {toast} from "$lib/util";
 import {runningTime,isPlaying} from "./store";
 import {get} from "$lib/util";
 $:isPlay = $isPlaying;
-let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+export let grid;
 let selectedTd = null; 
 let equationMode = false;
 
