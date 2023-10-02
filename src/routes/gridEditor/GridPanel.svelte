@@ -7,9 +7,6 @@ import ControlPanel from "./ControlPanel.svelte";
 import { onMount } from "svelte";
 import {toast} from "$lib/util";
 
-export let start;
-export let stop;
-
 let rows = [[]]; //[[]]
 let grid = {bgColor: "#1F2937", fontSize: 2, padding: 2,margin:0,cellBorderColor:"#e52222" }
 rows[0].push(getNewCol());
@@ -69,14 +66,12 @@ function handleEndTimeInput(event) {
     console.log(rows[rowIndex][colIndex]);
 }
 }
-onMount(()=>{
-// console.log(grid.bgColor);
-})
+
 ///////////////////////////////////////        
 </script>
 
 
-<AddDelBtns bind:rows={rows} {redraw} {start} {stop}/>
+<AddDelBtns bind:rows={rows} {redraw} />
 <div class="flex w-full">
     <div class="flex justify-center w-8/12" 
     style="background-color : {grid.bgColor}"

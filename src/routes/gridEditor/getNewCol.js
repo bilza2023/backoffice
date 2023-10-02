@@ -13,6 +13,4 @@ return {
         bb:false,
         type : 'code'
         }
-
-
 }

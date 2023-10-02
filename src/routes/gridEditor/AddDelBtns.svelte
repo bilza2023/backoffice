@@ -5,8 +5,8 @@ import getNewCol from "./getNewCol.js";
 export let rows;
 export let redraw;
 import {runningTime} from "./store";
-export let start;
-export let stop;
+import {start,stop} from "./main.js";
+import {get} from "$lib/util";
 
 $: rTime = $runningTime;
 const addRow = () => {

@@ -2,5 +2,7 @@
 
 import { writable } from 'svelte/store';
 
-export const runningTime     = writable(0);
+export let  runningTime     = writable(0);
+export let  startTime     = writable(null);
+export let  interval     = writable(null);
 

@@ -6,14 +6,15 @@ export let grid;
 import {runningTime} from "./store";
 
 $:rTime = $runningTime;
-function getColor(startTime,endTime){
-    if (startTime < rTime ){
-        return "red";
+
+function getColor(startTime) {
+    if (startTime < rTime) {
+      return "red";
     }else {
-        return grid.bgColor;
+      return "white"  
     }
-    
 }
+
 
 function borderColor(tf){
 // debugger;
@@ -42,7 +43,7 @@ function borderColor(tf){
             font-size : ${grid.fontSize}em;
             margin : ${grid.margin}px;
             padding : ${grid.padding}px;
-            color : ${getColor(col.startTime,col.endTime)};
+            color : ${getColor(col.startTime)};
         `}
         
         

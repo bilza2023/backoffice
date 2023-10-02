@@ -11,28 +11,11 @@ import ThreeButtons from "./ThreeButtons.svelte";
 import GridPanel from "./GridPanel.svelte";
 import GlobalPanel from "./GlobalPanel.svelte";
 import SPPanel from "./SPPanel.svelte";
-import {runningTime} from "./store";
 
 let showPanel = "gridPanel"
 let data = {};
 let rows = [];
-let startTime = null;
-let interval = null;
 
-function start(){
-  interval = setInterval(updateTimeDiff,1000);  
-  startTime = Date.now();  
-}
-
-function stop(){ 
-    clearInterval(interval);
-    runningTime.set(0);
-}
-function updateTimeDiff() {
-    const currentTime = Date.now();
-    const timeDiff = currentTime - startTime;
-    runningTime.set(Math.floor(timeDiff / 1000));
-}
 </script>
 
 <PageWrapper>
@@ -43,7 +26,7 @@ function updateTimeDiff() {
 
 <div>
 {#if showPanel == "gridPanel"}
-<GridPanel  {start} {stop}/>
+<GridPanel  />
 {/if}
 
 {#if showPanel == "globalPanel"}
