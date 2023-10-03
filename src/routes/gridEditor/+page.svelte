@@ -11,11 +11,42 @@ import ThreeButtons from "./ThreeButtons.svelte";
 import GridPanel from "./GridPanel.svelte";
 import GlobalPanel from "./GlobalPanel.svelte";
 import SPPanel from "./SPPanel.svelte";
-let grid = {bgColor: "#1F2937", fontSize: 2, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+import getNewCol from "./getNewCol.js";
+let grid = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let showPanel = "gridPanel"
 let data = {};
-let rows = [];
+let rows = [[]]; //[[]]
+rows[0].push(getNewCol());
 
+
+async function save(){
+  try{
+       debugger; 
+       const question =  {_id :'650b94b4d750929738a4526c' ,board:"FBISE" , class:9 ,chapter:1, exercise: "1.2", questionNo : 1,part:"i",finalized : false,filename : "fbise_cl_9_ch_1_ex_1.2_q_1_pt_1" , eqs : []};
+       question.questionType = "grid";
+       question.grid = {};
+       question.grid.sp = [];
+       question.grid.fs = [];
+       question.grid.global = grid;
+       question.grid.rows = rows;
+       /////////////////////////////////////// 
+       const token = localStorage.getItem("token");
+       const response = await fetch(`${BASE_URL}/upload_math`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token,question})
+        });
+        if (response.ok) {
+            toast.push('Data uploaded successfully');
+        }else {
+              toast.push('Response not ok');
+        } 
+      }catch (e) {
+              toast.push('Unknown Error');
+      }
+}
 </script>
 
 <PageWrapper>
@@ -32,7 +63,7 @@ let rows = [];
 <SPPanel />
 {/if}
 
-<GridPanel  {grid}/>
+<GridPanel  {grid} {save} bind:rows={rows}/>
 
 </div>
 

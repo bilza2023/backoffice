@@ -29,14 +29,9 @@ export let grid;
         <input class="w-8/12 p-1 m-1 rounded-md" type="color" bind:value={grid.cellFontColor}>
     </div>
     
-    <!-- <div class="flex items-center justify-center w-6/12">
-        <div class="w-4/12 p-1 m-1 rounded-md">Show Grid</div>
-        <button class="w-8/12 p-1 m-1 rounded-md bg-gray-600" on:click={()=>grid.showGrid = ! grid.showGrid } >Show Grid</button>
-    </div>
-    -->
     <div class="flex items-center justify-center w-6/12">
         <div class="w-4/12 p-1 m-1 rounded-md">Font Size</div>
-        <input class="w-8/12 p-1 m-1 rounded-md bg-gray-600" type="number" bind:value={grid.fontSize}>
+        <input class="w-8/12 p-1 m-1 rounded-md bg-gray-600" type="number" bind:value={grid.fontSize} step="0.25">
     </div>
    
     <div class="flex items-center justify-center w-6/12">

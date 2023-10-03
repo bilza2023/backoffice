@@ -5,7 +5,7 @@ export default function getNewCol(){
 
 return {
         startTime:0, 
-        endTime: null, 
+        endTime: 0, 
         content:"",
         bl:false,
         bt:false,

@@ -3,6 +3,7 @@
 // export let addRow;
 import getNewCol from "./getNewCol.js";
 export let rows;
+export let save;
 export let toggleEquationMode;
 export let redraw;
 import {runningTime} from "./store";
@@ -10,6 +11,7 @@ import {start,stop} from "./main.js";
 
 $: rTime = $runningTime;
 const addRow = () => {
+ debugger;
 // Row must have atleast 1 item or the Array.fill will not work
 const newRow = Array(rows[0].length).fill(getNewCol());
     rows.push(newRow);
@@ -68,4 +70,7 @@ const delCol = () => {
     
     <button class="bg-green-400 p-1 m-1 rounded-md text-xs"
     on:click={toggleEquationMode}>Toggle Equation Mode</button>
+   
+    <button class="bg-green-400 p-1 m-1 rounded-md text-xs"
+    on:click={save}>Save</button>
 </div>

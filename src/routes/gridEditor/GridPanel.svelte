@@ -2,14 +2,16 @@
 //@ts-nocheck
 import AddDelBtns from "./AddDelBtns.svelte";
 import Grid from "./Grid.svelte";
-import getNewCol from "./getNewCol.js";
+
 import ControlPanel from "./ControlPanel.svelte";
 import { onMount } from "svelte";
 import {toast} from "$lib/util";
 import {runningTime,isPlaying} from "./store";
 import {get} from "$lib/util";
 $:isPlay = $isPlaying;
+export let save;
 export let grid;
+export let rows;
 let selectedTd = null; 
 let equationMode = false;
 
@@ -17,8 +19,8 @@ function toggleEquationMode(){
    equationMode = !equationMode;
    redraw();
 } 
-let rows = [[]]; //[[]]
-rows[0].push(getNewCol());
+// let rows = [[]]; //[[]]
+// rows[0].push(getNewCol());
 
 $:rTime = $runningTime;
 
@@ -39,7 +41,6 @@ $:{
    rows = [...rows];
 }
 ////////////////////////////////           
-
 function getColor(startTime,content) {
    if (!isPlay ){
          return grid.cellFontColor;
@@ -117,14 +118,12 @@ function handleEndTimeInput(event) {
     console.log(rows[rowIndex][colIndex]);
 }
 }
-
 ///////////////////////////////////////        
 </script>
 
-
-<AddDelBtns bind:rows={rows} {redraw} {toggleEquationMode}/>
-<div class="flex w-full">
-    <div class="flex justify-center items-center p-4 w-8/12" 
+<AddDelBtns bind:rows={rows} {redraw} {toggleEquationMode} {save}/>
+<div class="flex justify-around w-full p-1 m-1 ">
+    <div class="flex justify-center items-center p-1 w-8/12 border-2 border-red-800" 
     style="background-color : {grid.bgColor}"
     >
     <Grid {rows} {grid} {handleClick} {equationMode}/>
