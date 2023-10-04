@@ -5,7 +5,7 @@ import {Icons } from '$lib/util';
 export let questions;
 
 
-import { selectedExStore } from '../../../lib/util/appStore.js';
+import { selectedExStore } from '../../lib/util/appStore.js';
   $: selectedEx = $selectedExStore;
 
 function setSelectedEx(ex){

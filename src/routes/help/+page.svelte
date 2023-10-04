@@ -3,10 +3,11 @@
 </svelt:head>
 <script>
 // @ts-nocheck
-import {PageWrapper,HdgWithIcon,Centre,Card,CardBtn,InputFormCancel,ShowIfTrue,Loading} from '$lib/cmp';
+import {PageWrapper,HdgWithIcon} from '$lib/cmp';
 import Katex from 'svelte-katex';
-import CodeTxt from '../editor/CodeTxt.svelte';
+import CodeTxt from '../teachermath/editor/CodeTxt.svelte';
 import {Icons} from '$lib/util';
+import Nav from '$lib/appComp/Nav.svelte';
 
 const list = [
   { title: "Fraction", code: "\\frac{3}{2}" },
@@ -46,7 +47,6 @@ const list = [
   // Add more examples here
 ];
 
-import Nav from '../Nav.svelte';
 </script>
 
 <Nav/>

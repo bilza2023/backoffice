@@ -3,7 +3,7 @@
 import { HdgWithIcon,Card } from '$lib/cmp';
 import {Icons } from '$lib/util';
 
-import { isLoginStore, isAdminStore,selectedExStore,teacherNameStore } from '../../../lib/util/appStore.js';
+import { isLoginStore, isAdminStore,selectedExStore,teacherNameStore } from '../../lib/util/appStore.js';
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;
   $: teacherName = $teacherNameStore;  

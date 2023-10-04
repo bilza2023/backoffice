@@ -8,7 +8,7 @@ import loginFn from '$lib/loginFns/loginFn';
 let email ="";
 let password =""; 
 //--nav is at a wrong place
-import Nav from '../teachermath/Nav.svelte';
+import Nav from '$lib/appComp/Nav.svelte';
 </script>
 
 <Nav/>

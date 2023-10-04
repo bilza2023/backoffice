@@ -2,12 +2,10 @@
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
 import { isLoginStore, isAdminStore,BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
-import Nav from '../teachermath/Nav.svelte';
-// import deleteQuestion from './crud/deleteQuestion';
-    // import Allfilled from './allFilled/+page.svelte';
-  // Use the store values directly with the $ prefix
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;
+import Nav from '$lib/appComp/Nav.svelte';
+  
+$: isLogin = $isLoginStore;
+$: isAdmin = $isAdminStore;
   
 // let allfilled = false; 
 onMount(async () => {
@@ -17,7 +15,6 @@ onMount(async () => {
     return;
     }  //
     
-  
   } catch (e) {
        toast.push('Unknown Error');
   }      

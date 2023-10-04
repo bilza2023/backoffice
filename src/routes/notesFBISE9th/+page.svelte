@@ -2,7 +2,7 @@
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
 import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
-import Nav from '../teachermath/Nav.svelte';
+import Nav from '$lib/appcomp/Nav.svelte';
 
 ////////////////////////////////////////////////////////
 </script>

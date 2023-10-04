@@ -56,14 +56,14 @@ function statusIcons(){
     <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/>
     {/if}
     
-    <NavBtn title='Notes' icon ={Icons.MESSAGE} url='/fbiseMath9th'/>
-    <NavBtn title='9th Syllbus' icon ='📜' url='/teachermath/syllabus'/>
+    <!-- <NavBtn title='Notes' icon ={Icons.MESSAGE} url='/fbiseMath9th'/> -->
+    <!-- <NavBtn title='9th Syllbus' icon ='📜' url='/teachermath/syllabus'/> -->
     <NavBtn title='Filled By Me' icon ={Icons.PENCIL} url='/filledByMe'/>
-    <NavBtn title='Help' icon ={Icons.BOOK}    url='/teachermath/help'/>
+    <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
     <NavBtn2 title='Logout' icon ={Icons.LOCK}    clk={logout}/>
     
     {:else}
-    <NavBtn title='Help' icon ={Icons.BOOK}    url='/teachermath/help'/>
+    <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
     <NavBtn title='Login' icon ='🔑'  url='/login'/>
     {/if}
     </div>

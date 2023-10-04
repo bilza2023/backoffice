@@ -1,14 +1,21 @@
 <script>
 //@ts-nocheck
-import { PageWrapper,HdgWithIcon} from  '$lib/cmp';
+import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
 import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
-import Nav from './teachermath/Nav.svelte';
-
+import Nav from '$lib/appComp/Nav.svelte';
+import Instructions from '$lib/appComp/Instructions.svelte';
 import { isLoginStore, isAdminStore } from '../lib/util/appStore.js';
   // Use the store values directly with the $ prefix
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;
-  
+
+let showInstructions = true;  
+let showSyllabus = true;  
+let showNotes = true;  
+
+function closeInstructions(){showInstructions = !showInstructions}  
+function closeSyllabus(){showSyllabus = !showSyllabus}  
+function closeNotes(){showNotes = !showNotes}  
 let questions;
 onMount(async () => {
   try{
@@ -29,18 +36,34 @@ onMount(async () => {
 <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Teachers Hub</HdgWithIcon>
 </div>
+
+<BtnWIconSm clk ={closeInstructions}>Toggle Instructions</BtnWIconSm>
+{#if showInstructions}
 <br>
-<div class='flex flex-col justify-center'>
-<p class="bg-gray-700 p-1 m-1 mx-4"><u>Dear Teachers : </u></p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Instead of going fast emphasis should be on correctness and clerity.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Start slow and add speed only when you are comfortable.Your added questions are being reviewed at backend so no need to hurry.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Do not follow math notes blindly, do fix errors and add steps where you thing its feasible.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">It has been notices that sidebar is very helpful for students. Add something in the sidebar whenever possible.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Add 1 or 2 max 3 items in the sidebar. If more are required add another step.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">DO NOT use table in the sidebar since that has some issues currently.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Notes are available in the top Nav bar.</p>
-<p class="bg-gray-700 p-1 m-1 mx-4">Questions visible in Syllabus are those which are empty. Once a question has been saved by a Teacher it is removed from the syllabus. However this question is available in "Filled By Me" page and can be edited again.</p>
+<Instructions />
+{/if}
+
+<br>
+
+<BtnWIconSm clk ={closeSyllabus}>Toggle Syllabus</BtnWIconSm>
+{#if showSyllabus}
+<div class="flex justify-center p-2 m-2 ">
+  <div class="w-3/12">
+   <Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>
+  </div>
 </div>
+{/if}
+<br>
+
+<BtnWIconSm clk ={closeNotes}>Toggle Notes</BtnWIconSm>
+{#if showNotes}
+<div class="flex justify-center  p-2 m-2 ">
+  <div class="w-3/12">
+  <Card  url="/notesFBISE9th" title="Notes FBISE 9th"/>
+  </div>
+</div>
+{/if}
+<br>
 
 <br>
 <br>

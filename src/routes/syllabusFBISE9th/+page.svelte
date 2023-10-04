@@ -3,7 +3,7 @@
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon } from '$lib/cmp';
 import { BASE_URL,onMount,toast,Icons,goto,chqLogin } from '$lib/util';
-import Nav from '../Nav.svelte';
+import Nav from '$lib/appComp/Nav.svelte';
 import MainPanel from './MainPanel.svelte';
   import SidePanel from './SidePanel.svelte';
 
