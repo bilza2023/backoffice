@@ -14,8 +14,6 @@ $:{
         let r = selectedTd.split('-');
         seletedRow = parseInt(r[0]);
         seletedCol = parseInt(r[1]);
-        console.log("rseletedRow", seletedRow,seletedCol);
-        // console.log("rows", rows[seletedRow][seletedCol].bb);
     }
 }
 </script>

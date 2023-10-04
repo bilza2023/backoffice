@@ -8,7 +8,7 @@ import {toast} from "$lib/util";
 import {runningTime,isPlaying} from "./store";
 $:isPlay = $isPlaying;
 export let save;
-export let grid;
+export let global;
 export let rows;
 export let addRow;
 export let addCol;
@@ -47,12 +47,12 @@ $:{
 ////////////////////////////////           
 function getColor(startTime,content) {
    if (!isPlay ){
-         return grid.cellFontColor;
+         return global.cellFontColor;
    }else {
           if (startTime <=  rTime) {
-               return grid.cellFontColor;
+               return global.cellFontColor;
          }else {
-            return grid.bgColor; 
+            return global.bgColor; 
          }
    }
 }
@@ -60,12 +60,12 @@ function getColor(startTime,content) {
 function borderColor(tf){
  // debugger;
     if (tf==true){
-        return grid.cellBorderColor;
+        return global.cellBorderColor;
     }else{
-        if (grid.showGrid == true){
-         return grid.gridColor;
+        if (global.showGrid == true){
+         return global.gridColor;
         }else {
-         return grid.bgColor;
+         return global.bgColor;
         } 
     }
 }
@@ -130,9 +130,9 @@ function handleEndTimeInput(event) {
 <AddDelBtns  {toggleEquationMode} {save} {addRow} {addCol} {delRow} {delCol}/>
 <div class="flex justify-around w-full p-1 m-1 ">
     <div class="flex justify-center items-center p-1 w-8/12 border-2 border-red-800" 
-    style="background-color : {grid.bgColor}"
+    style="background-color : {global.bgColor}"
     >
-    <Grid {rows} {grid} {handleClick} {equationMode}/>
+    <Grid {rows} {global} {handleClick} {equationMode}/>
     </div>
 
     <div class="flex flex-col p-1 m-1 bg-stone-700 w-3/12 justify-start ">

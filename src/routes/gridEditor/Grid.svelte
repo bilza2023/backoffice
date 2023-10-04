@@ -3,11 +3,11 @@
 import Katex from "svelte-katex";
 export let handleClick;
 export let rows;
-export let grid;
+export let global;
 export let equationMode;
 
 </script>
-<!-- great learning style="background-color : {grid.bgColor}"> no ${}-->
+<!-- great learning style="background-color : {global.bgColor}"> no ${}-->
 <table class=" p-0 m-0" >
 {#each rows as row, rowIndex}
     <tr class="m-0 p-0">
@@ -24,9 +24,9 @@ export let equationMode;
             border-top-color : ${col.btc};
             border-right-color : ${col.brc};
             border-bottom-color : ${col.bbc};
-            font-size : ${grid.fontSize}em;
-            margin : ${grid.margin}px;
-            padding : ${grid.padding}px;
+            font-size : ${global.fontSize}em;
+            margin : ${global.margin}px;
+            padding : ${global.padding}px;
             color : ${col.color};
         `}
         
