@@ -12,16 +12,54 @@ import GridPanel from "./GridPanel.svelte";
 import GlobalPanel from "./GlobalPanel.svelte";
 import SPPanel from "./SPPanel.svelte";
 import getNewCol from "./getNewCol.js";
-let grid = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+
+let grid;
+// let grid = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let showPanel = "gridPanel"
 let data = {};
-let rows = [[]]; //[[]]
-rows[0].push(getNewCol());
+let rows ;
+// let rows = [[]]; //[[]]
+// rows[0].push(getNewCol());
+function redraw(){rows = [...rows]}
+
+const addRow = () => {
+ //  debugger;
+ // Row must have atleast 1 item or the Array.fill will not work
+ const newRow = Array(rows[0].length).fill(getNewCol());
+    rows.push(newRow);
+    redraw();
+    console.log("rows" , rows);
+}
+const addCol = () => {
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    row.push(getNewCol());
+  }
+  console.log("rows", rows);
+  redraw();
+}
+const delRow = () => {
+    if (rows.length > 0) {
+        rows.pop(); // Remove the last row
+        redraw();
+        console.log("rows", rows);
+    }
+}
+
+const delCol = () => {
+    if (rows.length > 0 && rows[0].length > 0) {
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].pop(); // Remove the last element from each row
+        }
+        redraw();
+        console.log("rows", rows);
+    }
+}
 
 
 async function save(){
   try{
-       debugger; 
+    //    debugger; 
        const question =  {_id :'650b94b4d750929738a4526c' ,board:"FBISE" , class:9 ,chapter:1, exercise: "1.2", questionNo : 1,part:"i",finalized : false,filename : "fbise_cl_9_ch_1_ex_1.2_q_1_pt_1" , eqs : []};
        question.questionType = "grid";
        question.grid = {};
@@ -47,6 +85,38 @@ async function save(){
               toast.push('Unknown Error');
       }
 }
+onMount(async () => {
+  try {
+ //    debugger;
+       if (!chqLogin()){
+      goto('/login');
+      return;
+      }
+   //http://localhost/math?id=6508bff7c970727df5e0ac85
+      let  id = new URLSearchParams(location.search).get("id"); 
+      const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer 000`,
+        }
+      });
+  
+    if (resp.ok) {
+        // debugger;
+        const data = await resp.json();
+        const mathQuestion  = data.mathQuestion //===> important
+        grid = mathQuestion.grid.global;
+        rows = mathQuestion.grid.rows;
+        // questionDetails = question.filename;
+
+    } else {
+        const data = await resp.json();
+        toast.push(data.message);
+    }
+  } catch (error) {
+    toast.push('Unknown Error');
+  }
+});
 </script>
 
 <PageWrapper>
@@ -63,7 +133,7 @@ async function save(){
 <SPPanel />
 {/if}
 
-<GridPanel  {grid} {save} bind:rows={rows}/>
+<GridPanel  {grid} {save} bind:rows={rows} {addRow} {addCol} {delRow} {delCol}/>
 
 </div>
 

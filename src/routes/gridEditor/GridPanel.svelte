@@ -4,14 +4,16 @@ import AddDelBtns from "./AddDelBtns.svelte";
 import Grid from "./Grid.svelte";
 
 import ControlPanel from "./ControlPanel.svelte";
-import { onMount } from "svelte";
 import {toast} from "$lib/util";
 import {runningTime,isPlaying} from "./store";
-import {get} from "$lib/util";
 $:isPlay = $isPlaying;
 export let save;
 export let grid;
 export let rows;
+export let addRow;
+export let addCol;
+export let delRow;
+export let delCol;
 let selectedTd = null; 
 let equationMode = false;
 
@@ -26,6 +28,7 @@ $:rTime = $runningTime;
 
 $:{
  rTime;
+ if (rows){
    for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
       for (let j = 0; j < row.length; j++) {
@@ -39,6 +42,7 @@ $:{
       }
    }
    rows = [...rows];
+ }
 }
 ////////////////////////////////           
 function getColor(startTime,content) {
@@ -120,8 +124,10 @@ function handleEndTimeInput(event) {
 }
 ///////////////////////////////////////        
 </script>
+{#if rows}
 
-<AddDelBtns bind:rows={rows} {redraw} {toggleEquationMode} {save}/>
+
+<AddDelBtns  {toggleEquationMode} {save} {addRow} {addCol} {delRow} {delCol}/>
 <div class="flex justify-around w-full p-1 m-1 ">
     <div class="flex justify-center items-center p-1 w-8/12 border-2 border-red-800" 
     style="background-color : {grid.bgColor}"
@@ -133,3 +139,4 @@ function handleEndTimeInput(event) {
     <ControlPanel bind:rows={rows}  bind:selectedTd = {selectedTd} {handleInput} {handleStartTimeInput} {handleEndTimeInput} {handleBorder}/>
     </div>
 </div>
+{/if}
