@@ -28,7 +28,7 @@ function getUniqueExercisesForChapter(chapter) {
     const exercises = new Set();
     questions.forEach((question) => {
       if (question.chapter === chapter) {
-        exercises.add(question.exercise);
+        exercises.add(question.partNo.exercise);
       }
     });
     return Array.from(exercises);

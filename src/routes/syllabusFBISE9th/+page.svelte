@@ -55,6 +55,10 @@ onMount(async () => {
   <div class="w-10/12">
     <MainPanel {questions}  {selectedEx} {total_questions}/>
     <!-- code here -->
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 
 </div>

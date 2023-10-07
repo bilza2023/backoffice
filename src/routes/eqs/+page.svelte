@@ -16,10 +16,10 @@ import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
 import SPFSPart from './SPFSPart/SPFSPart.svelte';
 import PageHeading from './PageHeading.svelte';
 import getEqData from './extra/eqData';
-import Nav from '../Nav.svelte';
+import Nav from '$lib/appComp/Nav.svelte';
 import TeacherPanel from './TeacherPanel.svelte';
 
-import { isLoginStore, isAdminStore } from '../../../lib/util/appStore.js';
+import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;  
 ////////////////////////////////////////////////////////
@@ -35,12 +35,12 @@ function toggleFS(index){
  eqs = [...eqs];
 }
 function setStatus(status){
-question.status = status;
-redraw();
+ question.status = status;
+ redraw();
 }
 function setFree(free){
-question.free = free;
-redraw();
+ question.free = free;
+ redraw();
 }
 function moveUpEq(index) {
   if (index > 0) {
@@ -80,15 +80,16 @@ function addEq(i) {
   eqs = [...eqs];
   // console.log("eqs",eqs);
 }
+let allowed = true;
 let question;
 let eqs = [];
 onMount(async () => {
   try {
-  //  debugger;
        if (!chqLogin()){
       goto('/login');
       return;
       }
+      // debugger;
    //http://localhost/math?id=6508bff7c970727df5e0ac85
       let  id = new URLSearchParams(location.search).get("id"); 
       const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
@@ -101,8 +102,10 @@ onMount(async () => {
     if (resp.ok) {
         // debugger;
         const data = await resp.json();
-        question  = data.mathQuestion //===> important
-        eqs = question.eqs;
+        question  = data.question //===> important
+          // if (question.eqs !== undefined){
+            eqs = data.eqs.eqs;
+          // }//else its already eqs = []
         setSPTrue(eqs);
         questionDetails = question.filename;
 
@@ -119,7 +122,7 @@ onMount(async () => {
 </script>
 <Nav />
 <PageWrapper>
-{#if question}
+{#if question && allowed}
 
 <Toolbar  {addEq} {question} {closeAllSP} {setSPTrue}/>
 <PageHeading/>

@@ -2,11 +2,12 @@
 import {toast,BASE_URL} from '$lib/util';
 
 
-export default async function addQuestion(chapter,exercise,questionNo,part,board="FBISE"){
-// debugger;
+export default async function addQuestion(chapter,exercise,questionNo,part,board,classNo,questionType){
+debugger;
 const question = {
 board,
-class : 9,
+questionType,
+class : classNo,
 chapter,
 exercise,
 questionNo,

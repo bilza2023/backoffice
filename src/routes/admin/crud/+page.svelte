@@ -1,22 +1,27 @@
 <script>
 //@ts-nocheck
+import {NavBtn2} from '$lib/cmp';
 import { PageWrapper,HdgWithIcon,CardOnly} from  '$lib/cmp';
 import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
-import deleteQuestion from './deleteQuestion';
-import addQuestion from './addQuestion';
+
+
+// import addQuestionSpecial from './addQuestionSpecial';
+
+import AddQuestion from './AddQuestion.svelte';
+import DeleteQuestion from './DeleteQuestion.svelte';
+import AddSpecial from './AddSpecial.svelte';
+
+
 import { isLoginStore, isAdminStore } from '$lib/util';
   $: isLogin = $isLoginStore;
   $: isAdmin = $isAdminStore;
   
-let deleteQuestionId = "";  
-let newChapter = "";  
-let newExercise = "";  
-let newQuestionNo = "";  
-let newPart = "";  
+let show = "addQuestion";
+
 onMount(async () => {
   try{
-  debugger;
+  // debugger;
    chqLogin();
   } catch (e) {
        toast.push('Unknown Error');
@@ -27,48 +32,26 @@ onMount(async () => {
 </script>
 <Nav />
 <PageWrapper>
-
-<div class='flex justify-center  p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Questions CRUD</HdgWithIcon>
+<div class="flex justify-left p-1  m-0 bg-gray-600">
+<NavBtn2 clk={()=>show="addQuestion"} icon={Icons.QUESTIONMARK} title="Add Q"/>
+<NavBtn2 clk={()=>show="addSpecial"} icon={Icons.EXPLOSION} title="Add Special"/>
+<NavBtn2 clk={()=>show="deleteQuestion"} icon={Icons.DEL} title="Del Q"/>
 </div>
 
-<div class="flex flex-col gap-2 w-6/12 mx-auto border-2 border-white rounded-md text-center">
-  <label class="p-1 m-1 rounded-md w-6/12 mx-auto bg-red-600 mt-4" for="">Delete Question</label>
-
-  <label class="p-1 m-1 rounded-md w-6/12 mx-auto bg-gray-600 mt-4" for="">Question Id</label>
-  <input class="p-1 m-1 rounded-md w-6/12 mx-auto bg-gray-700" type="text" bind:value={deleteQuestionId} >
-  <button class="bg-red-900 p-1 m-1 border-2 border-gray-500 rounded-md w-4/12 mx-auto mb-4" 
-  on:click={()=>deleteQuestion(deleteQuestionId)}>Delete Question</button>
-</div>
 
 <br/>
- <!-- Add Question -->
-<div class="flex flex-col gap-2 w-6/12 mx-auto border-2 border-white rounded-md text-center">
-  <label class="p-1 m-1 rounded-md w-6/12 mx-auto bg-green-800 mt-4" for="">Add Question</label>
 
-<div class="flex justify-center items-center">
-<label class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-600 mt-4" for="">chapter</label>
-<input class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-700" type="number" bind:value={newChapter} >
-</div>
+{#if show == "addQuestion"}
+<AddQuestion />
+{/if}
 
-<div class="flex justify-center items-center">
-<label class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-600 mt-4" for="">exercise</label>
-<input class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-700" type="text" bind:value={newExercise} >
-</div>
+{#if show == "deleteQuestion"}
+<DeleteQuestion />
+{/if}
 
-<div class="flex justify-center items-center">
-<label class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-600 mt-4" for="">questionNo</label>
-<input class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-700" type="number" bind:value={newQuestionNo} >
-</div>
-
-<div class="flex justify-center items-center">
-<label class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-600 mt-4" for="">Part</label>
-<input class="p-1 m-1 rounded-md w-5/12 mx-auto bg-gray-700" type="text" bind:value={newPart} >
-</div>
-
-<button class="bg-green-900 p-1 m-1 border-2 border-gray-500 rounded-md w-4/12 mx-auto mb-4" 
-on:click={()=>addQuestion(newChapter,newExercise,newQuestionNo,newPart)}>Add Question</button>
-</div>
+{#if show == "addSpecial"}
+<AddSpecial />
+{/if}
 
 <br>
 <br>

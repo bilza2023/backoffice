@@ -1,12 +1,11 @@
 //@ts-nocheck
 import {toast,get} from "$lib/util";
-import { BASE_URL } from '../../../lib/util/config';
-import { isLoginStore, isAdminStore,teacherNameStore } from '../../../lib/util/appStore.js';
+import { BASE_URL } from '$lib/util/config';
+import { isLoginStore, isAdminStore,teacherNameStore } from '$lib/util/appStore.js';
 
 export  default async function save(question , eqs){
   try {
     // debugger;
-    question.eqs = eqs;
     const token = localStorage.getItem('token');
         if ( !token){
         toast.push("Please login")
@@ -46,13 +45,14 @@ export  default async function save(question , eqs){
       checkFinalTimings(question.eqs)
   }
 
- 
-        const response = await fetch(`${BASE_URL}/upload_math`, {
+
+        const response = await fetch(`${BASE_URL}/update_eq`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({token,question})
+            
+            body: JSON.stringify({token,question,eqs :question.eqs})
         });
         if (response.ok) {
             toast.push('Data uploaded successfully');

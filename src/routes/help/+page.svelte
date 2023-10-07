@@ -5,7 +5,7 @@
 // @ts-nocheck
 import {PageWrapper,HdgWithIcon} from '$lib/cmp';
 import Katex from 'svelte-katex';
-import CodeTxt from '../teachermath/editor/CodeTxt.svelte';
+import CodeTxt from '../eqs/CodeTxt.svelte';
 import {Icons} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 

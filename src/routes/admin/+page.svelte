@@ -37,9 +37,7 @@ onMount(async () => {
   <div class="w-3/12">
   <Card title='CRUD'  url="/admin/crud"/>
   </div>
-  <div class="w-3/12">
-  <Card title='Backup'  url="/admin/backup"/>
-  </div>
+
 </div>
 
 <br>
