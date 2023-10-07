@@ -17,10 +17,10 @@ import saveFn from "./save";
 let global = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
 let showPanel = "gridPanel"
 let data = {};
-let rows ;
 let question;
-// let rows = [[]]; //[[]]
-// rows[0].push(getNewCol());
+let questionDetails;
+let rows;
+
 function redraw(){rows = [...rows]}
 
 const addRow = () => {
@@ -64,7 +64,7 @@ saveFn(question,global,rows,[],[]);
 
 onMount(async () => {
   try {
- //    debugger;
+    // debugger;
        if (!chqLogin()){
       goto('/login');
       return;
@@ -81,17 +81,26 @@ onMount(async () => {
     if (resp.ok) {
         // debugger;
         const data = await resp.json();
-        question  = data.mathQuestion //===> important
-        global = question.grid.global;
-        rows = question.grid.rows;
-        // questionDetails = question.filename;
-
+        question  = data.question //===> important
+        // console.log("question" ,  question);
+        if (!question.grid.rows || question.grid.rows.length <= 0) {
+           rows = [[]]; //[[]]
+           rows[0].push(getNewCol());
+        }else {
+          rows = question.grid.rows
+        }
+        if (question.grid.global) {
+           global = question.grid.global;
+        }
+        questionDetails = question.filename;
+      // return;
     } else {
         const data = await resp.json();
         toast.push(data.message);
     }
   } catch (error) {
-    toast.push('Unknown Error');
+    // toast.push('Unknown Error');
+    console.log(error);
   }
 });
 </script>

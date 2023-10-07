@@ -104,7 +104,7 @@ onMount(async () => {
         const data = await resp.json();
         question  = data.question //===> important
           // if (question.eqs !== undefined){
-            eqs = data.eqs.eqs;
+            eqs = question.eqs;
           // }//else its already eqs = []
         setSPTrue(eqs);
         questionDetails = question.filename;

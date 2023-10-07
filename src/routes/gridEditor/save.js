@@ -4,6 +4,7 @@ import {BASE_URL ,  toast} from "$lib/util";
 
 export default async function saveFn(question,global,rows,sp=[],fs=[]){
   try{
+  debugger;
        question.questionType = "grid";
        question.grid = {};
        question.grid.sp = [];
@@ -12,7 +13,7 @@ export default async function saveFn(question,global,rows,sp=[],fs=[]){
        question.grid.rows = rows;
        /////////////////////////////////////// 
        const token = localStorage.getItem("token");
-       const response = await fetch(`${BASE_URL}/upload_math`, {
+       const response = await fetch(`${BASE_URL}/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

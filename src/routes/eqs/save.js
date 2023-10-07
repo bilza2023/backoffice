@@ -18,7 +18,8 @@ export  default async function save(question , eqs){
         }
 
  //==MUst 3 steps
-  question.eqs = eqs;
+  question.eqs =[];
+  question.eqs =eqs;
   assignSteps(question);
   /**
   filledBy rules
@@ -46,13 +47,13 @@ export  default async function save(question , eqs){
   }
 
 
-        const response = await fetch(`${BASE_URL}/update_eq`, {
+        const response = await fetch(`${BASE_URL}/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             
-            body: JSON.stringify({token,question,eqs :question.eqs})
+            body: JSON.stringify({token,question})
         });
         if (response.ok) {
             toast.push('Data uploaded successfully');
