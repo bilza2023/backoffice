@@ -3,17 +3,6 @@
 import { PageWrapper } from '$lib/cmp';
 import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
 
-import save from './save';
-import Toolbar from './Toolbar.svelte';
-import Titlebar from './Titlebar.svelte';
-import EqPart from './EqPart.svelte';
-import AdminPanel from './AdminPanel.svelte';
-import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
-import SPFSPart from './SPFSPart/SPFSPart.svelte';
-import PageHeading from './PageHeading.svelte';
-import getEqData from './extra/eqData';
-import Nav from '$lib/appComp/Nav.svelte';
-import TeacherPanel from './TeacherPanel.svelte';
 import LoadPage from "./LoadPage.svelte"
 
 import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
