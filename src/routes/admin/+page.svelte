@@ -1,20 +1,28 @@
 <script>
 //@ts-nocheck
-import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
-import { isLoginStore, isAdminStore,BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
+import {NavBtn2} from '$lib/cmp';
+import { PageWrapper,HdgWithIcon,CardOnly} from  '$lib/cmp';
+import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
+
+
+// import addQuestionSpecial from './addQuestionSpecial';
+
+import AddQuestion from './AddQuestion.svelte';
+import DeleteQuestion from './DeleteQuestion.svelte';
+import AddSpecial from './AddSpecial.svelte';
+
+
+import { isLoginStore, isAdminStore } from '$lib/util';
+  $: isLogin = $isLoginStore;
+  $: isAdmin = $isAdminStore;
   
-$: isLogin = $isLoginStore;
-$: isAdmin = $isAdminStore;
-  
-// let allfilled = false; 
+let show = "addQuestion";
+
 onMount(async () => {
   try{
-    if (!isLogin || !isAdmin){
-    goto('/login');
-    return;
-    }  //
-    
+  // debugger;
+   chqLogin();
   } catch (e) {
        toast.push('Unknown Error');
   }      
@@ -24,21 +32,26 @@ onMount(async () => {
 </script>
 <Nav />
 <PageWrapper>
-
-<div class='flex justify-center  p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Admin Panel</HdgWithIcon>
+<div class="flex justify-left p-1  m-0 bg-gray-600">
+<NavBtn2 clk={()=>show="addQuestion"} icon={Icons.QUESTIONMARK} title="Add Q"/>
+<NavBtn2 clk={()=>show="addSpecial"} icon={Icons.EXPLOSION} title="Add Special"/>
+<NavBtn2 clk={()=>show="deleteQuestion"} icon={Icons.DEL} title="Del Q"/>
 </div>
 
-<div class="flex justify-center w-full">
-  <div class="w-3/12">
-  <Card title='All Filled'  url="/admin/allFilled"/>
-  </div>
 
-  <div class="w-3/12">
-  <Card title='CRUD'  url="/admin/crud"/>
-  </div>
+<br/>
 
-</div>
+{#if show == "addQuestion"}
+<AddQuestion />
+{/if}
+
+{#if show == "deleteQuestion"}
+<DeleteQuestion />
+{/if}
+
+{#if show == "addSpecial"}
+<AddSpecial />
+{/if}
 
 <br>
 <br>
