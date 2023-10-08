@@ -23,7 +23,7 @@ onMount(async () => {
     const teacher_name = localStorage.getItem("teacher_name");
     const token = localStorage.getItem("teacher_token");
 
-    const resp = await fetch( `${BASE_URL}/filledByMe` ,{
+    const resp = await fetch( `${BASE_URL}/filled_by_me` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,15 @@ onMount(async () => {
        toast.push('Unknown Error');
   }      
 });
-
+function getUrl(question){
+ let url;
+ if (question.questionType == "eqs"){
+    url = `/eqs?id=${question._id}`;
+ }else{
+    url = `/grid?id=${question._id}`;
+ }
+return url; 
+}
 ////////////////////////////////////////////////////////
 </script>
 <Nav />
@@ -66,9 +74,11 @@ onMount(async () => {
 
             <div class='w-3/12'>
             <Card
-            title = {`Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`}
+            title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
-            url = {`/teachermath/editor?id=${question._id}`}>
+             url = {getUrl(question)}
+            
+            >
             </Card>
             </div>
 {/each}

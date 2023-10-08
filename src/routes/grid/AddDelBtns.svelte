@@ -4,7 +4,7 @@
 import getNewCol from "./getNewCol.js";
 export let save;
 export let toggleEquationMode;
-import {runningTime} from "./store";
+import {runningTime} from "./store.js";
 import {start,stop} from "./main.js";
 
 $: rTime = $runningTime;
