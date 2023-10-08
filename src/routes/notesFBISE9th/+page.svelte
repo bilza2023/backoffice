@@ -2,12 +2,12 @@
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
 import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
-import Nav from '$lib/appcomp/Nav.svelte';
-
+// import Nav from '$lib/appComp/Nav.svelte';
+let homeHref = '/'
 ////////////////////////////////////////////////////////
 </script>
-<Nav />
 <PageWrapper>
+<h1 class="p-1 m-1 rounded-md px-4 text-xl"><a href={homeHref} >Back</a></h1>
 
 <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>FBISE Class 9th Math Notes</HdgWithIcon>
