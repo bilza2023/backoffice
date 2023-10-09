@@ -37,7 +37,7 @@ return url;
 <div class="bg-stone-700 text-sm text-gray-300 w-5/12 p-2 m-1 rounded-md ">{`Total Questions ${total_questions} Empty Questions ${questions.length}`}</div>
 
 
-<div class='flex  w-full justify-center  flex-wrap'>
+<div class='flex  w-full justify-center  flex-wrap  px-2'>
 {#each questions as question,index}
     
 
@@ -59,3 +59,9 @@ return url;
     </div>
 
 {/if}
+
+<style>
+.custom-height {
+  max-height: 1000px;
+}
+</style>

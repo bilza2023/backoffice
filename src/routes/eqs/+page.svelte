@@ -30,16 +30,17 @@ onMount(async () => {
     if (resp.ok) {
         // debugger;
         const data = await resp.json();
-        console.log("data",data);
-        // let question  = data.question //===> important
+        let question  = data.question //===> important
+        // console.log("question.status",question.status);
 
-        if (data.question.status == "unlocked"){
+        if (question.status == "unlocked"){
+        // console.log("question.status",question.status);
             pageStatus = "load";
         }
-        if (data.question.status == "locked"){
+        if (question.status == "locked"){
             msg = "Sory this question is locked.";
         }
-        if (data.question.status == "final"){
+        if (question.status == "final"){
             msg = "Sory this question is final.";
         }
         

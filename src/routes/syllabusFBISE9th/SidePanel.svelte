@@ -5,7 +5,7 @@ import {Icons } from '$lib/util';
 export let questions;
 
 
-import { selectedExStore } from '../../lib/util/appStore.js';
+import { selectedExStore } from '$lib/util/appStore.js';
   $: selectedEx = $selectedExStore;
 
 function setSelectedEx(ex){
@@ -43,7 +43,7 @@ function getUniqueExercisesForChapter(chapter) {
 
 </script>
 
-<div class=''>
+<div class='custom-height overflow-y-auto'>
   
 
 {#each uniqueChapters as chapter}
@@ -63,5 +63,14 @@ function getUniqueExercisesForChapter(chapter) {
 {/each}
 
 
- 
+ <br>
+ <br>
+ <br>
+ <br>
 </div>
+
+<style>
+.custom-height {
+  max-height: 1000px;
+}
+</style>

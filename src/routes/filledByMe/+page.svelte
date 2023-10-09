@@ -13,7 +13,7 @@ let questions;
 
 onMount(async () => {
   try{
-    // debugger;
+    debugger;
     if (!chqLogin()){
     goto('/login');
     return;

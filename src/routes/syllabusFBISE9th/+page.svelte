@@ -5,7 +5,7 @@ import { PageWrapper,HdgWithIcon } from '$lib/cmp';
 import { BASE_URL,onMount,toast,Icons,goto,chqLogin } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import MainPanel from './MainPanel.svelte';
-  import SidePanel from './SidePanel.svelte';
+import SidePanel from './SidePanel.svelte';
 
 let questions;
 let total_questions;
@@ -30,9 +30,10 @@ onMount(async () => {
             }
             });
             if (resp.ok){
+            
               const data = await resp.json();
               questions = data.questions;
-              total_questions = data.total_questions;
+              total_questions = questions.length;
               localStorage.setItem('math_syllabus',JSON.stringify(questions));
             }else {
               toast.push('failed to load');
@@ -54,7 +55,6 @@ onMount(async () => {
   </div>
   <div class="w-10/12">
     <MainPanel {questions}  {selectedEx} {total_questions}/>
-    <!-- code here -->
     <br>
     <br>
     <br>
