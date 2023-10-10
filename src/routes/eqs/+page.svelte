@@ -5,54 +5,52 @@ import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
 
 import LoadPage from "./LoadPage.svelte"
 
-import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;  
 ////////////////////////////////////////////////////////
 let pageStatus = "loading";
 let msg = "Loading Please...";
+let question;
+let eqs;
 onMount(async () => {
   try {
-       if (!chqLogin()){
-      goto('/login');
-      return;
-      }
+     
       // debugger;
    //http://localhost/math?id=6508bff7c970727df5e0ac85
+    const token = localStorage.getItem('token');
       let  id = new URLSearchParams(location.search).get("id"); 
       const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer 000`,
+          'Authorization': `Bearer ${token}`,
         }
       });
   
     if (resp.ok) {
         // debugger;
         const data = await resp.json();
-        let question  = data.question //===> important
-        // console.log("question.status",question.status);
-
-        if (question.status == "unlocked"){
-        // console.log("question.status",question.status);
+        question  = data.question //===> important
+        eqs = question.eqs;
+///////////////////////////////////////////////////////
+switch (question.status) {
+    case "unlocked":
+        pageStatus = "load";
+        break;
+    case "locked":
+        msg = "Sorry this question is locked.";
+        break;
+    case "final":
+        msg = "Sorry this question is final.";
+        break;
+    case "fill":
+        let teacher_name = localStorage.getItem("teacher_name");
+        if (teacher_name == data.question.filledBy) {
             pageStatus = "load";
+        } else {
+            msg = "Sory this question is not filled by you, or you may not be logged in properly.";
         }
-        if (question.status == "locked"){
-            msg = "Sory this question is locked.";
-        }
-        if (question.status == "final"){
-            msg = "Sory this question is final.";
-        }
-        
-        if (data.question.status == "fill"){
-            let teacher_name = localStorage.getItem("teacher_name");
-            if(teacher_name == data.question.filledBy){
-                pageStatus = "load";
-            }else {
-                msg = "Sory this question is not filled by you.";
-            }
-        }
-        
+        break;
+}
+
+///////////////////////////////////////////////////////        
 
     } else {
         const data = await resp.json();
@@ -70,7 +68,7 @@ onMount(async () => {
 <h1>{msg}</h1>
 {/if}
 {#if pageStatus == 'load'}
-<LoadPage />
+<LoadPage {question} {eqs}/>
 {/if}
 
 

@@ -64,17 +64,14 @@ saveFn(question,global,rows,[],[]);
 
 onMount(async () => {
   try {
-    // debugger;
-       if (!chqLogin()){
-      goto('/login');
-      return;
-      }
+    
    //http://localhost/math?id=6508bff7c970727df5e0ac85
+   const token = localStorage.getItem("token");
       let  id = new URLSearchParams(location.search).get("id"); 
       const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer 000`,
+          'Authorization': `Bearer ${token}`,
         }
       });
   

@@ -4,24 +4,15 @@ import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
 import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 
-import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
-  // Use the store values directly with the $ prefix
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;
-  
 let questions;
 
 onMount(async () => {
   try{
     debugger;
-    if (!chqLogin()){
-    goto('/login');
-    return;
-    }  //
     
     //=============================  
     const teacher_name = localStorage.getItem("teacher_name");
-    const token = localStorage.getItem("teacher_token");
+    const token = localStorage.getItem("token");
 
     const resp = await fetch( `${BASE_URL}/be/filled_by_me` ,{
       method: 'POST',

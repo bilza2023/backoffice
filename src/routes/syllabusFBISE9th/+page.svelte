@@ -23,21 +23,23 @@ onMount(async () => {
     return;
     }  
     //=============================  
+            const token = localStorage.getItem('token');
             const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
             method: 'GET',
             headers: {
-            'Authorization': `Bearer 000`,
+            'Authorization': `Bearer ${token}`,
             }
             });
             if (resp.ok){
-            
+            debugger;
               const data = await resp.json();
               questions = data.questions;
               total_questions = questions.length;
-              localStorage.setItem('math_syllabus',JSON.stringify(questions));
+              // localStorage.setItem('math_syllabus',JSON.stringify(questions));
             }else {
-              toast.push('failed to load');
-              throw new Exception("failed to load")
+             const data = await resp.json();
+              toast.push(data.message);
+              // throw new Exception("failed to load")
             }
   } catch (e) {
        toast.push('failed to load');

@@ -23,18 +23,11 @@ export  default async function save(question , eqs){
   assignSteps(question);
   /**
   filledBy rules
-  - filledBy is for teacher not admin. Admin can open and save a question many times and it will not effect the filledBy
-  -if admin wants he can mark a question as empty and remove the filledBy both but seperately.
-  -do not over write filledBy once it is entered and no need for status here
-  -filledby once filled cann ot bechanged- no need so far ||====>
+  -do not over write filledBy once it is entered 
   - Admin must not over write BUT if there is no filledBy then the admin is the filler
    */
   if (!question.filledBy || question.filledBy == ""){
-     //-don not mark filled for Admin
-    //  if ( !get(isAdminStore) ){
-        //MUST NOT REMOVE- 
         question.filledBy = get(teacherNameStore);
-    //  } 
   }
   /////////////////////////////
   //--in locked we do not allow edit - its set by admin.
