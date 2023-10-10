@@ -32,8 +32,8 @@ const response = await fetch( `${BASE_URL}/be/teacher_login` ,{
         const data = await response.json();
         
         localStorage.setItem("token", data.token);
-        localStorage.setItem("teacher_status", data.status);
-        localStorage.setItem("teacher_name", data.teacher_name);
+        // localStorage.setItem("teacher_status", data.status);
+        // localStorage.setItem("teacher_name", data.teacher_name);
         isLoginStore.set(true);
             if (data.status == 'teacher'){
               isAdminStore.set(false);

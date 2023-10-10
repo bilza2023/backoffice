@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import { PageWrapper } from '$lib/cmp';
-import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
+import { BASE_URL,onMount,toast,goto } from '$lib/util';
 
 import LoadPage from "./LoadPage.svelte"
 
@@ -10,6 +10,8 @@ let pageStatus = "loading";
 let msg = "Loading Please...";
 let question;
 let eqs;
+let isLogin = false
+let isAdmin = false
 onMount(async () => {
   try {
      
@@ -29,6 +31,8 @@ onMount(async () => {
         const data = await resp.json();
         question  = data.question //===> important
         eqs = question.eqs;
+        isLogin = true;
+        isAdmin = data.isAdmin;
 ///////////////////////////////////////////////////////
 switch (question.status) {
     case "unlocked":
@@ -68,7 +72,7 @@ switch (question.status) {
 <h1>{msg}</h1>
 {/if}
 {#if pageStatus == 'load'}
-<LoadPage {question} {eqs}/>
+<LoadPage {question} {eqs} {isLogin}  {isAdmin}/>
 {/if}
 
 

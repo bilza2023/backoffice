@@ -2,7 +2,7 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon } from '$lib/cmp';
-import { BASE_URL,onMount,toast,Icons,goto,chqLogin } from '$lib/util';
+import { BASE_URL,onMount,toast,Icons,goto } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import MainPanel from './MainPanel.svelte';
 import SidePanel from './SidePanel.svelte';
@@ -15,13 +15,11 @@ let selectedEx ="1.1";
 function setSelectedEx(ex){
   selectedEx =ex;
 }
+let isLogin = false;
+let isAdmin = false;
 onMount(async () => {
   try{
-    // debugger;
-    if (!chqLogin()){
-    goto('/login');
-    return;
-    }  
+      
     //=============================  
             const token = localStorage.getItem('token');
             const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
@@ -31,9 +29,10 @@ onMount(async () => {
             }
             });
             if (resp.ok){
-            debugger;
+            // debugger;
               const data = await resp.json();
               questions = data.questions;
+              isLogin = true;
               total_questions = questions.length;
               // localStorage.setItem('math_syllabus',JSON.stringify(questions));
             }else {
@@ -48,7 +47,7 @@ onMount(async () => {
  
 ////////////////////////////////////////////////////////
 </script>
-<Nav />
+<Nav {isAdmin} {isLogin}/>
 <PageWrapper>
 {#if questions}
 <div class="flex justify-center border-2 border-white">

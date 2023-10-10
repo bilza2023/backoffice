@@ -1,17 +1,18 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
-import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
+import { BASE_URL, onMount,toast,Icons,goto} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 
 let questions;
-
+let isLogin = false;
+let isAdmin = false;
 onMount(async () => {
   try{
     debugger;
     
     //=============================  
-    const teacher_name = localStorage.getItem("teacher_name");
+    // const teacher_name = localStorage.getItem("teacher_name");
     const token = localStorage.getItem("token");
 
     const resp = await fetch( `${BASE_URL}/be/filled_by_me` ,{
@@ -20,11 +21,12 @@ onMount(async () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify( {token,teacher_name} )
+      body: JSON.stringify( {token} )
     });
             if (resp.ok){
               const data = await resp.json();
               questions = data.questions;
+              isLogin = true;
             }else {
               toast.push('failed to load');
               throw new Exception("failed to load")
@@ -44,7 +46,7 @@ return url;
 }
 ////////////////////////////////////////////////////////
 </script>
-<Nav />
+<Nav {isLogin} {isAdmin}/>
 <PageWrapper>
 
 <div class='flex justify-center  p-2 '>

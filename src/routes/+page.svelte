@@ -1,13 +1,9 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
-import { BASE_URL,chqLogin, onMount,toast,Icons,goto} from '$lib/util';
+import { BASE_URL, onMount,toast,Icons,goto,checkToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Instructions from '$lib/appComp/Instructions.svelte';
-import { isLoginStore, isAdminStore } from '../lib/util/appStore.js';
-  // Use the store values directly with the $ prefix
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;
 
 let showInstructions = true;  
 let showSyllabus = true;  
@@ -16,13 +12,13 @@ let showNotes = true;
 function closeInstructions(){showInstructions = !showInstructions}  
 function closeSyllabus(){showSyllabus = !showSyllabus}  
 function closeNotes(){showNotes = !showNotes}  
-let questions;
+let isLogin = false;
 onMount(async () => {
   try{
-      if (!chqLogin()){
-      goto('/login');
-      }
- 
+    if (checkToken()){
+      isLogin = true;
+    }     
+
   } catch (e) {
        toast.push('failed to load');
   }      
@@ -30,7 +26,7 @@ onMount(async () => {
 
 ////////////////////////////////////////////////////////
 </script>
-<Nav />
+<Nav {isLogin}/>
 <PageWrapper>
 
 <div class='flex justify-center  p-2 '>

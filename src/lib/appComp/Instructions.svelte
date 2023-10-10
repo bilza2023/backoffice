@@ -4,9 +4,9 @@ import { HdgWithIcon,BtnWIconSm} from  '$lib/cmp';
 import { Icons} from  '$lib/util';
 </script>
 
-<div class='flex justify-center  p-2 '>
+<!-- <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Dear Teachers</HdgWithIcon>
-</div>
+</div> -->
 
 <div class='flex flex-col justify-center'>
 <p class="bg-gray-700 p-1 m-1 mx-4"><u>Dear Teachers : </u></p>

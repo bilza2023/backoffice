@@ -5,7 +5,7 @@
 <script>
 //@ts-nocheck
 import { PageWrapper } from '$lib/cmp';
-import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
+import { onMount,toast } from '$lib/util';
 
 import save from './save';
 import Toolbar from './Toolbar.svelte';
@@ -17,11 +17,8 @@ import SPFSPart from './SPFSPart/SPFSPart.svelte';
 import PageHeading from './PageHeading.svelte';
 import getEqData from './extra/eqData';
 import Nav from '$lib/appComp/Nav.svelte';
-import TeacherPanel from './TeacherPanel.svelte';
+// import TeacherPanel from './TeacherPanel.svelte';
 
-import { isLoginStore, isAdminStore } from '$lib/util/appStore.js';
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;  
 ////////////////////////////////////////////////////////
  function redraw(){eqs = [...eqs];}
 function toggleSP(index){
@@ -83,6 +80,8 @@ function addEq(i) {
 let allowed = true;
 export let  question;
 export let eqs;
+export let isLogin=false;
+export let isAdmin=false;
 let questionDetails;
 onMount(async () => {
   try {
@@ -97,7 +96,7 @@ onMount(async () => {
 });
 
 </script>
-<Nav />
+<Nav {isLogin} {isAdmin} />
 <PageWrapper>
 {#if question && allowed}
 

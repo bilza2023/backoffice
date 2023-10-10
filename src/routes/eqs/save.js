@@ -1,22 +1,10 @@
 //@ts-nocheck
-import {toast,get} from "$lib/util";
+import {toast} from "$lib/util";
 import { BASE_URL } from '$lib/util/config';
-import { isLoginStore, isAdminStore,teacherNameStore } from '$lib/util/appStore.js';
 
 export  default async function save(question , eqs){
   try {
-    // debugger;
-    const token = localStorage.getItem('token');
-        if ( !token){
-        toast.push("Please login")
-        return;
-        }
-        //---add teacher name at back end but for now its ok
-        if ( !get(teacherNameStore) ){
-        toast.push("Please login")
-        return;
-        }
-
+     
  //==MUst 3 steps
   question.eqs =[];
   question.eqs =eqs;
@@ -26,9 +14,9 @@ export  default async function save(question , eqs){
   -do not over write filledBy once it is entered 
   - Admin must not over write BUT if there is no filledBy then the admin is the filler
    */
-  if (!question.filledBy || question.filledBy == ""){
-        question.filledBy = get(teacherNameStore);
-  }
+  // if (!question.filledBy || question.filledBy == ""){
+  //       question.filledBy = get(teacherNameStore);
+  // }
   /////////////////////////////
   //--in locked we do not allow edit - its set by admin.
   //--the status = inlocked , locked (both we do not allow to insert time). when status  == final we allow to insert time and check it
@@ -38,20 +26,22 @@ export  default async function save(question , eqs){
       setEndTimes(question);
       checkFinalTimings(question.eqs)
   }
-
-
-        const response = await fetch(`${BASE_URL}/be/update`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            
-            body: JSON.stringify({token,question})
-        });
-        if (response.ok) {
+    debugger;
+        const token = localStorage.getItem('token');
+    
+  const resp = await fetch( `${BASE_URL}/be/update` ,{
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+  },
+  body: JSON.stringify( {question} )
+});
+        if (resp.ok) {
             toast.push('Data uploaded successfully');
         }else {
-              toast.push('Response not ok');
+              const data = await resp.json();
+        toast.push(data.message);
         } 
       }catch (e) {
               toast.push('Unknown Error');

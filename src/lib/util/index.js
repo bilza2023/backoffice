@@ -5,10 +5,11 @@ import { toast } from '@zerodevx/svelte-toast';
 import { fade } from 'svelte/transition';
 import { get } from 'svelte/store';
 import { goto } from '$app/navigation';
+import checkToken from './checkToken';
 import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
-import chqLogin from './chqLogin';
+// import chqLogin from './chqLogin';
 
             export {
             isLoginStore,isAdminStore,
@@ -20,7 +21,7 @@ import chqLogin from './chqLogin';
                     goto,
                     browser,
                     Icons,
-                    chqLogin
+                    checkToken
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */

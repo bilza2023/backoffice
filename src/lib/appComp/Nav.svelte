@@ -3,18 +3,19 @@
 import {NavBtn,NavBtn2} from '$lib/cmp';
 import Logo from './Logo.svelte';
 import {Icons,goto, toast,onMount} from '$lib/util';
-import { isLoginStore, isAdminStore,teacherNameStore } from '$lib/util/appStore';
-  // Use the store values directly with the $ prefix
-  $: isLogin = $isLoginStore;
-  $: isAdmin = $isAdminStore;
+import { teacherNameStore } from '$lib/util/appStore';
   $: teacherName = $teacherNameStore;
+
+export let isLogin = false;  
+export let isAdmin = false;  
+
 ///////////////////////////////////
 function logout(){
-    isLoginStore.set(false);
-    isAdminStore.set(false);
-    localStorage.removeItem('teacher_token');
-    localStorage.removeItem('teacher_status');
-    localStorage.removeItem('math_syllabus');
+    // isLoginStore.set(false);
+    // isAdminStore.set(false);
+    localStorage.removeItem('token');
+    // localStorage.removeItem('teacher_status');
+    // localStorage.removeItem('math_syllabus');
     goto('/login');
 }
 function extractEmailPrefix(email) {
