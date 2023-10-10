@@ -92,7 +92,7 @@ onMount(async () => {
       // debugger;
    //http://localhost/math?id=6508bff7c970727df5e0ac85
       let  id = new URLSearchParams(location.search).get("id"); 
-      const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
+      const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer 000`,

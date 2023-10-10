@@ -23,7 +23,7 @@ onMount(async () => {
     return;
     }  
     //=============================  
-            const resp = await fetch( `${BASE_URL}/fbise_math9th_syllabus`, {
+            const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
             method: 'GET',
             headers: {
             'Authorization': `Bearer 000`,

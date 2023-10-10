@@ -47,7 +47,7 @@ export  default async function save(question , eqs){
   }
 
 
-        const response = await fetch(`${BASE_URL}/update`, {
+        const response = await fetch(`${BASE_URL}/be/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -23,7 +23,7 @@ onMount(async () => {
     const teacher_name = localStorage.getItem("teacher_name");
     const token = localStorage.getItem("teacher_token");
 
-    const resp = await fetch( `${BASE_URL}/filled_by_me` ,{
+    const resp = await fetch( `${BASE_URL}/be/filled_by_me` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
