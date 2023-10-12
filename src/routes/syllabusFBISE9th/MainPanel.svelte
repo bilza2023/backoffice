@@ -44,7 +44,7 @@ return url;
 
 {#if showSpecial}
     {#if showSpecial &&  showSpecialChapter}
-    <div class="bg-green-900">
+    <div class="bg-stone-900">
     <button class="p-1 m-1 rounded-md bg-yellow-900 text-xs text-white" 
     on:click={()=>showSpecialChapter = false}>
         Chapter Special  Questions

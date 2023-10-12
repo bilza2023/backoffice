@@ -34,6 +34,8 @@ onMount(async () => {
         isLogin = true;
         isAdmin = data.isAdmin;
 ///////////////////////////////////////////////////////
+if (isAdmin){pageStatus = "load";toast.push(`Welcome Admin , question status: ${question.status}`); return;}
+///////////////////////////////////////////////////////
 switch (question.status) {
     case "unlocked":
         pageStatus = "load";
