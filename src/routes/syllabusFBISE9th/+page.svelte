@@ -74,7 +74,7 @@ onMount(async () => {
 <div class="flex justify-center border-2 border-white">
   <div class="w-2/12">
       <SidePanel {syllabus} {setSelExNChapter}/>
-  </div>
+  </div>    
   <div class="w-10/12">
     <MainPanel {questions}  {selectedEx} {selectedChapter}/>
     <br>
