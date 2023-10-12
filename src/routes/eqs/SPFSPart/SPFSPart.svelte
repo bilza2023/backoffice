@@ -5,7 +5,6 @@ import CodeTxt from '../CodeTxt.svelte';
 import VerticalBtns from './VerticalBtns.svelte';
 import Table from './Table.svelte';
 import TableCode from './TableCode.svelte';
-// import SpToolBar from './SPToolBar.svelte';
 import FSSPToolBar from './FSSPToolBar.svelte';
 
 //theArray = eq.sp or eq.fs

@@ -19,14 +19,20 @@ export  default async function save(question , eqs){
   // }
   /////////////////////////////
   //--in locked we do not allow edit - its set by admin.
-  //--the status = inlocked , locked (both we do not allow to insert time). when status  == final we allow to insert time and check it
-  if ( question.status !== "final" ){
+  //--the status = unlocked , locked (both we do not allow to insert time). when status  == final we allow to insert time and check it
+  //--only unlocked save sets fake times. and in final we check the times
+  if ( question.status == "unlocked" ){
+      debugger;
       setFakeTimes(question);
   }else{
       setEndTimes(question);
       checkFinalTimings(question.eqs)
   }
-    debugger;
+  if ( question.status == "final" ){
+      setEndTimes(question);
+      checkFinalTimings(question.eqs)
+  }
+    // debugger;
         const token = localStorage.getItem('token');
     
   const resp = await fetch( `${BASE_URL}/be/update` ,{
@@ -63,10 +69,10 @@ function setFakeTimes(question) {
   for (let i = 0; i < question.eqs.length; i++) {
     const eq = question.eqs[i];
     eq.eqStartTime = time;//eq.eqStartTime of first is always zero
-     time += 5;
+     time += 10;
           if (eq.fs.length >0){
             eq.fsStartTime = time;
-            time +=5; 
+            time +=10; 
           }
     eq.eqEndTime = time;
     // time += 5; // for next iteration
@@ -84,13 +90,13 @@ function assignSteps(question) {
 function checkFinalTimings(eqs) {
   // Rule 1: Ensure eqStartTime of the first step is always 0
   eqs[0].eqStartTime = 0;
-
-  // Loop through the array to check other rules starting with index 1
+  eqs[eqs.length - 1].eqEndTime = 5000; // a larage number which will later be replaces before run
+  // Loop through the array to check other rules starting with index == 1
   for (let i = 1; i < eqs.length; i++) {
     const currentStep = eqs[i];
     const previousStep = eqs[i - 1];
 
-    // Rule 2: Check if the start time of the current step is equal to the end time of the previous step
+    // Rule 2: Check if the start time of the current step is equal to the end time of the previous step. It should be same ==>start time of the current step tobe equal to the end time of the previous step
     if (currentStep.eqStartTime !== previousStep.eqEndTime) {
       toast.push(`Validation error at step ${i + 1}: Start time does not match the end time of the previous step.`);
       return;
@@ -101,16 +107,16 @@ function checkFinalTimings(eqs) {
       toast.push(`Validation error at step ${i + 1}: eqStartTime is greater than or equal to eqEndTime.`);
       return;
     }
-
+//==correct: it is > and < so it means if step-1 fullscreen ends at 20 and step also ends at 20 the next step -2 can also start at 20 no problems
     // Rule 4: Check if fsStartTime and fsEndTime fall within eqStartTime and eqEndTime. BUT check only if fs has some thing
     if (currentStep.fs.length > 0){
-    if (
-      currentStep.fsStartTime < currentStep.eqStartTime ||
-      currentStep.fsEndTime > currentStep.eqEndTime
-    ) {
-      toast.push(`FS timings error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
-      return;
-    }
+      if (
+        currentStep.fsStartTime < currentStep.eqStartTime ||
+        currentStep.fsEndTime > currentStep.eqEndTime
+      ) {
+        toast.push(`FS timings error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
+        return;
+      }
     }
 
     // Rule 5: Check if fsStartTime is smaller than fsEndTime
