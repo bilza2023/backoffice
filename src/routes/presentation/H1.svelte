@@ -1,0 +1,9 @@
+<script>
+//@ts-nocheck
+export let code;
+
+</script>
+
+<div class="flex justify-center">
+<h1 class="bg-stone-500 px-2 m-1 p-1 rounded-md">{code}</h1>
+</div>
