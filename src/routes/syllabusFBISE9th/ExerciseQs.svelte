@@ -3,28 +3,27 @@
 import { Card } from '$lib/cmp';
 import {Icons } from '$lib/util';
 export let questions;
-export let selectedChapter;
 export let getUrl;
-let showChapterSpecial=true;
+export let selectedEx;
+let showQs=true;
 </script>
 
 <div class="bg-gray-700 p-2 m-2 rounded-md">
     <div class="text-center w-full">
     <button class="p-1 m-1 bg-gray-800 rounded-md "
-    on:click={()=>showChapterSpecial = !showChapterSpecial}
+    on:click={()=>showQs = !showQs}
     >
-Chapter Special Questions 
+    Exercise Questions
     </button>
     </div>
-{#if showChapterSpecial}
+{#if showQs}
 <div class='flex  w-full justify-center  flex-wrap  '>
 {#each questions as question,index}    
-        {#if question.isSpecial == true && 
-        question.chapter == selectedChapter &&
-        (question.partNo.exercise == "" ||  question.partNo.exercise == undefined) }
+        {#if question.isSpecial == false && 
+        question.partNo.exercise == selectedEx }
             <div class='w-3/12'>
             <Card
-            title = {`${question.partNo.name}`}
+            title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
             url = {getUrl(question)}
             >

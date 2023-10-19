@@ -5,26 +5,17 @@ import {Icons } from '$lib/util';
 export let questions;
 export let selectedChapter;
 export let getUrl;
-let showChapterSpecial=true;
 </script>
 
-<div class="bg-gray-700 p-2 m-2 rounded-md">
-    <div class="text-center w-full">
-    <button class="p-1 m-1 bg-gray-800 rounded-md "
-    on:click={()=>showChapterSpecial = !showChapterSpecial}
-    >
-Chapter Special Questions 
-    </button>
-    </div>
-{#if showChapterSpecial}
-<div class='flex  w-full justify-center  flex-wrap  '>
+
+<div class='flex  w-full justify-center  flex-wrap  px-2'>
 {#each questions as question,index}    
         {#if question.isSpecial == true && 
         question.chapter == selectedChapter &&
         (question.partNo.exercise == "" ||  question.partNo.exercise == undefined) }
             <div class='w-3/12'>
             <Card
-            title = {`${question.partNo.name}`}
+            title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
             url = {getUrl(question)}
             >
@@ -35,5 +26,3 @@ Chapter Special Questions
     <!-- {/if} -->
 {/each}
     </div>
-{/if}    
-</div>    

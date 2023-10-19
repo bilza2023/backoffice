@@ -3,8 +3,8 @@
 import {NavBtn,NavBtn2} from '$lib/cmp';
 import Logo from './Logo.svelte';
 import {Icons,goto, toast,onMount} from '$lib/util';
-import { teacherNameStore } from '$lib/util/appStore';
-  $: teacherName = $teacherNameStore;
+// import { teacherNameStore } from '$lib/util/appStore';
+  // $: teacherName = $teacherNameStore;
 
 export let isLogin = false;  
 export let isAdmin = false;  
@@ -14,17 +14,23 @@ function logout(){
     // isLoginStore.set(false);
     // isAdminStore.set(false);
     localStorage.removeItem('token');
-    // localStorage.removeItem('teacher_status');
+    localStorage.removeItem('teacher_name');
     // localStorage.removeItem('math_syllabus');
     goto('/login');
 }
-function extractEmailPrefix(email) {
+function extractEmailPrefix() {
+try{
+// debugger;
+const email = localStorage.getItem("teacher_name");
     let atIndex = email.indexOf('@');
     if (atIndex !== -1) {
         return email.substring(0, atIndex);
     } else {
         return 'name not found';
     }
+}catch (e) {
+  return 'name not found'; 
+}
 }
 function statusIcons(){
   if (isAdmin){
@@ -52,7 +58,7 @@ function statusIcons(){
     <!-- <NavBtn title='Templates' icon ='📜' url='/templates'/> -->
     
 
-    <NavBtn2 title={extractEmailPrefix(teacherName)} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
+    <NavBtn2 title={extractEmailPrefix()} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
     <!-- {#if isAdmin} -->
     <!-- <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/> -->
     <!-- {/if} -->

@@ -51,7 +51,7 @@ return url;
     </button>
     <ChapterSpecialQs  {questions } {selectedChapter} {getUrl} />
     </div>
-    {/if}
+    {/if} 
 
     {#if showSpecial && !showSpecialChapter}
     <div class="bg-stone-700">
