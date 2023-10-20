@@ -16,8 +16,9 @@ let selectedEx ="1.1";
 let selectedChapter = 1;
 
 function setEx(ex){
-selectedEx = ex;
+  selectedEx = ex;
 }
+
 let isLogin = false;
 let isAdmin = false;
 
@@ -70,9 +71,9 @@ return url;
 </div>
 {#if questions}
 <div class="p-4 m-1 border-2 border-white rounded-lg">
-  <Dd {setChapter} {selectedChapter}/>
+<Dd {setChapter} {selectedChapter}/>
   <br/>
-  <Exercises  {questions} {selectedChapter} {selectedEx} {setEx} />
+<Exercises  {questions} {selectedChapter} {selectedEx} {setEx} />
 </div>
 
 <ExerciseQs {questions} {selectedEx} {getUrl}/>

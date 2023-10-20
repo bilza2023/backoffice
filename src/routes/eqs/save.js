@@ -9,25 +9,13 @@ export  default async function save(question , eqs){
   question.eqs =[];
   question.eqs =eqs;
   assignSteps(question);
-  /**
-  filledBy rules
-  -do not over write filledBy once it is entered 
-  - Admin must not over write BUT if there is no filledBy then the admin is the filler
-   */
-  // if (!question.filledBy || question.filledBy == ""){
-  //       question.filledBy = get(teacherNameStore);
-  // }
-  /////////////////////////////
-  //--in locked we do not allow edit - its set by admin.
-  //--the status = unlocked , locked (both we do not allow to insert time). when status  == final we allow to insert time and check it
-  //--only unlocked save sets fake times. and in final we check the times
+  
   if ( question.status == "unlocked" ){
-      debugger;
+      //filledBy is set at backend
+      question.status = 'fill'; //important
       setFakeTimes(question);
-  }else{
-      setEndTimes(question);
-      checkFinalTimings(question.eqs)
   }
+  
   if ( question.status == "final" ){
       setEndTimes(question);
       checkFinalTimings(question.eqs)

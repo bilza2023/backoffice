@@ -9,7 +9,7 @@ let isLogin = false;
 let isAdmin = false;
 onMount(async () => {
   try{
-    debugger;
+    // debugger;
     
     //=============================  
     // const teacher_name = localStorage.getItem("teacher_name");
