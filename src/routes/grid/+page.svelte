@@ -4,7 +4,7 @@
 <script>
 //@ts-nocheck
 import {PageWrapper} from "$lib/cmp";
-import { BASE_URL,onMount,toast,goto,chqLogin } from '$lib/util';
+import { BASE_URL,onMount,toast } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import PageHeading from './PageHeading.svelte';
 import ThreeButtons from "./ThreeButtons.svelte";
@@ -15,12 +15,13 @@ import getNewCol from "./getNewCol.js";
 import saveFn from "./save";
 
 let global = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
+let rows;
 let showPanel = "gridPanel"
-let data = {};
+let data = {}; //?
 let question;
 let questionDetails;
-let rows;
-
+let isLogin = false;
+let  isAdmin = false;
 function redraw(){rows = [...rows]}
 
 const addRow = () => {
@@ -29,21 +30,21 @@ const addRow = () => {
  const newRow = Array(rows[0].length).fill(getNewCol());
     rows.push(newRow);
     redraw();
-    console.log("rows" , rows);
+    // console.log("rows" , rows);
 }
 const addCol = () => {
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     row.push(getNewCol());
   }
-  console.log("rows", rows);
+  // console.log("rows", rows);
   redraw();
 }
 const delRow = () => {
     if (rows.length > 0) {
         rows.pop(); // Remove the last row
         redraw();
-        console.log("rows", rows);
+        // console.log("rows", rows);
     }
 }
 
@@ -53,7 +54,7 @@ const delCol = () => {
             rows[i].pop(); // Remove the last element from each row
         }
         redraw();
-        console.log("rows", rows);
+        // console.log("rows", rows);
     }
 }
 
@@ -68,7 +69,7 @@ onMount(async () => {
    //http://localhost/math?id=6508bff7c970727df5e0ac85
    const token = localStorage.getItem("token");
       let  id = new URLSearchParams(location.search).get("id"); 
-      const resp = await fetch( `${BASE_URL}/get_question?id=${id}`, {
+      const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -79,6 +80,8 @@ onMount(async () => {
         // debugger;
         const data = await resp.json();
         question  = data.question //===> important
+        isAdmin  = data.isAdmin   //===> important
+        isLogin  = true;   //===> important
         // console.log("question" ,  question);
         if (!question.grid.rows || question.grid.rows.length <= 0) {
            rows = [[]]; //[[]]
@@ -87,8 +90,10 @@ onMount(async () => {
           rows = question.grid.rows
         }
         if (question.grid.global) {
+          question.grid.global.showGrid = true;
            global = question.grid.global;
         }
+           global.showGrid = true; // no need
         questionDetails = question.filename;
       // return;
     } else {
@@ -103,7 +108,8 @@ onMount(async () => {
 </script>
 
 <PageWrapper>
-<Nav />
+{#if isLogin}
+<Nav {isLogin} {isAdmin}/>
 <PageHeading />
 
 <ThreeButtons bind:showPanel={showPanel} />
@@ -119,7 +125,7 @@ onMount(async () => {
 <GridPanel  {global} {save} bind:rows={rows} {addRow} {addCol} {delRow} {delCol}/>
 
 </div>
-
+{/if}
 
 
 <br>

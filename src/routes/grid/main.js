@@ -18,7 +18,7 @@ function updateTimeDiff() {
     const currentTime = Date.now();
     const timeDiff = currentTime - get(startTime);
     runningTime.set(Math.floor(timeDiff / 1000));
-    console.log('runningTime' , get(runningTime))
+    // console.log('runningTime' , get(runningTime))
 }
 
 export {start,stop,updateTimeDiff}

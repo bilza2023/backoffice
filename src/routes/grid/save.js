@@ -11,12 +11,19 @@ export default async function saveFn(question,global,rows,sp=[],fs=[]){
        question.grid.fs = [];
        question.grid.global = global;
        question.grid.rows = rows;
+       
+  if ( question.status == "unlocked" ){
+      question.status = 'fill'; //important
+  }
+  
        /////////////////////////////////////// 
        const token = localStorage.getItem("token");
-       const response = await fetch(`${BASE_URL}/update`, {
+       const response = await fetch(`${BASE_URL}/be/update`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+            
+             headers: {
+             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({token,question})
         });

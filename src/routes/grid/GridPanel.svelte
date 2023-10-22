@@ -21,8 +21,7 @@ function toggleEquationMode(){
    equationMode = !equationMode;
    redraw();
 } 
-// let rows = [[]]; //[[]]
-// rows[0].push(getNewCol());
+
 
 $:rTime = $runningTime;
 
