@@ -34,17 +34,13 @@ function del(j) {
 }
 //-in svelte data updated in child comp does not automatically update the parent item data Unless bind is used. incase of table bind is not used.
 function updateTableData(j,data){
-// debugger;
-// theArray[j] = {code :data , type:"table"};
 theArray[j].code = data;
-console.log(theArray[j]);
 }
 </script> 
 
 
 <div id={`eqPart`} class= {`w-full ${clr} text-center rounded-md justify-center p-2`} >
 
-<!-- <SpToolBar  {i} {addSpTxtCode} {addTable}/> -->
 <FSSPToolBar   {theArray} {arrayName} {redraw}/>
  
 {#each theArray as sp, j}
@@ -92,13 +88,13 @@ console.log(theArray[j]);
     
     {#if (sp.type == 'table' || sp.type == 'tbl' )}
     <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1">
-          <Table item = {sp.code} {moveUp} {moveDown}{updateTableData} {del}{redraw} {j}/>
+          <Table bind:item = {sp.code} {moveUp} {moveDown} {del} {j}/>
     </div>
     {/if}
     
     {#if (sp.type == 'tableCode' )}
     <!-- <div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1"> -->
-          <TableCode item = {sp.code} {moveUp} {moveDown}{updateTableData} {del}{redraw} {j}/>
+          <TableCode bind:item = {sp.code} {moveUp} {moveDown} {del}{redraw} {j}/>
     <!-- </div> -->
     {/if}
 

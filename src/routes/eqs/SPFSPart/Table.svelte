@@ -4,12 +4,10 @@
 import VerticalBtnsTbl from './VerticalBtnsTbl.svelte';
 
 export let item;
-export let redraw;
 export let moveUp;
 export let moveDown;
 export let del;
 export let j;
-export let updateTableData;
 
 let parsedData=[];
 $: {
@@ -19,36 +17,29 @@ $: {
 // Function to handle input change
 const handleInputChange = (newValue, rowIndex, colIndex) => {
   parsedData[rowIndex][colIndex] = newValue;
-  updateTableData(j,JSON.stringify(parsedData));
+  item = JSON.stringify(parsedData);
 }
- // Function to add a new row
-  const addRow = () => {
-    const newRow = Array(parsedData[0].length).fill('');
-    parsedData.push(newRow);
-    // item = JSON.stringify(parsedData);
-    // parsedData = [...parsedData];
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
-  }
 
-  const addCol = () => {
-    parsedData.forEach(row => row.push(''));
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
-  }
+const addRow = () => {
+  const newRow = Array(parsedData[0].length).fill('');
+  parsedData.push(newRow);
+  item = JSON.stringify(parsedData);
+}
+
+const addCol = () => {
+  parsedData.forEach(row => row.push(''));
+  item = JSON.stringify(parsedData);
+}
 const delRow = () => {
   if (parsedData.length > 0) {
     parsedData.pop(); // Remove the last row
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
-    
+    item = JSON.stringify(parsedData);
   }
 }
 const delCol = () => {
   if (parsedData.length > 0 && parsedData[0].length > 0) {
-    parsedData.forEach(row => row.pop()); // Remove the last column from each row
-   updateTableData(j,JSON.stringify(parsedData));
-    redraw();
+    parsedData.forEach(row => row.pop()); 
+  item = JSON.stringify(parsedData);
   }
 }
 
@@ -75,8 +66,5 @@ const delCol = () => {
 {/if}
 
  <div class='w-2/12'>
-            <VerticalBtnsTbl {delRow} {delCol} {moveUp} {moveDown} {del} {j} {addRow} {addCol}/>
+<VerticalBtnsTbl {delRow} {delCol} {moveUp} {moveDown} {del} {j} {addRow} {addCol}/>
         </div>
-<!-- 
-<button on:click={addCol}>AddCol</button>
-<button on:click={addRow}>AddRow</button> -->

@@ -1,63 +1,46 @@
 <script>
 //@ts-nocheck
-    // import { onMount } from "svelte";
 import VerticalBtnsTbl from './VerticalBtnsTbl.svelte';
-import Katex from 'svelte-katex';
-
+//item = sp.code - this is just string which when we parse becomes a 2-dim array (table).
 export let item;
-export let redraw;
 export let moveUp;
 export let moveDown;
 export let del;
 export let j;
-export let updateTableData;
+import TableCodeDisplay from "./TableCodeDisplay.svelte";
 
 let parsedData=[];
+
 $: {
   parsedData = JSON.parse(item);
 }
-// onMount(()=>{
-//   parsedData = JSON.parse(item);
-//   // console.log(parsedData);
-// });
-
 
 // Function to handle input change
 const handleInputChange = (newValue, rowIndex, colIndex) => {
   parsedData[rowIndex][colIndex] = newValue;
-  updateTableData(j,JSON.stringify(parsedData));
+    item = JSON.stringify(parsedData);
 }
  // Function to add a new row
   const addRow = () => {
     const newRow = Array(parsedData[0].length).fill('');
     parsedData.push(newRow);
-    // item = JSON.stringify(parsedData);
-    // parsedData = [...parsedData];
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
+    item = JSON.stringify(parsedData);
   }
 
-  // Function to add a new column
-  const addCol = () => {
+const addCol = () => {
     parsedData.forEach(row => row.push(''));
-    // item = JSON.stringify(parsedData);
-    // parsedData = [...parsedData];
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
+    item = JSON.stringify(parsedData);
   }
 const delRow = () => {
   if (parsedData.length > 0) {
     parsedData.pop(); // Remove the last row
-    updateTableData(j,JSON.stringify(parsedData));
-    redraw();
-    
+    item = JSON.stringify(parsedData);
   }
 }
 const delCol = () => {
   if (parsedData.length > 0 && parsedData[0].length > 0) {
     parsedData.forEach(row => row.pop()); // Remove the last column from each row
-   updateTableData(j,JSON.stringify(parsedData));
-    redraw();
+   item = JSON.stringify(parsedData);
   }
 }
 </script>
@@ -88,23 +71,4 @@ const delCol = () => {
 </div><!--top flex for upper table-->
 
 <!-- <hr/> -->
-
-<div class="flex justify-center  rounded-md w-full mx-auto mb-4 mt-2 gap-1">
-{#if parsedData.length > 0}
-    <div class="flex flex-col justify-center items-center m-1 p-1 rounded-md border-2 border-gray-300 w-full">
-        {#each parsedData as row, rowIndex}
-            <div class="flex justify-center gap-1 w-full">
-                {#each row as cell, colIndex}
-                    <div class='flex flex-col justify-center items-center w-full'>
-                        <div class="bg-gray-900 m-1 p-1 rounded-md w-8/12">
-                        <Katex>{cell}</Katex>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        {/each}
-    </div>
-    
-
-{/if}
-</div><!--top flex for upper table-->
+<TableCodeDisplay  {item}  />
