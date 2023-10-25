@@ -1,5 +1,6 @@
 <script>
 //@ts-nocheck
+import {BASE_URL} from '$lib/util';
 export let addEq;
 export let question;
 export let closeAllSP;
@@ -22,6 +23,6 @@ on:click={setSPTrue}>Show Sp</button>
 on:click={closeAllSP}
 >Hide SP</button>
 &nbsp;
-<a href={`https://skillzaa.com/math?id=${question._id}`} target="_blank" 
+<a href={`eqsPlayer?id=${question._id}`} target="_blank" 
 class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</a>
 </div>

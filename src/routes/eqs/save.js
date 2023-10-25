@@ -4,13 +4,13 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , eqs){
   try {
-     
+
  //==MUst 3 steps
   question.eqs =[];
   question.eqs =eqs;
   assignSteps(question);
-  
-  if ( question.status == "unlocked" ){
+//--fill is no staus , fill is just having filledBy field with a name  
+  if ( question.status !== "locked" || question.status !== "final" ){
       //filledBy is set at backend
       question.status = 'fill'; //important
       setFakeTimes(question);
@@ -34,7 +34,7 @@ export  default async function save(question , eqs){
         if (resp.ok) {
             toast.push('Data uploaded successfully');
         }else {
-              const data = await resp.json();
+              const data = await  resp.json();
         toast.push(data.message);
         } 
       }catch (e) {
