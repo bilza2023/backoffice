@@ -33,10 +33,12 @@ onMount(async () => {
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Teachers Hub</HdgWithIcon>
 </div>
 
-<BtnWIconSm clk ={closeInstructions}>Toggle Instructions</BtnWIconSm>
+<BtnWIconSm clk ={closeInstructions}>Sample Questions</BtnWIconSm>
 {#if showInstructions}
-<br>
-<Instructions />
+<div class="flex justify-center flex-col">
+<a class="mx-auto m-1 p-1 bg-gray-400 rounded-lg px-10"
+ href="https://backoffice-navy.vercel.app/eqsPlayer?id=653113340a6eaa163e9f89d0">Ex 1.1 Q 1</a>
+</div>
 {/if}
 
 <br>
