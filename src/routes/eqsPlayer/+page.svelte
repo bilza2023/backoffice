@@ -84,6 +84,16 @@ async function fileExists(url) {
   }
 }
 
+async function getSoundFile(filename) {
+  const soundFile = `./sounds/math_fbise_9/${filename}.mp3`;
+  
+  if (await fileExists(soundFile)) {
+    return soundFile;
+  } else {
+    return './mathSounds/test.mp3';
+  }
+}
+
 //=======
 /////////////////////////
 let soundFile;
@@ -116,9 +126,17 @@ onMount(async () => {
     if (resp.ok) {
       
         const data = await resp.json();
+        // if (data.errorCode == "notFree"){
+        //     notFreeContent = true;
+        //     return;
+        // }
         const question  = data.question //===> important
+        // eqs = data.eqs.eqs; //its twice eqs.eqs
         eqs = question.eqs;
-        soundFile = './test.mp3';
+        soundFile = await getSoundFile(question.filename);
+        // soundFile =  `./mathSounds/${mathQuestion.filename}.mp3`;
+
+    // const data  = (await import(`../../lib/mathData/${id}.js`)).default;  
     questionDetails = question.filename;;
 
     sound = new Howl({
@@ -150,8 +168,7 @@ onMount(async () => {
 </script>
 
 {#if !isPlaying}
-<!-- isAdmin and isLogin are true fake fix this later -->
-<Nav isAdmin=true isLogin=true/>
+<Nav isAdmin=false isLogin=true/>
 {/if}
 
 {#if notFreeContent}
@@ -195,4 +212,3 @@ This is premier content
 <br>
 
 </div><!--page div-->
-

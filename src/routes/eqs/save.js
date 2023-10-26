@@ -10,7 +10,7 @@ export  default async function save(question , eqs){
   question.eqs =eqs;
   assignSteps(question);
 //--fill is no staus , fill is just having filledBy field with a name  
-  if ( question.status !== "locked" || question.status !== "final" ){
+  if ( question.status == "unlocked" || question.status == "fill" ){
       //filledBy is set at backend
       question.status = 'fill'; //important
       setFakeTimes(question);
