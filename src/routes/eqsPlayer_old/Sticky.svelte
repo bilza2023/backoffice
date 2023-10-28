@@ -5,7 +5,7 @@ export let start;
 export let changeSeek;
 export let maxSliderValue
 export let stop;
-export let runningTime;
+export let timeDiff;
 
 </script>
 
@@ -20,9 +20,9 @@ export let runningTime;
       ◼ <!-- This is the UTF-8 stop icon -->
     </button>
     <div class="p-1 bg-gray-700 mx-2 rounded text-xs text-yellow-600 ">
-      {(runningTime).toFixed(0)} sec</div>
+      {(timeDiff).toFixed(0)} sec</div>
     <div class='flex-grow'>
-    <input class='w-full'  type="range"  id="timeSlider" value={runningTime} min=0 max={maxSliderValue} 
+    <input class='w-full'  type="range"  id="timeSlider" value={timeDiff} min=0 max={maxSliderValue} 
     on:change={(e)=>changeSeek(e.target.value)}
     > </div>  
   </div>
