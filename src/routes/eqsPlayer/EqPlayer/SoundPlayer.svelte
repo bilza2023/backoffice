@@ -2,20 +2,37 @@
 //@ts-nocheck
 import {onMount} from "$lib/util";
 import { Howl } from 'howler';
+import {runningTime} from './store';
+
+$:rTime = $runningTime;
 //=============================
 export let soundFile;
-export let callBack;
+export let moveSeek;
+
+$:{
+  moveSeek;
+  if (sound && !isNaN(moveSeek)) {
+    const seekPosition = parseInt(moveSeek);
+    if (seekPosition >= 0 && seekPosition <= maxSliderValue) {
+      sound.seek(seekPosition);
+      runningTime.set(seekPosition);
+      // console.log("Seeking to position:", seekPosition);
+    } else {
+      console.error("Invalid seek position:", seekPosition);
+    }
+  }
+}
+
 //=============================
 let maxSliderValue=0;
 let  sound;
-let  runningTime      = 0;
 let  isPlaying        = false;  
 let  interval         = null;
 
 
 async function start(){
 try{
-debugger;
+// debugger;
   await loadSound();
  if (isPlaying == true){return;}
         sound.play();
@@ -35,17 +52,19 @@ function stop(){
     isPlaying = false;
     sound.stop();
     clearInterval(interval);
-    runningTime =0;
+    runningTime.set(0);
     return true;
 }
 function updateTimeDiff() {
-    runningTime = sound.seek();
-    callBack(runningTime);
+    const r = sound.seek();
+    runningTime.set(r);
 }
 
 function changeSeek(newSeekValue){
-    sound.seek(newSeekValue);
-    updateTimeDiff();
+//  debugger;
+    sound.seek(parseInt(newSeekValue));
+    runningTime.set(parseInt(newSeekValue));
+    // updateTimeDiff();
 }
 
 async function loadSound(){
@@ -74,9 +93,9 @@ onMount(async()=>{
       ◼ <!-- This is the UTF-8 stop icon -->
     </button>
     <div class="p-1 bg-gray-700 mx-2 rounded text-xs text-yellow-600 ">
-      {(runningTime).toFixed(0)}/{maxSliderValue.toFixed(0)} sec</div>
+      {(rTime).toFixed(0)}/{maxSliderValue.toFixed(0)} sec</div>
     <div class='flex-grow'>
-    <input class='w-full'  type="range"  id="timeSlider" value={runningTime} min=0 max={maxSliderValue} 
+    <input class='w-full'  type="range"  id="timeSlider" value={rTime} min=0 max={maxSliderValue} 
     on:change={(e)=>changeSeek(e.target.value)}
     > </div>  
   </div>

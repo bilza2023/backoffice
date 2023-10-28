@@ -1,12 +1,12 @@
 <script>
 // @ts-nocheck
 //Eq is just a wrapper / user of components inside EqPlayer
-import MainNav from '$lib/appComp/MainNav.svelte';
+import Nav from '$lib/appComp/Nav.svelte';
 import Eq from './Eq.svelte';
 /////////////////////////////////////////
 </script>
 
-<MainNav/>
+<Nav isAdmin={false} isLogin={true}/>
 
 
 <Eq /> 

@@ -1,45 +1,14 @@
 <script>
 // @ts-nocheck
 import {BASE_URL,onMount,toast} from '$lib/util';
-import Sticky from "./Sticky.svelte";
-import { Howl } from 'howler';
+import SoundPlayer from "./EqPlayer/SoundPlayer.svelte";
 import EqPlayer from './EqPlayer/EqPlayer.svelte';
 ////////////////////////////////////////////////
+import {runningTime} from './EqPlayer/store';
 
-function updateTimeDiff() {
-      runningTime = sound.seek();
-    if (runningTime > (sound.duration() * 1000)) {
-        stop();
-    }
-}
+$:rTime = $runningTime;
 
-function changeSeek(newSeekValue){
- sound.seek(newSeekValue);
- runningTime = sound.seek();
- setCurrentEq();
-}
  
-function start(){
-    // debugger;
-    if (isPlaying == true){return;}
-    isPlaying = true;
-    sound.play();
-        sound.on('play', function () {
-        interval = setInterval(updateTimeDiff,1000);
-        // runningTime = runningTime +0; 
-        });
-    
-}
-
-function stop(){
-    sound.stop();
-    isPlaying = false;
-    runningTime = 0;
-    clearInterval(interval);
-    window.scrollTo({top: 0,behavior: 'smooth'});
-    // setFocus();
-}
-
 async function fileExists(url) {
   try {
     const response = await fetch(url);
@@ -58,19 +27,15 @@ async function getSoundFile(filename) {
     return './mathSounds/test.mp3';
   }
 }
-
+function changeSeek(newSeekValue){
+    moveSeek = parseInt(newSeekValue);
+    // console.log("seek", newSeekValue);
+}
 /////////////////////////
 let soundFile;
-let sound;
-let PresentationTotalTime =0; 
-let interval;
-let maxSliderValue; //it is not runningTime since it does not change
-let isPlaying=false;
-let runningTime = 0; 
 let eqs=[];
 let questionDetails;
-let notFreeContent = false;
-
+let moveSeek = 0;
 onMount(async () => {
   try {
   // debugger;
@@ -91,20 +56,10 @@ onMount(async () => {
       
         const question  = data.question //===> important
         eqs = question.eqs;
+        eqs = eqs.map( (eq)=>{eq.isf = false;return eq;});
         soundFile = await getSoundFile(question.filename);
     questionDetails = question.filename;;
 
-    sound = new Howl({
-    src: [soundFile],
-    volume: 1.0,
-    onload: function() {
-        eqs = eqs.map( (eq)=>{eq.isf = false;return eq;});
-        PresentationTotalTime = sound.duration();
-        maxSliderValue = PresentationTotalTime;
-        //--check again
-        eqs[eqs.length-1].eqEndTime =  PresentationTotalTime;
-    }
-    });
 
 //////////////////////////////////////////
     } else {
@@ -127,9 +82,9 @@ onMount(async () => {
 <!-- ************** -->
 <div class='bg-gray-800 w-full  text-white min-h-screen p-0 m-0'>
 
-<Sticky {start} {stop} {runningTime} {changeSeek} maxSliderValue={maxSliderValue}/>
-   
-<EqPlayer  runningTime=0 {eqs} {changeSeek}/> 
+<SoundPlayer  soundFile={soundFile} {moveSeek} />
+
+<EqPlayer  runningTime={rTime} {eqs} {changeSeek}/> 
 
 <br>
 <br>
