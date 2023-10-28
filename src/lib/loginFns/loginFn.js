@@ -35,10 +35,12 @@ const response = await fetch( `${BASE_URL}/be/teacher_login` ,{
         // localStorage.setItem("teacher_status", data.status);
         localStorage.setItem("teacher_name", data.teacher_name);
         isLoginStore.set(true);
-            if (data.status == 'teacher'){
-              isAdminStore.set(false);
-            }else {
+            if (data.status == 'admin'){
               isAdminStore.set(true);
+              localStorage.setItem("teacher_status", 'admin');
+            }else {
+              isAdminStore.set(false);
+              localStorage.setItem("teacher_status", 'teacher');
             }
         goto("/");
   } else {

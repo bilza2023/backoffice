@@ -6,6 +6,7 @@ import { fade } from 'svelte/transition';
 import { get } from 'svelte/store';
 import { goto } from '$app/navigation';
 import checkToken from './checkToken';
+import checkAdminToken from './checkAdminToken';
 import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
@@ -21,7 +22,8 @@ import Icons from './icons';
                     goto,
                     browser,
                     Icons,
-                    checkToken
+                    checkToken,
+                    checkAdminToken
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */

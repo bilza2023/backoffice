@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
-import { BASE_URL, onMount,toast,Icons,goto,checkToken} from '$lib/util';
+import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Instructions from '$lib/appComp/Instructions.svelte';
 
@@ -13,10 +13,14 @@ function closeInstructions(){showInstructions = !showInstructions}
 function closeSyllabus(){showSyllabus = !showSyllabus}  
 function closeNotes(){showNotes = !showNotes}  
 let isLogin = false;
+let isAdmin = false;
 onMount(async () => {
   try{
     if (checkToken()){
       isLogin = true;
+        if (checkAdminToken()){
+            isAdmin = true;
+        }
     }     
 
   } catch (e) {
@@ -26,7 +30,7 @@ onMount(async () => {
 
 ////////////////////////////////////////////////////////
 </script>
-<Nav {isLogin}/>
+<Nav {isLogin} {isAdmin}/>
 <PageWrapper>
 
 <div class='flex justify-center  p-2 '>
@@ -47,7 +51,7 @@ onMount(async () => {
 {#if showSyllabus}
 <div class="flex justify-center p-2 m-2 ">
   <div class="w-3/12">
-   <Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>
+<Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>
   </div>
 </div>
 {/if}

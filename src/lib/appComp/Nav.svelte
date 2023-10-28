@@ -11,11 +11,9 @@ export let isAdmin = false;
 
 ///////////////////////////////////
 function logout(){
-    // isLoginStore.set(false);
-    // isAdminStore.set(false);
     localStorage.removeItem('token');
     localStorage.removeItem('teacher_name');
-    // localStorage.removeItem('math_syllabus');
+    localStorage.removeItem("teacher_status");
     goto('/login');
 }
 function extractEmailPrefix() {
@@ -59,12 +57,10 @@ function statusIcons(){
     
 
     <NavBtn2 title={extractEmailPrefix()} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
-    <!-- {#if isAdmin} -->
-    <!-- <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/> -->
-    <!-- {/if} -->
-    
-    <!-- <NavBtn title='Notes' icon ={Icons.MESSAGE} url='/fbiseMath9th'/> -->
-    <!-- <NavBtn title='9th Syllbus' icon ='📜' url='/teachermath/syllabus'/> -->
+      {#if isAdmin}
+    <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/>
+      {/if}
+      
     <NavBtn title='Filled By Me' icon ={Icons.PENCIL} url='/filledByMe'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
     <NavBtn2 title='Logout' icon ={Icons.LOCK}    clk={logout}/>
