@@ -4,7 +4,6 @@ import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
 import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Instructions from '$lib/appComp/Instructions.svelte';
-
 let showInstructions = true;  
 let showSyllabus = true;  
 let showNotes = true;  
@@ -36,7 +35,6 @@ onMount(async () => {
 <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Teachers Hub</HdgWithIcon>
 </div>
-
 <BtnWIconSm clk ={closeInstructions}>Sample Questions</BtnWIconSm>
 {#if showInstructions}
 <div class="flex justify-center flex-col">

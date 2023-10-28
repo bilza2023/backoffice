@@ -6,6 +6,7 @@ import { BASE_URL,onMount,toast,Icons,goto } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import DdStatus from "./DdStatus.svelte";
+import Summary from '$lib/appComp/Summary.svelte';
 
 let questions;
 let total_questions;
@@ -66,6 +67,7 @@ return url;
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Syllabus FBISE Class 9th</HdgWithIcon>
 </div>
 {#if questions}
+<Summary {questions}/>
 <div class="p-4 m-1 border-2 border-white rounded-lg">
 <Dd {setChapter} {selectedChapter}/>
   <br/>
