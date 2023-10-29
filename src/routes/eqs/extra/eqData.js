@@ -18,7 +18,8 @@ constructor(){
       this.showSPinFS = false,  
       this.fsStartTime = 0, 
       this.fsEndTime =0, 
-      this.code= "", // remove this later
+      this.code= "", 
+      this.type= "code", //new addition 
       this.spVisibility= true, 
       this.fsVisibility= false, 
 

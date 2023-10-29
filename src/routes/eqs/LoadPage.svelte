@@ -39,6 +39,15 @@ function setFree(free){
  question.free = free;
  redraw();
 }
+function setType(typ){
+ question.questionType = typ;
+ redraw();
+}
+function setEqType(i,typ) {
+//  debugger;
+  eqs[i].type = typ;
+ eqs = [...eqs]; 
+}
 function moveUpEq(index) {
   if (index > 0) {
     const eqToMove = eqs[index];
@@ -107,7 +116,7 @@ onMount(async () => {
   <Titlebar />
   {#each eqs as eq, i}
       <EqPart  {eq} {i} status ={question.status}/>
-      <EqPartLowerToolBar {eq} {i} {addEq} {moveUpEq} {moveDownEq} {delEq} {toggleSP} {toggleFS}/>
+      <EqPartLowerToolBar {eq} {i} {addEq} {moveUpEq} {moveDownEq} {delEq} {toggleSP} {toggleFS} {setEqType}/>
 
         {#if eq.spVisibility}
           <SPFSPart clr="bg-yellow-900"  arrayName='Side Panel' theArray={eq.sp}  {redraw} {i} />
@@ -141,7 +150,7 @@ onMount(async () => {
 <br>
 
   {#if isAdmin }
-    <AdminPanel {question} {setFree} {setStatus}/>
+    <AdminPanel {question} {setFree} {setStatus} {setType}/>
   {/if}
 {/if}
 <br>

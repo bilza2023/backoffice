@@ -15,10 +15,10 @@ export let eq;
         <div>{eq.code}</div>
     {/if}
 
-    {#if eq.type == 'html'}
+    <!-- {#if eq.type == 'html'}
         <div>
         {@html eq.code }
         </div>
-    {/if}
+    {/if} -->
 
 </div>

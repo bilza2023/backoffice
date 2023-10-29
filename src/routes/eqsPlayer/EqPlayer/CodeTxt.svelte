@@ -14,6 +14,9 @@ export let eq;
     {#if eq.type == 'txt' || eq.type == 'text'}
         <p>{eq.code}</p>
     {/if}
+    {#if eq.type == 'hdg' || eq.type == 'heading'}
+        <h1>{eq.code}</h1>
+    {/if}
 
     {#if eq.type == 'html'}
         <div>

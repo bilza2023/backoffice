@@ -1,7 +1,9 @@
 
 <script>
 //@ts-nocheck
-import CodeTxt from './CodeTxt.svelte';
+import EqTypeCode from './EqTypeCode.svelte';
+import EqTypeText from './EqTypeText.svelte';
+import EqTypeHdg from './EqTypeHdg.svelte';
 export let eq;
 export let i;
 export let status;
@@ -16,11 +18,18 @@ export let status;
     <input type="text" class="bg-stone-700 w-1/12 p-0 m-0 rounded-md" bind:value={eq.eqStartTime}  disabled={status !== "final" ? true:false}/>
     {/if}  
 
-    <textarea id={`ta-${i}`} class="bg-stone-700 w-5/12 p-1 m-0 rounded-md" bind:value={eq.code}></textarea>
+{#if eq.type == undefined || eq.type == 'code' || eq.type == ''}
+<EqTypeCode {eq} {i}/>
+{/if}
 
-    <div  class="bg-stone-600 w-5/12 p-0 m-0 rounded-md">
-          <CodeTxt {eq}/>
-    </div>
+{#if eq.type == 'text' || eq.type == 'txt'}
+<EqTypeText {eq} {i}/>
+{/if}
+    
+{#if eq.type == 'heading' || eq.type == 'hdg'}
+<EqTypeHdg {eq} {i}/>
+{/if}
+    
     
 </div>
 

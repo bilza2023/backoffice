@@ -1,11 +1,13 @@
 
 <script>
 //@ts-nocheck
+import {Icons} from '$lib/util';
 export let i;
 export let eq;
 export let addEq;
 export let moveUpEq;
 export let moveDownEq;
+export let setEqType;
 export let delEq;
 export let toggleSP;
 export let toggleFS;
@@ -22,6 +24,23 @@ export let toggleFS;
 <button on:click={()=>moveUpEq(i)} class="bg-gray-900 text-white p-1 text-xs rounded-md">Up</button>
 
 <button on:click={()=>moveDownEq(i)} class="bg-gray-900 text-white p-1 text-xs rounded-md">Down</button>
+
+<!-- //////////////////////////////////// -->
+<div  class="flex gap-1 bg-stone-800 text-white  text-xs p-1 rounded-sm">
+<button 
+ class= {`${eq.type == 'code' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+on:click={()=>setEqType(i,'code')}>{Icons.ADD}</button>
+
+<button 
+class= {`${eq.type == 'text' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+on:click={()=>setEqType(i,'text')}>{Icons.TEMPLATE}</button>
+
+<button 
+class= {`${eq.type == 'hdg' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+on:click={()=>setEqType(i,'hdg')}>{Icons.BOOK}</button>
+</div>
+
+<!-- //////////////////////////////////// -->
 
 <div  class="bg-stone-700 text-white p-1 text-xs rounded-md">Full Screen Start Time</div>
 
