@@ -2,9 +2,10 @@
 //@ts-nocheck
 import {onMount} from "$lib/util";
 import { Howl } from 'howler';
-import {runningTime} from './store';
+import {runningTime,isPlayingStore} from './store';
 
 $:rTime = $runningTime;
+$:isPlaying = $isPlayingStore;
 //=============================
 export let soundFile;
 export let moveSeek;
@@ -26,7 +27,7 @@ $:{
 //=============================
 let maxSliderValue=0;
 let  sound;
-let  isPlaying        = false;  
+// let  isPlaying        = false; //delete it 
 let  interval         = null;
 
 
@@ -37,7 +38,7 @@ try{
  if (isPlaying == true){return;}
         sound.play();
         sound.on('play', function () {
-        isPlaying = true;
+        isPlayingStore.set(true);
         interval = setInterval(updateTimeDiff,1000);
     });
 
@@ -49,7 +50,7 @@ try{
 }
 
 function stop(){ 
-    isPlaying = false;
+    isPlayingStore.set(false);
     sound.stop();
     clearInterval(interval);
     runningTime.set(0);

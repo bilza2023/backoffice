@@ -3,7 +3,7 @@
 import ImgCodeTxt from "./ImgCodeTxt.svelte";
 import {currentEqStore} from "../store";
 $:currentEq   = $currentEqStore;
-
+ 
 </script> 
 {#if currentEq}
 <div class='justify-center line-clamp-4 text-yellow-300'>

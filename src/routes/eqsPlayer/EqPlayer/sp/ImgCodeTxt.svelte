@@ -3,6 +3,7 @@
 import Katex from 'svelte-katex'
 import Table from './Table.svelte';
 import TableCode from './TableCode.svelte';
+import {HdgWithIcon} from "$lib/cmp"
 export let eq;
 
 </script>
@@ -30,11 +31,12 @@ export let eq;
     {#if eq.type == 'tableCode' }
         <TableCode code={eq.code}/>
     {/if}
-   
-    {#if eq.type == 'html'}
-        <div>
-        {@html eq.code }
+    
+    {#if eq.type == 'heading' || eq.type == 'hdg' }
+        <div class="flex justify-center items-center w-full ">
+        <HdgWithIcon size=1.5>{eq.code}</HdgWithIcon>
         </div>
     {/if}
+   
 
 </div>

@@ -27,6 +27,9 @@ function addTxtCodeImg(textOrCode = "text"){
   if (textOrCode == "img"){
     newItem = { code: "", type: 'img' };
   }
+  if (textOrCode == "heading"){
+    newItem = { code: "", type: 'heading' };
+  }
   theArray.push(newItem);
   redraw();
   console.log(theArray);
@@ -42,6 +45,8 @@ function addTxtCodeImg(textOrCode = "text"){
 <button on:click={()=>addTxtCodeImg("code")} class="bg-yellow-600 text-white p-1 text-xs rounded-md">Code</button>
 
 <button on:click={()=>addTxtCodeImg("img")} class="bg-green-600 text-white p-1 text-xs rounded-md">Image</button>
+
+<button on:click={()=>addTxtCodeImg("heading")} class="bg-orange-600 text-white p-1 text-xs rounded-md">Heading</button>
 
 <button on:click={()=>addTable()} class="bg-green-900 text-white p-1 text-xs rounded-md">Table</button>
 

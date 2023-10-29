@@ -8,6 +8,8 @@ import {currentEqStore} from "./store";
 
 $:{
     runningTime;
+    //fullScreen =false;--since if not then if eq end at 20 and fullScreen also end at 20 then the fullScreen stays on.
+    fullScreen =false;
     setCurrentEq();
     checkFullScreen();
 }

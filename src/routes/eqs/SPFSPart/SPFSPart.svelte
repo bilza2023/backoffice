@@ -73,6 +73,18 @@ theArray[j].code = data;
 
     </div>
     {/if}
+   
+    {#if (sp.type == 'heading' || sp.type == 'hdg' )}
+    <div class="flex justify-center  rounded-md w-8/12 mx-auto mb-4 mt-2 gap-1">
+
+    <input class=" bg-stone-900 rounded-md w-10/12 mx-auto" bind:value={sp.code} />
+
+        <div class='w-2/12'>
+            <VerticalBtns {moveUp} {moveDown} {del} {j}/>
+        </div>
+
+    </div>
+    {/if}
     
     {#if (sp.type == 'img' || sp.type == 'image' )}
     <div class="flex justify-center  rounded-md w-8/12 mx-auto mb-4 mt-2 gap-1">

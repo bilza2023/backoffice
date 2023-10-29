@@ -2,12 +2,13 @@
 // @ts-nocheck
 import {BASE_URL,onMount,toast} from '$lib/util';
 import SoundPlayer from "./EqPlayer/SoundPlayer.svelte";
+import Nav from '$lib/appComp/Nav.svelte';
 import EqPlayer from './EqPlayer/EqPlayer.svelte';
 ////////////////////////////////////////////////
-import {runningTime} from './EqPlayer/store';
+import {runningTime,isPlayingStore} from './EqPlayer/store';
 
 $:rTime = $runningTime;
-
+$:isPlaying = $isPlayingStore;
  
 async function fileExists(url) {
   try {
@@ -74,12 +75,16 @@ onMount(async () => {
 
 /////////////////////////////////////////
 </script>
+{#if !isPlaying}
+<Nav isAdmin={false} isLogin={true}/>
+{/if}
 
  <div class='p-1 m-0 text-xs bg-gray-800 text-yellow-600  '>
  {questionDetails}
  </div>
 
 <!-- ************** -->
+
 <div class='bg-gray-800 w-full  text-white min-h-screen p-0 m-0'>
 
 <SoundPlayer  soundFile={soundFile} {moveSeek} />
