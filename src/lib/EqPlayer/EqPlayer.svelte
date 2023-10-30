@@ -1,7 +1,6 @@
 <script>
 // @ts-nocheck
 import {onMount,get} from '$lib/util';
-
 import EqPanel from './EqPanel.svelte';
 import SidePanel from './sp/SidePanel.svelte';
 import FullScreen from './fullScreen/FullScreen.svelte';

@@ -87,8 +87,8 @@ onMount(async () => {
 
 <div class='bg-gray-800 w-full  text-white min-h-screen p-0 m-0'>
 
+
 <SoundPlayer  soundFile={soundFile} {moveSeek} />
 
 <EqPlayer  runningTime={rTime} {eqs} {changeSeek}/> 
-
 </div><!--page div-->
