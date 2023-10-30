@@ -34,7 +34,7 @@ export let eq;
     
     {#if eq.type == 'heading' || eq.type == 'hdg' }
         <div class="flex justify-center items-center w-full ">
-        <HdgWithIcon size=1.5>{eq.code}</HdgWithIcon>
+        <HdgWithIcon size=1.5 bgColor=bg-stone-700>{eq.code}</HdgWithIcon>
         </div>
     {/if}
    
