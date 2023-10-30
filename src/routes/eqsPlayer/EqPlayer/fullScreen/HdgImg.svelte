@@ -7,9 +7,10 @@ const temp = {
  "imgSrc" : "graph"
 }
 export let fs;
+export let runningTime;
 // export let typeData;
 $: data = JSON.parse(fs.code);
-// $: console.log(JSON.parse(fs.code),fs);
+$: console.log("runningTime",runningTime);
 
 </script>
 <HdgWithIcon>{data.hdgContent}</HdgWithIcon>

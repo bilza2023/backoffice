@@ -1,8 +1,10 @@
 <script>
 //@ts-nocheck
-import HdgImg from "./HdgImg.svelte";
+// import HdgImg from "./HdgImg.svelte";
 import FullScreenPanel from './FullScreenPanel.svelte'; 
 import {currentEqStore} from "../store";
+
+export let runningTime;
 $:currentEq   = $currentEqStore;
 // const typeData = JSON.stringify({
 //         hdgContent : 'JSON Content',
@@ -14,7 +16,7 @@ $:currentEq   = $currentEqStore;
    
         <div   class='w-full  rounded-md m-1 p-1 bg-stone-600 text-center'>
                 {#if currentEq.fs.type !== "Null"} 
-                <FullScreenPanel fs={currentEq.fs} />  
+                <FullScreenPanel fs={currentEq.fs} {runningTime}/>  
                 {/if}
         </div>
 

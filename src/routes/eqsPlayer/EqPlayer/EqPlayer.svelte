@@ -67,7 +67,7 @@ onMount(async () => {
 {:else}
 <!--Full Screen---->
         <div class= "w-full   min-h-screen p-2 m-0 mt-2  bg-yellow-950 text-yellow-300b" >
-        <FullScreen eqs= {eqs} />
+        <FullScreen eqs= {eqs} {runningTime} />
         </div>
 {/if}
     </div><!--flex div for 2 panels-->
