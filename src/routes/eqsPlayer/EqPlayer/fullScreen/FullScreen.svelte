@@ -2,10 +2,11 @@
 //@ts-nocheck
 // import HdgImg from "./HdgImg.svelte";
 import FullScreenPanel from './FullScreenPanel.svelte'; 
-import {currentEqStore} from "../store";
+// import {currentEqStore} from "../store";
 
 export let runningTime;
-$:currentEq   = $currentEqStore;
+export let currentEq;
+// $:currentEq   = $currentEqStore;
 // const typeData = JSON.stringify({
 //         hdgContent : 'JSON Content',
 //         imgSrc : 'graph',

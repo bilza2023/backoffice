@@ -4,9 +4,9 @@
 <script>
 //@ts-nocheck
 import { browser,onMount } from '$lib/util';
-import {currentEqStore} from "./store";
-$:currentEq   = $currentEqStore;
-
+// import {currentEqStore} from "./store";
+// $:currentEq   = $currentEqStore;
+export let currentEq;
 import CodeTxt from './CodeTxt.svelte';
 //== Import variables
 export let eqs;

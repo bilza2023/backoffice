@@ -1,9 +1,9 @@
 <script>
 //@ts-nocheck
 import ImgCodeTxt from "./ImgCodeTxt.svelte";
-import {currentEqStore} from "../store";
+// import {currentEqStore} from "../store";
 
-$:currentEq   = $currentEqStore;
+export let currentEq;
 
 </script> 
 {#if currentEq}
