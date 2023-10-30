@@ -91,10 +91,4 @@ onMount(async () => {
 
 <EqPlayer  runningTime={rTime} {eqs} {changeSeek}/> 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-
 </div><!--page div-->

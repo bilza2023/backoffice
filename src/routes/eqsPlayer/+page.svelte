@@ -7,10 +7,3 @@ import Eq from './Eq.svelte';
 </script>
 
 <Eq /> 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-

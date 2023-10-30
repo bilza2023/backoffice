@@ -3,7 +3,7 @@
 import {onMount,get} from '$lib/util';
 import EqPanel from './EqPanel.svelte';
 import SidePanel from './sp/SidePanel.svelte';
-import FullScreen from './sp/FullScreen.svelte';
+import FullScreen from './fullScreen/FullScreen.svelte';
 import {currentEqStore} from "./store";
 
 $:{
@@ -29,7 +29,7 @@ function setCurrentEq(){
 function checkFullScreen(){
 // if (runningTime > 11){debugger;}
 const currentEq = get(currentEqStore);
-  if (currentEq &&  currentEq.fs.length > 0) {
+  if (currentEq &&  currentEq.fs.type !== "Null") {
      if (runningTime >= currentEq.fsStartTime && runningTime < currentEq.fsEndTime ){
 //       console.log("Full screen true");
       fullScreen = true;
@@ -71,10 +71,5 @@ onMount(async () => {
         </div>
 {/if}
     </div><!--flex div for 2 panels-->
-<br>
-<br>
-<br>
-<br>
-<br>
 
 </div><!--page div-->

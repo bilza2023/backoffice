@@ -4,8 +4,12 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , eqs){
   try {
-
- //==MUst 3 steps
+// debugger;
+// for (let xx = 0; xx < eqs.length; xx++) {
+//   eqs[xx].fs = {type: "Null" , typeData: "some type data"};;
+//   console.log("eqs[xx].fs",eqs[xx].fs);
+// }
+// debugger;
   question.eqs =[];
   question.eqs =eqs;
   assignSteps(question);

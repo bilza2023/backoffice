@@ -11,6 +11,7 @@ import save from './save';
 import Toolbar from './Toolbar.svelte';
 import Titlebar from './Titlebar.svelte';
 import EqPart from './EqPart.svelte';
+import FullScreen from './fullScreen/FullScreen.svelte';
 import AdminPanel from './AdminPanel.svelte';
 import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
 import SPFSPart from './SPFSPart/SPFSPart.svelte';
@@ -122,7 +123,7 @@ onMount(async () => {
           <SPFSPart clr="bg-yellow-900"  arrayName='Side Panel' theArray={eq.sp}  {redraw} {i} />
         {/if}
         {#if eq.fsVisibility}
-          <SPFSPart clr="bg-stone-700"  arrayName='Full Screen' theArray={eq.fs}  {redraw} {i} />
+          <FullScreen bind:fs={eq.fs[i]} {i} />
         {/if}
   {/each}
 </div>
@@ -160,13 +161,6 @@ onMount(async () => {
   <button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,eqs)}>Save</button>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
