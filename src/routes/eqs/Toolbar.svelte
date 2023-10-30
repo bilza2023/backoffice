@@ -1,8 +1,10 @@
 <script>
 //@ts-nocheck
 import {BASE_URL} from '$lib/util';
+import save from './save';
 export let addEq;
 export let question;
+export let eqs;
 export let closeAllSP;
 export let setSPTrue;
 
@@ -22,6 +24,10 @@ on:click={setSPTrue}>Show Sp</button>
 <button  class="bg-orange-800 p-1   rounded-sm"
 on:click={closeAllSP}
 >Hide SP</button>
+&nbsp;
+<button  class="bg-green-800 p-1   rounded-sm"
+on:click={()=>save(question,eqs)}
+>Save</button>
 &nbsp;
 <a href={`eqsPlayer?id=${question._id}`} target="_blank" 
 class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</a>

@@ -110,7 +110,7 @@ onMount(async () => {
 <PageWrapper>
 {#if question && allowed}
 
-<Toolbar  {addEq} {question} {closeAllSP} {setSPTrue}/>
+<Toolbar  {addEq} {question}{eqs} {closeAllSP} {setSPTrue}/>
 <PageHeading/>
 
 <div class="m-4 p-0">
@@ -123,7 +123,7 @@ onMount(async () => {
           <SPFSPart clr="bg-yellow-900"  arrayName='Side Panel' theArray={eq.sp}  {redraw} {i} />
         {/if}
         {#if eq.fsVisibility}
-          <FullScreen bind:fs={eq.fs[i]} {i} />
+          <FullScreen bind:fs={eq.fs}  />
         {/if}
   {/each}
 </div>
