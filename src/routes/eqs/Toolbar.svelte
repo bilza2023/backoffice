@@ -1,6 +1,7 @@
 <script>
 //@ts-nocheck
 import {BASE_URL} from '$lib/util';
+import dump from './dump';
 import save from './save';
 export let addEq;
 export let question;
@@ -28,6 +29,10 @@ on:click={closeAllSP}
 <button  class="bg-green-800 p-1   rounded-sm"
 on:click={()=>save(question,eqs)}
 >Save</button>
+&nbsp;
+<button  class="bg-green-900 p-1   rounded-sm"
+on:click={()=>dump(question,eqs)}
+>Dump</button>
 &nbsp;
 <a href={`eqsPlayer?id=${question._id}`} target="_blank" 
 class="bg-blue-900 p-1 rounded-xl text-white ml-4 my-auto">{question.filename}</a>

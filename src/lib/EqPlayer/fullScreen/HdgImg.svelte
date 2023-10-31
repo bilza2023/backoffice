@@ -12,9 +12,32 @@ export let runningTime;
 $: data = JSON.parse(fs.code);
 $: console.log("runningTime",runningTime);
 
-</script>
-<HdgWithIcon>{data.hdgContent}</HdgWithIcon>
+  function getImageContainerHeight() {
+    const imageContainer = document.getElementById('imageContainer');
+    if (imageContainer) {
+      return imageContainer.clientHeight;
+    }
+    return null; // Return null if the element is not found
+  }
 
-<div id='fsElm' class='flex justify-center w-full m-1 p-2 pb-4'>
-    <img class="w-6/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
+  onMount(() => {
+    // const height = getImageContainerHeight();
+    // console.log('Image Container Height:', height);
+  });
+</script>
+
+
+<div class="flex  justify-center gap-1 ">
+ <div id = '' 
+class='flex flex-col justify-center w-full  p-2 pb-4 h-full '>
+    <HdgWithIcon>{data.hdgContent}</HdgWithIcon>
+    <img  class="w-12/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
+</div>
+
+ <div id = '' 
+class='flex flex-col justify-center w-full  p-2 pb-4 h-full '>
+    <HdgWithIcon>{data.hdgContent}</HdgWithIcon>
+    <img style="height: 50%;" class="w-12/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
+</div>
+
 </div>

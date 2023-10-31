@@ -6,12 +6,19 @@ export let stop;
 export let changeSeek;
 export let maxSliderValue=200;
 
+  function localStart(){
+  const outerDiv = document.getElementById('scrollMe');
+    if (outerDiv) {
+      outerDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  start();
+  }
 </script>
 
-<div class="sticky top-0 z-50 bg-stone-900 shadow-sm p-2">
+<div id='scrollMe' class="sticky top-0 z-50 bg-stone-900 shadow-sm p-2">
   <div class="flex">
     <button class="bg-blue-500 hover:bg-green-700 text-white text-xs 
-    py-1 px-2 rounded" on:click={start}>
+    py-1 px-2 rounded" on:click={localStart}>
       ▶ <!-- This is the UTF-8 play icon -->
     </button>
     <button class="bg-blue-500 hover:bg-red-700 text-white text-xs 

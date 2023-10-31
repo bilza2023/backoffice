@@ -65,7 +65,7 @@ return false;
         </div>
 {:else}
 <!--Full Screen---->
-        <div class= "w-full   min-h-screen p-2 m-0 mt-2  bg-yellow-950 text-yellow-300b" >
+        <div class= "w-full   min-h-screen p-1 m-0 mt-2 mb-2  bg-stone-500 text-yellow-300b rounded-md" >
         <FullScreen eqs= {eqs} {runningTime} {currentEq}/>
         </div>
 {/if}
