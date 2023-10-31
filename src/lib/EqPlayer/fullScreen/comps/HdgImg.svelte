@@ -10,7 +10,7 @@ export let fs;
 export let runningTime;
 // export let typeData;
 $: data = JSON.parse(fs.code);
-$: console.log("runningTime",runningTime);
+// $: console.log("runningTime",runningTime);
 
   function getImageContainerHeight() {
     const imageContainer = document.getElementById('imageContainer');
@@ -27,9 +27,9 @@ $: console.log("runningTime",runningTime);
 </script>
 
 <div class="flex flex-col justify-center ">
-{#if runningTime < 10}
+<!-- {#if runningTime < 10} -->
 <HdgWithIcon>{data.hdgContent}</HdgWithIcon>
-{/if}
+<!-- {/if} -->
 
 <div 
 id = 'imageContainer' 

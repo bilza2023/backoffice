@@ -1,12 +1,9 @@
 <script>
 //@ts-nocheck
 export let parsedData;
-export let updateJSON;
 export let formData; 
-// = [
-// {title : "One" , type: 'text' , bindTo:""},
-// {title : "Two" , type: 'number' ,bindTo:""}
-// ];
+export let updateJSON;
+
 
 </script>
 {#each formData as d,i}
@@ -18,7 +15,8 @@ export let formData;
         </div>
         
         {#if d.type == 'text'}
-        <input bind:value={parsedData[d.bindTo]}
+        <input type='text' 
+        bind:value={parsedData[d.bindTo]}
         on:input={updateJSON}
         class="bg-gray-700 text-white rounded-md p-1 w-full" 
           />
@@ -26,6 +24,7 @@ export let formData;
         
         {#if d.type == 'number'}
         <input type='number' 
+        bind:value={parsedData[d.bindTo]}
         on:input={updateJSON}
         class="bg-gray-700 text-white rounded-md p-1 w-full" 
           />

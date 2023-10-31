@@ -12,13 +12,13 @@ export let runningTime;
 $: data = JSON.parse(fs.code);
 $: console.log("runningTime",runningTime);
 
-  function getImageContainerHeight() {
-    const imageContainer = document.getElementById('imageContainer');
-    if (imageContainer) {
-      return imageContainer.clientHeight;
-    }
-    return null; // Return null if the element is not found
-  }
+  // function getImageContainerHeight() {
+  //   const imageContainer = document.getElementById('imageContainer');
+  //   if (imageContainer) {
+  //     return imageContainer.clientHeight;
+  //   }
+  //   return null; // Return null if the element is not found
+  // }
 
   onMount(() => {
     // const height = getImageContainerHeight();
@@ -31,13 +31,13 @@ $: console.log("runningTime",runningTime);
  <div id = '' 
 class='flex flex-col justify-center w-full  p-2 pb-4 h-full '>
     <HdgWithIcon>{data.hdgContent}</HdgWithIcon>
-    <img  class="w-12/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
+    <img style="height: 50%;"  class="w-12/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
 </div>
 
  <div id = '' 
 class='flex flex-col justify-center w-full  p-2 pb-4 h-full '>
-    <HdgWithIcon>{data.hdgContent}</HdgWithIcon>
-    <img style="height: 50%;" class="w-12/12" src= {`mathImages/${data.imgSrc}.png`} alt="" >
+    <HdgWithIcon>{data.hdgContent2}</HdgWithIcon>
+    <img style="height: 50%;" class="w-12/12" src= {`mathImages/${data.imgSrc2}.png`} alt="" >
 </div>
 
 </div>

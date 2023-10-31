@@ -74,7 +74,7 @@ switch (question.status) {
 <h1>{msg}</h1>
 {/if}
 {#if pageStatus == 'load'}
-<LoadPage {question} {eqs} {isLogin}  {isAdmin}/>
+<LoadPage bind:question={question} bind:eqs={eqs} {isLogin}  {isAdmin}/>
 {/if}
 
 
