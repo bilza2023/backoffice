@@ -8,6 +8,12 @@ export  default async function save(question , eqs){
 //--we are not trusting question.eqs here rather we want to replace them by eqs sent.
   question.eqs =[];
   question.eqs =eqs;
+
+  for (let i = 0; i < question.eqs.length; i++) {
+    const eq = question.eqs[i];
+      eq.fs ={};
+  }
+  
   assignSteps(question);
 //--fill is no staus , fill is just having filledBy field with a name  
   if ( question.status == "unlocked" || question.status == "fill" ){
