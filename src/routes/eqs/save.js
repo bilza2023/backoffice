@@ -4,12 +4,7 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , eqs){
   try {
-// debugger;
-// for (let xx = 0; xx < eqs.length; xx++) {
-//   eqs[xx].fs = {type: "Null" , typeData: "some type data"};;
-//   console.log("eqs[xx].fs",eqs[xx].fs);
-// }
-// debugger;
+//--we are not trusting question.eqs here rather we want to replace them by eqs sent.
   question.eqs =[];
   question.eqs =eqs;
   assignSteps(question);
@@ -55,14 +50,23 @@ function setEndTimes(question) {
   //--set the last time very high so that it does not create problems in checking for now and before play we can set it equal to narration length.
   question.eqs[question.eqs.length-1].eqEndTime = 50000;
 }
-
+// without full-screen
 function setFakeTimes(question) {
+  let time = 0;
+  for (let i = 0; i < question.eqs.length; i++) {
+    const eq = question.eqs[i];
+    eq.eqStartTime = time;
+     time += 10;
+    eq.eqEndTime = time;
+  }
+}
+function setFakeTimesWithFS(question) {
   let time = 0;
   for (let i = 0; i < question.eqs.length; i++) {
     const eq = question.eqs[i];
     eq.eqStartTime = time;//eq.eqStartTime of first is always zero
      time += 10;
-          if (eq.fs.length >0){
+          if (eq.fs && eq.fs.type !== undefined &&  eq.fs.type !== ''){
             eq.fsStartTime = time;
             time +=10; 
           }
