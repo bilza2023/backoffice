@@ -11,7 +11,9 @@ export  default async function save(question , eqs){
 
   for (let i = 0; i < question.eqs.length; i++) {
     const eq = question.eqs[i];
+      if (Array.isArray(eq.fs)){
       eq.fs ={};
+      }
   }
   
   assignSteps(question);
