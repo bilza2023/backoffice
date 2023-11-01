@@ -4,6 +4,7 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , eqs){
   try {
+  // debugger;
 //--we are not trusting question.eqs here rather we want to replace them by eqs sent.
   question.eqs =[];
   question.eqs =eqs;
