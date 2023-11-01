@@ -9,13 +9,13 @@ import DdStatus from "./DdStatus.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
 
 let questions;
-let total_questions;
 
 let selectedChapter = 1;
 let selectedStatus = 'fill';
 
 let isLogin = false;
 let isAdmin = false;
+let totalCount = false;
 
 function setStatus(n){
 selectedStatus = n;
@@ -76,7 +76,7 @@ return url;
 <div class="flex flex-wrap justify-center w-full">
     {#each questions as question}
         {#if question.chapter == selectedChapter}
-        {#if question.status == selectedStatus}
+        {#if question.status == selectedStatus || selectedStatus == 'all' }
         <div class='w-3/12'>
             <Card
             title = {`Ch:${question.chapter} Ex:${question.partNo.exercise} Q:${question.partNo.questionNo}`}

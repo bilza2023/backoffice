@@ -23,7 +23,7 @@ let count = 0;
 return count;
 }
 function statusPerc(status){
-debugger;
+// debugger;
 let ttl = questions.length;
 let count = totalStatus(status);
 let perc =  (count/ttl)*100;   

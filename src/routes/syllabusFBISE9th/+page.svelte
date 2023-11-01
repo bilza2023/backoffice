@@ -14,7 +14,13 @@ let total_questions;
 
 let selectedEx ="1.1";
 let selectedChapter = 1;
+let chapterTotalQuestions = 0;
 
+$:  {
+  if (questions){
+    chapterTotalQuestions = questions.filter(question => question.chapter == selectedChapter).length;
+  }
+}
 function setEx(ex){
   selectedEx = ex;
 }
@@ -77,6 +83,7 @@ return url;
   <br/>
 <Exercises  {questions} {selectedChapter} {selectedEx} {setEx} />
 </div>
+<HdgWithIcon>{`Chapter Total: ${chapterTotalQuestions}`}</HdgWithIcon>
 
 <ExerciseQs {questions} {selectedEx} {getUrl}/>
 <br/>

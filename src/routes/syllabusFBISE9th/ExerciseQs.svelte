@@ -6,6 +6,8 @@ export let questions;
 export let getUrl;
 export let selectedEx;
 let showQs=true;
+
+$: totalExQuestion = questions.filter(question => question.partNo.exercise === selectedEx).length
 </script>
 
 <div class="bg-gray-700 p-2 m-2 rounded-md">
@@ -13,14 +15,13 @@ let showQs=true;
     <button class="p-1 m-1 bg-gray-800 rounded-md "
     on:click={()=>showQs = !showQs}
     >
-    Exercise Questions
+    Total Exercise Questions ({`${totalExQuestion}`})
     </button>
     </div>
 {#if showQs}
 <div class='flex  w-full justify-center  flex-wrap  '>
 {#each questions as question,index}    
-        {#if question.isSpecial == false && 
-        question.partNo.exercise == selectedEx }
+        {#if question.partNo.exercise == selectedEx }
             <div class='w-3/12'>
             <Card
             title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
