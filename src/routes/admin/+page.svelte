@@ -2,7 +2,7 @@
 <script>  
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card } from '$lib/cmp';
-import { BASE_URL,onMount,toast,Icons,goto } from '$lib/util';
+import { BASE_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import DdStatus from "./DdStatus.svelte";
@@ -75,9 +75,12 @@ selectedStatus = n;
 function setChapter(newChapter){
 selectedChapter = newChapter;
 }
+onMount(()=>{
 
-/////////////////////==============---- onMount
+isLogin = checkToken();
+isAdmin = checkAdminToken();
 
+});
 function getUrl(question){
  let url;
  if (question.questionType == "eqs"){

@@ -2,7 +2,7 @@
 <script>  
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon } from '$lib/cmp';
-import { BASE_URL,onMount,toast,Icons,goto } from '$lib/util';
+import { BASE_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import ChapterSpecialQs from "./ChapterSpecialQs.svelte";
@@ -43,6 +43,12 @@ function getUrl(question){
  }
 return url; 
 } 
+onMount(()=>{
+
+isLogin = checkToken();
+isAdmin = checkAdminToken();
+
+});
 ////////////////////////////////////////////////////////
 </script>
 <Nav {isAdmin} {isLogin}/>
