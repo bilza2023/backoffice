@@ -34,10 +34,10 @@ return perc.toFixed(2) ;
 
 <div class="flex flex-wrap w-full border-2 border-red rounded-md m-0 p-1 justify-center  ">
 
-<div class="p-1 m-1 bg-orange-700 rounded-md text-xs text-white">Total Q: {totalQuestions}</div>
-<div class="p-1 m-1 bg-orange-700 rounded-md text-xs text-white">Total Unlocked: {totalStatus('unlocked')} , ({statusPerc('unlocked')})%</div>
+<div class="p-1 m-1 bg-blue-900 rounded-md text-xs text-white">Total Q: {totalQuestions}</div>
+<div class="p-1 m-1 bg-red-900 rounded-md text-xs text-white">Total Unlocked: {totalStatus('unlocked')} , ({statusPerc('unlocked')})%</div>
 <div class="p-1 m-1 bg-orange-700 rounded-md text-xs text-white">Total Fill: {totalStatus('fill')},({statusPerc('fill')}%)</div>
-<div class="p-1 m-1 bg-orange-700 rounded-md text-xs text-white">Total Locked: {totalStatus('locked')} , ({statusPerc('locked')}%)</div>
-<div class="p-1 m-1 bg-green-700 rounded-md text-xs text-white">Total Final: {totalStatus('final')}, ({statusPerc('final')}%)</div>
+<div class="p-1 m-1 bg-green-700 rounded-md text-xs text-white">Total Locked: {totalStatus('locked')} , ({statusPerc('locked')}%)</div>
+<div class="p-1 m-1 bg-green-900 rounded-md text-xs text-white">Total Final: {totalStatus('final')}, ({statusPerc('final')}%)</div>
 
 </div>

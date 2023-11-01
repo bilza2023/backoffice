@@ -34,6 +34,10 @@ onMount(async () => {
         isLogin = true;
         isAdmin = data.isAdmin;
 ///////////////////////////////////////////////////////
+//--so final does not open for Admin also
+// debugger;
+if (question.status == 'final'){toast.push(`Sorry this question is final`); return;}
+
 if (isAdmin){pageStatus = "load";toast.push(`Welcome Admin , question status: ${question.status}`); return;}
 ///////////////////////////////////////////////////////
 switch (question.status) {
