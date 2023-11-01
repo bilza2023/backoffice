@@ -7,8 +7,9 @@ import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import DdStatus from "./DdStatus.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
+import {questions} from './questions.js';
 
-let questions;
+// let questions;
 let totalChapterQuestions;
 let totalChapterUnlocked;
 let totalChapterFill;
@@ -27,6 +28,7 @@ let isLogin = false;
 let isAdmin = false;
 // let totalCount = false;
 let printableQuestions;
+
 $:{
   selectedChapter;
   if(questions){
@@ -38,9 +40,6 @@ $:{
       question.chapter === selectedChapter && question.status === 'unlocked');
   totalChapterUnlocked = tcu.length;
   /////////////////////////////////////
-//   
-// 
-// 
   const dsssaw  = questions.filter(question => 
       question.chapter === selectedChapter && question.status === 'fill');
   totalChapterFill = dsssaw.length;
@@ -55,6 +54,7 @@ $:{
 
   }
 }
+
 $: {
   // debugger;
   selectedChapter;
@@ -75,32 +75,9 @@ selectedStatus = n;
 function setChapter(newChapter){
 selectedChapter = newChapter;
 }
-onMount(async () => {
-  try{
-    //=============================  
-            const token = localStorage.getItem('token');
-            const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
-            method: 'GET',
-            headers: {
-            'Authorization': `Bearer ${token}`,
-            }
-            });
-            if (resp.ok){
-            // debugger;
-              const data = await resp.json();
-              questions = data.questions;
-              isLogin = true;
-                  selectedChapter = 1
-              total_questions = questions.length;
-            //   console.log("questions",questions);
-            }else {
-             const data = await resp.json();
-              toast.push(data.message);
-            }
-  } catch (e) {
-      //  toast.push('failed to load');
-  }      
-});
+
+/////////////////////==============---- onMount
+
 function getUrl(question){
  let url;
  if (question.questionType == "eqs"){
@@ -116,7 +93,7 @@ return url;
 <PageWrapper>
 
 <div class='flex justify-center   p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Syllabus FBISE Class 9th</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-500' icon={Icons.MANAGER }>Syllabus FBISE-9th ADMIN</HdgWithIcon>
 </div>
 {#if questions}
 <Summary {questions}/>
