@@ -11,6 +11,9 @@ export let setType;
 <button on:click={()=>setStatus("unlocked")}
 class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Unlocked</button>
 
+<button on:click={()=>setStatus("fill")}
+class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Fill</button>
+
 <button on:click={()=>setStatus("locked")}
 class='bg-blue-800 rounded-md p-1 mx-2 m-1'>Locked</button>
 

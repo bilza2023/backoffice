@@ -9,10 +9,10 @@ import ChapterSpecialQs from "./ChapterSpecialQs.svelte";
 import ExerciseQs from "./ExerciseQs.svelte";
 import Exercises from "./Exercises.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
-import {questions} from './questions';
+import getSyllabus from '$lib/appComp/getSyllabus';
 
-
-
+/////////////////////////////////
+let questions;
 let selectedEx ="1.1";
 let selectedChapter = 1;
 let chapterTotalQuestions = 0;
@@ -31,7 +31,6 @@ let isAdmin = false;
 
 function setChapter(newChapter){
 selectedChapter = newChapter;
-// console.log("setChapter",selectedChapter);
 }
 /////////////////-----on-mount
 function getUrl(question){
@@ -43,12 +42,23 @@ function getUrl(question){
  }
 return url; 
 } 
-onMount(()=>{
 
-isLogin = checkToken();
-isAdmin = checkAdminToken();
+onMount(async () => {
+try{
+  let r  = await getSyllabus();
+    if (r){
+      questions = r;
+      isLogin = checkToken();
+      isAdmin = checkAdminToken();
+    }else {
+      toast.push("Failed to load");
+    }
 
+  } catch (e) {
+       toast.push('System error');
+  }      
 });
+
 ////////////////////////////////////////////////////////
 </script>
 <Nav {isAdmin} {isLogin}/>

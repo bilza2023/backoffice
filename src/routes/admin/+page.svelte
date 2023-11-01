@@ -7,9 +7,9 @@ import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import DdStatus from "./DdStatus.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
-import {questions} from './questions.js';
+import getSyllabus from '$lib/appComp/getSyllabus';
 
-// let questions;
+let questions;
 let totalChapterQuestions;
 let totalChapterUnlocked;
 let totalChapterFill;
@@ -75,12 +75,23 @@ selectedStatus = n;
 function setChapter(newChapter){
 selectedChapter = newChapter;
 }
-onMount(()=>{
 
-isLogin = checkToken();
-isAdmin = checkAdminToken();
+onMount(async () => {
+try{
+  let r  = await getSyllabus();
+    if (r){
+      questions = r;
+      isLogin = checkToken();
+      isAdmin = checkAdminToken();
+    }else {
+      toast.push("Failed to load");
+    }
 
+  } catch (e) {
+       toast.push('System error');
+  }      
 });
+
 function getUrl(question){
  let url;
  if (question.questionType == "eqs"){
