@@ -7,6 +7,12 @@ export let getUrl;
 export let selectedEx;
 let showQs=true;
 
+function getStatusIcon(status){
+  if (status == 'unlocked') {return ' 🧊'  }
+  if (status == 'fill') {return Icons.PENCIL }
+  if (status == 'locked') {return '🔒' }
+  if (status == 'final') {return Icons.STUDENTCAP }
+}
 $: totalExQuestion = questions.filter(question => question.partNo.exercise === selectedEx).length
 </script>
 
@@ -28,7 +34,14 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
             icon={Icons.TEST}
             url = {getUrl(question)}
             >
-            <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}</div>
+            <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
+            
+            {#if question.status !== 'unlocked' }
+                <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
+                <a href= {`/eqsPlayer?id=${question._id}`}>{Icons.START}</a>
+                </div>
+            {/if}
+            
             </Card>
             </div>
         {/if}

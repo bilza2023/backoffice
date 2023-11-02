@@ -34,13 +34,7 @@ selectedChapter = newChapter;
 }
 /////////////////-----on-mount
 function getUrl(question){
- let url;
- if (question.questionType == "eqs"){
-    url = `/eqs?id=${question._id}`;
- }else{
-    url = `/grid?id=${question._id}`;
- }
-return url; 
+ return `/eqs?id=${question._id}`;
 } 
 
 onMount(async () => {
