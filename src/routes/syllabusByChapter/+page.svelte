@@ -112,7 +112,7 @@ return url;
 <PageWrapper>
 
 <div class='flex justify-center   p-2 '>
- <HdgWithIcon bgColor='bg-stone-500' icon={Icons.MANAGER }>Syllabus FBISE-9th ADMIN</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-500' icon={Icons.MANAGER }>Syllabus FBISE-9th By Chapter</HdgWithIcon>
 </div>
 {#if questions}
 <Summary {questions}/>
@@ -139,7 +139,7 @@ return url;
             
             {#if question.status !== 'unlocked' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                <a href= {`/eqsPlayer?id=${question._id}`}>{Icons.START}</a>
+                <a href= {`/eqsPlayer?id=${question._id}`} target="_blank">{Icons.START}</a>
                 </div>
             {/if}
 

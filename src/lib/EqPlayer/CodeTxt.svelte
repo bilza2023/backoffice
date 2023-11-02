@@ -15,7 +15,7 @@ export let eq;
         <p>{eq.code}</p>
     {/if}
     {#if eq.type == 'hdg' || eq.type == 'heading'}
-        <h1>{eq.code}</h1>
+        <h1 class='text-yellow-400'>{eq.code}</h1>
     {/if}
 
     {#if eq.type == 'html'}

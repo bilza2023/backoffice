@@ -58,7 +58,7 @@ function statusIcons(){
 
     <NavBtn2 title={extractEmailPrefix()} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
       {#if isAdmin}
-    <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/>
+    <!-- <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/> -->
       {/if}
       
     <NavBtn title='Filled By Me' icon ={Icons.PENCIL} url='/filledByMe'/>
