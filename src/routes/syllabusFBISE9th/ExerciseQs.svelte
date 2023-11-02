@@ -5,8 +5,21 @@ import {Icons } from '$lib/util';
 export let questions;
 export let getUrl;
 export let selectedEx;
-let showQs=true;
 
+    let showQs=true;
+    let sortedArray;
+
+$:{
+ if(questions){
+    const sortOne = questions.filter(question =>question.partNo.exercise == selectedEx);
+    sortedArray = sortOne.sort((a, b) => {
+        const questionNoA = a.partNo.questionNo;
+        const questionNoB = b.partNo.questionNo;
+    return questionNoA - questionNoB;
+    });
+    console.log(sortedArray);
+ }
+}
 function getStatusIcon(status){
   if (status == 'unlocked') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
@@ -26,8 +39,8 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
     </div>
 {#if showQs}
 <div class='flex  w-full justify-center  flex-wrap  '>
-{#each questions as question,index}    
-        {#if question.partNo.exercise == selectedEx }
+{#each sortedArray as question,index}    
+        <!-- {#if question.partNo.exercise == selectedEx } -->
             <div class='w-3/12'>
             <Card
             title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
@@ -44,7 +57,7 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
             
             </Card>
             </div>
-        {/if}
+        <!-- {/if} -->
     <!-- {/if} -->
 {/each}
     </div>
