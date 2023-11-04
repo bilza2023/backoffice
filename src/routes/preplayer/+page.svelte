@@ -1,17 +1,19 @@
 <script>
 //@ts-nocheck
-
+import {browser,onMount} from '$lib/util'
 import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 import BaseComp from './BaseComp.svelte';
 import BlinkingBanner from './slides/BlinkingBanner.svelte';
 import HdgImg from './slides/HdgImg.svelte';
 
-const slides =[];
-slides.push(getNewSlide(0,30,"HdgImg",[
- {name : '', content: 'Heading and Image' , showAt :0, hideAt:null , entryStyle:null , exitStyle:null , extra : []}, 
- {name : '', content: 'graph' , showAt :0, hideAt:null , entryStyle:null , exitStyle:null , extra : []} 
-]));
+let slides;
 
+onMount(async()=>{
+if(browser){
+slides =  await JSON.parse(localStorage.getItem('slides'));
+console.log(slides);
+}
+});
 
 let interval=null;
 let pulse=0;

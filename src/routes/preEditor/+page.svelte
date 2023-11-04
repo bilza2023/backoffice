@@ -3,16 +3,36 @@
 import {NavBtn2} from '$lib/cmp';
 import { Icons,onMount } from '$lib/util';
 import getNewSlide  from '$lib/Presentation/getNewSlide.js';
+import {getNewItem} from '$lib/Presentation';
+import DisplayPanel from './DisplayPanel.svelte';
+import SettingsPanel from './SettingsPanel.svelte';
+import AddNewSlide from './AddNewSlide.svelte';
 
-let slides=[
-getNewSlide(0,30,"HdgImg",[
+let showAddNew = false;
+let currentSlide = null;
+let slides=[];
+
+function setCurrentSlide(i){
+        currentSlide = slides[i];
+        // console.log(currentSlide);
+}
+
+function addHdgImg(){
+let newStartTime = 0;
+ if(slides.length > 0){
+ newStartTime = slides[0].endTime ;
  
-    {name : '', content: 'Heading and Image' , showAt :0, hideAt:null , entryStyle:null , exitStyle:null , extra : []}, 
- 
-    {name : '', content: 'graph' , showAt :0, hideAt:null , entryStyle:null , exitStyle:null , extra : []} 
- 
-    ]),
-];
+ }
+    slides.push(getNewSlide(newStartTime,newStartTime + 10,"HdgImg",[]));
+    slides[slides.length -1].items = [];
+    slides[slides.length -1].items.push(getNewItem('','heading'));
+    slides[slides.length -1].items.push(getNewItem('','imgSrc'));
+
+    redraw();
+    showAddNew = false;
+}
+
+function redraw(){slides = [...slides];}
 
 </script> 
 
@@ -20,30 +40,37 @@ getNewSlide(0,30,"HdgImg",[
 
 <div class='flex justify-start w-full p-1 m-0 bg-gray-900'>
 
-<NavBtn2  icon={Icons.BULB} title='New' clk={()=>{console.log("click")}}     />
+<NavBtn2  icon={Icons.BULB} title='New' clk={()=>{showAddNew = !showAddNew}}     />
+<NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>{localStorage.setItem('slides',JSON.stringify(slides));}}     />
 </div>
+
+{#if showAddNew}
+<AddNewSlide add={addHdgImg}/>
+{/if}
+
+
 
 {#if slides}
 <div class="flex justify-center  w-full ">
 
-{#each slides as slide,i}
     
-        <div class='w-1/12    bg-gray-800 min-h-screen text-white   '>
-                <p>{i+1}</p>
+        <div class='flex flex-col w-1/12    bg-gray-800 min-h-screen text-white    '>
+                {#each slides as slide,i}
+                <button class='hover:bg-gray-600' on:click={()=>setCurrentSlide(i)}>{i+1}</button>
+                {/each}
         </div>
         
         <div class='w-7/12    bg-blue-900 min-h-screen   '>
-                <p>{slide.startTime}</p>
+             <DisplayPanel   {currentSlide}/>
         </div>
 
         <div class='w-4/12 bg-yellow-900'>
-                <p>{slide.endTime}</p>
+           {#if currentSlide}     
+              <SettingsPanel bind:slide={currentSlide} />  
+              {/if}
         </div>
-{/each}
 </div>
 {/if}
-
-
 
 
 </div><!--page wrapper-->
