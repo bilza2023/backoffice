@@ -31,6 +31,14 @@ onMount(async () => {
         const data = await resp.json();
         question  = data.question //===> important
         eqs = question.eqs;
+        
+        // const code = [];
+        // for (let i = 0; i < eqs.length; i++) {
+        //   const eq = eqs[i];
+        //   const n = {equation: eq.code}
+        //   code.push(n);
+        // }
+        // console.log("code",code);
         isLogin = true;
         isAdmin = data.isAdmin;
 ///////////////////////////////////////////////////////
