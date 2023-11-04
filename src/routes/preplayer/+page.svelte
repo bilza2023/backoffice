@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 
-import getNewSlide  from './fn/getNewSlide.js';
+import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 import BaseComp from './BaseComp.svelte';
 import BlinkingBanner from './slides/BlinkingBanner.svelte';
 import HdgImg from './slides/HdgImg.svelte';
