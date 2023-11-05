@@ -1,36 +1,39 @@
 <script>
 //@ts-nocheck
 import {NavBtn2} from '$lib/cmp';
-import { Icons,onMount } from '$lib/util';
-import getNewSlide  from '$lib/Presentation/getNewSlide.js';
-import {getNewItem} from '$lib/Presentation';
+import { Icons,onMount, toast } from '$lib/util';
+import save from './save.js';
 import DisplayPanel from './DisplayPanel.svelte';
 import SettingsPanel from './SettingsPanel.svelte';
 import AddNewSlide from './AddNewSlide.svelte';
 
+let presentationName = '';
 let showAddNew = false;
 let currentSlide = null;
 let slides=[];
 
 function setCurrentSlide(i){
         currentSlide = slides[i];
-        // console.log(currentSlide);
 }
 
-function addHdgImg(){
-let newStartTime = 0;
- if(slides.length > 0){
- newStartTime = slides[0].endTime ;
- 
- }
-    slides.push(getNewSlide(newStartTime,newStartTime + 10,"HdgImg",[]));
-    slides[slides.length -1].items = [];
-    slides[slides.length -1].items.push(getNewItem('','heading'));
-    slides[slides.length -1].items.push(getNewItem('','imgSrc'));
+onMount(async () => {
+  try {
+//     debugger;
+    let  id = new URLSearchParams(location.search).get("id"); 
+    let presentations = JSON.parse(localStorage.getItem('presentations'));    
+    
+    if (!isNaN(id) && id >= 0 && id < presentations.length) {
+            slides = presentations[  parseInt(id) ]; 
+            console.log( slides  );
+    } else {
+            toast.push('Failed to find presentation')    
+    }
 
-    redraw();
-    showAddNew = false;
-}
+  }catch (e) {
+        toast.push('failed to load');
+  } 
+     
+});
 
 function redraw(){slides = [...slides];}
 
@@ -41,12 +44,18 @@ function redraw(){slides = [...slides];}
 <div class='flex justify-start w-full p-1 m-0 bg-gray-900'>
 
 <NavBtn2  icon={Icons.BULB} title='New' clk={()=>{showAddNew = !showAddNew}}     />
-<NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>{localStorage.setItem('slides',JSON.stringify(slides));}}     />
+<NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>save(slides)}     />
 </div>
 
 {#if showAddNew}
-<AddNewSlide add={addHdgImg}/>
+<div class="flex w-full bg-gray-600">
+        <input class="p-1 m-1 text-xs rounded-md" type="text" 
+                bind:value={presentationName}
+        />
+        <button class="p-1 m-1 text-xs rounded-md">Create New</button>
+</div>
 {/if}
+<AddNewSlide  {showAddNew} bind:slides={slides} {redraw}/>
 
 
 

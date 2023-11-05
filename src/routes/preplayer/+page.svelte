@@ -1,18 +1,27 @@
 <script>
 //@ts-nocheck
 import {browser,onMount} from '$lib/util'
-import getNewSlide  from '$lib/Presentation/getNewSlide.js';
-import BaseComp from './BaseComp.svelte';
-import BlinkingBanner from './slides/BlinkingBanner.svelte';
-import HdgImg from './slides/HdgImg.svelte';
+// import getNewSlide  from '$lib/Presentation/getNewSlide.js';
+// import BaseComp from './BaseComp.svelte';
+
+import {HdgImg,BlinkingJumbotron} from '$lib/Presentation/slides';
 
 let slides;
 
-onMount(async()=>{
-if(browser){
-slides =  await JSON.parse(localStorage.getItem('slides'));
-console.log(slides);
-}
+onMount(async () => {
+  try {
+//     debugger;
+    let  id = new URLSearchParams(location.search).get("id"); 
+    let presentations = JSON.parse(localStorage.getItem('presentations'));    
+    if (!isNaN(id) && id >= 0 && id < presentations.length) {
+            slides = presentations[  parseInt(id) ]; 
+            console.log( slides  );
+    } else {
+            toast.push('Failed to find presentation')    
+    }
+  }catch (e) {
+        toast.push('failed to load');
+  }      
 });
 
 let interval=null;
@@ -55,6 +64,8 @@ function setCurrentSlide(){
 {#if currentSlide}
 
 {#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} theme={ {} }/>{/if}
+
+{#if currentSlide.type == 'BlinkingJumbotron' }<BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} theme={ {} }/>{/if}
 
 
 {/if}

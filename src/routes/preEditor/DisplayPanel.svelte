@@ -1,11 +1,21 @@
 <script>
 //@ts-nocheck
-export let currentSlide;
-</script>
 
+import {HdgImg,BlinkingJumbotron} from '$lib/Presentation/slides';
+
+export let currentSlide;
+let pulse = 0;
+</script>
+<!-- //starategy-picker -->
 {#if currentSlide}
-currentSlide.startTime
-{currentSlide.startTime}
+
+
+{#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} theme={ {} }/>{/if}
+
+{#if currentSlide.type == 'BlinkingJumbotron' }<BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} theme={ {} }/>{/if}
+
+
+
 
 {:else}
 <h1>No Slide Selected</h1>

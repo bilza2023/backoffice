@@ -1,7 +1,9 @@
 <script>
 //@ts-nocheck
 export let slide;
-import HdgImgEd from "./HdgImgEd.svelte";
+
+import {HdgImgEd,BlinkingJumbotron} from '$lib/Presentation/slides';
+
 </script>
 
  {#if slide.type == 'HdgImg'}
