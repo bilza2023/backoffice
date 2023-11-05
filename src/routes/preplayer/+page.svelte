@@ -1,5 +1,8 @@
 <script>
 //@ts-nocheck
+/**
+ 6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
+*/
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
 // import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 // import BaseComp from './BaseComp.svelte';
@@ -81,9 +84,9 @@ class="p-1 m-0 mx-2 rounded-md bg-gray-900 text-yellow-500    text-xs">
 
 {#if currentSlide}
 
-{#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} {theme}/>{/if}
+{#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
 
-{#if currentSlide.type == 'BlinkingJumbotron' }<BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} compExtra={currentSlide.compExtra} {theme}/>{/if}
+{#if currentSlide.type == 'BlinkingJumbotron' }<BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
 
 
 {/if}
