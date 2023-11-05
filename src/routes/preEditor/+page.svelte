@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {AreYouSure, NavBtn2} from '$lib/cmp';
+import { NavBtn2} from '$lib/cmp';
 import { Icons,onMount, toast,BASE_URL, goto } from '$lib/util';
 import save from './save.js';
 import DisplayPanel from './DisplayPanel.svelte';
@@ -12,19 +12,20 @@ let showAddNew = false;
 let currentSlide = null;
 let slides=[];
 let id = null;
+
 function setCurrentSlide(i){
         currentSlide = slides[i];
 }
 
 function create(){
-debugger;
+// debugger;
 const  newPresentation = createNewPresentation();
 slides = newPresentation.slides;
 id = newPresentation.id;
 }
 
 async function saveLocal(id,slides){
-debugger;
+// debugger;
  await save(id,slides);
 toast.push('saved');
 }
@@ -59,11 +60,13 @@ function redraw(){slides = [...slides];}
 <div class='flex justify-start w-full p-1 m-0 bg-gray-900'>
 
 <NavBtn2  icon={Icons.HOUSE} title='Home' clk={()=>goto('/presentations')}     />
-<NavBtn2  icon={Icons.BULB} title='New' clk={create}     />
+<NavBtn2  icon={Icons.BULB} title='New' clk={()=>showAddNew = !showAddNew}     />
 <NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>saveLocal(id,slides)}     />
 </div>
 
-<AddNewSlide  {showAddNew} bind:slides={slides} {redraw}/>
+{#if showAddNew}
+<AddNewSlide   bind:slides={slides} {redraw}/>
+{/if}
 
 
 

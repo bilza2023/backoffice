@@ -6,7 +6,7 @@ import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 import {getNewItem} from '$lib/Presentation';
 export let slides;
 export let redraw;
-export let showAddNew;
+// export let showAddNew;
 
 function addHdgImg(){
 // debugger;

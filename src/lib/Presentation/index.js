@@ -1,5 +1,6 @@
 import getNewSlide from "./getNewSlide";
 import getNewItem from "./getNewItem";
+import getDefaultTheme from "./getDefaultTheme";
 
 
 
@@ -7,5 +8,6 @@ import getNewItem from "./getNewItem";
 export {
     getNewSlide,
     getNewItem,
+    getDefaultTheme
 
 }
