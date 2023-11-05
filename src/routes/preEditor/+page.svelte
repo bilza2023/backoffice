@@ -1,38 +1,53 @@
 <script>
 //@ts-nocheck
-import {NavBtn2} from '$lib/cmp';
-import { Icons,onMount, toast } from '$lib/util';
+import {AreYouSure, NavBtn2} from '$lib/cmp';
+import { Icons,onMount, toast,BASE_URL, goto } from '$lib/util';
 import save from './save.js';
 import DisplayPanel from './DisplayPanel.svelte';
 import SettingsPanel from './SettingsPanel.svelte';
 import AddNewSlide from './AddNewSlide.svelte';
+import createNewPresentation from './createNewPresentation.js';
 
-let presentationName = '';
 let showAddNew = false;
 let currentSlide = null;
 let slides=[];
-
+let id = null;
 function setCurrentSlide(i){
         currentSlide = slides[i];
 }
 
-onMount(async () => {
-  try {
-//     debugger;
-    let  id = new URLSearchParams(location.search).get("id"); 
-    let presentations = JSON.parse(localStorage.getItem('presentations'));    
-    
-    if (!isNaN(id) && id >= 0 && id < presentations.length) {
-            slides = presentations[  parseInt(id) ]; 
-            console.log( slides  );
-    } else {
-            toast.push('Failed to find presentation')    
-    }
+function create(){
+debugger;
+const  newPresentation = createNewPresentation();
+slides = newPresentation.slides;
+id = newPresentation.id;
+}
 
-  }catch (e) {
-        toast.push('failed to load');
-  } 
-     
+async function saveLocal(id,slides){
+debugger;
+ await save(id,slides);
+toast.push('saved');
+}
+onMount(async ()=>{
+// debugger;
+   id = new URLSearchParams(location.search).get("id");
+
+  const resp = await fetch( `${BASE_URL}/pre/read`, {
+    method: 'POST',
+      headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify( {id} )
+  });
+
+  if(resp.ok){
+   const data = await resp.json();
+   slides = data.presentation.slides; 
+//    console.log('slides' , slides);
+   toast.push("loaded");
+  }
+
+
 });
 
 function redraw(){slides = [...slides];}
@@ -43,23 +58,16 @@ function redraw(){slides = [...slides];}
 
 <div class='flex justify-start w-full p-1 m-0 bg-gray-900'>
 
-<NavBtn2  icon={Icons.BULB} title='New' clk={()=>{showAddNew = !showAddNew}}     />
-<NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>save(slides)}     />
+<NavBtn2  icon={Icons.HOUSE} title='Home' clk={()=>goto('/presentations')}     />
+<NavBtn2  icon={Icons.BULB} title='New' clk={create}     />
+<NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>saveLocal(id,slides)}     />
 </div>
 
-{#if showAddNew}
-<div class="flex w-full bg-gray-600">
-        <input class="p-1 m-1 text-xs rounded-md" type="text" 
-                bind:value={presentationName}
-        />
-        <button class="p-1 m-1 text-xs rounded-md">Create New</button>
-</div>
-{/if}
 <AddNewSlide  {showAddNew} bind:slides={slides} {redraw}/>
 
 
 
-{#if slides}
+{#if slides }
 <div class="flex justify-center  w-full ">
 
     

@@ -10,6 +10,7 @@ import checkAdminToken from './checkAdminToken';
 import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
+import uuid from './uuid';
 // import chqLogin from './chqLogin';
 
             export {
@@ -19,6 +20,7 @@ import Icons from './icons';
                     toast,
                     fade,
                     get,
+                    uuid,
                     goto,
                     browser,
                     Icons,

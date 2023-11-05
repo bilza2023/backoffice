@@ -6,7 +6,7 @@
 - dont use callbacks in comps since they are just display items.its not an app its presentation.
  */
 
-export default function getNewSlide( startTime, endTime, type, items, compExtra=[], template='') {
+export default function getNewSlide( startTime, endTime, type, items, slideExtra=[], template='') {
 
 return {
     startTime,
@@ -14,7 +14,7 @@ return {
     type,
     version:'0.0.0',
     items, 
-    compExtra,
+    slideExtra,
     template,
 };
 

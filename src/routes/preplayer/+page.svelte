@@ -1,28 +1,35 @@
 <script>
 //@ts-nocheck
-import {browser,onMount} from '$lib/util'
+import {browser,onMount,toast,BASE_URL} from '$lib/util'
 // import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 // import BaseComp from './BaseComp.svelte';
 
 import {HdgImg,BlinkingJumbotron} from '$lib/Presentation/slides';
 
 let slides;
+let id;
 
-onMount(async () => {
-  try {
-//     debugger;
-    let  id = new URLSearchParams(location.search).get("id"); 
-    let presentations = JSON.parse(localStorage.getItem('presentations'));    
-    if (!isNaN(id) && id >= 0 && id < presentations.length) {
-            slides = presentations[  parseInt(id) ]; 
-            console.log( slides  );
-    } else {
-            toast.push('Failed to find presentation')    
-    }
-  }catch (e) {
-        toast.push('failed to load');
-  }      
+
+onMount(async ()=>{
+// debugger;
+   id = new URLSearchParams(location.search).get("id");
+
+  const resp = await fetch( `${BASE_URL}/pre/read`, {
+    method: 'POST',
+      headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify( {id} )
+  });
+
+  if(resp.ok){
+   const data = await resp.json();
+   slides = data.presentation.slides; 
+   console.log('slides' , slides);
+   toast.push("Presentations loaded");
+  }
 });
+
 
 let interval=null;
 let pulse=0;

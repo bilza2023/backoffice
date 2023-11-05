@@ -1,16 +1,15 @@
 //@ts-nocheck
+import {BASE_URL} from '$lib/util';
 
-
-export default function save(slides){
+export default async function save(id,slides){
 debugger;
-let presentations = JSON.parse(localStorage.getItem('presentations'));
-
-if(presentations == null){presentations=[];}
-
-presentations.push(slides);
-
-localStorage.setItem('presentations',JSON.stringify(presentations));
-
-console.log(slides);
-
+let presentation = {slides ,_id:id}
+  const resp = await fetch( `${BASE_URL}/pre/update`, {
+    method: 'POST',
+      headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify( {presentation} )
+  });
+return true;
 }

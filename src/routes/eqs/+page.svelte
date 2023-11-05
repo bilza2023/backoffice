@@ -24,6 +24,7 @@ onMount(async () => {
         headers: {
           'Authorization': `Bearer ${token}`,
         }
+        
       });
   
     if (resp.ok) {

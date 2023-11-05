@@ -25,7 +25,7 @@ const fire = ()=> {
   <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="bg-red-600 flex hover:cursor-pointer justify-center fixed-size"
-      on:click={()=>deleteFn(index)} >
+      on:click={ ()=>deleteFn(index) } >
       <span class=" text-2xl">☠️</span>  
     </div>
 {/if}
