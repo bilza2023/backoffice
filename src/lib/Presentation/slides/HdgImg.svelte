@@ -9,13 +9,13 @@ export let theme;
 // primaryColor,secondaryColor,backgroundColor,textColor,highlightColor
 </script>
 
-<div class="flex flex-col justify-center min-h-screen   "
+<div class="flex flex-col justify-start min-h-screen   "
  style = {`
  background-color : ${theme.backgroundColor};
  `}
 >
 
-    <div class="flex  justify-center m-2 p-4 bg-red-900 text-white rounded-md"
+    <div class="flex  justify-center m-2 p-4 rounded-md"
    style = {`
         background-color : ${theme.primaryColor};
         color : ${theme.textColor};
@@ -27,9 +27,11 @@ export let theme;
     </div>
 
     <div class='flex justify-center w-full  p-2 pb-4 h-full '>
-        <img style="height: 50%;" class="w-6/12" src= {`mathImages/${items[1].content}.png`} alt="" >
+        <img style="height: 70%;" class="w-10/12" src= {`mathImages/${items[1].content}.png`} alt="" >
     </div>
 
+<div class='flex justify-end w-full pr-10'>
     <div style={`color :${theme.highlightColor}`}>taleem.help</div>
+</div>
 
 </div>

@@ -7,7 +7,7 @@ let presentations=[];
 let newPresentationName='';
 
 async function del(id){
- debugger;
+//  debugger;
   const resp = await fetch( `${BASE_URL}/pre/delete`, {
     method: 'POST',
       headers: {

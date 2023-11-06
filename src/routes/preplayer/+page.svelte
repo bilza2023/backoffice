@@ -4,7 +4,7 @@
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
-import { themes ,DisplayCompStrat} from '$lib/Presentation/index.js';
+import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
 
 
@@ -75,7 +75,7 @@ function setCurrentSlide(){
 
 
 {#if currentSlide}
-    <DisplayCompStrat {currentSlide} {theme} {pulse} />
+    <Presentation {currentSlide} {theme} {pulse} />
 {/if}
 
 </div><!--page wrapper-->
