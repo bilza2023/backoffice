@@ -1,5 +1,6 @@
 <script>
 //@ts-nocheck
+import Table from './Table.svelte';
 import {HdgWithIcon} from '$lib/cmp'
 import {Icons, browser,onMount,BASE_URL, toast} from '$lib/util';
 let presentations=[];
@@ -22,9 +23,13 @@ async function del(id){
   }
 }
 
-async function create(){
+async function create(name){
+if (newPresentationName == '' || !newPresentationName){
+toast.push("A name is required fornew presentation")
+return false;
+}
 // debugger;
-  const presentation = {slides:[]};
+  const presentation = {slides:[] , name};
   const resp = await fetch( `${BASE_URL}/pre/create`, {
     method: 'POST',
       headers: {
@@ -36,6 +41,7 @@ async function create(){
 
   if(resp.ok){
    toast.push("Presentation Created");
+   newPresentationName = '';
    readAll();
   }
   
@@ -53,7 +59,7 @@ const resp = await fetch( `${BASE_URL}/pre/readAll`, {
    const data = await resp.json();
    presentations = data.items; 
   //  console.log(presentations)
-   toast.push(" loaded");
+  //  toast.push(" loaded");
   }
   
 }
@@ -61,25 +67,22 @@ onMount(async ()=>{
   readAll();
 
 });
-</script> 
+</script>
+
 <div class="bg-gray-800 text-white w-full min-h-screen"><!--page wrapper-->
 {#if presentations}
 <div class='flex justify-center w-full'>
 <HdgWithIcon icon={Icons.BOOKS}>Presentations</HdgWithIcon>
 </div>
+<!-- create new form -->
+<div class="bg-stone-600 p-2 m-2 rounded-md roder-2 border-white">
+  <button class='bg-green-500 m-0 p-1 rounded-md mx-2 text-white' on:click={()=>create(newPresentationName)}>Create</button>
+  <input type="text" class='bg-gray-900 m-0 p-2 rounded-md mx-2 outline-none text-white' bind:value={newPresentationName} placeholder="Presentation Name">
+</div>
 
-<button class='bg-green-800 m-0 p-1 rounded-md mx-8' on:click={()=>create(newPresentationName)}>Create</button>
+<Table  {presentations} {del} />
 
-{#each presentations as presentation,i}
-
-  <div class='flex justify-center w-full p-1 m-1 rounded-md'>
-    <a class=" bg-green-800 m-0 p-1 rounded-md mx-8"  href= {`/preplayer?id=${presentation._id}`} target='_blank'>{presentation._id}</a>
-    <a class=" bg-stone-700 m-0 p-1 rounded-md mx-8"  href= {`/preEditor?id=${presentation._id}`} target='_blank'>Edit</a>
-    <button 
-    class=" bg-red-800 m-0 p-0 rounded-md  text-xs"
-    on:click={()=>del(presentation._id)}
-     >Delete</button>
-  </div>
-{/each}
+{:else}
+<h1>loading....</h1>
 {/if}
 </div><!--page wrapper-->
