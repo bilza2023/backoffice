@@ -7,7 +7,7 @@ import {browser,onMount,toast,BASE_URL} from '$lib/util'
 // import getNewSlide  from '$lib/Presentation/getNewSlide.js';
 // import BaseComp from './BaseComp.svelte';
 import getDefaultTheme from '$lib/Presentation/getDefaultTheme';
-import {HdgImg,BlinkingJumbotron} from '$lib/Presentation/slides';
+import {HdgImg,BlinkingJumbotron,TestComp} from '$lib/Presentation/slides';
 import { themes } from '$lib/Presentation/themes';
 let slides;
 let id;
@@ -79,10 +79,14 @@ function setCurrentSlide(){
 class="p-1 m-0 mx-2 rounded-md bg-gray-900 text-yellow-500    text-xs">
 <option value="redGray">RedGray</option>
 <option value="basic">Basic</option>
+<option value="earthyElegance">Earthy Elegance</option>
+<option value="oceanic">Oceanic</option>
 </select>
 </div>
 
 {#if currentSlide}
+
+{#if currentSlide.type == 'TestComp' }<TestComp {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
 
 {#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
 
