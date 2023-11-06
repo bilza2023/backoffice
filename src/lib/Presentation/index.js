@@ -1,13 +1,5 @@
-import getNewSlide from "./getNewSlide";
-import getNewItem from "./getNewItem";
-import getDefaultTheme from "./getDefaultTheme";
 
-
-
-
-export {
-    getNewSlide,
-    getNewItem,
-    getDefaultTheme
-
-}
+export { default as DisplayCompStrat } from './DisplayCompStrat.svelte';
+export { default as getNewSlide } from './getNewSlide.js';
+export { default as getNewItem } from './getNewItem.js';
+export {  themes } from './themes.js';

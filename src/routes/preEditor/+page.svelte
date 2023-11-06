@@ -3,11 +3,12 @@
 import { NavBtn2} from '$lib/cmp';
 import { Icons,onMount, toast,BASE_URL, goto } from '$lib/util';
 import save from './save.js';
-import DisplayPanel from './DisplayPanel.svelte';
 import SettingsPanel from './SettingsPanel.svelte';
 import AddNewSlide from './AddNewSlide.svelte';
 import createNewPresentation from './createNewPresentation.js';
+import { themes ,DisplayCompStrat} from '$lib/Presentation';
 
+let theme = themes.basic;
 let showAddNew = false;
 let currentSlide = null;
 let slides=[];
@@ -81,7 +82,9 @@ function redraw(){slides = [...slides];}
         </div>
         
         <div class='w-7/12    bg-blue-900 min-h-screen   '>
-             <DisplayPanel   {currentSlide}/>
+            {#if currentSlide}    
+             <DisplayCompStrat {currentSlide} {theme} pulse=0 />
+             {/if}
         </div>
 
         <div class='w-4/12 bg-yellow-900'>

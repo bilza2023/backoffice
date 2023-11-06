@@ -4,14 +4,13 @@
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
-// import getNewSlide  from '$lib/Presentation/getNewSlide.js';
-// import BaseComp from './BaseComp.svelte';
-import getDefaultTheme from '$lib/Presentation/getDefaultTheme';
-import {HdgImg,BlinkingJumbotron,TestComp} from '$lib/Presentation/slides';
-import { themes } from '$lib/Presentation/themes';
+import { themes ,DisplayCompStrat} from '$lib/Presentation/index.js';
+import PlayButtons from './PlayButtons.svelte';
+
+
 let slides;
 let id;
-let theme = getDefaultTheme();
+let theme = themes.basic;
 
 onMount(async ()=>{
 // debugger;
@@ -28,8 +27,8 @@ onMount(async ()=>{
   if(resp.ok){
    const data = await resp.json();
    slides = data.presentation.slides; 
-   console.log('slides' , slides);
-   toast.push("Presentations loaded");
+  //  console.log('slides' , slides);
+  //  toast.push("Presentations loaded");
   }
 });
 
@@ -67,32 +66,16 @@ function setCurrentSlide(){
  }
 }
 </script> 
+
 <div class='bg-gray-800 text-white w-full min-h-screen'>
 
-
 <div class='flex justify-start w-full p-1 m-0 bg-gray-700'>
-<button class="p-1 m-0 mx-2 rounded-md bg-green-700 text-white text-xs"   on:click={start}>Start</button>
-<button class="p-1 m-0 mx-2 rounded-md bg-red-800 text-white text-xs"   on:click={stop}>Stop</button>
-<div class="p-1 m-0 mx-2 rounded-md bg-gray-900 text-yellow-500    text-xs">{pulse} sec</div>
-
-<select on:change={(e) => applyTheme(e.target.value)}
-class="p-1 m-0 mx-2 rounded-md bg-gray-900 text-yellow-500    text-xs">
-<option value="redGray">RedGray</option>
-<option value="basic">Basic</option>
-<option value="earthyElegance">Earthy Elegance</option>
-<option value="oceanic">Oceanic</option>
-</select>
+<PlayButtons   {start} {stop} {pulse} {applyTheme} />
 </div>
 
+
 {#if currentSlide}
-
-{#if currentSlide.type == 'TestComp' }<TestComp {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
-
-{#if currentSlide.type == 'HdgImg' }<HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
-
-{#if currentSlide.type == 'BlinkingJumbotron' }<BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.compExtra} {theme}/>{/if}
-
-
+    <DisplayCompStrat {currentSlide} {theme} {pulse} />
 {/if}
 
 </div><!--page wrapper-->
