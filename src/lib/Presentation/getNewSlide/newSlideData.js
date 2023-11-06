@@ -5,17 +5,20 @@
 - DO NOT USE GLOBALS FROM PRESENTATION / ENGINE TO SLIDES 
 - dont use callbacks in comps since they are just display items.its not an app its presentation.
  */
-
-export default function getNewItem( content, name='') {
+// import { uuid } from "$lib/util";
+export default function newSlideData( type) {
 
 return {
-    name , 
-    content, 
-    showAt :0, 
-    hideAt:null , 
-    entryStyle:null , 
-    exitStyle:null , 
-    extra : []
+    startTime:0,
+    endTime:10,
+    type,
+    version:'0.0.0',
+    items: [], 
+    slideExtra:[],
+    template:'',
 };
+
+
+
 
 }

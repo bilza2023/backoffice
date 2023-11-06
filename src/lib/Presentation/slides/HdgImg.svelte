@@ -27,7 +27,7 @@ export let theme;
     </div>
 
     <div class='flex justify-center w-full  p-2 pb-4 h-full '>
-        <img style="height: 70%;" class="w-10/12" src= {`mathImages/${items[1].content}.png`} alt="" >
+        <img style="height: 60%;" class="w-6/12" src= {`mathImages/${items[1].content}.png`} alt="" >
     </div>
 
 <div class='flex justify-end w-full pr-10'>
