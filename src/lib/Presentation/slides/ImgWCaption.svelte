@@ -7,26 +7,29 @@ export let theme;
 // primaryColor,secondaryColor,backgroundColor,textColor,highlightColor
 </script>
 
-<div class="flex flex-col justify-start min-h-screen   "
+<div class="flex flex-col justify-start min-h-screen  p-8 pt-4 "
  style = {`
  background-color : ${theme.backgroundColor};
  `}
 >
 
-    <div class="flex  justify-center m-2 p-4 rounded-md"
+<div class= " m-2 p-4 rounded-md text-center"
    style = {`
         background-color : ${theme.primaryColor};
         color : ${theme.textColor};
         `} 
     >
-        <h1 class={`text-white text-3xl`}
-        style={`color : ${theme.textColor}`}
-        >{items[0].content}</h1>
+     <img style="height: 40%;" 
+     class='rounded-md mx-auto'
+      src= {`mathImages/${items[0].content}.png`} alt="" >
+   
+        <div class="mt-4 border-2 p-4 rounded-md " 
+        style={`background-color : ${theme.primaryColor};`} >
+
+        {items[1].content}
+        </div>
     </div>
- 
-    <div class='flex justify-center w-full  p-2 pb-4 h-full '>
-        <img style="height: 70%;" class="w-10/12" src= {`mathImages/${items[1].content}.png`} alt="" >
-    </div>
+
 
 <div class='flex justify-end w-full pr-10'>
     <div style={`color :${theme.highlightColor}`}>taleem.help</div>

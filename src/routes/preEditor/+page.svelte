@@ -158,7 +158,7 @@ function moveUp(uuid) {
              {/if}
         </div>
 
-        <div class='w-4/12 bg-yellow-900'>
+        <div class='w-4/12 '>
            {#if currentSlide}     
         <Presentation bind:currentSlide={currentSlide} {theme} pulse=0  displayMode={false} />
         
