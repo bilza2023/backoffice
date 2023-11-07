@@ -2,7 +2,8 @@
 //@ts-nocheck
 // import TestComp from "./slides/TestComp.svelte";
 import HdgImg from "./slides/HdgImg.svelte";
-import BlinkingJumbotron from "./slides/BlinkingJumbotron.svelte";
+import BlinkingMessage from "./slides/BlinkingMessage.svelte";
+import BlinkingMessageEd from "./slides/BlinkingMessageEd.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
@@ -22,10 +23,10 @@ export let displayMode = true;
 {/if}
 
 <!-- BlinkingJumbotron -->
-{#if currentSlide.type == 'BlinkingJumbotron' }
+{#if currentSlide.type == 'BlinkingMessage' }
     {#if  displayMode}
-        <BlinkingJumbotron {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+        <BlinkingMessage {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
     {:else}
-        <p>None..</p>
+        <BlinkingMessageEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
     {/if}
 {/if}

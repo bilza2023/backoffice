@@ -1,14 +1,11 @@
 <script>
 //@ts-nocheck
 
-    import { onMount } from 'svelte';
-    import { backIn } from 'svelte/easing';
+import { onMount } from 'svelte';
 export let items;
-
-// let headingItem = getNewItem('','heading');
-// let imgSrcItem = getNewItem('','imgSrc');
-// export let compExtra =[];
+export let slideExtra =[];
 export let theme;
+
 onMount(async()=>{
  //if i put push in mount it will push on ever page appear/load
 //  console.log("slide",slide);
@@ -24,7 +21,7 @@ onMount(async()=>{
             color: ${theme.secondaryColor};
         `}
     >Heading</h1>
-
+ 
         <input type='text' 
         bind:value={items[0].content}
         class=" rounded-md p-1   w-full border-2" 

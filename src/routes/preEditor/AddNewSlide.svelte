@@ -9,6 +9,7 @@ export let redraw;
 
 
 function addSlide(type){
+//  debugger;
     const newSlide = getNewSlide(type);
         if (newSlide == null){
             toast.push("failed to add slide");
@@ -23,7 +24,7 @@ function addSlide(type){
 <div class='flex flex-wrap justify-center w-full bg-stone- 900'>
 
 <NavBtn2  icon={Icons.BUS} title='HdgImg' clk={()=>addSlide('HdgImg')} />
-<NavBtn2  icon={Icons.BUS} title='BlinkingJumbotron' clk={()=>addSlide('BlinkingJumbotron')} />
+<NavBtn2  icon={Icons.BUS} title='BlinkingMessage' clk={()=>addSlide('BlinkingMessage')} />
 
 
 

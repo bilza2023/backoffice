@@ -51,6 +51,7 @@ function setFakeTimings(){
 
 async function saveLocal(id,slides){
 // debugger;
+setFakeTimings();
  await save(id,slides);
 toast.push('saved');
 }
@@ -94,6 +95,7 @@ function moveDown(uuid) {
     slides[index] = slides[index + 1];
     slides[index + 1] = temp;
   }
+  setFakeTimings();
   redraw();
 }
 
@@ -104,6 +106,7 @@ function moveUp(uuid) {
     slides[index] = slides[index - 1];
     slides[index - 1] = temp;
   }
+  setFakeTimings();
   redraw();
 }
 

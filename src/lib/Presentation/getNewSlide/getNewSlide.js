@@ -12,10 +12,14 @@ function addHdgImg(){
     return newSlide;
 }
 
-function addBlinkingJumbotron(){
-const newSlide = newSlideData("BlinkingJumbotron");
+function addBlinkingMessage(){
+const newSlide = newSlideData("BlinkingMessage");
     newSlide.uuid = uuid();
-    newSlide.items.push(getNewItem('This is Great','content'));
+    newSlide.items.push(getNewItem(
+    '',
+    `
+    In web development, "Lorem Ipsum" is often used as a placeholder text. It's not directly related to code, but it's a common practice to use it for filling content areas in website mockups before real content is available. This helps in designing layouts and testing how text fits within elements.
+    `));
     return newSlide;
 }
 
@@ -26,8 +30,8 @@ export default function getNewSlide(type) {
     slide = addHdgImg();
     break;
 
-    case 'BlinkingJumbotron':
-    slide = addBlinkingJumbotron();
+    case 'BlinkingMessage':
+    slide = addBlinkingMessage();
     break;
  
     default:
