@@ -6,6 +6,8 @@ import BlinkingMessage from "./slides/BlinkingMessage.svelte";
 import BlinkingMessageEd from "./slides/BlinkingMessageEd.svelte";
 import ImgWCaption from "./slides/ImgWCaption.svelte";
 import ImgWCaptionEd from "./slides/ImgWCaptionEd.svelte";
+import HdgList from "./slides/HdgList.svelte";
+import HdgListEd from "./slides/HdgListEd.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
@@ -39,5 +41,14 @@ export let displayMode = true;
         <ImgWCaption {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
     {:else}
         <ImgWCaptionEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
+    {/if}
+{/if}
+
+<!-- ImgWCaption -->
+{#if currentSlide.type == 'HdgList' }
+    {#if  displayMode}
+        <HdgList {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+    {:else}
+        <HdgListEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
     {/if}
 {/if}

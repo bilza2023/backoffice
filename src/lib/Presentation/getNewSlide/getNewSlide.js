@@ -18,6 +18,10 @@ export default function getNewSlide(type) {
     slide = addImgWCaption();
     break;
  
+    case 'HdgList':
+    slide = addHdgList();
+    break;
+ 
     default:
     slide = null;
     break;
@@ -47,6 +51,15 @@ const newSlide = newSlideData("ImgWCaption");
     newSlide.uuid = uuid();
     newSlide.items.push(getNewItem('graph','img'));
     newSlide.items.push(getNewItem('This is a graph of the company','caption'));
+    return newSlide;
+}
+function addHdgList(){
+const newSlide = newSlideData("HdgList");
+    newSlide.uuid = uuid();
+    // newSlide.items.push(getNewItem('graph','img'));
+    // newSlide.items.push(getNewItem('This is a graph of the company','caption'));
+    newSlide.slideExtra.push({key : "data" , value: "This is some data"});
+    newSlide.slideExtra.push({key : "rows" , value:2});
     return newSlide;
 }
 //////////////////////////////////////////////////

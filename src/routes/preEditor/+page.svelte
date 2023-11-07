@@ -115,7 +115,6 @@ function moveUp(uuid) {
   redraw();
 }
 
-
 </script> 
 
 <div class='bg-gray-900 text-white w-full min-h-screen'>
@@ -130,45 +129,44 @@ function moveUp(uuid) {
         <div class="p-2 m-0  rounded-md bg-gray-900 text-yellow-500    text-xs">Themes:</div> 
         <ThemeDD  callback={applyTheme}/>
   </div>      
-
 </div>
 
+
 {#if showAddNew}
-<AddNewSlide   bind:slides={slides} {redraw}/>
+  <AddNewSlide   bind:slides={slides} {redraw}/>
 {/if}
 
 <br>
 
 {#if slides }
 <div class="flex justify-center  w-full ">
-
     
-        <div class='flex flex-col w-1/12    bg-gray-700 min-h-screen text-white    '>
-                {#each slides as slide,i}
-                <button class='hover:bg-gray-900 my-1' on:click={()=>setCurrentSlide(i)}
-                style={`background-color: ${currentSlide && currentSlide.uuid == slide.uuid ? 'green' : '#374151'}; `}
-                >{i+1}
-                </button>
-                {/each}
-        </div>
-        
-        <div class='w-7/12    bg-blue-900 min-h-screen   '>
-            {#if currentSlide}    
-             <Presentation {currentSlide} {theme} pulse=0 />
-             {/if}
-        </div>
+      <div class='flex flex-col w-1/12    bg-gray-700 min-h-screen text-white    '>
+              {#each slides as slide,i}
+              <button class='hover:bg-gray-900 my-1 hover:border-2 border-white' on:click={()=>setCurrentSlide(i)}
+              style={`background-color: ${currentSlide && currentSlide.uuid == slide.uuid ? 'green' : '#374151'}; `}
+              >{i+1}
+              </button>
+              {/each}
+      </div>
+      
+      <div class='w-7/12    bg-blue-900 min-h-screen   '>
+          {#if currentSlide}    
+            <Presentation {currentSlide} {theme} pulse=0 />
+            {/if}
+      </div>
 
-        <div class='w-4/12 '>
-           {#if currentSlide}     
-        <Presentation bind:currentSlide={currentSlide} {theme} pulse=0  displayMode={false} />
-        
-        <div class='w-full text-center'>
-        <MoveSlideDown {currentSlide} {moveDown}/>
-        <MoveSlideUp {currentSlide} {moveUp}/>
-        <DeleteSlide {currentSlide} {delSlide}/>
-        </div>
-           {/if}
-        </div>
+      <div class='w-4/12 '>
+          {#if currentSlide}     
+      <Presentation bind:currentSlide={currentSlide} {theme} pulse=0  displayMode={false} />
+      
+      <div class='w-full text-center'>
+      <MoveSlideDown {currentSlide} {moveDown}/>
+      <MoveSlideUp {currentSlide} {moveUp}/>
+      <DeleteSlide {currentSlide} {delSlide}/>
+      </div>
+          {/if}
+      </div>
 </div>
 {/if}
 
