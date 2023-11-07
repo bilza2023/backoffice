@@ -1,10 +1,10 @@
 <script>
 //@ts-nocheck
-import ThemeDD from './ThemeDD.svelte';
+import {ThemeDD} from '$lib/Presentation';
 export let start;
 export let stop;
 export let pulse;
-export let applyTheme;
+export let callback;
 
 </script>
 
@@ -15,4 +15,4 @@ export let applyTheme;
 
 
 
-<ThemeDD  {applyTheme}/>
+<ThemeDD  {callback}/>

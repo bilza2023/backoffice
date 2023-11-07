@@ -70,7 +70,7 @@ function setCurrentSlide(){
 <div class='bg-gray-800 text-white w-full min-h-screen'>
 
 <div class='flex justify-start w-full p-1 m-0 bg-gray-700'>
-<PlayButtons   {start} {stop} {pulse} {applyTheme} />
+<PlayButtons   {start} {stop} {pulse} callback={applyTheme} />
 </div>
 
 
