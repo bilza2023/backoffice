@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { NavBtn2} from '$lib/cmp';
+
 import { Icons,onMount, toast,BASE_URL, goto,uuid } from '$lib/util';
 import save from './save.js';
 import AddNewSlide from './AddNewSlide.svelte';
@@ -8,7 +8,7 @@ import { themes ,Presentation,ThemeDD} from '$lib/Presentation';
 import DeleteSlide from './DeleteSlide.svelte';
 import MoveSlideUp from './MoveSlideUp.svelte';
 import MoveSlideDown from './MoveSlideDown.svelte';
-
+import Nav from './Nav.svelte';
 let theme = themes.basic;
 let showAddNew = false;
 let currentSlide = null;
@@ -54,11 +54,20 @@ function setFakeTimings(){
 
 }
 
-async function saveLocal(id,slides){
+async function saveLocal(){
 // debugger;
 setFakeTimings();
- await save(id,slides);
-toast.push('saved');
+  const presentation = {slides ,_id:id};
+  const resp = await fetch( `${BASE_URL}/pre/update`, {
+    method: 'POST',
+      headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer 000`,
+  },
+  body: JSON.stringify( {presentation} )
+  });
+  if(resp.ok){toast.push('saved');}else {toast.push('failed to saved');}
+  
 }
 async function addUuid(slidesWOuuid) {
   for (let i = 0; i < slidesWOuuid.length; i++) {
@@ -119,18 +128,9 @@ function moveUp(uuid) {
 
 <div class='bg-gray-900 text-white w-full min-h-screen'>
 <!-- nav -->
-<div class='flex justify-between   w-full p-1 m-0 bg-gray-700'>
-  <div class='flex justify-start'>
-        <NavBtn2  icon={Icons.HOUSE} title='Home' clk={()=>goto('/presentations')}     />
-        <NavBtn2  icon={Icons.BULB} title='New' clk={()=>showAddNew = !showAddNew}     />
-        <NavBtn2  icon={Icons.SAVE} title='Save' clk={()=>saveLocal(id,slides)}     />
-  </div>
-  <div class='flex justify-end items-end '>
-        <div class="p-2 m-0  rounded-md bg-gray-900 text-yellow-500    text-xs">Themes:</div> 
-        <ThemeDD  callback={applyTheme}/>
-  </div>      
-</div>
-
+{#if slides}
+<Nav  bind:showAddNew = {showAddNew} {slides} {applyTheme} {saveLocal}    />
+{/if}
 
 {#if showAddNew}
   <AddNewSlide   bind:slides={slides} {redraw}/>
