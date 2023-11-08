@@ -21,6 +21,9 @@ export default function getNewSlide(type) {
     case 'HdgList':
     slide = addHdgList();
     break;
+    case 'TblStr':
+    slide = addTblStr();
+    break;
  
     default:
     slide = null;
@@ -60,6 +63,14 @@ const newSlide = newSlideData("HdgList");
     // newSlide.items.push(getNewItem('This is a graph of the company','caption'));
     newSlide.slideExtra.push({key : "data" , value: "This is some data"});
     newSlide.slideExtra.push({key : "rows" , value:2});
+    return newSlide;
+}
+
+function addTblStr(){
+const newSlide = newSlideData("TblStr");
+    newSlide.uuid = uuid();
+    // newSlide.items.push(getNewItem('graph','img'));
+    newSlide.slideExtra.push({key : "data" , value: "first,second"});
     return newSlide;
 }
 //////////////////////////////////////////////////

@@ -8,6 +8,8 @@ import ImgWCaption from "./slides/ImgWCaption.svelte";
 import ImgWCaptionEd from "./slides/ImgWCaptionEd.svelte";
 import HdgList from "./slides/HdgList.svelte";
 import HdgListEd from "./slides/HdgListEd.svelte";
+import TblStr from "./slides/TblStr.svelte";
+import TblStrEd from "./slides/TblStrEd.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
@@ -50,5 +52,13 @@ export let displayMode = true;
         <HdgList {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
     {:else}
         <HdgListEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
+    {/if}
+{/if}
+<!-- TblStr -->
+{#if currentSlide.type == 'TblStr' }
+    {#if  displayMode}
+        <TblStr {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+    {:else}
+        <TblStrEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
     {/if}
 {/if}

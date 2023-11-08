@@ -10,7 +10,7 @@ import MoveSlideDown from './MoveSlideDown.svelte';
 import Nav from './Nav.svelte';
 let theme = themes.basic;
 let showAddNew = false;
-let showEdit = false;
+let showEdit = true;
 let currentSlide = null;
 let slides=[];
 let id = null;

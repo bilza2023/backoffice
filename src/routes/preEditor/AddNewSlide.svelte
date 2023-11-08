@@ -24,9 +24,10 @@ function addSlide(type){
 <div class='flex flex-wrap justify-center w-full bg-stone- 900'>
 
 <NavBtn2  icon={Icons.BUS} title='HdgImg' clk={()=>addSlide('HdgImg')} />
-<NavBtn2  icon={Icons.EXPLOSION} title='BlinkingMessage' clk={()=>addSlide('BlinkingMessage')} />
-<NavBtn2  icon={Icons.MANAGER } title='ImgWCaption' clk={()=>addSlide('ImgWCaption')} />
+<NavBtn2  icon={Icons.EXPLOSION} title='Blink' clk={()=>addSlide('BlinkingMessage')} />
+<NavBtn2  icon={Icons.MANAGER } title='ImgCap' clk={()=>addSlide('ImgWCaption')} />
 <NavBtn2  icon={Icons.CODE } title='HdgList' clk={()=>addSlide('HdgList')} />
+<NavBtn2  icon={Icons.BARCHART } title='TblStr' clk={()=>addSlide('TblStr')} />
 
 
 
