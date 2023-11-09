@@ -3,7 +3,7 @@
 //@ts-nocheck
 import {Icons} from '$lib/util';
 export let i;
-export let eq;
+export let item;
 export let addEq;
 export let moveUpEq;
 export let moveDownEq;
@@ -28,15 +28,15 @@ export let toggleFS;
 <!-- //////////////////////////////////// -->
 <div  class="flex gap-1 bg-stone-800 text-white  text-xs p-1 rounded-sm">
 <button 
- class= {`${eq.type == 'code' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+ class= {`${item.extra.type == 'code' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
 on:click={()=>setEqType(i,'code')}>{Icons.ADD}</button>
 
 <button 
-class= {`${eq.type == 'text' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+class= {`${item.extra.type == 'text' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
 on:click={()=>setEqType(i,'text')}>{Icons.TEMPLATE}</button>
 
 <button 
-class= {`${eq.type == 'hdg' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
+class= {`${item.extra.type == 'hdg' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
 on:click={()=>setEqType(i,'hdg')}>{Icons.BOOK}</button>
 </div>
 
@@ -44,11 +44,11 @@ on:click={()=>setEqType(i,'hdg')}>{Icons.BOOK}</button>
 
 <div  class="bg-stone-700 text-white p-1 text-xs rounded-md">Full Screen Start Time</div>
 
-<input class='text bg-gray-700 rounded-md text-center' type="number" bind:value={eq.fsStartTime}>
+<input class='text bg-gray-700 rounded-md text-center' type="number" bind:value={item.extra.fsStartTime}>
 
 <div  class="bg-stone-600 text-white p-1 text-xs rounded-md text-center">Full Screen End Time</div>
 
-<input class='text bg-gray-600 rounded-md' type="number" bind:value={eq.fsEndTime}>
+<input class='text bg-gray-600 rounded-md' type="number" bind:value={item.extra.fsEndTime}>
 
 &nbsp;
 &nbsp;

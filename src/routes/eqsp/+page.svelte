@@ -1,104 +1,153 @@
+<svelt:head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+</svelt:head>
+
 <script>
 //@ts-nocheck
 import { PageWrapper } from '$lib/cmp';
-import { BASE_URL,onMount,toast,goto } from '$lib/util';
+import { onMount,toast } from '$lib/util';
 
-import LoadPage from "./LoadPage.svelte"
-
+// import save from './save';
+// import Toolbar from './Toolbar.svelte';
+import Titlebar from './Titlebar.svelte';
+import EqPart from './EqPart.svelte';
+// import FullScreen from './fullScreen/FullScreen.svelte';
+import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
+// import SPFSPart from './SPFSPart/SPFSPart.svelte';
+import PageHeading from './PageHeading.svelte';
+import getNewItem from './getNewItem';
+//--remove nav later
+// import Nav from '$lib/appComp/Nav.svelte';
+function save(){console.log('slide' , slide);}
 ////////////////////////////////////////////////////////
-let pageStatus = "loading";
-let msg = "Loading Please...";
-let question;
-let eqs;
-let isLogin = false
-let isAdmin = false
-onMount(async () => {
-  try {
-     
-      // debugger;
-   //http://localhost/math?id=6508bff7c970727df5e0ac85
-    const token = localStorage.getItem('token');
-      let  id = new URLSearchParams(location.search).get("id"); 
-      const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        }
-        
-      });
-  
-    if (resp.ok) {
-        // debugger;
-        const data = await resp.json();
-        question  = data.question //===> important
-        eqs = question.eqs;
-        
-        // const code = [];
-        // for (let i = 0; i < eqs.length; i++) {
-        //   const eq = eqs[i];
-        //   const n = {equation: eq.code}
-        //   code.push(n);
-        // }
-        // console.log("code",code);
-        isLogin = true;
-        isAdmin = data.isAdmin;
-///////////////////////////////////////////////////////
-//--so final does not open for Admin also
-// debugger;
-if (question.status == 'final'){toast.push(`Sorry this question is final`); return;}
+ function redraw(){slide = {...slide};}
 
-if (isAdmin){pageStatus = "load";toast.push(`Welcome Admin , question status: ${question.status}`); return;}
-///////////////////////////////////////////////////////
-switch (question.status) {
-    case "unlocked":
-        pageStatus = "load";
-        break;
-    case "locked":
-        msg = "Sorry this question is locked.";
-        break;
-    case "final":
-        msg = "Sorry this question is final.";
-        break;
-    case "fill":
-        let teacher_name = localStorage.getItem("teacher_name");
-        if (teacher_name == data.question.filledBy) {
-            pageStatus = "load";
-        } else {
-            msg = "Sory this question is not filled by you, or you may not be logged in properly.";
-        }
-        break;
+function toggleSP(index){
+//  debugger;
+ slide.items[index].extra.spVisibility = !slide.items[index].extra.spVisibility; 
+ slide.items[index].extra.fsVisibility = false; 
+  redraw();
+}
+function toggleFS(index){
+ slide.items[index].extra.fsVisibility = !slide.items[index].extra.fsVisibility; 
+ slide.items[index].extra.spVisibility = false;
+  redraw();
+}
+function setStatus(status){
+ question.status = status;
+ redraw();
 }
 
-///////////////////////////////////////////////////////        
-
-    } else {
-        const data = await resp.json();
-        toast.push(data.message);
-    }
-  } catch (error) {
-    // toast.push('Unknown Error');
-    console.error(error);
+function setEqType(i,typ) {
+//  debugger;
+  slide.items[i].extra.type = typ;
+ redraw();
+}
+function moveUpEq(index) {
+  if (index > 0) {
+    const eqToMove = slide.items[index];
+    slide.items.splice(index, 1);
+    slide.items.splice(index - 1, 0, eqToMove);
   }
-});
+ redraw();
+}
+function moveDownEq(index) {
+  if (index < slide.items.length - 1) {
+    const eqToMove = slide.items[index];
+    slide.items.splice(index, 1);
+    slide.items.splice(index + 1, 0, eqToMove);
+  }
+  redraw();
+}
+function delEq(index) {
+  slide.items.splice(index, 1);
+  redraw();
+}
+function setSPTrue(){
+  for (let i = 0; i < eqs.length; i++) {
+    eqs[i].spVisibility = true; 
+  }
+    eqs = [...eqs];
+} 
+function closeAllSP(){
+  // debugger;
+  for (let i = 0; i < eqs.length; i++) {
+    eqs[i].spVisibility = false; 
+  }
+    eqs = [...eqs];
+}
+function addEq(i) {
+   slide.items.splice(i+1, 0, getNewItem());
+  slide = {...slide};
+}
+//fsStartTime fsEndTime
+let slide = {
 
+  items :[
+      {name: '' , content : '' , extra : {
+            type : 'hdg',
+            code : 'This is a heading',
+            startTime : 0,
+            endTime : 10,
+      }},
+      {name: '' , content : '' , extra : {
+            type : 'text',
+            code : 'This is normal text',
+            startTime : 10,
+            endTime : 20,
+      }},
+      {name: '' , content : '' , extra : {
+            type : 'code',
+            code : '4^2',
+            startTime : 20,
+            endTime : 30,
+      }},
+  ]
+
+};
+
+for (let i = 0; i < slide.items.length; i++) {
+  const item = slide.items[i];
+  item.extra.step = i;
+  item.extra.fsVisibility = false;
+  item.extra.spVisibility = false;
+}
+console.log("slide",slide);
 </script>
+<!-- <Nav isLogin={true} isAdmin={true} /> -->
 <PageWrapper>
-{#if pageStatus !== 'load'}
-<h1>{msg}</h1>
-{/if}
-{#if pageStatus == 'load'}
-<LoadPage bind:question={question} bind:eqs={eqs} {isLogin}  {isAdmin}/>
-{/if}
+
+<!-- <Toolbar  {addEq} {eqs} {closeAllSP} {setSPTrue}/> -->
+<PageHeading/>
+
+<div class="m-4 p-0">
+  <Titlebar />
+  {#each slide.items as item, i}
+      <EqPart  bind:item={item} {i} />
+<!--         -->
+      <EqPartLowerToolBar {item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>
+
+        {#if item.extra.spVisibility}
+        sidepanel
+          <!-- <SPFSPart clr="bg-yellow-900"  arrayName='Side Panel' theArray={eq.sp}  {redraw} {i} /> -->
+        {/if}
+        {#if item.extra.fsVisibility}
+        fs
+          <!-- <FullScreen bind:fs={eq.fs}  /> -->
+        {/if}
+  {/each}
+</div>
 
 
 <br>
 <br>
+
+<div class="flex justify-center">
+  <button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(slide)}>Save</button>
+</div>
+
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 </PageWrapper>
