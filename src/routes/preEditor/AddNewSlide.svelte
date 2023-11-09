@@ -26,8 +26,9 @@ function addSlide(type){
 <NavBtn2  icon={Icons.BUS} title='HdgImg' clk={()=>addSlide('HdgImg')} />
 <NavBtn2  icon={Icons.EXPLOSION} title='Blink' clk={()=>addSlide('BlinkingMessage')} />
 <NavBtn2  icon={Icons.MANAGER } title='ImgCap' clk={()=>addSlide('ImgWCaption')} />
-<NavBtn2  icon={Icons.CODE } title='HdgList' clk={()=>addSlide('HdgList')} />
+<NavBtn2  icon={Icons.HOT } title='HdgList' clk={()=>addSlide('HdgList')} />
 <NavBtn2  icon={Icons.BARCHART } title='TblStr' clk={()=>addSlide('TblStr')} />
+<NavBtn2  icon={Icons.CODE } title='Eqs' clk={()=>addSlide('Eqs')} />
 
 
 

@@ -6,7 +6,7 @@ import EqTypeText from './EqTypeText.svelte';
 import EqTypeHdg from './EqTypeHdg.svelte';
 export let eq;
 export let i;
-export let status;
+// export let status;
 </script> 
  
  <div class="flex justify-centre   w-full p-0 m-1 gap-1 rounded-md ">

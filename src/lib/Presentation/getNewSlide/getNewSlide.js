@@ -24,6 +24,10 @@ export default function getNewSlide(type) {
     case 'TblStr':
     slide = addTblStr();
     break;
+
+    case 'Eqs':
+    slide = addEqs();
+    break;
  
     default:
     slide = null;
@@ -39,6 +43,7 @@ function addHdgImg(){
     newSlide.uuid = uuid();
     newSlide.items.push(getNewItem('The Title','heading'));
     newSlide.items.push(getNewItem('graph','imgSrc'));
+
     return newSlide;
 }
 
@@ -71,6 +76,21 @@ const newSlide = newSlideData("TblStr");
     newSlide.uuid = uuid();
     // newSlide.items.push(getNewItem('graph','img'));
     newSlide.slideExtra.push({key : "data" , value: "first,second"});
+    return newSlide;
+}
+
+function addEqs(){
+const newSlide = newSlideData("Eqs");
+    newSlide.uuid = uuid();
+    // for every eq we will need one item of items array
+    // name = type , content  = content and extra.sp == sp []
+    newSlide.items.push(getNewItem('Heading One','hdg' , 
+        {   sp : [
+            {code : "2^2" , type : 'text'}
+        ]
+            }
+        ));
+    // newSlide.slideExtra.push({key : "data" , value: "first,second"});
     return newSlide;
 }
 //////////////////////////////////////////////////

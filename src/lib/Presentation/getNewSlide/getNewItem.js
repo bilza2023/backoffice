@@ -6,16 +6,13 @@
 - dont use callbacks in comps since they are just display items.its not an app its presentation.
  */
 
-export default function getNewItem( content, name='') {
+export default function getNewItem( content, name='',extra = {}) {
 
 return {
     name , 
     content, 
     showAt :0, 
-    extra : []
-    // hideAt:null , 
-    // entryStyle:null , 
-    // exitStyle:null , 
+    extra
 };
 
 }
