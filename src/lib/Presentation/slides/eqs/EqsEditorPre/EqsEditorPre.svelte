@@ -14,59 +14,65 @@ import getNewItem from './getNewItem';
     import { onMount } from 'svelte';
 
 ////////////////////////////////////////////////////////
+export let startTime;
+export let endTime;
+export let items;
+export let theme={};
+
+////////////////////////////////////////////////////////
  function redraw(){slide = {...slide};}
 function log(){console.log("slide" , slide);}
 function toggleSP(index){
 //  debugger;
- slide.items[index].extra.spVisibility = !slide.items[index].extra.spVisibility; 
- slide.items[index].extra.fsVisibility = false; 
+ items[index].extra.spVisibility = !items[index].extra.spVisibility; 
+ items[index].extra.fsVisibility = false; 
   redraw();
 }
 function toggleFS(index){
- slide.items[index].extra.fsVisibility = !slide.items[index].extra.fsVisibility; 
- slide.items[index].extra.spVisibility = false;
+ items[index].extra.fsVisibility = !items[index].extra.fsVisibility; 
+ items[index].extra.spVisibility = false;
   redraw();
 }
 function setEqType(i,typ) {
 //  debugger;
-  slide.items[i].extra.type = typ;
+  items[i].extra.type = typ;
  redraw();
 }
 function moveUpEq(index) {
   if (index > 0) {
-    const eqToMove = slide.items[index];
-    slide.items.splice(index, 1);
-    slide.items.splice(index - 1, 0, eqToMove);
+    const eqToMove = items[index];
+    items.splice(index, 1);
+    items.splice(index - 1, 0, eqToMove);
   }
  redraw();
 }
 function moveDownEq(index) {
-  if (index < slide.items.length - 1) {
-    const eqToMove = slide.items[index];
-    slide.items.splice(index, 1);
-    slide.items.splice(index + 1, 0, eqToMove);
+  if (index < items.length - 1) {
+    const eqToMove = items[index];
+    items.splice(index, 1);
+    items.splice(index + 1, 0, eqToMove);
   }
   redraw();
 }
 function delEq(index) {
-  slide.items.splice(index, 1);
+  items.splice(index, 1);
   redraw();
 }
 function openAllSP(){
-  for (let i = 0; i < slide.items.length; i++) {
-    slide.items[i].extra.spVisibility = true; 
+  for (let i = 0; i < items.length; i++) {
+    items[i].extra.spVisibility = true; 
   }
     redraw();
 } 
 function closeAllSP(){
   // debugger;
-  for (let i = 0; i < slide.items.length; i++) {
-    slide.items[i].extra.spVisibility = false; 
+  for (let i = 0; i < items.length; i++) {
+    items[i].extra.spVisibility = false; 
   }
     redraw();
 }
 function addEq(i) {
-   slide.items.splice(i+1, 0, getNewItem());
+   items.splice(i+1, 0, getNewItem());
   slide = {...slide};
 }
 
@@ -74,8 +80,8 @@ export let slide;
 
 onMount(async ()=>{
 
-for (let i = 0; i < slide.items.length; i++) {
-  const item = slide.items[i];
+for (let i = 0; i < items.length; i++) {
+  const item = items[i];
   item.extra.step = i;
   item.extra.fsVisibility = false;
   item.extra.spVisibility = false;
@@ -92,7 +98,7 @@ for (let i = 0; i < slide.items.length; i++) {
 
 <div class="m-4 p-0">
   <Titlebar />
-  {#each slide.items as item, i}
+  {#each items as item, i}
       <EqPart  bind:item={item} {i} />
 <!--         -->
       <EqPartLowerToolBar {item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>

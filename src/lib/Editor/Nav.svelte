@@ -5,6 +5,7 @@ import { Icons,goto} from '$lib/util';
 import { ThemeDD} from '$lib/Presentation';
 export let showAddNew;
 export let showEdit;
+export let showDisplay;
 export let saveLocal;
 export let applyTheme;
 
@@ -14,7 +15,10 @@ export let applyTheme;
   <div class='flex justify-start'>
         <NavBtn2  icon={Icons.HOUSE} title='Home' clk={()=>goto('/presentations')}     />
         <NavBtn2  icon={Icons.BULB} title='New' clk={()=>showAddNew = !showAddNew}     />
-        <NavBtn2  icon={Icons.WRENCH} title='Edit' clk={()=>showEdit = !showEdit}     />
+
+        <NavBtn2  icon={Icons.TV  } title='Edit' clk={()=>showDisplay = !showDisplay}     />
+        
+        <NavBtn2  icon={Icons.HAMMER_AND_WRENCH} title='Edit' clk={()=>showEdit = !showEdit}     />
         <NavBtn2  icon={Icons.SAVE} title='Save' clk={saveLocal}     />
   </div>
   <div class='flex justify-end items-end '>

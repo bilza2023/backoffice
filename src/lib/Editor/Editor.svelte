@@ -8,14 +8,26 @@ import DeleteSlide from './DeleteSlide.svelte';
 import MoveSlideUp from './MoveSlideUp.svelte';
 import MoveSlideDown from './MoveSlideDown.svelte';
 import Nav from './Nav.svelte';
+
+export let slides=[];
+export let save=()=>{};
+
 let theme = themes.basic;
 let showAddNew = false;
 let showEdit = true;
+let showDisplay = true;
 let currentSlide = null;
-let slides=[];
 let id = null;
 let pulse = 0;
-$:  wdd = showEdit ? 7 : 10;
+let displayWidth = '75%';
+$: {
+  if (showDisplay && showEdit ){
+  
+  }
+
+}
+
+
 function applyTheme(themeKey){
 // debugger;
 theme = themes[themeKey];
@@ -54,50 +66,17 @@ function setFakeTimings(){
 
 }
 
-async function saveLocal(){
-// debugger;
-setFakeTimings();
-  const presentation = {slides ,_id:id};
-  const resp = await fetch( `${BASE_URL}/pre/update`, {
-    method: 'POST',
-      headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer 000`,
-  },
-  body: JSON.stringify( {presentation} )
-  });
-  if(resp.ok){toast.push('saved');}else {toast.push('failed to saved');}
-  
-}
 async function addUuid(slidesWOuuid) {
   for (let i = 0; i < slidesWOuuid.length; i++) {
     slidesWOuuid[i].uuid = uuid(); 
   }
 }
 onMount(async ()=>{
-// debugger;
-   id = new URLSearchParams(location.search).get("id");
-
-  const resp = await fetch( `${BASE_URL}/pre/read`, {
-    method: 'POST',
-      headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify( {id} )
-  });
-
-if(resp.ok){
-   const data = await resp.json();
-   slides = await data.presentation.slides; 
    await addUuid(slides);
-
    if(slides.length > 0){
         setFakeTimings();
         setCurrentSlide(0);
    }
-}
-
-
 });
 
 function redraw(){slides = [...slides];}
@@ -126,10 +105,10 @@ function moveUp(uuid) {
 
 </script> 
 
-<div class='bg-gray-900 text-white w-full min-h-screen'>
+<div class='bg-gray-900 text-white w-full min-h-screen '>
 <!-- nav -->
 {#if slides}
-<Nav  bind:showAddNew = {showAddNew} bind:showEdit = {showEdit} {applyTheme} {saveLocal}    />
+<Nav  bind:showAddNew = {showAddNew} bind:showEdit = {showEdit} {applyTheme} {save}  bind:showDisplay={showDisplay}  />
 {/if}
 
 {#if showAddNew}
@@ -139,9 +118,11 @@ function moveUp(uuid) {
 
 
 {#if slides }
-<div class="flex justify-center  w-full ">
+<div class="flex justify-start    w-full  ">
     
-      <div class='flex flex-col w-1/12    bg-gray-700 min-h-screen text-white    '>
+      <div class='flex flex-col   bg-gray-700 min-h-screen text-white    '
+      style={`width : 10%`}
+      >
               {#each slides as slide,i}
               <button class='hover:bg-gray-600 my-1 hover:border-2 border-white' on:click={()=>setCurrentSlide(i)}
               style={`background-color: ${currentSlide && currentSlide.uuid == slide.uuid ? 'green' : '#374151'}; `}
@@ -149,27 +130,32 @@ function moveUp(uuid) {
               </button>
               {/each}
       </div>
-      
-      <div class={`w-${wdd}/12  bg-blue-900 min-h-screen`} >
-          {#if currentSlide}    
-            <Presentation {currentSlide} {theme} pulse=0 />
-            {/if}
-      </div>
 
-          {#if showEdit}     
-      <div class='w-4/12 '>
-          {#if currentSlide}     
-      <Presentation bind:currentSlide={currentSlide} {theme} pulse=0  displayMode={false} />
-      
-      <div class='w-full text-center'>
-      <MoveSlideDown {currentSlide} {moveDown}/>
-      <MoveSlideUp {currentSlide} {moveUp}/>
-      <DeleteSlide {currentSlide} {delSlide}/>
-      </div>
+        {#if showDisplay}
+        <div class={ `bg-blue-900 min-h-screen`}
+        style={`width : ${showEdit ? '65%' : '90%'}`}
+        >
+          {#if currentSlide}
+            <Presentation {currentSlide} {theme} pulse=0 />
           {/if}
-      </div>
+        </div>
+      {/if}
+
+      {#if showEdit}
+        <div class=''
+         style={`width : ${showDisplay ? '25%' : '90%'}`}
+         >
+          {#if currentSlide}
+            <Presentation bind:currentSlide={currentSlide} {theme} pulse=0 displayMode={false} />
+            <div class='w-full text-center'>
+              <MoveSlideDown {currentSlide} {moveDown}/>
+              <MoveSlideUp {currentSlide} {moveUp}/>
+              <DeleteSlide {currentSlide} {delSlide}/>
+            </div>
           {/if}
-</div>
+        </div>
+      {/if}
+    </div>
 {/if}
 
 

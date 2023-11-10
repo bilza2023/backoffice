@@ -80,17 +80,55 @@ const newSlide = newSlideData("TblStr");
 }
 
 function addEqs(){
-const newSlide = newSlideData("Eqs");
+const newSlide =  {
+  startTime : 0,    //This is slide start and end time
+  endTime : 50,    
+  type : 'Eqs',    
+  slideExtra : [],    
+  /////////////////
+ items :[
+      {name: '' , content : '' , extra : {
+            type : 'hdg',
+            step : 1,
+            code : 'This is a heading',
+            startTime : 0,//This is item start and end time
+            endTime : 10,
+            sp:[ 
+                  {code : 'Step one', type: 'text', },
+                  {code : 'Step one', type: 'text', },
+                  ],
+            fs:[
+                  {code : 'This is full Screen', type: 'text', }
+            ]
+      }},
+      {name: '' , content : '' , extra : {
+            type : 'text',
+            step : 2,
+            code : 'Step Two',
+            startTime : 10,
+            endTime : 20,
+            sp:[ 
+                  {code : 'Step Two', type: 'text', },
+                  {code : 'Step Two', type: 'text', },
+                  ],
+            fs:[]
+      }},
+      {name: '' , content : '' , extra : {
+            type : 'code',
+            step : 3,
+            code : '4^2',
+            startTime : 20,
+            endTime : 30,
+            sp:[ 
+                  {code : 'Step Three', type: 'text', },
+                  {code : 'Step Three', type: 'text', },
+                  ],
+            fs:[]
+      }},
+  ]
+
+};
     newSlide.uuid = uuid();
-    // for every eq we will need one item of items array
-    // name = type , content  = content and extra.sp == sp []
-    newSlide.items.push(getNewItem('Heading One','hdg' , 
-        {   sp : [
-            {code : "2^2" , type : 'text'}
-        ]
-            }
-        ));
-    // newSlide.slideExtra.push({key : "data" , value: "first,second"});
     return newSlide;
 }
 //////////////////////////////////////////////////

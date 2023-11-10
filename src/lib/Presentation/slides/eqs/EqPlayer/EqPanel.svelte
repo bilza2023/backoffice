@@ -3,67 +3,61 @@
 </svelte:head>
 <script>
 //@ts-nocheck
-import { browser,onMount } from '$lib/util';
-// import {currentEqStore} from "./store";
-// $:currentEq   = $currentEqStore;
-// export let currentEq;
+import { onMount } from '$lib/util';
 import CodeTxt from './CodeTxt.svelte';
-//== Import variables
-export let items;
+
 export let pulse;
-// let innerEqs =[];
-// export let changeSeek;
+export let items;
+export let changeSeek;
 
-// $: { 
-//      currentEq; 
-//         setFocus( );
-//         const topIndex = findTopIndex();
-//         innerEqs = removeElementsBeforeIndex(topIndex);
-// }
+////////////////////////////////
+function isFocus(item){
+   // debugger;
+   if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
+       return true; 
+   }else {
+      return false;  
+   }
+}
 
-// function setFocus( ){
-//   eqs = eqs.map( (eq)=>{eq.isf = false;return eq;});
-//   for (let i = 0; i < eqs.length; i++) {
-//         const eq = eqs[i];
-//             if (currentEq._id == eq._id ){
-//                 eq.isf = true;
-//                 return; // no need to checkany further
-//             }
-//         }
-// }
+$:{
+   pulse;
+   items = [...items];
+}
+
 
 // function removeElementsBeforeIndex(index) {
-//     if (index < 0 || index >= eqs.length) {
-//         return eqs;
+//     if (index < 0 || index >= items.length) {
+//         return items;
 //     }
-//     return eqs.slice(index);
+//     return items.slice(index);
 // }
 // function findTopIndex() {
-//     let index = eqs.findIndex(obj => obj.isf === true);
+//     let index = items.findIndex(obj => obj.isf === true);
 //     if (index <= 2) {
 //         return 0;
 //     }
 //  return index - 2;    
 // }
 // onMount(()=>{
-//     if(eqs && eqs.length > 0) {
-//         eqs[0].isf = true;
+//     if(items && items.length > 0) {
+//         items[0].isf = true;
 //     }
 // });
-//on:click={()=>changeSeek(eq.eqStartTime)}
+
 </script>
 
-    {#if items}
-    <!-- {#each eqs as eq,index} -->
-    <button class='flex w-full'  >
+    {#each items as item,index}
+    <button class='flex w-full'  on:click={()=>changeSeek(item.extra.startTime)}>
         
-        <div class="w-full text-center">
-            <CodeTxt type={items[0].name} code={items[0].content}/>
+        <div class='m-1 p-1 rounded-2xl bg-stone-600 text-sm items-center justify-center' >{ item.extra.step }</div>
+
+        <div class="{ isFocus(item) == true ? 'focused' : 'nonFocused'}  w-full text-center">
+            <CodeTxt eq={item}/>
         </div>
 
     </button>    
-    <!-- {/each} -->
-    {/if}
+    {/each}
 <!-- do not remove the 4 br they are bery important -->
 <br/>    
 <br/>    

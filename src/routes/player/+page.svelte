@@ -6,30 +6,21 @@
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
 import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
-
+import readSlides from '$lib/tdf/readSlides';
 
 let slides;
 let id;
+let tcode;
 let theme = themes.basic;
 
 onMount(async ()=>{
-// debugger;
-   id = new URLSearchParams(location.search).get("id");
+id = new URLSearchParams(location.search).get("id");
+tcode = new URLSearchParams(location.search).get("tcode");
 
-  const resp = await fetch( `${BASE_URL}/pre/read`, {
-    method: 'POST',
-      headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify( {id} )
-  });
+let returnSlides  = await readSlides(id,tcode);
+if (returnSlides){slides = returnSlides}
+else {throw new Error('Failed to load');}
 
-  if(resp.ok){
-   const data = await resp.json();
-   slides = data.presentation.slides; 
-  //  console.log('slides' , slides);
-  //  toast.push("Presentations loaded");
-  }
 });
 
 
@@ -75,6 +66,8 @@ function setCurrentSlide(){
 
 
 {#if currentSlide}
+<!-- {currentSlide} {theme} {pulse} and displayMode -->
+<!-- Thats all only these 4 inputs keep in mind there is just 1 slide that being currentSlide AND theme is external -->
     <Presentation {currentSlide} {theme} {pulse} />
 {/if}
 
