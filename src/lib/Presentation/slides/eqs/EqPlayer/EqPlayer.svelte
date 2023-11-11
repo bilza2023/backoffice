@@ -43,7 +43,7 @@ return false;
  
 <!--Main Panel---->
 {#if !fullScreen}
-        <div class= "w-8/12 min-h-screen p-2  m-0 overflow-x-auto"  >
+        <div class= "w-8/12 min-h-screen max-h-screen  p-2  m-0 overflow-x-auto "  >
         <EqPanel items={items}  pulse={pulse}  {setPulse} />
         </div>
 
@@ -59,4 +59,13 @@ return false;
 {/if}
     </div><!--flex div for 2 panels-->
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div><!--page div-->

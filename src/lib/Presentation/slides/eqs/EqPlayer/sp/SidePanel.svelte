@@ -20,7 +20,7 @@ function isFocus(item){
 }
 </script> 
 
-<div class='justify-center line-clamp-4 text-yellow-300'>
+<div class='justify-center sticky top-4   line-clamp-4 text-yellow-300'>
 {#each items as item}
  {#if  isFocus(item) }    
         <div class='w-full  rounded-md m-1 p-1 bg-stone-600 text-center'>

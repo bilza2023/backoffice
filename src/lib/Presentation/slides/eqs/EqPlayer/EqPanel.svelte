@@ -23,32 +23,16 @@ function isFocus(item){
 $:{
    pulse;
    items = [...items];
+     const focusedElement = document.querySelector('.focused');
+   if (focusedElement) {
+      focusedElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
+   }
 }
-
-
-// function removeElementsBeforeIndex(index) {
-//     if (index < 0 || index >= items.length) {
-//         return items;
-//     }
-//     return items.slice(index);
-// }
-// function findTopIndex() {
-//     let index = items.findIndex(obj => obj.isf === true);
-//     if (index <= 2) {
-//         return 0;
-//     }
-//  return index - 2;    
-// }
-// onMount(()=>{
-//     if(items && items.length > 0) {
-//         items[0].isf = true;
-//     }
-// });
 
 </script>
 
     {#each items as item,index}
-    <button class='flex w-full'  on:click={()=>setPulse(item.extra.startTime)}>
+    <button   class='flex w-full'  on:click={()=>setPulse(item.extra.startTime)}>
         
         <div class='m-1 p-1 rounded-2xl bg-stone-600 text-sm items-center justify-center' >{ item.extra.step }</div>
 

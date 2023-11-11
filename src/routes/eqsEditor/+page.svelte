@@ -17,8 +17,6 @@ let isAdmin = false
 
 onMount(async () => {
   try {
-      // debugger;
-   //http://localhost/math?id=6508bff7c970727df5e0ac85
     const token = localStorage.getItem('token');
       let  id = new URLSearchParams(location.search).get("id"); 
       const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
@@ -47,9 +45,9 @@ onMount(async () => {
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 <Nav {isLogin} {isAdmin} />
 
-<PageHeading />
 
 {#if slide}
+<PageHeading  {question}/>
  <EqEditor pulse=0 bind:startTime={slide.startTime} bind:endTime={slide.endTime} 
  bind:items={slide.items} bind:slideExtra={slide.slideExtra} theme={theme}/>
  
