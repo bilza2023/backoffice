@@ -77,8 +77,6 @@ function addEq(i) {
   redraw();
 }
 
-// export let slide;
-
 onMount(async ()=>{
 
 for (let i = 0; i < items.length; i++) {
@@ -86,7 +84,8 @@ for (let i = 0; i < items.length; i++) {
   item.extra.step = i;
   item.extra.fsVisibility = false;
   item.extra.spVisibility = false;
-    if (typeof item.extra.fs == 'object'){
+    if (!Array.isArray(item.extra.fs)){
+    // debugger;
       item.extra.fs = [];
     }
 }
@@ -104,14 +103,14 @@ for (let i = 0; i < items.length; i++) {
   <Titlebar />
   {#each items as item, i}
       <EqPart  bind:item={item} {i} />
-<!--         -->
+
       <EqPartLowerToolBar {item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>
 
         {#if item.extra.spVisibility}
           <SP clr="bg-yellow-900"  arrayName='Side Panel' bind:theArray={item.extra.sp}  {redraw} {i} />
         {/if}
         {#if item.extra.fsVisibility}
-          <SP clr="bg-yellow-900"  arrayName='Full Screen' bind:theArray={item.extra.fs}  {redraw} {i} />
+          <SP clr="bg-stone-700"  arrayName='Full Screen' bind:theArray={item.extra.fs}  {redraw} {i} />
         {/if}
   {/each}
 </div>

@@ -31,6 +31,9 @@ let interval=null;
 let pulse=0;
 let currentSlide = null;
 
+function setPulse(time){
+pulse = time;
+}
 function applyTheme(themeKey){
 // debugger;
 theme = themes[themeKey];
@@ -71,7 +74,7 @@ function setCurrentSlide(){
 {#if currentSlide}
 <!-- {currentSlide} {theme} {pulse} and displayMode -->
 <!-- Thats all only these 4 inputs keep in mind there is just 1 slide that being currentSlide AND theme is external -->
-    <Presentation {currentSlide} {theme} {pulse} />
+    <Presentation {currentSlide} {theme} {pulse} {setPulse}/>
 {/if}
 
 </div><!--page wrapper-->

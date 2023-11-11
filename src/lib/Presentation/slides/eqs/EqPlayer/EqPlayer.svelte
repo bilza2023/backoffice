@@ -11,27 +11,29 @@ export let endTime;
 export let items;
 export let slideExtra;
 export let pulse;
-export let changeSeek;
+export let setPulse=()=>{console.log("setPulse")};
 /////////////////////////////////////////
 $:{
     pulse;
     fullScreen =false;
-    // checkFullScreen();
+    checkFullScreen();
 }
 
 ////////////////////////////////////////////////
-// function checkFullScreen(){
-// //--Code can not be "" to be displayed
-//   if (currentItem ) {
-//      if (pulse >= currentItem.fsStartTime && pulse < currentItem.fsEndTime ){
-// //       console.log("Full screen true");
-//       fullScreen = true;
-//      }else {
-//       fullScreen = false;
-//      }
-//   }
-// return false;  
-// }
+function checkFullScreen(){
+
+   for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
+              if (pulse >= item.extra.fsStartTime && pulse < item.extra.fsEndTime) {
+                  fullScreen = true;
+                }else {
+                        fullScreen = false;
+                }
+        }
+   }     
+return false;  
+}
 
 
 </script>
@@ -42,7 +44,7 @@ $:{
 <!--Main Panel---->
 {#if !fullScreen}
         <div class= "w-8/12 min-h-screen p-2  m-0 overflow-x-auto"  >
-        <EqPanel items={items}  pulse={pulse}  {changeSeek} />
+        <EqPanel items={items}  pulse={pulse}  {setPulse} />
         </div>
 
 <!--Side Panel---->

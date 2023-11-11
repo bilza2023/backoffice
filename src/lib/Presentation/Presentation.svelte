@@ -11,12 +11,13 @@ import HdgListEd from "./slides/HdgListEd.svelte";
 import TblStr from "./slides/TblStr.svelte";
 import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
-import EqsEditorPre from "./slides/eqs/EqsEditor/EqsEditor.svelte";
+import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
 export let pulse;
 export let theme;
+export let setPulse=()=>{};
 export let displayMode = true;
 </script>
 
@@ -67,8 +68,8 @@ export let displayMode = true;
 <!-- Eqs -->
 {#if currentSlide.type == 'Eqs' }
     {#if  displayMode}
-        <EqPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+        <EqPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
-        <EqsEditorPre bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
+        <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
     {/if}
 {/if}

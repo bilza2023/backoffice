@@ -8,7 +8,7 @@ import CodeTxt from './CodeTxt.svelte';
 
 export let pulse;
 export let items;
-export let changeSeek;
+export let setPulse;
 
 ////////////////////////////////
 function isFocus(item){
@@ -48,7 +48,7 @@ $:{
 </script>
 
     {#each items as item,index}
-    <button class='flex w-full'  on:click={()=>changeSeek(item.extra.startTime)}>
+    <button class='flex w-full'  on:click={()=>setPulse(item.extra.startTime)}>
         
         <div class='m-1 p-1 rounded-2xl bg-stone-600 text-sm items-center justify-center' >{ item.extra.step }</div>
 
