@@ -9,7 +9,7 @@ import Titlebar from './Titlebar.svelte';
 import EqPart from './EqPart.svelte';
 import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
 import SP from './SPPart/SP.svelte';
-import PageHeading from './PageHeading.svelte';
+// import PageHeading from './PageHeading.svelte';
 import getNewItem from './getNewItem';
     import { onMount } from 'svelte';
 
@@ -20,7 +20,7 @@ export let items;
 export let theme={};
 
 ////////////////////////////////////////////////////////
- function redraw(){slide = {...slide};}
+function redraw(){ items = [...items];}
 function log(){console.log("slide" , slide);}
 function toggleSP(index){
 //  debugger;
@@ -72,8 +72,9 @@ function closeAllSP(){
     redraw();
 }
 function addEq(i) {
+//  debugger;
    items.splice(i+1, 0, getNewItem());
-  slide = {...slide};
+  redraw();
 }
 
 export let slide;
@@ -93,7 +94,7 @@ for (let i = 0; i < items.length; i++) {
 <!-- <Nav isLogin={true} isAdmin={true} /> -->
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 
-<PageHeading/>
+<!-- <PageHeading/> -->
 <Toolbar  {addEq}  {closeAllSP} {openAllSP} {log} />
 
 <div class="m-4 p-0">

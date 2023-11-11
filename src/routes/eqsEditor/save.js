@@ -4,24 +4,16 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , slide){
   try {
-  // debugger;
-//--we are not trusting question.eqs here rather we want to replace them by eqs sent.
+
   question.slides =[];
   question.slides.push(slide);
-
-  // for (let i = 0; i < question.eqs.length; i++) {
-  //   const eq = question.eqs[i];
-  //     if (Array.isArray(eq.fs)){
-  //     eq.fs ={};
-  //     }
-  // }
   
-  // assignSteps(question);
+  assignSteps(question);
 //--fill is no staus , fill is just having filledBy field with a name  
-  if ( question.status == "unlocked" || question.status == "fill" ){
+  if ( question.status == "unlocked" || question.status == "fill"  || question.status == "locked" ){
       //filledBy is set at backend
       question.status = 'fill'; //important
-      // setFakeTimes(question);
+      setFakeTimes(question);
   }
   
   if ( question.status == "final" ){
@@ -61,13 +53,17 @@ function setEndTimes(question) {
 }
 // without full-screen
 function setFakeTimes(question) {
+// debugger;
+question.slides[0].startTime = 0;
   let time = 0;
-  for (let i = 0; i < question.eqs.length; i++) {
-    const eq = question.eqs[i];
-    eq.eqStartTime = time;
+  for (let i = 0; i < question.slides[0].items.length; i++) {
+    const item = question.slides[0].items[i];
+    item.extra.startTime = time;
      time += 10;
-    eq.eqEndTime = time;
+    item.extra.endTime = time;
   }
+ //-- The final time is placed here 
+ question.slides[0].endTime = time; 
 }
 function setFakeTimesWithFS(question) {
   let time = 0;
@@ -85,9 +81,10 @@ function setFakeTimesWithFS(question) {
 
 }
 function assignSteps(question) {
-  for (let i = 0; i < question.eqs.length; i++) {
-    const eq = question.eqs[i];
-    eq.step = i +1;
+//  debugger;
+  for (let i = 0; i < question.slides[0].items.length; i++) {
+    const item = question.slides[0].items[i];
+    item.extra.step = i +1;
   }
 
 }

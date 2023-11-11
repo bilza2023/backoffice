@@ -7,8 +7,7 @@ import AdminPanel from './AdminPanel.svelte';
 import Nav from '$lib/appComp/Nav.svelte';
 import EqEditor from "$lib/Presentation/slides/eqs/EqsEditor/EqsEditor.svelte";
 import { themes } from '$lib/Presentation';
-// import readSlides from '$lib/tdf/readSlides';
-// import Toolbar from './Toolbar.svelte';
+import PageHeading from './PageHeading.svelte';
 
 let slide;
 let theme = themes.basic;
@@ -47,11 +46,12 @@ onMount(async () => {
 </script>
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 <Nav {isLogin} {isAdmin} />
-<!-- <Toolbar /> -->
+
+<PageHeading />
 
 {#if slide}
-<!-- <EqEditorPre bind:slide={slide} /> -->
- <EqEditor pulse=0 startTime={slide.startTime} endTime={slide.endTime} items={slide.items} slideExtra={slide.slideExtra} theme={theme}/>
+ <EqEditor pulse=0 bind:startTime={slide.startTime} bind:endTime={slide.endTime} 
+ bind:items={slide.items} bind:slideExtra={slide.slideExtra} theme={theme}/>
  
  {/if}
 
