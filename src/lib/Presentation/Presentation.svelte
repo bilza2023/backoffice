@@ -11,7 +11,7 @@ import HdgListEd from "./slides/HdgListEd.svelte";
 import TblStr from "./slides/TblStr.svelte";
 import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
-import EqsEditorPre from "./slides/eqs/EqsEditorPre/EqsEditorPre.svelte";
+import EqsEditorPre from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
