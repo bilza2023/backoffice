@@ -21,7 +21,6 @@ export let theme={};
 
 ////////////////////////////////////////////////////////
 function redraw(){ items = [...items];}
-function log(){console.log("slide" , slide);}
 function toggleSP(index){
 //  debugger;
  items[index].extra.spVisibility = !items[index].extra.spVisibility; 
@@ -29,6 +28,7 @@ function toggleSP(index){
   redraw();
 }
 function toggleFS(index){
+//  debugger;
  items[index].extra.fsVisibility = !items[index].extra.fsVisibility; 
  items[index].extra.spVisibility = false;
   redraw();
@@ -77,7 +77,7 @@ function addEq(i) {
   redraw();
 }
 
-export let slide;
+// export let slide;
 
 onMount(async ()=>{
 
@@ -86,6 +86,9 @@ for (let i = 0; i < items.length; i++) {
   item.extra.step = i;
   item.extra.fsVisibility = false;
   item.extra.spVisibility = false;
+    if (typeof item.extra.fs == 'object'){
+      item.extra.fs = [];
+    }
 }
 
 });
@@ -95,7 +98,7 @@ for (let i = 0; i < items.length; i++) {
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 
 <!-- <PageHeading/> -->
-<Toolbar  {addEq}  {closeAllSP} {openAllSP} {log} />
+<Toolbar  {addEq}  {closeAllSP} {openAllSP} />
 
 <div class="m-4 p-0">
   <Titlebar />

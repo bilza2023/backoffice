@@ -1,7 +1,6 @@
 <script>
 //@ts-nocheck
 export let addEq;
-export let log=()=>{};
 export let closeAllSP;
 export let openAllSP;
 
@@ -22,8 +21,5 @@ on:click={closeAllSP}
 >Hide SP</button>
 &nbsp;
 
-<button id="saveBtn" class="bg-green-800 p-1   rounded-sm"
-on:click={log}
->log</button>
-&nbsp;
+
 </div>
