@@ -34,6 +34,16 @@ function checkFullScreen(){
    }     
 return false;  
 }
+function showFullPage(index){
+        // debugger;
+ if(items[index].extra.fs.length > 0){
+        setPulse(items[index].extra.startTime);
+        fullScreen = true;
+ }
+}
+function closeFs(){
+        fullScreen = false;
+}
 
 
 </script>
@@ -44,7 +54,7 @@ return false;
 <!--Main Panel---->
 {#if !fullScreen}
         <div class= "w-8/12 min-h-screen max-h-screen  p-2  m-0 overflow-x-auto "  >
-        <EqPanel items={items}  pulse={pulse}  {setPulse} />
+        <EqPanel items={items}  pulse={pulse}  {setPulse} {showFullPage} />
         </div>
 
 <!--Side Panel---->
@@ -54,7 +64,7 @@ return false;
 {:else}
 <!--Full Screen---->
         <div class= "w-full   min-h-screen p-1 m-0 mt-2 mb-2  bg-stone-500 text-yellow-300b rounded-md" >
-        <SidePanel  {items} {pulse} spORfs='fs'/>
+        <SidePanel  {items} {pulse} spORfs='fs' {closeFs}/>
         </div>
 {/if}
     </div><!--flex div for 2 panels-->

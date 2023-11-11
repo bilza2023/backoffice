@@ -9,24 +9,29 @@ import CodeTxt from './CodeTxt.svelte';
 export let pulse;
 export let items;
 export let setPulse;
+export let showFullPage;
 
 ////////////////////////////////
-function isFocus(item){
-   // debugger;
-   if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
-       return true; 
-   }else {
-      return false;  
-   }
+function removeAllFocusedClass() {
+  const allElements = document.querySelectorAll('.focused');
+  allElements.forEach(element => {
+    element.classList.remove('focused');
+  });
 }
+function isFocus(item){
+  // debugger;
+  if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
+      console.log(item);
+      return true; 
+  }else {
+      return  false;  
+  }
+}
+
 
 $:{
    pulse;
    items = [...items];
-     const focusedElement = document.querySelector('.focused');
-   if (focusedElement) {
-      focusedElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
-   }
 }
 
 </script>
@@ -34,12 +39,18 @@ $:{
     {#each items as item,index}
     <button   class='flex w-full'  on:click={()=>setPulse(item.extra.startTime)}>
         
-        <div class='m-1 p-1 rounded-2xl bg-stone-600 text-sm items-center justify-center' >{ item.extra.step }</div>
+        <button class='m-1 p-1 rounded-2xl  text-sm items-center justify-center {(item.extra.fs.length > 0)? 'bg-yellow-700': 'bg-stone-600'}' on:click={()=>showFullPage(index)}>{ item.extra.step }</button>
 
-        <div class="{ isFocus(item) == true ? 'focused' : 'nonFocused'}  w-full text-center">
+      {#if isFocus(item)}
+       <div class="focused w-full text-center">
             <CodeTxt eq={item}/>
-        </div>
+       </div>
 
+      {:else}
+       <div class=" nonFocused w-full text-center">
+            <CodeTxt eq={item}/>
+       </div>
+      {/if}
     </button>    
     {/each}
 <!-- do not remove the 4 br they are bery important -->

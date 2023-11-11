@@ -3,7 +3,8 @@
 import ImgCodeTxt from "./ImgCodeTxt.svelte";
 export let pulse;
 export let items;
-export let spORfs= 'sp';
+export let closeFs=()=>{};
+export let spORfs;
 
 $:{
    pulse;
@@ -19,6 +20,9 @@ function isFocus(item){
    }
 }
 </script> 
+{#if spORfs=='fs'}
+<button on:click={closeFs} class='text-xs text-yellow-600'>close fullscreen</button>
+{/if}
 
 <div class='justify-center sticky top-4   line-clamp-4 text-yellow-300'>
 {#each items as item}
