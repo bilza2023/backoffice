@@ -84,6 +84,8 @@ const newSlide =  {
   startTime : 0,    //This is slide start and end time
   endTime : 50,    
   type : 'Eqs',    
+  template : '',    
+  version : '',    
   slideExtra : [],    
   /////////////////
  items :[
@@ -100,33 +102,8 @@ const newSlide =  {
             fs:[
                   {code : 'This is full Screen', type: 'text', }
             ]
-      }},
-      {name: '' , content : '' , extra : {
-            type : 'text',
-            step : 2,
-            code : 'Step Two',
-            startTime : 10,
-            endTime : 20,
-            sp:[ 
-                  {code : 'Step Two', type: 'text', },
-                  {code : 'Step Two', type: 'text', },
-                  ],
-            fs:[]
-      }},
-      {name: '' , content : '' , extra : {
-            type : 'code',
-            step : 3,
-            code : '4^2',
-            startTime : 20,
-            endTime : 30,
-            sp:[ 
-                  {code : 'Step Three', type: 'text', },
-                  {code : 'Step Three', type: 'text', },
-                  ],
-            fs:[]
-      }},
-  ]
-
+      }}
+    ]
 };
     newSlide.uuid = uuid();
     return newSlide;

@@ -39,6 +39,7 @@ function getUrl(question){
 
 onMount(async () => {
 try{
+// debugger;
   let r  = await getSyllabus();
     if (r){
       questions = r;

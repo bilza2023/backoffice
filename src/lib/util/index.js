@@ -7,6 +7,7 @@ import { get } from 'svelte/store';
 import { goto } from '$app/navigation';
 import checkToken from './checkToken';
 import checkAdminToken from './checkAdminToken';
+import convertEqsToSlide from './convertEqToSlide.js';
 import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
@@ -20,6 +21,7 @@ import uuid from './uuid';
                     toast,
                     fade,
                     get,
+                    convertEqsToSlide,
                     uuid,
                     goto,
                     browser,

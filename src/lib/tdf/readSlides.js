@@ -1,9 +1,10 @@
 //@ts-nocheck
-import { BASE_URL } from "$lib/util";
+
+import { BASE_URL,convertEqsToSlide } from "$lib/util";
 
 export default async function readSlides(id,tcode){
-try{
-
+ try{
+ 
   const resp = await fetch( `${BASE_URL}/pre/read`, {
     method: 'POST',
       headers: {
@@ -11,10 +12,10 @@ try{
   },
   body: JSON.stringify( {id , tcode} )
   });
-// debugger;
+// 
   if(resp.ok){
-   const data = await resp.json();
-   return data.slides; 
+    const data = await resp.json();
+    return data.slides; 
   }else {
     return false;
   }

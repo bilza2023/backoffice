@@ -6,7 +6,7 @@ import { ThemeDD} from '$lib/Presentation';
 export let showAddNew;
 export let showEdit;
 export let showDisplay;
-export let saveLocal;
+export let save;
 export let applyTheme;
 
 </script>
@@ -19,7 +19,7 @@ export let applyTheme;
         <NavBtn2  icon={Icons.TV  } title='Edit' clk={()=>showDisplay = !showDisplay}     />
         
         <NavBtn2  icon={Icons.HAMMER_AND_WRENCH} title='Edit' clk={()=>showEdit = !showEdit}     />
-        <NavBtn2  icon={Icons.SAVE} title='Save' clk={saveLocal}     />
+        <NavBtn2  icon={Icons.SAVE} title='Save' clk={save}     />
   </div>
   <div class='flex justify-end items-end '>
         <div class="p-2 m-0  rounded-md bg-gray-900 text-yellow-500    text-xs">Themes:</div> 

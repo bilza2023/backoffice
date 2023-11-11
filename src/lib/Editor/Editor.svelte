@@ -27,7 +27,6 @@ $: {
 
 }
 
-
 function applyTheme(themeKey){
 // debugger;
 theme = themes[themeKey];

@@ -7,11 +7,11 @@
  */
 // import { uuid } from "$lib/util";
 export default function newSlideData( type) {
-
+// fsStartTime:null and  fsEndTime:null are in items and not in side
 return {
     startTime:0,
     endTime:10,
-    type,
+    type, // this is "slideType" , its what is used by Presentation Module
     version:'0.0.0',
     items: [], 
     slideExtra:[],

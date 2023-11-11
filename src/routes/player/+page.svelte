@@ -14,10 +14,13 @@ let tcode;
 let theme = themes.basic;
 
 onMount(async ()=>{
+//  
 id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
 
 let returnSlides  = await readSlides(id,tcode);
+// debugger;
+returnSlides[0].endTime = 100;
 if (returnSlides){slides = returnSlides}
 else {throw new Error('Failed to load');}
 

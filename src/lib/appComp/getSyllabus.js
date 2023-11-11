@@ -1,7 +1,7 @@
 import {BASE_URL} from '$lib/util';
 
 export default async function getSyllabus() {
-
+ try{
  //=============================  
     const token = localStorage.getItem('token');
     const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
@@ -17,5 +17,7 @@ export default async function getSyllabus() {
     }else {
         return false;
     }
-
+ }catch (e){
+    console.error(e);
+ }
 }
