@@ -45,13 +45,13 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
             <Card
             title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
-            url = {getUrl(question)}
+            url = {`/eqsEditor?tcode=fbise9math&id=${question._id}`}
             >
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
             
             {#if question.status !== 'unlocked' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                <a href= {`/eqsPlayer?id=${question._id}`} target="_blank">{Icons.START}</a>
+                <a href= {`/player?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.START}</a>
                 </div>
             {/if}
             

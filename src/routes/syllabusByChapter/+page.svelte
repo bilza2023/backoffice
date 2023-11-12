@@ -134,7 +134,7 @@ return url;
             title = {`Ch:${question.chapter} Ex:${question.partNo.exercise} Q:${question.partNo.questionNo}`}
             icon={Icons.TEST}
             url = {`/eqsEditor?tcode=fbise9math&id=${question._id}`}
-            >
+            > 
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
             
             {#if question.status !== 'unlocked' }
