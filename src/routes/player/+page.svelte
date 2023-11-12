@@ -1,3 +1,6 @@
+<svelte:head>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+</svelte:head>
 <script>
 //@ts-nocheck
 /**
@@ -12,7 +15,8 @@ let slides;
 let id;
 let tcode;
 let theme = themes.basic;
-
+let hydrateInterval=null;
+ 
 onMount(async ()=>{
 //  
 id = new URLSearchParams(location.search).get("id");
@@ -23,7 +27,7 @@ let returnSlides  = await readSlides(id,tcode);
 returnSlides[0].endTime = 100;
 if (returnSlides){slides = returnSlides}
 else {throw new Error('Failed to load');}
-
+hydrate();
 });
 
 
@@ -44,6 +48,15 @@ function gameloop(){
     setCurrentSlide();
 }
 
+function hydrate(){
+start();
+ hydrateInterval =  setInterval(stopHydrate,2000);
+}
+function stopHydrate(){
+    clearInterval(hydrateInterval);
+    stop();
+    pulse = 0;
+}
 function start(){
     interval= setInterval(gameloop,1000);
 }

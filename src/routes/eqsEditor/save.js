@@ -4,7 +4,7 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , slide){
   try {
-// debugger;
+  // 
   question.slides =[];
   question.slides.push(slide);
   
@@ -18,10 +18,8 @@ if ( question.status == "unlocked" || question.status == "fill"  || question.sta
   
   if ( question.status == "final" ){
       setEndTimes(question);
-      // debugger;
       checkFinalTimings(question.slides[0].items)
   }
-    // debugger;
         const token = localStorage.getItem('token');
     
 const resp = await fetch( `${BASE_URL}/be/update` ,{
@@ -55,32 +53,27 @@ function setEndTimes(question) {
 // without full-screen
 function setFakeTimes(question) {
 // debugger;
-question.slides[0].startTime = 0;
+question.slides[0].startTime = 0;// imp
+question.slides[0].items[0].extra.startTime = 0; // imp also
   let time = 0;
   for (let i = 0; i < question.slides[0].items.length; i++) {
     const item = question.slides[0].items[i];
     item.extra.startTime = time;
      time += 10;
+      if (item.extra.fs && item.extra.fs.length > 0 ){
+            item.extra.fsStartTime = time;
+            time +=10; 
+            item.extra.fsEndTime = time;
+            time +=10; 
+      }
     item.extra.endTime = time;
   }
  //-- The final time is placed here 
+//  question.slides[0].items[0].extra.endTime = time;
  question.slides[0].endTime = time; 
 }
-function setFakeTimesWithFS(question) {
-  let time = 0;
-  for (let i = 0; i < question.eqs.length; i++) {
-    const eq = question.eqs[i];
-    eq.eqStartTime = time;//eq.eqStartTime of first is always zero
-     time += 10;
-          if (eq.fs && eq.fs.type !== undefined &&  eq.fs.type !== ''){
-            eq.fsStartTime = time;
-            time +=10; 
-          }
-    eq.eqEndTime = time;
-    // time += 5; // for next iteration
-  }
 
-}
+
 function assignSteps(question) {
 //  debugger;
   for (let i = 0; i < question.slides[0].items.length; i++) {
