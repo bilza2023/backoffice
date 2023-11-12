@@ -103,8 +103,8 @@ for (let i = 0; i < items.length; i++) {
   <Titlebar />
   {#each items as item, i}
       <EqPart  bind:item={item} {i} />
-
-      <EqPartLowerToolBar {item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>
+ 
+      <EqPartLowerToolBar bind:item={item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>
 
         {#if item.extra.spVisibility}
           <SP clr="bg-yellow-900"  arrayName='Side Panel' bind:theArray={item.extra.sp}  {redraw} {i} />
@@ -114,7 +114,6 @@ for (let i = 0; i < items.length; i++) {
         {/if}
   {/each}
 </div>
-
 
 <br>
 <br>

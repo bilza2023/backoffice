@@ -21,10 +21,9 @@ $:{
 
 ////////////////////////////////////////////////
 function checkFullScreen(){
-
    for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
+        if ( item.extra.fs.length > 0 ){
               if (pulse >= item.extra.fsStartTime && pulse < item.extra.fsEndTime) {
                   fullScreen = true;
                 }else {

@@ -12,16 +12,8 @@ export let setPulse;
 export let showFullPage;
 
 ////////////////////////////////
-function removeAllFocusedClass() {
-  const allElements = document.querySelectorAll('.focused');
-  allElements.forEach(element => {
-    element.classList.remove('focused');
-  });
-}
 function isFocus(item){
-  // debugger;
   if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
-      console.log(item);
       return true; 
   }else {
       return  false;  

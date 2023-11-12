@@ -4,33 +4,34 @@ import { BASE_URL } from '$lib/util/config';
 
 export  default async function save(question , slide){
   try {
-
+// debugger;
   question.slides =[];
   question.slides.push(slide);
   
   assignSteps(question);
 //--fill is no staus , fill is just having filledBy field with a name  
-  if ( question.status == "unlocked" || question.status == "fill"  || question.status == "locked" ){
-      //filledBy is set at backend
+if ( question.status == "unlocked" || question.status == "fill"  || question.status == "locked" ){
       question.status = 'fill'; //important
       setFakeTimes(question);
-  }
+       setEndTimes(question);
+}
   
   if ( question.status == "final" ){
-      // setEndTimes(question);
-      // checkFinalTimings(question.eqs)
+      setEndTimes(question);
+      // debugger;
+      checkFinalTimings(question.slides[0].items)
   }
     // debugger;
         const token = localStorage.getItem('token');
     
-  const resp = await fetch( `${BASE_URL}/be/update` ,{
+const resp = await fetch( `${BASE_URL}/be/update` ,{
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`,
   },
   body: JSON.stringify( {question} )
-});
+  });
         if (resp.ok) {
             toast.push('Data uploaded successfully');
         }else {
@@ -44,12 +45,12 @@ export  default async function save(question , slide){
 //////////////////////////////////////////////////////
 function setEndTimes(question) {
 // debugger;
-  for (let i = 0; i < question.eqs.length - 1; i++) {
-    const eq = question.eqs[i];
-    eq.eqEndTime = question.eqs[i+1].eqStartTime;
+  for (let i = 0; i < question.slides[0].items.length - 1; i++) {//skip last
+    const item = question.slides[0].items[i];
+    item.extra.endTime = parseInt(question.slides[0].items[i+1].extra.startTime);
   }
   //--set the last time very high so that it does not create problems in checking for now and before play we can set it equal to narration length.
-  question.eqs[question.eqs.length-1].eqEndTime = 50000;
+  question.slides[0].items[question.slides[0].items.length-1].endTime = 50000;
 }
 // without full-screen
 function setFakeTimes(question) {
@@ -89,38 +90,40 @@ function assignSteps(question) {
 
 }
 
-function checkFinalTimings(eqs) {
-  // Rule 1: Ensure eqStartTime of the first step is always 0
-  eqs[0].eqStartTime = 0;
-  eqs[eqs.length - 1].eqEndTime = 5000; // a larage number which will later be replaces before run
-  // Loop through the array to check other rules starting with index == 1
-  for (let i = 1; i < eqs.length; i++) {
-    const currentStep = eqs[i];
-    const previousStep = eqs[i - 1];
+function checkFinalTimings(items) {
+  
+  // Rule 1: Ensure startTime of the first step is always 0
+  items[0].extra.startTime = 0;
+  items[items.length - 1].extra.endTime = 5000; // a larage number which will later be replaces before run
 
-    // Rule 2: Check if the start time of the current step is equal to the end time of the previous step. It should be same ==>start time of the current step tobe equal to the end time of the previous step
-    if (currentStep.eqStartTime !== previousStep.eqEndTime) {
+  // Loop through the array to check other rules starting with index == 1
+  for (let i = 1; i < items.length; i++) {
+    const currentStep = items[i].extra;
+    const previousStep = items[i - 1].extra;
+
+    // Rule 2: Check if the start time of the current step is equal to the end time of the previous step. It should be same ==>start time of the current step to be equal to the end time of the previous step
+    if (currentStep.startTime !== previousStep.endTime) {
       toast.push(`Validation error at step ${i + 1}: Start time does not match the end time of the previous step.`);
       return;
     }
 
-    // Rule 3: Check if eqStartTime is not smaller than eqEndTime
-    if (currentStep.eqStartTime >= currentStep.eqEndTime) {
-      toast.push(`Validation error at step ${i + 1}: eqStartTime is greater than or equal to eqEndTime.`);
+    // Rule 3: Check if startTime is not smaller than endTime
+    //if step-1 fullscreen ends at 20 and step also ends at 20 the next step -2 can also start at 20 no problems
+//This if conditon check if the rule is violated
+    if (currentStep.startTime >= currentStep.endTime) {
+      toast.push(`Validation error at step ${i + 1}: startTime is greater than or equal to endTime.`);
       return;
     }
-//==correct: it is > and < so it means if step-1 fullscreen ends at 20 and step also ends at 20 the next step -2 can also start at 20 no problems
-    // Rule 4: Check if fsStartTime and fsEndTime fall within eqStartTime and eqEndTime. BUT check only if fs has some thing
+ // Rule 4: Check if fsStartTime and fsEndTime fall within startTime and endTime. BUT check only if fs has some thing
     if (currentStep.fs.length > 0){
       if (
-        currentStep.fsStartTime < currentStep.eqStartTime ||
-        currentStep.fsEndTime > currentStep.eqEndTime
+        currentStep.fsStartTime < currentStep.startTime ||
+        currentStep.fsEndTime > currentStep.endTime
       ) {
-        toast.push(`FS timings error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of eqStartTime and eqEndTime.`);
+        toast.push(`FS timings error at step ${i + 1}: fsStartTime or fsEndTime is not within the range of startTime and endTime.`);
         return;
       }
     }
-
     // Rule 5: Check if fsStartTime is smaller than fsEndTime
     if (currentStep.fs.length > 0){
     if (currentStep.fsStartTime >= currentStep.fsEndTime) {
@@ -135,7 +138,6 @@ function checkFinalTimings(eqs) {
       currentStep.fsEndTime = null;
     }
   }
-
-  // All rules passed
+  toast.push('Timings checked successfully');
   return true;
 }

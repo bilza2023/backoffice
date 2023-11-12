@@ -15,7 +15,7 @@ export let i;
     {#if i==0}
     <input type="text" class="bg-stone-700 w-1/12 p-0 m-0 rounded-md" value={0}  disabled={true}/>
     {:else}
-    <input type="text" class="bg-stone-700 w-1/12 p-0 m-0 rounded-md" bind:value={item.extra.startTime} />
+    <input type="number" class="bg-stone-700 w-1/12 p-0 m-0 rounded-md" bind:value={item.extra.startTime} />
     {/if}  
 
 {#if item.extra.type == undefined || item.extra.type == 'code' || item.extra.type == ''}

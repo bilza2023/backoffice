@@ -14,7 +14,9 @@ let theme = themes.basic;
 let question;
 let isLogin = false
 let isAdmin = false
-
+function savelocal(){
+  save(question,slide);
+}
 onMount(async () => {
   try {
     const token = localStorage.getItem('token');
@@ -47,11 +49,11 @@ onMount(async () => {
 
 
 {#if slide}
-<PageHeading  {question}/>
+<PageHeading  {question} {savelocal}/>
  <EqEditor pulse=0 bind:startTime={slide.startTime} bind:endTime={slide.endTime} 
  bind:items={slide.items} bind:slideExtra={slide.slideExtra} theme={theme}/>
  
- {/if}
+
 
   {#if isAdmin }
     <AdminPanel bind:question={question} />
@@ -60,6 +62,15 @@ onMount(async () => {
 <div class="flex justify-center">
   <button id="saveBtn2" class="w-10/12 bg-green-800 p-2  rounded-md text-xl" on:click={()=>save(question,slide)}>Save</button>
 </div>
+
+{:else}
+<div class='flex justify-center p-1 m-1'>
+<br>
+<br>
+<h1>loading....</h1>
+</div>
+
+ {/if}
 
 <br>
 <br>
