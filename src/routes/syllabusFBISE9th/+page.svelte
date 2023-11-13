@@ -60,7 +60,7 @@ try{
 <PageWrapper>
 
 <div class='flex justify-center   p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Syllabus FBISE Class 9th</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>FBISE 9th Math</HdgWithIcon>
 </div>
 {#if questions}
 
@@ -70,7 +70,10 @@ try{
   <br/>
 <Exercises  {questions} {selectedChapter} {selectedEx} {setEx} />
 </div>
-<HdgWithIcon>{`Chapter Total: ${chapterTotalQuestions}`}</HdgWithIcon>
+<!-- <HdgWithIcon>{`Chapter Total: ${chapterTotalQuestions}`}</HdgWithIcon> -->
+<div class='flex justify-start text-xs p-1 m-1 '>
+{`Total Chapter Questions: ${chapterTotalQuestions}`}
+</div>
 
 <ExerciseQs {questions} {selectedEx} {getUrl}/>
 <br/>

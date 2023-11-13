@@ -9,11 +9,11 @@ export let del;
 {#each presentations as presentation, i}
 <tr class="">
     <td class='p-1 m-1 rounded-md bg-gray-700'>
-        <a class="text-white p-1 rounded-md mx-8" href={`/preplayer?id=${presentation._id}`} target='_blank'>{presentation.name}</a>
+        <a class="text-white p-1 rounded-md mx-8" href={`/player?tcode=pre&id=${presentation._id}`} target='_blank'>{presentation.name}</a>
     </td>
 
     <td>
-        <a class="bg-blue-700 text-white p-1 rounded-md mx-2" href={`/preEditor?id=${presentation._id}`} target='_blank'>Edit</a>
+<a class="bg-blue-700 text-white p-1 rounded-md mx-2" href={`/editor?tcode=pre&id=${presentation._id}`} target='_blank'>Edit</a>
     </td>
 
     <td>

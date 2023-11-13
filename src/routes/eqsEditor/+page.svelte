@@ -12,14 +12,16 @@ import PageHeading from './PageHeading.svelte';
 let slide;
 let theme = themes.basic;
 let question;
-let isLogin = false
-let isAdmin = false
+let isLogin = false;
+let isAdmin = false;
+
 function savelocal(){
   save(question,slide);
 }
 onMount(async () => {
   try {
-    const token = localStorage.getItem('token');
+
+      const token = localStorage.getItem('token');
       let  id = new URLSearchParams(location.search).get("id"); 
       const resp = await fetch( `${BASE_URL}/be/get_question?id=${id}`, {
         method: 'GET',
@@ -29,12 +31,17 @@ onMount(async () => {
         
       });
   
+        debugger;
     if (resp.ok) {
-        // debugger;
         const data = await resp.json();
         question  = data.question //===> important
+        if (question.slides){
         let slides = question.slides;
         slide  = slides[0];
+        }else {
+        question.slides = [];
+        slide  = slides[0];
+        }
         isLogin = true;
         isAdmin = data.isAdmin;
 

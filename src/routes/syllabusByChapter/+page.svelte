@@ -112,7 +112,8 @@ return url;
 <PageWrapper>
 
 <div class='flex justify-center   p-2 '>
- <HdgWithIcon bgColor='bg-stone-500' icon={Icons.MANAGER }>Syllabus FBISE-9th By Chapter</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-500' icon={Icons.MANAGER }>
+ FBISE 9 Math </HdgWithIcon>
 </div>
 {#if questions}
 <Summary {questions}/>
@@ -127,8 +128,7 @@ return url;
   <br/>
 <div class="flex flex-wrap justify-center w-full">
     {#each printableQuestions as question}
-        <!-- {#if question.chapter == selectedChapter} -->
-        <!-- {#if question.status == selectedStatus || selectedStatus == 'all' } -->
+
         <div class='w-3/12'>
             <Card
             title = {`Ch:${question.chapter} Ex:${question.partNo.exercise} Q:${question.partNo.questionNo}`}
