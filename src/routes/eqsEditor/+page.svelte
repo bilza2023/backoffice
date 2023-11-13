@@ -8,7 +8,7 @@ import Nav from '$lib/appComp/Nav.svelte';
 import EqEditor from "$lib/Presentation/slides/eqs/EqsEditor/EqsEditor.svelte";
 import { themes } from '$lib/Presentation';
 import PageHeading from './PageHeading.svelte';
-
+import getNewSlide from '$lib/Presentation/getNewSlide/getNewSlide';
 let slide;
 let theme = themes.basic;
 let question;
@@ -31,7 +31,7 @@ onMount(async () => {
         
       });
   
-        debugger;
+        // debugger;
     if (resp.ok) {
         const data = await resp.json();
         question  = data.question //===> important
@@ -39,8 +39,10 @@ onMount(async () => {
         let slides = question.slides;
         slide  = slides[0];
         }else {
+        const newSlidelide = getNewSlide('Eqs');
         question.slides = [];
-        slide  = slides[0];
+        question.slides.push(newSlidelide);
+        slide  = newSlidelide;
         }
         isLogin = true;
         isAdmin = data.isAdmin;

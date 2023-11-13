@@ -88,22 +88,7 @@ const newSlide =  {
   version : '',    
   slideExtra : [],    
   /////////////////
- items :[
-      {name: '' , content : '' , extra : {
-            type : 'hdg',
-            step : 1,
-            code : 'This is a heading',
-            startTime : 0,//This is item start and end time
-            endTime : 10,
-            sp:[ 
-                  {code : 'Step one', type: 'text', },
-                  {code : 'Step one', type: 'text', },
-                  ],
-            fs:[
-                  {code : 'This is full Screen', type: 'text', }
-            ]
-      }}
-    ]
+ items :[]
 };
     newSlide.uuid = uuid();
     return newSlide;
