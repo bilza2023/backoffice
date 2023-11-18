@@ -11,6 +11,7 @@ import { themes ,Presentation} from '$lib/Presentation';
 // import MainNav from '$lib/appComp/MainNav.svelte';
 import SoundPlayer from './SoundPlayer.svelte';
 import readSlides from '$lib/tdf/readSlides';
+import save from './save.js';
 
 let slides;
 let item;
@@ -19,30 +20,57 @@ let tcode;
 let isPlaying=false;
 let theme = themes.basic;
 let hydrateInterval=null;
+let editTimeCounter = 1;
  
 onMount(async ()=>{
 //http://localhost:5173/player?tcode=fbise9math&id=653113340a6eaa163e9f89d0  
 id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
-debugger;
+
 let data  = await readSlides(id,tcode);
 let returnSlides  = data.slides;
 item  = data.item;
 
-// console.log(item.filename);
-returnSlides[0].endTime = 100;
 if (returnSlides){slides = returnSlides}
 else {throw new Error('Failed to load');}
+
+let soundFileUrl = `/mathSounds/${item.filename}.mp3`;
+// debugger;
+let sound = new Howl({
+    src: [soundFileUrl],
+    volume: 1.0,
+    onload: function() {
+        // console.log('sound.duration()' , sound.duration());
+        slides[0].startTime = 0;
+        slides[0].endTime = Math.ceil(sound.duration());
+
+        slides[0].items[0].extra.startTime = 0;
+        slides[0].items[slides[0].items.length -1].extra.endTime = Math.ceil(sound.duration());
+        editTimeCounter =1; //this will next start 1 and end 0
+        // console.log('slides', slides);
+    }
+    });
 // hydrate();
 });
 
+function saveLocal(){
+// debugger;
+const question = item;
+question.slides = slides; 
+save(question);
 
+}
 let interval=null;
 let pulse=0;
 let currentSlide = null;
 
 function setPulse(time){
-pulse = time;
+  slides[0].items[editTimeCounter - 1].extra.endTime = Math.round(pulse);
+  slides[0].items[editTimeCounter].extra.startTime = Math.round(pulse);
+  const msg = "Time :" +  pulse + "added to :"  +editTimeCounter;
+ toast.push( msg  );
+  editTimeCounter +=1;
+console.log("Time Now : " , slides);
 }
 function applyTheme(themeKey){
 // debugger;
@@ -77,29 +105,6 @@ function setCurrentSlide(){
  }
 }
 
-async function fileExists(url) {
-  try {
-    const response = await fetch(url);
-    return response.status === 200;
-  } catch (error) {
-    return false;
-  }
-}
-
-async function getSoundFile(filename) {
-  const soundFile = `./mathSounds/${filename}.mp3`;
-  
-  if (await fileExists(soundFile)) {
-    return soundFile;
-  } else {
-    return './mathSounds/test.mp3';
-  }
-}
-function changeSeek(newSeekValue){
-    moveSeek = parseInt(newSeekValue);
-    // console.log("seek", newSeekValue);
-}
-
 $:{
  pulse;
 //  console.log(pulse);
@@ -112,7 +117,8 @@ setCurrentSlide();
 
 {#if  item  }
 <div class='flex justify-start sticky top-0 w-full p-1 m-0 bg-gray-600'>
-<SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/${item.filename}.mp3`}/>
+<SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/${item.filename}.mp3`} save={saveLocal}/>
+<!-- <SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/test.mp3`} save={saveLocal}/> -->
 </div>
 {/if}
 

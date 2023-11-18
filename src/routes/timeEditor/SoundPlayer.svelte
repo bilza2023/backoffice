@@ -8,6 +8,7 @@ export let pulse=0;
 export let isPlaying=false;
 export let soundFile;
 export let moveSeek=()=>{};
+export let save=()=>{};
 //=============================
 
 $:{
@@ -106,5 +107,11 @@ onMount(async()=>{
     <input class='w-full'  type="range"  id="timeSlider" value={pulse} min=0 max={maxSliderValue} 
     on:change={(e)=>changeSeek(e.target.value)}
     > </div>  
+
+      <button class="bg-blue-500 hover:bg-green-700 text-white text-xs 
+    py-1 px-2 mx-2 rounded" on:click={save}>
+      {Icons.SAVE}
+    </button>
+
   </div>
 </div>
