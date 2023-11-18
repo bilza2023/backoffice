@@ -19,7 +19,6 @@ let id;
 let tcode;
 let isPlaying=false;
 let theme = themes.basic;
-let hydrateInterval=null;
 let editTimeCounter = 1;
  
 onMount(async ()=>{
@@ -50,7 +49,7 @@ let sound = new Howl({
         // console.log('slides', slides);
     }
     });
-// hydrate();
+
 });
 
 function saveLocal(){
@@ -64,7 +63,7 @@ let interval=null;
 let pulse=0;
 let currentSlide = null;
 
-function setPulse(time){
+function setTime(time){
   slides[0].items[editTimeCounter - 1].extra.endTime = Math.round(pulse);
   slides[0].items[editTimeCounter].extra.startTime = Math.round(pulse);
   const msg = "Time :" +  pulse + "added to :"  +editTimeCounter;
@@ -80,17 +79,6 @@ theme = themes[themeKey];
 function gameloop(){
     pulse++;
     setCurrentSlide();
-}
-
-function hydrate(){
-start();
- hydrateInterval =  setInterval(stopHydrate,2000);
-}
-
-function stopHydrate(){
-    clearInterval(hydrateInterval);
-    stop();
-    pulse = 0;
 }
 
 
@@ -117,7 +105,7 @@ setCurrentSlide();
 
 {#if  item  }
 <div class='flex justify-start sticky top-0 w-full p-1 m-0 bg-gray-600'>
-<SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/${item.filename}.mp3`} save={saveLocal}/>
+<SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/${item.filename}.mp3`} save={saveLocal} {setTime}/>
 <!-- <SoundPlayer   bind:pulse={pulse} bind:isPlaying={isPlaying} soundFile={`/mathSounds/test.mp3`} save={saveLocal}/> -->
 </div>
 {/if}
@@ -125,7 +113,7 @@ setCurrentSlide();
 {#if  currentSlide  }
 <!-- {currentSlide} {theme} {pulse} and displayMode -->
 <!-- Thats all only these 4 inputs keep in mind there is just 1 slide that being currentSlide AND theme is external -->
-    <Presentation {currentSlide} {theme} {pulse} {setPulse}/>
+    <Presentation {currentSlide} {theme} {pulse}/>
 {/if}
 
 </div><!--page wrapper-->

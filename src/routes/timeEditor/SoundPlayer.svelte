@@ -7,8 +7,10 @@ import { Howl } from 'howler';
 export let pulse=0;
 export let isPlaying=false;
 export let soundFile;
+export let setTime;
 export let moveSeek=()=>{};
 export let save=()=>{};
+let hydrateInterval=null;
 //=============================
 
 $:{
@@ -78,8 +80,20 @@ sound = new Howl({
     }
     });
 }
+function hydrate(){
+start();
+ hydrateInterval =  setInterval(stopHydrate,2000);
+}
+
+function stopHydrate(){
+    clearInterval(hydrateInterval);
+    stop();
+    pulse = 0;
+}
+
+
 onMount(async()=>{
-    // loadSound();
+   hydrate();
 });
 </script>
 
@@ -90,6 +104,13 @@ onMount(async()=>{
     py-1 px-2 mx-2 rounded" href='/'>
       {Icons.HOUSE}
  </a>
+
+
+      <button class="bg-blue-500 hover:bg-green-700 text-white text-xs 
+    py-1 px-2 mx-2 rounded" on:click={setTime}>
+      {Icons.CLOCK}
+    </button>
+
 
     <button class="bg-blue-500 hover:bg-green-700 text-white text-xs 
     py-1 px-2 mx-2 rounded" on:click={start}>

@@ -3,7 +3,8 @@
 import { Card } from '$lib/cmp';
 import {Icons } from '$lib/util';
 export let questions;
-export let getUrl;
+// export let getUrl;
+export let isAdmin=false;
 export let selectedEx;
 
     let showQs=true;
@@ -52,6 +53,12 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
             {#if question.status !== 'unlocked' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                 <a href= {`/player?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.START}</a>
+                </div>
+            {/if}
+            
+            {#if isAdmin }
+                <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
+                <a href= {`/timeEditor?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.EXPLOSION}</a>
                 </div>
             {/if}
             
