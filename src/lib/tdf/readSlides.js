@@ -15,7 +15,7 @@ export default async function readSlides(id,tcode){
 // 
   if(resp.ok){
     const data = await resp.json();
-    return data.slides; 
+    return data; 
   }else {
     return false;
   }
