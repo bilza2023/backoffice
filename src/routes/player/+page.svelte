@@ -22,12 +22,12 @@ onMount(async ()=>{
 id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
 
-let returnSlides  = await readSlides(id,tcode);
+let val  = await readSlides(id,tcode);
 // debugger;
-returnSlides[0].endTime = 100;
-if (returnSlides){slides = returnSlides}
+// returnSlides[0].endTime = 100;
+if (val){slides = val.slides;} //we also have val.item
 else {throw new Error('Failed to load');}
-hydrate();
+// hydrate();
 });
 
 
@@ -67,6 +67,7 @@ function stop(){
 }
 
 function setCurrentSlide(){
+//  debugger;
  for (let i = 0; i < slides.length; i++) {
  const slide = slides[i];
         if (pulse >= slide.startTime && pulse < slide.endTime ){
