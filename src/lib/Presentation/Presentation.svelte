@@ -12,6 +12,7 @@ import TblStr from "./slides/TblStr.svelte";
 import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
 import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
+// import GridPlayer from "./slides/grid/girdPlayer/GridPlayer.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
@@ -65,11 +66,21 @@ export let displayMode = true;
         <TblStrEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
     {/if}
 {/if}
+
 <!-- Eqs -->
 {#if currentSlide.type == 'Eqs' }
     {#if  displayMode}
         <EqPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
         <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
+    {/if}
+{/if}
+
+<!-- grid -->
+{#if currentSlide.type == 'grid' }
+    {#if  displayMode}
+        <!-- <GridPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/> -->
+    {:else}
+        <!-- <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} /> -->
     {/if}
 {/if}
