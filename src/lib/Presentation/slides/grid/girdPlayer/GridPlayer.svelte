@@ -1,65 +1,33 @@
-<svelt:head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
-</svelt:head>
+<svelte:head>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+</svelte:head>
 <script>
 //@ts-nocheck
-import GridPanel from "./GridPanel.svelte";
-// import getNewCol from "./getNewCol.js";
-// import saveFn from "./save";
 
-let global = {bgColor: "#293544", fontSize: 1, padding: 4,margin:1,cellBorderColor:"#e52222" ,cellFontColor : "white",showGrid : true,gridColor: "#384556" }
-let rows;
-let showPanel = "gridPanel"
-let data = {}; //?
-export let question;
-let questionDetails;
-let isLogin = false;
-let  isAdmin = false;
-function redraw(){rows = [...rows]}
-
-const addRow = () => {
- //  debugger;
- // Row must have atleast 1 item or the Array.fill will not work
- const newRow = Array(rows[0].length).fill(getNewCol());
-    rows.push(newRow);
-    redraw();
-    // console.log("rows" , rows);
-}
-const addCol = () => {
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i];
-    row.push(getNewCol());
-  }
-  // console.log("rows", rows);
-  redraw();
-}
-const delRow = () => {
-    if (rows.length > 0) {
-        rows.pop(); // Remove the last row
-        redraw();
-        // console.log("rows", rows);
-    }
-}
-
-const delCol = () => {
-    if (rows.length > 0 && rows[0].length > 0) {
-        for (let i = 0; i < rows.length; i++) {
-            rows[i].pop(); // Remove the last element from each row
-        }
-        redraw();
-        // console.log("rows", rows);
-    }
-}
-
-function save(){
-saveFn(question,global,rows,[],[]);
-}
+// import Katex from "svelte-katex";
+import Cell from './Cell.svelte';
+export let items;
+export let pulse;
+export let slideExtra;
+// export let rowsCount;
+</script> 
 
 
-</script>
-
-<div>
-<GridPanel  {global} {save} bind:rows={rows} {addRow} {addCol} {delRow} {delCol}/>
-
-</div>
+    <table>
+        {#each items as item, i (item)}
+            {#if i % slideExtra[0].value === 0}
+                <tr>
+            {/if}
+              <Cell {item} itemIndex={i} {pulse}/>
+              
+            {#if (i + 1) % slideExtra[0].value === 0 || (i + 1) === items.length}
+                {#if (i + 1) % slideExtra[0].value !== 0}
+                    {#each Array(slideExtra[0].value - (i + 1) % slideExtra[0].value) as _}
+                        <td class="border-2 border-white"></td>
+                    {/each}
+                {/if}
+                {@html `</tr>`}
+            {/if}
+        {/each}
+    </table>
 

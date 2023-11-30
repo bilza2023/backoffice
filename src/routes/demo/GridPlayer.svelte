@@ -6,22 +6,23 @@
 
 // import Katex from "svelte-katex";
 import Cell from './Cell.svelte';
-export let currentSlide;
+export let items;
 export let pulse;
-export let rowsCount;
+export let slideExtra;
+// export let rowsCount;
 </script> 
 
 
     <table>
-        {#each currentSlide[0].items as item, i (item)}
-            {#if i % rowsCount === 0}
+        {#each items as item, i (item)}
+            {#if i % slideExtra[0].value === 0}
                 <tr>
             {/if}
               <Cell {item} itemIndex={i} {pulse}/>
               
-            {#if (i + 1) % rowsCount === 0 || (i + 1) === currentSlide[0].items.length}
-                {#if (i + 1) % rowsCount !== 0}
-                    {#each Array(rowsCount - (i + 1) % rowsCount) as _}
+            {#if (i + 1) % slideExtra[0].value === 0 || (i + 1) === items.length}
+                {#if (i + 1) % slideExtra[0].value !== 0}
+                    {#each Array(slideExtra[0].value - (i + 1) % slideExtra[0].value) as _}
                         <td class="border-2 border-white"></td>
                     {/each}
                 {/if}
