@@ -70,10 +70,10 @@ saveFn(question,global,rows,[],[]);
 
 <div>
 {#if showPanel == "globalPanel"}
-<GlobalPanel bind:global={global} />
+<!-- <GlobalPanel bind:global={global} /> -->
 {/if}
 {#if showPanel == "SBPanel"}
-<SPPanel />
+<!-- <SPPanel /> -->
 {/if}
 
 <GridPanel  {global} {save} bind:rows={rows} {addRow} {addCol} {delRow} {delCol}/>

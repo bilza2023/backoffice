@@ -14,6 +14,7 @@ import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
 import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 
 import GridPlayer from "./slides/grid/girdPlayer/GridPlayer.svelte";
+import GridEditor from "./slides/grid/girdEditor/GridEditor.svelte";
 
 import {HdgImgEd} from '$lib/Presentation/slides';
 
@@ -83,6 +84,6 @@ export let displayMode = true;
     {#if  displayMode}
         <GridPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
-        <!-- <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} /> -->
+        <GridEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
     {/if}
 {/if}

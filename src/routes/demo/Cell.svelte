@@ -1,39 +1,56 @@
 <script>
 //@ts-nocheck
-import {onMount} from '$lib/util'
-import Katex from "svelte-katex";
+
 export let item;
-export let pulse;
-export let itemIndex;
 
-function clr(item){
- if (pulse >= item.showAt ){
-    return 'white';
- }else {
-    return '#1F2937';
- }
+
+function toggleBorder(bdr){
+    item[bdr] = !item[bdr]; 
+    console.log(item[bdr]);
 }
-
-
 </script>
 
-        <td class="border-2 border-white" 
-        style= {`
-            min-width: 70px;
-            min-height: 70px;
-            border-left-color : ${item.blc};
-            border-top-color : ${item.btc};
-            border-right-color : ${item.brc};
-            border-bottom-color : ${item.bbc};
-            font-size : 1em;
-            margin : 2px;
-            padding : 2px;
-            color : ${clr(item)};
-        `}
-        
-        
-        id={`${itemIndex}`}
-        >
-            <Katex>{item.content}</Katex>
-          
-        </td>
+
+<td class='border-2 border-white p-2 flex-grow'>
+
+<div class='flex justify-center'>
+content: 
+<input class='bg-gray-700 mb-2 rounded-md ml-1'
+type="text" bind:value={item.content}>
+</div>
+
+<div class='flex justify-center'>
+showAt:  
+<input class='bg-gray-700 mb-2 rounded-md ml-1'
+type="number" bind:value={item.showAt}>
+
+</div>
+
+
+    <div class='text-center'>
+        <button class="{item.bl ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bl')}>bl</button>
+        <button class="{item.bt ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bt')}>bt</button>
+        <button class="{item.br ? "btnGreen":"btn"}" on:click={()=>toggleBorder('br')}>br</button>
+        <button class="{item.bb ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bb')}>bb</button>
+    </div>
+
+</td>
+
+
+<style>
+.btn {
+    padding : 1px;
+    border-radius: 10px;
+    border : 1px solid silver;
+    color:black;
+    background-color: bisque;
+}
+.btnGreen {
+    padding : 1px;
+    border-radius: 10px;
+    border : 1px solid silver;
+    color:black;
+    background-color: green;
+}
+
+</style>

@@ -5,7 +5,7 @@ export default function demoData(){
 return  {
         startTime : 0,
         endTime : 100,
-        slideExtra : [ {key: 'rowCount' , value: 2} ],
+        slideExtra : [ {key: 'colCount' , value: 2} ],
         type : 'grid',
 
         items : [
