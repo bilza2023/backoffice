@@ -6,7 +6,7 @@ export let item;
 
 function toggleBorder(bdr){
     item[bdr] = !item[bdr]; 
-    console.log(item[bdr]);
+    // console.log(item[bdr]);
 }
 </script>
 
@@ -15,7 +15,7 @@ function toggleBorder(bdr){
 
 <div class='flex justify-center'>
 content: 
-<input class='bg-gray-700 mb-2 rounded-md ml-1'
+<input class='bg-gray-700 mb-2 rounded-md ml-1 text-center'
 type="text" bind:value={item.content}>
 </div>
 

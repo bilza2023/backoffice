@@ -2,10 +2,10 @@
 //@ts-nocheck
 
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
-// import GridPlayer from './GridPlayer.svelte';
+import GridEditor from './gridEditor/GridEditor.svelte';
 import Presentation from '$lib/Presentation/Presentation.svelte';
 import demoData from '$lib/Presentation/slides/grid/demoData';
-import Cell from './Cell.svelte';
+import Cell from './gridEditor/Cell.svelte';
 let pulse = 0;
 function gameLoop(){pulse+=1;console.log(pulse);currentSlide=currentSlide;}
 
@@ -19,8 +19,8 @@ let currentSlide = {
     {
         name: "",
         content: [
-            { "content": "aaa", "showAt": 3, "bl": true, "bt": false, "br": false, "bb": false },
-            { "content": "bbb", "showAt": 3, "bl": true, "bt": false, "br": false, "bb": false }
+            { "content": "aaa", "showAt": 0, "bl": true, "bt": false, "br": false, "bb": false },
+            { "content": "bbb", "showAt": 0, "bl": true, "bt": false, "br": false, "bb": false }
         ],
         showAt: 0,
         extra: {}
@@ -28,8 +28,8 @@ let currentSlide = {
     {
         name: "",
         content: [
-            { "content": "ccc", "showAt": 3, "bl": true, "bt": false, "br": false, "bb": false },
-            { "content": "ddd", "showAt": 3, "bl": true, "bt": false, "br": false, "bb": false }
+            { "content": "ccc", "showAt": 0, "bl": true, "bt": false, "br": false, "bb": false },
+            { "content": "ddd", "showAt": 0, "bl": true, "bt": false, "br": false, "bb": false }
         ],
         showAt: 0,
         extra: {}
@@ -38,97 +38,18 @@ let currentSlide = {
 
 }
 onMount(async ()=>{
-    for (let i = 0; i < currentSlide.items.length; i++) {
-        const item = currentSlide.items[i].content;
-        console.log(item);
-    }
+    // for (let i = 0; i < currentSlide.items.length; i++) {
+    //     const item = currentSlide.items[i].content;
+    //     console.log(item);
+    // }
 // currentSlide = demoData();
     // setInterval(gameLoop,1000);
 });
-
-function addCol() {
-  // Add an empty cell to each row
-  currentSlide.items.forEach((item) => {
-    item.content.push({
-      "content": "", // Empty content
-      "showAt": 0,
-      "bl": false,
-      "bt": false,
-      "br": false,
-      "bb": false
-    });
-  });
-  currentSlide = currentSlide;
-}
-
-function addRow() {
-  if (currentSlide.items.length === 0 || currentSlide.items[0].content.length === 0) {
-    return;
-  }
-  const colCount = currentSlide.items[0].content.length;
-  const newRow = {
-    name: "",
-    content: Array.from({ length: colCount }, () => ({
-      "content": "", // Empty content
-      "showAt": 0,
-      "bl": false,
-      "bt": false,
-      "br": false,
-      "bb": false
-    })),
-    showAt: 0,
-    extra: {}
-  };
-
-  currentSlide.items.push(newRow);
-  currentSlide = currentSlide;
-}
 
 function save(){
 console.log(currentSlide);
 }
 </script> 
 
-<div class='bg-gray-800 text-white w-full min-h-screen'>
-<br>
-<button class='btn'  on:click={addCol}>Add Col</button>
-<button class='btn'  on:click={addRow}>Add Row</button>
-<button class='btn'  on:click={save}>Save</button>
-<br>
 
-<div class='flex justify-center w-full table-container'>
-
-{#if currentSlide}
-  <table>
-    {#each currentSlide.items as item, itemIndex}
-      <tr>
-        {#each item.content as item, cellIndex}
-          <!-- {#if cell.showAt <= pulse} -->
-          <Cell  bind:item={item} />
-            
-          <!-- {/if} -->
-        {/each}
-      </tr>
-    {/each}
-  </table>
-{/if}
-
-
-</div>
-</div><!--page wrapper-->
-
-<style>
-  .bg-gray-800 {
-    overflow-x: auto; /* Add this line to enable horizontal scrolling */
-  }
-
-  .table-container {
-    overflow-x: auto;
-  }
-.btn {
-    border-radius: 10px;
-    background-color: cadetblue;
-    padding :2px;
-}
-  /* Rest of your styles remain unchanged */
-</style>
+<GridEditor  {pulse}  {currentSlide} />
