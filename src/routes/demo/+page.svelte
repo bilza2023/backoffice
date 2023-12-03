@@ -2,10 +2,10 @@
 //@ts-nocheck
 
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
-import GridEditor from './gridEditor/GridEditor.svelte';
-import Presentation from '$lib/Presentation/Presentation.svelte';
-import demoData from '$lib/Presentation/slides/grid/demoData';
-import Cell from './gridEditor/Cell.svelte';
+// import GridEditor from './gridEditor/GridEditor.svelte';
+// import GridPlayer from './gridPlayer/GridPlayer.svelte';
+// import {theme} from 
+import { themes ,Presentation} from '$lib/Presentation';
 let pulse = 0;
 function gameLoop(){pulse+=1;console.log(pulse);currentSlide=currentSlide;}
 
@@ -51,5 +51,12 @@ console.log(currentSlide);
 }
 </script> 
 
+<div class='bg-gray-800 text-white w-full min-h-screen'>
 
-<GridEditor  {pulse}  {currentSlide} />
+<br>
+<Presentation {currentSlide} {pulse} {themes} displayMode={false}/>
+<!-- <GridPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} /> -->
+
+
+ <!-- <GridEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} /> -->
+</div>

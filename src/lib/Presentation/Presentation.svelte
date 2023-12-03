@@ -13,8 +13,8 @@ import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
 import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 
-import GridPlayer from "./slides/grid/girdPlayer/GridPlayer.svelte";
-import GridEditor from "./slides/grid/girdEditor/GridEditor.svelte";
+import GridPlayer from "./slides/grid/gridPlayer/GridPlayer.svelte";
+import GridEditor from "./slides/grid/gridEditor/GridEditor.svelte";
 
 import {HdgImgEd} from '$lib/Presentation/slides';
 
