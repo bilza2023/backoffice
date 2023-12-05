@@ -86,8 +86,7 @@ function setCurrentSlide(){
 
 
 {#if currentSlide}
-<!-- {currentSlide} {theme} {pulse} and displayMode -->
-<!-- Thats all only these 4 inputs keep in mind there is just 1 slide that being currentSlide AND theme is external -->
+
     <Presentation {currentSlide} {theme} {pulse} {setPulse}/>
 {/if}
 

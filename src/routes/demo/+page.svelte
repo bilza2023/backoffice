@@ -55,8 +55,5 @@ console.log(currentSlide);
 
 <br>
 <Presentation {currentSlide} {pulse} {themes} displayMode={false}/>
-<!-- <GridPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} /> -->
 
-
- <!-- <GridEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} /> -->
 </div>
