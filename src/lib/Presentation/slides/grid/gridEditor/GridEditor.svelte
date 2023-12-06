@@ -1,9 +1,10 @@
 <script>
 //@ts-nocheck
 import Cell from './Cell.svelte';
+import {NavBtn2} from '$lib/cmp';
+import {Icons} from '$lib/util';
 
 // export let pulse = 0;
-export let save;
 export let items;
 
 function addCol() {
@@ -65,12 +66,13 @@ function delCol() {
 </script> 
 
 
+<div class='flex'>
+  <NavBtn2 title='Add Col' icon={Icons.BULB}  clk={addCol} />
+  <NavBtn2 title='Add Row' icon={Icons.BULB} clk={addRow} />
+  <NavBtn2 title='Del Row' icon={Icons.DEL} clk={delRow} />
+  <NavBtn2 title='Del Col' icon={Icons.DEL} clk={delCol} />
 
-<button class='btn'  on:click={addCol}>Add Col</button>
-<button class='btn'  on:click={addRow}>Add Row</button>
-<button class='btnRed'  on:click={delRow}>Del Row</button>
-<button class='btnRed'  on:click={delCol}>Del Col</button>
-<button class='btn'  on:click={save}>Save</button>
+</div>
 
 <br>
 <br>

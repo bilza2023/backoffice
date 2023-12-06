@@ -10,6 +10,7 @@ import {browser,onMount,toast,BASE_URL} from '$lib/util'
 import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
 import readSlides from '$lib/tdf/readSlides';
+import parse from './fn/parse.js';
 
 let slides;
 let id;
@@ -23,9 +24,14 @@ id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
 
 let val  = await readSlides(id,tcode);
-// debugger;
-// returnSlides[0].endTime = 100;
-if (val){slides = val.slides;} //we also have val.item
+  let returnSlides  = await readSlides(id,tcode);
+   
+ if (returnSlides){
+//   slides  = returnSlides.slides;
+//  debugger;
+  slides = await parse(returnSlides.slides);
+  currentSlide = slides[0];
+ }
 else {throw new Error('Failed to load');}
 // hydrate();
 });
@@ -84,7 +90,7 @@ function setCurrentSlide(){
 <PlayButtons   {start} {stop} {pulse} callback={applyTheme} />
 </div>
 
-
+<br>
 {#if currentSlide}
 
     <Presentation {currentSlide} {theme} {pulse} {setPulse}/>

@@ -1,4 +1,4 @@
-//here is parse function using slide.type == 'grid' etc i will parse any other slide types that needs to be parsed.
+ //here is parse function using slide.type == 'grid' etc i will parse any other slide types that needs to be parsed.
 
 //@ts-nocheck
 export default async function parse(slides){

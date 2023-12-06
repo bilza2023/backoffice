@@ -3,7 +3,7 @@
 </svelte:head>
 <script>
 //@ts-nocheck
-
+ 
 // import Katex from "svelte-katex";
 import Cell from './Cell.svelte';
 export let items;
@@ -20,12 +20,13 @@ export let slideExtra;
     {#each items as item, itemIndex}
       <tr>
         {#each item.content as item, cellIndex}
-          {#if item.showAt <= pulse}
-          <td class='border-2 border-white p-2'>
-          {item.content}
-          </td>
+          <!-- {#if item.showAt <= pulse} -->
+          <!-- <td class='border-2 border-white p-2'> -->
+          <!-- {item.content} -->
+          <Cell  {item}   {pulse} />
+          <!-- </td> -->
             
-          {/if}
+          <!-- {/if} -->
         {/each}
       </tr>
     {/each}

@@ -6,6 +6,8 @@
   import readSlides from '$lib/tdf/readSlides';
   import Presentation from '$lib/Presentation/Presentation.svelte';
   import parse from './fn/parse.js';
+  import LeftPanel from './LeftPanel.svelte';
+import {gridData} from './fn/gridData';
 
  let currentSlide;
  let slides;
@@ -14,45 +16,50 @@
 
  
 
-function stringify(){
-  for (let i = 0; i < slides.length; i++) {
-    const slide = slides[i];
-      if (slide.type == 'grid'){
-        for (let j = 0; j < slide.items.length; j++) {
-          const item = slide.items[j];
-          item.content = JSON.stringify(item.content);
-        }
-      }
-  }
-}
+// onMount(async ()=>{
+//  id = '656871a9fab6e4f916ebff25';
+// //   slides  = returnSlides.slides;
+// //  debugger;
+// //   slides = await parse(returnSlides.slides);
+//   slides = [];
+//   slides.push(gridData);
+
+//   currentSlide = slides[0];
+
+// });
 
   onMount(async ()=>{
-//  debugger;
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
   let returnSlides  = await readSlides(id,tcode);
    
  if (returnSlides){
-  slides  = returnSlides.slides;
-  parse();
-  currentSlide = returnSlides.slides[0];
+//   slides  = returnSlides.slides;
+//  debugger;
+  slides = await parse(returnSlides.slides);
+  currentSlide = slides[0];
   }
 else {throw new Error('Failed to load');}
-  });
+});
 
 </script>
 
 <PageWrapper>
 
-<Toolbar /> 
+{#if slides}
+    <Toolbar {slides} {id}  /> 
+{/if}
 
-    <div 
-    class='p-2 ml-1 min-h-screen bg-blue-900 text-center'
-    >
+<div class='flex justify-start '>
+
+    <LeftPanel   {slides} />
+
+    <div class='p-2 ml-1 min-h-screen  text-center' >
         {#if currentSlide}
         <Presentation {currentSlide}  displayMode={false} />
         {/if}
     </div>
+</div>
     
  
   <br>
