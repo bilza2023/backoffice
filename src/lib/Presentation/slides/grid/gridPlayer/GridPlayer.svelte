@@ -20,13 +20,7 @@ export let slideExtra;
     {#each items as item, itemIndex}
       <tr>
         {#each item.content as item, cellIndex}
-          <!-- {#if item.showAt <= pulse} -->
-          <!-- <td class='border-2 border-white p-2'> -->
-          <!-- {item.content} -->
           <Cell  {item}   {pulse} />
-          <!-- </td> -->
-            
-          <!-- {/if} -->
         {/each}
       </tr>
     {/each}

@@ -17,24 +17,20 @@ function clr(item){
 
 </script>
 
-        <td class="border-2  text-center" 
+        <td class="text-center" 
         style= {`
             min-width: 70px;
             min-height: 70px;
-            border-left-color : ${item.bl ? 'red' : '#344356'};
-            border-top-color : ${item.bt ? 'red' : '#344356'};
-            border-right-color : ${item.br ? 'red' : '#344356'};
-            border-bottom-color : ${item.bb ? 'red' : '#344356'};
             font-size : 1em;
-            margin : 2px;
-            padding : 2px;
+            margin : 1px;
+            padding : 1px;
             color : ${pulse >= item.showAt ? 'white' : '#1F2937'};
         `}
         
         
         id={`${itemIndex}`}
         >
-            <div
+            <div class='border-2'
              style= {`
             border-left-color : ${item.bl ? 'red' : '#344356'};
             border-top-color : ${item.bt ? 'red' : '#344356'};
