@@ -44,10 +44,11 @@ else {throw new Error('Failed to load');}
 
 </script>
 
-<PageWrapper>
+
+<div class='bg-gray-800 overflow-x-auto w-full text-white'>
 
 {#if slides}
-    <Toolbar {slides} {id}  /> 
+    <Toolbar {slides} {id}  />  
 {/if}
 
 <div class='flex justify-start '>
@@ -67,4 +68,4 @@ else {throw new Error('Failed to load');}
   <br>
   <br>
 
-</PageWrapper>
+</div>

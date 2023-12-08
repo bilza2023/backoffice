@@ -1,5 +1,6 @@
 <script>
 //@ts-nocheck
+import {toast} from '$lib/util';
 import Cell from './Cell.svelte';
 import {NavBtn2} from '$lib/cmp';
 import {Icons} from '$lib/util';
@@ -8,6 +9,10 @@ import {Icons} from '$lib/util';
 export let items;
 
 function addCol() {
+  if (items.length === 0) {
+    toast.push('No row exists. Please add a row first');
+    return;
+  }
   // Add an empty cell to each row
   items.forEach((item) => {
     item.content.push({
@@ -24,9 +29,18 @@ function addCol() {
 }
 
 function addRow() {
-  if (items.length === 0 || items[0].content.length === 0) {
+  if (items.length === 0) {
+    items.push({
+      name: "",
+      content: [],
+      showAt: 0,
+      extra: {}
+    });
+    items = items;
+    toast.push('Empty row added');
     return;
   }
+  //get number of col in first row since all rows have equal no of col 
   const colCount = items[0].content.length;
   const newRow = {
     name: "",
@@ -64,11 +78,11 @@ function delCol() {
 }
 
 </script> 
+<div class='bg-gray-800 overflow-x-auto w-full'>
 
-
-<div class='flex'>
-  <NavBtn2 title='Add Col' icon={Icons.BULB}  clk={addCol} />
+<div class='flex '>
   <NavBtn2 title='Add Row' icon={Icons.BULB} clk={addRow} />
+  <NavBtn2 title='Add Col' icon={Icons.BULB}  clk={addCol} />
   <NavBtn2 title='Del Row' icon={Icons.DEL} clk={delRow} />
   <NavBtn2 title='Del Col' icon={Icons.DEL} clk={delCol} />
 
@@ -95,6 +109,7 @@ function delCol() {
 {/if}
 
 
+</div>
 </div>
 
 <style>

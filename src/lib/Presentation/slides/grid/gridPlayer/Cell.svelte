@@ -32,11 +32,13 @@ function clr(item){
         >
             <div class='border-2'
              style= {`
+            min-width: 70px;
+            min-height: 70px; 
             border-left-color : ${item.bl ? 'red' : '#344356'};
             border-top-color : ${item.bt ? 'red' : '#344356'};
             border-right-color : ${item.br ? 'red' : '#344356'};
             border-bottom-color : ${item.bb ? 'red' : '#344356'};
-        `}
+            `}
             >
                 <Katex>{item.content}</Katex>
             </div>
