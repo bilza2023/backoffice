@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {NavBtn2} from '$lib/cmp';
+import {NavBtn2,Logo} from '$lib/cmp';
 import {Icons} from '$lib/util';
 import save from './fn/save';
 let show  = false;
@@ -43,11 +43,12 @@ function shiftTime(slideIndex, newEndTime) {
 <div class='flex justify-between  bg-gray-600 m-0 p-0 items-center gap-1'>
  
   <div class='flex justify-start'>
+    <Logo url='/' /> 
     <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={()=>save(slides,id)} />
   </div> 
 
-  <div class='flex justify-end m-0 p-1 items-center gap-1 border-2 border-white rounded-md '>
+  <div class='flex justify-end m-0 p-0 items-center gap-1 border-2 border-white rounded-md '>
   {#if slides.length > 0}
     Start Time: &nbsp;
     <div class='bg-gray-500 text-white p-0 px-4 m-0 rounded-md border-2 border-white'  type="number" >
@@ -58,9 +59,9 @@ function shiftTime(slideIndex, newEndTime) {
     <input class='bg-gray-500 text-white p-0 m-0 rounded-md border-2 border-white'  type="number" bind:value={slides[currentSlideIndex].endTime}
       on:input={() => shiftTime(currentSlideIndex, slides[currentSlideIndex].endTime)}
     >
+  <NavBtn2 title='Del' icon={Icons.DEL}  clk={delCurSlide} />
     {/if}
 
-  <NavBtn2 title='Del' icon={Icons.DEL}  clk={delCurSlide} />
   </div>  
   
 

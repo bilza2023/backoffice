@@ -25,6 +25,7 @@ export { default as InputElm } from './InputElm.svelte';
 export { default as InputEmail } from './InputEmail.svelte';
 export { default as InputTextArea } from './InputTextArea.svelte';
 export { default as Li } from './Li.svelte';
+export { default as Logo } from './Logo.svelte';
 export { default as Lbl } from './Lbl.svelte';
 export { default as Loading } from './Loading.svelte';
 export { default as LinkIconOval } from './LinkIconOval.svelte';
