@@ -24,16 +24,12 @@ onMount(async()=>{
  
         <input type='text' 
         bind:value={items[0].content}
-        class=" rounded-md p-1   w-full border-2" 
-         style = {`
-            color: ${theme.textColor};
-            background-color: ${theme.backgroundColor};
-            border-color: ${theme.secondaryColor};
-        `}
+        class=" rounded-md p-1   w-full border-2 bg-gray-700 text-white" 
+        
           />
         
     <h1
-      class='p-1 m-1'
+      class='p-1 m-1 '
       style = {`
             color: ${theme.secondaryColor};
         `}
@@ -42,12 +38,8 @@ onMount(async()=>{
 
         <input type='text' 
         bind:value={items[1].content}
-        class=" rounded-md p-1 w-full border-2" 
-        style = {`
-            color: ${theme.textColor};
-            background-color: ${theme.backgroundColor};
-            border-color: ${theme.secondaryColor};
-        `}
+        class=" rounded-md p-1 w-full border-2 bg-gray-700 text-white" 
+       
           />
 </div> 
 

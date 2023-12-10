@@ -1,15 +1,31 @@
 <script>
 //@ts-nocheck
+import {Icons} from '$lib/util';
 export let slides;
-export let setCurrentSlide;
+export let setCurrentSlideIndex;
+export let moveDown;
+export let moveUp;
 </script>
 
     <div class='flex flex-col  w-20  bg-green-950' style="border-right: 2px solid white;">
     {#if slides}
         {#each slides as slide,slideIndex}
-            <button on:click={()=>setCurrentSlide(slideIndex)} class='hover:bg-green-600'>
+        <div class='hover:bg-green-600 text-center'>
+
+            <button on:click={()=>setCurrentSlideIndex(slideIndex)} >
                 {slide.type.toUpperCase()}
             </button>
+
+            <div class='flex justify-evenly '>
+                
+                <button class='bg-green-900 '
+                on:click={()=>moveDown(slideIndex)}>{Icons.DOWN}</button>
+
+                <button class='bg-green-900 '
+                on:click={()=>moveUp(slideIndex)}>{Icons.UP}</button>
+
+            </div>
+        </div>
         {/each}
     {/if}
     </div>
