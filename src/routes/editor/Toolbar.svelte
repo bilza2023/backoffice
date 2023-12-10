@@ -44,7 +44,7 @@ function shiftTime(slideIndex, newEndTime) {
   <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
   <NavBtn2 title='Save' icon={Icons.BOOK}  clk={()=>save(slides,id)} />
   
-{#if slides}
+{#if slides.length > 0}
   Start Time: &nbsp;
   <div class='bg-gray-500 text-white p-0 px-4 m-0 rounded-md border-2 border-white'  type="number" >
   {slides[currentSlideIndex].startTime}

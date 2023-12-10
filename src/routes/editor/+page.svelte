@@ -14,6 +14,7 @@
  let slides;
  let id;
  let tcode;
+ let isLoading = true;
 
 async function moveDown(index) {
   if (index < slides.length - 1) {
@@ -40,6 +41,7 @@ async function moveUp(index) {
  }
 
 function delCurSlide(){
+// debugger;
   if (slides.length > 1) {
     slides.splice(currentSlideIndex, 1);
     setCurrentSlideIndex(currentSlideIndex >= slides.length ? slides.length - 1 : currentSlideIndex);
@@ -48,6 +50,7 @@ function delCurSlide(){
     slides = [];
     setCurrentSlideIndex(-1); // Set to an invalid index or handle as needed
   }
+  slides = [...slides];
 }
 
 function getNewStartTime(){
@@ -71,7 +74,7 @@ async function  addNew(slideType){
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
   let returnSlides  = await readSlides(id,tcode);
-   
+    try { 
  if (returnSlides){
 //  debugger;
   slides = await parse(returnSlides.slides);
@@ -79,7 +82,13 @@ async function  addNew(slideType){
       currentSlideIndex = 0;
     }
   }
+
 else {throw new Error('Failed to load');}
+ } catch (error) {
+      console.error(error);
+    } finally {
+      isLoading = false;
+    }
 });
 
 
@@ -94,7 +103,9 @@ else {throw new Error('Failed to load');}
 
 <div class='flex justify-start '>
 
-  {#if slides && currentSlideIndex >= 0 && currentSlideIndex < slides.length}
+  {#if isLoading}
+    <p>Loading...</p>
+  {:else if slides && slides.length > 0} 
 
     <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
 

@@ -34,5 +34,7 @@ export let moveUp;
         
     
         {/each}
+    {:else}
+    <h3>No slides</h3>
     {/if}
     </div>
