@@ -3,6 +3,7 @@
 import {Icons} from '$lib/util';
 export let slides;
 export let setCurrentSlideIndex;
+export let currentSlideIndex;
 export let moveDown;
 export let moveUp;
 </script>
@@ -10,7 +11,11 @@ export let moveUp;
     <div class='flex flex-col  w-20  bg-green-950' style="border-right: 2px solid white;">
     {#if slides}
         {#each slides as slide,slideIndex}
-        <div class='hover:bg-green-600 text-center'>
+
+        <div class='hover:bg-green-600 text-center'
+        style="{slideIndex === currentSlideIndex ? 
+        'border: 2px solid white;border-radius:10px;margin:1px;' : ''}"
+        >
 
             <button on:click={()=>setCurrentSlideIndex(slideIndex)} >
                 {slide.type.toUpperCase()}
@@ -26,6 +31,8 @@ export let moveUp;
 
             </div>
         </div>
+        
+    
         {/each}
     {/if}
     </div>

@@ -34,7 +34,7 @@ function shiftTime(slideIndex, newEndTime) {
       slides[i].endTime = slides[i].startTime + (slides[i].endTime - slides[i].startTime);
     }
   }
- console.log(slides); 
+//  console.log(slides); 
 }
 
 

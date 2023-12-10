@@ -40,8 +40,14 @@ async function moveUp(index) {
  }
 
 function delCurSlide(){
-
-
+  if (slides.length > 1) {
+    slides.splice(currentSlideIndex, 1);
+    setCurrentSlideIndex(currentSlideIndex >= slides.length ? slides.length - 1 : currentSlideIndex);
+  } else {
+    // If there's only one slide, you may want to handle this case differently
+    slides = [];
+    setCurrentSlideIndex(-1); // Set to an invalid index or handle as needed
+  }
 }
 
 function getNewStartTime(){
@@ -80,7 +86,7 @@ else {throw new Error('Failed to load');}
 </script>
 
 
-<div class='bg-gray-800 overflow-x-auto w-full text-white'>
+<div class='bg-gray-800 overflow-x-auto w-full text-white min-h-screen'>
 
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} bind:currentSlideIndex={currentSlideIndex} {delCurSlide}/>  
@@ -88,13 +94,16 @@ else {throw new Error('Failed to load');}
 
 <div class='flex justify-start '>
 
-    <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp}/>
+  {#if slides && currentSlideIndex >= 0 && currentSlideIndex < slides.length}
+
+    <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
 
     <div class='p-2 ml-1 min-h-screen  text-center' >
-        {#if slides}
         <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
-        {/if}
     </div>
+    {:else}
+        <h1>No Slides in the presentation</h1>
+    {/if}
 </div>
     
  
