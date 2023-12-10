@@ -15,13 +15,22 @@
  let id;
  let tcode;
  let isLoading = true;
-
 async function moveDown(index) {
   if (index < slides.length - 1) {
     // Check if the slide is not the last one
     const temp = slides[index];
     slides[index] = slides[index + 1];
     slides[index + 1] = temp;
+
+    // Exchange startTime and endTime
+    const tempStartTime = slides[index].startTime;
+    slides[index].startTime = slides[index + 1].startTime;
+    slides[index + 1].startTime = tempStartTime;
+
+    const tempEndTime = slides[index].endTime;
+    slides[index].endTime = slides[index + 1].endTime;
+    slides[index + 1].endTime = tempEndTime;
+
     setCurrentSlideIndex(index + 1);
   }
 }
@@ -32,10 +41,20 @@ async function moveUp(index) {
     const temp = slides[index];
     slides[index] = slides[index - 1];
     slides[index - 1] = temp;
+
+    // Exchange startTime and endTime
+    const tempStartTime = slides[index].startTime;
+    slides[index].startTime = slides[index - 1].startTime;
+    slides[index - 1].startTime = tempStartTime;
+
+    const tempEndTime = slides[index].endTime;
+    slides[index].endTime = slides[index - 1].endTime;
+    slides[index - 1].endTime = tempEndTime;
+
     setCurrentSlideIndex(index - 1);
   }
 }
- 
+
  async function  setCurrentSlideIndex(index){
  currentSlideIndex = index;
  }
