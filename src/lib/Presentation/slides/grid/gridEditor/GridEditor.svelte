@@ -3,7 +3,7 @@
 import {toast} from '$lib/util';
 import Cell from './Cell.svelte';
 import {NavBtn2} from '$lib/cmp';
-import {Icons} from '$lib/util';
+import Toolbar from './Toolbar.svelte';
 
 // export let pulse = 0;
 export let items;
@@ -78,57 +78,26 @@ function delCol() {
 }
 
 </script> 
-<div class='bg-gray-800 overflow-x-auto w-full'>
 
-<div class='flex '>
-  <NavBtn2 title='Add Row' icon={Icons.BULB} clk={addRow} />
-  <NavBtn2 title='Add Col' icon={Icons.BULB}  clk={addCol} />
-  <NavBtn2 title='Del Row' icon={Icons.DEL} clk={delRow} />
-  <NavBtn2 title='Del Col' icon={Icons.DEL} clk={delCol} />
-
-</div>
-
-<br>
+<Toolbar  {addRow} {addCol} {delRow} {delCol}   />
 <br>
 
-<div class='flex justify-center w-full table-container'>
+<!-- <div class='flex justify-center w-full overflow-auto '> -->
 
 {#if items}
-  <table>
+  <!-- <table> -->
     {#each items as item, itemIndex}
-      <tr>
+    Row:{itemIndex+1}
+      <div class='{`flex flex-wrap w-full gap-1 justify-start ${itemIndex % 2 === 0 ? "bg-gray-700" : "bg-gray-500"}`}'>
+
         {#each item.content as item, cellIndex}
-          <!-- {#if cell.showAt <= pulse} -->
           <Cell  bind:item={item} />
-            
-          <!-- {/if} -->
         {/each}
-      </tr>
+      </div>
+      <br>  
     {/each}
-  </table>
+  <!-- </table> -->
 {/if}
 
 
-</div>
-</div>
-
-<style>
-  .bg-gray-800 {
-    overflow-x: auto; /* Add this line to enable horizontal scrolling */
-  }
-
-  .table-container {
-    overflow-x: auto;
-  }
-.btn {
-    border-radius: 10px;
-    background-color: cadetblue;
-    padding :2px;
-}
-.btnRed {
-    border-radius: 10px;
-    background-color: red;
-    padding :2px;
-}
-  /* Rest of your styles remain unchanged */
-</style>
+<!-- </div> -->

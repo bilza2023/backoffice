@@ -11,30 +11,24 @@ function toggleBorder(bdr){
 </script>
 
 
-<td class='border-2 border-white p-2 flex-grow'>
+<div class='border-2 border-white p-2  w-3/12'>
+        <div>
+        <span class='text-xs'>content:</span> 
+        <input class='bg-gray-900 mb-2 rounded-md ml-1 text-center'
+        type="text" bind:value={item.content}>
 
-<div class='flex justify-center'>
-content: 
-<input class='bg-gray-700 mb-2 rounded-md ml-1 text-center'
-type="text" bind:value={item.content}>
-</div>
+        <span class='text-xs'>showAt:</span> 
+        <input class='bg-gray-900 mb-2 rounded-md ml-1'
+        type="number" bind:value={item.showAt}>
+        </div>
 
-<div class='flex justify-center'>
-showAt:  
-<input class='bg-gray-700 mb-2 rounded-md ml-1'
-type="number" bind:value={item.showAt}>
-
-</div>
-
-
-    <div class='text-center'>
+        <div>
         <button class="{item.bl ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bl')}>bl</button>
         <button class="{item.bt ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bt')}>bt</button>
         <button class="{item.br ? "btnGreen":"btn"}" on:click={()=>toggleBorder('br')}>br</button>
         <button class="{item.bb ? "btnGreen":"btn"}" on:click={()=>toggleBorder('bb')}>bb</button>
-    </div>
-
-</td>
+        </div>
+</div>
 
 
 <style>

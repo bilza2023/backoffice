@@ -11,9 +11,11 @@
 
  let currentSlideIndex;
  let slides;
+ let show=false; // new slide bar
  let id;
  let tcode;
  let isLoading = true;
+ let showSidePanel = true;
 
 async function save(){
  saveFinal(slides,tcode,id);
@@ -60,6 +62,7 @@ async function moveUp(index) {
 }
 
  async function  setCurrentSlideIndex(index){
+//  debugger;
  currentSlideIndex = index;
  }
 
@@ -90,6 +93,7 @@ async function  addNew(slideType){
  newSlide.endTime = st+10;
  slides = [...slides, newSlide];
  setCurrentSlideIndex(slides.length-1);
+ show = false;
 }
 
 
@@ -121,7 +125,8 @@ else {throw new Error('Failed to load');}
 <div class='bg-gray-800 overflow-x-auto w-full text-white min-h-screen'>
 
 {#if slides}
-    <Toolbar bind:slides={slides} {id} {addNew} bind:currentSlideIndex={currentSlideIndex} {delCurSlide} {save}/>  
+    <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
+    {setCurrentSlideIndex} />  
 {/if}
 
 <div class='flex justify-start w-full'>
@@ -130,9 +135,10 @@ else {throw new Error('Failed to load');}
     <p>Loading...</p>
   {:else if slides && slides.length > 0} 
 
-    <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
-
-    <div class='p-2 ml-1 min-h-screen  text-center w-10/12' >
+      {#if showSidePanel}
+        <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
+      {/if}
+    <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
         <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
     </div>
     {:else}

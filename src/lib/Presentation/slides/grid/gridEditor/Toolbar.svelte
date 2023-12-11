@@ -1,0 +1,17 @@
+<script>
+//@ts-nocheck
+import {NavBtn2} from '$lib/cmp';
+import {Icons} from '$lib/util';
+export let addRow;
+export let addCol;
+export let delRow;
+export let delCol;
+</script>
+
+<div class='flex justify-center   border-2 border-white p-1 text-xs w-4/12 bg-gray-700 '>
+  <NavBtn2 title='Add Row' icon={Icons.BULB} clk={addRow} />
+  <NavBtn2 title='Add Col' icon={Icons.BULB}  clk={addCol} />
+  <NavBtn2 title='Del Row' icon={Icons.DEL} clk={delRow} />
+  <NavBtn2 title='Del Col' icon={Icons.DEL} clk={delCol} />
+
+</div>

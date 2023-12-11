@@ -8,17 +8,17 @@ export let moveDown;
 export let moveUp;
 </script>
 
-    <div class='flex flex-col  w-20  bg-green-950 p-1' 
+    <div class='flex flex-col  w-1/12  bg-gray-600 p-1' 
     style="border-right: 2px solid white;">
     {#if slides}
         {#each slides as slide,slideIndex}
 
-        <div class='hover:bg-green-600 text-center'
+        <div class='hover:bg-red-900 text-center'
         style="{slideIndex === currentSlideIndex ? 
-        'border: 2px solid white;border-radius:10px;margin:1px;' : 'border: 2px solid green;border-radius:10px;margin:1px;'}"
+        'border: 2px solid white;border-radius:10px;margin:1px;' : 'border: 2px solid #737c89;border-radius:10px;margin:1px;'}"
         >
 
-            <button class='bg-green-900 text-white px-1 py-1 rounded 
+            <button class='bg-gray-700 text-white px-1 py-1 rounded 
             text-xs'
                     on:click={() => setCurrentSlideIndex(slideIndex)}>
                 {slide.type.toUpperCase().slice(0, 7)}
@@ -28,12 +28,12 @@ export let moveUp;
                 
         <div class='flex justify-evenly mt-1 gap-1'>
 
-            <button class='bg-green-900 text-white px-1 py-1 rounded'
+            <button class='bg-gray-700 text-white px-1 py-1 rounded'
                     on:click={() => moveDown(slideIndex)}>
                 {Icons.DOWN}
             </button>
 
-            <button class='bg-green-900 text-white px-1 py-1 rounded'
+            <button class='bg-gray-700 text-white px-1 py-1 rounded'
                     on:click={() => moveUp(slideIndex)}>
                 {Icons.UP}
             </button>

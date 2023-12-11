@@ -2,11 +2,12 @@
 //@ts-nocheck
 import {NavBtn2,Logo} from '$lib/cmp';
 import {Icons} from '$lib/util';
-let show  = false;
+export let show;
 export let slides;
-export let id;
+// export let id;
 export let addNew;
 export let save;
+export let showSidePanel;
 export let currentSlideIndex;
 export let delCurSlide;
 
@@ -45,6 +46,7 @@ function shiftTime(slideIndex, newEndTime) {
   <div class='flex justify-start'>
     <Logo url='/' /> 
     <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
+    <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
   </div> 
 
