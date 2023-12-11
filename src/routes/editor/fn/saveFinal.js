@@ -4,7 +4,7 @@ import {toast,BASE_URL} from '$lib/util';
 
 
 
-export default async function save(slides,id){
+export default async function saveFinal(slides,tcode,id){
 // debugger;
 //--first slide start time = 0;
 
@@ -17,7 +17,7 @@ stringify(slides);
     'Content-Type': 'application/json',
     'Authorization': `Bearer 000`,
   },
-  body: JSON.stringify( {presentation} )
+  body: JSON.stringify( {presentation,tcode} ) 
   });
   // debugger;
   if(resp.ok){

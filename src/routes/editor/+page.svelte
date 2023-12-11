@@ -6,7 +6,8 @@
   import readSlides from '$lib/tdf/readSlides';
   import {Presentation,getNewSlide} from '$lib/Presentation';
   import parse from './fn/parse.js';
-  import addNewSlide from './fn/addNewSlide.js';
+  import saveFinal from './fn/saveFinal';
+  // import addNewSlide from './fn/addNewSlide.js';
   import LeftPanel from './LeftPanel.svelte';
 // import {gridData} from './fn/gridData';
 
@@ -15,6 +16,11 @@
  let id;
  let tcode;
  let isLoading = true;
+
+async function save(){
+ saveFinal(slides,tcode,id);
+} 
+
 async function moveDown(index) {
   if (index < slides.length - 1) {
     // Check if the slide is not the last one
@@ -117,7 +123,7 @@ else {throw new Error('Failed to load');}
 <div class='bg-gray-800 overflow-x-auto w-full text-white min-h-screen'>
 
 {#if slides}
-    <Toolbar bind:slides={slides} {id} {addNew} bind:currentSlideIndex={currentSlideIndex} {delCurSlide}/>  
+    <Toolbar bind:slides={slides} {id} {addNew} bind:currentSlideIndex={currentSlideIndex} {delCurSlide} {save}/>  
 {/if}
 
 <div class='flex justify-start '>
