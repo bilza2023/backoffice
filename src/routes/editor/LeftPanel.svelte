@@ -21,7 +21,7 @@ export let moveUp;
             <button class='bg-green-900 text-white px-1 py-1 rounded 
             text-xs'
                     on:click={() => setCurrentSlideIndex(slideIndex)}>
-                {slide.type.toUpperCase()}
+                {slide.type.toUpperCase().slice(0, 7)}
             </button>
             
             <div class='flex justify-evenly '>

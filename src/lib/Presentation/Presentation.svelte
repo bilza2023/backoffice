@@ -1,13 +1,13 @@
 <script>
 //@ts-nocheck
 // import TestComp from "./slides/TestComp.svelte";
-import HdgImg from "./slides/HdgImg.svelte";
-import BlinkingMessage from "./slides/BlinkingMessage.svelte";
-import BlinkingMessageEd from "./slides/BlinkingMessageEd.svelte";
+import HdgImg from "./slides/HdgImg/HdgImg.svelte";
+import BlinkingMessage from "./slides/BlinkingMessage/BlinkingMessage.svelte";
+import BlinkingMessageEd from "./slides/BlinkingMessage/BlinkingMessageEd.svelte";
 import ImgWCaption from "./slides/ImgWCaption.svelte";
 import ImgWCaptionEd from "./slides/ImgWCaptionEd.svelte";
-import HdgList from "./slides/HdgList.svelte";
-import HdgListEd from "./slides/HdgListEd.svelte";
+import HdgList from "./slides/HdgList/HdgList.svelte";
+import HdgListEd from "./slides/HdgList/HdgListEd.svelte";
 import TblStr from "./slides/TblStr.svelte";
 import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
@@ -20,7 +20,14 @@ import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
 export let pulse;
-export let theme={}; // the {} may cause problems
+export let theme={
+  description     : '',
+    primaryColor    : '#BC6C25',
+    secondaryColor  : '#DDA15E',
+    backgroundColor : '#FEFAE0',
+    textColor       : '#283618',
+    highlightColor  : '#606C38'
+}; 
 export let setPulse=()=>{};
 export let displayMode = true;
 </script>
