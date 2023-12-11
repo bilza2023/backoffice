@@ -6,7 +6,7 @@ export let item;
 
 function toggleBorder(bdr){
     item[bdr] = !item[bdr]; 
-    // console.log(item[bdr]);
+    // console.log('item' , item);
 }
 </script>
 

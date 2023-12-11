@@ -4,6 +4,7 @@ import {toast} from '$lib/util';
 import Cell from './Cell.svelte';
 import {NavBtn2} from '$lib/cmp';
 import Toolbar from './Toolbar.svelte';
+import Row from './Row.svelte';
 
 // export let pulse = 0;
 export let items;
@@ -88,12 +89,8 @@ function delCol() {
   <!-- <table> -->
     {#each items as item, itemIndex}
     Row:{itemIndex+1}
-      <div class='{`flex flex-wrap w-full gap-1 justify-start ${itemIndex % 2 === 0 ? "bg-gray-700" : "bg-gray-500"}`}'>
-
-        {#each item.content as item, cellIndex}
-          <Cell  bind:item={item} />
-        {/each}
-      </div>
+    <Row  rowItem={item} {itemIndex}  />
+   
       <br>  
     {/each}
   <!-- </table> -->
