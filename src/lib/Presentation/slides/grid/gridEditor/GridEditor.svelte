@@ -1,13 +1,18 @@
 <script>
 //@ts-nocheck
 import {toast} from '$lib/util';
-import Cell from './Cell.svelte';
-import {NavBtn2} from '$lib/cmp';
 import Toolbar from './Toolbar.svelte';
 import Row from './Row.svelte';
 
-// export let pulse = 0;
+// export let pulse=0;
 export let items;
+
+function parseItem(item) {
+  return {
+    ...item,
+    content: JSON.parse(item.content),
+  };
+}
 
 function addCol() {
   if (items.length === 0) {
@@ -86,14 +91,12 @@ function delCol() {
 <!-- <div class='flex justify-center w-full overflow-auto '> -->
 
 {#if items}
-  <!-- <table> -->
     {#each items as item, itemIndex}
     Row:{itemIndex+1}
-    <Row  rowItem={item} {itemIndex}  />
+    <Row  rowItem= {parseItem(item)}  {itemIndex}  />
    
       <br>  
     {/each}
-  <!-- </table> -->
 {/if}
 
 
