@@ -10,6 +10,7 @@ export let i;
 </script> 
  
  <div class="flex justify-centre   w-full p-0 m-1 gap-1 rounded-md ">
+ 
     <div class="bg-stone-700 w-1/12 p-0 m-0 rounded-md">{i+1}</div>
       <!--- first item.eqStartTime must be 0 always  -->
     {#if i==0}

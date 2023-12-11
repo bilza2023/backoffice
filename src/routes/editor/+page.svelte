@@ -7,9 +7,7 @@
   import {Presentation,getNewSlide} from '$lib/Presentation';
   import parse from './fn/parse.js';
   import saveFinal from './fn/saveFinal';
-  // import addNewSlide from './fn/addNewSlide.js';
   import LeftPanel from './LeftPanel.svelte';
-// import {gridData} from './fn/gridData';
 
  let currentSlideIndex;
  let slides;
@@ -126,7 +124,7 @@ else {throw new Error('Failed to load');}
     <Toolbar bind:slides={slides} {id} {addNew} bind:currentSlideIndex={currentSlideIndex} {delCurSlide} {save}/>  
 {/if}
 
-<div class='flex justify-start '>
+<div class='flex justify-start w-full'>
 
   {#if isLoading}
     <p>Loading...</p>
@@ -134,7 +132,7 @@ else {throw new Error('Failed to load');}
 
     <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
 
-    <div class='p-2 ml-1 min-h-screen  text-center' >
+    <div class='p-2 ml-1 min-h-screen  text-center w-10/12' >
         <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
     </div>
     {:else}

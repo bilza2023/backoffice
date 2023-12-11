@@ -20,7 +20,7 @@ export let toggleFS;
 
 <button on:click={()=>toggleSP(i)} class="bg-green-700 text-white p-1 text-xs rounded-md">SideBar</button>
 
-<button on:click={()=>toggleFS(i)} class="bg-green-900 text-white p-1 text-xs rounded-md">FullScreen</button>
+
 <button on:click={()=>moveUpEq(i)} class="bg-gray-900 text-white p-1 text-xs rounded-md">Up</button>
 
 <button on:click={()=>moveDownEq(i)} class="bg-gray-900 text-white p-1 text-xs rounded-md">Down</button>
@@ -40,18 +40,8 @@ class= {`${item.extra.type == 'hdg' ? 'bg-red-800' : 'bg-gray-500'} rounded-md`}
 on:click={()=>setEqType(i,'hdg')}>{Icons.BOOK}</button>
 </div>
 
-<!-- //////////////////////////////////// -->
 
-<div  class="bg-stone-700 text-white p-1 text-xs rounded-md">Full Screen Start Time</div>
-
-<input class='text bg-gray-700 rounded-md text-center' type="number" bind:value={item.extra.fsStartTime}>
-
-<div  class="bg-stone-600 text-white p-1 text-xs rounded-md text-center">Full Screen End Time</div>
-
-<input class='text bg-gray-600 rounded-md' type="number" bind:value={item.extra.fsEndTime}>
-
-&nbsp;
-&nbsp;
-&nbsp;
 <button on:click={()=>delEq(i)} class="bg-red-900 text-white p-1 text-xs rounded-md">Del</button>
 </div>
+
+

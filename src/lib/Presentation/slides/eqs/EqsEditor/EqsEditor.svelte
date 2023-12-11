@@ -99,7 +99,7 @@ for (let i = 0; i < items.length; i++) {
 <!-- <PageHeading/> -->
 <Toolbar  {addEq}  {closeAllSP} {openAllSP} />
 
-<div class="m-4 p-0">
+<div class="w-full m-4 p-0">
   <Titlebar />
   {#each items as item, i}
       <EqPart  bind:item={item} {i} />
@@ -109,9 +109,7 @@ for (let i = 0; i < items.length; i++) {
         {#if item.extra.spVisibility}
           <SP clr="bg-yellow-900"  arrayName='Side Panel' bind:theArray={item.extra.sp}  {redraw} {i} />
         {/if}
-        {#if item.extra.fsVisibility}
-          <SP clr="bg-stone-700"  arrayName='Full Screen' bind:theArray={item.extra.fs}  {redraw} {i} />
-        {/if}
+       
   {/each}
 </div>
 
