@@ -9,7 +9,6 @@ export default async function saveFinal(slides,tcode,id){
 //--first slide start time = 0;
 
 updateSlideStartTimes(slides);
-//--i have removed the parse for Grid but the stringify is still here may remove later or just keep it
 stringify(slides);
   const presentation = {slides ,_id:id};
   const resp = await fetch( `${BASE_URL}/pre/update`, {

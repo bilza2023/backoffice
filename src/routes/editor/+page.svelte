@@ -105,7 +105,6 @@ async function  addNew(slideType){
  if (returnSlides){
 //  debugger;
   slides = await parse(returnSlides.slides);
-  slides = returnSlides.slides;
     if (slides.length > 0){
       currentSlideIndex = 0;
     }
