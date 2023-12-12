@@ -7,7 +7,11 @@ import Row from './Row.svelte';
 // export let pulse=0;
 //Eacj item = 1 row, data is saved in item.arr array of objects
 export let items;
+let showBdr = false;
+let showShowAt = false;
 
+function setBdr(){showBdr = !showBdr}
+function setshowShowAt(){showShowAt = !showShowAt}
 
 function addCol() {
   // debugger;
@@ -85,7 +89,7 @@ function delCol() {
 
 </script> 
 
-<Toolbar  {addRow} {addCol} {delRow} {delCol}   />
+<Toolbar  {addRow} {addCol} {delRow} {delCol}   {setBdr} {setshowShowAt}/>
 <br>
 
 <!-- <div class='flex justify-center w-full overflow-auto '> -->
@@ -94,9 +98,8 @@ function delCol() {
     {#each items as item, itemIndex}
     Row:{itemIndex+1}
         {#if item.arr} 
-        <Row  rowItem= {item}  {itemIndex}  />
+        <Row  rowItem= {item}  {itemIndex}  {showShowAt} {showBdr}/>
         {/if}
-      <br>  
     {/each}
 {/if}
 

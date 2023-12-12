@@ -122,7 +122,7 @@ else {throw new Error('Failed to load');}
 
 
 <div class='bg-gray-800 overflow-x-auto w-full text-white min-h-screen'>
-
+ 
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
     {setCurrentSlideIndex} />  
