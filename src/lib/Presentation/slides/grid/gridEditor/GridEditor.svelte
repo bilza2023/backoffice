@@ -1,18 +1,11 @@
 <script>
 //@ts-nocheck
-import {toast} from '$lib/util';
+import {toast,onMount} from '$lib/util';
 import Toolbar from './Toolbar.svelte';
 import Row from './Row.svelte';
 
 // export let pulse=0;
 export let items;
-
-function parseItem(item) {
-  return {
-    ...item,
-    content: JSON.parse(item.content),
-  };
-}
 
 function addCol() {
   if (items.length === 0) {
@@ -31,7 +24,7 @@ function addCol() {
       "bb": false
     });
   });
-  items = items;
+  items = [...items];
 }
 
 function addRow() {
@@ -42,7 +35,7 @@ function addRow() {
       showAt: 0,
       extra: {}
     });
-    items = items;
+    items = [...items];
     toast.push('Empty row added');
     return;
   }
@@ -64,13 +57,13 @@ function addRow() {
   };
 
   items.push(newRow);
-  items = items;
+  items = [...items];
 }
 
 function delRow() {
   if (items.length > 0) {
     items.pop();
-    items = items;
+    items = [...items];
   }
 }
 
@@ -79,7 +72,7 @@ function delCol() {
     items.forEach((item) => {
       item.content.pop();
     });
-    items = items;
+    items = [...items];
   }
 }
 
@@ -93,7 +86,7 @@ function delCol() {
 {#if items}
     {#each items as item, itemIndex}
     Row:{itemIndex+1}
-    <Row  rowItem= {parseItem(item)}  {itemIndex}  />
+    <Row  rowItem= {item}  {itemIndex}  />
    
       <br>  
     {/each}
