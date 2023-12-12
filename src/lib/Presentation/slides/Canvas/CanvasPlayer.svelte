@@ -5,7 +5,9 @@
   import drawLine from './fn/drawLine';
   import drawGrid from './fn/drawGrid';
   import drawRay from './fn/drawRay';
-
+  import drawText from './fn/drawText';
+  import getPoint from './fn/getPoint';
+  import ToolBar from './Toolbar.svelte';
   export let items;
   export let slideExtra = [];
   export let theme;
@@ -15,45 +17,44 @@
 
   onMount(() => {
     ctx = canvas.getContext('2d');
+    canvas.width = 1200;
+    canvas.height = 400;
   });
-
+   
 
 
   afterUpdate(() => {
-   const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    ctx.scale(dpr, dpr);
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawGrid(ctx, canvas, 1);
 
-    // Call the drawGrid function with the required arguments
-    drawGrid(ctx, canvas, 10,'#555f6d');
-    // drawLine(canvas,ctx,0,0,100,100);
-    drawRay(canvas,ctx,20,20,60,60);
+    drawRay(canvas,ctx,20,3,20,99);
+    drawText(canvas, ctx,21,10,'Y',24);
+    drawText(canvas, ctx,21,98,'Y\'',24);
+
+    drawRay(canvas,ctx,10,90,90,90);
+    drawText(canvas, ctx,12,89,'X\'',24);
+    drawText(canvas, ctx,85,89,'X',24);
+
+    drawRay(canvas,ctx,21,88,90,10);
+
+    drawText(canvas, ctx,17,77,'1.6',24);
+    drawText(canvas, ctx,17,60,'3.2',24);
+    drawText(canvas, ctx,17,48,'4.8',24);
+    drawText(canvas, ctx,17,25,'6.4',24);
+    // drawText(canvas, ctx,17,10,'8.0',24);
+
+    drawText(canvas, ctx,35,96,'1',24);
+    drawText(canvas, ctx,50,96,'2',24);
+    drawText(canvas, ctx,65,96,'3',24);
+    drawText(canvas, ctx,80,96,'4',24);
   });
 
-  function drawLines() {
-    // Set canvas width and height to match the screen
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Set the line color to white
-    ctx.strokeStyle = 'white';
-
-    // Draw a line
-    ctx.beginPath();
-    ctx.moveTo(50, 50);
-    ctx.lineTo(150, 150);
-    ctx.stroke();
-  }
 </script>
 
-<div class='flex w-full justify-center'>
-<canvas bind:this={canvas}></canvas>
+
+<div class='flex flex-col w-full justify-center'>
+<ToolBar />
+<canvas bind:this={canvas} on:click={ e =>getPoint(e,canvas)} ></canvas>
 </div>
 
 
@@ -62,8 +63,6 @@
 <style>
   canvas {
     border: 1px solid white;
-    width: 75%; /* Set canvas width to 60% of the screen */
-    height: calc(60% * 9 / 16); /* Calculate height for a 16:9 aspect ratio */
     display: block;
   }
 </style>

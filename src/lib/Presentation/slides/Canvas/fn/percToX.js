@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-
+ 
 export default function percToX(canvas,x) {
     const canvasWidth = canvas.width;
     // Calculate the pixel value based on the percentage
