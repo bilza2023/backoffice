@@ -13,6 +13,9 @@ import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
 import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 
+import CanvasEditor from "./slides/Canvas/CanvasEditor.svelte";
+import CanvasPlayer from "./slides/Canvas/CanvasPlayer.svelte";
+
 import GridPlayer from "./slides/grid/gridPlayer/GridPlayer.svelte";
 import GridEditor from "./slides/grid/gridEditor/GridEditor.svelte";
 
@@ -92,5 +95,14 @@ export let displayMode = true;
         <GridPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
         <GridEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
+    {/if}
+{/if}
+
+<!-- CanvasEditor -->
+{#if currentSlide.type == 'canvas' }
+    {#if  displayMode}
+        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
+    {:else}
+        <CanvasEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
     {/if}
 {/if}

@@ -34,13 +34,22 @@ export default function getNewSlide(type) {
     break;
  
     default:
-    slide = null;
+    slide = addDefault(type);
     break;
  }
 return slide;
 }
 /////////////////////////////////////////////
 /////////////////////////////////////////////
+function addDefault(name){
+//start time and end time will be re-written once the slide is inserted
+    const newSlide = newSlideData(name);
+    newSlide.uuid = uuid();
+    // newSlide.items.push(getNewItem('The Title','heading'));
+    // newSlide.items.push(getNewItem('graph','imgSrc'));
+
+    return newSlide;
+}
 
 function addGrid(){
  return { 

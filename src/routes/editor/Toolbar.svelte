@@ -78,5 +78,7 @@ function shiftTime(slideIndex, newEndTime) {
 <NavBtn2 title='ImgWCaption' icon={Icons.MANAGER } clk={()=>addNew('ImgWCaption')} />
 <NavBtn2 title='TblStr' icon={Icons.RULER } clk={()=>addNew('TblStr')} />
 <NavBtn2 title='Eqs' icon={Icons.NOTES }  clk={()=>addNew('Eqs')} />
+
+<NavBtn2 title='Canvas' icon={Icons.TV }  clk={()=>addNew('canvas')} />
 </div>
 {/if}
