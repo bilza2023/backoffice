@@ -2,6 +2,9 @@
     //@ts-nocheck
   import { onMount } from '$lib/util';
   import { afterUpdate } from 'svelte';
+  import drawLine from './fn/drawLine';
+  import drawGrid from './fn/drawGrid';
+  import drawRay from './fn/drawRay';
 
   export let items;
   export let slideExtra = [];
@@ -11,14 +14,23 @@
   let ctx;
 
   onMount(() => {
-    // Get the 2D context of the canvas
     ctx = canvas.getContext('2d');
-    drawLines();
   });
 
+
+
   afterUpdate(() => {
-    // Redraw lines when component updates
-    drawLines();
+   const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Call the drawGrid function with the required arguments
+    drawGrid(ctx, canvas, 10,'#555f6d');
+    // drawLine(canvas,ctx,0,0,100,100);
+    drawRay(canvas,ctx,20,20,60,60);
   });
 
   function drawLines() {
@@ -40,13 +52,18 @@
   }
 </script>
 
+<div class='flex w-full justify-center'>
+<canvas bind:this={canvas}></canvas>
+</div>
+
+
+
+
 <style>
   canvas {
     border: 1px solid white;
-    width: 100%; /* Set canvas width to 100% */
-    height: 70vh; /* Set canvas height to 100% of viewport height */
-    display: block; /* Ensure canvas behaves as a block element */
+    width: 75%; /* Set canvas width to 60% of the screen */
+    height: calc(60% * 9 / 16); /* Calculate height for a 16:9 aspect ratio */
+    display: block;
   }
 </style>
-
-<canvas bind:this={canvas}></canvas>
