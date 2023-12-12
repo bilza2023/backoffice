@@ -9,7 +9,7 @@ export default async function saveFinal(slides,tcode,id){
 //--first slide start time = 0;
 
 updateSlideStartTimes(slides);
-stringify(slides);
+// stringify(slides);
   const presentation = {slides ,_id:id};
   const resp = await fetch( `${BASE_URL}/pre/update`, {
     method: 'POST',

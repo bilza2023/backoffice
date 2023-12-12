@@ -103,8 +103,7 @@ async function  addNew(slideType){
   let returnSlides  = await readSlides(id,tcode);
     try { 
  if (returnSlides){
-//  debugger;
-  slides = await parse(returnSlides.slides);
+  slides = returnSlides.slides;
     if (slides.length > 0){
       currentSlideIndex = 0;
     }

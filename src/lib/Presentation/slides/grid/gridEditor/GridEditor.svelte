@@ -5,17 +5,20 @@ import Toolbar from './Toolbar.svelte';
 import Row from './Row.svelte';
 
 // export let pulse=0;
+//Eacj item = 1 row, data is saved in item.arr array of objects
 export let items;
 
+
 function addCol() {
+  // debugger;
   if (items.length === 0) {
     toast.push('No row exists. Please add a row first');
     return;
   }
   // Add an empty cell to each row
   items.forEach((item) => {
-    item.content.push({
-      "content": "", // Empty content
+    item.arr.push({
+      "content": "", // This is item.arr.content NOT item.content
       "showAt": 0,
       "type": "code",
       "bl": false,
@@ -28,10 +31,12 @@ function addCol() {
 }
 
 function addRow() {
+//  debugger;
   if (items.length === 0) {
     items.push({
       name: "",
-      content: [],
+      content: "",
+      arr: [], // added new for this component
       showAt: 0,
       extra: {}
     });
@@ -40,11 +45,12 @@ function addRow() {
     return;
   }
   //get number of col in first row since all rows have equal no of col 
-  const colCount = items[0].content.length;
+  const colCount = items[0].arr.length;
   const newRow = {
     name: "",
-    content: Array.from({ length: colCount }, () => ({
-      "content": "", // Empty content
+    content: "",
+    arr: Array.from({ length: colCount }, () => ({
+      "content": "", // This is item.arr.content NOT item.content
       "showAt": 0,
       "type": "code",
       "bl": false,
@@ -62,15 +68,16 @@ function addRow() {
 
 function delRow() {
   if (items.length > 0) {
-    items.pop();
+    items.pop(); //to del row items.pop
     items = [...items];
   }
 }
 
 function delCol() {
-  if (items.length > 0 && items[0].content.length > 0) {
+//  debugger;
+  if (items.length > 0 && items[0].arr.length > 0) {
     items.forEach((item) => {
-      item.content.pop();
+      item.arr.pop(); //to del col items.arr.pop
     });
     items = [...items];
   }
@@ -83,11 +90,12 @@ function delCol() {
 
 <!-- <div class='flex justify-center w-full overflow-auto '> -->
 
-{#if items}
+{#if items} 
     {#each items as item, itemIndex}
     Row:{itemIndex+1}
-    <Row  rowItem= {item}  {itemIndex}  />
-   
+        {#if item.arr} 
+        <Row  rowItem= {item}  {itemIndex}  />
+        {/if}
       <br>  
     {/each}
 {/if}

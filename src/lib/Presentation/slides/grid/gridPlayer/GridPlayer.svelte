@@ -19,7 +19,7 @@ export let slideExtra;
   <table>
     {#each items as item, itemIndex}
       <tr>
-        {#each item.content as item, cellIndex}
+        {#each item.arr as item, cellIndex}
           <Cell  {item}   {pulse} />
         {/each}
       </tr>

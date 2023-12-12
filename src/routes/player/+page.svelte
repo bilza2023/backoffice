@@ -29,7 +29,8 @@ let val  = await readSlides(id,tcode);
  if (returnSlides){
 //   slides  = returnSlides.slides;
 //  debugger;
-  slides = await parse(returnSlides.slides);
+//   slides = await parse(returnSlides.slides);
+  slides = returnSlides.slides;
   currentSlide = slides[0];
  }
 else {throw new Error('Failed to load');}
