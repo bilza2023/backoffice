@@ -30,7 +30,7 @@ function clr(item){
         
         id={`${itemIndex}`}
         >
-            <div class='border-2'
+            <div class='flex justify-center items-center   border-2'
              style= {`
             min-width: 70px;
             min-height: 70px; 
