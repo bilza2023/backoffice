@@ -3,10 +3,11 @@
 import {onMount} from '$lib/util'
 import Katex from "svelte-katex";
 export let item;
-export let pulse;
+export let pulse=0;
 export let itemIndex;
 
 function clr(item){
+  if(pulse == 0){return 'white';}
     // return 'white';
  if (pulse >= item.showAt ){
     return 'white';
@@ -14,7 +15,24 @@ function clr(item){
     return '#1F2937';
  }
 }
-
+function textColor(item) {
+    if(pulse == 0){return 'white';}     
+    // Set text color to white when background color is red
+    if (Math.abs(pulse - item.showAt) == 1) {
+        return 'white';
+    } else {
+        return clr(item); // Use the original text color function
+    }
+}
+function backgroundColor(item) {
+    if(pulse == 0){return 'transparent';}    
+    // Return yellow if the item.showAt is within 1 second of pulse
+    if (item.showAt !== 0 && Math.abs(pulse - item.showAt) == 1) {
+        return '#7f7f03';
+    } else {
+        return 'transparent'; // Default background color
+    }
+}
 </script>
 
         <td class="text-center" 
@@ -24,7 +42,8 @@ function clr(item){
             font-size : 1em;
             margin : 1px;
             padding : 1px;
-            color : ${pulse >= item.showAt ? 'white' : '#1F2937'};
+            color : ${textColor(item)};
+            background-color: ${backgroundColor(item)};
         `}
         
         
