@@ -7,7 +7,7 @@ import {toast,BASE_URL} from '$lib/util';
 export default async function saveFinal(slides,tcode,id){
 // debugger;
 //--first slide start time = 0;
-
+slides[0].startTime = 0;
 updateSlideStartTimes(slides);
 // stringify(slides);
   const presentation = {slides ,_id:id};

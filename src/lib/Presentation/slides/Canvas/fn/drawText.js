@@ -6,6 +6,7 @@ import percToX from "./percToX";
 import percToY from "./percToY";
 
 export default function drawText(canvas, ctx,x, y,text, fontSize = 12, textColor = 'white') {
+// debugger;
     x = percToX(canvas, x);
     y = percToY(canvas, y);
 
