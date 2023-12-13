@@ -1,0 +1,21 @@
+    // drawRay
+    items[0] = {name: 'drawRay',showAt :  0 , itemExtra : {x1:20, y1:3, x2:20, y2:99, lineWidth : 2, lineColor : 'white'}};
+    items[1] = {name: 'drawRay',showAt :  0 , itemExtra : {x1:21, y1:88, x2:90, y2:10, lineWidth : 2, lineColor : 'white'}};
+    items[2] = {name: 'drawRay',showAt :  0 , itemExtra : {x1:10, y1:90, x2:90, y2:90, lineWidth : 2, lineColor : 'white'}};
+
+    // drawText
+    items[3] = {name: 'drawText',showAt :  0 , itemExtra : {x:21, y:10, text:'Y', fontSize : 24, textColor : 'white'}};
+    items[4] = {name: 'drawText',showAt :  0 , itemExtra : {x:21, y:98, text:'Y\'', fontSize : 24, textColor : 'white'}};
+
+    items[5] = {name: 'drawText',showAt :  0 , itemExtra : {x:85, y:89, text:'X', fontSize : 24, textColor : 'white'}};
+    items[6] = {name: 'drawText',showAt :  0 , itemExtra : {x:12, y:89, text:'X\'', fontSize : 24, textColor : 'white'}};
+
+    items[7] = {name: 'drawText',showAt :  0 , itemExtra : {x:17, y:17, text:'1.6', fontSize : 24, textColor : 'white'}};
+    items[8] = {name: 'drawText',showAt :  0 , itemExtra : {x:17, y:60, text:'3.2', fontSize : 24, textColor : 'white'}};
+    items[9] = {name: 'drawText',showAt :  0 , itemExtra : {x:17, y:48, text:'4.8', fontSize : 24, textColor : 'white'}};
+    items[10] = {name: 'drawText',showAt :  0 , itemExtra : {x:17, y:25, text:'6.4', fontSize : 24, textColor : 'white'}};
+
+    items[11] = {name: 'drawText',showAt :  0 , itemExtra : {x:35, y:96, text:'1', fontSize : 24, textColor : 'white'}};
+    items[12] = {name: 'drawText',showAt :  0 , itemExtra : {x:50, y:96, text:'2', fontSize : 24, textColor : 'white'}};
+    items[13] = {name: 'drawText',showAt :  0 , itemExtra : {x:65, y:96, text:'3', fontSize : 24, textColor : 'white'}};
+    items[14] = {name: 'drawText',showAt :  0 , itemExtra : {x:80, y:96, text:'4', fontSize : 24, textColor : 'white'}};
