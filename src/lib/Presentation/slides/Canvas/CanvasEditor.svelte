@@ -11,6 +11,9 @@
   import drawPoly from './fn/drawPoly';
   import drawCircle from './fn/drawCircle';
   import drawEllipse from './fn/drawEllipse';
+  import drawHline from './fn/drawHline';
+  import drawPoint from './fn/drawPoint';
+  import drawPointWText from './fn/drawPointWText';
 
   import getPoint from './fn/getPoint';
   import ToolBar from './Toolbar.svelte';
@@ -43,6 +46,10 @@
             //  debugger;
                 drawRay(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
             break;
+            case 'drawHline':
+            //  debugger;
+                drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
+            break;
             case 'drawText':
                 drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.textColor);
             break;
@@ -60,6 +67,12 @@
             break;
             case 'drawCircle':
                 drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.fillColor,item.extra.opacity,item.extra.filled);
+            break;
+            case 'drawPoint':
+                drawPoint(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.width,item.extra.fillColor,item.extra.opacity);
+            break;
+            case 'drawPointWText':
+                drawPointWText(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.text,item.extra.width,item.extra.color,item.extra.colorText);
             break;
             case 'drawEllipse':
                 drawEllipse(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);

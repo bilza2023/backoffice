@@ -15,7 +15,11 @@ function undo(){
 function textDraw(){
     // debugger;
     if (points.length < 1) {
-    toast.push('points missing');
+    toast.push('Point missing');
+    return;
+    }
+    if (!txt || txt == '') {
+    toast.push('Missing text data');
     return;
     }
     items.push({name: 'drawText',showAt :  0 , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white'}});
@@ -94,8 +98,33 @@ function circleDraw(){
     items = [...items];
     pointsStore.set([]);
 }
+function pointDraw(){
+    if (points.length < 1) {
+    toast.push('points missing');
+    return;
+    }
+    items.push({name: 'drawPoint',showAt :  0 , extra : {
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y),width : 10, color : 'white'}});
+    items = [...items];
+    pointsStore.set([]);
+}
+function pointWTextDraw(){
+    if (points.length < 1) {
+    toast.push('points missing');
+    return;
+    }
+    if (!txt || txt == '') {
+    toast.push('Missing text data');
+    return;
+    }
+    items.push({name: 'drawPointWText',showAt :  0 , extra : {
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y),text:txt,width : 10, color : 'yellow',colorText: 'white'}});
+    items = [...items];
+    pointsStore.set([]);
+}
+
 function ellipseDraw(){
-    if (points.length < 2) {
+    if (points.length < 3) {
     toast.push('points missing');
     return;
     }
@@ -132,12 +161,12 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 
 <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={hlineDraw}>
-─
+→
 </button>
 
 <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={rayDraw}>
-→
+↔
 </button>
 
 <button
@@ -165,18 +194,22 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 </button>
 
 <button
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={polyDraw}>
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointDraw}>
 •
 </button>
 
 <button
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={polyDraw}>
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
 •T
 </button>
 
-<button
+<!-- <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={polyDraw}>
 ╱╲
+</button> -->
+<button
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
+├┼┤
 </button>
 
 

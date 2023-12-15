@@ -3,8 +3,33 @@ import percToX from "./percToX";
 import percToY from "./percToY";
 
 function drawArrowhead(ctx, fromX, fromY, toX, toY, radius) {
-    // Implementation remains the same as in the drawRay function
-    // ...
+    let x_center = toX;
+    let y_center = toY;
+
+    let angle;
+    let x;
+    let y;
+
+    ctx.beginPath();
+
+    angle = Math.atan2(toY - fromY, toX - fromX)
+    x = radius * Math.cos(angle) + x_center;
+    y = radius * Math.sin(angle) + y_center;
+
+    ctx.moveTo(x, y);
+
+    angle += (1/3)*(2*Math.PI)
+    x = radius * Math.cos(angle) + x_center;
+    y = radius * Math.sin(angle) + y_center;
+
+    ctx.lineTo(x, y);
+
+    angle += (1/3)*(2*Math.PI)
+    x = radius * Math.cos(angle) + x_center;
+    y = radius * Math.sin(angle) + y_center;
+
+    ctx.lineTo(x, y);
+    ctx.closePath();
 
     ctx.fill();
 }
