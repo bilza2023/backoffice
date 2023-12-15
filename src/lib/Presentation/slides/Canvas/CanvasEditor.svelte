@@ -25,19 +25,36 @@
   
   let canvas;
   let ctx;
+  let currentX=0;  
+  let currentY=0;  
 
   onMount(() => {
     ctx = canvas.getContext('2d');
-    canvas.width = 1200;
-    canvas.height = 400;
+    updateCanvasSize(); // Call the function initially
+    window.addEventListener('resize', updateCanvasSize);
   });
    
-
+  function updateCanvasSize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    console.log( 'x' , canvas.width, 'Y' , canvas.height  );
+} 
+   // Function to handle mousemove event
+  function mouseOut(event) {
+   currentX = 0;
+    currentY = 0;
+  }
+  function handleMouseMove(event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    currentX = Math.round(x);
+    currentY = Math.round(y);
+    // console.log('Mouse coordinates:', currentX, currentY);
+  }  
 
   afterUpdate(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // drawGrid(ctx, canvas, 1);
-    // debugger;
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -69,7 +86,7 @@
                 drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.fillColor,item.extra.opacity,item.extra.filled);
             break;
             case 'drawPoint':
-                drawPoint(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.width,item.extra.fillColor,item.extra.opacity);
+                drawPoint(canvas,ctx,item.extra.points,item.extra.width,item.extra.fillColor,item.extra.opacity);
             break;
             case 'drawPointWText':
                 drawPointWText(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.text,item.extra.width,item.extra.color,item.extra.colorText);
@@ -78,9 +95,8 @@
                 drawEllipse(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);
             break;
             case 'drawGrid':
-                drawGrid(canvas,ctx);
-            break;
-        
+            drawGrid(canvas,ctx);
+            break;       
             default:
                 break;
         }
@@ -93,8 +109,10 @@
 
 
 <div class='flex flex-col w-full justify-center p-0 m-0'>
-<ToolBar  {canvas} {ctx} bind:items = {items}/>
-<canvas bind:this={canvas} on:click={ e =>getPoint(e,canvas)} />
+<ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY}/>
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
+on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
 </div>
 
 

@@ -3,13 +3,24 @@
 import {pointsStore} from './store';
 import {toast} from '$lib/util';
 export let items;
+export let currentX;
+export let currentY;
 
 $: points = $pointsStore;
 let txt = '';
 
-function undo(){
- items.pop();
- items = [...items];
+function undo() {
+//   debugger;
+  const lastItem = items[items.length - 1];
+
+  if ( lastItem.name !== 'drawGrid') {
+    // If the last item is 'drawGrid', pop the item on top
+    items.pop();
+    // items.splice(items.length - 2, 1);
+  } else {
+    toast.push('Nothing to Undo')
+  }
+  items = [...items];
 }
 
 function textDraw(){
@@ -104,7 +115,7 @@ function pointDraw(){
     return;
     }
     items.push({name: 'drawPoint',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y),width : 10, color : 'white'}});
+    points:points.map(point => ({...point})),width : 10, color : 'white'}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -142,8 +153,7 @@ function gridDraw(){
         return;    
     }
 }
-    items.push({name: 'drawGrid',showAt :  0 , extra : {}});
-    items = [...items];
+    items = [{name: 'drawGrid',showAt :  0 , extra : {}}, ...items];
 }
 
 
@@ -225,6 +235,13 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 •
 </button>
 
+
+<div class='flex items-center px-1 p-0 m-0 border-2 border-gray-700  rounded-md bg-gray-900'>
+X:
+{currentX},
+Y:
+{currentY}
+</div>
 <!-- <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={polyDraw}>
 ╱╲
