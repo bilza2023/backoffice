@@ -36,7 +36,7 @@
 
   afterUpdate(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid(ctx, canvas, 1);
+    // drawGrid(ctx, canvas, 1);
     // debugger;
 
     for (let i = 0; i < items.length; i++) {
@@ -76,6 +76,9 @@
             break;
             case 'drawEllipse':
                 drawEllipse(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);
+            break;
+            case 'drawGrid':
+                drawGrid(canvas,ctx);
             break;
         
             default:

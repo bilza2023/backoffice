@@ -5,7 +5,7 @@ import percToX from "./percToX";
 import percToY from "./percToY";
 import drawLine from "./drawLine";
 
-export default function drawGrid(ctx, canvas,lineWidth = 1,lineColor = '#4b5159') {
+export default function drawGrid(canvas,ctx,lineWidth = 1,lineColor = '#4b5159') {
     // Set the line color
     ctx.strokeStyle = lineColor;
     ctx.lineWidth = lineWidth;

@@ -133,19 +133,46 @@ function ellipseDraw(){
     items = [...items];
     pointsStore.set([]);
 }
+function gridDraw(){
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    if (item.name === 'drawGrid') {
+        items.splice(i, 1);
+        items = [...items];
+        return;    
+    }
+}
+    items.push({name: 'drawGrid',showAt :  0 , extra : {}});
+    items = [...items];
+}
+
 
 </script>
 
 <div class='flex justify-start border-2 border-gray-500'>
+
+
 <button 
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={undo}>
-↩
+class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-0 px-1 rounded m-1" on:click={undo}>
+<span class="">↪</span>
 </button>
 
 <button 
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={()=>pointsStore.set([])}>
+class="bg-green-500 hover:bg-green-800 text-white font-bold py-0 px-1 rounded m-1" on:click={()=>pointsStore.set([])}>
   Pts {`${points.length}`}
 </button>
+
+<button
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={gridDraw}>
+├┼┤
+</button>
+
+
+<button
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
+•T
+</button>
+
 
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={textDraw} >Text</button>
 
@@ -198,19 +225,11 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 •
 </button>
 
-<button
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
-•T
-</button>
-
 <!-- <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={polyDraw}>
 ╱╲
 </button> -->
-<button
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
-├┼┤
-</button>
+
 
 
 
