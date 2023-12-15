@@ -3,6 +3,7 @@ import percToX from "./percToX";
 import percToY from "./percToY";
 
 export default function drawPoint(canvas, ctx, points, width = 10, color = 'yellow') {
+  // debugger;
       const canvasPoints = points.map(point => ({
         x: percToX(canvas, point.x),
         y: percToY(canvas, point.y),

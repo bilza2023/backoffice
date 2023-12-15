@@ -6,8 +6,9 @@ import drawPoint from "./drawPoint";
 //////////////////////////////////////////
 
 export default function drawPointWText(canvas, ctx, x1, y1, text, width = 10, color = 'yellow',colorText='white') {  
+    // debugger;
     // Draw the point using the existing drawPoint function
-    drawPoint(canvas, ctx, x1, y1, width, color);
+    drawPoint(canvas, ctx,[{x:x1,y:y1}], width, color);
     
     // Convert percentage coordinates to actual coordinates for text
     x1 = percToX(canvas, x1);

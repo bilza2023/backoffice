@@ -173,12 +173,6 @@ class="bg-green-500 hover:bg-green-800 text-white font-bold py-0 px-1 rounded m-
 </button>
 
 <button
-class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={gridDraw}>
-├┼┤
-</button>
-
-
-<button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={pointWTextDraw}>
 •T
 </button>
@@ -189,6 +183,11 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 <input class="bg-gray-500 hover:bg-gray-700 w-32 text-white font-bold py-0 px-1 rounded m-1"
 type="text" name="" id="" bind:value={txt}>
 
+
+<button
+class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={gridDraw}>
+├┼┤
+</button>
 
 <button
 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={lineDraw}>

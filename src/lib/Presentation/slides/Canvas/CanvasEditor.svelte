@@ -52,7 +52,7 @@
     currentY = Math.round(y);
     // console.log('Mouse coordinates:', currentX, currentY);
   }  
-
+ 
   afterUpdate(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
