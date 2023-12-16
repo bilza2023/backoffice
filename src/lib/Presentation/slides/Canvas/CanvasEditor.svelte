@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
-  import { onMount } from '$lib/util';
-  import { afterUpdate } from 'svelte';
+  import { onMount,uuid } from '$lib/util';
+  import { afterUpdate,beforeUpdate } from 'svelte';
   import drawLine from './fn/drawLine';
   import drawGrid from './fn/drawGrid';
   import drawRay from './fn/drawRay';
@@ -17,11 +17,13 @@
 
   import getPoint from './fn/getPoint';
   import ToolBar from './Toolbar.svelte';
-  import EditPanel from './EditPanel.svelte'
+  import EditPanel from './editPanels/EditPanel.svelte'
   export let items;
   export let slideExtra = [];
   export let theme;
-
+/**
+ * Learning from 2 hours of trouble shooting is that we can use beforeUpdate if we want to edit the incomming data before we use it.
+ */
   
   let canvas;
   let ctx;
@@ -31,13 +33,25 @@
 
   function toggleShowEditorPanel(){showEditorPanel = !showEditorPanel;
   items = [...items];}
-
-  onMount(() => {
-    ctx = canvas.getContext('2d');
-    updateCanvasSize(); // Call the function initially
-    window.addEventListener('resize', updateCanvasSize);
+   async function addUuid() {
+  for (let i = 0; i < items.length; i++) {
+    items[i].uuid = uuid();
+  }
+  }
+  // function gameLoop() {items = [...items];}
+  beforeUpdate(async() => {
+  console.log("Before Update");
+    addUuid();
   });
-   
+
+  onMount( () => {
+    
+        ctx = canvas.getContext('2d');
+        updateCanvasSize(); // Call the function initially
+        window.addEventListener('resize', updateCanvasSize);
+        // setInterval(gameLoop,100);
+  });
+  
   function updateCanvasSize() {
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
