@@ -111,29 +111,23 @@
 
 </script>
 
-{#if showEditorPanel}
-
 <div class='flex w-full'>
-  <div class='flex flex-col justify-center p-0 m-0 w-10/12'>
+ 
+  <div class={`flex flex-col justify-center p-0 m-0 ${showEditorPanel ? 'w-10/12' : 'w-full'}`}>
+
     <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel}/>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
     on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
   </div>
 
-  <div class='w-2/12 bg-green-800'>
-  <EditPanel />
-  </div> 
+    {#if showEditorPanel}
+      <div class='w-2/12 bg-green-800'>
+      <EditPanel />
+      </div>
+    {/if}
+ 
 </div> 
-
-{:else}
-<div class='flex flex-col  justify-center p-0 m-0 w-full'>
-  <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel}/>
-  <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-  <canvas width="1200" height="400" bind:this={canvas} on:click={e =>getPoint(e,canvas)} 
-  on:mousemove={handleMouseMove} on:mouseout={mouseOut} />
-</div>
-{/if}
 
 
 
