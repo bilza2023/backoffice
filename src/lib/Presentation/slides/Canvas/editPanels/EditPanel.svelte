@@ -2,8 +2,9 @@
 //@ts-nocheck
 import {onMount} from '$lib/util';
 import RayEditPanel from './RayEditPanel.svelte';
-// import LineEditPanel from './LineEditPanel.svelte';
-// import HLineEditPanel from './HLineEditPanel.svelte';
+import TriangleEditPanel from './TriangleEditPanel.svelte';
+import RectangleEditPanel from './RectangleEditPanel.svelte';
+import CircleEditPanel from './CircleEditPanel.svelte';
 
   export let items;
   let selectedItem=null;
@@ -41,6 +42,18 @@ import RayEditPanel from './RayEditPanel.svelte';
 
 {#if selectedItem && selectedItem.name == 'drawHline'}
 <RayEditPanel bind:item={selectedItem} bind:items={items}/>
+{/if}
+
+{#if selectedItem && selectedItem.name == 'drawTriangle'}
+<TriangleEditPanel bind:item={selectedItem} bind:items={items}/>
+{/if}
+
+{#if selectedItem && selectedItem.name == 'drawRectangle'}
+<RectangleEditPanel bind:item={selectedItem} bind:items={items}/>
+{/if}
+
+{#if selectedItem && selectedItem.name == 'drawCircle'}
+<CircleEditPanel bind:item={selectedItem} bind:items={items}/>
 {/if}
 
 

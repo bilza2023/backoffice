@@ -101,12 +101,14 @@ function rayDraw(){
     pointsStore.set([]);
 }
 function circleDraw(){
-    if (points.length < 2) {
+    if (points.length < 1) {
     toast.push('points missing');
     return;
     }
+    // debugger;
+    const radius = 20;
     items.push({name: 'drawCircle',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white'}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y),radius:radius, lineWidth : 2, fillColor : 'white',filled:false}});
     items = [...items];
     pointsStore.set([]);
 }

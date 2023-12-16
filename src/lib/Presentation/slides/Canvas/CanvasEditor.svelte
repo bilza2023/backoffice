@@ -92,7 +92,7 @@
                 drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
             break;
             case 'drawTriangle':
-                drawTriangle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.x4,item.extra.y4,item.extra.fillColor,item.extra.opacity,item.extra.filled);
+                drawTriangle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);
             break;
             case 'drawRectangle':
                 drawRectangle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.fillColor,item.extra.opacity,item.extra.filled);
@@ -101,7 +101,8 @@
                 drawPoly(canvas,ctx,item.extra.points,item.extra.fillColor,item.extra.opacity,item.extra.filled);
             break;
             case 'drawCircle':
-                drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.fillColor,item.extra.opacity,item.extra.filled);
+            // debugger;
+                drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.radius,item.extra.lineWidth,item.extra.fillColor,item.extra.filled);
             break;
             case 'drawPoint':
                 drawPoint(canvas,ctx,item.extra.points,item.extra.width,item.extra.fillColor,item.extra.opacity);
