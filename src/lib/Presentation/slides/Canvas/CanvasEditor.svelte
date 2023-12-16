@@ -27,7 +27,11 @@
   let ctx;
   let currentX=0;  
   let currentY=0;  
-  let showEditorPanel = false;
+  let showEditorPanel = true;
+
+  function toggleShowEditorPanel(){showEditorPanel = !showEditorPanel;
+  items = [...items];}
+
   onMount(() => {
     ctx = canvas.getContext('2d');
     updateCanvasSize(); // Call the function initially
@@ -111,7 +115,7 @@
 
 <div class='flex w-full'>
   <div class='flex flex-col justify-center p-0 m-0 w-10/12'>
-    <ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY} bind:showEditorPanel={showEditorPanel}/>
+    <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel}/>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
     on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
@@ -124,7 +128,7 @@
 
 {:else}
 <div class='flex flex-col  justify-center p-0 m-0 w-full'>
-  <ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY}/>
+  <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel}/>
   <!-- svelte-ignore a11y-mouse-events-have-key-events -->
   <canvas width="1200" height="400" bind:this={canvas} on:click={e =>getPoint(e,canvas)} 
   on:mousemove={handleMouseMove} on:mouseout={mouseOut} />

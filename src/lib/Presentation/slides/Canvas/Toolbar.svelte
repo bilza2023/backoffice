@@ -5,7 +5,7 @@ import {toast} from '$lib/util';
 export let items;
 export let currentX;
 export let currentY;
-export let showEditorPanel;
+export let toggleShowEditorPanel;
 
 $: points = $pointsStore;
 let txt = '';
@@ -160,13 +160,12 @@ function gridDraw(){
 
 </script>
 
-<div class='flex justify-start border-2 border-gray-500'>
+<div class='flex justify-start border-2 border-gray-500 text-sm'>
 
-
-<button 
-class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-0 px-1 rounded m-1" on:click={()=>showEditorPanel = !showEditorPanel}>
-Hide
+<button class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-0 px-1 rounded m-1" on:click={toggleShowEditorPanel}>
+  🙈
 </button>
+
 
 <button 
 class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-0 px-1 rounded m-1" on:click={undo}>
@@ -184,10 +183,9 @@ class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1"
 </button>
 
 
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={textDraw} >Text</button>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0 px-1 rounded m-1" on:click={textDraw} >✏️</button>
 
-<input class="bg-gray-500 hover:bg-gray-700 w-32 text-white font-bold py-0 px-1 rounded m-1"
-type="text" name="" id="" bind:value={txt}>
+<input class="bg-gray-500 hover:bg-gray-700 w-32 text-white font-bold py-0 px-1 rounded m-1" type="text" name="" id="" bind:value={txt}>
 
 
 <button
