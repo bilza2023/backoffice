@@ -8,8 +8,6 @@ export let moveDown;
 export let moveUp;
 </script>
 
-    <div class='flex flex-col  w-1/12  bg-gray-600 p-1' 
-    style="border-right: 2px solid white;">
     {#if slides}
         {#each slides as slide,slideIndex}
 
@@ -48,4 +46,3 @@ export let moveUp;
     {:else}
     <h3>No slides</h3>
     {/if}
-    </div>

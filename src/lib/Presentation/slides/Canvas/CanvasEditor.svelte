@@ -17,7 +17,7 @@
 
   import getPoint from './fn/getPoint';
   import ToolBar from './Toolbar.svelte';
-
+  import EditPanel from './EditPanel.svelte'
   export let items;
   export let slideExtra = [];
   export let theme;
@@ -27,7 +27,7 @@
   let ctx;
   let currentX=0;  
   let currentY=0;  
-
+  let showEditorPanel = false;
   onMount(() => {
     ctx = canvas.getContext('2d');
     updateCanvasSize(); // Call the function initially
@@ -107,13 +107,29 @@
 
 </script>
 
+{#if showEditorPanel}
 
-<div class='flex flex-col w-full justify-center p-0 m-0'>
-<ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY}/>
-<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-<canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
-on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
+<div class='flex w-full'>
+  <div class='flex flex-col justify-center p-0 m-0 w-10/12'>
+    <ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY} bind:showEditorPanel={showEditorPanel}/>
+    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+    <canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
+    on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
+  </div>
+
+  <div class='w-2/12 bg-green-800'>
+  <EditPanel />
+  </div> 
+</div> 
+
+{:else}
+<div class='flex flex-col  justify-center p-0 m-0 w-full'>
+  <ToolBar  {canvas} {ctx} bind:items = {items} {currentX} {currentY}/>
+  <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+  <canvas width="1200" height="400" bind:this={canvas} on:click={e =>getPoint(e,canvas)} 
+  on:mousemove={handleMouseMove} on:mouseout={mouseOut} />
 </div>
+{/if}
 
 
 

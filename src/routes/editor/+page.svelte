@@ -134,12 +134,25 @@ else {throw new Error('Failed to load');}
     <p>Loading...</p>
   {:else if slides && slides.length > 0} 
 
-      {#if showSidePanel}
-        <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
-      {/if}
-    <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
+      {#if showSidePanel}    
+      <div class='flex flex-col  w-1/12  bg-gray-600 p-1' 
+      style="border-right: 2px solid white;">
+          <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
+      </div>  
+      
+       <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
         <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
-    </div>
+      </div>  
+      {:else}
+      
+       <div class='p-2 ml-1 min-h-screen  text-center w-full' >
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
+      </div>  
+      {/if}
+
+
+
+   
     {:else}
         <h1>No Slides in the presentation</h1>
     {/if}
