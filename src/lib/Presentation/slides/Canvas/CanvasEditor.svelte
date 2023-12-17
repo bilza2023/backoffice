@@ -79,17 +79,17 @@
         switch (item.name) {
             case 'drawRay':
             //  debugger;
-                drawRay(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor,item.extra.opacity);
+                drawRay(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.width,item.extra.color,item.extra.opacity,item.extra.dash,item.extra.gap);
             break;
             case 'drawHline':
             //  debugger;
-                drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColoritem.extra.opacity);
+                drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.width,item.extra.color,item.extra.opacity,item.extra.dash,item.extra.gap);
             break;
             case 'drawText':
                 drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.textColoritem.extra.opacity);
             break;
             case 'drawLine':
-                drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColoritem.extra.opacity);
+                drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.width,item.extra.color,item.extra.opacity,item.extra.dash,item.extra.gap);
             break;
             case 'drawTriangle':
                 drawTriangle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);

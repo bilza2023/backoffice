@@ -45,7 +45,7 @@ function lineDraw(){
     return;
     }
     items.push({name: 'drawLine',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),opacity:1}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),width:1,color:'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -87,7 +87,7 @@ function hlineDraw(){
     return;
     }
     items.push({name: 'drawHline',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white',opacity:1}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -97,7 +97,7 @@ function rayDraw(){
     return;
     }
     items.push({name: 'drawRay',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white',opacity:1}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
 }

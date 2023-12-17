@@ -34,7 +34,7 @@ function drawArrowhead(ctx, fromX, fromY, toX, toY, radius) {
     ctx.fill();
 }
 
-export default function drawHline(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, lineColor = 'white',opacity = 1) {
+export default function drawHline(canvas, ctx, x1, y1, x2, y2, width = 2, color = 'white',opacity = 1,dash=5,gap=0) {
     x1 = percToX(canvas, x1);
     x2 = percToX(canvas, x2);
     y1 = percToY(canvas, y1);
@@ -42,11 +42,12 @@ export default function drawHline(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, li
 
     // Set the line color
     ctx.globalAlpha = opacity;
-    ctx.strokeStyle = lineColor;
-    ctx.fillStyle = lineColor;
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.setLineDash([dash,gap]);
 
     // Set the line width
-    ctx.lineWidth = lineWidth;
+    ctx.lineWidth = width;
 
     // Begin a new path
     ctx.beginPath();
@@ -60,6 +61,7 @@ export default function drawHline(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, li
     // Stroke the line
     ctx.stroke();
 
+    ctx.setLineDash([]);
     // Draw arrowhead at the end
     drawArrowhead(ctx, x2, y2, x1, y1, 10);
 }

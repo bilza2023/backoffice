@@ -2,9 +2,6 @@
 import percToX from "./percToX";
 import percToY from "./percToY";
 
-
-
-
 function drawArrowhead(ctx, fromX, fromY, toX, toY, radius) {
     let x_center = toX;
     let y_center = toY;
@@ -37,18 +34,21 @@ function drawArrowhead(ctx, fromX, fromY, toX, toY, radius) {
     ctx.fill();
 }
 
-export default function drawRay(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, lineColor = 'white',opacity=1) {
+export default function drawRay(canvas, ctx, x1, y1, x2, y2, width = 2,
+ color = 'white',opacity=1,dash=5,gap=0) {
+
     x1 = percToX(canvas, x1);
     x2 = percToX(canvas, x2);
     y1 = percToY(canvas, y1);
     y2 = percToY(canvas, y2);
 
     // Set the line color
-    ctx.strokeStyle = lineColor;
-    ctx.fillStyle = lineColor;
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.setLineDash([dash,gap]);
 
     // Set the line width
-    ctx.lineWidth = lineWidth;
+    ctx.lineWidth = width;
     ctx.globalAlpha = opacity;
     // Begin a new path
     ctx.beginPath();
@@ -62,6 +62,7 @@ export default function drawRay(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, line
     // Stroke the line
     ctx.stroke();
 
+    ctx.setLineDash([]);
     // Draw arrowheads at both ends
     drawArrowhead(ctx, x2, y2, x1, y1, 10);
     drawArrowhead(ctx, x1, y1, x2, y2, 10);
