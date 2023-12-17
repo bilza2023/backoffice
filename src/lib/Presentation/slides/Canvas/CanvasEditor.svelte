@@ -41,11 +41,11 @@
   // function gameLoop() {items = [...items];}
   beforeUpdate(async() => {
   console.log("Before Update");
-    addUuid();
+    
   });
 
   onMount( () => {
-    
+        addUuid();
         ctx = canvas.getContext('2d');
         updateCanvasSize(); // Call the function initially
         window.addEventListener('resize', updateCanvasSize);

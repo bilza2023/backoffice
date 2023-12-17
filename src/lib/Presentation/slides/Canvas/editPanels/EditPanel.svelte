@@ -15,7 +15,7 @@ import PolyEditPanel from './PolyEditPanel.svelte';
 //   });
   function handleSelection(event) {
     const selectedValue = event.target.value;
-    selectedItem = items.find(item => item.name === selectedValue);
+    selectedItem = items.find(item => item.uuid === selectedValue);
 
     if (selectedItem) {
     //  debugger;
@@ -27,7 +27,7 @@ import PolyEditPanel from './PolyEditPanel.svelte';
 <select on:change={handleSelection} class="w-full bg-gray-800 text-white text-center">
   {#each items.slice().reverse() as item}
     {#if item.name !== 'drawGrid'}
-    <option class="bg-gray-700" value={item.name}>{item.name}</option>
+    <option class="bg-gray-700" value={item.uuid}>{item.name}</option>
     {/if}
   {/each}
 </select>

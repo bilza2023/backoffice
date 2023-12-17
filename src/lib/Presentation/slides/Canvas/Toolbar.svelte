@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import {pointsStore} from './store';
-import {toast} from '$lib/util';
+import {toast,uuid as uuidFn} from '$lib/util';
 export let items;
 export let currentX;
 export let currentY;
@@ -34,7 +34,7 @@ function textDraw(){
     toast.push('Missing text data');
     return;
     }
-    items.push({name: 'drawText',showAt :  0 , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white',opacity:1}});
+    items.push({name: 'drawText',showAt :  0, uuid : uuidFn() , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white',opacity:1}});
     items = [...items];
     txt = '';
     pointsStore.set([]);
@@ -44,7 +44,7 @@ function lineDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawLine',showAt :  0 , extra : {
+    items.push({name: 'drawLine',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),width:1,color:'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
@@ -55,7 +55,7 @@ function polyDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawPoly',showAt :  0 , extra : {
+    items.push({name: 'drawPoly',showAt :  0, uuid : uuidFn() , extra : {
     points : points.map(point => ({...point})),fillColor : 'white',opacity:1,filled:true}});
     // debugger;
     items = [...items];
@@ -66,7 +66,7 @@ function rectangleDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawRectangle',showAt :  0 , extra : {
+    items.push({name: 'drawRectangle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),fillColor : 'white',opacity:1,filled:true}});
     items = [...items];
     pointsStore.set([]);
@@ -76,7 +76,7 @@ function triangleDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawTriangle',showAt :  0 , extra : {
+    items.push({name: 'drawTriangle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),x3 :parseInt(points[2].x), y3:parseInt(points[2].y),fillColor : 'white',opacity:1,filled:true}});
     items = [...items];
     pointsStore.set([]);
@@ -86,7 +86,7 @@ function hlineDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawHline',showAt :  0 , extra : {
+    items.push({name: 'drawHline',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
@@ -96,7 +96,7 @@ function rayDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawRay',showAt :  0 , extra : {
+    items.push({name: 'drawRay',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     pointsStore.set([]);
@@ -108,7 +108,7 @@ function circleDraw(){
     }
     // debugger;
     const radius = 20;
-    items.push({name: 'drawCircle',showAt :  0 , extra : {
+    items.push({name: 'drawCircle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y),radius:radius, lineWidth : 2, fillColor : 'white',filled:false,opacity:1}});
     items = [...items];
     pointsStore.set([]);
@@ -118,7 +118,7 @@ function pointDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawPoint',showAt :  0 , extra : {
+    items.push({name: 'drawPoint',showAt :  0, uuid : uuidFn() , extra : {
     points:points.map(point => ({...point})),width : 10, color : 'white'}});
     items = [...items];
     pointsStore.set([]);
@@ -132,7 +132,7 @@ function pointWTextDraw(){
     toast.push('Missing text data');
     return;
     }
-    items.push({name: 'drawPointWText',showAt :  0 , extra : {
+    items.push({name: 'drawPointWText',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y),text:txt,width : 10, color : 'yellow',colorText: 'white'}});
     items = [...items];
     pointsStore.set([]);
@@ -143,7 +143,7 @@ function ellipseDraw(){
     toast.push('points missing');
     return;
     }
-    items.push({name: 'drawEllipse',showAt :  0 , extra : {
+    items.push({name: 'drawEllipse',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), radius1:40, radius2:20, borderWidth : 2, color : 'white',filled:false,opacity:1}});
     items = [...items];
     pointsStore.set([]);
@@ -157,7 +157,7 @@ function gridDraw(){
         return;    
     }
 }
-    items = [{name: 'drawGrid',showAt :  0 , extra : {}}, ...items];
+    items = [{name: 'drawGrid',showAt :  0, uuid : uuidFn() , extra : {}}, ...items];
 }
 
 
