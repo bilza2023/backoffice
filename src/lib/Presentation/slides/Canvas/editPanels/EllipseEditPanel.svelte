@@ -16,6 +16,8 @@ items = [...items];
 <!-- keep in mind am using content for name and name for component type as drawRay -->
 <div class='flex flex-col justify-center text-center overflow-y-auto'>
 
+<div class="w-6/12 mx-auto bg-gray-600 text-white text-xs  rounded-md my-1">Ellipse</div>
+
 <div class="w-6/12 mx-auto bg-gray-600 text-white text-xs  rounded-md my-1">Points:x,y</div>
 
     <div class='flex gap-1'>

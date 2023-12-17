@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {pointsStore} from './store';
+import {pointsStore,selectedItemStore} from './store';
 import {toast,uuid as uuidFn} from '$lib/util';
 export let items;
 export let currentX;
@@ -37,7 +37,7 @@ function textDraw(){
     items.push({name: 'drawText',showAt :  0, uuid : uuidFn() , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white',opacity:1}});
     items = [...items];
     txt = '';
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function lineDraw(){
     if (points.length < 2) {
@@ -47,7 +47,7 @@ function lineDraw(){
     items.push({name: 'drawLine',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),width:1,color:'white',opacity:1,dash:5,gap:0}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function polyDraw(){
     // debugger;
@@ -59,7 +59,7 @@ function polyDraw(){
     points : points.map(point => ({...point})),fillColor : 'white',opacity:1,filled:true}});
     // debugger;
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function rectangleDraw(){
     if (points.length < 2) {
@@ -69,7 +69,7 @@ function rectangleDraw(){
     items.push({name: 'drawRectangle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),fillColor : 'white',opacity:1,filled:true}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function triangleDraw(){
     if (points.length < 3) {
@@ -79,7 +79,7 @@ function triangleDraw(){
     items.push({name: 'drawTriangle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),x3 :parseInt(points[2].x), y3:parseInt(points[2].y),fillColor : 'white',opacity:1,filled:true}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function hlineDraw(){
     if (points.length < 2) {
@@ -89,7 +89,7 @@ function hlineDraw(){
     items.push({name: 'drawHline',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function rayDraw(){
     if (points.length < 2) {
@@ -99,7 +99,8 @@ function rayDraw(){
     items.push({name: 'drawRay',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), width : 2, color : 'white',opacity:1,dash:5,gap:0}});
     items = [...items];
-    pointsStore.set([]);
+    
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function circleDraw(){
     if (points.length < 1) {
@@ -111,7 +112,7 @@ function circleDraw(){
     items.push({name: 'drawCircle',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y),radius:radius, lineWidth : 2, fillColor : 'white',filled:false,opacity:1}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function pointDraw(){
     if (points.length < 1) {
@@ -121,7 +122,7 @@ function pointDraw(){
     items.push({name: 'drawPoint',showAt :  0, uuid : uuidFn() , extra : {
     points:points.map(point => ({...point})),width : 10, color : 'white'}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function pointWTextDraw(){
     if (points.length < 1) {
@@ -135,7 +136,7 @@ function pointWTextDraw(){
     items.push({name: 'drawPointWText',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y),text:txt,width : 10, color : 'yellow',colorText: 'white'}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 
 function ellipseDraw(){
@@ -146,7 +147,7 @@ function ellipseDraw(){
     items.push({name: 'drawEllipse',showAt :  0, uuid : uuidFn() , extra : {
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), radius1:40, radius2:20, borderWidth : 2, color : 'white',filled:false,opacity:1}});
     items = [...items];
-    pointsStore.set([]);
+    selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
 }
 function gridDraw(){
   for (let i = 0; i < items.length; i++) {

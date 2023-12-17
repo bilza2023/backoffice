@@ -7,31 +7,13 @@ import RectangleEditPanel from './RectangleEditPanel.svelte';
 import CircleEditPanel from './CircleEditPanel.svelte';
 import EllipseEditPanel from './EllipseEditPanel.svelte';
 import PolyEditPanel from './PolyEditPanel.svelte';
+import {selectedItemStore} from '../store';
 
+$:selectedItem = $selectedItemStore;
   export let items;
-  let selectedItem=null;
-//   onMount(async () =>{
-//   selectedItem = items.length-1;
-//   });
-  function handleSelection(event) {
-    const selectedValue = event.target.value;
-    selectedItem = items.find(item => item.uuid === selectedValue);
-
-    if (selectedItem) {
-    //  debugger;
-      console.log("Selected item name:", selectedItem.uuid);
-    }
-  }
+ 
 </script>
 
-<select on:change={handleSelection} class="w-full bg-gray-800 text-white text-center">
-    <option class="bg-gray-700" value=''>Select Item</option>
-  {#each items.slice().reverse() as item}
-    {#if item.name !== 'drawGrid'}
-    <option class="bg-gray-700" value={item.uuid}>{item.name}</option>
-    {/if}
-  {/each}
-</select>
 
 <div class='p-2 overflow-y-auto'>
 
