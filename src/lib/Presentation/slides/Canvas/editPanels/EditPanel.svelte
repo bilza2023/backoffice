@@ -5,6 +5,8 @@ import RayEditPanel from './RayEditPanel.svelte';
 import TriangleEditPanel from './TriangleEditPanel.svelte';
 import RectangleEditPanel from './RectangleEditPanel.svelte';
 import CircleEditPanel from './CircleEditPanel.svelte';
+import EllipseEditPanel from './EllipseEditPanel.svelte';
+import PolyEditPanel from './PolyEditPanel.svelte';
 
   export let items;
   let selectedItem=null;
@@ -54,6 +56,14 @@ import CircleEditPanel from './CircleEditPanel.svelte';
 
 {#if selectedItem && selectedItem.name == 'drawCircle'}
 <CircleEditPanel bind:item={selectedItem} bind:items={items}/>
+{/if}
+
+{#if selectedItem && selectedItem.name == 'drawEllipse'}
+<EllipseEditPanel bind:item={selectedItem} bind:items={items}/>
+{/if}
+
+{#if selectedItem && selectedItem.name == 'drawPoly'}
+<PolyEditPanel bind:item={selectedItem} bind:items={items}/>
 {/if}
 
 

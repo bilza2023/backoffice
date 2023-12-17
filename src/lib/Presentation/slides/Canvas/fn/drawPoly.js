@@ -3,7 +3,7 @@ import percToX from "./percToX";
 import percToY from "./percToY";
 
 export default function drawPoly(canvas, ctx, points, fillColor = 'white', opacity = 1, filled = true) {
-    // Convert percentage coordinates to actual canvas coordinates for each point
+    // debugger;
     const canvasPoints = points.map(point => ({
         x: percToX(canvas, point.x),
         y: percToY(canvas, point.y),
@@ -11,6 +11,7 @@ export default function drawPoly(canvas, ctx, points, fillColor = 'white', opaci
 
     // Set the fill color and opacity directly
     ctx.fillStyle = fillColor;
+    ctx.globalAlpha = opacity;
     
     // Begin a new path
     ctx.beginPath();

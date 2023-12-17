@@ -37,7 +37,7 @@ function drawArrowhead(ctx, fromX, fromY, toX, toY, radius) {
     ctx.fill();
 }
 
-export default function drawRay(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, lineColor = 'white') {
+export default function drawRay(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, lineColor = 'white',opacity=1) {
     x1 = percToX(canvas, x1);
     x2 = percToX(canvas, x2);
     y1 = percToY(canvas, y1);
@@ -49,7 +49,7 @@ export default function drawRay(canvas, ctx, x1, y1, x2, y2, lineWidth = 2, line
 
     // Set the line width
     ctx.lineWidth = lineWidth;
-
+    ctx.globalAlpha = opacity;
     // Begin a new path
     ctx.beginPath();
 

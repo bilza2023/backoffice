@@ -19,7 +19,7 @@ export default function drawRectangle(canvas, ctx, x1, y1, x3, y3, fillColor = '
 
     // Set the fill color and opacity directly
     ctx.fillStyle = fillColor;
-
+    ctx.globalAlpha = opacity;
     // Begin a new path
     ctx.beginPath();
 

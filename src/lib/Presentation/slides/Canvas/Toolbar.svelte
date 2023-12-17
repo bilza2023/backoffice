@@ -34,7 +34,7 @@ function textDraw(){
     toast.push('Missing text data');
     return;
     }
-    items.push({name: 'drawText',showAt :  0 , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white'}});
+    items.push({name: 'drawText',showAt :  0 , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white',opacity:1}});
     items = [...items];
     txt = '';
     pointsStore.set([]);
@@ -45,11 +45,12 @@ function lineDraw(){
     return;
     }
     items.push({name: 'drawLine',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y)}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),opacity:1}});
     items = [...items];
     pointsStore.set([]);
 }
 function polyDraw(){
+    // debugger;
     if (points.length < 3) {
     toast.push('points missing');
     return;
@@ -86,7 +87,7 @@ function hlineDraw(){
     return;
     }
     items.push({name: 'drawHline',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white'}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white',opacity:1}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -96,7 +97,7 @@ function rayDraw(){
     return;
     }
     items.push({name: 'drawRay',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white'}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), lineWidth : 2, lineColor : 'white',opacity:1}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -108,7 +109,7 @@ function circleDraw(){
     // debugger;
     const radius = 20;
     items.push({name: 'drawCircle',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y),radius:radius, lineWidth : 2, fillColor : 'white',filled:false}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y),radius:radius, lineWidth : 2, fillColor : 'white',filled:false,opacity:1}});
     items = [...items];
     pointsStore.set([]);
 }
@@ -138,12 +139,12 @@ function pointWTextDraw(){
 }
 
 function ellipseDraw(){
-    if (points.length < 3) {
+    if (points.length < 1) {
     toast.push('points missing');
     return;
     }
     items.push({name: 'drawEllipse',showAt :  0 , extra : {
-    x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y), x3:parseInt(points[2].x), y3:parseInt(points[2].y), lineWidth : 2, lineColor : 'white'}});
+    x1:parseInt(points[0].x), y1:parseInt(points[0].y), radius1:40, radius2:20, borderWidth : 2, color : 'white',filled:false,opacity:1}});
     items = [...items];
     pointsStore.set([]);
 }

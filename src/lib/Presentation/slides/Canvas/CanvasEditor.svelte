@@ -79,17 +79,17 @@
         switch (item.name) {
             case 'drawRay':
             //  debugger;
-                drawRay(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
+                drawRay(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor,item.extra.opacity);
             break;
             case 'drawHline':
             //  debugger;
-                drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
+                drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColoritem.extra.opacity);
             break;
             case 'drawText':
-                drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.textColor);
+                drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.textColoritem.extra.opacity);
             break;
             case 'drawLine':
-                drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColor);
+                drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.lineWidth,item.extra.lineColoritem.extra.opacity);
             break;
             case 'drawTriangle':
                 drawTriangle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);
@@ -102,7 +102,7 @@
             break;
             case 'drawCircle':
             // debugger;
-                drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.radius,item.extra.lineWidth,item.extra.fillColor,item.extra.filled);
+                drawCircle(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.radius,item.extra.lineWidth,item.extra.fillColor,item.extra.filled,item.extra.opacity);
             break;
             case 'drawPoint':
                 drawPoint(canvas,ctx,item.extra.points,item.extra.width,item.extra.fillColor,item.extra.opacity);
@@ -111,15 +111,14 @@
                 drawPointWText(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.text,item.extra.width,item.extra.color,item.extra.colorText);
             break;
             case 'drawEllipse':
-                drawEllipse(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.x3,item.extra.y3,item.extra.fillColor,item.extra.opacity,item.extra.filled);
+                drawEllipse(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.radius1,item.extra.radius2,item.extra.borderWidth,item.extra.color,item.extra.filled,item.extra.opacity);
             break;
             case 'drawGrid':
             drawGrid(canvas,ctx);
             break;       
             default:
                 break;
-        }
-        
+        }   
     }
   
   });
@@ -137,7 +136,7 @@
   </div>
 
     {#if showEditorPanel}
-      <div class='w-2/12 bg-green-800'>
+      <div class='w-2/12 bg-gray-600'>
       <EditPanel bind:items = {items} />
       </div>
     {/if}

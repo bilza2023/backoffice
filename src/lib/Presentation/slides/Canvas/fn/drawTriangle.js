@@ -11,7 +11,7 @@ export default function drawTriangle(canvas, ctx, x1, y1, x2, y2, x3, y3, fillCo
     y2 = percToY(canvas, y2);
     y3 = percToY(canvas, y3);
   
-    // Set the fill color and opacity directly
+    ctx.globalAlpha = opacity;
     ctx.fillStyle = fillColor;
 
     // Begin a new path

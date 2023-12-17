@@ -44,4 +44,8 @@ items = [...items];
 <input class="w-full bg-gray-800 text-white text-center rounded-md"
  type="color"bind:value={item.extra.fillColor} on:change={handleChange}/>
 
+
+<div class="w-6/12 mx-auto bg-gray-600 text-white text-xs  rounded-md my-1">Opacity</div>
+<input class="w-full bg-gray-800 text-white text-center rounded-md"
+ type="number" min=0 max=1 step=0.1 bind:value={item.extra.opacity} on:change={handleChange} />
 </div>
