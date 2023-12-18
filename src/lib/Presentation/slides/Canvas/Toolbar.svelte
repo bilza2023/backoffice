@@ -34,7 +34,7 @@ function textDraw(){
     toast.push('Missing text data');
     return;
     }
-    items.push({name: 'drawText',showAt :  0, uuid : uuidFn() , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, textColor : 'white',opacity:1}});
+    items.push({name: 'drawText',showAt :  0, uuid : uuidFn() , extra : {x:parseInt(points[0].x), y:parseInt(points[0].y), text:txt, fontSize : 24, color : 'white',opacity:1}});
     items = [...items];
     txt = '';
     selectedItemStore.set(items[items.length-1]);pointsStore.set([]);

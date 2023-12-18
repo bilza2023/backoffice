@@ -29,7 +29,7 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawHline(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.width,item.extra.color,item.extra.opacity,item.extra.dash,item.extra.gap);
             break;
             case 'drawText':
-                drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.textColoritem.extra.opacity);
+                drawText(canvas,ctx,item.extra.x, item.extra.y,item.extra.text, item.extra.fontSize, item.extra.color,item.extra.opacity);
             break;
             case 'drawLine':
                 drawLine(canvas,ctx,item.extra.x1,item.extra.y1,item.extra.x2,item.extra.y2,item.extra.width,item.extra.color,item.extra.opacity,item.extra.dash,item.extra.gap);
