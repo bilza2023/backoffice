@@ -20,7 +20,8 @@
   let currentX=0;  
   let currentY=0;  
   let showEditorPanel = true;
- 
+  let cursorState = 'default';
+
 function toggleShowEditorPanel(){
       showEditorPanel = !showEditorPanel;
       items = [...items];
@@ -42,9 +43,22 @@ async function addUuid() {
         ctx = canvas.getContext('2d');
         updateCanvasSize(); // Call the function initially
         window.addEventListener('resize', updateCanvasSize);
-        // setInterval(gameLoop,100);
+        cursorSetup();
+      
   });
-  
+  function cursorSetup(){
+      const handleKeyUp = (event) => {
+          if (event.key === 'Escape') {
+          cursorState = 'default';
+          }
+        }
+         window.addEventListener('keyup', handleKeyUp);
+
+      return () => {
+      // Cleanup when the component is unmounted
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }
   function updateCanvasSize() {
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
@@ -70,11 +84,11 @@ async function addUuid() {
 
 </script>
 
-<div class='flex'>
+<div class='flex justify-start items-start  '>
  
-  <div class={`flex flex-col justify-center p-0 m-0 ${showEditorPanel ? 'w-10/12 ' : 'w-full'}`}>
+  <div class={`flex flex-col justify-center p-0 m-0 ${showEditorPanel ? 'w-10/12 ' : 'w-full'}`} style="cursor: {cursorState};" >
 
-    <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel}/>
+    <ToolBar  bind:items = {items} {currentX} {currentY}  {toggleShowEditorPanel} bind:cursorState={cursorState}/>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
     on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
@@ -98,4 +112,5 @@ async function addUuid() {
     border: 1px solid white;
     display: block;
   }
+  
 </style>

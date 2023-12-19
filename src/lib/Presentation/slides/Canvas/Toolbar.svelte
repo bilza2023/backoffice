@@ -6,6 +6,7 @@ export let items;
 export let currentX;
 export let currentY;
 export let toggleShowEditorPanel;
+export let cursorState='default';
 
 $: points = $pointsStore;
 let txt = '';
@@ -38,6 +39,7 @@ function textDraw(){
     items = [...items];
     txt = '';
     selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
+    
 }
 function lineDraw(){
     if (points.length < 2) {
@@ -48,6 +50,7 @@ function lineDraw(){
     x1:parseInt(points[0].x), y1:parseInt(points[0].y), x2:parseInt(points[1].x), y2:parseInt(points[1].y),width:1,color:'white',opacity:1,dash:5,gap:0}});
     items = [...items];
     selectedItemStore.set(items[items.length-1]);pointsStore.set([]);
+    cursorState = 'crosshair';
 }
 function polyDraw(){
     // debugger;
