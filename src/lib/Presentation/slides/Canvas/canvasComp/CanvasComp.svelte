@@ -57,5 +57,4 @@ import getPoint from './fn/getPoint';
 </script>
 
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-<canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)} 
-    on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />
+<canvas width="1200" height="400" bind:this={canvas} on:click={ e =>getPoint(e,canvas)}  on:mousemove={handleMouseMove} on:mouseout={mouseOut}  />

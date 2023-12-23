@@ -48,7 +48,7 @@ function shiftTime(slideIndex, newEndTime) {
     <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
-    <NavBtn title='Link' icon={Icons.TV}  url={`https://backoffice-navy.vercel.app/player?tcode=fbise9math&id=${id}`} />
+    <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} />
   </div> 
 
   <div class='flex justify-end m-0 p-1 items-center gap-1 border-2 border-gray-500  rounded-md text-xs mr-1'>

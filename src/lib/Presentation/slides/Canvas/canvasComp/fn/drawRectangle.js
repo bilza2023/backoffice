@@ -6,7 +6,7 @@ export default function drawRectangle(canvas, ctx, x1, y1, x3, y3, fillColor = '
     // Convert percentage coordinates to actual canvas coordinates for the given points
     x1 = percToX(canvas, x1);
     y1 = percToY(canvas, y1);
-
+ 
     x3 = percToX(canvas, x3);
     y3 = percToY(canvas, y3);
 

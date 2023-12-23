@@ -4,48 +4,66 @@
 <script>
 //@ts-nocheck
 import { onMount } from '$lib/util';
+ import { afterUpdate } from 'svelte';
 import CodeTxt from './CodeTxt.svelte';
 
 export let pulse;
 export let items;
 export let setPulse;
 export let showFullPage;
-
+/**
+Svelte is good for drawing data and NOT-AT_ALL good for calculating while drawing so make calculations before the draw begins and then just draw the already calculated data.
+*/
 ////////////////////////////////
-function isFocus(item){
-  if (pulse >= item.extra.startTime && pulse < item.extra.endTime ){
-      return true; 
-  }else {
-      return  false;  
-  }
-}
-
-
+let focusedItem=null;
 $:{
    pulse;
-   items = [...items];
+   items.forEach(item => {
+     if (pulse >= item.extra.startTime && pulse < item.extra.endTime) {
+       focusedItem = item;
+     }
+     items = [...items];
+     scroll ();
+   });
 }
 
+  function scroll () {
+      let focusedElement = document.querySelector('.focused');
+      if (focusedElement) {
+        // focusedElement = document.querySelector('.focused');
+        // focusedElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+         let rect = focusedElement.getBoundingClientRect();
+      let viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+      let scrollPos = rect.top + window.pageYOffset - viewHeight * 0.1; // Adjust this value to change the space at the top
+      window.scrollTo({top: scrollPos, behavior: 'smooth'});
+      }
+  }
 </script>
 
-    {#each items as item,index}
-    <button   class='flex w-full'  on:click={()=>setPulse(item.extra.startTime)}>
-        
-        <button class='m-1 p-1 rounded-2xl  text-sm items-center justify-center {(item.extra.fs.length > 0)? 'bg-yellow-700': 'bg-stone-600'}' on:click={()=>showFullPage(index)}>{ item.extra.step }</button>
 
-      {#if isFocus(item)}
-       <div class="focused w-full text-center">
-            <CodeTxt eq={item}/>
-       </div>
 
-      {:else}
-       <div class=" nonFocused w-full text-center">
-            <CodeTxt eq={item}/>
-       </div>
-      {/if}
-    </button>    
-    {/each}
+{#each items as item,index}
+  <button class='flex w-full' on:click={()=>setPulse(item.extra.startTime)}>
+   
+    <div class='m-1 p-1 rounded-2xl text-sm items-center justify-center 
+    bg-stone-600' >
+    { item.extra.step }
+    </div>
+   
+      <div  class={item === focusedItem ? "focused w-full text-center" : "nonFocused w-full text-center"} >
+      <CodeTxt eq={item}/>
+    </div>
+  
+  </button>    
+{/each}
+
+
 <!-- do not remove the 4 br they are bery important -->
+<br/>    
+<br/>    
+<br/>    
+<br/>    
 <br/>    
 <br/>    
 <br/>    
