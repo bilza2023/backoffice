@@ -10,40 +10,36 @@ import CodeTxt from './CodeTxt.svelte';
 export let pulse;
 export let items;
 export let setPulse;
-export let showFullPage;
 /**
 Svelte is good for drawing data and NOT-AT_ALL good for calculating while drawing so make calculations before the draw begins and then just draw the already calculated data.
 */
 ////////////////////////////////
-let focusedItem=null;
+let focusedDivId=null;
+ let prevFocusedDivId = null;
 $:{
    pulse;
-   items.forEach(item => {
-     if (pulse >= item.extra.startTime && pulse < item.extra.endTime) {
-       focusedItem = item;
+   for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    if (pulse >= item.extra.startTime && pulse < item.extra.endTime) {
+       prevFocusedDivId = focusedDivId;
+        focusedDivId = i;
      }
-     items = [...items];
-     scroll ();
-   });
+   }
+  items = [...items];
 }
 
-  function scroll () {
-      let focusedElement = document.querySelector('.focused');
+ afterUpdate(() => {
+      if (focusedDivId !== null && focusedDivId !== prevFocusedDivId) {
+      const focusedElement = document.getElementById(`${focusedDivId}`);
       if (focusedElement) {
-        // focusedElement = document.querySelector('.focused');
-        // focusedElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-         let rect = focusedElement.getBoundingClientRect();
-      let viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-      let scrollPos = rect.top + window.pageYOffset - viewHeight * 0.1; // Adjust this value to change the space at the top
-      window.scrollTo({top: scrollPos, behavior: 'smooth'});
+        focusedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-  }
+    }
+  });
 </script>
 
-
-
 {#each items as item,index}
+
   <button class='flex w-full' on:click={()=>setPulse(item.extra.startTime)}>
    
     <div class='m-1 p-1 rounded-2xl text-sm items-center justify-center 
@@ -51,13 +47,13 @@ $:{
     { item.extra.step }
     </div>
    
-      <div  class={item === focusedItem ? "focused w-full text-center" : "nonFocused w-full text-center"} >
+    <div id={`${index}`}  class={focusedDivId === index ? "focused w-full text-center" : "nonFocused w-full text-center"} >
       <CodeTxt eq={item}/>
-    </div>
-  
-  </button>    
-{/each}
+    </div> 
 
+  </button> 
+
+{/each}
 
 <!-- do not remove the 4 br they are bery important -->
 <br/>    

@@ -4,7 +4,6 @@
 
   export let start;
   export let stop;
-  export let pulse;
   export let callback;
 </script>
 
@@ -16,8 +15,6 @@
     <button class="p-1 rounded-sm bg-red-800 text-white text-sm" 
     on:click={stop}>■ Stop</button>
  
-    <div class="p-1 rounded-sm bg-gray-900 text-yellow-500 text-sm">
-    {pulse} sec</div>
 
     <ThemeDD {callback}/>
 

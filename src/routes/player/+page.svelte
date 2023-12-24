@@ -10,6 +10,7 @@ import {browser,onMount,toast,BASE_URL} from '$lib/util'
 import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
 import readSlides from '$lib/tdf/readSlides';
+import Slider from './Slider.svelte';
 import parse from './fn/parse.js';
 
 let slides;
@@ -44,6 +45,7 @@ let currentSlide = null;
 
 function setPulse(time){
 pulse = time;
+setCurrentSlide();
 }
 function applyTheme(themeKey){
 // debugger;
@@ -85,10 +87,15 @@ function setCurrentSlide(){
 }
 </script> 
 
-<div class='bg-gray-800 text-white w-full min-h-screen'>
+<div class='bg-gray-800 text-white w-full min-h-screen' style='position: fixed; top: 0;'>
 
 <div class='flex justify-start sticky top-0 w-full p-1 m-0 bg-gray-700'>
-<PlayButtons   {start} {stop} {pulse} callback={applyTheme} />
+<PlayButtons   {start} {stop} callback={applyTheme} />
+
+{#if currentSlide}
+<Slider  {slides} {pulse} {setPulse}/>
+{/if}
+
 </div>
 
 <br>
