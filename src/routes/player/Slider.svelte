@@ -10,10 +10,10 @@ export let setPulse;
 
 {#if slides}
 
-    <div class="w-2/12 p-1 rounded-sm bg-gray-900 text-yellow-500 text-xs">
+    <div class="w-3/12 p-1 rounded-sm bg-gray-900 text-yellow-500 text-xs">
     {pulse}/{slides[slides.length -1].endTime} sec</div>
 
-  <div class='10/12'>
+  <div class='9/12'>
   
   <input type="range" min='0' 
   max={slides[slides.length -1].endTime} value={pulse} class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer " id="myRange"

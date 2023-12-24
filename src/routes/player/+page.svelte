@@ -11,16 +11,15 @@ import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
 import readSlides from '$lib/tdf/readSlides';
 import Slider from './Slider.svelte';
-import parse from './fn/parse.js';
 
 let slides;
 let id;
 let tcode;
 let theme = themes.basic;
 let hydrateInterval=null;
- 
-onMount(async ()=>{
-//  
+let stopTime = null;
+
+onMount(async ()=>{  
 id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
 
@@ -28,16 +27,24 @@ let val  = await readSlides(id,tcode);
   let returnSlides  = await readSlides(id,tcode);
    
  if (returnSlides){
-//   slides  = returnSlides.slides;
-//  debugger;
-//   slides = await parse(returnSlides.slides);
   slides = returnSlides.slides;
+  getStopTime(slides);
   currentSlide = slides[0];
  }
 else {throw new Error('Failed to load');}
 // hydrate();
 });
 
+async function   getStopTime(slides){
+ if(slides.length > 0){
+    if (slides[slides.length -1].endTime 
+    && slides[slides.length -1].endTime > 0 ){
+        stopTime = slides[slides.length -1].endTime;
+        }else {
+        stopTime = 600;
+    }
+ }
+}
 
 let interval=null;
 let pulse=0;
@@ -45,6 +52,7 @@ let currentSlide = null;
 
 function setPulse(time){
 pulse = time;
+// if(pulse > stopTime){stop();return;}
 setCurrentSlide();
 }
 function applyTheme(themeKey){
@@ -54,18 +62,19 @@ theme = themes[themeKey];
 }
 function gameloop(){
     pulse++;
+    if(pulse > stopTime){stop();return;}
     setCurrentSlide();
 }
 
-function hydrate(){
-start();
- hydrateInterval =  setInterval(stopHydrate,2000);
-}
-function stopHydrate(){
-    clearInterval(hydrateInterval);
-    stop();
-    pulse = 0;
-}
+// function hydrate(){
+// start();
+//  hydrateInterval =  setInterval(stopHydrate,2000);
+// }
+// function stopHydrate(){
+//     clearInterval(hydrateInterval);
+//     stop();
+//     pulse = 0;
+// }
 function start(){
     interval= setInterval(gameloop,1000);
 }
@@ -98,7 +107,6 @@ function setCurrentSlide(){
 
 </div>
 
-<br>
 {#if currentSlide}
 
     <Presentation {currentSlide} {theme} {pulse} {setPulse}/>
