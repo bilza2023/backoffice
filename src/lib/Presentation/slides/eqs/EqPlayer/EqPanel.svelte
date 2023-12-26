@@ -44,7 +44,7 @@ $:{
    
     <div class='m-1 p-1 rounded-2xl text-sm items-center justify-center 
     bg-stone-600' >
-    { item.extra.step }
+    { item.extra.step + 1 }
     </div>
    
     <div id={`${index}`}  class={focusedDivId === index ? "focused w-full text-center" : "nonFocused w-full text-center"} >

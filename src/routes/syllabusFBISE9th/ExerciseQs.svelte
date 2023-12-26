@@ -4,7 +4,7 @@ import { Card } from '$lib/cmp';
 import {Icons } from '$lib/util';
 export let questions;
 // export let getUrl;
-export let isAdmin=false;
+// export let isAdmin=false;
 export let selectedEx;
 
     let showQs=true;
@@ -46,7 +46,7 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
             <Card
             title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
-            url = {`/eqsEditor?tcode=fbise9math&id=${question._id}`}
+            url = {`/editor?tcode=fbise9math&id=${question._id}`}
             >
 
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
@@ -61,11 +61,7 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
                 </div>
             {/if}
             
-            {#if isAdmin }
-                <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                <a href= {`/timeEditor?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.EXPLOSION}</a>
-                </div>
-            {/if}
+         
             
             </Card>
             </div>

@@ -11,14 +11,15 @@ import EqPartLowerToolBar from './EqPartLowerToolBar.svelte';
 import SP from './SPPart/SP.svelte';
 // import PageHeading from './PageHeading.svelte';
 import getNewItem from './getNewItem';
-    import { onMount } from 'svelte';
+import { onMount } from 'svelte';
 
 ////////////////////////////////////////////////////////
 export let startTime;
 export let endTime;
 export let items;
 export let theme={};
-
+export let soundFile;
+let currentTime=0
 ////////////////////////////////////////////////////////
 function redraw(){ items = [...items];}
 function toggleSP(index){
@@ -97,12 +98,12 @@ for (let i = 0; i < items.length; i++) {
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 
 <!-- <PageHeading/> -->
-<Toolbar  {addEq}  {closeAllSP} {openAllSP} />
+<Toolbar  {addEq}  {closeAllSP} {openAllSP} {soundFile} bind:currentTime={currentTime}/>
 
 <div class="w-full m-4 p-0">
   <Titlebar />
   {#each items as item, i}
-      <EqPart  bind:item={item} {i} />
+      <EqPart  bind:item={item} {i} {currentTime}/>
  
       <EqPartLowerToolBar bind:item={item} {i} {addEq} {delEq} {moveUpEq} {moveDownEq} {setEqType}  {toggleSP} {toggleFS}/>
 

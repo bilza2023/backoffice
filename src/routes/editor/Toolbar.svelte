@@ -1,16 +1,16 @@
 <script>
 //@ts-nocheck
-import {NavBtn2,Logo,NavBtn} from '$lib/cmp';
-import {BASE_URL, Icons} from '$lib/util';
+import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
+import {BASE_URL, Icons,onMount} from '$lib/util';
 export let show;
 export let slides;
+export let item;
 export let id;
 export let addNew;
 export let save;
 export let showSidePanel;
 export let currentSlideIndex;
-export let delCurSlide;
-
+// export let delCurSlide;
 function shiftTime(slideIndex, newEndTime) {
 //  debugger;
   if (slideIndex < 0 || slideIndex >= slides.length) {
@@ -37,8 +37,13 @@ function shiftTime(slideIndex, newEndTime) {
   }
 //  console.log(slides); 
 }
-
-
+onMount(async () => {
+console.log("item",item);
+});
+$: {
+  console.log('Status:', item.status);
+  console.log('Question Type:', item.questionType);
+}
 </script>
 
 <div class='flex justify-between  bg-gray-600 m-0 p-0 items-center gap-1 border-b-2 border-white'>
@@ -49,8 +54,6 @@ function shiftTime(slideIndex, newEndTime) {
     <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
     <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} />
-
- 
 
   </div> 
 
@@ -65,7 +68,36 @@ function shiftTime(slideIndex, newEndTime) {
     <input class='bg-gray-500 text-white p-0 m-0 rounded-md border-2 border-white text-center'  type="number" bind:value={slides[currentSlideIndex].endTime}
       on:input={() => shiftTime(currentSlideIndex, slides[currentSlideIndex].endTime)}
     >
-  <NavBtn2 title='Del' icon={Icons.DEL}  clk={delCurSlide} />
+
+<!-- DD for status     -->
+<!-- ['unlocked' ,'fill' ,'locked', 'final'], -->
+   <div class="relative">
+  <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}>
+    <option value="unlocked">Unlocked</option>
+    <option value="fill">Filled</option>
+    <option value="locked">Locked</option>
+    <option value="final">Final</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 text-white">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12l-6-6 1.414-1.414L10 9.172l4.586-4.586L16 6z"/></svg>
+  </div>
+</div>
+
+<!-- DD for questionType     -->
+<!-- ['paid' ,'login' ,'free'], -->
+   <div class="relative">
+  <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="question_type" bind:value={item.questionType}>
+    <option value="paid">Paid</option>
+    <option value="login">Login</option>
+    <option value="free">Free</option>
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 text-white">
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12l-6-6 1.414-1.414L10 9.172l4.586-4.586L16 6z"/></svg>
+  </div>
+</div>
+
+   <!-- <AreYouSure deleteFn={delCurSlide} triggerTime={500} /> -->
+     <!-- <NavBtn2 title='Del' icon={Icons.DEL}  clk={delCurSlide} /> -->
     {/if}
 
   </div>  

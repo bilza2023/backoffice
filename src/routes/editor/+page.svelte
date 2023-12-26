@@ -16,9 +16,11 @@
  let tcode;
  let isLoading = true;
  let showSidePanel = true;
+ let item;
+ let soundFile;
 
 async function save(){
- saveFinal(slides,tcode,id);
+ saveFinal(slides,tcode,id,item);
 } 
 
 async function moveDown(index) {
@@ -103,7 +105,11 @@ async function  addNew(slideType){
   let returnSlides  = await readSlides(id,tcode);
     try { 
  if (returnSlides){
+//  debugger;
   slides = returnSlides.slides;
+  item = returnSlides.item;
+  //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
+  soundFile = tcode + '/' + returnSlides.item.partNo.exercise  + '/' + returnSlides.item.filename + '.mp3';
     if (slides.length > 0){
       currentSlideIndex = 0;
     }
@@ -125,7 +131,7 @@ else {throw new Error('Failed to load');}
  
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex} />  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile}/>  
 {/if}
 
 <div class='flex justify-start w-full'>
@@ -141,12 +147,12 @@ else {throw new Error('Failed to load');}
       </div>  
       
        <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {soundFile}/>
       </div>  
       {:else}
       
        <div class='p-2 ml-1 min-h-screen  text-center w-full' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {soundFile}/>
       </div>  
       {/if}
 
