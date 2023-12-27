@@ -138,7 +138,7 @@ else {throw new Error('Failed to load');}
 
   {#if isLoading}
     <p>Loading...</p>
-  {:else if slides && slides.length > 0} 
+  {:else if slides  && slides.length > 0} 
 
       {#if showSidePanel}    
       <div class='flex flex-col  w-1/12  bg-gray-600 p-1' 

@@ -51,11 +51,13 @@ $: totalExQuestion = questions.filter(question => question.partNo.exercise === s
 
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
 
+            {#if question.status !== 'final' }
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                 <a href= {`/editor?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
             </div>
-            
-            {#if question.status !== 'unlocked' }
+            {/if}
+
+            {#if question.status !== 'empty' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                 <a href= {`/player?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.START}</a>
                 </div>

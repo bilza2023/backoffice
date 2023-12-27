@@ -3,14 +3,7 @@
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
 import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
-import Instructions from '$lib/appComp/Instructions.svelte';
-let showInstructions = true;  
-let showSyllabus = true;  
-let showNotes = true;  
 
-function closeInstructions(){showInstructions = !showInstructions}  
-function closeSyllabus(){showSyllabus = !showSyllabus}  
-function closeNotes(){showNotes = !showNotes}  
 let isLogin = false;
 let isAdmin = false;
 onMount(async () => {
@@ -38,10 +31,10 @@ onMount(async () => {
 
 
 <div class="flex justify-center w-full items-center">
-
+<!-- 
   <div class="w-3/12">
   <Card  url="/syllabusByChapter" title="Syllbus By Chapter" icon={Icons.COMPUTER}/>
-  </div>
+  </div> -->
 
   <div class="w-3/12">
   <Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>

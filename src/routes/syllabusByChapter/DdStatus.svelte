@@ -32,7 +32,7 @@ All ( {totalChapterQuestions} )
 {/if }
 </button>
 
-<button on:click={()=>setStatus('unlocked')}  class={`p-1 m-1 rounded-lg  px-2 ${(selectedStatus == 'unlocked' && showAllStatus ==false)? 'bg-gray-400':'bg-gray-600' }`}>Unlocked ( {totalChapterUnlocked} )</button>
+<button on:click={()=>setStatus('unlocked')}  class={`p-1 m-1 rounded-lg  px-2 ${(selectedStatus == 'unlocked' && showAllStatus ==false)? 'bg-gray-400':'bg-gray-600' }`}>Empty ( {totalChapterUnlocked} )</button>
 
 <button on:click={()=>setStatus('fill')}  class={`p-1 m-1 rounded-lg  px-2 ${(selectedStatus== 'fill'  && showAllStatus ==false)? 'bg-gray-400':'bg-gray-600' }`}>Fill ( {totalChapterFill} )</button>
 

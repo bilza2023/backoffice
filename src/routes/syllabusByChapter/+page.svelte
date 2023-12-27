@@ -37,7 +37,7 @@ $:{
   totalChapterQuestions = tcq.length;
   /////////////////////////////////////
   const tcu  = questions.filter(question => 
-      question.chapter === selectedChapter && question.status === 'unlocked');
+      question.chapter === selectedChapter && question.status === 'empty');
   totalChapterUnlocked = tcu.length;
   /////////////////////////////////////
   const dsssaw  = questions.filter(question => 
@@ -68,7 +68,7 @@ $: {
   }
 }
 function getStatusIcon(status){
-  if (status == 'unlocked') {return ' 🧊'  }
+  if (status == 'empty') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
@@ -97,15 +97,7 @@ try{
   }      
 });
 
-function getUrl(question){
- let url;
- if (question.questionType == "eqs"){
-    url = `/eqs?id=${question._id}`;
- }else{
-    url = `/grid?id=${question._id}`;
- }
-return url; 
-} 
+
 ////////////////////////////////////////////////////////
 </script>
 <Nav {isAdmin} {isLogin}/>
@@ -133,7 +125,7 @@ return url;
             <Card
             title = {`Ch:${question.chapter} Ex:${question.partNo.exercise} Q:${question.partNo.questionNo}`}
             icon={Icons.TEST}
-            url = {`/eqsEditor?tcode=fbise9math&id=${question._id}`}
+            url = {`/editor?tcode=fbise9math&id=${question._id}`}
             > 
             
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
@@ -143,7 +135,7 @@ return url;
             </div>
 
 
-            {#if question.status !== 'unlocked' }
+            {#if question.status !== 'empty' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                 <a href= {`/player?tcode=fbise9math&id=${question._id}`} target="_blank">{Icons.START}</a>
                 </div>

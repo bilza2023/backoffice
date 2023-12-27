@@ -10,7 +10,13 @@ export let addNew;
 export let save;
 export let showSidePanel;
 export let currentSlideIndex;
-// export let delCurSlide;
+export let delCurSlide;
+let showDelete=false;
+
+function delFirst(){
+showDelete=false;
+delCurSlide();
+}
 function shiftTime(slideIndex, newEndTime) {
 //  debugger;
   if (slideIndex < 0 || slideIndex >= slides.length) {
@@ -74,7 +80,7 @@ $: {
 Status
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}>
-    <option value="unlocked">Unlocked</option>
+    <option value="empty">Empty</option>
     <option value="fill">Filled</option>
     <option value="locked">Locked</option>
     <option value="final">Final</option>
@@ -98,8 +104,7 @@ Type
   </div>
 </div>
 
-   <!-- <AreYouSure deleteFn={delCurSlide} triggerTime={500} /> -->
-     <!-- <NavBtn2 title='Del' icon={Icons.DEL}  clk={delCurSlide} /> -->
+     <NavBtn2 title='Del' icon={Icons.DEL}  clk={()=>showDelete = !showDelete} />
     {/if}
 
   </div>  
@@ -119,4 +124,9 @@ Type
 
 <NavBtn2 title='Canvas' icon={Icons.TV }  clk={()=>addNew('canvas')} />
 </div>
+{/if}
+
+
+{#if showDelete}
+<NavBtn2 title='Are You Sure to Delete' icon={Icons.DEL }  clk={delFirst} />
 {/if}
