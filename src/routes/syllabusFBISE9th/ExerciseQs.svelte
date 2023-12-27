@@ -22,7 +22,7 @@ $:{
  }
 }
 function getStatusIcon(status){
-  if (status == 'unlocked') {return ' 🧊'  }
+  if (status == 'empty') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
