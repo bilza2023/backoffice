@@ -61,7 +61,7 @@ function statusIcons(){
     <!-- <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/> -->
       {/if}
       
-    <NavBtn title='Filled By Me' icon ={Icons.PENCIL} url='/filledByMe'/>
+    <NavBtn title='Question Manager' icon ={Icons.BOOKS} url='/questionManager'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
     <NavBtn2 title='Logout' icon ={Icons.LOCK}    clk={logout}/>
     

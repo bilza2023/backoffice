@@ -71,6 +71,7 @@ $: {
 
 <!-- DD for status     -->
 <!-- ['unlocked' ,'fill' ,'locked', 'final'], -->
+Status
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}>
     <option value="unlocked">Unlocked</option>
@@ -85,6 +86,7 @@ $: {
 
 <!-- DD for questionType     -->
 <!-- ['paid' ,'login' ,'free'], -->
+Type
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="question_type" bind:value={item.questionType}>
     <option value="paid">Paid</option>

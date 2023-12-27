@@ -1,1 +1,0 @@
-on:input={(e)=>updateData(d.bindTo,e.target.value)}
