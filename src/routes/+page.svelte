@@ -1,5 +1,5 @@
 <script>
-//@ts-nocheck
+//@ts-nocheck 
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
 import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';

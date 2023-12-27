@@ -53,13 +53,10 @@ function statusIcons(){
             <!-- ******************************** -->
     <div class='flex'>
     {#if isLogin}
-    <!-- <NavBtn title='Templates' icon ='📜' url='/templates'/> -->
-    
 
-    <NavBtn2 title={extractEmailPrefix()} icon ={statusIcons()}    clk={()=>toast.push("is loggedin")}/>
-      {#if isAdmin}
+      <!-- {#if isAdmin} -->
     <!-- <NavBtn title='Admin Panel' icon ={Icons.BULB} url='/admin'/> -->
-      {/if}
+      <!-- {/if} -->
       
     <NavBtn title='Question Manager' icon ={Icons.BOOKS} url='/questionManager'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
