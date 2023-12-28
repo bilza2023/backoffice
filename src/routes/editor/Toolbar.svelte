@@ -11,6 +11,7 @@ export let save;
 export let showSidePanel;
 export let currentSlideIndex;
 export let delCurSlide;
+export let filename;
 let showDelete=false;
 
 function delFirst(){
@@ -54,13 +55,13 @@ $: {
 
 <div class='flex justify-between  bg-gray-600 m-0 p-0 items-center gap-1 border-b-2 border-white'>
  
-  <div class='flex justify-start'>
+  <div class='flex justify-start items-center'>
     <Logo url='/' /> 
     <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
     <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} />
-
+    &nbsp;<span class='text-green-300 bg-gray-900 p-1 text-sm rounded-md '>{filename}</span>
   </div> 
 
   <div class='flex justify-end m-0 p-1 items-center gap-1 border-2 border-gray-500  rounded-md text-xs mr-1'>

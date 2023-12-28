@@ -18,6 +18,7 @@
  let showSidePanel = true;
  let item;
  let soundFile;
+ let filename;
 
 async function save(){
  saveFinal(slides,tcode,id,item);
@@ -108,6 +109,7 @@ async function  addNew(slideType){
 //  debugger;
   slides = returnSlides.slides;
   item = returnSlides.item;
+  filename = item.filename;
   //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
   soundFile = tcode + '/' + returnSlides.item.partNo.exercise  + '/' + returnSlides.item.filename + '.mp3';
     if (slides.length > 0){
@@ -131,7 +133,7 @@ else {throw new Error('Failed to load');}
  
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile}/>  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename}/>  
 {/if}
 
 <div class='flex justify-start w-full'>
