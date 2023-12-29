@@ -22,7 +22,8 @@ import GridEditor from "./slides/grid/gridEditor/GridEditor.svelte";
 import {HdgImgEd} from '$lib/Presentation/slides';
 
 export let currentSlide;
-export let soundFile=null;
+export let currentTime;
+
 export let pulse;
 export let theme={
   description     : '',
@@ -86,7 +87,7 @@ export let displayMode = true;
     {#if  displayMode}
         <EqPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
-        <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {soundFile} />
+        <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {currentTime} />
     {/if}
 {/if}
 

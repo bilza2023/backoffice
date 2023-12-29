@@ -19,7 +19,11 @@
  let item;
  let soundFile;
  let filename;
-
+let currentTime=0;
+// $:{
+//   currentTime;
+//   console.log(currentTime);
+// }
 async function save(){
  saveFinal(slides,tcode,id,item);
 } 
@@ -133,7 +137,7 @@ else {throw new Error('Failed to load');}
  
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename}/>  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} />  
 {/if}
 
 <div class='flex justify-start w-full'>
@@ -149,12 +153,12 @@ else {throw new Error('Failed to load');}
       </div>  
       
        <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {soundFile}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime}/>
       </div>  
       {:else}
       
        <div class='p-2 ml-1 min-h-screen  text-center w-full' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {soundFile}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime}/>
       </div>  
       {/if}
 

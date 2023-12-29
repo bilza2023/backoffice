@@ -1,7 +1,8 @@
 <script>
 //@ts-nocheck
 import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
-import {BASE_URL, Icons,onMount} from '$lib/util';
+import {Icons} from '$lib/util';
+import SoundButtons from './SoundButtons.svelte';
 export let show;
 export let slides;
 export let item;
@@ -12,7 +13,12 @@ export let showSidePanel;
 export let currentSlideIndex;
 export let delCurSlide;
 export let filename;
+export let soundFile=null;
+export let currentTime=0;
+
 let showDelete=false;
+
+
 
 function delFirst(){
 showDelete=false;
@@ -44,9 +50,7 @@ function shiftTime(slideIndex, newEndTime) {
   }
 //  console.log(slides); 
 }
-onMount(async () => {
-console.log("item",item);
-});
+
 $: {
   console.log('Status:', item.status);
   console.log('Question Type:', item.questionType);
@@ -60,25 +64,29 @@ $: {
     <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
-    <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} />
-    &nbsp;<span class='text-green-300 bg-gray-900 p-1 text-sm rounded-md '>{filename}</span>
+    <!-- <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} /> -->
+    
+    <a href={`player?tcode=fbise9math&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a>
+
+<SoundButtons  {soundFile}  bind:currentTime={currentTime} />    
+
   </div> 
 
   <div class='flex justify-end m-0 p-1 items-center gap-1 border-2 border-gray-500  rounded-md text-xs mr-1'>
   {#if slides.length > 0}
-    Start Time: &nbsp;
+    <span class='text-xs'>Start</span> 
     <div class='bg-gray-900 text-white p-0 px-4 m-0 rounded-md border-2 border-white'  type="number" >
     {slides[currentSlideIndex].startTime}
     </div>
     
-    End Time: &nbsp;
-    <input class='bg-gray-500 text-white p-0 m-0 rounded-md border-2 border-white text-center'  type="number" bind:value={slides[currentSlideIndex].endTime}
+    <span class='text-xs'>End</span>
+    <input class='bg-gray-500 text-white p-0 m-0 rounded-md border-2 border-white text-center '  type="number" bind:value={slides[currentSlideIndex].endTime}
       on:input={() => shiftTime(currentSlideIndex, slides[currentSlideIndex].endTime)}
     >
 
 <!-- DD for status     -->
 <!-- ['unlocked' ,'fill' ,'locked', 'final'], -->
-Status
+<span class='text-xs'>Status</span>
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}>
     <option value="empty">Empty</option>
@@ -93,7 +101,7 @@ Status
 
 <!-- DD for questionType     -->
 <!-- ['paid' ,'login' ,'free'], -->
-Type
+<span class='text-xs'>Type</span>
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="question_type" bind:value={item.questionType}>
     <option value="paid">Paid</option>

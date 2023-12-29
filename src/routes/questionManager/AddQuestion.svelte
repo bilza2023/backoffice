@@ -92,7 +92,6 @@ name = convertToUrlFriendlyName(name);
     <option value="14">14</option>
     <option value="15">15</option>
     <option value="16">16</option>
-    <option value="17">17</option>
     </select>
 </div>
 

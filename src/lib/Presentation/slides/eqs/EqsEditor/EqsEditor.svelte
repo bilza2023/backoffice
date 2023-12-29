@@ -18,8 +18,7 @@ export let startTime;
 export let endTime;
 export let items;
 export let theme={};
-export let soundFile;
-let currentTime=0
+export let currentTime;
 ////////////////////////////////////////////////////////
 function redraw(){ items = [...items];}
 function toggleSP(index){
@@ -98,7 +97,7 @@ for (let i = 0; i < items.length; i++) {
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 
 <!-- <PageHeading/> -->
-<Toolbar  {addEq}  {closeAllSP} {openAllSP} {soundFile} bind:currentTime={currentTime}/>
+<Toolbar  {addEq}  {closeAllSP} {openAllSP} />
 
 <div class="w-full m-4 p-0">
   <Titlebar />

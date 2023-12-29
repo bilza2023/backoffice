@@ -15,8 +15,6 @@
 /**
  * Learning from 2 hours of trouble shooting is that we can use beforeUpdate if we want to edit the incomming data before we use it.
  */
-  
-  
   let currentX=0;  
   let currentY=0;  
   let showEditorPanel = true;
@@ -37,38 +35,7 @@ async function addUuid() {
   onMount( () => {
         addUuid();
   });
-//   function cursorSetup(){
-//       const handleKeyUp = (event) => {
-//           if (event.key === 'Escape') {
-//           cursorState = 'default';
-//           }
-//         }
-//          window.addEventListener('keyup', handleKeyUp);
 
-//       return () => {
-//       // Cleanup when the component is unmounted
-//       window.removeEventListener('keyup', handleKeyUp);
-//     };
-//   }
-//   function updateCanvasSize() {
-//     canvas.width = canvas.clientWidth;
-//     canvas.height = canvas.clientHeight;
-//     console.log( 'x' , canvas.width, 'Y' , canvas.height  );
-// } 
-   // Function to handle mousemove event
-  // function mouseOut(event) {
-  //  currentX = 0;
-  //   currentY = 0;
-  // }
-  // function handleMouseMove(event) {
-  //   const rect = canvas.getBoundingClientRect();
-  //   const x = event.clientX - rect.left;
-  //   const y = event.clientY - rect.top;
-  //   currentX = Math.round(x);
-  //   currentY = Math.round(y);
-  //   // console.log('Mouse coordinates:', currentX, currentY);
-  // }  
- 
 </script>
 
 <div class='flex justify-start items-start  '>
