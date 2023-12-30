@@ -8,6 +8,7 @@
   import parse from './fn/parse.js';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
+import {returnSlidesFake} from './returnSlidesFake';
 
  let currentSlideIndex;
  let slides;
@@ -107,7 +108,10 @@ async function  addNew(slideType){
  onMount(async ()=>{
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
-  let returnSlides  = await readSlides(id,tcode);
+//  debugger;
+  // let returnSlides  = await readSlides(id,tcode);
+  let returnSlides  = returnSlidesFake;
+  console.log(returnSlides);
     try { 
  if (returnSlides){
 //  debugger;

@@ -7,7 +7,6 @@ import  afterUpdateFn  from './fn/afterUpdate';
 import drawGrid from './fn/drawGrid';
 import drawLinePure from './pure/drawLinePure';
 import Line from './objects/Line';
-import Handles from './Handles';
 
   let canvas;
   let ctx;
@@ -17,15 +16,10 @@ import Handles from './Handles';
   let cursorState = 'default';
   let interval;
   let line;
-  let handles;
   onMount(async () => {
         ctx = canvas.getContext('2d');
         ctx.imageSmoothingEnabled = true;
-        handles = new Handles();
-        line = new Line(20, 20, 300, 280, 2,'red');
-         handles.add(100,100,'123','x1y1');
-         handles.add(200,100,'123','x1y1');
-         handles.add(300,100,'123','x1y1');
+        line = new Line(20, 20, 200, 200, 2,'red');
          interval = setInterval(gameloop,20);
      
 
@@ -55,7 +49,7 @@ import Handles from './Handles';
     const y = event.clientY - rect.top;
     currentX = Math.round(x);
     currentY = Math.round(y);
-    handles.reconcile(x,y);
+    // handles.reconcile(x,y);
     line.reconcile(x,y);
     // handles.draw(ctx);
     // console.log('Mouse coordinates:', currentX, currentY);
@@ -68,8 +62,8 @@ async  function gameloop(){
      await drawGrid(canvas,ctx,5,1,'#3c444f');
      line.selected = true;
      line.draw(ctx);
+     
          
-     handles.draw(ctx);
   }
   afterUpdate(async () => {
   });

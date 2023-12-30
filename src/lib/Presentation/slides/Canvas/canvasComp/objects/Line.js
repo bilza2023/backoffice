@@ -1,14 +1,13 @@
 //@ts-nocheck
+import Vertex from "./Vertex";
 
 export default class Line{
 
 constructor(x1=0,y1=0,x2=200,y2=200,lineWidth=1,lineColor='gray'){
-
-    this.x1 =x1;
-    this.y1 =y1;
-    this.x2 =x2;
-    this.y2 =y2;
-    
+    this.vertex1 = new Vertex(x1,y1);
+    this.vertex1.selected = true;
+    this.vertex2 = new Vertex(x2,y2);
+       
     this.lineWidth =lineWidth;
     this.lineColor =lineColor;
     this.opacity=1;
@@ -19,6 +18,7 @@ constructor(x1=0,y1=0,x2=200,y2=200,lineWidth=1,lineColor='gray'){
 }
 
 draw(ctx){
+    // debugger;
     ctx.globalAlpha = this.opacity;
     ctx.strokeStyle = this.lineColor;
     ctx.fillStyle = this.lineColor;
@@ -29,23 +29,22 @@ draw(ctx){
     // Begin a new path
     ctx.beginPath();
     // Move the pen to the starting point
-    ctx.moveTo(this.x1, this.y1);
-    ctx.lineTo(this.x2, this.y2);
+    ctx.moveTo(this.vertex1.x, this.vertex1.y);
+    ctx.lineTo(this.vertex2.x, this.vertex2.y);
     ctx.stroke();
     ctx.setLineDash([]);
     ctx.globalAlpha = 1;
-    if(this.selected){
-        drawSelected(ctx,this.x1,this.y1,this.x2,this.y2);
-    }
-
+    //--if selected they will draw them selves
+    this.vertex1.draw(ctx);
+    this.vertex2.draw(ctx);
 }
 
 isHit(x,y){
-    return isPointOnLine(x, y, this.x1, this.y1, this.x2, this.y2);
+    // return isPointOnLine(x, y, this.x1, this.y1, this.x2, this.y2);
 }
 reconcile(x,y){
-this.x1 = x;
-this.y1 = y;
+this.vertex1.x = x;
+this.vertex1.y = y;
 }
 
 }
