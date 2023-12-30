@@ -1,33 +1,37 @@
 //@ts-nocheck
+import drawLinePure from '../pure/drawLinePure.js';
 
+/**
+Since the cell of a grid needs to be square thus we have to use either height for both the lines (ver and horiz) or width. I choose width.
+horizontalNoOflSteps and verticalNoOflSteps are number of lines to draw. if the canvas width and height are different e.g width = 800 and height = 400. then we can draw @ 10 percent 10 cells in one row BUT only 5 rows since height is half that of width 
+ */
 
-import percToX from "./percToX";
-import percToY from "./percToY";
-import drawLine from "./drawLine";
-
-export default function drawGrid(canvas,ctx,lineWidth = 1,lineColor = '#4b5159') {
-    // Set the line color
+export default async  function drawGrid(canvas,ctx,percent =10,lineWidth = 1,lineColor = '#4b5159') {
+    // debugger;
+    ctx.globalAlpha = 0.5;
     ctx.strokeStyle = lineColor;
     ctx.lineWidth = lineWidth;
 
-    drawLine(canvas,ctx,0,10,100,10,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,20,100,20,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,30,100,30,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,40,100,40,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,50,100,50,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,60,100,60,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,70,100,70,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,80,100,80,lineWidth,lineColor);
-    drawLine(canvas,ctx,0,90,100,90,lineWidth,lineColor);
-///----vertical
-    drawLine(canvas,ctx,10,0,10,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,20,0,20,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,30,0,30,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,40,0,40,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,50,0,50,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,60,0,60,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,70,0,70,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,80,0,80,100,lineWidth,lineColor);
-    drawLine(canvas,ctx,90,0,90,100,lineWidth,lineColor);
 
+
+//---sleeping line
+  let horizontalNoOflSteps = (canvas.width /percent); 
+  let horizontalStep = 0; 
+  let horizontalIncrement = ((canvas.width /100)*percent); 
+
+    for (let i = 0; i < horizontalNoOflSteps; i++) {
+        drawLinePure(ctx,0,horizontalStep,canvas.width,horizontalStep,lineWidth,lineColor);
+        horizontalStep+=horizontalIncrement;
+    }
+
+//---standing line
+  let verticalNoOflSteps = (canvas.height /percent); 
+  let verticalStep = 0; 
+  let verticalIncrement = ((canvas.width /100)*percent); 
+    for (let i = 0; i < verticalNoOflSteps; i++) {
+        drawLinePure(ctx,verticalStep,0,verticalStep,canvas.height,lineWidth,lineColor);
+        verticalStep+=verticalIncrement;
+    }
+ ctx.globalAlpha = 1; 
 }
+

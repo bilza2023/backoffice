@@ -16,6 +16,8 @@ export default function getPoint(event,canvas) {
     const yy = (yToPerc(canvas,y).toFixed(0));
     //=== store array
     updateStoreArray(pointsStore , { x: xx, y: yy });
-
-    console.log(`Clicked at X: ${xx}, Y: ${yy}`);
+  
   }
+
+  /////////////////////////////
+  
