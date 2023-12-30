@@ -43,7 +43,10 @@ draw(ctx){
 isHit(x,y){
     return isPointOnLine(x, y, this.x1, this.y1, this.x2, this.y2);
 }
-
+reconcile(x,y){
+this.x1 = x;
+this.y1 = y;
+}
 
 }
 //////////////////////////////////////////////

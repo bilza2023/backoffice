@@ -7,6 +7,7 @@ import  afterUpdateFn  from './fn/afterUpdate';
 import drawGrid from './fn/drawGrid';
 import drawLinePure from './pure/drawLinePure';
 import Line from './objects/Line';
+import Handles from './Handles';
 
   let canvas;
   let ctx;
@@ -14,10 +15,20 @@ import Line from './objects/Line';
   export let currentX=0;  
   export let currentY=0;  
   let cursorState = 'default';
+  let interval;
   let line;
-  onMount( () => {
+  let handles;
+  onMount(async () => {
         ctx = canvas.getContext('2d');
-         ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingEnabled = true;
+        handles = new Handles();
+        line = new Line(20, 20, 300, 280, 2,'red');
+         handles.add(100,100,'123','x1y1');
+         handles.add(200,100,'123','x1y1');
+         handles.add(300,100,'123','x1y1');
+         interval = setInterval(gameloop,20);
+     
+
   });
   // function cursorSetup(){
   //     const handleKeyUp = (event) => {
@@ -44,17 +55,23 @@ import Line from './objects/Line';
     const y = event.clientY - rect.top;
     currentX = Math.round(x);
     currentY = Math.round(y);
+    handles.reconcile(x,y);
+    line.reconcile(x,y);
+    // handles.draw(ctx);
     // console.log('Mouse coordinates:', currentX, currentY);
     // await update();
    
   }  
 
-  afterUpdate(async () => {
-    await drawGrid(canvas,ctx,5,1,'#28323f');
-     line = new Line(20, 20, 300, 280, 2,'red');
+async  function gameloop(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+     await drawGrid(canvas,ctx,5,1,'#3c444f');
      line.selected = true;
      line.draw(ctx);
-  
+         
+     handles.draw(ctx);
+  }
+  afterUpdate(async () => {
   });
 ////////////////////////
 function getPoint(event,canvas) {
