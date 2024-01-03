@@ -24,20 +24,7 @@ import Line from './objects/Line';
      
 
   });
-  // function cursorSetup(){
-  //     const handleKeyUp = (event) => {
-  //         if (event.key === 'Escape') {
-  //         cursorState = 'default';
-  //         }
-  //       }
-  //        window.addEventListener('keyup', handleKeyUp);
-
-  //     return () => {
-  //     // Cleanup when the component is unmounted
-  //     window.removeEventListener('keyup', handleKeyUp);
-  //   };
-  // }
- 
+       
    // Function to handle mousemove event
   function mouseOut(event) {
    currentX = 0;
