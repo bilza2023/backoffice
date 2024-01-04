@@ -77,8 +77,22 @@ function addEq(i) {
   redraw();
 }
 
-onMount(async ()=>{
+function addFakeTimings(){
+  // debugger;
+const duration = 10;
+let runningTime = startTime;
 
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    item.extra.step = i;
+    item.extra.startTime = runningTime;
+    runningTime+=duration;
+    item.extra.endTime = runningTime;
+  }
+ endTime = items[items.length-1].extra.endTime;
+ items = [...items];
+}
+onMount(async ()=>{
 for (let i = 0; i < items.length; i++) {
   const item = items[i];
   item.extra.step = i;
@@ -97,7 +111,7 @@ for (let i = 0; i < items.length; i++) {
 <div class="bg-gray-800 w-full  text-white min-h-screen p-0 m-0">
 
 <!-- <PageHeading/> -->
-<Toolbar  {addEq}  {closeAllSP} {openAllSP} />
+<Toolbar  {addEq}  {closeAllSP} {openAllSP} {addFakeTimings}/>
 
 <div class="w-full m-4 p-0">
   <Titlebar />

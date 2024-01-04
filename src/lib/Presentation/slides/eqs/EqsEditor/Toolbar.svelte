@@ -1,9 +1,10 @@
 <script>
 //@ts-nocheck
-
+import {Icons} from '$lib/util';
 export let addEq;
 export let closeAllSP;
 export let openAllSP;
+export let addFakeTimings;
 
 </script>
 
@@ -20,6 +21,11 @@ on:click={openAllSP}>&#128065; Show Sp</button>
 <button  class="bg-orange-800 p-1   rounded-md"
 on:click={closeAllSP}
 >&#128064; Hide SP</button>
+&nbsp;
+
+<button  class="bg-orange-400 p-1   rounded-md"
+on:click={addFakeTimings}
+>{Icons.CLOCK} Fake Timings</button>
 &nbsp;
 
 </div>

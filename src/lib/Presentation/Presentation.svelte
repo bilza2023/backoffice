@@ -87,7 +87,7 @@ export let displayMode = true;
     {#if  displayMode}
         <EqPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
-        <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {currentTime} />
+        <EqsEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {currentTime} startTime={currentSlide.startTime}/>
     {/if}
 {/if}
 

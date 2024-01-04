@@ -1,4 +1,4 @@
-<script>
+ <script>
 //@ts-nocheck
 import Table from './Table.svelte';
 import {HdgWithIcon} from '$lib/cmp'
