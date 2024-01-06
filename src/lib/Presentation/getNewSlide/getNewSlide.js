@@ -32,6 +32,9 @@ export default function getNewSlide(type) {
     case 'grid':
     slide = addGrid();
     break;
+    case 'img':
+    slide = addImg();
+    break;
  
     default:
     slide = addDefault(type);
@@ -68,7 +71,13 @@ function addHdgImg(){
     newSlide.uuid = uuid();
     newSlide.items.push(getNewItem('The Title','heading'));
     newSlide.items.push(getNewItem('graph','imgSrc'));
-
+    return newSlide;
+}
+function addImg(){
+//start time and end time will be re-written once the slide is inserted
+    const newSlide = newSlideData("img");
+    newSlide.uuid = uuid();
+    newSlide.items.push(getNewItem('',''));
     return newSlide;
 }
 

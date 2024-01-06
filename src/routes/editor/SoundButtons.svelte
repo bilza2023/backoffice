@@ -53,6 +53,7 @@ async function loadSound() {
   try {
     sound = new Howl({
       src: [soundFile],
+      html5:true,
     // fbise9math/2.1/fbise_cl_9_ch_2_ex_2.1_q_1_pt_0.mp3
     //   src: ['fbise9math/1.2/fbise_cl_9_ch_2_ex_2.1_q_1_pt_0.mp3'],
       volume: 1.0,

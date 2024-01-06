@@ -132,6 +132,7 @@ $: {
 <NavBtn2 title='Eqs' icon={Icons.NOTES }  clk={()=>addNew('Eqs')} />
 
 <NavBtn2 title='Canvas' icon={Icons.TV }  clk={()=>addNew('canvas')} />
+<NavBtn2 title='Img' icon={Icons.STUDENT }  clk={()=>addNew('img')} />
 </div>
 {/if}
 

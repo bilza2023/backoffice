@@ -21,6 +21,9 @@ import GridEditor from "./slides/grid/gridEditor/GridEditor.svelte";
 
 import {HdgImgEd} from '$lib/Presentation/slides';
 
+import Img from './slides/img/Img.svelte';
+import ImgEd from './slides/img/ImgEd.svelte';
+
 export let currentSlide;
 export let currentTime;
 
@@ -106,5 +109,14 @@ export let displayMode = true;
         <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
     {:else}
         <CanvasEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
+    {/if}
+{/if}
+
+<!-- Img -->
+{#if currentSlide.type == 'img' }
+    {#if  displayMode}
+        <Img {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
+    {:else}
+        <ImgEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
     {/if}
 {/if}
