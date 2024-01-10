@@ -8,16 +8,26 @@ export let questions;
 export let selectedEx;
 
     let showQs=true;
-    // let sortedArray;
-    let sortOne=[];
+    let sortedArray;
 
+$:{
+ if(questions){
+    const sortOne = questions.filter(question => parseInt(question.partNo.exercise) == selectedEx);
+    sortedArray = sortOne.sort((a, b) => {
+        const questionNoA = a.partNo.questionNo;
+        const questionNoB = b.partNo.questionNo;
+    return questionNoA - questionNoB;
+    });
+    console.log(sortedArray);
+ }
+}
 function getStatusIcon(status){
   if (status == 'empty') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
 }
-$: totalExQuestion = questions.filter(question => question.exercise === selectedEx).length
+$: totalExQuestion = questions.filter(question => question.partNo.exercise === selectedEx).length
 </script>
 
 <div class="bg-gray-700 p-2 m-2 rounded-md">
@@ -28,13 +38,13 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
     Total Exercise Questions ({`${totalExQuestion}`})
     </button>
     </div>
-{#if questions}
+{#if showQs}
 <div class='flex  w-full justify-center  flex-wrap  '>
-{#each questions as question,index}    
-        {#if question.exercise == selectedEx }
+{#each sortedArray as question,index}    
+        <!-- {#if question.partNo.exercise == selectedEx } -->
             <div class='w-3/12'>
             <Card
-            title = {`Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`}
+            title = {`Ex ${question.partNo.exercise} Q-${question.partNo.questionNo} pt ${question.partNo.part}`}
             icon={Icons.TEST}
             url = {`/editor?tcode=fbise9math&id=${question._id}`}
             >
@@ -57,7 +67,8 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
             
             </Card>
             </div>
-        {/if}
+        <!-- {/if} -->
+    <!-- {/if} -->
 {/each}
     </div>
 {/if}    

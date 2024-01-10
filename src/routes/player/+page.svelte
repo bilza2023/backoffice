@@ -27,7 +27,7 @@ let val  = await readSlides(id,tcode);
   let returnSlides  = await readSlides(id,tcode);
    
  if (returnSlides){
-  slides = returnSlides.slides;
+  slides = returnSlides.item.slides;
   getStopTime(slides);
   currentSlide = slides[0];
  }

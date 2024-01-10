@@ -39,10 +39,11 @@ function getUrl(question){
 
 onMount(async () => {
 try{
-// debugger;
   let r  = await getSyllabus();
+// debugger;
     if (r){
       questions = r;
+      console.log("questions",questions);
       isLogin = checkToken();
       isAdmin = checkAdminToken();
     }else {

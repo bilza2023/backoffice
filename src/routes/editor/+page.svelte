@@ -1,11 +1,9 @@
 <script>
   //@ts-nocheck
-  import { PageWrapper } from '$lib/cmp';
   import { onMount } from '$lib/util';
   import Toolbar from './Toolbar.svelte';
   import readSlides from '$lib/tdf/readSlides';
   import {Presentation,getNewSlide} from '$lib/Presentation';
-  import parse from './fn/parse.js';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
 
@@ -105,17 +103,18 @@ async function  addNew(slideType){
 
 
  onMount(async ()=>{
+ 
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
   let returnSlides  = await readSlides(id,tcode);
     try { 
  if (returnSlides){
-//  debugger;
-  slides = returnSlides.slides;
-  item = returnSlides.item;
+  debugger;
+  item =  returnSlides.item;
+  slides = item.slides;
   filename = item.filename;
   //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
-  soundFile = tcode + '/' + returnSlides.item.partNo.exercise  + '/' + returnSlides.item.filename + '.mp3';
+  soundFile = tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
     if (slides.length > 0){
       currentSlideIndex = 0;
     }

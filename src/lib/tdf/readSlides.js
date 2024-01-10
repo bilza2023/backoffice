@@ -1,11 +1,11 @@
 //@ts-nocheck
 
-import { BASE_URL,convertEqsToSlide } from "$lib/util";
+import { BASE_URL } from "$lib/util";
 
 export default async function readSlides(id,tcode){
  try{
- 
-  const resp = await fetch( `${BASE_URL}/pre/read`, {
+//  debugger;
+  const resp = await fetch( `${BASE_URL}/be/read`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',

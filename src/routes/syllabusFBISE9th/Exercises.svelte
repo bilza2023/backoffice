@@ -17,7 +17,7 @@ function allEx(){
     for (let i = 0; i < questions.length; i++) {
         const question = questions[i];
         if (question.chapter == selectedChapter){
-            ex.push(question.partNo.exercise);
+            ex.push(question.exercise);
         }
     }
 return ex;

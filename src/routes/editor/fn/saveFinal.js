@@ -4,13 +4,13 @@ import {toast,BASE_URL} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
-// debugger;
+debugger;
 //--first slide start time = 0;
 slides[0].startTime = 0;
 updateSlideStartTimes(slides);
 // stringify(slides);
   const presentation = {slides ,status:item.status,questionType:item.questionType,_id:id};
-  const resp = await fetch( `${BASE_URL}/pre/update`, {
+  const resp = await fetch( `${BASE_URL}/be/update`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',
