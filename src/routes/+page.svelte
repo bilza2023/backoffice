@@ -31,13 +31,13 @@ onMount(async () => {
 
 
 <div class="flex justify-center w-full items-center">
-  
+<!--   
   <div class="w-3/12">
   <Card  url="/syllabusByChapter" title="Syllbus By Chapter" icon={Icons.COMPUTER}/>
-  </div>
+  </div> -->
 
   <div class="w-3/12">
-  <Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>
+  <Card  url="/syllabus?tcode=fbise9math" title="FBISE 9th Math" icon={Icons.BOOKS}/>
   </div>
 
   <div class="w-3/12">
@@ -45,4 +45,22 @@ onMount(async () => {
   </div>
 
 </div>
+
+<div class="flex justify-center w-full items-center">
+  
+  <div class="w-3/12">
+  <Card  url="/syllabus?tcode=fbise10math" title="FBISE 10th Math" icon={Icons.BOOKS}/>
+  </div>
+
+</div>
+
+<div class="flex justify-center w-full items-center">
+  
+  <div class="w-3/12">
+  <Card  url="/syllabus?tcode=fbise8math" title="FBISE 8th Math" icon={Icons.BOOKS}/>
+  </div>
+
+</div>
+
+
 </PageWrapper>

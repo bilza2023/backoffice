@@ -9,8 +9,8 @@ import ChapterSpecialQs from "./ChapterSpecialQs.svelte";
 import ExerciseQs from "./ExerciseQs.svelte";
 import Exercises from "./Exercises.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
-import getSyllabus from '$lib/appComp/getSyllabus';
-
+// import getSyllabus from '$lib/appComp/getSyllabus';
+let tcode;
 /////////////////////////////////
 let questions;
 let selectedEx ="1.1";
@@ -39,15 +39,27 @@ function getUrl(question){
 
 onMount(async () => {
 try{
-  let r  = await getSyllabus();
-// debugger;
-    if (r){
-      questions = r;
-      console.log("questions",questions);
+    // debugger;
+    tcode = new URLSearchParams(location.search).get("tcode");
+    let token = localStorage.getItem("token");
+    const resp = await fetch( `${BASE_URL}/be/syllabus` ,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ tcode} )
+    });
+
+    if (resp){
+      const data = await resp.json();
+      questions = data.questions;
+      // console.log("questions",questions);
       isLogin = checkToken();
       isAdmin = checkAdminToken();
     }else {
-      toast.push("Failed to load");
+     const data = await resp.json();
+      toast.push(data.message);
     }
 
   } catch (e) {
@@ -61,7 +73,7 @@ try{
 <PageWrapper>
 
 <div class='flex justify-center   p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>FBISE 9th Math</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>{tcode}</HdgWithIcon>
 </div>
 {#if questions}
 

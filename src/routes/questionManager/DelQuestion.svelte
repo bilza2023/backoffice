@@ -2,9 +2,11 @@
 //@ts-nocheck
 import { toast,BASE_URL } from "$lib/util";
 let id;
+let classNo =9;
 
 async function deleteQuestion(){
-//   debugger;
+  // debugger;
+  let tcode = 'fbise' + classNo + 'math';
   let token = localStorage.getItem("token");
     const response = await fetch( `${BASE_URL}/be/delete_question` ,{
       method: 'POST',
@@ -12,7 +14,7 @@ async function deleteQuestion(){
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ id } )
+      body: JSON.stringify({ id,tcode } )
     });
 
     if (response.ok) {
@@ -33,6 +35,11 @@ async function deleteQuestion(){
 <h1 class='mx-auto'>Delete Question</h1>
 
 
+<!--Class no-->
+<div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
+    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Class</div>
+    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={classNo} />
+</div>
 <!--id-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Id</div>

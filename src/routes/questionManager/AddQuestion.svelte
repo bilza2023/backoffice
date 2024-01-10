@@ -3,7 +3,7 @@
 import { toast,BASE_URL } from "$lib/util";
 
 let board = 'FBISE';
-let classNo =9;
+let classNo =10;
 let chapter= "1";
 let exercise ='1.1';
 let questionNo =999;
@@ -16,32 +16,21 @@ function convertToUrlFriendlyName(name) {
     return sanitizedUrlFriendlyName;
 }
 
-function checkName(isSpecial,name){
-    const isSpecialBool = isSpecial === "true";
-    if (isSpecialBool && (name === null || name === undefined || name.trim() === '')) {
-        return false; // Special Questions must have a name
-    }
-    return true; // Name is valid
-}
-
 async function addQuestion(){
-
-// if (!checkName(isSpecial,name)){
-//     toast.push('Special Questions must have a name');
-// return;
-// }
+//  debugger;
 if(name && name !== ''){
 name = convertToUrlFriendlyName(name);
 }
 // debugger;
+  let tcode = 'fbise' + classNo + 'math';
   let token = localStorage.getItem("token");
-    const response = await fetch( `${BASE_URL}/q/add_question` ,{
+    const response = await fetch( `${BASE_URL}/be/add_question` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ qData :{board, classNo, chapter, isSpecial, exercise, questionNo, part, name}} )
+      body: JSON.stringify({ qData :{board, classNo, chapter, exercise, questionNo, part, name,tcode}} )
     });
 
     if (response.ok) {
@@ -70,7 +59,7 @@ name = convertToUrlFriendlyName(name);
 <!--Class no-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Class</div>
-    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={classNo} />
+    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={classNo} min="8" max=10/>
 </div>
 
 <!--Chapter-->
