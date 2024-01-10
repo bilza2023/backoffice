@@ -33,9 +33,9 @@ return;
 }
 
 name = convertToUrlFriendlyName(name);
-
+// debugger;
   let token = localStorage.getItem("token");
-    const response = await fetch( `${BASE_URL}/be/new_question` ,{
+    const response = await fetch( `${BASE_URL}/q/add_question` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,8 +45,9 @@ name = convertToUrlFriendlyName(name);
     });
 
     if (response.ok) {
-        // const data = await response.json();
-        toast.push('Question Created');
+        const data = await response.json();
+        // toast.push('Question Created');
+        toast.push(data.message);
     }else {
         const data = await response.json();
         toast.push(data.message)

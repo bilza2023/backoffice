@@ -31,10 +31,10 @@ onMount(async () => {
 
 
 <div class="flex justify-center w-full items-center">
-<!-- 
+  
   <div class="w-3/12">
   <Card  url="/syllabusByChapter" title="Syllbus By Chapter" icon={Icons.COMPUTER}/>
-  </div> -->
+  </div>
 
   <div class="w-3/12">
   <Card  url="/syllabusFBISE9th" title="FBISE 9th Syllbus" icon={Icons.BOOKS}/>
