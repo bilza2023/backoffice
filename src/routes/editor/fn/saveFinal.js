@@ -1,6 +1,6 @@
 //@ts-nocheck
 // import stringify from "./stringify";
-import {toast,BASE_URL} from '$lib/util';
+import {toast,BASE_URL,ajaxPost} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
@@ -10,15 +10,16 @@ slides[0].startTime = 0;
 updateSlideStartTimes(slides);
 // stringify(slides);
   const presentation = {slides ,status:item.status,questionType:item.questionType,_id:id};
-  const resp = await fetch( `${BASE_URL}/be/update`, {
-    method: 'POST',
-      headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer 000`,
-  },
-  body: JSON.stringify( {presentation,tcode} ) 
-  });
-  // debugger;
+  // const resp = await fetch( `${BASE_URL}/be/update`, {
+  //   method: 'POST',
+  //     headers: {
+  //   'Content-Type': 'application/json',
+  //   'Authorization': `Bearer 000`,
+  // },
+  // body: JSON.stringify( {presentation,tcode} ) 
+  // });
+  debugger;
+  const resp = await ajaxPost(`${BASE_URL}/be/update`,{presentation,tcode})
   if(resp.ok){
     toast.push('saved');}
     else {toast.push('failed to saved');

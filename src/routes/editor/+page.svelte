@@ -103,7 +103,7 @@ async function  addNew(slideType){
 
 
  onMount(async ()=>{
- 
+//  debugger;
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
   let returnSlides  = await readSlides(id,tcode);

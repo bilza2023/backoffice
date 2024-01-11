@@ -12,6 +12,7 @@ import convertEqsToSlide from './convertEqToSlide.js';
 import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
+import ajaxPost from './ajaxPost';
 import uuid from './uuid';
 // import chqLogin from './chqLogin';
 
@@ -29,7 +30,8 @@ import uuid from './uuid';
                     browser,
                     Icons,
                     checkToken,
-                    checkAdminToken
+                    checkAdminToken,
+                    ajaxPost
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */

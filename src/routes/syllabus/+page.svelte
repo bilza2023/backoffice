@@ -88,7 +88,7 @@ try{
 {`Total Chapter Questions: ${chapterTotalQuestions}`}
 </div>
 
-<ExerciseQs {questions} {selectedEx} {getUrl} {isAdmin}/>
+<ExerciseQs {questions} {selectedEx} {getUrl} {isAdmin} {tcode}/>
 
 <br/>
 {/if}
