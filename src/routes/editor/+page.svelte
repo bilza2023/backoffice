@@ -136,7 +136,7 @@ else {throw new Error('Failed to load');}
  
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} />  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} {tcode}/>  
 {/if}
 
 <div class='flex justify-start w-full'>

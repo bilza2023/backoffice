@@ -13,6 +13,7 @@ export let showSidePanel;
 export let currentSlideIndex;
 export let delCurSlide;
 export let filename;
+export let tcode;
 export let soundFile=null;
 export let currentTime=0;
 
@@ -66,7 +67,7 @@ $: {
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
     <!-- <NavBtn title='Link' icon={Icons.TV}  url={`player?tcode=fbise9math&id=${id}`} /> -->
     
-    <a href={`player?tcode=fbise9math&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a>
+    <a href={`player?tcode=${tcode}&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a>
 
 <SoundButtons  {soundFile}  bind:currentTime={currentTime} />    
 
