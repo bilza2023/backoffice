@@ -11,7 +11,13 @@ export let selectedEx;
     let showQs=true;
     // let sortedArray;
     let sortOne=[];
-
+function getTitle(question){
+if (question.name && question.name !== ''){
+return `Ex ${question.exercise} ${question.name} `;
+}else {
+return `Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`;
+}
+}
 function getStatusIcon(status){
   if (status == 'empty') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
@@ -35,7 +41,7 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
         {#if question.exercise == selectedEx }
             <div class='w-3/12'>
             <Card
-            title = {`Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`}
+            title = {getTitle(question)}
             icon={Icons.TEST}
             url = {`/editor?tcode=${tcode}&id=${question._id}`}
             >
