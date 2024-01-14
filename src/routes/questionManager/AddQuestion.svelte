@@ -6,8 +6,8 @@ let tcode = null;
 // let classNo =10;
 let chapter= "1";
 let exercise ='1.1';
-let questionNo =999;
-let part=9;
+let questionNo =1;
+let part=0;
 let name='';
 
 function convertToUrlFriendlyName(name) {
@@ -59,16 +59,19 @@ name = convertToUrlFriendlyName(name);
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Course (tcode)</div>
 
     <select class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={tcode}>
-    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    <option   class='text-sm text-center bg-gray-800 text-white' 
     value='fbise8math'>fbise8math</option>
 
-    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    <option   class='text-sm text-center bg-gray-800 text-white' 
     value='fbise9math'>fbise9math</option>
+    
+    <option  class='text-sm text-center bg-gray-800 text-white' 
+    value='fbise9english'>fbise9english</option>
 
-    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    <option   class='text-sm text-center bg-gray-800 text-white' 
     value='fbise10math'>fbise10math</option>
 
-    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    <option   class='text-sm text-center bg-gray-800 text-white' 
     value='experimental'>experimental</option>
 
 

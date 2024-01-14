@@ -26,48 +26,32 @@ onMount(async () => {
 <PageWrapper>
 
 <div class='flex justify-center  p-2 '>
- <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Teachers Hub</HdgWithIcon>
+ <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Back Office - Teachers Hub</HdgWithIcon>
+</div>
+
+<div class='flex justify-center p-8 '>
+<div class='flex flex-wrap  justify-center border-2 border-white  gap-1 p-4 m-0 bg-gray-700 rounded-md w-full'>
+
+
+ <a href={`/syllabus?tcode=fbise8math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise8math\\images\\thumbnail.png`} alt="fbise8math" /></a>
+
+ <a href={`/syllabus?tcode=fbise9math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math\\images\\thumbnail.png`} alt="fbise9math" /></a>
+
+
+ <a href={`/syllabus?tcode=fbise9english`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9english\\images\\thumbnail.png`} alt="fbise9english" /></a>
+
+
+ <a href={`/syllabus?tcode=fbise10math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise10math\\images\\thumbnail.png`} alt="fbise10math" /></a>
+
+ <a href={`/syllabus?tcode=experimental`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\experimental\\images\\thumbnail.png`} alt="experimental" /></a>
+ 
+</div>
 </div>
 
 
-<div class="flex justify-center w-full items-center">
-<!--   
-  <div class="w-3/12">
-  <Card  url="/syllabusByChapter" title="Syllbus By Chapter" icon={Icons.COMPUTER}/>
-  </div> -->
-
-  <div class="w-3/12">
-  <Card  url="/syllabus?tcode=fbise9math" title="FBISE 9th Math" icon={Icons.BOOKS}/>
-  </div>
-
-  <div class="w-3/12">
+<div class='flex justify-center w-full'>
+ <div class="w-3/12">
   <Card  url="/notesFBISE9th" title="Notes FBISE 9th"/>
   </div>
-
 </div>
-
-<div class="flex justify-center w-full items-center">
-  
-  <div class="w-3/12">
-  <Card  url="/syllabus?tcode=fbise10math" title="FBISE 10th Math" icon={Icons.BOOKS}/>
-  </div>
-
-</div>
-
-<div class="flex justify-center w-full items-center">
-  
-  <div class="w-3/12">
-  <Card  url="/syllabus?tcode=fbise8math" title="FBISE 8th Math" icon={Icons.BOOKS}/>
-  </div>
-
-</div>
-<div class="flex justify-center w-full items-center">
-  
-  <div class="w-3/12">
-  <Card  url="/syllabus?tcode=experimental" title="Experimental" icon={Icons.BOOKS}/>
-  </div>
-
-</div>
-
-
 </PageWrapper>
