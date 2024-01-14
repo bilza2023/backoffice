@@ -61,6 +61,13 @@ onMount(async () => {
   </div>
 
 </div>
+<div class="flex justify-center w-full items-center">
+  
+  <div class="w-3/12">
+  <Card  url="/syllabus?tcode=experimental" title="Experimental" icon={Icons.BOOKS}/>
+  </div>
+
+</div>
 
 
 </PageWrapper>

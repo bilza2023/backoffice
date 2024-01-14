@@ -2,8 +2,8 @@
 //@ts-nocheck
 import { toast,BASE_URL } from "$lib/util";
 
-let board = 'FBISE';
-let classNo =10;
+let tcode = null;
+// let classNo =10;
 let chapter= "1";
 let exercise ='1.1';
 let questionNo =999;
@@ -17,12 +17,16 @@ function convertToUrlFriendlyName(name) {
 }
 
 async function addQuestion(){
-//  debugger;
+ debugger;
+if(!tcode || tcode == null || tcode == undefined){
+    toast.push("missing tcode");
+    return;
+}
 if(name && name !== ''){
 name = convertToUrlFriendlyName(name);
 }
 // debugger;
-  let tcode = 'fbise' + classNo + 'math';
+//   let tcode = 'fbise' + classNo + 'math';
   let token = localStorage.getItem("token");
     const response = await fetch( `${BASE_URL}/be/add_question` ,{
       method: 'POST',
@@ -30,7 +34,7 @@ name = convertToUrlFriendlyName(name);
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ qData :{board, classNo, chapter, exercise, questionNo, part, name,tcode}} )
+      body: JSON.stringify({ qData :{chapter, exercise, questionNo, part, name,tcode}} )
     });
 
     if (response.ok) {
@@ -50,22 +54,31 @@ name = convertToUrlFriendlyName(name);
 
 <h1 class='mx-auto'>Add Question</h1>
 
-<!--Board-->
-<!-- <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
-    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Board</div>
-    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12'>fbise</div>
-</div> -->
-
-<!--Class no-->
+<!--tcode-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
-    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Class</div>
-    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={classNo} min="8" max=10/>
-</div>
+    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Course (tcode)</div>
 
+    <select class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={tcode}>
+    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    value='fbise8math'>fbise8math</option>
+
+    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    value='fbise9math'>fbise9math</option>
+
+    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    value='fbise10math'>fbise10math</option>
+
+    <option type='number' class='text-sm text-center bg-gray-800 text-white' 
+    value='experimental'>experimental</option>
+
+
+    </select>
+    
+</div>
 <!--Chapter-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Chapter</div>
-    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={chapter} />
+    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={chapter} min=1 max=500/>
     
 </div>
 
@@ -79,13 +92,13 @@ name = convertToUrlFriendlyName(name);
 <!--Question No-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Question No</div>
-    <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' bind:value={questionNo}/>
+    <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' bind:value={questionNo}  min=0 max=500/>
 </div>
 
 <!--Part No-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Part No</div>
-    <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' bind:value={part}/>
+    <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' bind:value={part}  min=0 max=500/>
 </div>
 
 <!--Name-->

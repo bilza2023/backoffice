@@ -152,12 +152,12 @@ else {throw new Error('Failed to load');}
       </div>  
       
        <div class='p-2 ml-1 min-h-screen  text-center w-11/12' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime} {tcode}/>
       </div>  
       {:else}
       
        <div class='p-2 ml-1 min-h-screen  text-center w-full' >
-        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime}/>
+        <Presentation currentSlide={slides[currentSlideIndex]}  displayMode={false} {currentTime} {tcode}/>
       </div>  
       {/if}
 

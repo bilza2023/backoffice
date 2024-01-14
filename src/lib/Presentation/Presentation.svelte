@@ -26,6 +26,9 @@ import ImgEd from './slides/img/ImgEd.svelte';
 
 export let currentSlide;
 export let currentTime;
+//--since every tcode has its own database thus we need to give Presentation its own tcode so that it can access that data (png/mp3) files.
+
+export let tcode='fbise9math';
 
 export let pulse;
 export let theme={
@@ -44,9 +47,9 @@ export let displayMode = true;
 <!-- HdgImg -->
 {#if currentSlide.type == 'HdgImg' }
     {#if  displayMode}
-        <HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+        <HdgImg {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {:else}
-        <HdgImgEd {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
+        <HdgImgEd {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {/if}
 {/if}
 
@@ -62,9 +65,9 @@ export let displayMode = true;
 <!-- ImgWCaption -->
 {#if currentSlide.type == 'ImgWCaption' }
     {#if  displayMode}
-        <ImgWCaption {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme}/>
+        <ImgWCaption {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {:else}
-        <ImgWCaptionEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme}/>
+        <ImgWCaptionEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {/if}
 {/if}
 
@@ -106,17 +109,17 @@ export let displayMode = true;
 <!-- CanvasEditor -->
 {#if currentSlide.type == 'canvas' }
     {#if  displayMode}
-        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
+        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse} {tcode}/>
     {:else}
-        <CanvasEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
+        <CanvasEditor bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {/if}
 {/if}
 
 <!-- Img -->
 {#if currentSlide.type == 'img' }
     {#if  displayMode}
-        <Img {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse}/>
+        <Img {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse} {tcode}/>
     {:else}
-        <ImgEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} />
+        <ImgEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {/if}
 {/if}

@@ -5,7 +5,7 @@ import { PageWrapper,HdgWithIcon } from '$lib/cmp';
 import { BASE_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
-import ChapterSpecialQs from "./ChapterSpecialQs.svelte";
+//import ChapterSpecialQs from "./ChapterSpecialQs.svelte";
 import ExerciseQs from "./ExerciseQs.svelte";
 import Exercises from "./Exercises.svelte";
 import Summary from '$lib/appComp/Summary.svelte';
@@ -39,7 +39,7 @@ function getUrl(question){
 
 onMount(async () => {
 try{
-    // debugger;
+    debugger;
     tcode = new URLSearchParams(location.search).get("tcode");
     let token = localStorage.getItem("token");
     const resp = await fetch( `${BASE_URL}/be/syllabus` ,{
