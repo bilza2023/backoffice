@@ -73,6 +73,9 @@ name = convertToUrlFriendlyName(name);
 
     <option   class='text-sm text-center bg-gray-800 text-white' 
     value='experimental'>experimental</option>
+   
+    <option   class='text-sm text-center bg-gray-800 text-white' 
+    value='matrices'>matrices</option>
 
 
     </select>

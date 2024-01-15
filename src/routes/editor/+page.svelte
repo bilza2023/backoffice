@@ -109,12 +109,12 @@ async function  addNew(slideType){
   let returnSlides  = await readSlides(id,tcode);
     try { 
  if (returnSlides){
-  debugger;
+  //debugger;
   item =  returnSlides.item;
   slides = item.slides;
   filename = item.filename;
   //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
-  soundFile = tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
+  // soundFile = tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
     if (slides.length > 0){
       currentSlideIndex = 0;
     }
