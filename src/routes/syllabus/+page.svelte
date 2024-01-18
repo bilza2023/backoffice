@@ -39,7 +39,7 @@ function getUrl(question){
 
 onMount(async () => {
 try{
-    debugger;
+    // debugger;
     tcode = new URLSearchParams(location.search).get("tcode");
     let token = localStorage.getItem("token");
     const resp = await fetch( `${BASE_URL}/be/syllabus` ,{

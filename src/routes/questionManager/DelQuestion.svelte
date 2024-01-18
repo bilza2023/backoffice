@@ -1,12 +1,18 @@
 <script>
 //@ts-nocheck
 import { toast,BASE_URL } from "$lib/util";
+import TcodeDd from "./TcodeDD.svelte";
 let id;
 let classNo =9;
+let tcode='fbise10math';
 
 async function deleteQuestion(){
-  // debugger;
-  let tcode = 'fbise' + classNo + 'math';
+  debugger;
+  if(!tcode || tcode == null || tcode == undefined){
+    toast.push("missing tcode");
+    return;
+}
+  // let tcode = 'fbise' + classNo + 'math';
   let token = localStorage.getItem("token");
     const response = await fetch( `${BASE_URL}/be/delete_question` ,{
       method: 'POST',
@@ -35,11 +41,7 @@ async function deleteQuestion(){
 <h1 class='mx-auto'>Delete Question</h1>
 
 
-<!--Class no-->
-<div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
-    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Class</div>
-    <input type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={classNo} />
-</div>
+<TcodeDd bind:tcode={tcode}/>
 <!--id-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Id</div>
@@ -48,7 +50,7 @@ async function deleteQuestion(){
 
 <br>
 <div class='flex justify-center'>
-<button class='bg-orange-700 p-2 m-2 rounded-md hover:bg-green-500' on:click={deleteQuestion}>Delete</button>
+<button class='bg-orange-700 p-2 m-2 rounded-md hover:bg-green-500' on:click={()=>deleteQuestion(tcode)}>Delete</button>
 </div>
 
 </div><!--wrapper-->

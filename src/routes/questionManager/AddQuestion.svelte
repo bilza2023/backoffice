@@ -1,8 +1,8 @@
 <script>
 //@ts-nocheck
 import { toast,BASE_URL } from "$lib/util";
-
-let tcode = null;
+import TcodeDd from "./TcodeDD.svelte";
+let tcode='fbise9math';
 // let classNo =10;
 let chapter= "1";
 let exercise ='1.1';
@@ -54,33 +54,7 @@ name = convertToUrlFriendlyName(name);
 
 <h1 class='mx-auto'>Add Question</h1>
 
-<!--tcode-->
-<div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
-    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Course (tcode)</div>
-
-    <select class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={tcode}>
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise8math'>fbise8math</option>
-
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise9math'>fbise9math</option>
-    
-    <option  class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise9english'>fbise9english</option>
-
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise10math'>fbise10math</option>
-
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='experimental'>experimental</option>
-   
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='matrices'>matrices</option>
-
-
-    </select>
-    
-</div>
+<TcodeDd bind:tcode={tcode}/>
 <!--Chapter-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Chapter</div>

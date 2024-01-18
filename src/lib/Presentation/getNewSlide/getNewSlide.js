@@ -5,7 +5,12 @@ import uuid from "./uuid.js";
 
 export default function getNewSlide(type) {
  let slide;
+//  debugger;
  switch (type) {
+    case 'HdgPara':
+    slide = addHdgPara();
+    break;
+
     case 'HdgImg':
     slide = addHdgImg();
     break;
@@ -71,6 +76,15 @@ function addHdgImg(){
     newSlide.uuid = uuid();
     newSlide.items.push(getNewItem('The Title','heading'));
     newSlide.items.push(getNewItem('graph','imgSrc'));
+    return newSlide;
+}
+function addHdgPara(){
+//start time and end time will be re-written once the slide is inserted
+    const newSlide = newSlideData("HdgPara");
+    newSlide.uuid = uuid();
+    newSlide.items.push(getNewItem('The Title','heading'));
+    newSlide.items.push(getNewItem('some text here...','para'));
+
     return newSlide;
 }
 function addImg(){

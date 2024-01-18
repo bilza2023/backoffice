@@ -53,8 +53,8 @@ function shiftTime(slideIndex, newEndTime) {
 }
 
 $: {
-  console.log('Status:', item.status);
-  console.log('Question Type:', item.questionType);
+  // console.log('Status:', item.status);
+  // console.log('Question Type:', item.questionType);
 }
 </script>
 
@@ -134,6 +134,7 @@ $: {
 
 <NavBtn2 title='Canvas' icon={Icons.TV }  clk={()=>addNew('canvas')} />
 <NavBtn2 title='Img' icon={Icons.STUDENT }  clk={()=>addNew('img')} />
+<NavBtn2 title='HdgPara' icon={Icons.TEXT }  clk={()=>addNew('HdgPara')} />
 </div>
 {/if}
 

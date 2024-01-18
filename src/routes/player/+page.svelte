@@ -109,7 +109,7 @@ function setCurrentSlide(){
 
 {#if currentSlide}
 
-    <Presentation {currentSlide} {theme} {pulse} {setPulse}/>
+    <Presentation {currentSlide} {theme} {pulse} {setPulse} {tcode}/>
 {/if}
 
 </div><!--page wrapper-->

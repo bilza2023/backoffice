@@ -22,7 +22,7 @@ export let theme;
   </div>
 
   <div class="flex justify-center w-full p-2 pb-4">
-    <img style="max-height: 75vh; width: auto; max-width: 90%;" src={`${tcode}/images/${items[0].content}.png`} alt="">
+    <img style="max-height: 75vh; width: auto; max-width: 90%;" src={`./${tcode}/images/${items[0].content}.png`} alt="">
   </div>
 
 </div> 

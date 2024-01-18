@@ -4,10 +4,12 @@ import {toast,BASE_URL,ajaxPost} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
-debugger;
+// debugger;
 //--first slide start time = 0;
-slides[0].startTime = 0;
-updateSlideStartTimes(slides);
+if (slides && slides.length > 0){
+  slides[0].startTime = 0;
+  updateSlideStartTimes(slides);
+}
 // stringify(slides);
   const presentation = {slides ,status:item.status,questionType:item.questionType,_id:id};
   // const resp = await fetch( `${BASE_URL}/be/update`, {
@@ -18,7 +20,7 @@ updateSlideStartTimes(slides);
   // },
   // body: JSON.stringify( {presentation,tcode} ) 
   // });
-  debugger;
+  // debugger;
   const resp = await ajaxPost(`${BASE_URL}/be/update`,{presentation,tcode})
   if(resp.ok){
     toast.push('saved');}

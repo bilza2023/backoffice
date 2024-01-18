@@ -72,7 +72,7 @@ $:{
   color: white; /* Text color */
   border: 2px solid red; /* Border with black color and 2px width */
   padding: 5px; /* Padding inside the element */
-  font-size: 2em; /* Font size */
+  font-size: 1.5em; /* Font size */
   font-weight: bold; /* Bold text */
   line-height:1.5em;
   border-radius: 5px; /* Rounded corners */
@@ -83,6 +83,6 @@ $:{
     background-color: grey;
     padding:2px;
     margin:2px;
-    font-size:1.5em;
+    font-size:1.25em;
      }
 </style>

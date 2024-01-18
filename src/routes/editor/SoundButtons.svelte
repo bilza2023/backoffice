@@ -12,6 +12,7 @@ let interval=null;
 let isPlaying=false;
 
 onMount(async () => {
+// console.log('soundFile',soundFile);
 loadSound();
 });
 function play(){
@@ -51,6 +52,7 @@ function gameloop(){
 }
 async function loadSound() {
   try {
+  //  debugger;
     sound = new Howl({
       src: [soundFile],
       html5:true,

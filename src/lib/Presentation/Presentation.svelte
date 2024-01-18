@@ -13,6 +13,9 @@ import TblStrEd from "./slides/TblStrEd.svelte";
 import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";
 import EqsEditor from "./slides/eqs/EqsEditor/EqsEditor.svelte";
 
+import HdgPara from "./slides/HdgPara/HdgPara.svelte";
+import HdgParaEd from "./slides/HdgPara/HdgParaEd.svelte";
+
 import CanvasEditor from "./slides/Canvas/CanvasEditor.svelte";
 import CanvasPlayer from "./slides/Canvas/CanvasPlayer.svelte";
 
@@ -121,5 +124,14 @@ export let displayMode = true;
         <Img {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse} {tcode}/>
     {:else}
         <ImgEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
+    {/if}
+{/if}
+
+<!-- HdgParaEd -->
+{#if currentSlide.type == 'HdgPara' }
+    {#if  displayMode}
+        <HdgPara {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse} {tcode}/>
+    {:else}
+        <HdgParaEd bind:items={currentSlide.items} bind:slideExtra={currentSlide.slideExtra} {theme} {tcode}/>
     {/if}
 {/if}
