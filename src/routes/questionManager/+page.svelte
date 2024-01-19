@@ -6,7 +6,8 @@ import HdgWithIcon from '$lib/cmp/HdgWithIcon.svelte';
 import {Icons,onMount,checkToken,checkAdminToken} from '$lib/util';
 import AddQuestion from './AddQuestion.svelte';
 import DelQuestion from './DelQuestion.svelte';
-let showDel = false;
+import Copy from './Copy.svelte';
+let showDel = 1;
 
 let isLogin = false;
 let isAdmin = false;
@@ -31,32 +32,42 @@ onMount(async () => {
 
 {#if isLogin}
 <div class='flex justify-start items-center gap-1  w-full p-1 bg-gray-900'>
- <NavBtn2 title='Add question' icon ={Icons.ADD}    clk={()=>showDel=false}/>
-  <NavBtn2 title='Delete question' icon ={Icons.DEL}    clk={()=>showDel=true}/>
+ <NavBtn2 title='Add question' icon ={Icons.ADD}    clk={()=>showDel=1}/>
+  <NavBtn2 title='Delete question' icon ={Icons.DEL}    clk={()=>showDel=2}/>
+  <NavBtn2 title='Copy question' icon ={Icons.TEMPLATE}    clk={()=>showDel=3}/>
 </div>
+{:else}
+<h1>Please login</h1>
+{/if}
 
 
-{#if !showDel}
+{#if showDel==1}
 <div class='flex justify-center text-white'>
 <HdgWithIcon bgColor = 'bg-green-800'>Add Questions</HdgWithIcon>
 </div>
 
     <AddQuestion />
-{:else}
+{/if}  
+
+{#if showDel==2}
 <div class='flex justify-center text-white'>
 <HdgWithIcon bgColor = 'bg-orange-800'>Delete Questions</HdgWithIcon>
 </div>
 
     <DelQuestion />
+{/if}    
 
-{/if}
-
-
-{:else}
+{#if showDel==3}
 <div class='flex justify-center text-white'>
-<HdgWithIcon bgColor = 'bg-orange-800'>Please login</HdgWithIcon>
+<HdgWithIcon bgColor = 'bg-blue-800'>Copy Questions</HdgWithIcon>
 </div>
-{/if}
+
+    <Copy />
+{/if}    
+
+
+
+
 <br>
 <br>
 <br>
