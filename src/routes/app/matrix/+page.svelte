@@ -1,6 +1,3 @@
-<svelte:head>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-</svelte:head>
 
 <script>
 // @ts-nocheck
