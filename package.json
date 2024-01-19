@@ -74,6 +74,7 @@
     "locate-character": "^3.0.0",
     "magic-string": "^0.30.1",
     "mathjax": "^3.2.2",
+    "mathjs": "^12.3.0",
     "mdn-data": "^2.0.30",
     "merge2": "^1.4.1",
     "micromatch": "^4.0.5",
