@@ -55,5 +55,8 @@ onMount(async () => {
  <div class="w-3/12">
   <Card  url="/notesFBISE9th" title="Notes FBISE 9th"/>
   </div>
+ <div class="w-3/12">
+  <Card  url="/syllabusByChapter" title="9 Math By Chapter"/>
+  </div>
 </div>
 </PageWrapper>

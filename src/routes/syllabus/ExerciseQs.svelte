@@ -1,30 +1,42 @@
 <script>
 //@ts-nocheck
 import { Card } from '$lib/cmp';
-import {Icons } from '$lib/util';
+import {Icons,onMount } from '$lib/util';
 export let questions;
 export let tcode;
-// export let getUrl;
-// export let isAdmin=false;
 export let selectedEx;
+let sortedArray=[];
+
+
+$:{
+  selectedEx;  
+  if(questions){
+  let filteredQuestions = questions.filter(question => question.exercise === selectedEx);
+  sortedArray =  filteredQuestions.sort((a, b) =>  a.sortOrder - b.sortOrder );
+  }  
+//   console.log("sortedArray",sortedArray);
+}
 
     let showQs=true;
     // let sortedArray;
-    let sortOne=[];
+    
 function getTitle(question){
-if (question.name && question.name !== ''){
-return `Ex ${question.exercise} ${question.name} `;
-}else {
-return `Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`;
+    if (question.name && question.name !== ''){
+        return `${question.name} `;
+    }else {
+        return `Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`;
+    }
 }
-}
+
 function getStatusIcon(status){
   if (status == 'empty') {return ' 🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
 }
+
 $: totalExQuestion = questions.filter(question => question.exercise === selectedEx).length
+
 </script>
 
 <div class="bg-gray-700 p-2 m-2 rounded-md">
@@ -35,9 +47,9 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
     Total Exercise Questions ({`${totalExQuestion}`})
     </button>
     </div>
-{#if questions}
+{#if sortedArray}
 <div class='flex  w-full justify-center  flex-wrap  '>
-{#each questions as question,index}    
+{#each sortedArray as question,index}    
         {#if question.exercise == selectedEx }
             <div class='w-3/12'>
             <Card

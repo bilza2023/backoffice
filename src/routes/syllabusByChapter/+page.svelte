@@ -83,13 +83,24 @@ selectedChapter = newChapter;
 
 onMount(async () => {
 try{
-  let r  = await getSyllabus();
-    if (r){
-      questions = r;
+    let token = localStorage.getItem("token");
+    const resp = await fetch( `${BASE_URL}/be/syllabus` ,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ tcode:'fbise9math'} )
+    });
+     if (resp){
+      const data = await resp.json();
+      questions = data.questions;
+      // console.log("questions",questions);
       isLogin = checkToken();
       isAdmin = checkAdminToken();
     }else {
-      toast.push("Failed to load");
+     const data = await resp.json();
+      toast.push(data.message);
     }
 
   } catch (e) {
@@ -123,7 +134,7 @@ try{
 
         <div class='w-3/12'>
             <Card
-            title = {`Ch:${question.chapter} Ex:${question.partNo.exercise} Q:${question.partNo.questionNo}`}
+            title = {`Ch:${question.chapter} Ex:${question.exercise} Q:${question.questionNo}`}
             icon={Icons.TEST}
             url = {`/editor?tcode=fbise9math&id=${question._id}`}
             > 

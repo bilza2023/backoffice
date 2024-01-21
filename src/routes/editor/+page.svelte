@@ -18,10 +18,8 @@
  let soundFile;
  let filename;
 let currentTime=0;
-// $:{
-//   currentTime;
-//   console.log(currentTime);
-// }
+
+
 async function save(){
  saveFinal(slides,tcode,id,item);
 } 
@@ -113,6 +111,7 @@ async function  addNew(slideType){
   item =  returnSlides.item;
   slides = item.slides;
   filename = item.filename;
+  console.log("filename",filename);
   //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
   soundFile = tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
     if (slides.length > 0){
