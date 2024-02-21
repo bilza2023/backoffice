@@ -7,7 +7,7 @@ import Nav from '$lib/appComp/Nav.svelte';
 import Table from './Table.svelte';
 import { sqrt,det,transpose,inv } from 'mathjs';
 import VerticalBtnsTbl from './VerticalBtnsTbl.svelte';
-
+//It seems all good on local
 let isLogin = false;
 let isAdmin = false;
 
