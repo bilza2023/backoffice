@@ -18,7 +18,7 @@ const passwordError = validateString(password,6,30);
       return;
     }
 
-const response = await fetch( `${BASE_URL}/be/teacher_login` ,{
+const response = await fetch( `${BASE_URL}/login` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL } from "$lib/util";
+import { toast,BASE_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let tcode='fbise9math';
 // let classNo =10;
@@ -17,7 +17,7 @@ function convertToUrlFriendlyName(name) {
 }
 
 async function addQuestion(){
- debugger;
+//  debugger;
 if(!tcode || tcode == null || tcode == undefined){
     toast.push("missing tcode");
     return;
@@ -27,22 +27,18 @@ name = convertToUrlFriendlyName(name);
 }
 // debugger;
 //   let tcode = 'fbise' + classNo + 'math';
-  let token = localStorage.getItem("token");
-    const response = await fetch( `${BASE_URL}/be/add_question` ,{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({ qData :{chapter, exercise, questionNo, part, name,tcode}} )
+//   let token = localStorage.getItem("token");
+    const resp = await ajaxPost( 
+        `${BASE_URL}/command` , 
+        { command : "create" ,tcode, arg_array :{ questionData :{board: "fbise" ,chapter, exercise, questionNo, part, name}} 
     });
 
-    if (response.ok) {
-        const data = await response.json();
+    if (resp.ok) {
+        const data = await resp.json();
         // toast.push('Question Created');
         toast.push(data.message);
     }else {
-        const data = await response.json();
+        const data = await resp.json();
         toast.push(data.message)
     }
 

@@ -25,12 +25,16 @@ function getTitle(question){
     if (question.name && question.name !== ''){
         return `${question.name} `;
     }else {
-        return `Ex ${question.exercise} Q-${question.questionNo} pt ${question.part}`;
+        let r = `Ex ${question.exercise} Q-${question.questionNo}`;
+        if(question.part || question.part != 0){
+            r+= ` pt ${question.part}`
+        }
+        return r;
     }
 }
 
 function getStatusIcon(status){
-  if (status == 'empty') {return ' 🧊'  }
+  if (status == 'empty') {return '🧊'  }
   if (status == 'fill') {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
@@ -59,7 +63,8 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
             url = {`/editor?tcode=${tcode}&id=${question._id}`}
             >
 
-            <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}{getStatusIcon(question.status)}</div>
+            <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}
+                &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
 
             {#if question.status !== 'final' }
             <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">

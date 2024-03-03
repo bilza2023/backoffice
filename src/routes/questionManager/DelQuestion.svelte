@@ -1,27 +1,23 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL } from "$lib/util";
+import { toast,BASE_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let id;
 let classNo =9;
 let tcode='fbise10math';
 
 async function deleteQuestion(){
-  debugger;
+  // debugger;
   if(!tcode || tcode == null || tcode == undefined){
     toast.push("missing tcode");
     return;
 }
   // let tcode = 'fbise' + classNo + 'math';
-  let token = localStorage.getItem("token");
-    const response = await fetch( `${BASE_URL}/be/delete_question` ,{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({ id,tcode } )
-    });
+  // let token = localStorage.getItem("token");,
+  const response = await ajaxPost( 
+        `${BASE_URL}/command` , 
+        { command : "delete" ,tcode, arg_array :{ id} } 
+      );
 
     if (response.ok) {
         // const data = await response.json();
