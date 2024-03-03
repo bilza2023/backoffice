@@ -9,7 +9,7 @@
 import {browser,onMount,toast,BASE_URL} from '$lib/util'
 import { themes ,Presentation} from '$lib/Presentation';
 import PlayButtons from './PlayButtons.svelte';
-import readSlides from '$lib/tdf/readSlides';
+// import readSlides from '$lib/tdf/readSlides';
 import Slider from './Slider.svelte';
 
 let slides;
@@ -23,15 +23,29 @@ onMount(async ()=>{
 id = new URLSearchParams(location.search).get("id");
 tcode = new URLSearchParams(location.search).get("tcode");
 
-let val  = await readSlides(id,tcode);
-  let returnSlides  = await readSlides(id,tcode);
-   
- if (returnSlides){
-  slides = returnSlides.item.slides;
-  getStopTime(slides);
-  currentSlide = slides[0];
- }
-else {throw new Error('Failed to load');}
+let token = localStorage.getItem("token");
+const resp = await fetch( `${BASE_URL}/tcode/read`, {
+    method: 'POST',
+      headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+  },
+  body: JSON.stringify( {id , tcode} )
+  });
+// 
+  if(resp.ok){
+    // Error in the api
+    const firstITem = await resp.json();
+    const item = firstITem.item;
+    const question = item.question;
+    slides = question.slides;
+    getStopTime(slides);
+    currentSlide = slides[0];
+    
+} else {
+    throw new Error('Failed to load');}
+  
+
 // hydrate();
 });
 
