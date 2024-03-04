@@ -1,8 +1,10 @@
 <script>
-//@ts-nocheck 
+//@ts-nocheck  
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
 import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
+
+// import MyComponent  from '../../node_modules/taleem_ui_lib/index.js';
 
 let isLogin = false;
 let isAdmin = false;
@@ -28,7 +30,7 @@ onMount(async () => {
 <div class='flex justify-center  p-2 '>
  <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>Back Office - Teachers Hub</HdgWithIcon>
 </div>
-
+<!-- <MyComponent /> -->
 <div class='flex justify-center p-8 '>
 <div class='flex flex-wrap  justify-center border-2 border-white  gap-1 p-4 m-0 bg-gray-700 rounded-md w-full'>
 

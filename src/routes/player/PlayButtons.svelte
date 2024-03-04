@@ -1,6 +1,6 @@
 <script>
   //@ts-nocheck
-  import { ThemeDD } from '$lib/Presentation';
+  // import {ThemeDD}  from '../../../node_modules/taleem_ui_lib/dist';
 
   export let start;
   export let stop;
@@ -16,7 +16,7 @@
     on:click={stop}>■ Stop</button>
  
 
-    <ThemeDD {callback}/>
+    <!-- <ThemeDD {callback}/> -->
 
 </div>
 

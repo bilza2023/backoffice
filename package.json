@@ -113,6 +113,7 @@
     "svelte-hmr": "^0.15.2",
     "svelte-katex": "^0.1.2",
     "svelte-preprocess": "^5.0.4",
+    "taleem_ui_lib": "^0.0.6",
     "to-regex-range": "^5.0.1",
     "totalist": "^3.0.1",
     "undici": "^5.22.1",

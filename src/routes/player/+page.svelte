@@ -6,8 +6,12 @@
 /**
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
-import {browser,onMount,toast,BASE_URL} from '$lib/util'
-import { themes ,Presentation} from '$lib/Presentation';
+import {browser,onMount,toast,BASE_URL} from '$lib/util';
+
+//import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
+
+import Presentation  from '../../../node_modules/taleem_ui_lib/dist/Presentation/Presentation.svelte';
+
 import PlayButtons from './PlayButtons.svelte';
 // import readSlides from '$lib/tdf/readSlides';
 import Slider from './Slider.svelte';
@@ -15,7 +19,15 @@ import Slider from './Slider.svelte';
 let slides;
 let id;
 let tcode;
-let theme = themes.basic;
+let theme =  {
+    description     : '',
+    primaryColor    : '#BC6C25',
+    secondaryColor  : '#DDA15E',
+    backgroundColor : '#FEFAE0',
+    textColor       : '#283618',
+    highlightColor  : '#606C38',
+
+};
 let hydrateInterval=null;
 let stopTime = null;
 
@@ -34,7 +46,6 @@ const resp = await fetch( `${BASE_URL}/tcode/read`, {
   });
 // 
   if(resp.ok){
-    // Error in the api
     const firstITem = await resp.json();
     const item = firstITem.item;
     const question = item.question;
@@ -71,7 +82,15 @@ setCurrentSlide();
 }
 function applyTheme(themeKey){
 // debugger;
-theme = themes[themeKey];
+theme = {
+        description     : '',
+        primaryColor    : '#BC6C25',
+        secondaryColor  : '#DDA15E',
+        backgroundColor : '#FEFAE0',
+        textColor       : '#283618',
+        highlightColor  : '#606C38',
+
+    };
 // console.log(theme);
 }
 function gameloop(){
