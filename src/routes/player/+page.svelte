@@ -10,7 +10,7 @@ import {browser,onMount,toast,BASE_URL} from '$lib/util';
 
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
-import Presentation  from '../../../node_modules/taleem_ui_lib/dist/Presentation/Presentation.svelte';
+import {Presentation}  from '$lib/Presentation';
 
 import PlayButtons from './PlayButtons.svelte';
 // import readSlides from '$lib/tdf/readSlides';
@@ -143,6 +143,7 @@ function setCurrentSlide(){
 {#if currentSlide}
 
     <Presentation {currentSlide} {theme} {pulse} {setPulse} {tcode}/>
-{/if}
+ 
+ {/if}
 
 </div><!--page wrapper-->

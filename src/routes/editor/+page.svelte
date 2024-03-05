@@ -4,7 +4,7 @@
   import Toolbar from './Toolbar.svelte';
   import readSlides from '$lib/tdf/readSlides';
   // import {Presentation,getNewSlide} from '$lib/Presentation';
-  import {Presentation,getNewSlide}  from '../../../node_modules/taleem_ui_lib/dist/Presentation';
+  import {Presentation,getNewSlide}  from '$lib/Presentation';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
 
