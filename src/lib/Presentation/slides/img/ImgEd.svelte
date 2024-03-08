@@ -2,7 +2,7 @@
 //@ts-nocheck
 
 // import { onMount } from 'svelte';
-export let items;
+export let items; 
 export let tcode;
 export let slideExtra =[];
 export let theme;
