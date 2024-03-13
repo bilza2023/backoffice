@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
 import {NavBtn2} from '$lib/cmp';
-import {Icons,toast} from '$lib/util';
+import {Icons,toast,BASE_URL} from '$lib/util';
 
 export let tcode;
 // export let item;
