@@ -3,6 +3,9 @@
 import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
 import {Icons,BASE_URL, toast} from '$lib/util';
 import SoundButtons from './SoundButtons.svelte';
+import UploadMp3 from './UploadMp3.svelte';
+import UploadImage from './UploadImage.svelte';
+
 export let show;
 export let slides;
 export let item;
@@ -18,115 +21,6 @@ export let soundFile=null;
 export let currentTime=0;
 
 let showDelete=false;
-
-async function uploadMp3() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.multiple = false; // Allow only single file selection
-    input.accept = '.mp3'; // Allow only MP3 files
-    input.click(); // Click the hidden input element
-    input.addEventListener('change', handleMp3Selection);
-  }
-
-  async function uploadImage() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.multiple = false; // Allow only single file selection
-    input.accept = 'image/*'; // Allow all image file types
-    input.click(); // Click the hidden input element
-    input.addEventListener('change', handleImageSelection);
-  }
-
-  async function image_exists(file,tcode) {
-    try {
-      debugger;
-    const url = `https://taleem-media.blr1.digitaloceanspaces.com/images/${tcode}/${file.name}`;
-        debugger;
-    // const resp = await ajaxGet(url);
-    const resp = await fetch( url, {
-    method: 'GET',
-      headers: {
-    'Content-Type': 'application/json'
-    // 'Authorization': `Bearer ${token}`,
-    }
-    });  
-
-         if(resp.ok){
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('Error checking MP3 file existence:', error);
-        return false;
-    }
-}
-
-
-  async function handleMp3Selection(event) {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('mp3', file);
-
-    formData.append('tcode', tcode);
-    formData.append('exercise', item.exercise);
-
-    
-    try {
-      ////////////////////////////////////////////
-        const resp = await fetch(`${BASE_URL}/upload_mp3`, {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (resp.ok) {
-            const data = await resp.json();
-            toast.push("File Uploaded");
-        } else {
-          const data = await resp.json();
-                if(data.message){
-                toast.push(data.message);
-                }else{
-                toast.push("Failed to upload MP3 file");
-                }
-        }
-    } catch (error) {
-        console.error('Error uploading MP3 file:', error);
-    }
-}
-
-/////////////////////////////////////////////////////////
-async function handleImageSelection(event) {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
-
-    formData.append('tcode', tcode);
-
-    try {
-      const exists = await image_exists(file,tcode);
-      if(exists){toast.push('file aready exists');return;}
-
-        const resp = await fetch(`${BASE_URL}/upload_image`, {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (resp.ok) {
-            const data = await resp.json();
-            // console.log('Uploaded image file:', data.url);
-            toast.push("file uploaded");
-        } else {
-          toast.push("failed to upload file");
-            // console.error('Failed to upload image file:', resp.statusText);
-        }
-    } catch (error) {
-        // console.error('Error uploading image file:', error);
-    }
-}
-
-
-
 function delFirst(){
 showDelete=false;
 delCurSlide();
@@ -174,8 +68,9 @@ function shiftTime(slideIndex, newEndTime) {
 <SoundButtons  {soundFile}  bind:currentTime={currentTime} />    
 
 
-<NavBtn2 title='Upload Mp3' icon={Icons.SPEAKER}  clk={uploadMp3} />
-<NavBtn2 title='Upload Jpg' icon={Icons.TREE}  clk={uploadImage} />
+<!-- <NavBtn2 title='Upload Mp3' icon={Icons.SPEAKER}  clk={uploadMp3} /> -->
+<UploadMp3 {item} {tcode}/>
+<UploadImage  {tcode}/>
 
 <span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span>
 
