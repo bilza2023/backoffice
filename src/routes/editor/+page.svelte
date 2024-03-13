@@ -118,7 +118,8 @@ async function  addNew(slideType){
   filename = data.question.filename;
   // console.log("filename",filename);
   // //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
-  soundFile = tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
+  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
+  // https://taleem-media.blr1.digitaloceanspaces.com/mp3/fbise9math/1.2/fbise_cl_9_ch_1_ex_1.2_q_1_pt_0.mp3
     if (slides.length > 0){
       currentSlideIndex = 0;
     }

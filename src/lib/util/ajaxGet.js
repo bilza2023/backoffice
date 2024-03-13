@@ -6,11 +6,11 @@ export default async function ajaxGet(url) {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
-      }
+      } 
     });
 
     return resp;
   } catch (error) {
-    return error; // should this be throw error ???
+    throw error;
   }
 }

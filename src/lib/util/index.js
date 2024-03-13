@@ -13,6 +13,7 @@ import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
 import ajaxPost from './ajaxPost';
+import ajaxGet from './ajaxGet';
 import uuid from './uuid';
 // import chqLogin from './chqLogin';
 
@@ -31,7 +32,8 @@ import uuid from './uuid';
                     Icons,
                     checkToken,
                     checkAdminToken,
-                    ajaxPost
+                    ajaxPost,
+                    ajaxGet
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */

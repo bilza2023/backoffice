@@ -1,7 +1,8 @@
 <script>
 //@ts-nocheck
-import {onMount,toast} from '$lib/util';
+import {Icons,onMount,toast} from '$lib/util';
 import { Howl } from "howler";
+import {NavBtn2} from '$lib/cmp';
 
 export let soundFile=null;
 export let currentTime=0;
@@ -85,6 +86,11 @@ async function loadSound() {
         <button on:click={stop} class="p-1 m-1 bg-orange-700">◼</button>
         <div  class="p-1 m-1 bg-orange-700">{currentTime}/{maxSliderValue}</div>
 {:else}  
-      <h3 class="flex items-center text-xs">sound Not Available</h3>
+      <!-- <h3 class="flex items-center text-xs">sound Not Available</h3> -->
+  <div class='text-lg'>
+    
+    <NavBtn2 title='No Sound' icon={Icons.NOSPEAKER}  />
+  </div>
+
 {/if}
 </div>

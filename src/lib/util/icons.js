@@ -56,6 +56,7 @@ export default class Icons {
   static SAVE = '💾';
   static SMILYFACE = '😊';
   static SPEAKER = '📢';
+  static NOSPEAKER = '🔇';
   static STAIRS = '🪜';
   static STAR = '⭐';
   static START = '▶';

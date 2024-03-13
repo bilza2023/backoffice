@@ -1,7 +1,14 @@
+
+Here is my complete code in which using handleMp3Selection and handleImageSelection i upload mp3 file and image file to digitialocean space.
+The problem is that before upload i want to check if the file already exists or not
+For this i want to use a simple procedure of using a http "get" command on the uri to check if the file exists or not and return true or false.
+
+I think we need 2 functions "mp3_exists" and "image_exists" both taking a uri/url of the reasource and trying to "get" it. if successfule return true else false.
+
 <script>
 //@ts-nocheck
 import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
-import {Icons,BASE_URL, toast} from '$lib/util';
+import {Icons, ajaxPost,BASE_URL, toast} from '$lib/util';
 import SoundButtons from './SoundButtons.svelte';
 export let show;
 export let slides;
@@ -37,32 +44,6 @@ async function uploadMp3() {
     input.addEventListener('change', handleImageSelection);
   }
 
-  async function image_exists(file,tcode) {
-    try {
-      debugger;
-    const url = `https://taleem-media.blr1.digitaloceanspaces.com/images/${tcode}/${file.name}`;
-        debugger;
-    // const resp = await ajaxGet(url);
-    const resp = await fetch( url, {
-    method: 'GET',
-      headers: {
-    'Content-Type': 'application/json'
-    // 'Authorization': `Bearer ${token}`,
-    }
-    });  
-
-         if(resp.ok){
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('Error checking MP3 file existence:', error);
-        return false;
-    }
-}
-
-
   async function handleMp3Selection(event) {
     const file = event.target.files[0];
     const formData = new FormData();
@@ -71,9 +52,9 @@ async function uploadMp3() {
     formData.append('tcode', tcode);
     formData.append('exercise', item.exercise);
 
-    
+
     try {
-      ////////////////////////////////////////////
+      debugger;
         const resp = await fetch(`${BASE_URL}/upload_mp3`, {
             method: 'POST',
             body: formData,
@@ -101,12 +82,7 @@ async function handleImageSelection(event) {
     const formData = new FormData();
     formData.append('image', file);
 
-    formData.append('tcode', tcode);
-
     try {
-      const exists = await image_exists(file,tcode);
-      if(exists){toast.push('file aready exists');return;}
-
         const resp = await fetch(`${BASE_URL}/upload_image`, {
             method: 'POST',
             body: formData,
@@ -114,14 +90,12 @@ async function handleImageSelection(event) {
 
         if (resp.ok) {
             const data = await resp.json();
-            // console.log('Uploaded image file:', data.url);
-            toast.push("file uploaded");
+            console.log('Uploaded image file:', data.url);
         } else {
-          toast.push("failed to upload file");
-            // console.error('Failed to upload image file:', resp.statusText);
+            console.error('Failed to upload image file:', resp.statusText);
         }
     } catch (error) {
-        // console.error('Error uploading image file:', error);
+        console.error('Error uploading image file:', error);
     }
 }
 
