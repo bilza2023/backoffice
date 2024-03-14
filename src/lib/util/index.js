@@ -13,6 +13,8 @@ import { BASE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
 import ajaxPost from './ajaxPost';
+import ajaxPostData from './ajaxPostData';
+import ajaxPostMsg from './ajaxPostMsg';
 import ajaxGet from './ajaxGet';
 import uuid from './uuid';
 // import chqLogin from './chqLogin';
@@ -33,6 +35,8 @@ import uuid from './uuid';
                     checkToken,
                     checkAdminToken,
                     ajaxPost,
+                    ajaxPostData,
+                    ajaxPostMsg,
                     ajaxGet
             }
 
