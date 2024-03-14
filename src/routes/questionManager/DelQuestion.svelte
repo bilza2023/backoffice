@@ -14,17 +14,16 @@ async function deleteQuestion(){
 }
   // let tcode = 'fbise' + classNo + 'math';
   // let token = localStorage.getItem("token");,
-  const response = await ajaxPost( 
-        `${BASE_URL}/command` , 
-        { command : "delete" ,tcode, arg_array :{ id} } 
-      );
+  const response = await ajaxPost(`${BASE_URL}/tcode/delete` ,{ tcode,  id });
 
     if (response.ok) {
-        // const data = await response.json();
-        toast.push('Question deleted');
+        const data = await response.json();
+        // console.log(" data", data);
+        toast.push(data.message);
         id='';
     }else {
         const data = await response.json();
+        // console.log(" data", data);
         toast.push(data.message)
     }
 

@@ -17,7 +17,7 @@ function convertToUrlFriendlyName(name) {
 }
 
 async function addQuestion(){
-//  debugger;
+ debugger;
 if(!tcode || tcode == null || tcode == undefined){
     toast.push("missing tcode");
     return;
