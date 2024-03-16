@@ -22,7 +22,7 @@ if (slides && slides.length > 0){
   // });
   // debugger;
   // const resp = await ajaxPost(`${BASE_URL}/be/update`,{presentation,tcode});
-  const resp = await ajaxPost( `${BASE_URL}/command` , { command : "update" ,tcode,	arg_array :{question} } );
+  const resp = await ajaxPost( `${BASE_URL}/command` , { command : "update" ,tcode,	question } );
 
   if(resp.ok){
     toast.push('saved');}

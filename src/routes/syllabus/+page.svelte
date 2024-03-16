@@ -53,12 +53,13 @@ try{
     tcode = new URLSearchParams(location.search).get("tcode");
     ///---it came to this
 
-    const resp = await ajaxPost( `${BASE_URL}/command` , { command : "getSyllabus" ,tcode,	arg_array :{} } );
+    const resp = await ajaxPost( `${BASE_URL}/command` , { command : "getSyllabus" ,tcode } );
 
 /////////////////////    
     if (resp){
       const data = await resp.json();
-      questions = data.questions;
+      // console.log("data",data);
+      questions = data.data.syllabus; //data.data.syllabus
       chapter_map_array = await chapter_map(questions);
       // console.log("map",chapter_map_array);
       setChapter(chapter_map_array[0].chapter);

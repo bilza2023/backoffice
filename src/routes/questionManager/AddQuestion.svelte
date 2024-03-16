@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL,ajaxPostMsg } from "$lib/util";
+import { toast,BASE_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let tcode='fbise9math';
 // let classNo =10;
@@ -27,19 +27,16 @@ name = convertToUrlFriendlyName(name);
 }
 debugger;
 const token = localStorage.getItem("token");
-  const resp = await fetch( `${BASE_URL}/tcode/create` ,{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({tcode,question} )
-    });
+
+const resp = await ajaxPost( `${BASE_URL}/command` , { command : "create" ,tcode,	
+question :{chapter,exercise,questionNo,part,name}
+});
+
 
     if(resp.ok){
 
       const data = await resp.json();
-      return data;
+      toast.push(data.message);
     }else {
       const data = await resp.json();
       toast.push(data.message);

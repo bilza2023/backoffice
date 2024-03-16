@@ -106,16 +106,17 @@ async function  addNew(slideType){
    id = new URLSearchParams(location.search).get("id");
    tcode = new URLSearchParams(location.search).get("tcode");
   // debugger;
-   const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	arg_array :{id} } );
+   const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
 
 
 
  if (resp.ok){
   const data = await resp.json();
-  
-  item =  data.question;
-  slides = data.question.slides;
-  filename = data.question.filename;
+  console.log("data",data);
+  console.log("data.data.item",data.data.item);
+  item =  data.data.item;
+  slides = item.slides;
+  filename = item.filename;
   // console.log("filename",filename);
   // //I can use different tcode (different tables) for the same eq-player. the files should be in static/tcode/exercise/filename.mp3
   soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';

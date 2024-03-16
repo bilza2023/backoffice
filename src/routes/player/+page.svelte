@@ -6,7 +6,7 @@
 /**
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
-import {browser,onMount,toast,BASE_URL} from '$lib/util';
+import {browser,onMount,ajaxPost,toast,BASE_URL} from '$lib/util';
 
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
@@ -32,23 +32,17 @@ let hydrateInterval=null;
 let stopTime = null;
 
 onMount(async ()=>{  
-id = new URLSearchParams(location.search).get("id");
-tcode = new URLSearchParams(location.search).get("tcode");
+ id = new URLSearchParams(location.search).get("id");
+ tcode = new URLSearchParams(location.search).get("tcode");
 
-let token = localStorage.getItem("token");
-const resp = await fetch( `${BASE_URL}/tcode/read`, {
-    method: 'POST',
-      headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`,
-  },
-  body: JSON.stringify( {id , tcode} )
-  });
-// 
-  if(resp.ok){
-    const firstITem = await resp.json();
-    const item = firstITem.item;
-    const question = item.question;
+ const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
+
+
+
+ if (resp.ok){
+  const data = await resp.json();
+  
+ const question = data.data.item;
     slides = question.slides;
     getStopTime(slides);
     currentSlide = slides[0];
