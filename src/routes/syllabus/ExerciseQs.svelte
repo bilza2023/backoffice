@@ -72,6 +72,8 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
                 <a href= {`/player?tcode=${tcode}&id=${question._id}`} target="_blank">{Icons.START}</a>
                 </div>
             {/if}
+           
+        
             
          
             

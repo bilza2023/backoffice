@@ -6,7 +6,7 @@ export let questions;
 export let tcode;
 export let selectedEx;
 let sortedArray=[];
-
+ 
 
 $:{
   selectedEx;  
@@ -79,6 +79,11 @@ $: totalExQuestion = questions.filter(question => question.exercise === selected
                 </div>
             {/if}
             
+            {#if question.status !== 'empty' }
+            <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
+            <a href= {`/player2?tcode=${tcode}&id=${question._id}`} target="_blank">{Icons.COMPUTER}</a>
+            </div>
+            {/if}
          
             
             </Card>

@@ -9,7 +9,7 @@ import checkToken from './checkToken';
 import updateStoreArray from './updateStoreArray';
 import checkAdminToken from './checkAdminToken';
 import convertEqsToSlide from './convertEqToSlide.js';
-import { BASE_URL } from './config';
+import { BASE_URL,RESOURCE_URL } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
 import ajaxPost from './ajaxPost';
@@ -22,6 +22,7 @@ import uuid from './uuid';
             export {
             isLoginStore,isAdminStore,
             BASE_URL,
+            RESOURCE_URL,
                     onMount,
                     toast,
                     fade,
