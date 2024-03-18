@@ -9,7 +9,7 @@ async function uploadImage() {
     const input = document.createElement('input');
     input.type = 'file';
     input.multiple = false; // Allow only single file selection
-    input.accept = 'image/*'; // Allow all image file types
+    input.accept = 'image/png'; // Allow all image file types
     input.click(); // Click the hidden input element
     input.addEventListener('change', handleImageSelection);
   }
@@ -77,4 +77,4 @@ async function handleImageSelection(event) {
 </script>
 
 
-<NavBtn2 title='Upload Jpg' icon={Icons.TREE}  clk={uploadImage} />
+<NavBtn2 title='Upload Png' icon={Icons.TREE}  clk={uploadImage} />
