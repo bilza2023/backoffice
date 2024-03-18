@@ -18,7 +18,8 @@ async function uploadMp3() {
 async function handleMp3Selection(event) {
     const file = event.target.files[0];
     const formData = new FormData();
-    formData.append('mp3', file);
+
+    formData.append('mp3', file, item.filename + ".mp3");
 
     formData.append('tcode', tcode);
     formData.append('exercise', item.exercise);

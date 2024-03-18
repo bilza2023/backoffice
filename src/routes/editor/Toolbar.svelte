@@ -69,8 +69,8 @@ function shiftTime(slideIndex, newEndTime) {
 
 
 <!-- <NavBtn2 title='Upload Mp3' icon={Icons.SPEAKER}  clk={uploadMp3} /> -->
+<UploadImage  {tcode} />
 <UploadMp3 {item} {tcode}/>
-<UploadImage  {tcode}/>
 
 <span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span>
 

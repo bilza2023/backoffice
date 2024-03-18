@@ -112,8 +112,8 @@ async function  addNew(slideType){
 
  if (resp.ok){
   const data = await resp.json();
-  console.log("data",data);
-  console.log("data.data.item",data.data.item);
+  // console.log("data",data);
+  // console.log("data.data.item",data.data.item);
   item =  data.data.item;
   slides = item.slides;
   filename = item.filename;
