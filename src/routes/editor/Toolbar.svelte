@@ -15,7 +15,7 @@ export let save;
 export let showSidePanel;
 export let currentSlideIndex;
 export let delCurSlide;
-export let filename;
+export let filename; 
 export let tcode;
 export let soundFile=null;
 export let currentTime=0;
