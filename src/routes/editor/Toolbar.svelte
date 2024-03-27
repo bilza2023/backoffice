@@ -19,12 +19,15 @@ export let filename;
 export let tcode;
 export let soundFile=null;
 export let currentTime=0;
+export let showEditDlg=false;
 
 let showDelete=false;
+
 function delFirst(){
 showDelete=false;
 delCurSlide();
 }
+
 function shiftTime(slideIndex, newEndTime) {
 //  debugger;
   if (slideIndex < 0 || slideIndex >= slides.length) {
@@ -91,9 +94,9 @@ function shiftTime(slideIndex, newEndTime) {
 
 <!-- DD for status     -->
 <!-- ['unlocked' ,'fill' ,'locked', 'final'], -->
-<span class='text-xs'>Status</span>
+<!-- <span class='text-xs'>Status</span>
    <div class="relative">
-  <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}>
+  <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="" bind:value={item.status}> 
     <option value="empty">Empty</option>
     <option value="fill">Filled</option>
     <option value="locked">Locked</option>
@@ -102,11 +105,11 @@ function shiftTime(slideIndex, newEndTime) {
   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 text-white">
     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12l-6-6 1.414-1.414L10 9.172l4.586-4.586L16 6z"/></svg>
   </div>
-</div>
+</div> -->
 
 <!-- DD for questionType     -->
 <!-- ['paid' ,'login' ,'free'], -->
-<span class='text-xs'>Type</span>
+<!-- <span class='text-xs'>Type</span>
    <div class="relative">
   <select class="block appearance-none w-full bg-gray-700 border border-gray-400 text-white py-1 px-1 pr-4 rounded leading-tight focus:outline-none" id="question_type" bind:value={item.questionType}>
     <option value="paid">Paid</option>
@@ -116,9 +119,10 @@ function shiftTime(slideIndex, newEndTime) {
   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 text-white">
     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12l-6-6 1.414-1.414L10 9.172l4.586-4.586L16 6z"/></svg>
   </div>
-</div>
+</div> -->
 
-     <NavBtn2 title='Del' icon={Icons.DEL}  clk={()=>showDelete = !showDelete} />
+<NavBtn2 title='Edit' icon={Icons.PENCIL}  clk={()=>showEditDlg = !showEditDlg} />
+  <NavBtn2 title='Del' icon={Icons.DEL}  clk={()=>showDelete = !showDelete} />
     {/if}
 
   </div>  
@@ -146,3 +150,5 @@ function shiftTime(slideIndex, newEndTime) {
 {#if showDelete}
 <NavBtn2 title='Are You Sure to Delete' icon={Icons.DEL }  clk={delFirst} />
 {/if}
+
+

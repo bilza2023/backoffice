@@ -2,11 +2,13 @@
   //@ts-nocheck
   import { onMount,ajaxPost ,BASE_URL} from '$lib/util';
   import Toolbar from './Toolbar.svelte';
-  import readSlides from '$lib/tdf/readSlides';
+  // import readSlides from '$lib/tdf/readSlides';
   // import {Presentation,getNewSlide} from '$lib/Presentation';
   import {Presentation,getNewSlide}  from '$lib/Presentation';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
+  import EditDlg from './EditDlg.svelte';
+  let showEditDlg=false;
 
  let currentSlideIndex;
  let slides;
@@ -21,7 +23,18 @@
 let currentTime=0;
 
 
+function convertToUrlFriendlyName(name) {
+            const urlFriendlyName = name.replace(/\s+/g, '_');
+            const sanitizedUrlFriendlyName = urlFriendlyName.replace(/[^\w\d_]/g, '');
+            return sanitizedUrlFriendlyName;
+}
+
 async function save(){
+  debugger;
+  if (item.name && item.name !== ''){
+    item.name = convertToUrlFriendlyName(item.name);
+  }
+        
  saveFinal(slides,tcode,id,item);
 } 
 
@@ -148,8 +161,13 @@ else {throw new Error('Failed to load');}
  
 {#if slides}
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} {tcode}/>  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg}/>  
 {/if}
+
+{#if showEditDlg}
+  <EditDlg bind:item={item} {save}/>
+{/if}
+
 
 <div class='flex justify-start w-full'>
 

@@ -4,24 +4,15 @@ import {toast,BASE_URL,ajaxPost} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
-// debugger;
+  debugger;
 //--first slide start time = 0;
 if (slides && slides.length > 0){
   slides[0].startTime = 0;
   updateSlideStartTimes(slides);
 }
-// stringify(slides);
-  const question = {slides ,status:item.status,questionType:item.questionType,_id:id};
-  // const resp = await fetch( `${BASE_URL}/be/update`, {
-  //   method: 'POST',
-  //     headers: {
-  //   'Content-Type': 'application/json',
-  //   'Authorization': `Bearer 000`,
-  // },
-  // body: JSON.stringify( {presentation,tcode} ) 
-  // });
-  // debugger;
-  // const resp = await ajaxPost(`${BASE_URL}/be/update`,{presentation,tcode});
+const question = item;
+question.slides = slides; 
+///////////////////////////////////////////////////////////////////
   const resp = await ajaxPost( `${BASE_URL}/command` , { command : "update" ,tcode,	question } );
 
   if(resp.ok){
