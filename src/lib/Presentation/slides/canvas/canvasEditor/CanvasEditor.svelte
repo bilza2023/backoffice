@@ -421,7 +421,7 @@
 
 <div class='w-70 '>
   <CanvasPlayer {items} {extra}/>
-</div>
+</div> 
 
 <!-- div for json-ui -->
 <div class='w-30'>

@@ -3,7 +3,11 @@
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     let canvas;
     let ctx;
-    export let extra;
+    export let extra={
+      canvasWidth : 1000,
+      canvasHeight : 360,
+      backgroundColor : 'gray'
+    };
     export let items;
 
 $:{
