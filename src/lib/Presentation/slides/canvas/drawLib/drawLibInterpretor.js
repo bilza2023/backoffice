@@ -130,6 +130,14 @@ export default class DrawLibInterpretor {
                     this.drawLib.text(item.text, this.addXfactor(this.getX(item.x)), this.getY(item.y), item.color, item.font,item.shadowOffsetX,item.shadowOffsetY,item.shadowBlur,item.shadowColor,item.globalAlpha);    
                     }
                     break;
+                case 'para':
+
+                    if (!item.translate || item.translate==false ){
+                    this.drawLib.para(item.text, item.x, item.y, item.color, item.font,item.shadowOffsetX,item.shadowOffsetY,item.shadowBlur,item.shadowColor,item.globalAlpha,item.lineHeightOffset,item.xOffset);
+                    }else{
+                    this.drawLib.para(item.text, this.addXfactor(this.getX(item.x)), this.getY(item.y), item.color, item.font,item.shadowOffsetX,item.shadowOffsetY,item.shadowBlur,item.shadowColor,item.globalAlpha,item.lineHeightOffset,item.xOffset);    
+                    }
+                    break;
                 case 'image':
                         const img = new Image();
                         img.onload = () => {
@@ -139,10 +147,6 @@ export default class DrawLibInterpretor {
                         img.src = item.image;
                 break;
 
-                case 'perpendSymbol':
-                    
-                    this.drawLib.drawPerpendSymbol(item.x,item.y,item.x1,item.y1,item.x2,item.y2,item.lineWidth,item.color);
-                    break;
                 case 'angleSymbol':
                     // debugger;
                     const st_angle_rads_angleSymbol = item.startAngle * (Math.PI / 180);

@@ -2,7 +2,15 @@
     //@ts-nocheck
     
     export let item;
-
+    function randNo(length=8){
+    const digits = '0123456789';
+  let result = '';
+  const digitsLength = digits.length;
+  for (let i = 0; i < length; i++) {
+      result += digits.charAt(Math.floor(Math.random() * digitsLength));
+  }
+  return result;
+  }
     function applyTemplate(event) {
         switch (event.target.value) {
 case 'ADD' :
@@ -460,6 +468,19 @@ case 'UP' :
        item.shadowBlur =  2;
             break;
 
+            case 'jt' :
+                item.name = "jt_"+ randNo();
+                item.text= "Ex 8.2 Question 3 Pt 2";
+                item.x= 4;
+                item.y= 3;
+                item.color= "#FAE500";
+                item.font= "80px Arial";
+                item.shadowOffsetX = 12;
+                item.shadowOffsetY = 12;
+                item.shadowColor = "#9D850B";
+                item.shadowBlur = 12
+            break;
+
             default:
                 break;
         }
@@ -475,6 +496,7 @@ case 'UP' :
                     <option value="none">None</option>
                     <option value="taleem">taleem</option>
                     <option value="title">Title</option>
+                    <option value="jt">JT</option>
 <option value="ADD">ADD</option>
 <option value="BALANCE">BALANCE</option>
 <option value="BARCHART">BARCHART</option>

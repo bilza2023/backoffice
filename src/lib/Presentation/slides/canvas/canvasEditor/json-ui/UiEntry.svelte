@@ -5,6 +5,7 @@ import Toolbar from "./Toolbar.svelte";
 ///////////////////////////////////////////////////////
     import GridCommand from "./commands/GridCommand.svelte";
     import TextCommand from "./commands/TextCommand.svelte";
+    import ParaCommand from "./commands/ParaCommand.svelte";
     import RayCommand from "./commands/RayCommand.svelte";
     import RectCommand from "./commands/RectCommand.svelte";
     import LineCommand from "./commands/LineCommand.svelte";
@@ -52,6 +53,10 @@ export let del;
 {#if displayBody}
 <div>
 
+    {#if item.command === 'para'}
+    <ParaCommand bind:item={item}/>
+    {/if}
+    
     {#if item.command === 'lines'}
     <LinesCommand bind:item={item}/>
     {/if}

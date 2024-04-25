@@ -280,7 +280,7 @@ shape(points, color = 'white', closed = true) {
 }
 
 ////////////////////////////////////////////////////////////
-/////////////////////===TEXT=====///////////////////////////
+/////////////////////===TEXT PARA=====//////////////////////
 ////////////////////////////////////////////////////////////
 text(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadowOffsetY = 0, shadowBlur = 4, shadowColor = 'gray',globalAlpha = 1) {
     this.ctx.save(); // Save the current context state
@@ -301,6 +301,40 @@ text(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadow
 
     this.ctx.restore(); // Restore the context state
 }
+para(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadowOffsetY = 0, shadowBlur = 4, shadowColor = 'gray', globalAlpha = 1, lineHeightOffset = 0, xOffset = 0) {
+    this.ctx.save(); // Save the current context state
+
+    // Set shadow properties
+    this.ctx.shadowOffsetX = shadowOffsetX;
+    this.ctx.shadowOffsetY = shadowOffsetY;
+    this.ctx.shadowBlur = shadowBlur;
+    this.ctx.shadowColor = shadowColor;
+
+    this.ctx.fillStyle = color;
+    this.ctx.font = font;
+    this.ctx.textBaseline = 'top';
+
+    this.ctx.globalAlpha = globalAlpha;
+
+    const lines = text.split('\n'); // Split text into lines based on line breaks
+
+    // Loop over each line
+    lines.forEach((line, index) => {
+        // Calculate y position for each line, adjusting for line height offset
+        const lineHeight = parseInt(font, 10) + lineHeightOffset; // Adjusted line height
+        const yPos = y + (index * lineHeight);
+
+        // Calculate x position for each line, adjusting for xOffset
+        const xPos = x + (index * xOffset);
+
+        // Call the text method for each line with adjusted positions
+        this.text(line, xPos, yPos, color, font, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, globalAlpha);
+    });
+
+    this.ctx.restore(); // Restore the context state
+}
+
+//////////////////////////////////////////////////////////////
 
 
     // Image drawing method

@@ -15,9 +15,9 @@ export let addXYCross;
 export let addTri;
 export let addBezier;
 export let addLines;
+export let addPara;
 // export let addPolygon;
 export let addAngleSymbol;
-export let addPerpendSymbol;
 // export let refresh;
 </script>
 
@@ -41,6 +41,9 @@ export let addPerpendSymbol;
         Image</button>
     <button on:click={addText} class="bg-stone-500 p-1 rounded-md text-xs m-1">
         Text</button>
+    
+        <button on:click={addPara} class="bg-stone-500 p-1 rounded-md text-xs m-1">
+        Para</button>
     
     <!-- Extended from Core     -->
     <button on:click={addTri} class="bg-stone-500 p-1 rounded-md text-xs m-1">
@@ -69,3 +72,13 @@ export let addPerpendSymbol;
   </div>
 
 
+
+  <div class="flex">
+    <!-- <button on:click={addJT} class="bg-orange-700   p-1 rounded-md text-xs m-1">JT</button> -->
+    
+
+  </div>
+
+  <style>
+
+  </style>

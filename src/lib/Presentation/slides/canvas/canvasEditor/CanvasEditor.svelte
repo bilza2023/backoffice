@@ -352,6 +352,25 @@
     });
   }
   
+  function addPara(){
+    addNewItem({
+      "translate": true,
+      "name": "para_"+ randNo(),
+      "command": "para",
+      "text": "Hello",
+      "x": 4,
+      "y": 4,
+      "color": "black",
+      "font": "20px Arial",
+     "shadowOffsetX" : 0,
+     "shadowOffsetY" : 0,
+     "lineHeightOffset" : 0,
+     "xOffset"        : 0,
+     "shadowColor" : "gray",
+     "globalAlpha" : 1,
+     "shadowBlur" : 0
+  });
+  }
   function addText(){
     addNewItem({
       "translate": true,
@@ -394,6 +413,7 @@
 {addAngleSymbol}
 {addBezier}
 {addLines}
+{addPara}
 />
   
 <!-- ////////////////////////////////////////////////////////  -->
