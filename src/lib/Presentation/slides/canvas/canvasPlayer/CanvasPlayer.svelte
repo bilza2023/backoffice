@@ -1,5 +1,6 @@
 <script>
     //@ts-nocheck
+    import {onMount} from "$lib/util";
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     let canvas;
     let ctx;
@@ -9,12 +10,16 @@
       backgroundColor : 'gray'
     };
     export let items;
+    onMount(()=>{
+      // debugger;
+    });
 
 $:{
     items;
     extra;
     if(canvas){
     ctx = canvas.getContext('2d');
+    debugger;
     let drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor);
     
     try {
@@ -31,7 +36,8 @@ $:{
   
 </script>
 
-<div class="flex justify-center">
-  
+<br>
+<br>
+<div class="flex justify-center" >
   <canvas bind:this={canvas} width={extra.canvasWidth} height={extra.canvasHeight}></canvas>
 </div>

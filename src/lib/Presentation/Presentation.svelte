@@ -2,6 +2,7 @@
 //@ts-nocheck
 // import TestComp from "./slides/TestComp.svelte";
 import { afterUpdate } from 'svelte';
+import {onMount} from "$lib/util";
 import BlinkingMessage from "./slides/BlinkingMessage/BlinkingMessage.svelte";
 import BlinkingMessageEd from "./slides/BlinkingMessage/BlinkingMessageEd.svelte";
 import ImgWCaption from "./slides/ImgWCaption.svelte";
@@ -29,6 +30,12 @@ import Img from './slides/img/Img.svelte';
 import ImgEd from './slides/img/ImgEd.svelte';
 
 export let currentSlide;
+
+onMount(()=>{
+    //   debugger;
+    });
+
+
 let forceUpdate = 0;
 afterUpdate(() => {
     // Trigger re-rendering whenever currentSlide changes
@@ -101,7 +108,7 @@ export let displayMode = true;
 <!-- CanvasEditor -->
 {#if currentSlide.type == 'canvas' }
     {#if  displayMode}
-        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} slideExtra={currentSlide.slideExtra} {theme} {setPulse} {tcode}/>
+        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} extra={currentSlide.extra} {theme} {setPulse} {tcode}/>
     {:else}
     <!-- bind:slideExtra={currentSlide.slideExtra} -->
         <CanvasEditor bind:items={currentSlide.items}  bind:extra={currentSlide.extra} {theme} {tcode}/>

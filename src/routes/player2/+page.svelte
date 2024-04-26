@@ -229,7 +229,7 @@ style='position: fixed; top: 0;' on:mousemove={showToolbar} >
 
 {#if currentSlide  }
   
-  <div id='displayDiv'>
+  <div >
     <Presentation {currentSlide} {theme} {pulse} {setPulse} {tcode}/>
   </div> 
 
@@ -238,11 +238,3 @@ style='position: fixed; top: 0;' on:mousemove={showToolbar} >
 </div><!--page wrapper-->
 
 
-<style>
-#displayDiv {
-  background-color: brown;
-
-
-}
-
-</style>

@@ -37,7 +37,8 @@ $:{
     }
   });
 </script>
-<br>
+<br/>
+<br/>
 {#each items as item,index}
 
   <button class='flex w-full' on:click={()=>setPulse(item.extra.startTime)}>
