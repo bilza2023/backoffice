@@ -41,7 +41,7 @@ theArray[j].code = data;
 
 <div id={`eqPart`} class= {`w-full ${clr} text-center rounded-md justify-center p-2`} >
 
-<FSSPToolBar   {theArray} {arrayName} {redraw}/>
+<FSSPToolBar   bind:theArray={theArray} {arrayName} {redraw}/>
  
 {#each theArray as sp, j}
 

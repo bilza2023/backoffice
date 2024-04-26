@@ -25,6 +25,7 @@ function addTxtCodeImg(textOrCode = "text"){
     newItem = { code: "", type: 'text' };
   }
   if (textOrCode == "img"){
+    // debugger;
     newItem = { code: "", type: 'img' };
   }
   if (textOrCode == "heading"){

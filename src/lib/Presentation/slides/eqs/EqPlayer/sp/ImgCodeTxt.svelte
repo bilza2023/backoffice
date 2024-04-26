@@ -9,7 +9,7 @@ export let eq;
 </script>
 
 <div class='flex justify-center '>
-
+    
     {#if eq.type == undefined || eq.type == 'txt' || eq.type == 'text'}
         <p class="bg-stone-700 p-2 m-1 rounded-md">{eq.code}</p>
     {/if}
@@ -21,7 +21,10 @@ export let eq;
     {/if}
 
     {#if eq.type == 'img' || eq.type == 'image'}
-        <img src= "/mathImages/{eq.code}.png" alt="Not found">
+
+    <img src= "https://taleem-media.blr1.cdn.digitaloceanspaces.com/images/fbise9math/theorem_10_1_2_img.png" alt="Not found">
+
+
     {/if}
     
     {#if eq.type == 'table' || eq.type == 'tbl'}

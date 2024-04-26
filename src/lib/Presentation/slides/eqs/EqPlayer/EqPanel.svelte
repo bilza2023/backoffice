@@ -55,7 +55,7 @@ $:{
 
 {/each}
 
-<!-- do not remove the 4 br they are bery important -->
+<!-- do not remove the 4 br they are very important -->
 <br/>    
 <br/>    
 <br/>    
