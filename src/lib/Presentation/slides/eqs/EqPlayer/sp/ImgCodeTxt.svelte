@@ -22,7 +22,7 @@ export let eq;
 
     {#if eq.type == 'img' || eq.type == 'image'}
 
-    <img src= "https://taleem-media.blr1.cdn.digitaloceanspaces.com/images/fbise9math/theorem_10_1_2_img.png" alt="Not found">
+    <img src= {`https://taleem-media.blr1.cdn.digitaloceanspaces.com/images/${eq.code}.png`} alt="Not found" />
 
 
     {/if}
