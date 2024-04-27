@@ -10,7 +10,7 @@
   import Summary from '$lib/appComp/Summary.svelte';
   import chapter_map from "./fn/chapter_map";
   // import getSyllabus from '$lib/appComp/getSyllabus';
-  let tcode;
+  let tcode; 
   /////////////////////////////////
   let questions;
   let selectedEx ="1.1";

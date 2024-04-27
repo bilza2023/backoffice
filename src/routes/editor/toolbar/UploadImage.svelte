@@ -2,7 +2,7 @@
     //@ts-nocheck
 import {NavBtn2} from '$lib/cmp';
 import {Icons,toast,BASE_URL} from '$lib/util';
-
+ 
 export let tcode;
 // export let item;
 async function uploadImage() {
@@ -34,7 +34,7 @@ async function uploadImage() {
             return false;
         }
     } catch (error) {
-        console.error('Error checking MP3 file existence:', error);
+        console.error('Error checking Image file existence:', error);
         return false;
     }
 }
