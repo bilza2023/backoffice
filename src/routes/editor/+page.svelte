@@ -138,36 +138,36 @@ function copySlide(){
   localStorage.setItem("copiedSlide", JSON.stringify(slides[currentSlideIndex]));
 }
 
-function fixOldCanvas(slides){
-  debugger;
-  for (let i = 0; i < slides.length; i++) {
-       const slide = slides[i];
-       if(slide.type == 'canvas'){
-        const content  = JSON.parse(slide.items[0].content);
-        // slide.items = content.commands;
+// function fixOldCanvas(slides){
+//   debugger;
+//   for (let i = 0; i < slides.length; i++) {
+//        const slide = slides[i];
+//        if(slide.type == 'canvas'){
+//         const content  = JSON.parse(slide.items[0].content);
+//         // slide.items = content.commands;
            
-        slide.items = [];
-            for (let j = 0; j < content.commands.length; j++) {
-              const commandItem = content.commands[j];
-              const newItem = getNewItem();
-              newItem.extra = commandItem;
-              slide.items.push(newItem);  
-              // console.log(commands);
-            }
+//         slide.items = [];
+//             for (let j = 0; j < content.commands.length; j++) {
+//               const commandItem = content.commands[j];
+//               const newItem = getNewItem();
+//               newItem.extra = commandItem;
+//               slide.items.push(newItem);  
+//               // console.log(commands);
+//             }
         
-        slide.extra = {
-        backgroundColor: '#efebb8',
-        canvasWidth : 1000,
-        canvasHeight : 360,
-        cellHeight : 25,
-        cellWidth : 25,
-        xFactor : 0,
-        yFactor : 0,
-        }
+//         slide.extra = {
+//         backgroundColor: '#efebb8',
+//         canvasWidth : 1000,
+//         canvasHeight : 360,
+//         cellHeight : 25,
+//         cellWidth : 25,
+//         xFactor : 0,
+//         yFactor : 0,
+//         }
 
-        }    
-      }
-}
+//         }    
+//       }
+// }
 
  onMount(async ()=>{
   try {
@@ -178,8 +178,6 @@ function fixOldCanvas(slides){
 
  if (resp.ok){
    const data = await resp.json();
-   // console.log("data",data);
-   // console.log("data.data.item",data.data.item);
    item =  data.data.item;
    slides = item.slides;
    //////////
@@ -220,7 +218,7 @@ else {throw new Error('Failed to load');}
 {/if}
 
 {#if showEditDlg}
-  <!-- <EditDlg bind:item={item} {save}/> -->
+  <EditDlg bind:item={item} {save}/>
 {/if}
 
 

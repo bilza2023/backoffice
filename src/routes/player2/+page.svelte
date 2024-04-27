@@ -47,7 +47,6 @@ id = new URLSearchParams(location.search).get("id");
  const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
 
 
-
  if (resp.ok){
   const data = await resp.json();
   
