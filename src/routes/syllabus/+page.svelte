@@ -56,7 +56,6 @@
     
     <!-- <Summary {questions} /> -->
     {#if questions}
-    <!-- <SyllabusComp  {questions} {tcode} uiMode={false}/> -->
     <SyllabusComp  {questions} {tcode} uiMode={false}/>
     {/if}
     
