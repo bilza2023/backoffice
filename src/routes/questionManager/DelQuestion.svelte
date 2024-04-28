@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL,ajaxPost } from "$lib/util";
+import { toast,API_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let id;
 let classNo =9;
@@ -14,7 +14,7 @@ async function deleteQuestion(){
 }
   // let tcode = 'fbise' + classNo + 'math';
   // let token = localStorage.getItem("token");,
-  const response = await ajaxPost(`${BASE_URL}/tcode/delete` ,{ tcode,  id });
+  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ tcode,  id });
 
     if (response.ok) {
         const data = await response.json();

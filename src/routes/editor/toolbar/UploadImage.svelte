@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
 import {NavBtn2} from '$lib/cmp';
-import {Icons,toast,BASE_URL} from '$lib/util';
+import {Icons,toast,API_URL} from '$lib/util';
  
 export let tcode;
 // export let item;
@@ -54,7 +54,7 @@ async function handleImageSelection(event) {
       const exists = await image_exists(file,tcode);
       if(exists){toast.push('file aready exists');return;}
 
-        const resp = await fetch(`${BASE_URL}/upload_image`, {
+        const resp = await fetch(`${API_URL}/upload_image`, {
             method: 'POST',
             body: formData,
         });

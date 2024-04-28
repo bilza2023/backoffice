@@ -2,7 +2,7 @@
 <script>  
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card } from '$lib/cmp';
-import { BASE_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken } from '$lib/util';
+import { API_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken } from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import Dd from "./Dd.svelte";
 import DdStatus from "./DdStatus.svelte";
@@ -84,7 +84,7 @@ selectedChapter = newChapter;
 onMount(async () => {
 try{
     let token = localStorage.getItem("token");
-    const resp = await fetch( `${BASE_URL}/be/syllabus` ,{
+    const resp = await fetch( `${API_URL}/be/syllabus` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

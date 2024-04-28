@@ -6,7 +6,7 @@
 /**
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
-import {browser,onMount,ajaxPost,toast,BASE_URL} from '$lib/util';
+import {browser,onMount,ajaxPost,toast,API_URL} from '$lib/util';
 
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
@@ -35,7 +35,7 @@ onMount(async ()=>{
  id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
 
- const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
+ const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
 
 
 

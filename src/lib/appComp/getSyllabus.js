@@ -1,12 +1,12 @@
 //@ts-nocheck
-import {BASE_URL} from '$lib/util';
+import {API_URL} from '$lib/util';
 
 export default async function getSyllabus(tcode) {
  try{
  debugger;
  
     const token = localStorage.getItem('token');
-    const resp = await fetch( `${BASE_URL}/be/syllabus`, {
+    const resp = await fetch( `${API_URL}/be/syllabus`, {
         method: 'POST',
         headers: {
         'Authorization': `Bearer ${token}`,

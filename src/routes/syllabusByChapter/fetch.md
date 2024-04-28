@@ -3,7 +3,7 @@ onMount(async () => {
   try{
     //=============================  
             const token = localStorage.getItem('token');
-            const resp = await fetch( `${BASE_URL}/be/fbise_math9th_syllabus`, {
+            const resp = await fetch( `${API_URL}/be/fbise_math9th_syllabus`, {
             method: 'GET',
             headers: {
             'Authorization': `Bearer ${token}`,

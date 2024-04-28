@@ -2,13 +2,13 @@
 //@ts-nocheck
 import Table from './Table.svelte';
 import {HdgWithIcon} from '$lib/cmp'
-import {Icons, browser,onMount,BASE_URL, toast} from '$lib/util';
+import {Icons, browser,onMount,API_URL, toast} from '$lib/util';
 let presentations=[];
 let newPresentationName='';
 
 async function del(id){
 //  debugger;
-  const resp = await fetch( `${BASE_URL}/pre/delete`, {
+  const resp = await fetch( `${API_URL}/pre/delete`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ return false;
 }
 // debugger;
   const presentation = {slides:[] , name};
-  const resp = await fetch( `${BASE_URL}/pre/create`, {
+  const resp = await fetch( `${API_URL}/pre/create`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ return false;
   
 }
 async function readAll(){
-const resp = await fetch( `${BASE_URL}/pre/readAll`, {
+const resp = await fetch( `${API_URL}/pre/readAll`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',

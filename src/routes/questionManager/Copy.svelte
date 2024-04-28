@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL } from "$lib/util";
+import { toast,API_URL } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let idFrom;
 let idTo;
@@ -19,7 +19,7 @@ async function copyQuestion(){
   }
   // let tcode = 'fbise' + classNo + 'math';
   let token = localStorage.getItem("token");
-    const response = await fetch( `${BASE_URL}/be/copy_question` ,{
+    const response = await fetch( `${API_URL}/be/copy_question` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

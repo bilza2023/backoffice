@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
 import {NavBtn2} from '$lib/cmp';
-import {Icons,toast,BASE_URL} from '$lib/util';
+import {Icons,toast,API_URL} from '$lib/util';
 
 export let tcode;
 export let item;
@@ -26,7 +26,7 @@ async function handleMp3Selection(event) {
     
     try {
       ////////////////////////////////////////////
-        const resp = await fetch(`${BASE_URL}/upload_mp3`, {
+        const resp = await fetch(`${API_URL}/upload_mp3`, {
             method: 'POST',
             body: formData,
         });

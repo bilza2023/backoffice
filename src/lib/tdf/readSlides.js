@@ -1,12 +1,12 @@
 //@ts-nocheck
 
-import { BASE_URL } from "$lib/util";
+import { API_URL } from "$lib/util";
 
 export default async function readSlides(id,tcode){
  try{
 //  debugger;
   let token = localStorage.getItem("token");
-  const resp = await fetch( `${BASE_URL}/be/read`, {
+  const resp = await fetch( `${API_URL}/be/read`, {
     method: 'POST',
       headers: {
     'Content-Type': 'application/json',

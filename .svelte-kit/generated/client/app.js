@@ -14,7 +14,8 @@ export const nodes = [
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
-	() => import('./nodes/13')
+	() => import('./nodes/13'),
+	() => import('./nodes/14')
 ];
 
 export const server_loads = [];
@@ -30,7 +31,8 @@ export const dictionary = {
 		"/player": [8],
 		"/presentations": [10],
 		"/questionManager": [11],
-		"/syllabusByChapter": [13],
+		"/syllabus2": [13],
+		"/syllabusByChapter": [14],
 		"/syllabus": [12]
 	};
 

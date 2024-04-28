@@ -7,7 +7,7 @@
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
 */
 //  import { onDestroy } from 'svelte';
-import {onMount,toast,RESOURCE_URL,BASE_URL, ajaxPost } from '$lib/util'
+import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '$lib/util'
 import { themes ,Presentation} from '$lib/Presentation';
 import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
@@ -44,7 +44,7 @@ tcode = new URLSearchParams(location.search).get("tcode");
 id = new URLSearchParams(location.search).get("id");
  tcode = new URLSearchParams(location.search).get("tcode");
 
- const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
+ const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
 
 
  if (resp.ok){

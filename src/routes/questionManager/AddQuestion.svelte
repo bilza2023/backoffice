@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import { toast,BASE_URL,ajaxPost } from "$lib/util";
+import { toast,API_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let tcode='fbise9math';
 // let classNo =10;
@@ -28,7 +28,7 @@ name = convertToUrlFriendlyName(name);
 debugger;
 const token = localStorage.getItem("token");
 
-const resp = await ajaxPost( `${BASE_URL}/command` , { command : "create" ,tcode,	
+const resp = await ajaxPost( `${API_URL}/command` , { command : "create" ,tcode,	
 question :{chapter,exercise,questionNo,part,name}
 });
 

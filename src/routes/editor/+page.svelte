@@ -1,6 +1,6 @@
 <script>
   //@ts-nocheck
-  import { onMount,ajaxPost ,BASE_URL} from '$lib/util';
+  import { onMount,ajaxPost ,API_URL} from '$lib/util';
   import Toolbar from './toolbar/Toolbar.svelte';
   // import readSlides from '$lib/tdf/readSlides';
   // import {Presentation,getNewSlide} from '$lib/Presentation';
@@ -174,7 +174,7 @@ function copySlide(){
 
    id = new URLSearchParams(location.search).get("id");
    tcode = new URLSearchParams(location.search).get("tcode");
-   const resp = await ajaxPost( `${BASE_URL}/command` , { command : "get" ,tcode,	id});
+   const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
 
  if (resp.ok){
    const data = await resp.json();

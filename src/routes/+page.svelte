@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck  
 import { PageWrapper,HdgWithIcon,BtnWIconSm,Card} from  '$lib/cmp';
-import { BASE_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
+import { API_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 
 // import MyComponent  from '../../node_modules/taleem_ui_lib/index.js';

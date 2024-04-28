@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
-import {Icons,BASE_URL, toast} from '$lib/util';
+import {Icons,API_URL, toast} from '$lib/util';
 import SoundButtons from './SoundButtons.svelte';
 import UploadMp3 from './UploadMp3.svelte';
 import UploadImage from './UploadImage.svelte';

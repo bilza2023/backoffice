@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 import { PageWrapper,HdgWithIcon,Card} from  '$lib/cmp';
-import { BASE_URL, onMount,toast,Icons,goto} from '$lib/util';
+import { API_URL, onMount,toast,Icons,goto} from '$lib/util';
 // import Nav from '$lib/appComp/Nav.svelte';
 let homeHref = '/'
 ////////////////////////////////////////////////////////

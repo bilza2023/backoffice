@@ -7,7 +7,7 @@ this is
 
 login function:
 // @ts-nocheck
-import {isLoginStore , isAdminStore, goto,BASE_URL,toast} from '$lib/util';
+import {isLoginStore , isAdminStore, goto,API_URL,toast} from '$lib/util';
 import validateString from "./validateString"
 import validateEmail from "./validateEmail"
 
@@ -26,7 +26,7 @@ const passwordError = validateString(password,6,30);
       return;
     }
 
-const response = await fetch( `${BASE_URL}/be/teacher_login` ,{
+const response = await fetch( `${API_URL}/be/teacher_login` ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const response = await fetch( `${BASE_URL}/be/teacher_login` ,{
       body: JSON.stringify( {email,password} )
     });
 
-// const response = await ajaxPost( `${BASE_URL}/login` , {email,password});
+// const response = await ajaxPost( `${API_URL}/login` , {email,password});
     if (response.ok) {
         const data = await response.json();
         

@@ -1,6 +1,6 @@
 //@ts-nocheck
 // import stringify from "./stringify";
-import {toast,BASE_URL,ajaxPost} from '$lib/util';
+import {toast,API_URL,ajaxPost} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
@@ -13,7 +13,7 @@ if (slides && slides.length > 0){
 const question = item;
 question.slides = slides;
 ///////////////////////////////////////////////////////////////////
-  const resp = await ajaxPost( `${BASE_URL}/command` , { command : "update" ,tcode,	question } );
+  const resp = await ajaxPost( `${API_URL}/command` , { command : "update" ,tcode,	question } );
 
   if(resp.ok){
     toast.push('saved');}

@@ -1,6 +1,6 @@
 <script>
         //@ts-nocheck
-        import { toast,BASE_URL,ajaxPost } from "$lib/util";
+        import { toast,API_URL,ajaxPost } from "$lib/util";
         
         export let item;
         // export let save;
