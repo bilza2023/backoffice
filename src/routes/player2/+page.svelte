@@ -22,6 +22,7 @@ let  interval  = null;
 
 let slides;
 let id;
+let filename;
 let tcode;
 let theme = themes.basic;
 let stopTime = null;
@@ -37,15 +38,10 @@ let questionData;
 
 onMount(async ()=>{  
 //questionType ['paid', 'login' , 'free'],
-id = new URLSearchParams(location.search).get("id");
+filename = new URLSearchParams(location.search).get("filename");
 tcode = new URLSearchParams(location.search).get("tcode");
 ////////////////////////
-//   = await readSlides(id,tcode);
-id = new URLSearchParams(location.search).get("id");
- tcode = new URLSearchParams(location.search).get("tcode");
-
- const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
-
+const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
 
  if (resp.ok){
   const data = await resp.json();

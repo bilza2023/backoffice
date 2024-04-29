@@ -11,6 +11,7 @@
   let showEditDlg=false;
 
   import {getNewItem} from '$lib/Presentation';
+    import { questions } from '../syllabusByChapter/questions';
 
 
  let currentSlideIndex;
@@ -172,9 +173,12 @@ function copySlide(){
  onMount(async ()=>{
   try {
 
-   id = new URLSearchParams(location.search).get("id");
+  //  id = new URLSearchParams(location.search).get("id");
+   filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
-   const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
+    // const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
+   debugger;
+   const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
 
  if (resp.ok){
    const data = await resp.json();
