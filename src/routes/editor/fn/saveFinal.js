@@ -10,6 +10,7 @@ if (slides && slides.length > 0){
   slides[0].startTime = 0;
   updateSlideStartTimes(slides);
 }
+
 const question = item;
 question.slides = slides;
 ///////////////////////////////////////////////////////////////////

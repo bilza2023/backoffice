@@ -7,6 +7,7 @@
   import {Presentation,getNewSlide}  from '$lib/Presentation';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
+  import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
   let showEditDlg=false;
 
@@ -37,8 +38,7 @@ function convertToUrlFriendlyName(name) {
 async function save(){
   if (item.name && item.name !== ''){
     item.name = convertToUrlFriendlyName(item.name);
-  }
-        
+  }   
  saveFinal(slides,tcode,id,item);
 } 
 
@@ -177,7 +177,6 @@ function copySlide(){
    filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
     // const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
-   debugger;
    const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
 
  if (resp.ok){
@@ -241,6 +240,12 @@ else {throw new Error('Failed to load');}
     
       <div class={`p-2 ml-1 min-h-screen text-center ${showSidePanel ? "w-11/12" : "w-full"}`}>
         <Presentation {currentSlide} displayMode={false} currentTime={currentTime} tcode={tcode} />
+
+        <br>
+        <CommentsBox  bind:comments = {item.teacherComments} />
+        <br>
+        <CommentsBox title = "Admin Comments" bind:comments = {item.adminComments}/>
+      
       </div>
       
     
