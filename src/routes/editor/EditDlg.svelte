@@ -40,6 +40,12 @@
             <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' bind:value={item.part}  min=0 max=500/>
         </div>
         
+        <!--Sort order-->
+        <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
+            <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Sort Order</div>
+            <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='number' min="0" max="500" bind:value={item.sortOrder}/>
+        </div>
+
         <!--Name-->
         <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
             <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Name</div>

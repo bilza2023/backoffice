@@ -45,10 +45,10 @@ function getStatusIcon(status){
             url = {`/player?tcode=${tcode}&id=${question._id}`}
             >
                 {#if !uiMode}
-
+                <div class="flex text-xs items-center ">#{question.sortOrder}</div>
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}
                     &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
-    
+        
                 {#if question.status !== 'final' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                     <a href= {`/editor?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
@@ -70,6 +70,7 @@ function getStatusIcon(status){
                 {/if}
 
                 {/if}
+
             </Card>
             </div>
 {/each}

@@ -235,7 +235,7 @@ else {throw new Error('Failed to load');}
       <div class='flex flex-col  w-1/12  bg-gray-600 p-1' 
       style="border-right: 2px solid white;">
           <LeftPanel   {slides} {setCurrentSlideIndex} {moveDown} {moveUp} {currentSlideIndex}/>
-      </div> 
+      </div>  
       {/if} 
     
       <div class={`p-2 ml-1 min-h-screen text-center ${showSidePanel ? "w-11/12" : "w-full"}`}>

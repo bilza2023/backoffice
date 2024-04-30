@@ -20,8 +20,11 @@
 function setStatus(status_value){
   statusToFilterFor = status_value;
   setSelectedQuestions();
+  sortBySortOrder();
 }
-
+function sortBySortOrder( ){
+  selectedQuestions.sort((a, b) => a.sortOrder - b.sortOrder);
+}
 function setSelectedQuestions(){
   selectedQuestions=[];
 // debugger;
@@ -68,6 +71,7 @@ function setChapter(newChapter){
 function setEx(ex){
     selectedEx = ex;
     setSelectedQuestions();
+    sortBySortOrder();
 }
 
 onMount(async ()=>{
