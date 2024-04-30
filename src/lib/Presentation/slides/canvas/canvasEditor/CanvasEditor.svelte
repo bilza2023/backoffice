@@ -1,18 +1,25 @@
 <script>
   //@ts-nocheck
-  import { onMount,toast } from '$lib/util';
+  import { toast } from '$lib/util';
   
   import {getNewItem} from '$lib/Presentation';
-  
+  import CanvasCommand from "./json-ui/commands/CanvasCommand.svelte";  
   import EditorToolbar from './EditorToolbar.svelte';
-  import CanvasCommand from "./json-ui/commands/CanvasCommand.svelte";
+  
   import CanvasPlayer from '../canvasPlayer/CanvasPlayer.svelte';  
+  import SelectItemMenu from './json-ui/SelectItemMenu.svelte';  
+  import CommandUi from './json-ui/CommandUi.svelte';  
   import UiEntry from "./json-ui/UiEntry.svelte";
 
   export let items;
   export let extra;
   export let currentTime;
+  let itemIndexInRightBar =0;
+  let showCanvasInSdieBar =true;
 
+  function toggleShowCanvas(){showCanvasInSdieBar = !showCanvasInSdieBar;}
+
+  // $:{itemIndexInRightBar; console.log("itemIndexInRightBar",itemIndexInRightBar);}
 
   function addNewItem(data){
     const newItem = getNewItem();
@@ -414,28 +421,27 @@
 {addBezier}
 {addLines}
 {addPara}
+{toggleShowCanvas}
 />
    
 <!-- ////////////////////////////////////////////////////////  -->
-<div class='flex justify-between'>
+<div class='flex justify-between gap-2'>
 
-<div class='w-70 '>
+<div class='w-75'>
   <CanvasPlayer {items} {extra}/>
 </div> 
 
 <!-- div for json-ui -->
-<div class='w-30'>
-          <div class='flex flex-col'>
-              {#each items  as item,index}
-                  <div class="flex justify-center bg-stone-700 p-1 m-1 rounded-md border-2 border-white ">                       
-                      <div class="flex flex-col w-full">                           
-                        <UiEntry bind:item={item.extra} moveUp={moveUp} moveDown={moveDown} {del} {index} {clone} />
-                      </div> 
-                  </div>
-              {/each}
-          </div>
-
-          <CanvasCommand  bind:extra={extra}   />
+<div class='w-25 max-w-[25%] min-w-[25%]  bg-stone-600 rounded-md p-2'>
+          
+  
+          {#if showCanvasInSdieBar}
+              <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
+              <CommandUi  bind:item={items[itemIndexInRightBar]}/>
+          {:else}
+              <CanvasCommand  bind:extra={extra}   />
+          {/if}
+          
 </div>
 </div>
 

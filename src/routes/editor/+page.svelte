@@ -22,7 +22,7 @@
  let id;
  let tcode;
  let isLoading = true;
- let showSidePanel = true;
+ let showSidePanel = false;
  let item;
  let soundFile;
  let filename;

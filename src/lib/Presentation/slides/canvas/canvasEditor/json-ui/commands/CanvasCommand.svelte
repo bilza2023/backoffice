@@ -2,7 +2,7 @@
     //@ts-nocheck
     import {Icons} from '$lib/util';
     export let extra;
-    let displayBody=false;
+    let displayBody=true;
 </script>
 
 <div class="flex w-full text-white rounded-md justify-center bg-stone-700 p-1 m-1 border-2 border-white">
