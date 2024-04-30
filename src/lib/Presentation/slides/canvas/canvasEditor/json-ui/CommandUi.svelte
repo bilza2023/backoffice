@@ -25,7 +25,7 @@
     
 </script>
 <div >
-
+{#if item}
 
     {#if item.extra.command === 'para'}
     <ParaCommand bind:item={item.extra}/>
@@ -98,5 +98,6 @@
     <LineCommand bind:item={item.extra} />
     {/if}
 
+    {/if}
 </div>
 

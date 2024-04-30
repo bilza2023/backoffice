@@ -111,6 +111,7 @@ function getNewStartTime(){
 }
 
 async function  addNew(slideType){
+  // debugger;
  const st = getNewStartTime();
  const newSlide = getNewSlide(slideType);
  newSlide.startTime = st;

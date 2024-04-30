@@ -16,10 +16,10 @@
   export let currentTime;
   let itemIndexInRightBar =0;
   let showCanvasInSdieBar =true;
-
+  // let itemInRightBar = null;
   function toggleShowCanvas(){showCanvasInSdieBar = !showCanvasInSdieBar;}
-
-  // $:{itemIndexInRightBar; console.log("itemIndexInRightBar",itemIndexInRightBar);}
+  
+  // $:{itemIndexInRightBar; itemInRightBar = items[itemIndexInRightBar];}
 
   function addNewItem(data){
     const newItem = getNewItem();
@@ -440,7 +440,7 @@ function clone(index) {
   
           {#if showCanvasInSdieBar}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
-              <CommandUi  bind:item={items[itemIndexInRightBar]}/>
+              <CommandUi  bind:item={items[itemIndexInRightBar]} />
               <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone}/>
           {:else}
               <CanvasCommand  bind:extra={extra}   />

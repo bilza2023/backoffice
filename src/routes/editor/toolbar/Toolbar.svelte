@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {NavBtn2,Logo,NavBtn,AreYouSure} from '$lib/cmp';
+import {NavBtn2,NavLink,Logo,NavBtn,AreYouSure} from '$lib/cmp';
 import {Icons,API_URL, toast} from '$lib/util';
 import SoundButtons from './SoundButtons.svelte';
 import UploadMp3 from './UploadMp3.svelte';
@@ -71,8 +71,8 @@ function shiftTime(slideIndex, newEndTime) {
       <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
     
-    <NavBtn title='Player1' icon={Icons.TV}  url={`/player?tcode=${tcode}&filename=${item.filename}`} />
-    <NavBtn title='Player2' icon={Icons.TV}  url={`/player2?tcode=${tcode}&filename=${item.filename}`} />
+    <NavLink title='Player1' icon={Icons.TV}  url={`/player?tcode=${tcode}&filename=${item.filename}`} />
+    <NavLink title='Player2' icon={Icons.TV}  url={`/player2?tcode=${tcode}&filename=${item.filename}`} />
        
     <!-- <a href={`player?tcode=${tcode}&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a> -->
   
