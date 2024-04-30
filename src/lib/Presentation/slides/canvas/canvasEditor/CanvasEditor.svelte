@@ -5,7 +5,7 @@
   import {getNewItem} from '$lib/Presentation';
   import CanvasCommand from "./json-ui/commands/CanvasCommand.svelte";  
   import EditorToolbar from './EditorToolbar.svelte';
-  
+  import Toolbar from "./json-ui/Toolbar.svelte";
   import CanvasPlayer from '../canvasPlayer/CanvasPlayer.svelte';  
   import SelectItemMenu from './json-ui/SelectItemMenu.svelte';  
   import CommandUi from './json-ui/CommandUi.svelte';  
@@ -29,31 +29,34 @@
   }
 
   function moveUp(index) {
-    //debugger;
-      if (index < items.length) {
-          const item = items.splice(index, 1)[0];
-          items.splice(index - 1, 0, item);
-          items = [...items];
-      }
-  }
-
-  function moveDown(index) {
-    // debugger;
-  if (index >= 0 && index < items.length) {
-    const item = items[index];
-    items.splice(index, 1);
-    items.splice(index + 1, 0, item);
-    items = [...items];
-  }
+    debugger;
+    if (index > 0 && index < items.length) {
+        const item = items.splice(index, 1)[0];
+        items.splice(index - 1, 0, item);
+        items = [...items];
+    }
 }
 
-  function clone(index) {
+
+function moveDown(index) {
     // debugger;
-  if (index >= 0 && index < items.length) {
-      items.unshift(items[index]);
-      items = [...items];
-  }
- }
+    if (index >= 0 && index < items.length - 1) {
+        const item = items[index];
+        items.splice(index, 1);
+        items.splice(index + 1, 0, item);
+        items = [...items];
+    }
+}
+
+
+function clone(index) {
+    // debugger;
+    if (index >= 0 && index < items.length) {
+        const clonedItem = JSON.parse(JSON.stringify(items[index]));
+        items.unshift(clonedItem);
+        items = [...items];
+    }
+}
 
  function del(index) {
       items.splice(index, 1);
@@ -438,6 +441,7 @@
           {#if showCanvasInSdieBar}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
               <CommandUi  bind:item={items[itemIndexInRightBar]}/>
+              <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone}/>
           {:else}
               <CanvasCommand  bind:extra={extra}   />
           {/if}

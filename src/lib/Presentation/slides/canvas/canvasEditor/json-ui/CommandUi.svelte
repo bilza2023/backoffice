@@ -1,6 +1,5 @@
 <script>
     //@ts-nocheck
-// import Toolbar from "./Toolbar.svelte";
 ///////////////////////////////////////////////////////
     import GridCommand from "./commands/GridCommand.svelte";
     import TextCommand from "./commands/TextCommand.svelte";
@@ -23,12 +22,11 @@
 
 ///////////////////////////////////////////////////////   
     export let item;
+    
 </script>
 <div >
 
 
-<!-- <Toolbar  {index}  {moveUp} {moveDown} {del}  {clone}/> -->
-    
     {#if item.extra.command === 'para'}
     <ParaCommand bind:item={item.extra}/>
     {/if}
