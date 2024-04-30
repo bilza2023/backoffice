@@ -42,13 +42,15 @@ function getStatusIcon(status){
             <Card
             title = {getTitle(question)}
             icon={Icons.TEST}
-            url = {`/player?tcode=${tcode}&id=${question._id}`}
+            url = {"#"}
             >
                 {#if !uiMode}
                 <div class="flex text-xs items-center ">#{question.sortOrder}</div>
+
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}
                     &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
         
+                    
                 {#if question.status !== 'final' }
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                     <a href= {`/editor?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
@@ -57,7 +59,7 @@ function getStatusIcon(status){
     
                 {#if question.status !== 'empty' }
                     <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                    <a href= {`/player?tcode=${tcode}&id=${question._id}`} target="_blank">{Icons.START}</a>
+                    <a href= {`/player?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.START}</a>
                     </div>
                 {/if}
                 

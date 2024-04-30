@@ -30,12 +30,17 @@ let theme =  {
 };
 let hydrateInterval=null;
 let stopTime = null;
+let soundFile;
+
+let filename;
 
 onMount(async ()=>{  
- id = new URLSearchParams(location.search).get("id");
+//  id = new URLSearchParams(location.search).get("id");
+ filename = new URLSearchParams(location.search).get("filename");
  tcode = new URLSearchParams(location.search).get("tcode");
 
- const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
+//  const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
+const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
 
 
 
