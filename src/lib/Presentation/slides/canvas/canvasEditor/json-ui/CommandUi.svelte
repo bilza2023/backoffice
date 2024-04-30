@@ -22,6 +22,7 @@
 
 ///////////////////////////////////////////////////////   
     export let item;
+    export let redraw;
     
 </script>
 <div >
@@ -83,7 +84,7 @@
 
 
     {#if item.extra.command === 'text'}
-    <TextCommand bind:item={item.extra} />
+    <TextCommand bind:item={item.extra} {redraw}/>
     {/if}
 
     {#if item.extra.command === 'ray'}

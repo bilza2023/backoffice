@@ -398,7 +398,7 @@ function clone(index) {
      "shadowBlur" : 0
   });
   }
-  
+  function redraw(){items = [...items];}
 </script>
 
 {#if items}
@@ -440,7 +440,7 @@ function clone(index) {
   
           {#if showCanvasInSdieBar}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
-              <CommandUi  bind:item={items[itemIndexInRightBar]} />
+              <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/>
               <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone}/>
           {:else}
               <CanvasCommand  bind:extra={extra}   />
