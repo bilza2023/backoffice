@@ -71,9 +71,9 @@ function shiftTime(slideIndex, newEndTime) {
       <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
     
-    <NavBtn title='Player1' icon={Icons.TV}  url={`/player?tcode=${tcode}&id=${item._id}`} />
-    <NavBtn title='Player2' icon={Icons.TV}  url={`/player2?tcode=${tcode}&id=${item._id}`} />
-    
+    <NavBtn title='Player1' icon={Icons.TV}  url={`/player?tcode=${tcode}&filename=${item.filename}`} />
+    <NavBtn title='Player2' icon={Icons.TV}  url={`/player2?tcode=${tcode}&filename=${item.filename}`} />
+       
     <!-- <a href={`player?tcode=${tcode}&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a> -->
   
 

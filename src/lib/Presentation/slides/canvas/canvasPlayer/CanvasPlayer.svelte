@@ -36,8 +36,8 @@ $:{
   
 </script>
 
-<br>
-<br>
-<div class="flex justify-center" >
-  <canvas bind:this={canvas} width={extra.canvasWidth} height={extra.canvasHeight}></canvas>
+<div class="flex justify-center w-full" >
+  <canvas 
+  class="w-full m-2"
+  bind:this={canvas} width={extra.canvasWidth} height={extra.canvasHeight}></canvas>
 </div>
