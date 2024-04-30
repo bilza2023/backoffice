@@ -12,6 +12,9 @@ export default class DrawLibInterpretor {
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
         this.xFactor = xFactor;
+        this.showGrid = false;
+        this.gridLineWidth = 1;
+        this.gridLineColor = 'white';
     }
     getX(val){
         // debugger;
@@ -33,21 +36,19 @@ export default class DrawLibInterpretor {
     interpret(items = {}) {
         
         this.drawLib.clear(this.drawLib.backgroundColor); 
-        
+        // debugger;
+        if(this.showGrid){
+            this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
+        }
+
         for (let i = 0; i < items.length; i++) {
             const itemWhole = items[i];
             const item = itemWhole.extra;
 
             switch (item.command) {
                 case 'grid':
-                    // debugger;
-                    // keep in mind item.cellWidth is different from this.cellWidth
-                    if (!item.translate || item.translate==false ){
-                    this.drawLib.grid(item.cellWidth, item.cellHeight, item.lineWidth, item.lineColor);
-                    }else {
-                    this.drawLib.grid(this.cellWidth, this.cellHeight, item.lineWidth, item.lineColor);    
-                    }
                     break;
+                    
 
                 case 'rect':
                     if (!item.translate || item.translate==false ){
@@ -96,7 +97,7 @@ export default class DrawLibInterpretor {
                 }
                     break;
                     
-                    
+                     
                 case 'circle':
                     // (x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAngle = Math.PI * 2, dash = 0, gap = 0)
                     const st_angle_rads_circle = item.startAngle * (Math.PI / 180);

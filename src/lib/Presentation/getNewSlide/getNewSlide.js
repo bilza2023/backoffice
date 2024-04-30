@@ -61,6 +61,10 @@ export default function getNewSlide(type) {
         cellWidth : 25,
         xFactor : 0,
         yFactor : 0,
+        ///////////////////
+        showGrid : true,
+        gridLineWidth : 1,
+        gridLineColor : 'gray'
     }
 
       

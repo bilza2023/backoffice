@@ -55,8 +55,8 @@ export let addAngleSymbol;
         Dot</button>
 
         
-    <button on:click={addGrid} class="bg-stone-500 p-1 rounded-md text-xs m-1">
-    Grid</button>
+    <!-- <button on:click={addGrid} class="bg-stone-500 p-1 rounded-md text-xs m-1"> -->
+    <!-- Grid</button> -->
         
     <button on:click={addRepeatDot} class="bg-stone-500 p-1 rounded-md text-xs m-1">R-Dot</button>
 

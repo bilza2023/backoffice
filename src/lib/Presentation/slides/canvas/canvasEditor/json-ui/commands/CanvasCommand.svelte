@@ -22,6 +22,13 @@
                 <input type="color" bind:value={extra.backgroundColor} class="bg-gray-900 text-white p-1">
             </td>
         </tr>
+        
+        <tr>
+            <td class="border border-white p-1">Show Grid</td>
+            <td class="border border-white p-1">
+                <input type="checkbox" bind:checked={extra.showGrid} class="bg-gray-900 text-white p-1">
+            </td>
+        </tr>
         <tr>
             <td class="border border-white p-1">Cell Width</td>
             <td class="border border-white p-1">
@@ -35,9 +42,27 @@
             </td>
         </tr>
         <tr>
+            <td class="border border-white p-1">Grid Line Width</td>
+            <td class="border border-white p-1">
+                <input type="number" min="1" max="1000" bind:value={extra.gridLineWidth} class="bg-gray-900 text-white p-1">
+            </td>
+        </tr>
+        <tr>
+            <td class="border border-white p-1">Grid Line Color</td>
+            <td class="border border-white p-1">
+                <input type="color" bind:value={extra.gridLineColor} class="bg-gray-900 text-white p-1">
+            </td>
+        </tr>
+        <tr>
             <td class="border border-white p-1">X-Factor</td>
             <td class="border border-white p-1">
                 <input type="number" min="0" max="100" bind:value={extra.xFactor} class="bg-gray-900 text-white p-1">
+            </td>
+        </tr>
+        <tr>
+            <td class="border border-white p-1">Y-Factor</td>
+            <td class="border border-white p-1">
+                <input type="number" min="0" max="100" bind:value={extra.yFactor} class="bg-gray-900 text-white p-1">
             </td>
         </tr>
     </table>

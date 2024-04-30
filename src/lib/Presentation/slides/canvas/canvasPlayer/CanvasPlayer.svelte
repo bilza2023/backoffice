@@ -19,11 +19,15 @@ $:{
     extra;
     if(canvas){
     ctx = canvas.getContext('2d');
-    debugger;
     let drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor);
     
+
     try {
       if (items){
+        drawLibInterpretor.showGrid = extra.showGrid;
+        drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
+        drawLibInterpretor.gridLineColor =  extra.gridLineColor;
+        
         drawLibInterpretor.interpret(items);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
