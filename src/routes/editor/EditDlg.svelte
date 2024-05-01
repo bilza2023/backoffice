@@ -57,7 +57,7 @@
             <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Status</div>
             <select class="text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12" id="" bind:value={item.status}> 
                 <option value="empty">Empty</option>
-                <option value="fill">Filled</option>
+                <option value="filled">Filled</option>
                 <option value="locked">Locked</option>
                 <option value="final">Final</option>
               </select>

@@ -1,12 +1,22 @@
 <script>
 //@ts-nocheck
 import { Card } from '$lib/cmp';
-import {Icons,onMount } from '$lib/util';
-    import { divide } from 'mathjs';
+import {Icons,toast,ajaxPost,API_URL } from '$lib/util';
 export let tcode;
 export let selectedQuestions;
 export let uiMode;
     
+async function save(e,id){
+    const sortOrder = e.target.value;
+
+// console.log("e",e.target.value,"id",id);
+const resp = await ajaxPost( `${API_URL}/command` , { command : "update" ,tcode,	question:{"_id" : id , "sortOrder" : sortOrder} } );
+
+  if(resp.ok){
+    toast.push('saved');}
+    else {toast.push('failed to saved');
+  }
+}    
      
 function getTitle(question){
     
@@ -23,7 +33,7 @@ function getTitle(question){
 
 function getStatusIcon(status){
   if (status == 'empty') {return '🧊'  }
-  if (status == 'fill') {return Icons.PENCIL }
+  if (status == 'filled' ) {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
 }
@@ -45,9 +55,9 @@ function getStatusIcon(status){
             url = {"#"}
             >
                 {#if !uiMode}
-                <div class="flex text-xs items-center ">#{question.sortOrder}</div>
+                <input class="text-xs items-center  bg-gray-700 text-white w-8 h-8" type="number" bind:value={question.sortOrder} on:blur={(e)=>save(e,question._id)} />
 
-                <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">{question.status}
+                <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-1">{question.status}
                     &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
         
                     
