@@ -14,6 +14,12 @@
         <h1 class='mx-auto'>Edit Question</h1>
         
         <!-- <TcodeDd bind:tcode={tcode}/> -->
+        <!--ID-->
+        <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
+            <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>ID</div>
+            <div type='number' class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white'>{item._id}</div>
+            
+        </div>
         <!--Chapter-->
         <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
             <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Chapter</div>

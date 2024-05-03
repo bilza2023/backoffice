@@ -179,7 +179,7 @@ function copySlide(){
    tcode = new URLSearchParams(location.search).get("tcode");
     // const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
    const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
-
+debugger;
  if (resp.ok){
    const data = await resp.json();
    item =  data.data.item;

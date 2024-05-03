@@ -3,18 +3,19 @@
 import { toast,API_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let id;
+let forced=false;
 let classNo =9;
 let tcode='fbise10math';
 
 async function deleteQuestion(){
-  // debugger;
+  debugger;
   if(!tcode || tcode == null || tcode == undefined){
     toast.push("missing tcode");
     return;
 }
   // let tcode = 'fbise' + classNo + 'math';
   // let token = localStorage.getItem("token");,
-  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ tcode,  id });
+  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ tcode, id,forced });
 
     if (response.ok) {
         const data = await response.json();
@@ -41,6 +42,11 @@ async function deleteQuestion(){
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Id</div>
     <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='text' bind:value={id}/>
+</div>
+<!-- force -->
+<div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
+    <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Force Del</div>
+    <input class='text-sm text-center bg-gray-800 text-white border-2 border-yellow-700 rounded-md p-1 w-8/12' type='checkbox' bind:value={forced}/>
 </div>
 
 <br>
