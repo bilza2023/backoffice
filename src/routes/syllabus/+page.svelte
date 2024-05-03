@@ -7,7 +7,7 @@
     
     
     import SyllabusComp from '$lib/appComp/syllabusComp/SyllabusComp.svelte';
-    // import Summary from '$lib/appComp/Summary.svelte';
+    import Summary from '$lib/appComp/Summary.svelte';
     
     let tcode; 
     /////////////////////////////////
@@ -54,8 +54,9 @@
      <HdgWithIcon bgColor='bg-stone-600' icon={Icons.TEST}>{tcode}</HdgWithIcon>
     </div>
     
-    <!-- <Summary {questions} /> -->
     {#if questions}
+    <Summary {questions} />
+
     <SyllabusComp  {questions} {tcode} uiMode={false}/>
     {/if}
     
