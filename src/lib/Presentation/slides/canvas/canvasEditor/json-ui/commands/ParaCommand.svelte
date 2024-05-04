@@ -101,6 +101,22 @@
                 <input type="number" bind:value={item.globalAlpha} class="bg-gray-900 text-white p-1" min="0" max="1" step="0.1">
             </td>
         </tr>
+<!-- show at and hide at -->
+<tr>
+    <td class="border border-white p-1">Show/Hide</td>
+    <td class="border border-white p-1">
+        <input type="checkbox" bind:checked={item.useShowHide} class="bg-gray-900 text-white p-1">
+    </td>
+</tr>
+<tr>
+    <td class="border border-white p-1">Show At</td>
+    <td class="border border-white p-1">
+        <input type="number" bind:value={item.showAt} class="bg-gray-900 text-white p-1" >
+    </td>
+</tr>
+
+<!-- show at and hide at -->
+
     </table>
 </div>
 

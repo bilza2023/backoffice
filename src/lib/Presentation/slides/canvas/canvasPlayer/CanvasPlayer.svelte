@@ -2,6 +2,8 @@
     //@ts-nocheck
     import {onMount} from "$lib/util";
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
+    export let pulse;
+    export let ignoreShowAt;
     let canvas;
     let ctx;
     export let extra={
@@ -28,7 +30,7 @@ $:{
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         
-        drawLibInterpretor.interpret(items);
+        drawLibInterpretor.interpret(items,pulse,ignoreShowAt);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }

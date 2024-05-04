@@ -16,6 +16,11 @@
   export let currentTime;
   let itemIndexInRightBar =0;
   let showCanvasInSdieBar =true;
+  let ignoreShowAt =true;
+
+  function toggleIgnoreShowAt(){
+    ignoreShowAt = !ignoreShowAt;
+  }
   // let itemInRightBar = null;
   function toggleShowCanvas(){showCanvasInSdieBar = !showCanvasInSdieBar;}
   
@@ -87,6 +92,8 @@ function clone(index) {
           "lineWidth": 1,
           "color": "red",
           "fill": false,
+          "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "globalAlpha" : 1,
               "gap": 0,
@@ -105,6 +112,8 @@ function clone(index) {
           "color": "red",
           "fill": false,
           "globalAlpha" : 1,
+          "useShowHide": false,
+          "showAt": 0,
               "lineWidth": 1,
               "dash": 0,
               "gap": 0,
@@ -125,6 +134,8 @@ function clone(index) {
           "color": "red",
           "lineWidth": 1,
           "globalAlpha" : 1,
+          "useShowHide": false,
+          "showAt": 0,
           "showHandle" : false,
           "dash": 0,
           "gap": 0,
@@ -142,10 +153,12 @@ function clone(index) {
           "height": 100,
           "color": "red",
           "filled": true,
-              "lineWidth": 1,
-              "globalAlpha" : 1,
-              "dash": 0,
-              "gap": 0,
+          "useShowHide": false,
+          "showAt": 0,
+          "lineWidth": 1,
+          "globalAlpha" : 1,
+          "dash": 0,
+          "gap": 0,
           });
   }
   function addAngleSymbol(){
@@ -160,6 +173,8 @@ function clone(index) {
           "startAngle": -90,
           "endAngle" : 0,
           "lineWidth" : 1,
+          "useShowHide": false,
+          "showAt": 0,
           "showOrigin" : false,
           "color" : 'black'
           });
@@ -174,6 +189,8 @@ function clone(index) {
           "label": "label",
           "dot_width": 10,
           "dot_color": "red",
+          "useShowHide": false,
+          "showAt": 0,
           "text_color": "yellow",
           "text_size": 24,
           "fill": true,
@@ -201,6 +218,8 @@ function clone(index) {
               "cellWidth": 50,
               "cellHeight": 50,
               "lineWidth": 1,
+              "useShowHide": false,
+              "showAt": 0,
               "lineColor": "green"
           });
     
@@ -215,6 +234,8 @@ function clone(index) {
               "y": 0,
               "width": 300,
               "height": 300,
+              "useShowHide": false,
+              "showAt": 0,
               "globalAlpha" : 1
     });
   }
@@ -228,6 +249,8 @@ function clone(index) {
               "filled": false,
               "lineWidth": 1,
               "globalAlpha" : 1,
+              "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "gap": 0
     });
@@ -247,6 +270,8 @@ function clone(index) {
               "lineWidth": 2,
               "filled": false,
               "globalAlpha" : 1,
+              "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "gap": 0,
     });
@@ -262,6 +287,8 @@ function clone(index) {
               "color": "black",
               "lineWidth": 1,
               "globalAlpha" : 1,
+              "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "gap": 0,
     });
@@ -278,6 +305,8 @@ function clone(index) {
               "color": "black",
               "lineWidth": 2,
               "globalAlpha" : 1,
+              "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "gap": 0,
     });
@@ -329,6 +358,8 @@ function clone(index) {
               "startArrow": true,
               "endArrow": true,
               "globalAlpha" : 1,
+              "useShowHide": false,
+          "showAt": 0,
               "dash": 0,
               "gap": 0,
     });
@@ -344,6 +375,8 @@ function clone(index) {
       "xFactor": 25,
       "yFactor": 0,
       "width": 5,
+      "useShowHide": false,
+          "showAt": 0,
       "color": "yellow",
     });
   }
@@ -358,6 +391,8 @@ function clone(index) {
       "xFactor": 4,
       "yFactor": 0,
       "color": "black",
+      "useShowHide": false,
+          "showAt": 0,
       "font": "20px Arial"
     });
   }
@@ -378,6 +413,8 @@ function clone(index) {
      "xOffset"        : 0,
      "shadowColor" : "gray",
      "globalAlpha" : 1,
+     "useShowHide": false,
+          "showAt": 0,
      "shadowBlur" : 0
   });
   }
@@ -394,6 +431,8 @@ function clone(index) {
      "shadowOffsetX" : 0,
      "shadowOffsetY" : 0,
      "shadowColor" : "gray",
+     "useShowHide": false,
+          "showAt": 0,
      "globalAlpha" : 1,
      "shadowBlur" : 0
   });
@@ -425,13 +464,15 @@ function clone(index) {
 {addLines}
 {addPara}
 {toggleShowCanvas}
+{toggleIgnoreShowAt}
+{ignoreShowAt}
 />
    
 <!-- ////////////////////////////////////////////////////////  -->
 <div class='flex justify-between gap-2'>
 
 <div class='w-75'>
-  <CanvasPlayer {items} {extra}/>
+  <CanvasPlayer {items} {extra} pulse = {currentTime} {ignoreShowAt}/>
 </div> 
 
 <!-- div for json-ui -->

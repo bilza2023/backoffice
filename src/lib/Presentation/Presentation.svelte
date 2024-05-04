@@ -108,10 +108,10 @@ export let displayMode = true;
 <!-- CanvasEditor -->
 {#if currentSlide.type == 'canvas' }
     {#if  displayMode}
-        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} extra={currentSlide.extra} {theme} {setPulse} {tcode}/>
+        <CanvasPlayer {pulse} startTime={currentSlide.startTime} endTime={currentSlide.endTime} items={currentSlide.items} extra={currentSlide.extra} {theme} {setPulse} {tcode} />
     {:else}
     <!-- bind:slideExtra={currentSlide.slideExtra} -->
-        <CanvasEditor bind:items={currentSlide.items}  bind:extra={currentSlide.extra} {theme} {tcode}/>
+        <CanvasEditor bind:items={currentSlide.items}  bind:extra={currentSlide.extra} {theme} {tcode} {currentTime}/>
     {/if}
 {/if}
 

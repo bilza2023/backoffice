@@ -20,6 +20,8 @@ export let addPara;
 export let addAngleSymbol;
 
 export let toggleShowCanvas;
+export let toggleIgnoreShowAt;
+export let ignoreShowAt;
 // export let refresh;
 </script>
 
@@ -28,6 +30,8 @@ export let toggleShowCanvas;
 
     <button on:click={toggleShowCanvas} class="bg-stone-700 p-1 rounded-md text-xs m-1">
         Canvas</button>
+
+    <button on:click={toggleIgnoreShowAt} class="bg-stone-700 p-1 rounded-md text-xs m-1">Ignr-{ignoreShowAt}</button>
 
     <!-- Core methods -->
     <button on:click={addLine} class="bg-stone-500 p-1 rounded-md text-xs m-1">

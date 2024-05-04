@@ -33,7 +33,7 @@ export default class DrawLibInterpretor {
         this.drawLib.text(txt, x,y,font_color , font);
     }
     
-    interpret(items = {}) {
+    interpret(items = {},pulse=0,ignoreShowAt=false) {
         
         this.drawLib.clear(this.drawLib.backgroundColor); 
         // debugger;
@@ -45,6 +45,14 @@ export default class DrawLibInterpretor {
             const itemWhole = items[i];
             const item = itemWhole.extra;
 
+            debugger;
+            //-- fields that are added later must be added to older items
+            if(!item.useShowHide){ item.useShowHide = false;}
+            if(!item.showAt){ item.showAt = 0;}
+
+            
+
+            if(showOrNot(item.useShowHide,item.showAt,pulse,ignoreShowAt) ){
             switch (item.command) {
                 case 'grid':
                     break;
@@ -233,6 +241,24 @@ export default class DrawLibInterpretor {
                     this.drawLib.text(`Unsupported command: ${item.command}`, 200,200, 'red', '25px Arial');
                     break;
             }
+        }// if showAt
         }
     }
+}
+
+
+///////////////////////////////////
+function showOrNot(useShowHide, showAt, pulse, ignoreShowAt) {
+    // console.log("showOrNot")
+
+    if (ignoreShowAt==true) {
+        return true;
+    }
+    if (useShowHide==false){
+        return true;
+    }
+    if( pulse >= showAt){
+        return true;
+    }
+    return false;
 }
