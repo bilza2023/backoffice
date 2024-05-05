@@ -5,6 +5,8 @@
     import SideBar from './SideBar.svelte';
     import chapter_map from "./chapter_map.js";
     import FilterByStatusBar from ".//FilterByStatusBar.svelte";
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
     export let questions;
     export let tcode;
@@ -17,6 +19,28 @@
     let selectedChapter = 1;
     let chapter_map_array=[];
   
+    /////////////==========>>>>>>>>>>
+      let ex_qs_all = 0;
+      let ex_qs_empty = 0;
+      let ex_qs_filled = 0;
+      let ex_qs_locked = 0;
+      let ex_qs_final = 0;
+    /////////////==========>>>>>>>>>>
+
+$:{
+    questions;
+ex_qs_all = questions.filter(question => question.exercise === selectedEx).length;
+
+ex_qs_empty = questions.filter(question => question.exercise === selectedEx && question.status === 'empty').length;
+
+ex_qs_filled = questions.filter(question => question.exercise === selectedEx && question.status === 'filled').length;
+
+ex_qs_locked = questions.filter(question => question.exercise === selectedEx && question.status === 'locked').length;
+
+ex_qs_final = questions.filter(question => question.exercise === selectedEx && question.status === 'final').length;
+
+}
+
 function setStatus(status_value){
   statusToFilterFor = status_value;
   setSelectedQuestions();
@@ -94,15 +118,22 @@ onMount(async ()=>{
         {selectedEx}
         {setEx}
         />
-
+ 
     </div>
 
     <div class="w-10/12">
-        <FilterByStatusBar   {setStatus} {statusToFilterFor}/>
+        <FilterByStatusBar   {setStatus} {statusToFilterFor} 
+        {ex_qs_all}
+        {ex_qs_empty}
+        {ex_qs_filled}
+        {ex_qs_locked}
+        {ex_qs_final}
+        {selectedEx}
+        />
         <Questions {selectedQuestions} {tcode} {uiMode}/>
         
     </div>
 
 </div>
-
+ 
   
