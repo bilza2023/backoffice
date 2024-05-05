@@ -7,5 +7,4 @@ export let i;
 
  <div  class="bg-stone-600 w-5/12 p-0 m-0 rounded-md">
           {item.extra.code}
-          xxxxxx
     </div>
