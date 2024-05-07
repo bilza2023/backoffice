@@ -35,7 +35,7 @@ onMount(async () => {
 <div class='flex flex-wrap  justify-center border-2 border-white  gap-1 p-4 m-0 bg-gray-700 rounded-md w-full'>
 
 
- <a href={`/syllabus?tcode=fbise8math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise8math\\images\\thumbnail.png`} alt="fbise8math" /></a>
+ <a href={`/syllabus?tcode=fbise9math2024`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math2024\\images\\thumbnail.png`} alt="fbise9math2024" /></a>
 
  <a href={`/syllabus?tcode=fbise9math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math\\images\\thumbnail.png`} alt="fbise9math" /></a>
 
@@ -45,7 +45,7 @@ onMount(async () => {
 
  <a href={`/syllabus?tcode=fbise10math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise10math\\images\\thumbnail.png`} alt="fbise10math" /></a>
  
- <a href={`/syllabus?tcode=matrices`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\matrices\\images\\thumbnail.png`} alt="matrices" /></a>
+ <!-- <a href={`/syllabus?tcode=matrices`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\matrices\\images\\thumbnail.png`} alt="matrices" /></a> -->
  
 </div>
 </div>
