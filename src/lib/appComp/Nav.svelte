@@ -47,7 +47,7 @@ function statusIcons(){
     {#if isLogin}
     <Logo url='/' />
     {:else}
-    <Logo url='/login' />
+    <Logo url='/' />
     {/if}
     </div>
             <!-- ******************************** -->
