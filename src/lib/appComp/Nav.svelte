@@ -63,6 +63,7 @@ function statusIcons(){
     <NavBtn2 title='Logout' icon ={Icons.LOCK}    clk={logout}/>
     
     {:else}
+    <NavBtn title='Question Manager' icon ={Icons.BOOKS} url='/questionManager'/>
     <NavBtn title='Help' icon ={Icons.BOOK}    url='/help'/>
     <NavBtn title='Login' icon ='🔑'  url='/login'/>
     {/if}
