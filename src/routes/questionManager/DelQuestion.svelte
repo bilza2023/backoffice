@@ -13,9 +13,7 @@ async function deleteQuestion(){
     toast.push("missing tcode");
     return;
 }
-  // let tcode = 'fbise' + classNo + 'math';
-  // let token = localStorage.getItem("token");,
-  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ tcode, id,forced });
+  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ id,forced });
 
     if (response.ok) {
         const data = await response.json();
@@ -37,7 +35,7 @@ async function deleteQuestion(){
 <h1 class='mx-auto'>Delete Question</h1>
 
 
-<TcodeDd bind:tcode={tcode}/>
+<!-- <TcodeDd bind:tcode={tcode}/> -->
 <!--id-->
 <div class='flex justify-around  border-2 border-gray-600 p-1 m-1 rounded-sm'>
     <div class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-4/12'>Id</div>

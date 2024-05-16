@@ -14,7 +14,7 @@ if (slides && slides.length > 0){
 const question = item;
 question.slides = slides;
 ///////////////////////////////////////////////////////////////////
-  const resp = await ajaxPost( `${API_URL}/command` , { command : "update" ,tcode,	question } );
+  const resp = await ajaxPost( `${API_URL}/tcode/update` , { 	question } );
 
   if(resp.ok){
     toast.push('saved');}

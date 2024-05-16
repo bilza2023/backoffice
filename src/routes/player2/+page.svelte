@@ -41,12 +41,12 @@ onMount(async ()=>{
 filename = new URLSearchParams(location.search).get("filename");
 tcode = new URLSearchParams(location.search).get("tcode");
 ////////////////////////
-const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
+const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
 
  if (resp.ok){
   const data = await resp.json();
   
-  questionData = data.data.item;
+  questionData = data.item;
     slides = questionData.slides;
 
  }else {

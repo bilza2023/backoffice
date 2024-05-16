@@ -38,16 +38,13 @@ onMount(async ()=>{
 //  id = new URLSearchParams(location.search).get("id");
  filename = new URLSearchParams(location.search).get("filename");
  tcode = new URLSearchParams(location.search).get("tcode");
-
-//  const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
-const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
-
+ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
 
 
  if (resp.ok){
   const data = await resp.json();
   
- const question = data.data.item;
+ const question = data.item;
     slides = question.slides;
     getStopTime(slides);
     currentSlide = slides[0];

@@ -2,6 +2,7 @@
 //@ts-nocheck
 import { toast,API_URL,ajaxPost } from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
+
 let tcode='fbise9math';
 // let classNo =10;
 let chapter= "1";
@@ -25,18 +26,17 @@ if(!tcode || tcode == null || tcode == undefined){
 if(name && name !== ''){
 name = convertToUrlFriendlyName(name);
 }
-debugger;
 const token = localStorage.getItem("token");
 
-const resp = await ajaxPost( `${API_URL}/command` , { command : "create" ,tcode,	
-question :{chapter,exercise,questionNo,part,name}
+const resp = await ajaxPost( `${API_URL}/tcode/create` , { question :{chapter,exercise,questionNo,part,tcode , name}
 });
 
 
     if(resp.ok){
 
       const data = await resp.json();
-      toast.push(data.message);
+
+      toast.push("Question saved");
     }else {
       const data = await resp.json();
       toast.push(data.message);

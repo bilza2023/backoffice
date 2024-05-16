@@ -17,7 +17,7 @@
 
  let currentSlideIndex;
  let currentSlide;
- let slides;
+ let slides=[];
  let show=false; // new slide bar
  let id;
  let tcode;
@@ -39,6 +39,8 @@ async function save(){
   if (item.name && item.name !== ''){
     item.name = convertToUrlFriendlyName(item.name);
   }   
+  //must add tcode
+  item.tcode = tcode;
  saveFinal(slides,tcode,id,item);
 } 
 
@@ -140,59 +142,20 @@ function copySlide(){
   localStorage.setItem("copiedSlide", JSON.stringify(slides[currentSlideIndex]));
 }
 
-// function fixOldCanvas(slides){
-//   debugger;
-//   for (let i = 0; i < slides.length; i++) {
-//        const slide = slides[i];
-//        if(slide.type == 'canvas'){
-//         const content  = JSON.parse(slide.items[0].content);
-//         // slide.items = content.commands;
-           
-//         slide.items = [];
-//             for (let j = 0; j < content.commands.length; j++) {
-//               const commandItem = content.commands[j];
-//               const newItem = getNewItem();
-//               newItem.extra = commandItem;
-//               slide.items.push(newItem);  
-//               // console.log(commands);
-//             }
-        
-//         slide.extra = {
-//         backgroundColor: '#efebb8',
-//         canvasWidth : 1000,
-//         canvasHeight : 360,
-//         cellHeight : 25,
-//         cellWidth : 25,
-//         xFactor : 0,
-//         yFactor : 0,
-//         }
-
-//         }    
-//       }
-// }
 
  onMount(async ()=>{
   try {
-
-  //  id = new URLSearchParams(location.search).get("id");
+debugger;
    filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
-    // const resp = await ajaxPost( `${API_URL}/command` , { command : "get" ,tcode,	id});
-   const resp = await ajaxPost( `${API_URL}/command` , { command : "getByFilename",tcode,filename});
-debugger;
+   const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
  if (resp.ok){
    const data = await resp.json();
-   item =  data.data.item;
+   item =  data.item;
    slides = item.slides;
-   //////////
-  //  fixOldCanvas(slides);
-
+   
   filename = item.filename;
-  //--CDN
-  // https://taleem-media.blr1.cdn.digitaloceanspaces.com/mp3/matrices/1.1/matrices_ch_1_ex_1.1_q_1_n_Test.mp3
-  // -- Origin
-  https://taleem-media.blr1.digitaloceanspaces.com/mp3/matrices/1.1/matrices_ch_1_ex_1.1_q_1_n_Test.mp3
-
+  
   soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
   
   if (slides.length > 0){
@@ -216,9 +179,9 @@ else {throw new Error('Failed to load');}
 
 <div class='bg-gray-800 overflow-x-auto w-full text-white min-h-screen'>
  
-{#if slides }
+{#if item }
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile} {filename} bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg} {duplicateCurrentSlide} {pasteSlide} {copySlide}/>  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile}  bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg} {duplicateCurrentSlide} {pasteSlide} {copySlide}/>  
 {/if}
 
 {#if showEditDlg}

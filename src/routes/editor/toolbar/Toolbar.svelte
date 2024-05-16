@@ -10,7 +10,7 @@ import NewSlidesDlg from "./NewSlidesDlg.svelte";
 export let show;
 export let slides;
 export let item;
-export let id;
+// export let id;
 export let addNew;
 export let save;
 export let showSidePanel;
@@ -21,7 +21,7 @@ export let pasteSlide;
 export let copySlide;
 
 export let delCurSlide;
-export let filename; 
+// export let filename; 
 export let tcode;
 export let soundFile=null;
 export let currentTime=0;
