@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/player2/+page.svelte";
+export { default as component } from "../../../../src/routes/questionManager/+page.svelte";

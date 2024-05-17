@@ -1,12 +1,10 @@
 <script>
   //@ts-nocheck
-  import { ThemeDD } from '$lib/Presentation';
   import { Icons ,goto} from '$lib/util';
 
   export let start;
   export let stop;
   export let pause;
-  export let callback;
   export let isPlaying;
   export let isPaused;
   export let setVolume;
@@ -41,7 +39,6 @@ goto('/');
  <input type="range" min="0" max="1" step='0.1' value="0.8" on:input={(e)=>setVolume(e.target.value)} />
 
 
-    <ThemeDD {callback}/>
 
 </div>
 

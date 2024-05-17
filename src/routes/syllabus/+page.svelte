@@ -12,14 +12,8 @@
     let tcode; 
     /////////////////////////////////
     let questions;
-    
-    
-    
-   
     let isLogin = false;
     let isAdmin = false;
-    
-    
     
   onMount(async () => {
   try{
@@ -55,8 +49,9 @@
     </div>
     
     {#if questions}
-    <Summary {questions} />
-
+      
+        <Summary {questions} />
+    
     <SyllabusComp  {questions} {tcode} uiMode={false}/>
     {/if}
     

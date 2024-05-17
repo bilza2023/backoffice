@@ -6,7 +6,6 @@
 
     export let start: () => void;
     export let stop: () => void;
-    export let applyTheme: () => void;
     export let pause: () => void;
     export let isPlaying: boolean;
     export let isPaused: boolean;
@@ -19,7 +18,7 @@
   
   <div class='toolbar-wrapper' in:fade={{ delay: 300 }} out:fade={{ delay: 300 }}>
     <div class='toolbar-content flex justify-left'>
-      <PlayButtons {start} {stop} callback={applyTheme} {pause} {isPlaying} {isPaused} {setVolume}/>
+      <PlayButtons {start} {stop}  {pause} {isPlaying} {isPaused} {setVolume}/>
   
       {#if currentSlide}
         <Slider {slides} {pulse} {setPulse}/>

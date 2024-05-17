@@ -4,7 +4,7 @@
     import Questions from "./Questions.svelte";
     import SideBar from './SideBar.svelte';
     import chapter_map from "./chapter_map.js";
-    import FilterByStatusBar from ".//FilterByStatusBar.svelte";
+    import FilterByStatusBar from "./FilterByStatusBar.svelte";
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
@@ -101,9 +101,7 @@ function setEx(ex){
 onMount(async ()=>{
       chapter_map_array = await chapter_map(questions);
       setChapter(chapter_map_array[0].chapter);
-
 });
-
 
 </script>
 
@@ -122,6 +120,7 @@ onMount(async ()=>{
     </div>
 
     <div class="w-10/12">
+      {#if uiMode==false}
         <FilterByStatusBar   {setStatus} {statusToFilterFor} 
         {ex_qs_all}
         {ex_qs_empty}
@@ -130,6 +129,7 @@ onMount(async ()=>{
         {ex_qs_final}
         {selectedEx}
         />
+        {/if}
         <Questions {selectedQuestions} {tcode} {uiMode}/>
         
     </div>

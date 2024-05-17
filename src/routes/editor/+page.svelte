@@ -2,19 +2,14 @@
   //@ts-nocheck
   import { onMount,ajaxPost ,API_URL} from '$lib/util';
   import Toolbar from './toolbar/Toolbar.svelte';
-  // import readSlides from '$lib/tdf/readSlides';
-  // import {Presentation,getNewSlide} from '$lib/Presentation';
-  import {Presentation,getNewSlide}  from '$lib/Presentation';
+  import {Presentation,getNewSlide,getNewItem}  from '$lib/Presentation';
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
-  let showEditDlg=false;
 
-  import {getNewItem} from '$lib/Presentation';
-    import { questions } from '../syllabusByChapter/questions';
-
-
+///////////////////////////////////////////////////////////  
+ let showEditDlg=false;
  let currentSlideIndex;
  let currentSlide;
  let slides=[];
@@ -27,7 +22,7 @@
  let soundFile;
  let filename;
 let currentTime=0;
-  
+///////////////////////////////////////////////////////////  
 
 function convertToUrlFriendlyName(name) {
             const urlFriendlyName = name.replace(/\s+/g, '_');
@@ -143,7 +138,7 @@ function copySlide(){
 }
 
 
- onMount(async ()=>{
+onMount(async ()=>{
   try {
 debugger;
    filename = new URLSearchParams(location.search).get("filename");

@@ -21,11 +21,8 @@
   function toggleIgnoreShowAt(){
     ignoreShowAt = !ignoreShowAt;
   }
-  // let itemInRightBar = null;
   function toggleShowCanvas(){showCanvasInSdieBar = !showCanvasInSdieBar;}
   
-  // $:{itemIndexInRightBar; itemInRightBar = items[itemIndexInRightBar];}
-
   function addNewItem(data){
     const newItem = getNewItem();
     newItem.extra = data;      

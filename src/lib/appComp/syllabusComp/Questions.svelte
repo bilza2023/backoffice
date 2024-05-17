@@ -34,9 +34,11 @@ function getTitle(question){
 function getStatusIcon(status){
   if (status == 'empty') {return '🧊'  }
   if (status == 'filled' ) {return Icons.PENCIL }
+  if (status == 'fill' ) {return Icons.PENCIL }
   if (status == 'locked') {return '🔒' }
   if (status == 'final') {return Icons.STUDENTCAP }
 }
+
 </script>
 {#if selectedQuestions.length <= 0 }
 <div class="flex justify-center w-full">
@@ -44,8 +46,8 @@ function getStatusIcon(status){
 </div>
 {:else}
 <div class='flex  bg-gray-700 p-2 m-2 rounded-md w-full justify-center  flex-wrap  '>
-{#each selectedQuestions as question,index}    
-    <!-- {#if question.exercise == selectedEx && question.status == 'final' } -->
+
+        {#each selectedQuestions as question,index}    
     
             <div class='w-3/12'>
 
