@@ -20,7 +20,7 @@ export let tcode;
     value='fbise8math'>fbise8math</option>
 
     <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise9math2024'>fbise9math2024</option>
+    value='fbise9mathOld'>fbise9mathOld</option>
     
     <option  class='text-sm text-center bg-gray-800 text-white' 
     value='fbise9english'>fbise9english</option>
