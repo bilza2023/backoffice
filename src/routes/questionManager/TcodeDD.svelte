@@ -11,14 +11,16 @@ export let tcode;
         Course(tcode)</div>
 
     <select class='text-sm text-center border-2 border-yellow-700 rounded-md p-1 w-8/12 bg-gray-800 text-white' bind:value={tcode}>
+    
+    
+    <option   class='text-sm text-center bg-gray-800 text-white' 
+        value='fbise9math'>fbise9math</option>
+        
     <option   class='text-sm text-center bg-gray-800 text-white' 
     value='fbise8math'>fbise8math</option>
 
     <option   class='text-sm text-center bg-gray-800 text-white' 
     value='fbise9math2024'>fbise9math2024</option>
-    
-    <option   class='text-sm text-center bg-gray-800 text-white' 
-    value='fbise9math'>fbise9math</option>
     
     <option  class='text-sm text-center bg-gray-800 text-white' 
     value='fbise9english'>fbise9english</option>
