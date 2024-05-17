@@ -35,9 +35,9 @@ onMount(async () => {
 <div class='flex flex-wrap  justify-center border-2 border-white  gap-1 p-4 m-0 bg-gray-700 rounded-md w-full'>
 
 
- <a href={`/syllabus?tcode=fbise9math2024`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math2024\\images\\thumbnail.png`} alt="fbise9math2024" /></a>
+ <a href={`/syllabus?tcode=fbise9math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math2024\\images\\thumbnail.png`} alt="fbise9math" /></a>
 
- <a href={`/syllabus?tcode=fbise9math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math\\images\\thumbnail.png`} alt="fbise9math" /></a>
+ <a href={`/syllabus?tcode=fbise9mathOld`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9math\\images\\thumbnail.png`} alt="fbise9mathOld" /></a>
 
 
  <a href={`/syllabus?tcode=fbise9english`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise9english\\images\\thumbnail.png`} alt="fbise9english" /></a>
