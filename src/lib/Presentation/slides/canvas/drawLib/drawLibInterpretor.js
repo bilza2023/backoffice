@@ -36,16 +36,15 @@ export default class DrawLibInterpretor {
     interpret(items = {},pulse=0,ignoreShowAt=false) {
         
         this.drawLib.clear(this.drawLib.backgroundColor); 
-        // debugger;
         if(this.showGrid){
             this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
         }
 
         for (let i = 0; i < items.length; i++) {
             const itemWhole = items[i];
+            // item in this loop is actually item.extra ==>
             const item = itemWhole.extra;
 
-            debugger;
             //-- fields that are added later must be added to older items
             if(!item.useShowHide){ item.useShowHide = false;}
             if(!item.showAt){ item.showAt = 0;}
@@ -236,6 +235,10 @@ export default class DrawLibInterpretor {
                 case 'polygon':
                     // debugger;
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
+                    break;
+                case 'sprite':
+                    debugger;
+                    this.drawLib.sprite();
                     break;
                 default:
                     this.drawLib.text(`Unsupported command: ${item.command}`, 200,200, 'red', '25px Arial');

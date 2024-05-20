@@ -434,9 +434,28 @@ function clone(index) {
      "shadowBlur" : 0
   });
   }
+  function addSprite(){
+    // debugger;
+    addNewItem({
+      "translate": true,
+      "name": "sprite_"+ randNo(),
+      "command": "sprite",
+      "spriteId": "000",
+      "x": 4,
+      "y": 4,
+      "bgColor": "black",
+     "shadowOffsetX" : 0,
+     "shadowOffsetY" : 0,
+     "shadowColor" : "gray",
+     "useShowHide": false,
+          "showAt": 0,
+     "globalAlpha" : 1,
+     "shadowBlur" : 0
+  });
+  }
   function redraw(){items = [...items];}
 </script>
-
+ 
 {#if items}
 <!-- the editor top level div -->
 <div class='p-2 bg-stone-900 '>
@@ -460,6 +479,7 @@ function clone(index) {
 {addBezier}
 {addLines}
 {addPara}
+{addSprite}
 {toggleShowCanvas}
 {toggleIgnoreShowAt}
 {ignoreShowAt}

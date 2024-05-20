@@ -16,6 +16,7 @@ export let addTri;
 export let addBezier;
 export let addLines;
 export let addPara;
+export let addSprite;
 // export let addPolygon;
 export let addAngleSymbol;
 
@@ -77,6 +78,7 @@ export let ignoreShowAt;
         XY Cross</button>
     
     <button on:click={addAngleSymbol} class="bg-stone-500 p-1 rounded-md text-xs m-1">Angle</button>
+    <button on:click={addSprite} class="bg-stone-500 p-1 rounded-md text-xs m-1">Sprite</button>
     
   </div>
 

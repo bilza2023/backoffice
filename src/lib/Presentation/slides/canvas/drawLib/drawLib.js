@@ -518,6 +518,21 @@ drawPerpendSymbol(x, y, x1, y1, x2, y2, lineWidth = 1, color = 'black') {
 }
 
 
+// image: The image element containing the sprite.
+// sx: The x-coordinate of the top-left corner of the sub-rectangle of the source image to draw.
+// sy: The y-coordinate of the top-left corner of the sub-rectangle of the source image to draw.
+// sWidth: The width of the sub-rectangle of the source image to draw.
+// sHeight: The height of the sub-rectangle of the source image to draw.
+// dx: The x-coordinate in the destination canvas at which to place the top-left corner of the source image.
+// dy: The y-coordinate in the destination canvas at which to place the top-left corner of the source image.
+// dWidth: The width to draw the image in the destination canvas.
+// dHeight: The height to draw the image in the destination canvas.
+// sprite(image={}, sx=0, sy=0, sWidth=100, sHeight=100, dx=0, dy=0, dWidth=100, dHeight=100) {
+sprite() {
+const img = new Image();
+    img.src = "http://localhost:5173/sprites/trees.webp";
+    this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
+}
 
 
         

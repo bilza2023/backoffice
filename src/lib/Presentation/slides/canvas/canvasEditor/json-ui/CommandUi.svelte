@@ -3,6 +3,7 @@
 ///////////////////////////////////////////////////////
     import GridCommand from "./commands/GridCommand.svelte";
     import TextCommand from "./commands/TextCommand.svelte";
+    import SpriteCommand from "./commands/SpriteCommand.svelte";
     import ParaCommand from "./commands/ParaCommand.svelte";
     import RayCommand from "./commands/RayCommand.svelte";
     import RectCommand from "./commands/RectCommand.svelte";
@@ -28,6 +29,10 @@
 <div >
 {#if item}
 
+    {#if item.extra.command === 'sprite'}
+    <SpriteCommand bind:item={item.extra}/>
+    {/if}
+   
     {#if item.extra.command === 'para'}
     <ParaCommand bind:item={item.extra}/>
     {/if}
