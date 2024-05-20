@@ -6,18 +6,17 @@ export let tcode;
 export let selectedQuestions;
 export let uiMode;
     
-async function save(e,id){
-    const sortOrder = e.target.value;
+async function save(e,question){
+    question.sortOrder = e.target.value;
 
-// console.log("e",e.target.value,"id",id);
-const resp = await ajaxPost( `${API_URL}/command` , { command : "update" ,tcode,	question:{"_id" : id , "sortOrder" : sortOrder} } );
-
-  if(resp.ok){
+const resp = await ajaxPost( `${API_URL}/tcode/update` , { 	question } );
+    if(resp.ok){
     toast.push('saved');}
     else {toast.push('failed to saved');
-  }
+    }
+
 }    
-     
+      
 function getTitle(question){
     
     if (question.name && question.name !== ''){
@@ -57,7 +56,7 @@ function getStatusIcon(status){
             url = {"#"}
             >
                 {#if !uiMode}
-                <input class="text-xs items-center  bg-gray-700 text-white w-8 h-8" type="number" bind:value={question.sortOrder} on:blur={(e)=>save(e,question._id)} />
+                <input class="text-xs items-center  bg-gray-700 text-white w-8 h-8" type="number" bind:value={question.sortOrder} on:blur={(e)=>save(e,question)} />
 
                 <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-1">{question.status}
                     &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
