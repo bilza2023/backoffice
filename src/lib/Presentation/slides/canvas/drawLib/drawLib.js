@@ -532,6 +532,7 @@ sprite() {
 const img = new Image();
     img.src = "http://localhost:5173/sprites/trees.webp";
     this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
+    this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
 }
 
 
