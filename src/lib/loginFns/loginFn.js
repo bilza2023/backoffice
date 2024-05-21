@@ -11,7 +11,7 @@ export default async function loginFn(email,password){
           toast.push('Not a valid email');  
       return;
     }
-
+debugger;
 const passwordError = validateString(password,6,30);
     if (passwordError.status !== "ok"){
           toast.push('Not a valid password');  
