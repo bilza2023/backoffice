@@ -528,11 +528,18 @@ drawPerpendSymbol(x, y, x1, y1, x2, y2, lineWidth = 1, color = 'black') {
 // dWidth: The width to draw the image in the destination canvas.
 // dHeight: The height to draw the image in the destination canvas.
 // sprite(image={}, sx=0, sy=0, sWidth=100, sHeight=100, dx=0, dy=0, dWidth=100, dHeight=100) {
-sprite() {
-const img = new Image();
-    img.src = "http://localhost:5173/sprites/trees.webp";
-    this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
-    this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
+sprite(sprite,item) {
+    // this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
+    this.ctx.drawImage(sprite.img,
+        sprite.selectedData.sx,
+        sprite.selectedData.sy,
+        sprite.selectedData.sw,
+        sprite.selectedData.sh,
+        item.dx,
+        item.dy,
+        sprite.selectedData.sw * Math.abs(item.wFactor),
+        sprite.selectedData.sh * Math.abs(item.hFactor)
+    );
 }
 
 

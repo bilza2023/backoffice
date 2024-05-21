@@ -2,13 +2,16 @@
 
 import DrawLib from "./drawLib" 
 
+/////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
     constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0) {
+        this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
         this.drawLib.width = width;
         this.drawLib.height = height;
         this.drawLib.backgroundColor = backgroundColor;
         
+        this.sprite = null;
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
         this.xFactor = xFactor;
@@ -237,8 +240,19 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
                     break;
                 case 'sprite':
-                    debugger;
-                    this.drawLib.sprite();
+                    // debugger;
+                    if (!item.translate || item.translate==false ){
+                        this.drawLib.sprite(this.sprite,item);
+                        }else {
+                        this.drawLib.rect(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth);
+                        const newItem = JSON.parse(JSON.stringify(item));
+
+                        newItem.dx = this.addXfactor(this.getX(item.dx));
+                        newItem.dy = this.getY(item.dy);
+
+                        this.drawLib.sprite(this.sprite,newItem);
+                        }
+                    
                     break;
                 default:
                     this.drawLib.text(`Unsupported command: ${item.command}`, 200,200, 'red', '25px Arial');

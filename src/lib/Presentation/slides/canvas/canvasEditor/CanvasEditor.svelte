@@ -14,6 +14,8 @@
   export let items;
   export let extra;
   export let currentTime;
+
+
   let itemIndexInRightBar =0;
   let showCanvasInSdieBar =true;
   let ignoreShowAt =true;
@@ -38,7 +40,6 @@
         items = [...items];
     }
 }
-
 
 function moveDown(index) {
     // debugger;
@@ -441,9 +442,10 @@ function clone(index) {
       "name": "sprite_"+ randNo(),
       "command": "sprite",
       "spriteId": "000",
-      "x": 4,
-      "y": 4,
-      "bgColor": "black",
+      "dx": 0,
+      "dy": 0,
+      "wFactor" : 1,
+      "hFactor" : 1,
      "shadowOffsetX" : 0,
      "shadowOffsetY" : 0,
      "shadowColor" : "gray",
