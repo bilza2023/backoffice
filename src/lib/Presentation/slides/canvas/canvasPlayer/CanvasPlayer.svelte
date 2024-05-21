@@ -1,6 +1,7 @@
 <script>
     //@ts-nocheck
     import {onMount} from "$lib/util";
+    import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     import Sprite from "../sprite/Sprite";
     export let pulse;
@@ -15,11 +16,8 @@
       backgroundColor : 'gray'
     };
     export let items;
-    onMount(()=>{
-      // debugger;
-    });
-
-$:{
+  
+function gameLoop(){
     items;
     extra;
     if(canvas){
@@ -51,7 +49,15 @@ $:{
     }
    }
 }    
-  
+let interval;
+onMount(async ()=>{
+
+  interval = setInterval(gameLoop,20);
+});  
+onDestroy(() => {
+		clearInterval(interval);
+});
+
 </script>
 
 <div class="flex justify-center w-full" >

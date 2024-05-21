@@ -52,8 +52,6 @@ export default class DrawLibInterpretor {
             if(!item.useShowHide){ item.useShowHide = false;}
             if(!item.showAt){ item.showAt = 0;}
 
-            
-
             if(showOrNot(item.useShowHide,item.showAt,pulse,ignoreShowAt) ){
             switch (item.command) {
                 case 'grid':
@@ -241,6 +239,7 @@ export default class DrawLibInterpretor {
                     break;
                 case 'sprite':
                     // debugger;
+                    console.log("pulse->sprite",pulse,);
                     if (!item.translate || item.translate==false ){
                         this.drawLib.sprite(this.sprite,item);
                         }else {
