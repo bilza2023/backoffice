@@ -30,15 +30,15 @@ onMount(async () => {
 <Nav {isLogin} {isAdmin}/>
 <div class="p-0 m-0 bg-gray-800 w-full min-h-screen">
 
-{#if isLogin}
+<!-- {#if isLogin} -->
 <div class='flex justify-start items-center gap-1  w-full p-1 bg-gray-900'>
  <NavBtn2 title='Add question' icon ={Icons.ADD}    clk={()=>showDel=1}/>
   <NavBtn2 title='Delete question' icon ={Icons.DEL}    clk={()=>showDel=2}/> 
  <NavBtn2 title='Copy question' icon ={Icons.TEMPLATE}    clk={()=>showDel=3}/> 
 </div>
-{:else}
-<h1>Please login</h1>
-{/if}
+<!-- {:else} -->
+<!-- <h1>Please login</h1> -->
+<!-- {/if} -->
 
 
 {#if showDel==1}
