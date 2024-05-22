@@ -4,8 +4,10 @@
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
-    
-    import Sprite from "../sprite/Sprite";
+    import { students } from "../sprite/students";
+    import { figs } from "../sprite/figs";
+    import { alphabets } from "../sprite/alphabets";
+   
     let spriteImgArray;
     
     let canvas;
@@ -20,7 +22,6 @@
   
 function gameLoop(){
     try {
-      debugger;
       if (items){
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
@@ -44,21 +45,15 @@ onMount(async ()=>{
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    debugger;
     spriteImgArray = [];
-    let students = new Sprite(
-            "students",
-            "http://localhost:5173/sprites/students.png",
-        );
-        students.img = new Image();
-        students.img.src = students.url;
-        students.addItem("student_w_tablet", 183, 317, 225, 350);
-        students.addItem("student_red", 254, 0, 275, 250); //527,254
-        students.addItem("student_female", 424, 288, 220, 250); //646,542
-        students.addItem("three_students", 0, 0, 700, 250); //646,542
-        students.addItem("student_black", 540, 0, 260, 266); //
-
+    
+        students.img = new Image(); students.img.src = students.url;
+        figs.img = new Image(); figs.img.src = figs.url;
+        alphabets.img = new Image(); alphabets.img.src = alphabets.url;
+        
         spriteImgArray.push(students);
+        spriteImgArray.push(figs);
+        spriteImgArray.push(alphabets);
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     

@@ -6,6 +6,19 @@
     export let item;
     export let redraw;
 
+    function handleSheetChange(event) {
+    item.sheet = event.target.value;
+    if(item.sheet == 'students'){
+        item.sheetItem = "student_w_tablet";
+    }
+    if(item.sheet == 'figs'){
+        item.sheetItem = "flower1";
+    }
+    if(item.sheet == 'alphabets'){
+        item.sheetItem = "A";
+    }
+    // You can add more logic here if needed
+  }
     function action(e){
         addUTFIcon(e,item);
         redraw();
@@ -71,7 +84,7 @@
         <tr>
             <td class="border border-white p-1">Sheet</td>
             <td class="border  border-white p-1">
-                <select  class="bg-gray-900 text-white p-1" bind:value={item.sheet}>
+                <select  class="bg-gray-900 text-white p-1" on:change={handleSheetChange} value={item.sheet}>
                     <option value="students">Students</option>
                     <option value="alphabets">Alphabets</option>
                     <option value="figs">Figs</option>

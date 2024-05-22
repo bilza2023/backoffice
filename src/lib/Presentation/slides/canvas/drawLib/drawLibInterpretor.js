@@ -36,7 +36,7 @@ export default class DrawLibInterpretor {
     }
     
     interpret(items,currentTime=0) {
-        debugger;    
+ 
         this.drawLib.clear(this.drawLib.backgroundColor); 
         if(this.showGrid){
             this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
@@ -237,6 +237,7 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
                     break;
                 case 'sprite':
+                    try{
                             let sprite;
                             for (let i = 0; i < this.spriteImgArray.length; i++) {
                                 const element = this.spriteImgArray[i];
@@ -247,6 +248,7 @@ export default class DrawLibInterpretor {
                             }
                     if(!sprite){throw Error("Sprite not found");}                            
                     sprite.applyItem(item.sheetItem);
+                    if (!sprite.selectedData){console.warn("sheetItem not found");break;}        
 
                     if (!item.translate || item.translate==false ){
                         this.drawLib.sprite(sprite,item);
@@ -261,6 +263,9 @@ export default class DrawLibInterpretor {
                         }
                     
                     break;
+                    }catch(e){
+                        break;
+                    }
                 default:
                     this.drawLib.text(`Unsupported command: ${item.command}`, 200,200, 'red', '25px Arial');
                     break;
