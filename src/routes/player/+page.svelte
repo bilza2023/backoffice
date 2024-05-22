@@ -138,7 +138,7 @@ function setCurrentSlide(){
 
 {#if currentSlide}
 
-    <Presentation {currentSlide} {theme} {pulse} {setPulse} {tcode}/>
+    <Presentation {currentSlide} {theme}   currentTime={pulse} {setPulse} {tcode}/>
  
  {/if}
 

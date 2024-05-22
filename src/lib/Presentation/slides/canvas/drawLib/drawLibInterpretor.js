@@ -1,23 +1,22 @@
 //@ts-nocheck
 
 import DrawLib from "./drawLib" 
-
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
-    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0) {
+    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray) {
         this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
         this.drawLib.width = width;
         this.drawLib.height = height;
         this.drawLib.backgroundColor = backgroundColor;
         
-        this.sprite = null;
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
         this.xFactor = xFactor;
         this.showGrid = false;
         this.gridLineWidth = 1;
         this.gridLineColor = 'white';
+        this.spriteImgArray = spriteImgArray;
     }
     getX(val){
         // debugger;
@@ -36,8 +35,8 @@ export default class DrawLibInterpretor {
         this.drawLib.text(txt, x,y,font_color , font);
     }
     
-    interpret(items = {},pulse=0,ignoreShowAt=false) {
-        
+    interpret(items,currentTime=0) {
+        debugger;    
         this.drawLib.clear(this.drawLib.backgroundColor); 
         if(this.showGrid){
             this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
@@ -52,7 +51,7 @@ export default class DrawLibInterpretor {
             if(!item.useShowHide){ item.useShowHide = false;}
             if(!item.showAt){ item.showAt = 0;}
 
-            if(showOrNot(item.useShowHide,item.showAt,pulse,ignoreShowAt) ){
+            if( currentTime >= item.showAt ){
             switch (item.command) {
                 case 'grid':
                     break;
@@ -238,18 +237,27 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
                     break;
                 case 'sprite':
-                    // debugger;
-                    console.log("pulse->sprite",pulse,);
+                            let sprite;
+                            for (let i = 0; i < this.spriteImgArray.length; i++) {
+                                const element = this.spriteImgArray[i];
+                                if(element.name == item.sheet){
+                                    sprite = element;
+                                    break;
+                                }
+                            }
+                    if(!sprite){throw Error("Sprite not found");}                            
+                    sprite.applyItem(item.sheetItem);
+
                     if (!item.translate || item.translate==false ){
-                        this.drawLib.sprite(this.sprite,item);
+                        this.drawLib.sprite(sprite,item);
                         }else {
-                        this.drawLib.rect(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth);
+                        
                         const newItem = JSON.parse(JSON.stringify(item));
 
                         newItem.dx = this.addXfactor(this.getX(item.dx));
                         newItem.dy = this.getY(item.dy);
 
-                        this.drawLib.sprite(this.sprite,newItem);
+                        this.drawLib.sprite(sprite,newItem);
                         }
                     
                     break;
@@ -264,17 +272,3 @@ export default class DrawLibInterpretor {
 
 
 ///////////////////////////////////
-function showOrNot(useShowHide, showAt, pulse, ignoreShowAt) {
-    // console.log("showOrNot")
-
-    if (ignoreShowAt==true) {
-        return true;
-    }
-    if (useShowHide==false){
-        return true;
-    }
-    if( pulse >= showAt){
-        return true;
-    }
-    return false;
-}

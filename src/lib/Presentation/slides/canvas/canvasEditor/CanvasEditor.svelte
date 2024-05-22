@@ -14,6 +14,9 @@
   export let items;
   export let extra;
   export let currentTime;
+  export let startTime;
+  export let endTime;
+  export let spriteImgArray;
 
 
   let itemIndexInRightBar =0;
@@ -442,6 +445,8 @@ function clone(index) {
       "name": "sprite_"+ randNo(),
       "command": "sprite",
       "spriteId": "000",
+      "sheet": "students",
+      "sheetItem": "student_w_tablet",
       "dx": 0,
       "dy": 0,
       "wFactor" : 1,
@@ -456,8 +461,13 @@ function clone(index) {
   });
   }
   function redraw(){items = [...items];}
+
+  function handlePulseChange(event) {
+        // debugger;
+        currentTime = parseInt(event.target.value);
+    }
 </script>
- 
+  
 {#if items}
 <!-- the editor top level div -->
 <div class='p-2 bg-stone-900 '>
@@ -491,7 +501,11 @@ function clone(index) {
 <div class='flex justify-between gap-2'>
 
 <div class='w-75'>
-  <CanvasPlayer {items} {extra} pulse = {currentTime} {ignoreShowAt}/>
+  <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt}/>
+    <div class="w-full">
+      <span>Seconds:{currentTime}</span>
+      <input class="w-full" type="range"  min={startTime} max={endTime} on:input={handlePulseChange} {spriteImgArray}/>
+    </div>
 </div> 
 
 <!-- div for json-ui -->

@@ -3,9 +3,9 @@
 
 export default class Sprite{
 
-constructor(url){
-    this.img = new Image();
-    this.img.src = url;
+constructor(name,url){
+    this.name = name;
+    
     this.url = url;
     this.data = [];
     this.selectedData = null;
@@ -26,6 +26,7 @@ applyItem(name){
         const item = this.data[i];
         if(item.name == name){
                 this.selectedData = item;
+                return;
         }
     }
 }

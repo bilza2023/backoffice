@@ -155,6 +155,8 @@ onMount(async ()=>{
   if (slides.length > 0){
     currentSlideIndex = 0;
     currentSlide = slides[0]
+
+    
     }
 
   }
