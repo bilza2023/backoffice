@@ -35,9 +35,11 @@ export default class DrawLibInterpretor {
         this.drawLib.text(txt, x,y,font_color , font);
     }
     
-    interpret(items,currentTime=0) {
+    interpret(items,currentTime=0,extra) {
  
-        this.drawLib.clear(this.drawLib.backgroundColor); 
+        // this.drawLib.clear('green'); 
+        this.drawLib.clear(extra.backgroundColor);
+
         if(this.showGrid){
             this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
         }

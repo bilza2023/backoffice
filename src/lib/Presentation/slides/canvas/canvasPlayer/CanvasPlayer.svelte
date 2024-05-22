@@ -28,7 +28,7 @@ function gameLoop(){
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
 ///////////////////////////////////
         // debugger;
-        drawLibInterpretor.interpret(items,currentTime);
+        drawLibInterpretor.interpret(items,currentTime,extra);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
@@ -56,7 +56,6 @@ onMount(async ()=>{
         spriteImgArray.push(alphabets);
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    
     
     drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray);
   }
