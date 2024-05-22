@@ -1,7 +1,7 @@
 import Sprite from "./Sprite";
 
 
-export const people = new Sprite("people","http://localhost:5173/sprites/people.png");
+export const people = new Sprite("people","/sprites/people.png");
 
 // 12 rows of 8 columns  each = 95 people (-1 last one is empty)
 

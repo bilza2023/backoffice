@@ -4,7 +4,7 @@ const w = 80;
 const h = 75;
 let x = 0;
 let y = 0;
-export const alphabets = new Sprite("alphabets","http://localhost:5173/sprites/alphabets.png");
+export const alphabets = new Sprite("alphabets","/sprites/alphabets.png");
 
 // 12 rows of 8 columns  each = 95 alphabets (-1 last one is empty)
 

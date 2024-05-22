@@ -4,7 +4,7 @@ const w = 90;
 const h = 100;
 let x = 0;
 let y = 0;
-export const figs = new Sprite("figs","http://localhost:5173/sprites/figs.png");
+export const figs = new Sprite("figs","/sprites/figs.png");
 
 // 12 rows of 8 columns  each = 95 figs (-1 last one is empty)
 
