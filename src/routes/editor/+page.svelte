@@ -7,7 +7,7 @@
   import LeftPanel from './LeftPanel.svelte';
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
-
+  import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
  let currentSlideIndex;
@@ -107,17 +107,36 @@ function getNewStartTime(){
  }
 }
 
+async function addTemplate(template_name){
+/////////--addNewSlide ---seq
+const st = getNewStartTime();
+ const newSlide = getNewSlide('canvas');
+ newSlide.startTime = st;
+ newSlide.endTime = st+10;
+ //....
+ let items_extra = getTemplateItemsNextra(template_name);
+ newSlide.items = items_extra.items;
+ newSlide.extra = items_extra.extra;
+ //....
+ slides = [...slides, newSlide];
+ setCurrentSlideIndex(slides.length-1);
+ currentSlide = slides[currentSlideIndex];
+ show = false;
+ ////////////////////////
+}
+
 async function  addNew(slideType){
   // debugger;
- const st = getNewStartTime();
+ /////////--addNewSlide ---seq
+  const st = getNewStartTime();
  const newSlide = getNewSlide(slideType);
  newSlide.startTime = st;
  newSlide.endTime = st+10;
  slides = [...slides, newSlide];
  setCurrentSlideIndex(slides.length-1);
  currentSlide = slides[currentSlideIndex];
-
  show = false;
+ ////////////////////////
 }
 
 async function duplicateCurrentSlide(){
@@ -177,7 +196,9 @@ else {throw new Error('Failed to load');}
  
 {#if item }
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
-    {setCurrentSlideIndex}  bind:item={item}  {soundFile}  bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg} {duplicateCurrentSlide} {pasteSlide} {copySlide}/>  
+    {setCurrentSlideIndex}  bind:item={item}  {soundFile}  bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg} {duplicateCurrentSlide} {pasteSlide} {copySlide}
+    {addTemplate}
+    />  
 {/if}
 
 {#if showEditDlg}
@@ -219,5 +240,5 @@ else {throw new Error('Failed to load');}
   <br>
   <br>
   <br>
-
+<button on:click={console.log("currentSlide",currentSlide)}>log slide</button>
 </div>

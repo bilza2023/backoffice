@@ -23,7 +23,6 @@ export let addAngleSymbol;
 export let toggleShowCanvas;
 export let toggleIgnoreShowAt;
 export let ignoreShowAt;
-// export let refresh;
 </script>
 
 
@@ -32,7 +31,7 @@ export let ignoreShowAt;
     <button on:click={toggleShowCanvas} class="bg-stone-700 p-1 rounded-md text-xs m-1">
         Canvas</button>
 
-    <button on:click={toggleIgnoreShowAt} class="bg-stone-700 p-1 rounded-md text-xs m-1">Ignr-{ignoreShowAt}</button>
+    <button on:click={()=> showTemplates = !showTemplates} class="bg-stone-700 p-1 rounded-md text-xs m-1">Templates</button>
 
     <!-- Core methods -->
     <button on:click={addLine} class="bg-stone-500 p-1 rounded-md text-xs m-1">
@@ -81,15 +80,3 @@ export let ignoreShowAt;
     <button on:click={addSprite} class="bg-stone-500 p-1 rounded-md text-xs m-1">Sprite</button>
     
   </div>
-
-
-
-  <div class="flex">
-    <!-- <button on:click={addJT} class="bg-orange-700   p-1 rounded-md text-xs m-1">JT</button> -->
-    
-
-  </div>
-
-  <style>
-
-  </style>

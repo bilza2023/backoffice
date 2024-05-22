@@ -17,6 +17,9 @@
     if(item.sheet == 'alphabets'){
         item.sheetItem = "A";
     }
+    if(item.sheet == 'people'){
+        item.sheetItem = "man_tblt_stndg";
+    }
     // You can add more logic here if needed
   }
     function action(e){
@@ -88,6 +91,7 @@
                     <option value="students">Students</option>
                     <option value="alphabets">Alphabets</option>
                     <option value="figs">Figs</option>
+                    <option value="people">People</option>
                 </select>
             </td>
         </tr>

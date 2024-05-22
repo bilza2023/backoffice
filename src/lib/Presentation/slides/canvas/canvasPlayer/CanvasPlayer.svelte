@@ -4,9 +4,11 @@
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
+//sprite - sheet    
     import { students } from "../sprite/students";
     import { figs } from "../sprite/figs";
     import { alphabets } from "../sprite/alphabets";
+    import { people } from "../sprite/people";
    
     let spriteImgArray;
     
@@ -50,10 +52,12 @@ onMount(async ()=>{
         students.img = new Image(); students.img.src = students.url;
         figs.img = new Image(); figs.img.src = figs.url;
         alphabets.img = new Image(); alphabets.img.src = alphabets.url;
+        people.img = new Image(); people.img.src = people.url;
         
         spriteImgArray.push(students);
         spriteImgArray.push(figs);
         spriteImgArray.push(alphabets);
+        spriteImgArray.push(people);
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     

@@ -6,6 +6,7 @@ import SoundButtons from './SoundButtons.svelte';
 import UploadMp3 from './UploadMp3.svelte';
 import UploadImage from './UploadImage.svelte';
 import NewSlidesDlg from "./NewSlidesDlg.svelte";
+import TemplatesDlg from "./TemplatesDlg.svelte";
 
 export let show;
 export let slides;
@@ -26,8 +27,10 @@ export let tcode;
 export let soundFile=null;
 export let currentTime=0;
 export let showEditDlg=false;
+export let addTemplate;
 
 let showDelete=false;
+let showCanvasTemplates =false;
 
 function delFirst(){
 showDelete=false;
@@ -70,6 +73,7 @@ function shiftTime(slideIndex, newEndTime) {
     <NavBtn2 title='SP' icon={Icons.DOOR}  clk={()=>showSidePanel = !showSidePanel} />
       <NavBtn2 title='New' icon={Icons.BULB}  clk={()=>show = !show} />
     <NavBtn2 title='Save' icon={Icons.BOOK}  clk={save} />
+    <NavBtn2 title='Templates' icon={Icons.MAGICWAND}  clk={()=> showCanvasTemplates=!showCanvasTemplates} />
     
     <NavLink title='Player1' icon={Icons.TV}  url={`/player?tcode=${tcode}&filename=${item.filename}`} />
     <NavLink title='Player2' icon={Icons.TV}  url={`/player2?tcode=${tcode}&filename=${item.filename}`} />
@@ -122,6 +126,10 @@ function shiftTime(slideIndex, newEndTime) {
 
 {#if showDelete}
 <NavBtn2 title='Are You Sure to Delete' icon={Icons.DEL }  clk={delFirst} />
+{/if}
+
+{#if showCanvasTemplates}
+<TemplatesDlg  {addTemplate}/>
 {/if}
 
 
