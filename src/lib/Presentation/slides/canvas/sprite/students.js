@@ -1,7 +1,7 @@
 import Sprite from "./Sprite";
 
 
-export const students = new Sprite("students","http://localhost:5173/sprites/students.png");
+export const students = new Sprite("students","/sprites/students.png");
 
 students.addItem("student_w_tablet",183, 317, 225, 350);
 students.addItem("student_red",254,0,275,250); //527,254
