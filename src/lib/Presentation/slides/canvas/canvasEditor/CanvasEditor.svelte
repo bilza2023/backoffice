@@ -367,17 +367,16 @@ function clone(index) {
   }
   function addRepeatDot(){
     addNewItem({
-      "translate": false,
+      "translate": true,
       "name": "repeatDot_"+ randNo(),
       "command": "repeatDot",
       "numberOfDots": 5,
-      "initialX": 25,
-      "initialY": 25,
-      "xFactor": 25,
+      "initialX": 1,
+      "initialY": 1,
+      "xFactor": 1,
       "yFactor": 0,
       "width": 5,
-      "useShowHide": false,
-          "showAt": 0,
+      "showAt": 0,
       "color": "yellow",
     });
   }
@@ -461,14 +460,14 @@ function clone(index) {
   });
   }
   function redraw(){items = [...items];}
-
+  
   function handlePulseChange(event) {
         // debugger;
         currentTime = parseInt(event.target.value);
     }
 </script>
   
-{#if items}
+{#if items }
 <!-- the editor top level div -->
 <div class='p-2 bg-stone-900 '>
 

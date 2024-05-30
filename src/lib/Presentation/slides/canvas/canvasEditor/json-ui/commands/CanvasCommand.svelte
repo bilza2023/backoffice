@@ -133,7 +133,7 @@
                 <input type="color" bind:value={extra.gridLineColor} class="bg-gray-900 text-white p-1">
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td class="border border-white p-1">X-Factor</td>
             <td class="border border-white p-1">
                 <input type="number" min="0" max="100" bind:value={extra.xFactor} class="bg-gray-900 text-white p-1">
@@ -144,7 +144,8 @@
             <td class="border border-white p-1">
                 <input type="number" min="0" max="100" bind:value={extra.yFactor} class="bg-gray-900 text-white p-1">
             </td>
-        </tr>
+        </tr> -->
     </table>
+    <br>
 </div>
 {/if}

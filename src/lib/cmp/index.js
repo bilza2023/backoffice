@@ -43,6 +43,7 @@ export { default as PageWrapper } from './PageWrapper.svelte';
 export { default as ProgressBar } from './ProgressBar.svelte';
 export { default as Range } from './Range.svelte';
 export { default as SectionHead } from './SectionHead.svelte';
+export { default as SmallBtnToolbar } from './SmallBtnToolbar.svelte';
 export { default as SectionHeadAYS } from './SectionHeadAYS.svelte';
 export { default as SectionHeadIcon } from './SectionHeadIcon.svelte';
 export { default as ShowIfTrue } from './ShowIfTrue.svelte';

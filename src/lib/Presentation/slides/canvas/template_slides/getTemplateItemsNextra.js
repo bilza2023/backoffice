@@ -2,6 +2,7 @@
 //@ts-nocheck
 import {test} from "./test";
 import {jt1} from "./jt1";
+import {rnl} from "./rnl";
 
 export default function getTemplateItemsNextra(template_name){
 let ret = null;
@@ -15,6 +16,12 @@ let ret = null;
     return {
         "items" : jt1.items,
         "extra" : jt1.extra,
+    }
+    }
+    if(template_name == "rnl"){
+    return {
+        "items" : rnl.items,
+        "extra" : rnl.extra,
     }
     }
     

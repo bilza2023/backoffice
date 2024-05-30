@@ -15,11 +15,11 @@ import Toolbar from "./Toolbar.svelte";
     import DotCommand from "./commands/DotCommand.svelte";
     import RepeatTextCommand from "./commands/RepeatTextCommand.svelte";
     import RepeatDotCommand from "./commands/RepeatDotCommand.svelte";
-    import ImageCommand from "./commands/ImageCommand.svelte";
+    // import ImageCommand from "./commands/ImageCommand.svelte";
     import TriangleCommand from "./commands/TriangleCommand.svelte";
     import PolygonCommand from "./commands/PolygonCommand.svelte";
     import AngleSymbolCommand from "./commands/AngleSymbolCommand.svelte";
-    import PerpendSymbolCommand from "./commands/PerpendSymbolCommand.svelte";
+    // import PerpendSymbolCommand from "./commands/PerpendSymbolCommand.svelte";
     import BezierCommand from "./commands/BezierCommand.svelte";
 
 ///////////////////////////////////////////////////////   
@@ -65,9 +65,10 @@ export let del;
     <BezierCommand bind:item={item}/>
     {/if}
    
-    {#if item.command === 'perpendSymbol'}
+    <!-- {#if item.command === 'perpendSymbol'}
     <PerpendSymbolCommand bind:item={item}/>
-    {/if}
+    {/if} -->
+
     {#if item.command === 'angleSymbol'}
     <AngleSymbolCommand bind:item={item}/>
     {/if}
@@ -86,10 +87,10 @@ export let del;
     {#if item.command === 'repeatText'}
     <RepeatTextCommand bind:item={item}/>
     {/if}
-  
+<!--   
     {#if item.command === 'image'}
     <ImageCommand bind:item={item}/>
-    {/if}
+    {/if} -->
   
     {#if item.command === 'repeatDot'}
     <RepeatDotCommand bind:item={item}/>

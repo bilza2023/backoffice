@@ -1,14 +1,18 @@
 export default class Icons {
   static ADD = ' ➕';
+  static ANGLE = ' ∠';
   static BALANCE = '⚖️';
+  static BAZIER = '🔷';
   static BARCHART = '📊';
   static BOOK = '📘';
   static BOOKS = '📚';
   static BUS = '🚌';
   static BULB = '💡'; 
   static CAR = '🚗';
+  static CANVAS = '🖼️';
   static CHARTUP = '📈';
   static CHARTDOWN = '📉';
+  static CIRCLE = '⭕';
   static CLOCK = '⏱️';
   static COG = '⚙';
   static COMPUTER = '💻';
@@ -21,11 +25,13 @@ export default class Icons {
   static DARK = '🌃';
   static DEL = '🗑️';
   static DOOR = '🚪';
+  static DOT = '🔘';
   static DOWN = '↓';
   static EMAIL = '📧';
   static EYE = '👁️';
   static EYES = '👀';
   static EXPLOSION = '💥';
+  static ELLIPSE = '🥚';
   static FILESBOX = '🗃️';
   static FLOWER = '🌸';
   static FROWNFACE = '☹️';
@@ -39,6 +45,7 @@ export default class Icons {
   static KEY = '🔑';
   static LOCK = '🔒';
   static LEFT = '←';
+  static LINE = '➖';
   static MAGNIFYING_GLASS = '🔍';
   static MANAGER = '💼';
   static MCQ = '🔱';
@@ -54,10 +61,12 @@ export default class Icons {
   static RULER = '📏';
   static RIGHT = '→';
   static RECYCLE = '♻️';
+  static RECTANGLE = '▭';
   static RUN = '🏃';
   static ROCKET = '🚀';
   static SAVE = '💾';
   static SMILYFACE = '😊';
+  static SPEECH = '🗣️';
   static SPEAKER = '📢';
   static NOSPEAKER = '🔇';
   static STAIRS = '🪜';
@@ -66,8 +75,10 @@ export default class Icons {
   static START = '▶';
   static STOP = '||';
   static STUDENT = '👨‍🎓';
+  static SPRITE = '🕹️';
   static STUDENTCAP = '🎓';
   static SUN = '☀️';
+  static SUNRISE = '🌅';
   static SUBTRACT = '➖';
   static TAG = '🏷️';
   static TEAM = '🧑‍🤝‍🧑';
@@ -76,8 +87,10 @@ export default class Icons {
   static TEMPLATE = '📜';
   static TEST = '🧪';
   static TEXT  = '📃';
+  static TEXT2 = '¶';
   static THUMBSUP = '👍';
   static THUMBSDOWN = '👎';
+  static TRIANGE = '🔺';
   static TRIANGULAR_RULER = '📐';
   static TREE = '🌳';
   static TV = '📺';

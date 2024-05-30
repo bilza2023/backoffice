@@ -45,12 +45,14 @@
     <BezierCommand bind:item={item.extra}/>
     {/if}
    
-    {#if item.extra.command === 'perpendSymbol'}
+    <!-- {#if item.extra.command === 'perpendSymbol'}
     <PerpendSymbolCommand bind:item={item.extra}/>
-    {/if}
+    {/if} -->
+    
     {#if item.extra.command === 'angleSymbol'}
     <AngleSymbolCommand bind:item={item.extra}/>
     {/if}
+    
     {#if item.extra.command === 'polygon'}
     <PolygonCommand bind:item={item.extra}/>
     {/if}
@@ -67,9 +69,9 @@
     <RepeatTextCommand bind:item={item.extra}/>
     {/if}
   
-    {#if item.extra.command === 'image'}
+    <!-- {#if item.extra.command === 'image'}
     <ImageCommand bind:item={item.extra}/>
-    {/if}
+    {/if} -->
   
     {#if item.extra.command === 'repeatDot'}
     <RepeatDotCommand bind:item={item.extra}/>

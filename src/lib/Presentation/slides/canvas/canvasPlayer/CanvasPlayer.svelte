@@ -17,7 +17,7 @@
 
     export let extra={
       canvasWidth : 1000,
-      canvasHeight : 360,
+      canvasHeight : 400,
       backgroundColor : 'gray'
     };
     export let items;
@@ -28,6 +28,8 @@ function gameLoop(){
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
+        drawLibInterpretor.cellWidth =  extra.cellWidth;
+        drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
         // debugger;
         drawLibInterpretor.interpret(items,currentTime,extra);
