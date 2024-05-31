@@ -48,7 +48,7 @@
     <!-- <SmallBtnToolbar clk={addGrid} icon={Icons.GRID} title="Grid" /> -->
     <SmallBtnToolbar clk={addRepeatDot} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
     <SmallBtnToolbar clk={addRepeatText} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" />
-    <SmallBtnToolbar clk={addLines} icon={Icons.LINE} title="Lines" />
+    <SmallBtnToolbar clk={addLines} icon={Icons.RULER} title="Lines" />
     <!-- <SmallBtnToolbar clk={addXYCross} icon={Icons.XYCROSS} title="XY Cross" /> -->
     <SmallBtnToolbar clk={addAngleSymbol} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={addSprite} icon={Icons.SPRITE} title="Sprite" />

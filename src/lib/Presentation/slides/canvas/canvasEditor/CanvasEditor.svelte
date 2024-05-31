@@ -33,7 +33,7 @@
     newItem.extra = data;      
     items.unshift(newItem);      
     items = [...items];
-  }
+}
 
   function moveUp(index) {
     debugger;
@@ -225,21 +225,7 @@ function clone(index) {
           });
     
   }
-  function addImage(){
-    addNewItem({
-              "translate": false,
-              "name": "image_"+ randNo(),
-              "command": "image",
-              "image": "https://taleem-media.blr1.cdn.digitaloceanspaces.com/images/matrices/multiplication_step-04.png",
-              "x": 100,
-              "y": 0,
-              "width": 300,
-              "height": 300,
-              "useShowHide": false,
-              "showAt": 0,
-              "globalAlpha" : 1
-    });
-  }
+  
   function addPolygon(){
     addNewItem({
       "points": [100,100,150,200,10,100],
@@ -303,7 +289,7 @@ function clone(index) {
               "y1": 2,
               "x2": 8,
               "y2": 8,
-              "color": "black",
+              "color": "red",
               "lineWidth": 2,
               "globalAlpha" : 1,
               "useShowHide": false,
@@ -352,15 +338,14 @@ function clone(index) {
               "y0": 2,
               "x1": 8,
               "y1": 8,
-              "lineColor": "black",
+              "lineColor": "yellow",
               "lineWidth": 2,
               "arrowWidth": 8,
               "arrowHeight": 12,
               "startArrow": true,
               "endArrow": true,
               "globalAlpha" : 1,
-              "useShowHide": false,
-          "showAt": 0,
+              "showAt": 0,
               "dash": 0,
               "gap": 0,
     });
@@ -464,7 +449,8 @@ function clone(index) {
   function handlePulseChange(event) {
         // debugger;
         currentTime = parseInt(event.target.value);
-    }
+  }
+
 </script>
   
 {#if items }
