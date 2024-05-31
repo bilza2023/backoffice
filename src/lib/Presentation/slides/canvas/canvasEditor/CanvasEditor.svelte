@@ -468,7 +468,6 @@ function clone(index) {
 {addDot}
 {addRepeatText}
 {addRepeatDot}
-{addImage}
 {addXYCross}
 {addTri}
 {addPolygon}
