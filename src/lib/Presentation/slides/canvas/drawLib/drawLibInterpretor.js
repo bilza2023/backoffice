@@ -148,15 +148,7 @@ export default class DrawLibInterpretor {
                     this.drawLib.para(item.text, this.addXfactor(this.getX(item.x)), this.getY(item.y), item.color, item.font,item.shadowOffsetX,item.shadowOffsetY,item.shadowBlur,item.shadowColor,item.globalAlpha,item.lineHeightOffset,item.xOffset);    
                     }
                     break;
-                case 'image':
-                        const img = new Image();
-                        img.onload = () => {
-                            this.drawLib.image(img, item.x, item.y, item.width, item.height);
-                            item.loadedImg = img;
-                        };
-                        img.src = item.image;
-                break;
-
+              
                 case 'angleSymbol':
                     // debugger;
                     const st_angle_rads_angleSymbol = item.startAngle * (Math.PI / 180);
@@ -195,9 +187,9 @@ export default class DrawLibInterpretor {
 
                 case 'dot':
                     if (!item.translate || item.translate==false ){
-                    this.drawLib.dot(item.x, item.y, item.label, item.dot_width, item.text_size, item.dot_color, item.text_color);
+                    this.drawLib.dot(item.x, item.y, item.label, item.dot_width, item.text_size, item.color, item.text_color);
                     }else{
-                    this.drawLib.dot(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.label, item.dot_width, item.text_size, item.dot_color, item.text_color);    
+                    this.drawLib.dot(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.label, item.dot_width, item.text_size, item.color, item.text_color);    
                     }
                     break;
 

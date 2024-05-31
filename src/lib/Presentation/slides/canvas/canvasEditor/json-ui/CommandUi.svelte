@@ -1,5 +1,6 @@
 <script>
     //@ts-nocheck
+import { onMount, onDestroy } from "svelte";
 ///////////////////////////////////////////////////////
     import GridCommand from "./commands/GridCommand.svelte";
     import TextCommand from "./commands/TextCommand.svelte";
@@ -24,7 +25,13 @@
 ///////////////////////////////////////////////////////   
     export let item;
     export let redraw;
-    
+    let interval;
+ onMount(async()=>{
+    interval = setInterval(redraw,250)
+ });
+ onDestroy(() => {
+        clearInterval(interval);
+    });  
 </script>
 <div >
 {#if item}
