@@ -90,7 +90,7 @@ bind:items={items}
   <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt}/>
     <div class="w-full">
       <span>Seconds:{currentTime}</span>
-      <input class="w-full" type="range"  min={startTime} max={endTime} on:input={handlePulseChange} {spriteImgArray}/>
+      <input class="w-full" type="range"  min={startTime} max={endTime}  {spriteImgArray} bind:value={currentTime}/>
     </div>
 </div> 
 
