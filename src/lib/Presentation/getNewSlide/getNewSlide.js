@@ -59,6 +59,7 @@ export default function getNewSlide(type) {
         canvasHeight : 360,
         cellHeight : 25,
         cellWidth : 25,
+        bgImg : null,
         xFactor : 0,
         yFactor : 0,
         ///////////////////

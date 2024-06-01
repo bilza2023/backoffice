@@ -15,11 +15,7 @@
     let canvas;
     let ctx;
 
-    export let extra={
-      canvasWidth : 1000,
-      canvasHeight : 400,
-      backgroundColor : 'gray'
-    };
+    export let extra;
     export let items;
   
 function gameLoop(){
@@ -30,6 +26,7 @@ function gameLoop(){
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
+        // drawLibInterpretor.bgImg =  extra.bgImg;
 ///////////////////////////////////
         // debugger;
         drawLibInterpretor.interpret(items,currentTime,extra);
@@ -42,10 +39,10 @@ function gameLoop(){
    
 }    
 //////////////////////////////////
-let interval;
-let drawLibInterpretor;
-onMount(async ()=>{
+async function init(){
   if(canvas){
+    if(interval){clearInterval(interval);}
+    //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
@@ -63,9 +60,15 @@ onMount(async ()=>{
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     
-    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray);
+    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,extra.bgImg);
   }
   interval = setInterval(gameLoop,20);
+}
+//////////////////////////////////
+let interval;
+let drawLibInterpretor;
+onMount(async ()=>{
+  await init();
 });  
 onDestroy(() => {
 		clearInterval(interval);

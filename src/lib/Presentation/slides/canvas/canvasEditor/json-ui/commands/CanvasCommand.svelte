@@ -71,8 +71,6 @@ import TrTf from "./TrTf.svelte";
 </script>
  
 <div class="flex w-full text-white rounded-md justify-center bg-stone-700 p-1 m-1 border-2 border-white">
-
-
     <div class="flex justify-end gap-1">
         <button on:click={()=>displayBody = !displayBody} class="p-1 m-1 text-xs rounded-md hover:bg-slate-700">Canvas</button>
     </div>
@@ -98,6 +96,26 @@ import TrTf from "./TrTf.svelte";
                     <option value="sereneForest">sereneForest</option>
                     <option value="horizonGlow">horizonGlow</option>
                     <option value="tranquilGarden">tranquilGarden</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="border border-white p-1">Bg Img</td>
+            <td class="border border-white p-1">
+                <select  class="bg-gray-900 text-white p-1" bind:value={extra.bgImg} >
+                    <option value="null">None</option>
+                    <option value="systemImages/paper01.jpg">paper01</option>
+                    <option value="systemImages/drywall.jpg">drywall</option>
+                    <option value="systemImages/black-board.jpg">black-board</option>
+                    <option value="systemImages/black-board-mat.jpg">black-board-mat</option>
+                    <option value="systemImages/wood.jpg">wood</option>
+                    <option value="systemImages/tinted.jpg">tinted</option>
+                    <option value="systemImages/black-mat.jpg">Black-Mat</option>
+                    <option value="systemImages/white-mat.jpg">White-Mat</option>
+                    <option value="systemImages/granite.jpg">granite</option>
+                    <option value="systemImages/gray-marble.jpg">gray-marble</option>
+                    <option value="systemImages/brown-stone.jpg">brown-stone</option>
+                    <option value="systemImages/gray-stone.jpg">gray-stone</option>
                 </select>
             </td>
         </tr>
