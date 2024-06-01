@@ -7,7 +7,7 @@ import TrColor from "./TrColor.svelte";
 import TrTf from "./TrTf.svelte";   
     import addUTFIcon from "./addUTFIcon";
     import UTFDD from "./UTFDD.svelte";
-    import SheetItemsDd from "../../../sprite/SheetItemsDD.svelte";
+    import SheetItemsDd from "../../../../../sprite/SheetItemsDD.svelte";
     export let item;
     export let redraw;
 

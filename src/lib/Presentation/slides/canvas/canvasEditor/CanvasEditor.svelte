@@ -13,7 +13,7 @@
   export let startTime;
   export let endTime;
   export let spriteImgArray;
-
+  export let bgImages;
 
   let itemIndexInRightBar =0;
   let showCanvasInSdieBar =true;
@@ -86,11 +86,13 @@ bind:items={items}
 <!-- ////////////////////////////////////////////////////////  -->
 <div class='flex justify-between gap-2'>
 
-<div class='w-75'>
-  <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt}/>
+<div class='w-75'> 
+  <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages}/>
+    
     <div class="w-full">
       <span>Seconds:{currentTime}</span>
-      <input class="w-full" type="range"  min={startTime} max={endTime}  {spriteImgArray} bind:value={currentTime}/>
+      <input class="w-full" type="range"  min={startTime} max={endTime}  
+      bind:value={currentTime}/>
     </div>
 </div> 
 

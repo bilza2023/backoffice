@@ -3,7 +3,7 @@
 import DrawLib from "./drawLib" 
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
-    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImgSrc) {
+    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages) {
         this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
         this.drawLib.width = width;
@@ -17,21 +17,8 @@ export default class DrawLibInterpretor {
         this.gridLineWidth = 1;
         this.gridLineColor = 'white';
         this.spriteImgArray = spriteImgArray;
-        //--bg image
+        this.bgImages = bgImages;
         
-        if(bgImgSrc !== "null" && bgImgSrc !== undefined){
-
-            this.bgImage = new Image(width, height);
-            this.bgImgSrc = bgImgSrc; //just keep it for later use
-
-            this.bgImage.onload = () => {
-                this.bgImage(this.bgImage);
-            };
-
-            this.bgImage.src = bgImgSrc;
-        }else {
-            this.bgImage = "null" ;
-        }
     }
     getX(val){
         // debugger;
@@ -54,11 +41,18 @@ export default class DrawLibInterpretor {
  
         // this.drawLib.clear('green'); 
         this.drawLib.clear(extra.backgroundColor);
-        debugger;
-        //bgImgSrc !== "null"
-                if(this.bgImage !== "null"){
-                    this.drawLib.bgImage(this.bgImage);
+        // debugger;
+        if(extra.bgImg !== "null"){
+            // console.log("this.bgImages[0]==>",this.bgImages[0].name);
+            for (let i = 0; i < this.bgImages.length; i++) {
+                const element = this.bgImages[i];
+                if(element.name == extra.bgImg){
+                    this.drawLib.bgImage(element.img);
+                    break;
                 }
+            }
+        }         
+        
         if(this.showGrid){
             this.drawLib.grid(this.cellWidth, this.cellHeight, this.gridLineWidth, this.gridLineColor);
         }

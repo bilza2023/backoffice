@@ -4,13 +4,9 @@
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
-//sprite - sheet    
-    import { students } from "../sprite/students";
-    import { figs } from "../sprite/figs";
-    import { alphabets } from "../sprite/alphabets";
-    import { people } from "../sprite/people";
    
-    let spriteImgArray;
+    export let spriteImgArray;
+    export let bgImages;
     
     let canvas;
     let ctx;
@@ -26,7 +22,6 @@ function gameLoop(){
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
-        // drawLibInterpretor.bgImg =  extra.bgImg;
 ///////////////////////////////////
         // debugger;
         drawLibInterpretor.interpret(items,currentTime,extra);
@@ -46,21 +41,11 @@ async function init(){
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    spriteImgArray = [];
     
-        students.img = new Image(); students.img.src = students.url;
-        figs.img = new Image(); figs.img.src = figs.url;
-        alphabets.img = new Image(); alphabets.img.src = alphabets.url;
-        people.img = new Image(); people.img.src = people.url;
-        
-        spriteImgArray.push(students);
-        spriteImgArray.push(figs);
-        spriteImgArray.push(alphabets);
-        spriteImgArray.push(people);
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     
-    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,extra.bgImg);
+    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
   }
   interval = setInterval(gameLoop,20);
 }
