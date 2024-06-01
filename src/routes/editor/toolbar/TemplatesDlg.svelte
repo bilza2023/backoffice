@@ -11,8 +11,7 @@ export let addTemplate;
     <NavBtn2 title='test' icon={Icons.TEMPLATE }  clk={()=>addTemplate('test')} />            
     <NavBtn2 title='jt1' icon={Icons.TEMPLATE }  clk={()=>addTemplate('jt1')} />            
     <NavBtn2 title='rnl' icon={Icons.TEMPLATE }  clk={()=>addTemplate('rnl')} />            
-    <!-- <NavBtn2 title='Grid' icon={Icons.CHARTUP } clk={()=>addNew('grid')} /> -->
-    <!-- <NavBtn2 title='Canvas' icon={Icons.TV }  clk={()=>addNew('canvas')} /> -->
-    <!-- <NavBtn2 title='TblStr' icon={Icons.RULER } clk={()=>addNew('TblStr')} /> -->
-
+    <NavBtn2 title='imgW4lbl' icon={Icons.TEMPLATE }  clk={()=>addTemplate('imgW4lbl')} />            
+    <NavBtn2 title='imgW2lbl' icon={Icons.TEMPLATE }  clk={()=>addTemplate('imgW2lbl')} />            
+ 
 </div>        

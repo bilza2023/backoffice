@@ -1,15 +1,22 @@
 
 //@ts-nocheck
-import {test} from "./test";
+import {imgW4lbl} from "./imgW4lbl";
+import {imgW2lbl} from "./imgW2lbl";
 import {jt1} from "./jt1";
 import {rnl} from "./rnl";
 
 export default function getTemplateItemsNextra(template_name){
 let ret = null;
-    if(template_name == "test"){
+    if(template_name == "imgW4lbl"){
     return {
-        "items" : test.items,
-        "extra" : test.extra,
+        "items" : imgW4lbl.items,
+        "extra" : imgW4lbl.extra,
+    }
+    }
+    if(template_name == "imgW2lbl"){
+    return {
+        "items" : imgW2lbl.items,
+        "extra" : imgW2lbl.extra,
     }
     }
     if(template_name == "jt1"){
