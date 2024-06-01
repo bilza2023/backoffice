@@ -116,6 +116,8 @@ import TrTf from "./TrTf.svelte";
                     <option value="systemImages/gray-marble.jpg">gray-marble</option>
                     <option value="systemImages/brown-stone.jpg">brown-stone</option>
                     <option value="systemImages/gray-stone.jpg">gray-stone</option>
+                    <option value="systemImages/design-old.jpg">design-old</option>
+                    <option value="systemImages/blue-waves.jpg">blue-waves</option>
                 </select>
             </td>
         </tr>
