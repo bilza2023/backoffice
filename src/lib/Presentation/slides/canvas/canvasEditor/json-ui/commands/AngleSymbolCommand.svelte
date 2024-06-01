@@ -46,19 +46,15 @@ import TrTf from "./TrTf.svelte";
             </td>
         </tr>
 
-        <!-- <TrNo title="End Angle" bind:itemFiled={item.endAngle}/> -->
-        <!-- <TrTf title="Fill" bind:itemFiled={item.fill}/> -->
         
-        <TrNo title="X" bind:itemFiled={item.x}/>
-        <TrNo title="Y" bind:itemFiled={item.y}/>
-        
-        <TrNo title="Radius" bind:itemFiled={item.radius}/>
-        <TrNo title="Ticks" bind:itemFiled={item.ticks}/>
-        
-        <TrNo title="Start Angle" bind:itemFiled={item.startAngle}/>
-        <TrNo title="End Angle" bind:itemFiled={item.endAngle}/>
-        <TrNo title="Line Width" bind:itemFiled={item.lineWidth}/>
-        <TrTf title="Show Origin" bind:itemFiled={item.showOrigin}/>
+        <TrNo title="X"             bind:itemFiled={item.x}/>
+        <TrNo title="Y"             bind:itemFiled={item.y}/>
+        <TrNo title="Radius"        bind:itemFiled={item.radius}/>
+        <TrNo title="Ticks"         bind:itemFiled={item.ticks}/>
+        <TrNo title="Start Angle"   bind:itemFiled={item.startAngle}/>
+        <TrNo title="End Angle"     bind:itemFiled={item.endAngle}/>
+        <TrNo title="Line Width"    bind:itemFiled={item.lineWidth}/>
+        <TrTf title="Show Origin"   bind:itemFiled={item.showOrigin}/>
         
 
         <CommonCommands  bind:item={item}/>

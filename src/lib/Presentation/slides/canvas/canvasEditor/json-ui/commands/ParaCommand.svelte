@@ -5,6 +5,7 @@ import TrNo from "./TrNo.svelte";
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
+import TrTextArea from "./TrTextArea.svelte";   
     export let item;
     function randNo(length=8){
     const digits = '0123456789';
@@ -21,13 +22,13 @@ import TrTf from "./TrTf.svelte";
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <TrText title="Text" itemFiled={item.text} />
-        <TrNo title="X" itemFiled={item.x} />
-        <TrNo title="Y" itemFiled={item.y} />
-        <TrText title="Font" itemFiled={item.font} />
+        <TrTextArea title="Text"        bind:itemFiled={item.text} />
+        <TrNo title="X"             bind:itemFiled={item.x} />
+        <TrNo title="Y"             bind:itemFiled={item.y} />
+        <TrText title="Font"        bind:itemFiled={item.font} />
         
-        <TrNo title="lineHeightOffset" itemFiled={item.lineHeightOffset} />
-        <TrNo title="xOffset" itemFiled={item.xOffset} />
+        <TrNo title="lineHeightOffset" bind:itemFiled={item.lineHeightOffset} />
+        <TrNo title="xOffset" bind:itemFiled={item.xOffset} />
       
         
 <CommonCommands  bind:item={item}/>

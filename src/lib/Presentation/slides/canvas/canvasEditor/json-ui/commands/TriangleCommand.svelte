@@ -10,14 +10,14 @@ import TrTf from "./TrTf.svelte";
 
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
-            <TrTf title="filled" itemFiled={item.filled} />
-            <TrNo title="X1" itemFiled={item.x1} />
-            <TrNo title="Y1" itemFiled={item.y1} />
-            <TrNo title="X2" itemFiled={item.x2} />
-            <TrNo title="Y2" itemFiled={item.y2} />
-            <TrNo title="X3" itemFiled={item.x3} />
-            <TrNo title="Y3" itemFiled={item.y3} />
-            <TrNo title="lineWidth" itemFiled={item.lineWidth} />
+            <TrTf title="filled"    bind:itemFiled={item.filled} />
+            <TrNo title="X1"        bind:itemFiled={item.x1} />
+            <TrNo title="Y1"        bind:itemFiled={item.y1} />
+            <TrNo title="X2"        bind:itemFiled={item.x2} />
+            <TrNo title="Y2"        bind:itemFiled={item.y2} />
+            <TrNo title="X3"        bind:itemFiled={item.x3} />
+            <TrNo title="Y3"        bind:itemFiled={item.y3} />
+            <TrNo title="lineWidth" bind:itemFiled={item.lineWidth} />
   
         
 <CommonCommands  bind:item={item}/>

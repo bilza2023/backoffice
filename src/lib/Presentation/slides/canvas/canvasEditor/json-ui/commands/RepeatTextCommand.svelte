@@ -55,12 +55,12 @@ function applyTemplate(event) {
             </td>
         </tr>
         
-        <TrText title="Text Array" itemFiled={item.textArray} />
-        <TrNo title="initialX" itemFiled={item.initialX} />
-        <TrNo title="initialY" itemFiled={item.initialY} />
-        <TrNo title="xFactor" itemFiled={item.xFactor} />
-        <TrNo title="yFactor" itemFiled={item.yFactor} />
-        <TrText title="font" itemFiled={item.font} />
+        <TrText title="Text Array"  bind:itemFiled={item.textArray} />
+        <TrNo title="initialX"      bind:itemFiled={item.initialX} />
+        <TrNo title="initialY"      bind:itemFiled={item.initialY} />
+        <TrNo title="xFactor"       bind:itemFiled={item.xFactor} />
+        <TrNo title="yFactor"       bind:itemFiled={item.yFactor} />
+        <TrText title="font"        bind:itemFiled={item.font} />
         
         
 <CommonCommands  bind:item={item}/>

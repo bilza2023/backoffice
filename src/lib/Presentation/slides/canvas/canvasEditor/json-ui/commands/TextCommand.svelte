@@ -89,10 +89,10 @@ import TrTf from "./TrTf.svelte";
 <UTFDD {action}/>
             </td>
         </tr>
-        <TrText title="text" itemFiled={item.text} />  
-        <TrNo title="x" itemFiled={item.x} />  
-        <TrNo title="y" itemFiled={item.y} />  
-        <TrText title="font" itemFiled={item.font} />  
+        <TrText title="text" bind:itemFiled={item.text} />  
+        <TrNo title="x" bind:itemFiled={item.x} />  
+        <TrNo title="y" bind:itemFiled={item.y} />  
+        <TrText title="font" bind:itemFiled={item.font} />  
        
         
         

@@ -110,9 +110,9 @@ import TrTf from "./TrTf.svelte";
         </td>
         </tr>
 
-        <TrNo title="x" itemFiled={item.dx} />
-        <TrNo title="y" itemFiled={item.dy} />
-        <TrNo title="wFactor" itemFiled={item.wFactor} />
+        <TrNo title="x"         bind:itemFiled={item.dx} />
+        <TrNo title="y"         bind:itemFiled={item.dy} />
+        <TrNo title="wFactor"   bind:itemFiled={item.wFactor} />
         
         <tr>
             <td class="border border-white p-1">H-Factor</td>

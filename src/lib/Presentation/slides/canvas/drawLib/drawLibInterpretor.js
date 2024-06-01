@@ -179,9 +179,9 @@ export default class DrawLibInterpretor {
                     break;
                 case 'ray':
                     if (!item.translate || item.translate==false ){
-                    this.drawLib.ray(item.x0, item.y0, item.x1, item.y1, item.lineColor, item.lineWidth, item.arrowWidth, item.arrowHeight, item.startArrow, item.endArrow,item.dash,item.gap);
+                    this.drawLib.ray(item.x0, item.y0, item.x1, item.y1, item.color, item.lineWidth, item.arrowWidth, item.arrowHeight, item.startArrow, item.endArrow,item.dash,item.gap);
                     }else{
-                    this.drawLib.ray(this.addXfactor(this.getX(item.x0)), this.getY(item.y0), this.addXfactor(this.getX(item.x1)), this.getY(item.y1), item.lineColor, item.lineWidth, item.arrowWidth, item.arrowHeight, item.startArrow, item.endArrow,item.dash,item.gap);     
+                    this.drawLib.ray(this.addXfactor(this.getX(item.x0)), this.getY(item.y0), this.addXfactor(this.getX(item.x1)), this.getY(item.y1), item.color, item.lineWidth, item.arrowWidth, item.arrowHeight, item.startArrow, item.endArrow,item.dash,item.gap);     
                     }
                     break;
 

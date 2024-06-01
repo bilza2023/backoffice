@@ -13,7 +13,7 @@ import TrTf from "./TrTf.svelte";
         <!-- <TrNo title="End Angle" bind:itemFiled={item.endAngle}/> -->
         <TrNo title="X" bind:itemFiled={item.x}/>
         <TrNo title="Y" bind:itemFiled={item.y}/>
-        <TrNo title="Label" bind:itemFiled={item.label}/>
+        <TrText title="Label" bind:itemFiled={item.label}/>
         <TrNo title="Dot Width" bind:itemFiled={item.dot_width}/>
         <TrColor title="Text Color" bind:itemFiled={item.text_color}/>
         <TrNo title="Text Size" bind:itemFiled={item.text_size}/>
