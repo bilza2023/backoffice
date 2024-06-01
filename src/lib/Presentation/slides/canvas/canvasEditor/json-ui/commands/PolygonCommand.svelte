@@ -1,74 +1,21 @@
 <script>
     //@ts-nocheck
+    import CommonCommands from "./CommonCommands.svelte";   
+import TrNo from "./TrNo.svelte";   
+import TrText from "./TrText.svelte";   
+import TrColor from "./TrColor.svelte";   
+import TrTf from "./TrTf.svelte";   
     export let item;
 </script>
 
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
-        <tr>
-            <td class="border border-white p-1">Name</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.name} class="bg-gray-900 text-white p-1" >
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Translate</td>
-            <td class="border border-white p-1">
-                <input type="checkbox" bind:checked={item.translate} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Points</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.points} class="bg-gray-900 text-white p-1" >
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Color</td>
-            <td class="border border-white p-1">
-                <input type="color" bind:value={item.color} class="bg-gray-900 text-white p-1" placeholder="Color">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Filled</td>
-            <td class="border border-white p-1">
-                <input type="checkbox" bind:checked={item.filled} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Dash</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.dash} class="bg-gray-900 text-white p-1" placeholder="Dash">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Gap</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.gap} class="bg-gray-900 text-white p-1" placeholder="Gap">
-            </td>
-        </tr>
-        
-        <tr>
-            <td class="border border-white p-1">Line Width</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.lineWidth} class="bg-gray-900 text-white p-1" placeholder="Gap">
-            </td>
-        </tr>
-<!-- show at and hide at -->
-<tr>
-    <td class="border border-white p-1">Show/Hide</td>
-    <td class="border border-white p-1">
-        <input type="checkbox" bind:checked={item.useShowHide} class="bg-gray-900 text-white p-1">
-    </td>
-</tr>
-<tr>
-    <td class="border border-white p-1">Show At</td>
-    <td class="border border-white p-1">
-        <input type="number" bind:value={item.showAt} class="bg-gray-900 text-white p-1" >
-    </td>
-</tr>
+           <!-- <TrNo title="lineWidth" itemFiled={item.lineWidth} /> -->
+           <TrText title="points" itemFiled={item.points} />
+           <TrTf title="filled" itemFiled={item.filled} />
+           <TrNo title="lineWidth" itemFiled={item.lineWidth} />
 
-<!-- show at and hide at -->
-        
-    </table>
+<CommonCommands  bind:item={item}/>    
+
+</table>
 </div>

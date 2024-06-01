@@ -1,5 +1,10 @@
 <script>
 //@ts-nocheck
+import CommonCommands from "./CommonCommands.svelte";   
+import TrNo from "./TrNo.svelte";   
+import TrText from "./TrText.svelte";   
+import TrColor from "./TrColor.svelte";   
+import TrTf from "./TrTf.svelte";   
 export let item;
 
 function applyTemplate(event) {
@@ -38,6 +43,7 @@ function applyTemplate(event) {
 
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
+
         <tr>
             <td class="border border-white p-1">Templates</td>
             <td class="border border-white p-1">
@@ -48,76 +54,16 @@ function applyTemplate(event) {
                 </select>
             </td>
         </tr>
-        <tr>
-            <td class="border border-white p-1">Name</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.name} class="bg-gray-900 text-white p-1" >
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Translate</td>
-            <td class="border border-white p-1">
-                <input type="checkbox" bind:checked={item.translate} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
         
-        <tr>
-            <td class="border border-white p-1">Text Array</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.textArray} class="bg-gray-900 text-white p-1" placeholder="Text Array">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Initial X</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.initialX} class="bg-gray-900 text-white p-1" placeholder="Initial X">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Initial Y</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.initialY} class="bg-gray-900 text-white p-1" placeholder="Initial Y">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">X Factor</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.xFactor} class="bg-gray-900 text-white p-1" placeholder="X Factor">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Y Factor</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.yFactor} class="bg-gray-900 text-white p-1" placeholder="Y Factor">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Color</td>
-            <td class="border border-white p-1">
-                <input type="color" bind:value={item.color} class="bg-gray-900 text-white p-1" placeholder="Color">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Font</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.font} class="bg-gray-900 text-white p-1" placeholder="Font">
-            </td>
-        </tr>
-<!-- show at and hide at -->
-<tr>
-    <td class="border border-white p-1">Show/Hide</td>
-    <td class="border border-white p-1">
-        <input type="checkbox" bind:checked={item.useShowHide} class="bg-gray-900 text-white p-1">
-    </td>
-</tr>
-<tr>
-    <td class="border border-white p-1">Show At</td>
-    <td class="border border-white p-1">
-        <input type="number" bind:value={item.showAt} class="bg-gray-900 text-white p-1" >
-    </td>
-</tr>
+        <TrText title="Text Array" itemFiled={item.textArray} />
+        <TrNo title="initialX" itemFiled={item.initialX} />
+        <TrNo title="initialY" itemFiled={item.initialY} />
+        <TrNo title="xFactor" itemFiled={item.xFactor} />
+        <TrNo title="yFactor" itemFiled={item.yFactor} />
+        <TrText title="font" itemFiled={item.font} />
+        
+        
+<CommonCommands  bind:item={item}/>
 
-<!-- show at and hide at -->
-
-    </table>
+</table>
 </div>

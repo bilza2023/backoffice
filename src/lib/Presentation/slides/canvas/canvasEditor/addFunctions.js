@@ -33,9 +33,17 @@ function addReqExtraFields(obj,command,color){
   //hide at is used when it is larger than showAt. for other use cases use other variables.e.g use "visibility for blinking"
   obj.hideAt = 0;
   obj.showAt = 0;
-  
   obj.visibility = 0;
   obj.globalAlpha = 1;
+
+  obj.gap= 0;
+  obj.dash= 0;
+
+  obj.shadowOffsetX = 0;
+  obj.shadowOffsetY = 0;
+  obj.shadowColor = "gray";
+  obj.shadowBlur = 0;
+  // === TOTAL 14 attrib 3Xsystem (name,command,translate) 1xcolor 4xvisibiity etc 2xdash-gap 4x shadow 
   return obj;
 }
 //////////////////////////////////
@@ -52,10 +60,8 @@ function addReqExtraFields(obj,command,color){
     "startAngle": 0,
     "endAngle": 360,
     "lineWidth": 1,
-    "color": "red",
     "fill": false,
-        "dash": 0,
-        "gap": 0,
+       
     };
 
     addNewItem(addReqExtraFields(obj,"ellipse","red"),items);
@@ -67,11 +73,8 @@ function addReqExtraFields(obj,command,color){
       "radius": 100,
       "startAngle": 0 ,
       "endAngle": 360 ,
-      "color": "red",
       "fill": false,
       "lineWidth": 1,
-      "dash": 0,
-      "gap": 0,
       };
     addNewItem(addReqExtraFields(obj,"circle","red"),items);
   }
@@ -86,8 +89,6 @@ function addReqExtraFields(obj,command,color){
           "y2": 10,
           "lineWidth": 1,
           "showHandle" : false,
-          "dash": 0,
-          "gap": 0,
           };
     addNewItem(addReqExtraFields(obj,"bezier","red"),items);      
     
@@ -100,8 +101,6 @@ function addReqExtraFields(obj,command,color){
           "height": 100,
           "filled": false,
           "lineWidth": 1,
-          "dash": 0,
-          "gap": 0,
           };
           addNewItem(addReqExtraFields(obj,"rect","red"),items); 
   }
@@ -150,8 +149,6 @@ function addReqExtraFields(obj,command,color){
       "points": [100,100,150,200,10,100],
               "filled": false,
               "lineWidth": 1,
-              "dash": 0,
-              "gap": 0
     };
     addNewItem(addReqExtraFields(obj,"polygon","red"),items); 
   }
@@ -165,8 +162,6 @@ function addReqExtraFields(obj,command,color){
               "y3": 10,
               "lineWidth": 2,
               "filled": false,
-              "dash": 0,
-              "gap": 0,
     };
     addNewItem(addReqExtraFields(obj,"triangle","red"),items); 
   }
@@ -176,8 +171,6 @@ function addReqExtraFields(obj,command,color){
               "y": 3,
               "arr": "2,0,0,-1,3,2,-3,2,0,-1,-2,0,0,-2",
               "lineWidth": 1,
-              "dash": 0,
-              "gap": 0,
     };
     addNewItem(addReqExtraFields(obj,"lines","yellow"),items); 
   }
@@ -188,8 +181,6 @@ function addReqExtraFields(obj,command,color){
               "x2": 8,
               "y2": 8,
               "lineWidth": 2,              
-              "dash": 0,
-              "gap": 0,
     };
     addNewItem(addReqExtraFields(obj,"line","red"),items); 
   }
@@ -205,8 +196,6 @@ function addReqExtraFields(obj,command,color){
               "arrowHeight": 12,
               "startArrow": true,
               "endArrow": true,
-              "dash": 0,
-              "gap": 0,
     };
     addNewItem(addReqExtraFields(obj,"ray","yellow"),items); 
   }
@@ -239,12 +228,8 @@ function addReqExtraFields(obj,command,color){
       "x": 4,
       "y": 4,
       "font": "20px Arial",
-     "shadowOffsetX" : 0,
-     "shadowOffsetY" : 0,
      "lineHeightOffset" : 0,
      "xOffset"        : 0,
-     "shadowColor" : "gray",
-     "shadowBlur" : 0
   };
   addNewItem(addReqExtraFields(obj,"para","red"),items); 
   }
@@ -254,10 +239,6 @@ function addReqExtraFields(obj,command,color){
       "x": 4,
       "y": 4,
       "font": "20px Arial",
-     "shadowOffsetX" : 0,
-     "shadowOffsetY" : 0,
-     "shadowColor" : "gray",
-     "shadowBlur" : 0
     };
   addNewItem(addReqExtraFields(obj,"text","black"),items); 
   }
@@ -271,10 +252,6 @@ function addReqExtraFields(obj,command,color){
       "dy": 0,
       "wFactor" : 1,
       "hFactor" : 1,
-     "shadowOffsetX" : 0,
-     "shadowOffsetY" : 0,
-     "shadowColor" : "gray",
-     "shadowBlur" : 0
     };
   addNewItem(addReqExtraFields(obj,"sprite","red"),items); 
   }

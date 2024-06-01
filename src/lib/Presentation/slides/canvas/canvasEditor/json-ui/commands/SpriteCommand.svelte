@@ -1,5 +1,10 @@
 <script>
     //@ts-nocheck
+    import CommonCommands from "./CommonCommands.svelte";   
+import TrNo from "./TrNo.svelte";   
+import TrText from "./TrText.svelte";   
+import TrColor from "./TrColor.svelte";   
+import TrTf from "./TrTf.svelte";   
     import addUTFIcon from "./addUTFIcon";
     import UTFDD from "./UTFDD.svelte";
     import SheetItemsDd from "../../../sprite/SheetItemsDD.svelte";
@@ -105,37 +110,10 @@
         </td>
         </tr>
 
-        <tr>
-            <td class="border border-white p-1">Name</td>
-            <td class="border border-white p-1">
-                <input type="text" bind:value={item.name} class="bg-gray-900 text-white p-1" >
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">Translate</td>
-            <td class="border border-white p-1">
-                <input type="checkbox" bind:checked={item.translate} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
+        <TrNo title="x" itemFiled={item.dx} />
+        <TrNo title="y" itemFiled={item.dy} />
+        <TrNo title="wFactor" itemFiled={item.wFactor} />
         
-        <tr>
-            <td class="border border-white p-1">DX</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.dx} class="bg-gray-900 text-white p-1" placeholder="X">
-            </td>
-        </tr>
-        <tr>
-            <td class="border border-white p-1">DY</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.dy} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
-                <tr>
-            <td class="border border-white p-1">W-Factor</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.wFactor} class="bg-gray-900 text-white p-1"  min=0 max=10 step="0.1">
-            </td>
-        </tr>
         <tr>
             <td class="border border-white p-1">H-Factor</td>
             <td class="border border-white p-1">
@@ -143,22 +121,7 @@
             </td>
         </tr>
        
-        <tr>
-            <td class="border border-white p-1">globalAlpha</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.globalAlpha} class="bg-gray-900 text-white p-1" min="0" max="1" step="0.1">
-            </td>
-        </tr>
-
-<tr>
-    <td class="border border-white p-1">Show At</td>
-    <td class="border border-white p-1">
-        <input type="number" bind:value={item.showAt} class="bg-gray-900 text-white p-1" >
-    </td>
-</tr>
-
-<!-- show at and hide at -->
-
+<CommonCommands  bind:item={item}/>
     </table>
 </div>
 

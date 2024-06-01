@@ -1,6 +1,11 @@
 <script>
     //@ts-nocheck
     import {Icons} from '$lib/util';
+    import CommonCommands from "./CommonCommands.svelte";   
+import TrNo from "./TrNo.svelte";   
+import TrText from "./TrText.svelte";   
+import TrColor from "./TrColor.svelte";   
+import TrTf from "./TrTf.svelte";   
     //--this is canvas main data this does not have item it has extra slide.extra (not silde.slideExtra)
     export let extra;
 
