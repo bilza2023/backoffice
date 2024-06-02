@@ -24,6 +24,7 @@
     export let setPulse = () => {};
     export let displayMode = true;
       
+    let ready = false;
 onMount(async()=>{
     // debugger;
     students.img = new Image(); students.img.src = students.url;
@@ -36,55 +37,56 @@ onMount(async()=>{
     spriteImgArray.push(alphabets);
     spriteImgArray.push(people);
     //////////////////////////////////////
-const paper01 = new Image(); paper01.src = "systemImages/paper01.jpg";
-bgImages.push({"name" : "systemImages/paper01.jpg" , "img" : paper01});
+const P = 'system_images/bg_images/';    
 
-const drywall = new Image(); drywall.src = "systemImages/drywall.jpg";
-bgImages.push({"name" : "systemImages/drywall.jpg" , "img" : drywall});
+const paper01 = new Image(); paper01.src = P + "paper01.jpg";
+bgImages.push({"name" : P + "paper01.jpg" , "img" : paper01});
 
-const black_board = new Image(); black_board.src = "systemImages/black_board.jpg";
-bgImages.push({"name" : "systemImages/black_board.jpg" , "img" : black_board});
+const drywall = new Image(); drywall.src = P + "drywall.jpg";
+bgImages.push({"name" : P + "drywall.jpg" , "img" : drywall});
 
-const black_board_mat = new Image(); black_board_mat.src = "systemImages/black_board_mat.jpg";
-bgImages.push({"name" : "systemImages/black_board_mat.jpg" , "img" : black_board_mat});
+const black_board = new Image(); black_board.src = P + "black_board.jpg";
+bgImages.push({"name" : P + "black_board.jpg" , "img" : black_board});
 
-const wood = new Image(); wood.src = "systemImages/wood.jpg";
-bgImages.push({"name" : "systemImages/wood.jpg" , "img" : wood});
+const black_board_mat = new Image(); black_board_mat.src = P + "black_board_mat.jpg";
+bgImages.push({"name" : P + "black_board_mat.jpg" , "img" : black_board_mat});
 
-const tinted = new Image(); tinted.src = "systemImages/tinted.jpg";
-bgImages.push({"name" : "systemImages/tinted.jpg" , "img" : tinted});
+const wood = new Image(); wood.src = P + "wood.jpg";
+bgImages.push({"name" : P + "wood.jpg" , "img" : wood});
 
-const black_mat = new Image(); black_mat.src = "systemImages/black_mat.jpg";
-bgImages.push({"name" : "systemImages/black_mat.jpg" , "img" : black_mat});
+const tinted = new Image(); tinted.src = P + "tinted.jpg";
+bgImages.push({"name" : P + "tinted.jpg" , "img" : tinted});
 
-const white_mat = new Image(); white_mat.src = "systemImages/white_mat.jpg";
-bgImages.push({"name" : "systemImages/white_mat.jpg" , "img" : white_mat});
+const black_mat = new Image(); black_mat.src = P + "black_mat.jpg";
+bgImages.push({"name" : P + "black_mat.jpg" , "img" : black_mat});
 
+const white_mat = new Image(); white_mat.src = P + "white_mat.jpg";
+bgImages.push({"name" : P + "white_mat.jpg" , "img" : white_mat});
 
-const granite = new Image(); granite.src = "systemImages/granite.jpg";
-bgImages.push({"name" : "systemImages/granite.jpg" , "img" : granite});
+const granite = new Image(); granite.src = P + "granite.jpg";
+bgImages.push({"name" : P + "granite.jpg" , "img" : granite});
 
+const gray_marble = new Image(); gray_marble.src = P + "gray_marble.jpg";
+bgImages.push({"name" : P + "gray_marble.jpg" , "img" : gray_marble});
 
-const gray_marble = new Image(); gray_marble.src = "systemImages/gray_marble.jpg";
-bgImages.push({"name" : "systemImages/gray_marble.jpg" , "img" : gray_marble});
-
-
-const brown_stone = new Image(); brown_stone.src = "systemImages/brown_stone.jpg";
-bgImages.push({"name" : "systemImages/brown_stone.jpg" , "img" : brown_stone});
-
-const gray_stone = new Image(); gray_stone.src = "systemImages/gray_stone.jpg";
-bgImages.push({"name" : "systemImages/gray_stone.jpg" , "img" : gray_stone});
-
-const design_old = new Image(); design_old.src = "systemImages/design_old.jpg";
-bgImages.push({"name" : "systemImages/design_old.jpg" , "img" : design_old});
-
-const blue_waves = new Image(); blue_waves.src = "systemImages/blue_waves.jpg";
-bgImages.push({"name" : "systemImages/blue_waves.jpg" , "img" : blue_waves});
+const brown_stone = new Image(); brown_stone.src = P + "brown_stone.jpg";
+bgImages.push({"name" : P + "brown_stone.jpg" , "img" : brown_stone});
 
 
+const gray_stone = new Image(); gray_stone.src = P + "gray_stone.jpg";
+bgImages.push({"name" : P + "gray_stone.jpg" , "img" : gray_stone});
+
+const design_old = new Image(); design_old.src = P + "design_old.jpg";
+bgImages.push({"name" : P + "design_old.jpg" , "img" : design_old});
+
+const blue_waves = new Image(); blue_waves.src = P + "blue_waves.jpg";
+bgImages.push({"name" : P + "blue_waves.jpg" , "img" : blue_waves});
+
+
+ready = true;
 }) ;  
 </script>
-
+<!-- <a href="system_images/bg_images/white_mat.jpg">ss</a> -->
 <!-- TblStr -->
 {#if currentSlide.type == "TblStr"}
     {#if displayMode}
@@ -145,6 +147,7 @@ bgImages.push({"name" : "systemImages/blue_waves.jpg" , "img" : blue_waves});
 {/if}
 
 <!-- CanvasEditor -->
+{#if ready}
 {#if currentSlide.type == "canvas"}
     {#if displayMode }
         <CanvasPlayer
@@ -166,4 +169,5 @@ bgImages.push({"name" : "systemImages/blue_waves.jpg" , "img" : blue_waves});
             {bgImages}
         />
     {/if}
+{/if}
 {/if}

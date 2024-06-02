@@ -547,6 +547,7 @@ sprite(sprite,item) {
 }
 
 bgImage(image) {
+    
         this.ctx.drawImage(image, 0, 0, this.canvas.width, this.canvas.height);
 }
         

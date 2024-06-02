@@ -105,20 +105,20 @@ import TrTf from "./TrTf.svelte";
                 <select  class="bg-gray-900 text-white p-1" bind:value={extra.bgImg} >
                     <!-- do not change the sequence since it is based on index of array -->
                     <option value="null">None</option>
-                    <option value="systemImages/paper01.jpg">paper01</option>
-                    <option value="systemImages/drywall.jpg">drywall</option>
-                    <option value="systemImages/black_board.jpg">black-board</option>
-                    <option value="systemImages/black_board_mat.jpg">black-board-mat</option>
-                    <option value="systemImages/wood.jpg">wood</option>
-                    <option value="systemImages/tinted.jpg">tinted</option>
-                    <option value="systemImages/black_mat.jpg">Black-Mat</option>
-                    <option value="systemImages/white_mat.jpg">White-Mat</option>
-                    <option value="systemImages/granite.jpg">granite</option>
-                    <option value="systemImages/gray_marble.jpg">gray-marble</option>
-                    <option value="systemImages/brown_stone.jpg">brown-stone</option>
-                    <option value="systemImages/gray_stone.jpg">gray-stone</option>
-                    <option value="systemImages/design_old.jpg">design-old</option>
-                    <option value="systemImages/blue_waves.jpg">blue-waves</option>
+                    <option value="system_images/bg_images/paper01.jpg">paper01</option>
+                    <option value="system_images/bg_images/drywall.jpg">drywall</option>
+                    <option value="system_images/bg_images/black_board.jpg">black-board</option>
+                    <option value="system_images/bg_images/black_board_mat.jpg">black-board-mat</option>
+                    <option value="system_images/bg_images/wood.jpg">wood</option>
+                    <option value="system_images/bg_images/tinted.jpg">tinted</option>
+                    <option value="system_images/bg_images/black_mat.jpg">Black-Mat</option>
+                    <option value="system_images/bg_images/white_mat.jpg">White-Mat</option>
+                    <option value="system_images/bg_images/granite.jpg">granite</option>
+                    <option value="system_images/bg_images/gray_marble.jpg">gray-marble</option>
+                    <option value="system_images/bg_images/brown_stone.jpg">brown-stone</option>
+                    <option value="system_images/bg_images/gray_stone.jpg">gray-stone</option>
+                    <option value="system_images/bg_images/design_old.jpg">design-old</option>
+                    <option value="system_images/bg_images/blue_waves.jpg">blue-waves</option>
                 </select>
             </td>
         </tr>
