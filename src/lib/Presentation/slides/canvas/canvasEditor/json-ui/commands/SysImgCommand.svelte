@@ -18,7 +18,12 @@ import TrTf from "./TrTf.svelte";
                     <option value="system_images/gen/wood.jpg">wood.jpg</option>
                     <option value="system_images/gen/black_board.jpg">black_board.jpg</option>
                     <option value="system_images/gen/people.png">people.png</option>
-                    <option value="system_images/gen/test.png">test.png</option>
+                    <option value="system_images/gen/atom.png">atom.png</option>
+                    <option value="system_images/gen/solarsystem.jpg">solarsystem.jpg</option>
+                    <option value="system_images/gen/hydrongen-atom.png">hydrongen-atom.png</option>
+                    <option value="system_images/gen/helium-atom.png">helium-atom.png</option>
+                    <option value="system_images/gen/carbon-atom.png">carbon-atom.png</option>
+                    <option value="system_images/gen/oxygen-atom.png">oxygen-atom.png</option>
                 </select>
             </td>
         </tr>

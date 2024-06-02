@@ -49,6 +49,7 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
     slides = questionData.slides;
   //  soundFile =  `${RESOURCE_URL}/mp3/${tcode}/${questionData.exercise}/${questionData.filename}.mp3`;
   // if (tcode == "fbise9mathOld"){tcode = "fbise9math"}
+  // soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/fbise9english/1/fbise9english_ch_1_ex_1_q_1_n_what_is_an_atom.mp3';
    soundFile =  `${RESOURCE_URL}/mp3/${tcode}/${questionData.exercise}/${questionData.filename}.mp3`;
   fixEndTime(slides); ///check why i need this?
   getStopTime(slides);
