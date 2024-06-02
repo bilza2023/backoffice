@@ -18,6 +18,7 @@ export default class DrawLibInterpretor {
         this.gridLineColor = 'white';
         this.spriteImgArray = spriteImgArray;
         this.bgImages = bgImages;
+        this.systemImagesCache = [];
         
     }
     getX(val){
@@ -82,6 +83,18 @@ export default class DrawLibInterpretor {
 
                 case 'shape':
                     this.drawLib.shape(item.points, item.color, item.closed);
+                    break;
+                case 'sysImage':
+                    // debugger;
+                    // item.name = "system_images/gen/wood.jpg"; 
+                    const image_ret = sysImageExists(this.systemImagesCache,item.src);
+                    if ( image_ret !== null){
+                        this.drawLib.image(image_ret, this.addXfactor(this.getX(item.x)), this.getY(item.y), this.getX(item.width), this.getY(item.height));
+                    }else {
+                        cacheSysImage(this.systemImagesCache,item.src);
+                        // this.drawLib.image(image_ret, 100, 100, 100, 100);
+                    }
+
                     break;
 
                 case 'line':
@@ -284,3 +297,21 @@ export default class DrawLibInterpretor {
 
 
 ///////////////////////////////////
+function sysImageExists(systemImagesCache,systemImageName){
+
+    for (let i = 0; i < systemImagesCache.length; i++) {
+        const element = systemImagesCache[i];
+        if(element.name == systemImageName){
+            return element.img;
+        }
+    }
+return null;    
+}
+
+async function cacheSysImage(systemImagesCache,systemImageName){
+        const i = new Image();
+        i.src= systemImageName;
+        i.onload = () => {
+            systemImagesCache.push({"name" : systemImageName , "img": i});
+        };
+}

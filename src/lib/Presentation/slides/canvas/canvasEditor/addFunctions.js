@@ -24,7 +24,7 @@ function randNo(length=8){
   }
   return result;
 }
-function addReqExtraFields(obj,command,color){
+function addReqExtraFields(obj,command,color="black"){
   obj.translate = true;
   obj.command = command;
   obj.name = command + "_" +randNo();
@@ -242,6 +242,16 @@ function addReqExtraFields(obj,command,color){
     };
   addNewItem(addReqExtraFields(obj,"text","black"),items); 
   }
+  function addSysImage(items){
+    const obj ={
+      "src": "system_images/gen/wood.jpg",
+      "x": 1,
+      "y": 1,
+      "width": 5,
+      "height": 4,
+    };
+  addNewItem(addReqExtraFields(obj,"sysImage"),items); 
+  }
   function addSprite(items){
     // debugger;
     const obj ={
@@ -277,7 +287,8 @@ export {
                 addRepeatText,
                 addPara,
                 addText,
-                addSprite
+                addSprite,
+                addSysImage
  }
 
  ////////////////////////////////////////////////////////////////

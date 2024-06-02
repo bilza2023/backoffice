@@ -3,7 +3,7 @@
     import { Icons } from "$lib/util";   
     import { SmallBtnToolbar } from "$lib/cmp"; 
     export let items;
-    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite} from "./addFunctions";
+    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage} from "./addFunctions";
 
 
 /////////////////////////////////////////
@@ -32,4 +32,5 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" />
     <SmallBtnToolbar clk={()=>addAngleSymbol(items)} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
+    <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" />
 </div>

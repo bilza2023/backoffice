@@ -18,6 +18,7 @@ import { onMount, onDestroy } from "svelte";
     import PolygonCommand from "./commands/PolygonCommand.svelte";
     import AngleSymbolCommand from "./commands/AngleSymbolCommand.svelte";
     import BezierCommand from "./commands/BezierCommand.svelte";
+    import SysImgCommand from "./commands/SysImgCommand.svelte";
 
 ///////////////////////////////////////////////////////   
     export let item;
@@ -98,6 +99,10 @@ import { onMount, onDestroy } from "svelte";
 
     {#if item.extra.command === 'line'}
     <LineCommand bind:item={item.extra} />
+    {/if}
+   
+    {#if item.extra.command === 'sysImage'}
+    <SysImgCommand bind:item={item.extra} />
     {/if}
 
     {/if}
