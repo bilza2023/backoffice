@@ -82,6 +82,9 @@ bgImages.push({"name" : P + "design_old.jpg" , "img" : design_old});
 const blue_waves = new Image(); blue_waves.src = P + "blue_waves.jpg";
 bgImages.push({"name" : P + "blue_waves.jpg" , "img" : blue_waves});
 
+const wall = new Image(); wall.src = P + "wall.jpg";
+bgImages.push({"name" : P + "wall.jpg" , "img" : wall});
+
 
 ready = true;
 }) ;  

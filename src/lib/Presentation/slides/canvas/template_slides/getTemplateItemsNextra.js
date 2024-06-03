@@ -7,9 +7,16 @@ import {jt1} from "./jt1";
 import {rnl} from "./rnl";
 import {h2li} from "./h2li";
 import {h3li} from "./h3li";
+import {jt2} from "./jt2";
 
 export default function getTemplateItemsNextra(template_name){
 let ret = null;
+    if(template_name == "jt2"){
+    return {
+        "items" : jt2.items,
+        "extra" : jt2.extra,
+    }
+    }
     if(template_name == "imgW4lbl"){
     return {
         "items" : imgW4lbl.items,

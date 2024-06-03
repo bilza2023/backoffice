@@ -277,6 +277,7 @@ export const rnl = {
         "xFactor": 0,
         "yFactor": 0,
         "showGrid": true,
+        "bgGlobalAlpha": 1,
         "gridLineWidth": 1,
         "gridLineColor": "#363C34"
     }

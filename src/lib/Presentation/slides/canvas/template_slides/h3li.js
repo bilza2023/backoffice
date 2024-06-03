@@ -225,6 +225,7 @@ export const h3li = {
         "yFactor": 0,
         "showGrid": false,
         "gridLineWidth": 1,
+        "bgGlobalAlpha": 1,
         "gridLineColor": "gray"
     }
 }

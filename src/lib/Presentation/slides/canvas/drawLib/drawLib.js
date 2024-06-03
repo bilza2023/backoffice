@@ -546,10 +546,11 @@ sprite(sprite,item) {
     );
 }
 
-bgImage(image) {
-    
+bgImage(image,bgGlobalAlpha=1) {
+    this.ctx.globalAlpha = bgGlobalAlpha;    
         this.ctx.drawImage(image, 0, 0, this.canvas.width, this.canvas.height);
-}
+        this.ctx.globalAlpha = 1;    
+    }
         
         
 }

@@ -39,7 +39,9 @@ export default class DrawLibInterpretor {
     }
     
     interpret(items,currentTime=0,extra) {
- 
+        //--keep 
+        if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}
+
         // this.drawLib.clear('green'); 
         this.drawLib.clear(extra.backgroundColor);
         // debugger;
@@ -48,7 +50,8 @@ export default class DrawLibInterpretor {
             for (let i = 0; i < this.bgImages.length; i++) {
                 const element = this.bgImages[i];
                 if(element.name == extra.bgImg){
-                    this.drawLib.bgImage(element.img);
+                    // debugger;
+                    this.drawLib.bgImage(element.img,extra.bgGlobalAlpha || 1);
                     break;
                 }
             }

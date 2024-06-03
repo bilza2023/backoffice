@@ -304,6 +304,7 @@ export const imgW4lbl = {
             "xFactor": 0,
             "yFactor": 0,
             "showGrid": false,
+            "bgGlobalAlpha": 1,
             "gridLineWidth": 1,
             "gridLineColor": "#363C34",
             "bgImg": "systemImages/white_mat.jpg"

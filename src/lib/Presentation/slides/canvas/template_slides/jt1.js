@@ -206,6 +206,7 @@ export const jt1 = {
         "cellHeight": 25,
         "cellWidth": 25,
         "xFactor": 0,
+        "bgGlobalAlpha": 1,
         "yFactor": 0,
         "showGrid": false,
         "gridLineWidth": 1,

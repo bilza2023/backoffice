@@ -162,6 +162,7 @@ export const h2li ={
         "xFactor": 0,
         "yFactor": 0,
         "showGrid": false,
+        "bgGlobalAlpha": 1,
         "gridLineWidth": 1,
         "gridLineColor": "gray"
     }

@@ -159,6 +159,7 @@ export const imgW2lbl = {
             "showGrid": false,
             "gridLineWidth": 1,
             "gridLineColor": "#363C34",
+            "bgGlobalAlpha": 1,
             "bgImg": "systemImages/white_mat.jpg"
         }
     }

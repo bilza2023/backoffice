@@ -119,9 +119,18 @@ import TrTf from "./TrTf.svelte";
                     <option value="system_images/bg_images/gray_stone.jpg">gray-stone</option>
                     <option value="system_images/bg_images/design_old.jpg">design-old</option>
                     <option value="system_images/bg_images/blue_waves.jpg">blue-waves</option>
+                    <option value="system_images/bg_images/wall.jpg">wall</option>
                 </select>
             </td>
         </tr>
+
+        <tr>
+            <td class="border border-white p-1">Opacity</td>
+            <td class="border border-white p-1">
+                <input type="number" min="0" max="1" step="0.1" bind:value={extra.bgGlobalAlpha} class="bg-gray-900 text-white p-1">
+            </td>
+        </tr>
+
         <tr>
             <td class="border border-white p-1">Bg Color</td>
             <td class="border border-white p-1">
