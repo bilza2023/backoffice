@@ -8,6 +8,7 @@
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
   import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
+  import {Inspector} from '$lib/Presentation';
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
  let currentSlideIndex;
@@ -165,6 +166,8 @@ onMount(async ()=>{
  if (resp.ok){
    const data = await resp.json();
    item =  data.item;
+   const inspector = new Inspector(item);
+    await inspector.fixSlides();
    slides = item.slides;
    
   filename = item.filename;
