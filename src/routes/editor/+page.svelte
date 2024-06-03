@@ -226,6 +226,7 @@ else {throw new Error('Failed to load');}
       <div class={`p-2 ml-1 min-h-screen text-center ${showSidePanel ? "w-11/12" : "w-full"}`}>
         <Presentation {currentSlide} displayMode={false} currentTime={currentTime} tcode={tcode} />
 
+    
         <br>
         <CommentsBox  bind:comments = {item.teacherComments} />
         <br>

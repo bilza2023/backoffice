@@ -29,6 +29,8 @@ function stop(){
     if (sound){
     isPlaying=false;
     sound.stop();
+    clearInterval(interval);
+    currentTime=0;
     }
 
 }
@@ -75,17 +77,34 @@ async function loadSound() {
     return false;
   }
 } 
-
+function goto(time) {
+  if (sound && time >= 0 && time <= sound.duration()) {
+    sound.seek(time);
+    currentTime = Math.round(time);
+  }
+}
 
 </script>
 
 
-<div class='flex justify-center items-center text-xs'>
+<div class='flex justify-center items-center text-xs bg-green-700 p-1 rounded-md'>
  {#if soundAvailable}
-        <button on:click={play} class="p-1 m-1 bg-green-700">▶</button>
-        <button on:click={pause} class="p-1 m-1 bg-green-700">||</button>
-        <button on:click={stop} class="p-1 m-1 bg-orange-700">◼</button>
-        <div  class="p-1 m-1 bg-orange-700">{currentTime}/{maxSliderValue}</div>
+        <div class="flex flex-col">
+        <div class="flex justify-center bg-red-900 text-white  text-xs ">
+          <div >🎵{currentTime}/{Math.round(sound.duration())}</div>
+        </div>
+              <!-- sound scroller -->
+          <div class="flex w-full">
+            <!-- <button on:click={play} class="p-1 m-1 bg-green-700">▶</button> -->
+            <button on:click={pause} class="p-1 m-1 bg-green-700">▶||</button>
+            <button on:click={stop} class="p-1 m-1 bg-orange-700">◼</button>
+            
+            <input class="w-full" type="range"  min={0} max={sound.duration()}  
+            bind:value={currentTime} on:input={(e) => goto(e.target.value)}/>
+
+            
+          </div>
+        </div>
 {:else}  
       <!-- <h3 class="flex items-center text-xs">sound Not Available</h3> -->
   <div class='text-lg'>

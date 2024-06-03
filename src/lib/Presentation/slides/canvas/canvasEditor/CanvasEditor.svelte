@@ -88,12 +88,14 @@ bind:items={items}
 
 <div class='w-75'> 
   <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages}/>
-    
+   
+  <!-- slider for current slide time -->
     <div class="w-full">
       <span>Seconds:{currentTime}</span>
       <input class="w-full" type="range"  min={startTime} max={endTime}  
       bind:value={currentTime}/>
     </div>
+   
 </div> 
 
 <!-- div for json-ui -->
