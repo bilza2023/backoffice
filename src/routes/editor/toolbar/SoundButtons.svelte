@@ -13,6 +13,7 @@ let interval=null;
 let isPlaying=false;
 
 onMount(async () => {
+  debugger;
 // console.log('soundFile',soundFile);
 loadSound();
 });

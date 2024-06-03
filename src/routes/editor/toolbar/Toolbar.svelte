@@ -80,9 +80,9 @@ function shiftTime(slideIndex, newEndTime) {
        
     <!-- <a href={`player?tcode=${tcode}&id=${id}`}><span class='text-green-300 bg-gray-900 p-1 text-xs rounded-md '>{filename}</span></a> -->
   
-
+{#if soundFile}
 <SoundButtons  {soundFile}  bind:currentTime={currentTime} />    
-
+{/if}
 
 <!-- <NavBtn2 title='Upload Mp3' icon={Icons.SPEAKER}  clk={uploadMp3} /> -->
 <UploadImage  {tcode} />

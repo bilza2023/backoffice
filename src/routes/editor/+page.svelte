@@ -172,7 +172,7 @@ onMount(async ()=>{
    
   filename = item.filename;
   // https://taleem-media.blr1.cdn.digitaloceanspaces.com/mp3/fbise9english/fbise9english_ch_1_ex_1_q_1_n_what_is_an_atom.mp3
-  // debugger;
+    debugger;
   soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
   
   if (slides.length > 0){
