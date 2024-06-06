@@ -163,7 +163,9 @@ onMount(async ()=>{
    filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
    const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
+ 
  if (resp.ok){
+   
    const data = await resp.json();
    item =  data.item;
    const inspector = new Inspector(item);
@@ -172,9 +174,14 @@ onMount(async ()=>{
    
   filename = item.filename;
   // https://taleem-media.blr1.cdn.digitaloceanspaces.com/mp3/fbise9english/fbise9english_ch_1_ex_1_q_1_n_what_is_an_atom.mp3
-    debugger;
-  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';
-  
+    // debugger;
+ if ( item.soundFileType = "mp3"){    
+  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';    
+ }else {
+  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/sound/' + item.filename + '.opus';
+
+
+ }
   if (slides.length > 0){
     currentSlideIndex = 0;
     currentSlide = slides[0]

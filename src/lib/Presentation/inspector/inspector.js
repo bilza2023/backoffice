@@ -9,6 +9,9 @@ export default class Inspector {
 
     constructor(question) {
         this.question = question;
+        //----fix on load
+        if (!this.question.soundFileType)
+        this.question.soundFileType = "mp3";
       }
 
     async fixSlides(){

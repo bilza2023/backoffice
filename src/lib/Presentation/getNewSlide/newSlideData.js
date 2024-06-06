@@ -11,6 +11,7 @@ return {
     endTime:10,
     type, // this is "slideType" , its what is used by Presentation Module
     template:'',
+    soundFileType:'opus',
     items: [], 
     slideExtra:[],
 };

@@ -50,7 +50,16 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
   //  soundFile =  `${RESOURCE_URL}/mp3/${tcode}/${questionData.exercise}/${questionData.filename}.mp3`;
   // if (tcode == "fbise9mathOld"){tcode = "fbise9math"}
   // soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/fbise9english/1/fbise9english_ch_1_ex_1_q_1_n_what_is_an_atom.mp3';
-   soundFile =  `${RESOURCE_URL}/mp3/${tcode}/${questionData.exercise}/${questionData.filename}.mp3`;
+  //  soundFile =  `${RESOURCE_URL}/mp3/${tcode}/${questionData.exercise}/${questionData.filename}.mp3`;
+
+  if ( questionData.soundFileType = "mp3"){    
+  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + questionData.exercise  + '/' + questionData.filename + '.mp3';    
+ }else {
+  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/sound/' + questionData.filename + '.opus';
+ }
+
+
+
   fixEndTime(slides); ///check why i need this?
   getStopTime(slides);
   currentSlide = slides[0];

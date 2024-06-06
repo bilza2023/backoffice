@@ -28,7 +28,7 @@ name = convertToUrlFriendlyName(name);
 }
 const token = localStorage.getItem("token");
 
-const resp = await ajaxPost( `${API_URL}/tcode/create` , { question :{chapter,exercise,questionNo,part,tcode , name}
+const resp = await ajaxPost( `${API_URL}/tcode/create` , { question :{chapter,exercise,questionNo,part,tcode , name, 'soundFileType' : 'opus'}
 });
 
 
