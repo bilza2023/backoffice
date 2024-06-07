@@ -9,7 +9,7 @@ import checkToken from './checkToken';
 import updateStoreArray from './updateStoreArray';
 import checkAdminToken from './checkAdminToken';
 import convertEqsToSlide from './convertEqToSlide.js';
-import { API_URL,RESOURCE_URL } from './config';
+import { API_URL,RESOURCE_URL,SOUND_FILE_PATH } from './config';
 import { isLoginStore,isAdminStore } from './appStore';
 import Icons from './icons';
 import ajaxPost from './ajaxPost';
@@ -38,7 +38,8 @@ import uuid from './uuid';
                     ajaxPost,
                     ajaxPostData,
                     ajaxPostMsg,
-                    ajaxGet
+                    ajaxGet,
+                    SOUND_FILE_PATH
             }
 
 /*<div in:fade={{ delay: 300 }} out:fade={{ delay: 300 }} */

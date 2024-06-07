@@ -47,9 +47,11 @@ export default class DrawLib {
     }
 
  //  rect     
- rect(x, y, width, height, color = 'white', filled = true, dash = 0, gap = 0,lineWidth=1) {
+ rect(x, y, width, height, color = 'white', filled = true, dash = 0, gap = 0,lineWidth=1,globalAlpha=1) {
     this.ctx.save(); // Save the current context state
     this.ctx.lineWidth = lineWidth;
+    this.ctx.globalAlpha = globalAlpha; // Set the global alpha
+
     if (dash === 0 && gap === 0) {
         this.ctx.setLineDash([]); // Set line dash pattern
     } else {

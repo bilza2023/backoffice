@@ -11,7 +11,7 @@ import { Presentation} from '$lib/Presentation';
 import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
 import Toolbar from './toolbar/Toolbar.svelte';
-
+import {SOUND_FILE_PATH} from "$lib/util";
 let  sound;
 let  soundFile=null;
 let  isPlaying=false;
@@ -47,12 +47,8 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
   debugger;
  if (questionData){
     slides = questionData.slides;
- 
-  if ( questionData.soundFileType = "mp3"){    
-  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + questionData.exercise  + '/' + questionData.filename + '.mp3';    
- }else {
-  soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/sound/' + questionData.filename + '.opus';
- }
+    soundFile =  SOUND_FILE_PATH + questionData.filename + '.opus';
+
 
 
 

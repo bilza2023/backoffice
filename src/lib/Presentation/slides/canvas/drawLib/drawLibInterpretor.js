@@ -77,10 +77,11 @@ export default class DrawLibInterpretor {
                     
 
                 case 'rect':
+                    debugger;
                     if (!item.translate || item.translate==false ){
-                    this.drawLib.rect(item.x, item.y, item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth);
+                    this.drawLib.rect(item.x, item.y, item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth,item.globalAlpha);
                     }else {
-                    this.drawLib.rect(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth);
+                    this.drawLib.rect(this.addXfactor(this.getX(item.x)), this.getY(item.y), item.width, item.height, item.color, item.filled,item.dash,item.gap,item.lineWidth ,item.globalAlpha);
                     }
                     break;
 
