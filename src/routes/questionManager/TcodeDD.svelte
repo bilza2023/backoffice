@@ -14,6 +14,9 @@ export let tcode;
     
     
     <option   class='text-sm text-center bg-gray-800 text-white' 
+        value='videoBlog'>videoBlog</option>
+
+        <option   class='text-sm text-center bg-gray-800 text-white' 
         value='fbise9math'>fbise9math</option>
         
     <option   class='text-sm text-center bg-gray-800 text-white' 

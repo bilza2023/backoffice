@@ -45,6 +45,9 @@ onMount(async () => {
 
  <a href={`/syllabus?tcode=fbise10math`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\fbise10math\\images\\thumbnail.png`} alt="fbise10math" /></a>
  
+
+ <a href={`/syllabus?tcode=videoBlog`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\videoBlog\\images\\thumbnail.png`} alt="videoBlog" /></a>
+ 
  <!-- <a href={`/syllabus?tcode=matrices`}> <img class="p-2  border-2 border-white rounded-md" src={`.\\matrices\\images\\thumbnail.png`} alt="matrices" /></a> -->
  
 </div>
