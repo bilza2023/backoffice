@@ -26,7 +26,9 @@
       
     let ready = false;
 onMount(async()=>{
-    // debugger;
+    
+    
+    // Sprite Sheets
     students.img = new Image(); students.img.src = students.url;
     figs.img = new Image(); figs.img.src = figs.url;
     alphabets.img = new Image(); alphabets.img.src = alphabets.url;
@@ -37,7 +39,8 @@ onMount(async()=>{
     spriteImgArray.push(alphabets);
     spriteImgArray.push(people);
     //////////////////////////////////////
-const P = 'system_images/bg_images/';    
+//
+    const P = 'system_images/bg_images/';    
 
 const paper01 = new Image(); paper01.src = P + "paper01.jpg";
 bgImages.push({"name" : P + "paper01.jpg" , "img" : paper01});
