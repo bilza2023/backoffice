@@ -24,9 +24,9 @@ function addTxtCodeImg(textOrCode = "text"){
   if (textOrCode == "text"){
     newItem = { code: "", type: 'text' };
   }
-  if (textOrCode == "img"){
+  if (textOrCode == "image"){
     // debugger;
-    newItem = { code: "", type: 'img' };
+    newItem = { code: "wood", type: 'image' };
   }
   if (textOrCode == "heading"){
     newItem = { code: "", type: 'heading' };
@@ -45,7 +45,7 @@ function addTxtCodeImg(textOrCode = "text"){
 
 <button on:click={()=>addTxtCodeImg("code")} class="bg-yellow-600 text-white p-1 text-xs rounded-md">Code</button>
 
-<button on:click={()=>addTxtCodeImg("img")} class="bg-green-600 text-white p-1 text-xs rounded-md">Image</button>
+<button on:click={()=>addTxtCodeImg("image")} class="bg-green-600 text-white p-1 text-xs rounded-md">Image</button>
 
 <button on:click={()=>addTxtCodeImg("heading")} class="bg-orange-600 text-white p-1 text-xs rounded-md">Heading</button>
 
