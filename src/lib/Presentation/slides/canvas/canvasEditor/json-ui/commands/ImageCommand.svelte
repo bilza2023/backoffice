@@ -6,27 +6,34 @@ import TrText from "./TrText.svelte";
 // import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
     export let item;
+
+async    function srcChanged(){
+// console.log("blur");
+const c = new Image();
+c.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/' + item.src + '.jpg';
+
+c.onload = () => {
+            item.image = c;
+        };
+
+        c.onerror = () => {
+            console.error('Image failed to load');
+            item.image = null;
+        };
+}    
 </script>
  
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <tr>
-            <td class="border border-white p-1">Image</td>
-            <td class="border border-white p-1">
-                <select bind:value={item.src} class="bg-gray-900 text-white p-1">
-                    <option value="system_images/gen/wood.jpg">wood.jpg</option>
-                    <option value="system_images/gen/black_board.jpg">black_board.jpg</option>
-                    <option value="system_images/gen/people.png">people.png</option>
-                    <option value="system_images/gen/atom.png">atom.png</option>
-                    <option value="system_images/gen/solarsystem.jpg">solarsystem.jpg</option>
-                    <option value="system_images/gen/hydrongen-atom.png">hydrongen-atom.png</option>
-                    <option value="system_images/gen/helium-atom.png">helium-atom.png</option>
-                    <option value="system_images/gen/carbon-atom.png">carbon-atom.png</option>
-                    <option value="system_images/gen/oxygen-atom.png">oxygen-atom.png</option>
-                </select>
-            </td>
-        </tr>
+        <!-- https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/ -->
+<tr>
+    <td class="border border-white p-1">src</td>
+    <td class="border border-white p-1">
+        <input type="text" bind:value={item.src} on:blur={srcChanged} class="bg-gray-900 text-white p-1" >
+    </td>
+</tr>
+        <!-- <TrText title="src" bind:itemFiled={item.src}/> -->
         <TrNo title="X" bind:itemFiled={item.x}/>
         <TrNo title="Y" bind:itemFiled={item.y}/>
         <TrNo title="Width" bind:itemFiled={item.width}/>

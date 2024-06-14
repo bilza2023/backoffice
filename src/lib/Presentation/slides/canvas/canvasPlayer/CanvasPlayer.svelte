@@ -10,13 +10,15 @@
     
     let canvas;
     let ctx;
-
     export let extra;
     export let items;
-  
+    export let slideImages;
+
+
 function gameLoop(){
     try {
       if (items){
+
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
@@ -41,10 +43,10 @@ async function init(){
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    
+   
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
+    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages,slideImages);
   }
   interval = setInterval(gameLoop,20);
 }

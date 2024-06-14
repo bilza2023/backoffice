@@ -33,5 +33,5 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addAngleSymbol(items)} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
     <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" />
-    <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="SysImage" />
+    <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
 </div>

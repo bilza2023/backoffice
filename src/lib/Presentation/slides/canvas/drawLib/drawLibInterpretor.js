@@ -3,7 +3,7 @@
 import DrawLib from "./drawLib" 
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
-    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages) {
+    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages,slideImages) {
         this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
         this.drawLib.width = width;
@@ -18,6 +18,7 @@ export default class DrawLibInterpretor {
         this.gridLineColor = 'white';
         this.spriteImgArray = spriteImgArray;
         this.bgImages = bgImages;
+        this.slideImages = slideImages;
         this.systemImagesCache = [];
         
     }
@@ -261,7 +262,13 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
                     break;
                 case 'image':
-                    this.drawLib.image(item.image, item.x, item.y, item.width, item.height);
+                    // debugger;
+                    this.drawLib.image(item.image, 
+                        this.addXfactor(this.getX(item.x)), 
+                        this.getY(item.y),
+                        this.getX(item.width), 
+                        this.getX(item.height)
+                        );
                     break;
                 case 'sprite':
                     try{

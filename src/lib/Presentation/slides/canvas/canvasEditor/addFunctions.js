@@ -252,15 +252,23 @@ function addReqExtraFields(obj,command,color="black"){
     };
   addNewItem(addReqExtraFields(obj,"sysImage"),items); 
   }
-  function addImage(items){
-    const obj ={
-      "src": "wood.jpg",
-      "x": 1,
-      "y": 1,
-      "width": 200,
-      "height": 200,
-    };
-  addNewItem(addReqExtraFields(obj,"image"),items); 
+  
+  async function addImage(items){
+const img = new Image();
+img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
+
+img.onload = () => {
+            const obj ={
+              "src": 'wood',
+              "image": img,
+              "x": 0,
+              "y": 0,
+              "width": 40,
+              "height": 15,
+            };
+          addNewItem(addReqExtraFields(obj,"image"),items);
+        };
+    
   }
   function addSprite(items){
     // debugger;

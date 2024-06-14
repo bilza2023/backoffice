@@ -89,6 +89,9 @@ const wall = new Image(); wall.src = P + "wall.jpg";
 bgImages.push({"name" : P + "wall.jpg" , "img" : wall});
 
 
+
+
+
 ready = true;
 }) ;  
 </script>
