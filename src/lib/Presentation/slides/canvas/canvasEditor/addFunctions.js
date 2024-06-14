@@ -252,6 +252,16 @@ function addReqExtraFields(obj,command,color="black"){
     };
   addNewItem(addReqExtraFields(obj,"sysImage"),items); 
   }
+  function addImage(items){
+    const obj ={
+      "src": "wood.jpg",
+      "x": 1,
+      "y": 1,
+      "width": 200,
+      "height": 200,
+    };
+  addNewItem(addReqExtraFields(obj,"image"),items); 
+  }
   function addSprite(items){
     // debugger;
     const obj ={
@@ -288,7 +298,8 @@ export {
                 addPara,
                 addText,
                 addSprite,
-                addSysImage
+                addSysImage,
+                addImage
  }
 
  ////////////////////////////////////////////////////////////////

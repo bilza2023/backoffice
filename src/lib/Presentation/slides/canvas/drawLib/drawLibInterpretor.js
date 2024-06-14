@@ -260,6 +260,9 @@ export default class DrawLibInterpretor {
                     // debugger;
                     this.drawLib.polygon(item.points, item.color, item.filled,item.lineWidth);
                     break;
+                case 'image':
+                    this.drawLib.image(item.image, item.x, item.y, item.width, item.height);
+                    break;
                 case 'sprite':
                     try{
                             let sprite;
