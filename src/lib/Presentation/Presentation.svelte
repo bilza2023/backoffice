@@ -116,15 +116,16 @@ async function loadImages() {
     const item = currentSlide.items[i];
     if (item.extra.command == 'image') {
       try {
-        const img = await loadImage('https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg');
-        playerImages.push({ image: img, src: img.src });
+        
+        const url = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/'+ item.extra.src +'.jpg';
+        const img = await loadImage( url);
+        playerImages.push({ image: img, src: img.src , id : item._id });
       } catch (err) {
         console.error('Error loading image:', err);
       }
     }
-    console.log("playerImages",playerImages);
+    // console.log("playerImages",playerImages);
   }
-  debugger;
 }
 </script>
 <!-- <a href="system_images/bg_images/white_mat.jpg">ss</a> -->
