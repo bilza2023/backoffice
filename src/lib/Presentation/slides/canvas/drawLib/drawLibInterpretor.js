@@ -3,7 +3,7 @@
 import DrawLib from "./drawLib" 
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
-    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages,slideImages) {
+    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages) {
         this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
         this.drawLib.width = width;
@@ -18,7 +18,6 @@ export default class DrawLibInterpretor {
         this.gridLineColor = 'white';
         this.spriteImgArray = spriteImgArray;
         this.bgImages = bgImages;
-        this.slideImages = slideImages;
         this.systemImagesCache = [];
         
     }
@@ -39,7 +38,7 @@ export default class DrawLibInterpretor {
         this.drawLib.text(txt, x,y,font_color , font);
     }
     
-    interpret(items,currentTime=0,extra) {
+    interpret(items,currentTime=0,extra,playerImages) {
         //--keep 
         if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}
 
@@ -263,7 +262,7 @@ export default class DrawLibInterpretor {
                     break;
                 case 'image':
                     // debugger;
-                    this.drawLib.image(item.image, 
+                    this.drawLib.image(playerImages[0].image, 
                         this.addXfactor(this.getX(item.x)), 
                         this.getY(item.y),
                         this.getX(item.width), 

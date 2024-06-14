@@ -14,6 +14,9 @@
   export let endTime;
   export let spriteImgArray;
   export let bgImages;
+  export let playerImages;
+
+  console.log("playerImages" , playerImages);
 
   let itemIndexInRightBar =0;
   let showCanvasInSdieBar =true;
@@ -60,21 +63,6 @@ let slideImages = [];
       items = [...items];
   }
   
-  function getSlideimages(){
-             slideImages = [];
-           debugger;
-            for (let i = 0; i < items.length; i++) {
-              const item = items[i];
-              if (item.extra.command == 'image'){
-                const img = new Image(); 
-                img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
-                slideImages.push({image:img, src:img.src });
-
-              }
-            }
-
- }
-  
   function redraw(){items = [...items];}
   
   function handlePulseChange(event) {
@@ -100,7 +88,7 @@ bind:items={items}
 <div class='flex justify-between gap-2'>
 
 <div class='w-75'> 
-  <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {slideImages}/>
+  <CanvasPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {playerImages}/>
    
   <!-- slider for current slide time -->
     <div class="w-full">

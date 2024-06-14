@@ -12,8 +12,7 @@
     let ctx;
     export let extra;
     export let items;
-    export let slideImages;
-
+    export let playerImages;
 
 function gameLoop(){
     try {
@@ -26,7 +25,7 @@ function gameLoop(){
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
         // debugger;
-        drawLibInterpretor.interpret(items,currentTime,extra);
+        drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
@@ -36,6 +35,7 @@ function gameLoop(){
    
 }    
 //////////////////////////////////
+
 async function init(){
   if(canvas){
     if(interval){clearInterval(interval);}
@@ -43,10 +43,9 @@ async function init(){
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-   
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages,slideImages);
+    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
   }
   interval = setInterval(gameLoop,20);
 }
