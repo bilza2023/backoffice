@@ -70,11 +70,12 @@ export default class DrawLib {
 }
 
 
-line(x1, y1, x2, y2, color = 'black', lineWidth = 1, dash = 0, gap = 0) {
+line(x1, y1, x2, y2, color = 'black', lineWidth = 1, dash = 0, gap = 0,globalAlpha=1) {
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;
     this.ctx.strokeStyle = color;
+    this.ctx.globalAlpha = globalAlpha;
 
     if (dash === 0 && gap === 0) {
         this.ctx.setLineDash([]); // Set line dash pattern
@@ -90,10 +91,11 @@ line(x1, y1, x2, y2, color = 'black', lineWidth = 1, dash = 0, gap = 0) {
     this.ctx.restore(); // Restore the context state
 }
 
-circle(x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAngle = Math.PI * 2, dash = 0, gap = 0,lineWidth=1) {
+circle(x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAngle = Math.PI * 2, dash = 0, gap = 0,lineWidth=1,globalAlpha=1) {
     // debugger;
     this.ctx.save(); // Save the current context state
     this.ctx.lineWidth = lineWidth;
+    this.ctx.globalAlpha = globalAlpha; 
     this.ctx.beginPath();
     this.ctx.arc(x, y, radius, startingAngle, endingAngle);
 
@@ -115,10 +117,11 @@ circle(x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAng
     this.ctx.restore(); // Restore the context state
 }
 
-ellipse(x, y, radiusX, radiusY, color = 'black', fill = false, rotation = 0, startAngle = 0, endAngle = Math.PI * 2,lineWidth=1, dash = 0, gap = 0) {
+ellipse(x, y, radiusX, radiusY, color = 'black', fill = false, rotation = 0, startAngle = 0, endAngle = Math.PI * 2,lineWidth=1, dash = 0, gap = 0,globalAlpha) {
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;
+    this.ctx.globalAlpha = globalAlpha;
     this.ctx.beginPath();
     this.ctx.ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle);
 

@@ -82,7 +82,7 @@ export default class DrawLibInterpretor {
                     }
                     break;
                 case 'shape':
-                    this.drawLib.shape(extra.points, extra.color, extra.closed);
+                    this.drawLib.shape(extra.points, extra.color, extra.closed,extra.globalAlpha);
                     break;
                 case 'sysImage':
                     // debugger;
@@ -99,9 +99,9 @@ export default class DrawLibInterpretor {
                 case 'line':
                     
                     if (!extra.translate || extra.translate==false ){
-                        this.drawLib.line(extra.x1, extra.y1, extra.x2, extra.y2, extra.color, extra.lineWidth,extra.dash,extra.gap);
+                        this.drawLib.line(extra.x1, extra.y1, extra.x2, extra.y2, extra.color, extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);
                     }else{
-                        this.drawLib.line(this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), this.addXfactor(this.getX(extra.x2)), this.getY(extra.y2), extra.color, extra.lineWidth,extra.dash,extra.gap);
+                        this.drawLib.line(this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), this.addXfactor(this.getX(extra.x2)), this.getY(extra.y2), extra.color, extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);
                     }
 
                     break;
@@ -136,9 +136,9 @@ export default class DrawLibInterpretor {
                     const end_angle_rads_circle = extra.endAngle * (Math.PI / 180);
 
                     if (!extra.translate || extra.translate==false ){
-                        this.drawLib.circle(extra.x, extra.y, extra.radius, extra.color, extra.fill,st_angle_rads_circle,end_angle_rads_circle,extra.dash,extra.gap,extra.lineWidth);                    
+                        this.drawLib.circle(extra.x, extra.y, extra.radius, extra.color, extra.fill,st_angle_rads_circle,end_angle_rads_circle,extra.dash,extra.gap,extra.lineWidth,extra.globalAlpha);                    
                     }else{
-                        this.drawLib.circle(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.radius, extra.color, extra.fill,st_angle_rads_circle,end_angle_rads_circle,extra.dash,extra.gap,extra.lineWidth);
+                        this.drawLib.circle(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.radius, extra.color, extra.fill,st_angle_rads_circle,end_angle_rads_circle,extra.dash,extra.gap,extra.lineWidth,extra.globalAlpha);
                     }
 
                     break;
@@ -148,9 +148,9 @@ export default class DrawLibInterpretor {
                     const rotation_rads = extra.rotation * (Math.PI / 180);
 
                     if (!extra.translate || extra.translate==false ){
-                    this.drawLib.ellipse(extra.x, extra.y, extra.radiusX, extra.radiusY, extra.color, extra.fill,rotation_rads , st_angle_rads, end_angle_rads,extra.lineWidth,extra.dash,extra.gap);                    
+                    this.drawLib.ellipse(extra.x, extra.y, extra.radiusX, extra.radiusY, extra.color, extra.fill,rotation_rads , st_angle_rads, end_angle_rads,extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);                    
                     }else{
-                    this.drawLib.ellipse(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.radiusX, extra.radiusY, extra.color, extra.fill, rotation_rads, st_angle_rads, end_angle_rads,extra.lineWidth,extra.dash,extra.gap);
+                    this.drawLib.ellipse(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.radiusX, extra.radiusY, extra.color, extra.fill, rotation_rads, st_angle_rads, end_angle_rads,extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);
                     }
                     break;
                 case 'text':
