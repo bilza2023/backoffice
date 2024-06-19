@@ -344,8 +344,11 @@ para(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadow
 
 
     // Image drawing method
-    image(image, x, y, width, height) {
+    image(image, x, y, width, height,globalAlpha=1) {
+        this.ctx.save(); // Save the current context state
+        this.ctx.globalAlpha = globalAlpha; // Set the global alpha
         this.ctx.drawImage(image, x, y, width, height);
+        this.ctx.restore();
     }
 
     // Clear canvas method

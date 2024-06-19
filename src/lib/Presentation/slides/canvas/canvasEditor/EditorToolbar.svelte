@@ -2,9 +2,13 @@
     //@ts-nocheck
     import { Icons } from "$lib/util";   
     import { SmallBtnToolbar } from "$lib/cmp"; 
+    import Groupdiv from "./Groupdiv.svelte"; 
     export let items;
     import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage} from "./addFunctions";
 
+    let groupDiv = false;
+
+    function showGroup(){groupDiv = !groupDiv;}
 
 /////////////////////////////////////////
 export let toggleShowCanvas;
@@ -34,4 +38,11 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
     <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" />
     <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
+    <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" />
 </div>
+
+{#if groupDiv}
+
+    <Groupdiv {items}/>
+
+{/if}

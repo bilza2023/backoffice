@@ -256,7 +256,8 @@ export default class DrawLibInterpretor {
                             this.addXfactor(this.getX(extra.x)), 
                             this.getY(extra.y),
                             this.getX(extra.width), 
-                            this.getX(extra.height)
+                            this.getX(extra.height),
+                            extra.globalAlpha
                             );
                         }
                     }

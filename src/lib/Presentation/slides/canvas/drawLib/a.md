@@ -1,0 +1,2 @@
+
+Create a fun and friendly Disney Pixar style movie poster in 4k of an arab teacher, full body profile wearing a hijab, wearing a teacher's apron. This woman is wearing a white dress with the name "taleem.help" and it is animated in 3D, the background of the image must be from a classroom

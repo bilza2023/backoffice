@@ -6,6 +6,7 @@
   import CanvasPlayer from '../canvasPlayer/CanvasPlayer.svelte';  
   import SelectItemMenu from './json-ui/SelectItemMenu.svelte';  
   import CommandUi from './json-ui/CommandUi.svelte';  
+  import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 
   export let items;
   export let extra;
@@ -19,14 +20,20 @@
   console.log("playerImages" , playerImages);
 
   let itemIndexInRightBar =0;
-  let showCanvasInSdieBar =true;
+  let showSideBar = 0;
   let ignoreShowAt =true;
 let slideImages = [];
 
   function toggleIgnoreShowAt(){
     ignoreShowAt = !ignoreShowAt;
   }
-  function toggleShowCanvas(){showCanvasInSdieBar = !showCanvasInSdieBar;}
+  function toggleShowCanvas(){
+    if(showSideBar >= 2){
+      showSideBar=0;
+    }else {
+      showSideBar+=1;
+    }
+  }
   
 
   function moveUp(index) {
@@ -83,7 +90,7 @@ bind:items={items}
 {toggleIgnoreShowAt}
 {ignoreShowAt}
 />
-   
+    
 <!-- ////////////////////////////////////////////////////////  -->
 <div class='flex justify-between gap-2'>
 
@@ -103,12 +110,14 @@ bind:items={items}
 <div class='w-25 max-w-[25%] min-w-[25%]  bg-stone-600 rounded-md p-2'>
           
   
-          {#if showCanvasInSdieBar}
+          {#if showSideBar==0}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
               <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/>
               <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone}/>
-          {:else}
-              <CanvasCommand  bind:extra={extra}   />
+          {:else if showSideBar==1}
+            <CanvasCommand  bind:extra={extra}   />
+          {:else if showSideBar==2}
+            <PremadeCommad  bind:items={items}   />
           {/if}
           
 </div>
