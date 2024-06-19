@@ -30,7 +30,9 @@
         if (selectedGroup) {
             for (let i = 0; i < selectedGroup.items.length; i++) {
                 const item = selectedGroup.items[i];
-                items = [...items,item];
+                const flatten = JSON.parse(JSON.stringify(item));
+                flatten._id = null;
+                items = [...items,flatten];
             }
         } else {
             console.error('No group selected to add');

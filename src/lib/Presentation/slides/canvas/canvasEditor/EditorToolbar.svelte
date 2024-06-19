@@ -4,6 +4,7 @@
     import { SmallBtnToolbar } from "$lib/cmp"; 
     import Groupdiv from "./Groupdiv.svelte"; 
     export let items;
+    export let pasteItem;
     import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage} from "./addFunctions";
 
     let groupDiv = false;
@@ -39,6 +40,7 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" />
     <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
     <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" />
+    <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" />
 </div>
 
 {#if groupDiv}

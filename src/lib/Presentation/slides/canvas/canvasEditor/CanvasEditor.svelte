@@ -7,7 +7,8 @@
   import SelectItemMenu from './json-ui/SelectItemMenu.svelte';  
   import CommandUi from './json-ui/CommandUi.svelte';  
   import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
-
+    import { toast } from "@zerodevx/svelte-toast";
+ 
   export let items;
   export let extra;
   export let currentTime;
@@ -17,7 +18,7 @@
   export let bgImages;
   export let playerImages;
 
-  console.log("playerImages" , playerImages);
+  // console.log("playerImages" , playerImages);
 
   let itemIndexInRightBar =0;
   let showSideBar = 0;
@@ -56,6 +57,26 @@ let slideImages = [];
   }
 
 
+  function copyItem(index) {
+    // debugger;
+    if (index >= 0 && index < items.length) {
+        localStorage.setItem("copiedItem" , JSON.stringify(items[index]));
+        toast.push("item copied");
+    }
+  }
+  function pasteItem() {
+    // debugger;
+    const copiedItem = localStorage.getItem("copiedItem");
+    if ( copiedItem ) {
+        const item = JSON.parse( copiedItem );
+        item._id = null;
+        items = [...items,item];
+        toast.push("item pasted");
+    }else {
+      toast.push("no copied item found");
+    }
+  }
+
   function clone(index) {
     // debugger;
     if (index >= 0 && index < items.length) {
@@ -89,6 +110,7 @@ bind:items={items}
 {toggleShowCanvas}
 {toggleIgnoreShowAt}
 {ignoreShowAt}
+{pasteItem}
 />
     
 <!-- ////////////////////////////////////////////////////////  -->
@@ -113,7 +135,7 @@ bind:items={items}
           {#if showSideBar==0}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
               <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/>
-              <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone}/>
+              <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
           {:else if showSideBar==1}
             <CanvasCommand  bind:extra={extra}   />
           {:else if showSideBar==2}

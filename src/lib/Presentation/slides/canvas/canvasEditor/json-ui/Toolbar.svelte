@@ -6,6 +6,7 @@ import Icons from "../../../../icons";
  export let moveDown;
  export let clone;
  export let del;
+ export let copyItem;
 
 
 </script>
@@ -26,6 +27,10 @@ import Icons from "../../../../icons";
         <button 
         on:click={()=>clone(index)}
         class=" p-1 m-1 text-xs rounded-md hover:bg-slate-700">🐑</button>
+
+        <button 
+        on:click={()=>copyItem(index)}
+        class=" p-1 m-1 text-xs rounded-md hover:bg-slate-700">📃</button>
         
         <button 
         on:click={()=>del(index)}
