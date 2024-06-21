@@ -5,6 +5,7 @@ import CommonCommands from "./CommonCommands.svelte";
 import TrNoWithSet from "./TrNoWithSet.svelte";   
 import TrStrWithSet from "./TrStrWithSet.svelte";   
 import ShadowCommands from "./ShadowCommands.svelte";   
+import GapDashCommands from "./GapDashCommands.svelte";   
 
 
 
@@ -32,6 +33,8 @@ import TrNo from "./TrNo.svelte";
         <!-- <TrNo title="Line Width" bind:itemFiled={item.lineWidth}/> -->
       
         
+        <GapDashCommands bind:item={item}/>
+
         <CommonCommands  bind:item={item}/>
         <ShadowCommands  bind:item={item} />
     </table>

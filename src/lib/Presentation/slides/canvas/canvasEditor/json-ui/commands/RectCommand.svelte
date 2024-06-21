@@ -2,6 +2,7 @@
     //@ts-nocheck
 import CommonCommands from "./CommonCommands.svelte";   
 import ShadowCommands from "./ShadowCommands.svelte";   
+import GapDashCommands from "./GapDashCommands.svelte";   
 
 import TrNoWithSet from "./TrNoWithSet.svelte";   
 import TrStrWithSet from "./TrStrWithSet.svelte";   
@@ -26,6 +27,8 @@ import TrTf from "./TrTf.svelte";
         <TrTf title="fill"      bind:itemFiled={item.filled} />
         
     
+    <GapDashCommands bind:item={item}/>
+
     <CommonCommands  bind:item={item}/>
     <ShadowCommands  bind:item={item} />
     </table>

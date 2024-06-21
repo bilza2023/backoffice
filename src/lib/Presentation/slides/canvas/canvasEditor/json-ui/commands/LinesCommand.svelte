@@ -46,7 +46,10 @@ import TrTf from "./TrTf.svelte";
         <TrNo title="X" bind:itemFiled={item.x}/>
         <TrNo title="Y" bind:itemFiled={item.y}/>
         <TrNo title="Line Width" bind:itemFiled={item.lineWidth}/>
-        
+<!--      
+        <TrNo title="dash" bind:itemFiled={item.dash}/>
+        <TrNo title="gap" bind:itemFiled={item.gap}/>
+         -->
         
 <CommonCommands  bind:item={item}/>
     </table>

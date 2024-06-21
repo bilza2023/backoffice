@@ -4,6 +4,7 @@ import CommonCommands from "./CommonCommands.svelte";
 import ShadowCommands from "./ShadowCommands.svelte";   
 import TrNoWithSet from "./TrNoWithSet.svelte";   
 import TrStrWithSet from "./TrStrWithSet.svelte";   
+import GapDashCommands from "./GapDashCommands.svelte";   
 
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
@@ -29,6 +30,8 @@ import TrTf from "./TrTf.svelte";
 <TrTf title="startArrow"      bind:itemFiled={item.startArrow} />
 <TrTf title="endArrow"      bind:itemFiled={item.endArrow} />
 
+
+<GapDashCommands bind:item={item}/>
 
 <CommonCommands  bind:item={item}/>
 <ShadowCommands  bind:item={item} />

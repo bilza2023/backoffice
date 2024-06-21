@@ -6,6 +6,6 @@
     export let item;
 </script>
         
+<TrNo title="Dash" bind:itemFiled={item.dash}/>
         <TrNo title="Gap" bind:itemFiled={item.gap}/>
-        <TrNo title="Dash" bind:itemFiled={item.dash}/>
 

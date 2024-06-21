@@ -1,13 +1,13 @@
 //@ts-nocheck
 import {getNewItem} from '$lib/Presentation';
 /**
-   *31-may-2024 
-   * addNewItem is different from getNewItem. In Presentation lib every slide basically has its content placed in "items". we use "getNewItem" to get a generic Presentation item for a slide and then using  addNewItem(data) assign the data to the newly created item.extra.
-   
-   * We can write any number of consumer functions  (like addEllipse,addCircle etc)for addNewItem(data) and it will create a blank item and assign item.extra to data. 
-   *
-   *
-   */
+ *31-may-2024 
+* addNewItem is different from getNewItem. In Presentation lib every slide basically has its content placed in "items". we use "getNewItem" to get a generic Presentation item for a slide and then using  addNewItem(data) assign the data to the newly created item.extra.
+
+* We can write any number of consumer functions  (like addEllipse,addCircle etc)for addNewItem(data) and it will create a blank item and assign item.extra to data. 
+*
+*
+*/
    function addNewItem(data,items){
     const newItem = getNewItem();
     newItem.extra = data;      
@@ -30,6 +30,7 @@ function addReqExtraFields(obj,command,color="black"){
   obj.name = command + "_" +randNo();
   
   obj.color = color;
+  obj.setCommands = [];
   //hide at is used when it is larger than showAt. for other use cases use other variables.e.g use "visibility for blinking"
   obj.hideAt = 0;
   obj.showAt = 0;
@@ -154,11 +155,11 @@ function addReqExtraFields(obj,command,color="black"){
   }
   function addTri(items){
     const obj ={
-              "x1": 2,
+              "x1": 6,
               "y1": 2,
-              "x2": 2,
-              "y2": 8,
-              "x3": 10,
+              "x2": 1,
+              "y2": 10,
+              "x3": 11,
               "y3": 10,
               "lineWidth": 2,
               "filled": false,
