@@ -13,7 +13,7 @@ import Icons from "../../../../icons";
 
 <div class="flex w-full justify-around bg-gray-900 text-white  rounded-md">
 
-    <div class="flex justify-end gap-1">
+    <div class="flex  justify-end  gap-1">
     
         <button 
         on:click={()=>moveUp(index)}

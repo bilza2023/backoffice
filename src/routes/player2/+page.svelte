@@ -42,9 +42,9 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
     slides = questionData.slides;
  }else {
     toast.push("failed to load");
- }
+ } 
  //////////////////////////////////////////
-  debugger;
+  // debugger;
  if (questionData){
     slides = questionData.slides;
     soundFile =  SOUND_FILE_PATH + questionData.filename + '.opus';

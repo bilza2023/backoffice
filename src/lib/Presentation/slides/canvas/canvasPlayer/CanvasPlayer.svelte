@@ -25,6 +25,7 @@ function gameLoop(){
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
         // debugger;
+        drawLibInterpretor.setSet(currentTime,items);
         drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');

@@ -1,19 +1,30 @@
 <script>
-    //@ts-nocheck
-    import addUTFIcon from "./addUTFIcon";
-    import UTFDD from "./UTFDD.svelte";
-    import CommonCommands from "./CommonCommands.svelte";   
-import TrNo from "./TrNo.svelte";   
+
+//@ts-nocheck
+import addUTFIcon from "./addUTFIcon";
+import UTFDD from "./UTFDD.svelte";
+import CommonCommands from "./CommonCommands.svelte";   
+import TrNoWithSet from "./TrNoWithSet.svelte";   
+import ShadowCommands from "./ShadowCommands.svelte";   
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
-    export let item;
-    export let redraw;
+    
+export let item;
+export let redraw;
 
-    function action(e){
-        addUTFIcon(e,item);
-        redraw();
-    }
+$:{
+item;
+if(!item.setCommands ){
+    item.setCommands = [];
+}
+
+}
+
+function action(e){
+    addUTFIcon(e,item);
+    redraw();
+}
     function randNo(length=8){
     const digits = '0123456789';
   let result = '';
@@ -90,13 +101,14 @@ import TrTf from "./TrTf.svelte";
             </td>
         </tr>
         <TrText title="text" bind:itemFiled={item.text} />  
-        <TrNo title="x" bind:itemFiled={item.x} />  
-        <TrNo title="y" bind:itemFiled={item.y} />  
+        <TrNoWithSet title="x" bind:itemFiled={item.x} bind:extra={item}/>  
+        <TrNoWithSet title="y" bind:itemFiled={item.y} bind:extra={item} />  
         <TrText title="font" bind:itemFiled={item.font} />  
        
         
         
 <CommonCommands  bind:item={item}/>
+<ShadowCommands  bind:item={item}/>
     </table>
 </div>
 

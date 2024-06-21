@@ -8,7 +8,6 @@
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
   import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
-  import {Inspector} from '$lib/Presentation';
   import {SOUND_FILE_PATH} from "$lib/util";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
@@ -169,16 +168,11 @@ onMount(async ()=>{
    
    const data = await resp.json();
    item =  data.item;
-   const inspector = new Inspector(item);
-    await inspector.fixSlides();
    slides = item.slides;
    
   filename = item.filename;
-  // https://taleem-media.blr1.cdn.digitaloceanspaces.com/mp3/fbise9english/fbise9english_ch_1_ex_1_q_1_n_what_is_an_atom.mp3
-    // debugger;
-//  if ( item.soundFileType = "mp3"){    
-  // soundFile = 'https://taleem-media.blr1.digitaloceanspaces.com/mp3/' + tcode + '/' + item.exercise  + '/' + item.filename + '.mp3';    
-//  }else {
+  
+  
   soundFile =  SOUND_FILE_PATH + item.filename + '.opus';
 
 

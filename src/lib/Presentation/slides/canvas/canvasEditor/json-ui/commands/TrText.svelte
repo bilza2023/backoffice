@@ -2,7 +2,7 @@
 //@ts-nocheck
 export let title;
 export let itemFiled;
-
+ 
 </script>
 <!-- https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/ -->
 <tr>

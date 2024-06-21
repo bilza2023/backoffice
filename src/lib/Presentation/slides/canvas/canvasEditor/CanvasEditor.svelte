@@ -8,7 +8,7 @@
   import CommandUi from './json-ui/CommandUi.svelte';  
   import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
     import { toast } from "@zerodevx/svelte-toast";
- 
+  
   export let items;
   export let extra;
   export let currentTime;
@@ -111,7 +111,7 @@ bind:items={items}
 {toggleIgnoreShowAt}
 {ignoreShowAt}
 {pasteItem}
-/>
+/> 
     
 <!-- ////////////////////////////////////////////////////////  -->
 <div class='flex justify-between gap-2'>

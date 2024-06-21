@@ -14,6 +14,7 @@
     import { figs } from "./sprite/figs";
     import { alphabets } from "./sprite/alphabets";
     import { people } from "./sprite/people";
+    import inspect from "./inspect.js";
     let spriteImgArray  = []; 
 
     let bgImages  = []; 
@@ -25,6 +26,12 @@
     export let displayMode = true;
       
     let ready = false;
+
+$:{
+    currentSlide;
+    inspect(currentSlide);
+}   
+
 onMount(async()=>{
     
     

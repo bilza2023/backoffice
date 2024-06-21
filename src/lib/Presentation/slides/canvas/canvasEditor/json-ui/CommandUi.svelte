@@ -1,5 +1,6 @@
 <script>
-    //@ts-nocheck
+ //---here the item should be named extra since IT IS item.extra and not item so that creates confusion.
+ //@ts-nocheck
 import { onMount, onDestroy } from "svelte";
 ///////////////////////////////////////////////////////
     import TextCommand from "./commands/TextCommand.svelte";

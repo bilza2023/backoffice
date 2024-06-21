@@ -299,6 +299,24 @@ export default class DrawLibInterpretor {
         }// if showAt
         }
     }
+
+    setSet(currentTime,items){
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            const setCommands = item.extra.setCommands; 
+        /////////////////////////////////////////////////////////// 
+        for (let j = 0; j < setCommands.length; j++) {
+            const command = setCommands[j];
+                if(currentTime >= command.at){
+                        if (typeof item.extra[command.prop] !== 'undefined') {
+                            item.extra[command.prop] = command.value;
+                        }
+                }
+        }           
+        ///////////////////////////////////////////////////////////            
+        }
+
+    }
 }
 
 
