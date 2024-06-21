@@ -2,10 +2,9 @@
 <script>
     //@ts-nocheck
 let at=0;
-let value=0;
+let value="";
 export let extra;
 export let propName;
-export let dataTypeIsNumber = true;
 
  function addSetCommands(){
  debugger;
@@ -32,13 +31,8 @@ export let dataTypeIsNumber = true;
             <!-- svelte-ignore a11y-label-has-associated-control -->
             <label class="text-xs">Set: </label>
 
-            <!-- {#if dataTypeIsNumber == true} -->
-            <!-- <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="number" bind:value={value}> -->
-
-            <!-- {:else} -->
             <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="text" bind:value={value}>
 
-            <!-- {/if} -->
         </div>
     </td>
 </tr>

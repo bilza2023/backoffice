@@ -1,15 +1,12 @@
 <script>
 //@ts-nocheck
-import AddSetCommands from "../AddSetCommands.svelte";
+import AddSetCommandsString from "../AddSetCommandsString.svelte";
 export let extra;
 export let title;
 export let itemFiled;
-export let min=0;
-export let max=100;
-export let step=1;
 
 let show = false;
-// console.log("extra.setCommands",extra.setCommands);
+
 function delSetCommand(index){
     if (extra && extra.setCommands) {
         extra.setCommands.splice(index, 1);
@@ -17,6 +14,7 @@ function delSetCommand(index){
         extra = { ...extra };
     }
 }
+
 </script>
 
 
@@ -25,12 +23,13 @@ function delSetCommand(index){
      <button class="text-pink-300" on:click={()=> show = !show }>{title}</button>   
     </td>
     <td class="border border-white p-1">
-        <input type="number" bind:value={itemFiled} class="bg-gray-900 text-white p-1" min={min} max={max} step={step}>
+        <input type="text" bind:value={itemFiled} class="bg-gray-900 text-white p-1" >
     </td>
 </tr>
 
+
 {#if show}
-<AddSetCommands bind:extra={extra} propName={title}/>
+<AddSetCommandsString bind:extra={extra} propName={title} />
 
 {#if  extra && extra.setCommands && extra.setCommands.length > 0}
 

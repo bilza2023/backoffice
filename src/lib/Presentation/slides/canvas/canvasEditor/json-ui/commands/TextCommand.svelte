@@ -5,6 +5,7 @@ import addUTFIcon from "./addUTFIcon";
 import UTFDD from "./UTFDD.svelte";
 import CommonCommands from "./CommonCommands.svelte";   
 import TrNoWithSet from "./TrNoWithSet.svelte";   
+import TrStrWithSet from "./TrStrWithSet.svelte";   
 import ShadowCommands from "./ShadowCommands.svelte";   
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
@@ -100,15 +101,18 @@ function action(e){
 <UTFDD {action}/>
             </td>
         </tr>
-        <TrText title="text" bind:itemFiled={item.text} />  
-        <TrNoWithSet title="x" bind:itemFiled={item.x} bind:extra={item}/>  
-        <TrNoWithSet title="y" bind:itemFiled={item.y} bind:extra={item} />  
+        <!-- <TrText title="text" bind:itemFiled={item.text} />   -->
+
+        <TrStrWithSet title="text" bind:itemFiled={item.text} bind:extra={item}  />  
+        
+        <TrNoWithSet title="x" bind:itemFiled={item.x} bind:extra={item} min=0 max=45/>  
+        <TrNoWithSet title="y" bind:itemFiled={item.y} bind:extra={item} min=0 max=25/>  
         <TrText title="font" bind:itemFiled={item.font} />  
        
         
         
-<CommonCommands  bind:item={item}/>
-<ShadowCommands  bind:item={item}/>
+<CommonCommands  bind:item={item} />
+<ShadowCommands  bind:item={item} />
     </table>
 </div>
 

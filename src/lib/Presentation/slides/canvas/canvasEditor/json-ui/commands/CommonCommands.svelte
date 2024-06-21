@@ -1,5 +1,8 @@
 <script>
     //@ts-nocheck
+import TrNoWithSet from "./TrNoWithSet.svelte";   
+import TrStrWithSet from "./TrStrWithSet.svelte"; 
+
     import TrNo from "./TrNo.svelte";   
     import TrText from "./TrText.svelte";   
     import TrColor from "./TrColor.svelte";   
@@ -12,18 +15,15 @@
 {#if show}     
 
         <TrText  title="Name" bind:itemFiled={item.name}   />
-        <TrColor  title="Color" bind:itemFiled={item.color}   />
+
+        <!-- <TrColor  title="Color" bind:itemFiled={item.color}   /> -->
         
+        <TrStrWithSet title="color" bind:itemFiled={item.color} bind:extra={item}  />  
+
         <TrNo title="Show At" bind:itemFiled={item.showAt}/>
-        <!-- <TrNo title="Hide At" bind:itemFiled={item.hideAt}/> -->
-       
-       
-        <tr>
-            <td class="border border-white p-1">Opacity</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.globalAlpha} class="bg-gray-900 text-white p-1" min="0" max="1" step="0.1">
-            </td>
-        </tr>
+      
+        
+        <TrNoWithSet title="globalAlpha" bind:itemFiled={item.globalAlpha} bind:extra={item} min=0 max=1 step="0.1"/>  
 
         <tr>
             <td class="border border-white p-1">Translate</td>
