@@ -127,7 +127,7 @@ bind:items={items}
     </div>
    
 </div> 
-
+ 
 <!-- div for json-ui -->
 <div class='w-25 max-w-[25%] min-w-[25%]  bg-stone-600 rounded-md p-2'>
           

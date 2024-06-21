@@ -11,7 +11,9 @@ import TrStrWithSet from "./TrStrWithSet.svelte";
 </script>
         
 
-<tr class="text-xs"><td class="border border-white p-1 text-pink-400"><button on:click={()=> show = !show}>common</button> </td></tr>
+<tr class="text-xs"><td class="border border-white p-1 text-pink-400"><button on:click={()=> show = !show}>common</button> </td>
+<td class="border border-white p-1 "></td>
+</tr>
 {#if show}     
 
         <TrText  title="Name" bind:itemFiled={item.name}   />

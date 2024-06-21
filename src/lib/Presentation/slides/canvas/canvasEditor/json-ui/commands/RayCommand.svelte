@@ -16,15 +16,18 @@ import TrTf from "./TrTf.svelte";
     <table class="border-collapse border-2 border-white">
         
 
-<TrStrWithSet title="x0"    bind:itemFiled={item.x0} bind:extra={item} />
-<TrStrWithSet title="y0"    bind:itemFiled={item.y0} bind:extra={item} />
-<TrStrWithSet title="x1"    bind:itemFiled={item.x1} bind:extra={item} />
-<TrStrWithSet title="y1"    bind:itemFiled={item.y1} bind:extra={item} />
-<TrStrWithSet title="lineWidth"    bind:itemFiled={item.lineWidth} bind:extra={item} />
-<TrStrWithSet title="arrowWidth"    bind:itemFiled={item.arrowWidth} bind:extra={item} />
-<TrStrWithSet title="arrowHeight"    bind:itemFiled={item.arrowHeight} bind:extra={item} />
-<TrStrWithSet title="startArrow"    bind:itemFiled={item.startArrow} bind:extra={item} />
-<TrStrWithSet title="endArrow"    bind:itemFiled={item.endArrow} bind:extra={item} />
+<TrNoWithSet title="x0"    bind:itemFiled={item.x0} bind:extra={item} />
+<TrNoWithSet title="y0"    bind:itemFiled={item.y0} bind:extra={item} />
+<TrNoWithSet title="x1"    bind:itemFiled={item.x1} bind:extra={item} />
+<TrNoWithSet title="y1"    bind:itemFiled={item.y1} bind:extra={item} />
+<TrNoWithSet title="lineWidth"    bind:itemFiled={item.lineWidth} bind:extra={item} />
+<TrNoWithSet title="arrowWidth"    bind:itemFiled={item.arrowWidth} bind:extra={item} />
+<TrNoWithSet title="arrowHeight"    bind:itemFiled={item.arrowHeight} bind:extra={item} />
+
+
+
+<TrTf title="startArrow"      bind:itemFiled={item.startArrow} />
+<TrTf title="endArrow"      bind:itemFiled={item.endArrow} />
 
 
 <CommonCommands  bind:item={item}/>

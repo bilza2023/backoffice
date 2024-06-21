@@ -25,7 +25,7 @@ function delSetCommand(index){
      <button class="text-pink-300" on:click={()=> show = !show }>{title}</button>   
     </td>
     <td class="border border-white p-1">
-        <input type="number" bind:value={itemFiled} class="bg-gray-900 text-white p-1" min={min} max={max} step={step}>
+        <input type="number" bind:value={itemFiled} class="bg-gray-900 text-white p-1" min={min} max={max} step={step} />
     </td>
 </tr>
 
