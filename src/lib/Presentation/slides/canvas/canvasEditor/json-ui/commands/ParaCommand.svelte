@@ -1,6 +1,10 @@
 <script>
     //@ts-nocheck
-    import CommonCommands from "./CommonCommands.svelte";   
+import CommonCommands from "./CommonCommands.svelte";   
+import ShadowCommands from "./ShadowCommands.svelte";   
+
+import TrNoWithSet from "./TrNoWithSet.svelte";   
+import TrStrWithSet from "./TrStrWithSet.svelte";   
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
@@ -23,16 +27,18 @@ import TrTextArea from "./TrTextArea.svelte";
     <table class="border-collapse border-2 border-white">
         
         <TrTextArea title="Text"        bind:itemFiled={item.text} />
-        <TrNo title="X"             bind:itemFiled={item.x} />
-        <TrNo title="Y"             bind:itemFiled={item.y} />
-        <TrText title="Font"        bind:itemFiled={item.font} />
-        
-        <TrNo title="lineHeightOffset" bind:itemFiled={item.lineHeightOffset} />
-        <TrNo title="xOffset" bind:itemFiled={item.xOffset} />
+
+        <TrStrWithSet title="x" bind:itemFiled=        {item.x} bind:extra={item}  />  
+        <TrStrWithSet title="y" bind:itemFiled=        {item.y} bind:extra={item}  />  
+        <TrStrWithSet title="font" bind:itemFiled=        {item.font} bind:extra={item}  />  
+        <TrStrWithSet title="lineHeightOffset" bind:itemFiled=        {item.lineHeightOffset} bind:extra={item}  />  
+
+        <TrStrWithSet title="xOffset" bind:itemFiled={item.xOffset} bind:extra={item}  />  
+
       
         
 <CommonCommands  bind:item={item}/>
-
+<ShadowCommands  bind:item={item} />
 </table>
 </div>
 

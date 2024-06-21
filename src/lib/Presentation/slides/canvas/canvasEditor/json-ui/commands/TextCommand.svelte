@@ -4,13 +4,15 @@
 import addUTFIcon from "./addUTFIcon";
 import UTFDD from "./UTFDD.svelte";
 import CommonCommands from "./CommonCommands.svelte";   
+
 import TrNoWithSet from "./TrNoWithSet.svelte";   
 import TrStrWithSet from "./TrStrWithSet.svelte";   
 import ShadowCommands from "./ShadowCommands.svelte";   
+
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
-    
+     
 export let item;
 export let redraw;
 
@@ -101,8 +103,8 @@ function action(e){
 <UTFDD {action}/>
             </td>
         </tr>
-        <!-- <TrText title="text" bind:itemFiled={item.text} />   -->
-
+       
+        
         <TrStrWithSet title="text" bind:itemFiled={item.text} bind:extra={item}  />  
         
         <TrNoWithSet title="x" bind:itemFiled={item.x} bind:extra={item} min=0 max=45/>  

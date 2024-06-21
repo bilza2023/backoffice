@@ -1,6 +1,10 @@
 <script>
     //@ts-nocheck
-    import CommonCommands from "./CommonCommands.svelte";   
+import CommonCommands from "./CommonCommands.svelte";  
+import ShadowCommands from "./ShadowCommands.svelte";   
+import TrNoWithSet from "./TrNoWithSet.svelte";   
+import TrStrWithSet from "./TrStrWithSet.svelte";   
+
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
@@ -20,5 +24,6 @@ import TrTf from "./TrTf.svelte";
         <TrTf title="Fill" bind:itemFiled={item.fill}/>
         
 <CommonCommands  bind:item={item}/>
+<ShadowCommands  bind:item={item} />
     </table>
 </div>
