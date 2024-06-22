@@ -64,6 +64,7 @@ export default class DrawLibInterpretor {
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
             // item in this loop is actually item.extra ==>
+    
             const extra = item.extra;
 
             //-- fields that are added later must be added to older items
@@ -300,10 +301,20 @@ export default class DrawLibInterpretor {
         }
     }
 
-    setSet(currentTime,items){
+setSet(currentTime,items){
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
+/////////////////////////////////////////////////////////////////////
+//--restore the orignal extra so that incase of time-scrub the values are orignal
+ if(currentTime>0){
+     item.extra = JSON.parse(JSON.stringify(item.orignalExtra));
+ }
+/////////////////////////////////////////////////////////////////////
+
             const setCommands = item.extra.setCommands; 
+            /**
+             * We must convert the setCommands as per assending order of time here 
+             */
         /////////////////////////////////////////////////////////// 
         for (let j = 0; j < setCommands.length; j++) {
             const command = setCommands[j];

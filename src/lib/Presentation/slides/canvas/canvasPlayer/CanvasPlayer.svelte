@@ -11,6 +11,7 @@
     let canvas;
     let ctx;
     export let extra;
+    let orignalExtra;
     export let items;
     export let playerImages;
 
@@ -54,6 +55,13 @@ async function init(){
 let interval;
 let drawLibInterpretor;
 onMount(async ()=>{
+ debugger;
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    item.orignalExtra = JSON.parse(JSON.stringify(item.extra));  
+    // item.setCommandsOrignal = JSON.parse(JSON.stringify(item.extra.setCommands));  
+  }
+  
   await init();
 });  
 onDestroy(() => {
