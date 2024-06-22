@@ -24,8 +24,7 @@ import TrTf from "./TrTf.svelte";
       
 <!--/////////////////////-->
 
-    <TrTFWithSet title="fill" bind:itemFiled={item.fill} bind:extra={item} />
-        
+    <TrTFWithSet title="fill" bind:itemFiled={item.fill} bind:extra={item} />   
         
     <CommonCommands  bind:item={item} />   
     <ShadowCommands  bind:item={item} /> 
