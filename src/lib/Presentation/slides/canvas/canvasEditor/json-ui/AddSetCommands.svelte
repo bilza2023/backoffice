@@ -4,14 +4,13 @@
 let at=0;
 let value=0;
 export let extra;
-export let propName;
-export let dataTypeIsNumber = true;
+export let title;
 
  function addSetCommands(){
- debugger;
-    extra.setCommands.push({
+    // debugger;
+    extra[title].setCommands.push({
         at,
-        "prop" : propName,
+        "prop" : title,
         value,
     });   
     extra = {...extra};
@@ -36,7 +35,7 @@ export let dataTypeIsNumber = true;
             <!-- <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="number" bind:value={value}> -->
 
             <!-- {:else} -->
-            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="text" bind:value={value}>
+            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="number" bind:value={value}>
 
             <!-- {/if} -->
         </div>

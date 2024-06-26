@@ -1,5 +1,6 @@
 //@ts-nocheck
 import {getNewItem} from '$lib/Presentation';
+import getProp from '../getProp';
 /**
  *31-may-2024 
 * addNewItem is different from getNewItem. In Presentation lib every slide basically has its content placed in "items". we use "getNewItem" to get a generic Presentation item for a slide and then using  addNewItem(data) assign the data to the newly created item.extra.
@@ -95,13 +96,14 @@ function addReqExtraFields(obj,command,color="black"){
     
   }
   function addRect(items){
+  // debugger;
     const obj = {
-          "x": 5,
-          "y": 5,
-          "width": 100,
-          "height": 100,
+          "x": getProp(5),
+          "y": getProp(5),
+          "width": getProp(100),
+          "height": getProp(100),
           "filled": false,
-          "lineWidth": 1,
+          "lineWidth": getProp(1),
           };
           addNewItem(addReqExtraFields(obj,"rect","red"),items); 
   }

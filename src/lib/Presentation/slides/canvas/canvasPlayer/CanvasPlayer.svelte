@@ -3,6 +3,7 @@
     import {onMount} from "$lib/util";
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
+    // import setSet from '../drawLib/setSet.js';
     export let currentTime;
    
     export let spriteImgArray;
@@ -17,21 +18,27 @@
 
 function gameLoop(){
     try {
+      // items = dummyData;
       if (items){
-
+        //This extra is slide extra
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
-        // debugger;
-        drawLibInterpretor.setSet(currentTime,items);
+      
+        // if (items.length > 0){
+        //   // console.log("drawLibInterpretor",items);  
+        //   // debugger;
+        // }
+
         drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
     } catch (error) {
+      debugger;
       drawLibInterpretor.jsonError();
     }
    
@@ -54,14 +61,9 @@ async function init(){
 //////////////////////////////////
 let interval;
 let drawLibInterpretor;
+
 onMount(async ()=>{
- debugger;
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    item.orignalExtra = JSON.parse(JSON.stringify(item.extra));  
-    // item.setCommandsOrignal = JSON.parse(JSON.stringify(item.extra.setCommands));  
-  }
-  
+
   await init();
 });  
 onDestroy(() => {

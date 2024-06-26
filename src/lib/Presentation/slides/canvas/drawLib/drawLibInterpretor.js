@@ -1,6 +1,7 @@
 //@ts-nocheck
 
-import DrawLib from "./drawLib" 
+import DrawLib from "./drawLib";
+import getVal from "../getVal"; 
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
     constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages) {
@@ -76,11 +77,21 @@ export default class DrawLibInterpretor {
                 case 'grid':
                     break;
                 case 'rect':
-                    if (!extra.translate || extra.translate==false ){
-                    this.drawLib.rect(extra.x, extra.y, extra.width, extra.height, extra.color, extra.filled,extra.dash,extra.gap,extra.lineWidth,extra.globalAlpha);
-                    }else {
-                    this.drawLib.rect(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.width, extra.height, extra.color, extra.filled,extra.dash,extra.gap,extra.lineWidth ,extra.globalAlpha);
-                    }
+                    this.drawLib.rect(
+                        this.addXfactor(this.getX(
+                            getVal(currentTime , extra.x.initialValue, extra.x.setCommands)
+                        )), 
+                        
+                        this.getY(
+                            getVal(currentTime , extra.y.initialValue, extra.y.setCommands)
+                        ),
+                        
+                        getVal(currentTime , extra.width.initialValue, extra.width.setCommands), 
+                        getVal(currentTime , extra.height.initialValue, extra.height.setCommands),
+                         
+                        extra.color, extra.filled,extra.dash,extra.gap,
+                        getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
+                        extra.globalAlpha);
                     break;
                 case 'shape':
                     this.drawLib.shape(extra.points, extra.color, extra.closed,extra.globalAlpha);
@@ -248,7 +259,7 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(extra.points, extra.color, extra.filled,extra.lineWidth);
                     break;
                 case 'image':
-                    debugger;
+                    // debugger;
                     for (let i = 0; i < playerImages.length; i++) {
                         const playerImage = playerImages[i];
                         if(playerImage.id == item._id){
@@ -301,34 +312,9 @@ export default class DrawLibInterpretor {
         }
     }
 
-setSet(currentTime,items){
-        for (let i = 0; i < items.length; i++) {
-            const item = items[i];
-/////////////////////////////////////////////////////////////////////
-//--restore the orignal extra so that incase of time-scrub the values are orignal
- if(currentTime>0){
-     item.extra = JSON.parse(JSON.stringify(item.orignalExtra));
- }
-/////////////////////////////////////////////////////////////////////
-
-            const setCommands = item.extra.setCommands; 
-            /**
-             * We must convert the setCommands as per assending order of time here 
-             */
-        /////////////////////////////////////////////////////////// 
-        for (let j = 0; j < setCommands.length; j++) {
-            const command = setCommands[j];
-                if(currentTime >= command.at){
-                        if (typeof item.extra[command.prop] !== 'undefined') {
-                            item.extra[command.prop] = command.value;
-                        }
-                }
-        }           
-        ///////////////////////////////////////////////////////////            
-        }
-
-    }
-}
+ 
+}//class ends
+    
 
 
 ///////////////////////////////////

@@ -2,7 +2,7 @@
 import uuid from "./uuid.js";
 
 export default function getNewItem( name='',content='', extra = {},arr=[]) {
-debugger;
+// debugger;
 return {
     uuid: uuid() , //added on 31-may 2024 --not used yet 
     name , 
