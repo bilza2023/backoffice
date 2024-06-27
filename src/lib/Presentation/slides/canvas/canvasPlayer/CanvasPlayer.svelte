@@ -3,9 +3,9 @@
     import {onMount} from "$lib/util";
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
-    // import setSet from '../drawLib/setSet.js';
     export let currentTime;
-   
+    import getProp from '../getProp';
+
     export let spriteImgArray;
     export let bgImages;
     
@@ -28,17 +28,12 @@ function gameLoop(){
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
       
-        // if (items.length > 0){
-        //   // console.log("drawLibInterpretor",items);  
-        //   // debugger;
-        // }
-
         drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
     } catch (error) {
-      debugger;
+      // debugger;
       drawLibInterpretor.jsonError();
     }
    
@@ -51,6 +46,20 @@ async function init(){
     //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
+      // console.log("items",items);
+      
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.extra.command == 'rect'){
+              if(typeof item.extra.color != 'object' ){
+                item.extra.color = getProp(item.extra.color);
+              }
+              if(typeof item.extra.filled != 'object' ){
+                item.extra.filled = getProp(item.extra.filled);
+              }
+
+        }
+      }
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////

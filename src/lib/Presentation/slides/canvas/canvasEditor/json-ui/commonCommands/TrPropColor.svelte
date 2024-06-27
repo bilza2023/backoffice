@@ -1,14 +1,9 @@
 <script>
     //@ts-nocheck
-import { parse } from "mathjs";
-import AddSetCommands from "../AddSetCommands.svelte";
+import AddSetCommandsColor from "./AddSetCommandsColor.svelte";
 export let extra;
 export let title;
 //////////////////////////////////
-
-export let min=0;
-export let max=100;
-export let step=1;
 
 let show = false;
 
@@ -20,9 +15,7 @@ function delSetCommand(index){
         extra = { ...extra };
     }
 }
-function addInput(e){
-    extra[title].initialValue = parseFloat(e.target.value);
-}
+
 </script>
 
 
@@ -32,25 +25,30 @@ function addInput(e){
     </td>
 
     <td class="border border-white p-1" >
-        <input type="number" class="bg-gray-900 text-white p-1" min={min} max={max} step={step}  value={extra[title].initialValue} on:input={addInput} />
+
+        <input type="color" class="bg-gray-900 text-white p-1"  
+        bind:value={extra[title].initialValue}  
+    />
+
     </td>
 </tr>
 
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////// -->
 {#if show}
-<AddSetCommands bind:extra={extra} title={title} />
-
-{#if  extra && extra[title].setCommands && extra[title].setCommands.length > 0}
+<AddSetCommandsColor bind:extra={extra} title={title} />
 
 {#each extra[title].setCommands as setcommand,index}
-    {#if setcommand.prop == title}
     <tr class="bg-pink-950 text-xs">
         <td class="bg-pink-700">
             <button on:click={()=>delSetCommand(index)}>del</button>
         </td>
-            <td>at {setcommand.at} set {title}={setcommand.value}</td>
+            <td style="background-color: {setcommand.value}">at {setcommand.at} set </td>
     </tr>
-    {/if}
 {/each}
-{/if}
+
 
 {/if}

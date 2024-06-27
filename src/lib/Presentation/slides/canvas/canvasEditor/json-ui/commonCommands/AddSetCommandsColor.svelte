@@ -5,13 +5,11 @@ let at=0;
 let value=0;
 export let extra;
 export let title;
-export let dataType="number";
 
  function addSetCommands(){
     // debugger;
     extra[title].setCommands.push({
         at,
-        "prop" : title,
         value,
     });   
     extra = {...extra};
@@ -33,7 +31,7 @@ export let dataType="number";
             <label class="text-xs">Set: </label>
 
 
-            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="text" bind:value={value}>
+            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="color" bind:value={value}>
           
 
         </div>

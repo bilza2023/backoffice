@@ -77,6 +77,7 @@ export default class DrawLibInterpretor {
                 case 'grid':
                     break;
                 case 'rect':
+                    // debugger;
                     this.drawLib.rect(
                         this.addXfactor(this.getX(
                             getVal(currentTime , extra.x.initialValue, extra.x.setCommands)
@@ -89,8 +90,14 @@ export default class DrawLibInterpretor {
                         getVal(currentTime , extra.width.initialValue, extra.width.setCommands), 
                         getVal(currentTime , extra.height.initialValue, extra.height.setCommands),
                          
-                        extra.color, extra.filled,extra.dash,extra.gap,
-                        getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
+                        
+                        getVal(currentTime , extra.color.initialValue, extra.color.setCommands),
+                        
+                        getVal(currentTime , extra.filled.initialValue, extra.filled.setCommands),
+                        
+                        extra.dash,extra.gap,
+                        
+                         getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
                         extra.globalAlpha);
                     break;
                 case 'shape':
@@ -166,12 +173,14 @@ export default class DrawLibInterpretor {
                     }
                     break;
                 case 'text':
+                   
+                    this.drawLib.text(
+                        getVal(currentTime , extra.text.initialValue, extra.text.setCommands),
 
-                    if (!extra.translate || extra.translate==false ){
-                    this.drawLib.text(extra.text, extra.x, extra.y, extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha);
-                    }else{
-                    this.drawLib.text(extra.text, this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha);    
-                    }
+                        this.addXfactor(this.getX(extra.x)), 
+                        this.getY(extra.y), 
+                        extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha);    
+                
                     break;
                 case 'para':
 

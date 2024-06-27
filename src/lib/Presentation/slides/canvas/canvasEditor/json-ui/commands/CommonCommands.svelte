@@ -1,7 +1,9 @@
 <script>
     //@ts-nocheck
 import TrNoWithSet from "./TrNoWithSet.svelte";   
-import TrStrWithSet from "./TrStrWithSet.svelte"; 
+    
+    import TrStrWithSet from "./TrStrWithSet.svelte"; 
+    import TrPropColor from "../commonCommands/TrPropColor.svelte";   
 
     import TrNo from "./TrNo.svelte";   
     import TrText from "./TrText.svelte";   
@@ -19,8 +21,9 @@ import TrStrWithSet from "./TrStrWithSet.svelte";
         <TrText  title="Name" bind:itemFiled={item.name}   />
 
         <!-- <TrColor  title="Color" bind:itemFiled={item.color}   /> -->
+        <TrPropColor  title="color"  bind:extra={item}   />
         
-        <TrStrWithSet title="color" bind:itemFiled={item.color} bind:extra={item}  />  
+
 
         <TrNo title="Show At" bind:itemFiled={item.showAt}/>
       

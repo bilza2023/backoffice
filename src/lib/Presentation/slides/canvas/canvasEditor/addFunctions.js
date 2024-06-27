@@ -30,7 +30,8 @@ function addReqExtraFields(obj,command,color="black"){
   obj.command = command;
   obj.name = command + "_" +randNo();
   
-  obj.color = color;
+  // obj.color = color;
+  obj.color = getProp(color),
   obj.setCommands = [];
   //hide at is used when it is larger than showAt. for other use cases use other variables.e.g use "visibility for blinking"
   obj.hideAt = 0;
@@ -102,7 +103,7 @@ function addReqExtraFields(obj,command,color="black"){
           "y": getProp(5),
           "width": getProp(100),
           "height": getProp(100),
-          "filled": false,
+          "filled": getProp(false),
           "lineWidth": getProp(1),
           };
           addNewItem(addReqExtraFields(obj,"rect","red"),items); 
@@ -238,7 +239,7 @@ function addReqExtraFields(obj,command,color="black"){
   }
   function addText(items){
     const obj ={
-      "text": "Hello",
+      "text": getProp("Hello"),
       "x": 4,
       "y": 4,
       "font": "20px Arial",

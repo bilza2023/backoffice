@@ -1,21 +1,22 @@
-
 <script>
     //@ts-nocheck
 let at=0;
-let value=0;
+let value= false;
+
 export let extra;
 export let title;
-export let dataType="number";
+
 
  function addSetCommands(){
     // debugger;
+
+    /////////////////////////////////////
     extra[title].setCommands.push({
         at,
-        "prop" : title,
-        value,
+        value ,
     });   
     extra = {...extra};
-
+    console.log("extra" , extra);
  }
 </script>
 
@@ -28,13 +29,17 @@ export let dataType="number";
         <div class="flex">
             <!-- svelte-ignore a11y-label-has-associated-control -->
             <label class="text-xs">At: </label>
+
             <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="number"  bind:value={at}>
+
             <!-- svelte-ignore a11y-label-has-associated-control -->
             <label class="text-xs">Set: </label>
 
+            
+            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="checkbox" 
+            bind:checked={value}
+            />
 
-            <input class="bg-gray-800 text-white w-[50px] text-xs text-center mx-2 rounded-md" type="text" bind:value={value}>
-          
 
         </div>
     </td>
