@@ -95,10 +95,16 @@ export default class DrawLibInterpretor {
                         
                         getVal(currentTime , extra.filled.initialValue, extra.filled.setCommands),
                         
-                        extra.dash,extra.gap,
+                        getVal(currentTime , extra.dash.initialValue, extra.dash.setCommands),
                         
-                         getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
-                        extra.globalAlpha);
+                        getVal(currentTime , extra.gap.initialValue, extra.gap.setCommands),
+                        
+                        
+                        getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
+
+                        getVal(currentTime , extra.globalAlpha.initialValue, extra.globalAlpha.setCommands),
+                    
+                    );
                     break;
                 case 'shape':
                     this.drawLib.shape(extra.points, extra.color, extra.closed,extra.globalAlpha);
@@ -177,9 +183,24 @@ export default class DrawLibInterpretor {
                     this.drawLib.text(
                         getVal(currentTime , extra.text.initialValue, extra.text.setCommands),
 
-                        this.addXfactor(this.getX(extra.x)), 
-                        this.getY(extra.y), 
-                        extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha);    
+                        this.addXfactor(this.getX(
+                            getVal(currentTime , extra.x.initialValue, extra.x.setCommands)
+                        )), 
+                        
+                        this.getY(
+                            getVal(currentTime , extra.y.initialValue, extra.y.setCommands)
+                        ),
+                        
+                        getVal(currentTime , extra.color.initialValue, extra.color.setCommands), 
+                        extra.font,
+                        
+                        extra.shadowOffsetX,
+                        extra.shadowOffsetY,
+                        extra.shadowBlur,
+                        extra.shadowColor,
+
+                        getVal(currentTime , extra.globalAlpha.initialValue, extra.globalAlpha.setCommands)
+                    );    
                 
                     break;
                 case 'para':

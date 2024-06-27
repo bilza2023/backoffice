@@ -12,6 +12,7 @@ import ShadowCommands from "./ShadowCommands.svelte";
 
 import TrText from "./TrText.svelte";   
 import TrPropText from "../commonCommands/TrPropText.svelte"
+import TrPropNumber from "../commonCommands/TrPropNumber.svelte"
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
      
@@ -109,9 +110,9 @@ function action(e){
         
         <!-- <TrStrWithSet title="text" bind:itemFiled={item.text} bind:extra={item}  />   -->
         <TrPropText title="text"  bind:extra={item}  />  
+        <TrPropNumber title="x"  bind:extra={item}  />  
+        <TrPropNumber title="y"  bind:extra={item}  />  
         
-        <TrNoWithSet title="x" bind:itemFiled={item.x} bind:extra={item} min=0 max=45/>  
-        <TrNoWithSet title="y" bind:itemFiled={item.y} bind:extra={item} min=0 max=25/>  
         <TrText title="font" bind:itemFiled={item.font} />  
        
         

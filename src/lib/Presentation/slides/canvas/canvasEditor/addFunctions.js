@@ -37,10 +37,10 @@ function addReqExtraFields(obj,command,color="black"){
   obj.hideAt = 0;
   obj.showAt = 0;
   obj.visibility = 0;
-  obj.globalAlpha = 1;
+  obj.globalAlpha = getProp(1);
 
-  obj.gap= 0;
-  obj.dash= 0;
+  obj.gap= getProp(0);
+  obj.dash= getProp(0);
 
   obj.shadowOffsetX = 0;
   obj.shadowOffsetY = 0;

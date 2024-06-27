@@ -6,7 +6,9 @@ import TrNoWithSet from "./TrNoWithSet.svelte";
     import TrPropColor from "../commonCommands/TrPropColor.svelte";   
 
     import TrNo from "./TrNo.svelte";   
-    import TrText from "./TrText.svelte";   
+    import TrText from "./TrText.svelte";
+    import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
+   
     import TrColor from "./TrColor.svelte";   
     export let item;
     let show = true;
@@ -28,7 +30,7 @@ import TrNoWithSet from "./TrNoWithSet.svelte";
         <TrNo title="Show At" bind:itemFiled={item.showAt}/>
       
         
-        <TrNoWithSet title="globalAlpha" bind:itemFiled={item.globalAlpha} bind:extra={item} min=0 max=1 step="0.1"/>  
+        <TrPropNumber title="globalAlpha" bind:extra={item} min=0 max=1 step="0.1"/>  
 
         <tr>
             <td class="border border-white p-1">Translate</td>

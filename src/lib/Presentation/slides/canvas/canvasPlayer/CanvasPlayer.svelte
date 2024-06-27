@@ -4,7 +4,8 @@
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
-    import getProp from '../getProp';
+    
+    import fix from './fix';
 
     export let spriteImgArray;
     export let bgImages;
@@ -47,19 +48,8 @@ async function init(){
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
       // console.log("items",items);
+      fix(items);
       
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        if (item.extra.command == 'rect'){
-              if(typeof item.extra.color != 'object' ){
-                item.extra.color = getProp(item.extra.color);
-              }
-              if(typeof item.extra.filled != 'object' ){
-                item.extra.filled = getProp(item.extra.filled);
-              }
-
-        }
-      }
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
