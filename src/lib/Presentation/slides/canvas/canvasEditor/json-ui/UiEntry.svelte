@@ -87,10 +87,12 @@ export let del;
     {#if item.command === 'repeatText'}
     <RepeatTextCommand bind:item={item}/>
     {/if}
+
 <!--   
     {#if item.command === 'image'}
     <ImageCommand bind:item={item}/>
-    {/if} -->
+    {/if}
+-->
   
     {#if item.command === 'repeatDot'}
     <RepeatDotCommand bind:item={item}/>

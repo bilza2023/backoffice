@@ -1,6 +1,8 @@
 <script>
     //@ts-nocheck
-    import CommonCommands from "./CommonCommands.svelte";   
+import CommonCommands from "./CommonCommands.svelte";  
+import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
+ 
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
@@ -40,50 +42,8 @@ import TrTf from "./TrTf.svelte";
   }
   return result;
   }
-    function applyTemplate(event) {
-        switch (event.target.value) {
 
-//////////////////////////////
-            case 'title':
-       item.font = "30px Arial";
-       item.color = "yellow";
-       item.shadowOffsetX =  6;
-       item.shadowOffsetY =  6;
-       item.globalAlpha =  1;
-       item.shadowColor =  "black";
-       item.shadowBlur =  3;
-            break;
-            case 'taleem':
-       item.text = "https://taleem.help";
-       item.font = "20px Arial";
-       item.translate = true;
-       item.x = 12;
-       item.y = 12;
-       item.color = "yellow";
-       item.shadowOffsetX =  4;
-       item.shadowOffsetY =  4;
-       item.globalAlpha =  1;
-       item.shadowColor =  "black";
-       item.shadowBlur =  2;
-            break;
-
-            case 'jt' :
-                item.name = "jt_"+ randNo();
-                // item.text= "Ex 8.2 Question 3 Pt 2";
-                item.x= 4;
-                item.y= 3;
-                item.color= "#FAE500";
-                item.font= "80px Arial";
-                item.shadowOffsetX = 12;
-                item.shadowOffsetY = 12;
-                item.shadowColor = "#9D850B";
-                item.shadowBlur = 12
-            break;
-
-            default:
-                break;
-        }
-    }
+  
 </script>
 
 <div class="flex flex-col w-full ">
@@ -110,9 +70,10 @@ import TrTf from "./TrTf.svelte";
         </td>
         </tr>
 
-        <TrNo title="x"         bind:itemFiled={item.dx} />
-        <TrNo title="y"         bind:itemFiled={item.dy} />
-        <TrNo title="wFactor"   bind:itemFiled={item.wFactor} />
+        <TrPropNumber title="dx" bind:extra={item}  />  
+        <TrPropNumber title="dy"  bind:extra={item}  />  
+        
+        <TrNo title="wFactor"   bind:extra={item} />
         
         <tr>
             <td class="border border-white p-1">H-Factor</td>

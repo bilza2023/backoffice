@@ -10,6 +10,9 @@ import TrText from "./TrText.svelte";
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
 import TrTextArea from "./TrTextArea.svelte";   
+import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
+import TrPropText from "../commonCommands/TrPropText.svelte";
+
     export let item;
     function randNo(length=8){
     const digits = '0123456789';
@@ -26,14 +29,18 @@ import TrTextArea from "./TrTextArea.svelte";
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <TrTextArea title="Text"        bind:itemFiled={item.text} />
+        <TrText title="text"   bind:extra={item} />
+ 
+        
+        <TrPropNumber title="x" bind:extra={item}  />  
+        <TrPropNumber title="y"  bind:extra={item}  /> 
 
-        <TrStrWithSet title="x" bind:itemFiled=        {item.x} bind:extra={item}  />  
-        <TrStrWithSet title="y" bind:itemFiled=        {item.y} bind:extra={item}  />  
-        <TrStrWithSet title="font" bind:itemFiled=        {item.font} bind:extra={item}  />  
-        <TrStrWithSet title="lineHeightOffset" bind:itemFiled=        {item.lineHeightOffset} bind:extra={item}  />  
 
-        <TrStrWithSet title="xOffset" bind:itemFiled={item.xOffset} bind:extra={item}  />  
+
+        <!-- <TrText title="font"  bind:extra={item}  />   -->
+        <TrNo title="lineHeightOffset"  bind:extra={item}  />  
+
+        <TrText title="xOffset" bind:extra={item}  />  
 
       
         

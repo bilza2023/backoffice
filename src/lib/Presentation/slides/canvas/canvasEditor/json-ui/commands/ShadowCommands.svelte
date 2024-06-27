@@ -18,11 +18,11 @@ function reset(){
 </tr>
 {#if show}     
 
-        <TrNo title="shadowOffsetX" bind:itemFiled={item.shadowOffsetX}/>
-        <TrNo title="shadowOffsetY" bind:itemFiled={item.shadowOffsetY}/>
-        <TrNo title="shadowBlur" bind:itemFiled={item.shadowBlur}/>
+        <TrNo title="shadowOffsetX" bind:extra={item}/>
+        <TrNo title="shadowOffsetY" bind:extra={item}/>
+        <TrNo title="shadowBlur" bind:extra={item}/>
        
-        <TrColor  title="shadowColor" bind:itemFiled={item.shadowColor}   />
+        <TrColor  title="shadowColor" bind:extra={item}   />
                  
 
 

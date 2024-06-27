@@ -40,6 +40,7 @@ export default class DrawLibInterpretor {
     }
     
     interpret(items,currentTime=0,extra,playerImages) {
+        
         //--keep 
         if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}
 
@@ -69,8 +70,12 @@ export default class DrawLibInterpretor {
             const extra = item.extra;
 
             //-- fields that are added later must be added to older items
-            if(!extra.useShowHide){ extra.useShowHide = false;}
-            if(!extra.showAt){ extra.showAt = 0;}
+            // if(!extra.useShowHide){ extra.useShowHide = false;}
+            
+            if(extra.showAt === undefined || extra.showAt === null){ 
+                debugger;
+                extra.showAt = 0;
+            }
 
             if( currentTime >= extra.showAt ){
             switch (extra.command) {
@@ -122,12 +127,31 @@ export default class DrawLibInterpretor {
 
                     break;
                 case 'line':
+                    debugger;
+                this.drawLib.line(
+                    this.addXfactor(this.getX(
+                        getVal(currentTime , extra.x1.initialValue, extra.x1.setCommands)
+                    )), 
                     
-                    if (!extra.translate || extra.translate==false ){
-                        this.drawLib.line(extra.x1, extra.y1, extra.x2, extra.y2, extra.color, extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);
-                    }else{
-                        this.drawLib.line(this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), this.addXfactor(this.getX(extra.x2)), this.getY(extra.y2), extra.color, extra.lineWidth,extra.dash,extra.gap,extra.globalAlpha);
-                    }
+                    this.getY(
+                        getVal(currentTime , extra.y1.initialValue, extra.y1.setCommands)
+                    ),
+                    this.addXfactor(this.getX(
+                        getVal(currentTime , extra.x2.initialValue, extra.x2.setCommands)
+                    )), 
+                    
+                    this.getY(
+                        getVal(currentTime , extra.y2.initialValue, extra.y2.setCommands)
+                    ),
+                     
+                    getVal(currentTime , extra.color.initialValue, extra.color.setCommands),
+                    
+                    getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
+                    
+                    getVal(currentTime , extra.dash.initialValue, extra.dash.setCommands),
+                    getVal(currentTime , extra.gap.initialValue, extra.gap.setCommands),
+                    getVal(currentTime , extra.globalAlpha.initialValue, extra.globalAlpha.setCommands),
+                    );
 
                     break;
                 case 'lines':
@@ -204,12 +228,27 @@ export default class DrawLibInterpretor {
                 
                     break;
                 case 'para':
-
-                    if (!extra.translate || extra.translate==false ){
-                    this.drawLib.para(extra.text, extra.x, extra.y, extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha,extra.lineHeightOffset,extra.xOffset);
-                    }else{
-                    this.drawLib.para(extra.text, this.addXfactor(this.getX(extra.x)), this.getY(extra.y), extra.color, extra.font,extra.shadowOffsetX,extra.shadowOffsetY,extra.shadowBlur,extra.shadowColor,extra.globalAlpha,extra.lineHeightOffset,extra.xOffset);    
-                    }
+                    // debuggerP;
+                    this.drawLib.para(
+                        extra.text, 
+                        this.addXfactor(this.getX(
+                            getVal(currentTime , extra.x.initialValue, extra.x.setCommands)
+                        )), 
+                        
+                        this.getY(
+                            getVal(currentTime , extra.y.initialValue, extra.y.setCommands)
+                        ),
+                        getVal(currentTime , extra.color.initialValue, extra.color.setCommands), 
+                        extra.font,
+                        extra.shadowOffsetX,
+                        extra.shadowOffsetY,
+                        extra.shadowBlur,
+                        extra.shadowColor,
+                        getVal(currentTime , extra.globalAlpha.initialValue, extra.globalAlpha.setCommands), 
+                        extra.lineHeightOffset,
+                        extra.xOffset
+                    );    
+                    
                     break;
                 case 'angleSymbol':
                     // debugger;
@@ -240,11 +279,22 @@ export default class DrawLibInterpretor {
                     }
                     break;
                 case 'ray':
-                    if (!extra.translate || extra.translate==false ){
-                    this.drawLib.ray(extra.x0, extra.y0, extra.x1, extra.y1, extra.color, extra.lineWidth, extra.arrowWidth, extra.arrowHeight, extra.startArrow, extra.endArrow,extra.dash,extra.gap);
-                    }else{
-                    this.drawLib.ray(this.addXfactor(this.getX(extra.x0)), this.getY(extra.y0), this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), extra.color, extra.lineWidth, extra.arrowWidth, extra.arrowHeight, extra.startArrow, extra.endArrow,extra.dash,extra.gap);     
-                    }
+                  
+                    this.drawLib.ray(
+                        this.addXfactor(this.getX(extra.x0)), 
+                        this.getY(extra.y0), 
+                        this.addXfactor(this.getX(extra.x1)), 
+                        this.getY(extra.y1), 
+                        getVal(currentTime , extra.color.initialValue, extra.color.setCommands),
+                        getVal(currentTime , extra.lineWidth.initialValue, extra.lineWidth.setCommands),
+                        extra.arrowWidth, 
+                        extra.arrowHeight, 
+                        extra.startArrow, 
+                        extra.endArrow,
+                        extra.dash,
+                        extra.gap
+                    );     
+                    
                     break;
                 case 'dot':
                     if (!extra.translate || extra.translate==false ){
@@ -255,11 +305,19 @@ export default class DrawLibInterpretor {
                     break;
                 case 'repeatText':
                     let wordsArray = extra.textArray.split(",");
-                    if (!extra.translate || extra.translate==false ){
-                    this.drawLib.repeatText(wordsArray, extra.initialX, extra.initialY, extra.xFactor, extra.yFactor, extra.color, extra.font);
-                    }else {
-                    this.drawLib.repeatText(wordsArray, this.addXfactor(this.getX(extra.initialX)), parseInt(this.getY(extra.initialY)),this.getX(extra.xFactor), parseInt(this.getY(extra.yFactor)), extra.color, extra.font);    
-                    }
+                  
+                    this.drawLib.repeatText(
+                        wordsArray, 
+                        this.addXfactor(this.getX(extra.initialX)), 
+                        parseInt(this.getY(extra.initialY)),
+                        
+                        this.getX(extra.xFactor), 
+                        parseInt(this.getY(extra.yFactor)), 
+
+                        getVal(currentTime , extra.color.initialValue, extra.color.setCommands),
+                        extra.font
+                    );    
+                    
                     break;
                 case 'repeatDot':
                     
@@ -324,8 +382,14 @@ export default class DrawLibInterpretor {
                         
                         const newItem = JSON.parse(JSON.stringify(extra));
 
-                        newItem.dx = this.addXfactor(this.getX(extra.dx));
-                        newItem.dy = this.getY(extra.dy);
+                        // newItem.dx = this.addXfactor(this.getX(extra.dx));
+                        newItem.dx = this.addXfactor(this.getX(
+                            getVal(currentTime , extra.dx.initialValue, extra.dx.setCommands)
+                        ));
+                        // newItem.dy = this.getY(extra.dy);
+                        newItem.dy = this.getY(
+                            getVal(currentTime , extra.dy.initialValue, extra.dy.setCommands)
+                        );
 
                         this.drawLib.sprite(sprite,newItem);
                         }
@@ -340,6 +404,8 @@ export default class DrawLibInterpretor {
             }
         }// if showAt
         }
+
+   
     }
 
  

@@ -13,7 +13,7 @@ export let item;
 
 function applyTemplate(event) {
         // Your logic here to handle template changes
-        console.log("Template changed:", event.target.value);
+        // console.log("Template changed:", event.target.value);
         switch (event.target.value) {
             
             case 'h-ruler':
@@ -42,7 +42,7 @@ function applyTemplate(event) {
             default:
                 break;
         }
-    }
+}
 </script>
 
 <div class="flex flex-col w-full">
@@ -59,12 +59,13 @@ function applyTemplate(event) {
             </td>
         </tr>
         
-        <TrText title="Text Array"  bind:itemFiled={item.textArray} />
-        <TrNo title="initialX"      bind:itemFiled={item.initialX} />
-        <TrNo title="initialY"      bind:itemFiled={item.initialY} />
-        <TrNo title="xFactor"       bind:itemFiled={item.xFactor} />
-        <TrNo title="yFactor"       bind:itemFiled={item.yFactor} />
-        <TrText title="font"        bind:itemFiled={item.font} />
+        <TrText     title="textArray"     bind:extra={item} />
+        <TrNo       title="initialX"      bind:extra={item} /> 
+        <TrNo       title="initialY"      bind:extra={item} />
+        <TrNo       title="xFactor"       bind:extra={item} />
+        <TrNo       title="yFactor"       bind:extra={item} />
+       
+        <TrText title="font"        bind:extra={item} />
         
         
 <CommonCommands  bind:item={item}/>

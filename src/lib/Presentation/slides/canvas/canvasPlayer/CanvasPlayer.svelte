@@ -13,9 +13,10 @@
     let canvas;
     let ctx;
     export let extra;
-    let orignalExtra;
     export let items;
     export let playerImages;
+    
+    let orignalExtra;
 
 function gameLoop(){
     try {
@@ -34,12 +35,17 @@ function gameLoop(){
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
     } catch (error) {
-      // debugger;
+      
       drawLibInterpretor.jsonError();
     }
    
 }    
 //////////////////////////////////
+
+// $: {
+//   items;
+//   fix(items);
+// }
 
 async function init(){
   if(canvas){
@@ -47,8 +53,6 @@ async function init(){
     //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
-      // console.log("items",items);
-      fix(items);
       
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////

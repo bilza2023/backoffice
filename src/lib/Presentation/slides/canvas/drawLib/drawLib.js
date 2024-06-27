@@ -71,6 +71,7 @@ export default class DrawLib {
 
 
 line(x1, y1, x2, y2, color = 'black', lineWidth = 1, dash = 0, gap = 0,globalAlpha=1) {
+    // debugger;
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;
@@ -289,6 +290,7 @@ shape(points, color = 'white', closed = true) {
 /////////////////////===TEXT PARA=====//////////////////////
 ////////////////////////////////////////////////////////////
 text(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadowOffsetY = 0, shadowBlur = 4, shadowColor = 'gray',globalAlpha = 1) {
+    // debugger;
     this.ctx.save(); // Save the current context state
 
     // Set shadow properties
@@ -538,10 +540,7 @@ drawPerpendSymbol(x, y, x1, y1, x2, y2, lineWidth = 1, color = 'black') {
 // dHeight: The height to draw the image in the destination canvas.
 // sprite(image={}, sx=0, sy=0, sWidth=100, sHeight=100, dx=0, dy=0, dWidth=100, dHeight=100) {
 sprite(sprite,item) {
-
-    // console.log("sheet",item.sheet);
-    // console.log("sheetItem",item.sheetItem);
-    // this.ctx.drawImage(img, 0, 0, 200, 200, 0, 0, 200, 200);
+    // debugger;
     this.ctx.drawImage(sprite.img,
         sprite.selectedData.sx,
         sprite.selectedData.sy,

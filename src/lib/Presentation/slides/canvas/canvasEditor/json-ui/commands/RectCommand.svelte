@@ -4,7 +4,7 @@ import CommonCommands from "./CommonCommands.svelte";
 import ShadowCommands from "./ShadowCommands.svelte";   
 import GapDashCommands from "./GapDashCommands.svelte";   
 
-import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
+import TrPropNumber from "../commonCommands/TrPropNumber.svelte";
 import TrTf from "./TrTf.svelte";   
 import TrPropBoolean from "../commonCommands/TrPropBoolean.svelte";   
     
@@ -23,9 +23,6 @@ export let item;
         <TrPropNumber title="lineWidth"  bind:extra={item}  />  
         
         <TrPropBoolean title="filled"  bind:extra={item}  />  
-   
-        <!-- <TrTf title="filled" bind:extra={item}  /> -->
-   
     
     <GapDashCommands bind:item={item}/>
 

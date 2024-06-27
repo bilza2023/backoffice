@@ -20,23 +20,14 @@ import TrNoWithSet from "./TrNoWithSet.svelte";
 </tr>
 {#if show}     
 
-        <TrText  title="Name" bind:itemFiled={item.name}   />
+        <TrText  title="name" bind:extra={item}   />
 
-        <!-- <TrColor  title="Color" bind:itemFiled={item.color}   /> -->
         <TrPropColor  title="color"  bind:extra={item}   />
         
-
-
-        <TrNo title="Show At" bind:itemFiled={item.showAt}/>
-      
+        <TrNo title="showAt"  bind:extra={item}/>
         
         <TrPropNumber title="globalAlpha" bind:extra={item} min=0 max=1 step="0.1"/>  
 
-        <tr>
-            <td class="border border-white p-1">Translate</td>
-            <td class="border border-white p-1">
-                <input type="checkbox" bind:checked={item.translate} class="bg-gray-900 text-white p-1">
-            </td>
-        </tr>
+     
 
 {/if}
