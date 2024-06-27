@@ -8,12 +8,12 @@ export default function fix(items){
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        // if (item.extra.command === 'rect') {
+        if (item.extra.command === 'rect' || item.extra.command === 'text') {
             properties.forEach(prop => {
                 if (item.extra.hasOwnProperty(prop) && typeof item.extra[prop] !== 'object') {
                     item.extra[prop] = getProp(item.extra[prop]);
                 }
             });
-        // }
+        }
     }
 }
