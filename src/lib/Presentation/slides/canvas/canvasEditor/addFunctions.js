@@ -115,8 +115,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
       "x": getProp(5),
       "y": getProp(5),
       "radius": getProp(100),
-      "startAngle": 0 ,
-      "endAngle": 360 ,
+      "startAngle": getProp(0) ,
+      "endAngle": getProp(360) ,
       "fill": getProp(false),
       "lineWidth": getProp(1),
       };
