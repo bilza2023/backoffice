@@ -196,25 +196,25 @@ export default class DrawLibInterpretor {
 
                     break;
                 case 'ellipse':
-                    const st_angle_rads = extra.startAngle * (Math.PI / 180);
-                    const end_angle_rads = extra.endAngle * (Math.PI / 180);
-                    const rotation_rads = extra.rotation * (Math.PI / 180);
 
-                
+                        
                     this.drawLib.ellipse(
                         this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
                         this.getY(getVal(currentTime , extra.y)),
-                        extra.radiusX, 
-                        extra.radiusY, 
-                        extra.color, 
-                        extra.fill, 
-                        rotation_rads, 
-                        st_angle_rads, 
-                        end_angle_rads,
-                        extra.lineWidth,
-                        extra.dash,
-                        extra.gap,
-                        extra.globalAlpha
+                        
+                        getVal(currentTime , extra.radiusX),
+                        getVal(currentTime , extra.radiusY),
+                        getVal(currentTime , extra.color),
+                        getVal(currentTime , extra.fill),
+
+                        getVal(currentTime , extra.rotation) * (Math.PI / 180),
+                        getVal(currentTime , extra.startAngle) * (Math.PI / 180),
+                        getVal(currentTime , extra.endAngle) * (Math.PI / 180),
+
+                        getVal(currentTime , extra.lineWidth),
+                        getVal(currentTime , extra.dash),
+                        getVal(currentTime , extra.gap),
+                        getVal(currentTime , extra.globalAlpha)
                     );
                     
                     break;

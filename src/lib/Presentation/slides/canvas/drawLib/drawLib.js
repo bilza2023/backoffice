@@ -119,6 +119,8 @@ circle(x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAng
 }
 
 ellipse(x, y, radiusX, radiusY, color = 'black', fill = false, rotation = 0, startAngle = 0, endAngle = Math.PI * 2,lineWidth=1, dash = 0, gap = 0,globalAlpha) {
+
+    debugger;
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;

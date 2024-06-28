@@ -96,15 +96,15 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
 }
  function addEllipse(items){
   const obj = { 
-    "x": getProp(15),
-    "y": getProp(7),
-    "radiusX": 50,
-    "radiusY": 100,
-    "rotation": 0,
-    "startAngle": 0,
-    "endAngle": 360,
-    "lineWidth": getProp(1),
-    "fill": getProp(false),
+    "x":          getProp(15),
+    "y":          getProp(7),
+    "radiusX":    getProp(50),
+    "radiusY":    getProp(100),
+    "rotation":   getProp(0),
+    "startAngle": getProp(0),
+    "endAngle":   getProp(360),
+    "lineWidth":  getProp(1),
+    "fill":       getProp(false),
        
     };
 
