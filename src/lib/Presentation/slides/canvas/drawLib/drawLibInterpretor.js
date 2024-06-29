@@ -65,13 +65,9 @@ export default class DrawLibInterpretor {
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
-            // item in this loop is actually item.extra ==>
     
             const extra = item.extra;
-
-            //-- fields that are added later must be added to older items
-            // if(!extra.useShowHide){ extra.useShowHide = false;}
-            
+        
             if(extra.showAt === undefined || extra.showAt === null){ 
                 debugger;
                 extra.showAt = 0;
@@ -125,7 +121,7 @@ export default class DrawLibInterpretor {
 
                     break;
                 case 'line':
-                    debugger;
+                    // debugger;
                 this.drawLib.line(
                     this.addXfactor(this.getX(getVal(currentTime , extra.x1) )), 
                     this.getY(getVal(currentTime , extra.y1)),
@@ -196,8 +192,6 @@ export default class DrawLibInterpretor {
 
                     break;
                 case 'ellipse':
-
-                        
                     this.drawLib.ellipse(
                         this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
                         this.getY(getVal(currentTime , extra.y)),
@@ -221,14 +215,11 @@ export default class DrawLibInterpretor {
                 case 'text':
                    
                     this.drawLib.text(
-                        getVal(currentTime , extra.text.initialValue, extra.text.setCommands),
-
+                        getVal(currentTime ,extra.text),
                         this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
                         this.getY(getVal(currentTime , extra.y)),
-                        
                         getVal(currentTime , extra.color), 
                         extra.font,
-                        
                         extra.shadowOffsetX,
                         extra.shadowOffsetY,
                         extra.shadowBlur,
@@ -285,8 +276,7 @@ export default class DrawLibInterpretor {
                     this.drawLib.bezier(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), this.addXfactor(this.getX(extra.x2)), this.getY(extra.y2), extra.color, extra.lineWidth, extra.globalAlpha, extra.showHandle, extra.dash, extra.gap);     
                     }
                     break;
-                case 'ray':
-                  
+                case 'ray':                  
                     this.drawLib.ray(
                         this.addXfactor(this.getX(getVal(currentTime , extra.x0) )), 
                             this.getY(getVal(currentTime , extra.y0)),

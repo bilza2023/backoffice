@@ -7,9 +7,9 @@ import TrNoWithSet from "./TrNoWithSet.svelte";
 import TrStrWithSet from "./TrStrWithSet.svelte";   
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
+import TrTextArea from "./TrTextArea.svelte";   
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
-import TrTextArea from "./TrTextArea.svelte";   
 import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
 import TrPropText from "../commonCommands/TrPropText.svelte";
 
@@ -29,18 +29,20 @@ import TrPropText from "../commonCommands/TrPropText.svelte";
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <TrText title="text"   bind:extra={item} />
+        <TrTextArea title="text"   bind:extra={item} />
  
         
         <TrPropNumber title="x" bind:extra={item}  />  
         <TrPropNumber title="y"  bind:extra={item}  /> 
 
+        <TrText title="font" bind:extra={item} />  
+       
 
 
         <!-- <TrText title="font"  bind:extra={item}  />   -->
         <TrNo title="lineHeightOffset"  bind:extra={item}  />  
 
-        <TrText title="xOffset" bind:extra={item}  />  
+        <TrNo title="xOffset" bind:extra={item}  />  
 
       
         

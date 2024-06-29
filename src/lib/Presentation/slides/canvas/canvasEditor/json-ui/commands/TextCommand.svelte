@@ -19,13 +19,6 @@ import TrTf from "./TrTf.svelte";
 export let item;
 export let redraw;
 
-$:{
-item;
-if(!item.setCommands ){
-    item.setCommands = [];
-}
-
-}
 
 function action(e){
     addUTFIcon(e,item);
@@ -88,7 +81,7 @@ function action(e){
 
 <div class="flex flex-col w-full ">
     <table class="border-collapse border-2 border-white">
-            
+<!--             
         <tr>
             <td class="border border-white p-1">Templates</td>
             <td class="border border-white p-1">
@@ -99,7 +92,8 @@ function action(e){
                     <option value="jt">JT</option>
                 </select>
             </td>
-        </tr>
+        </tr> -->
+ 
         <tr>
             <td class="border border-white p-1">Add Icon</td>
             <td class="border border-white p-1">
@@ -111,7 +105,7 @@ function action(e){
         <TrPropNumber title="x"  bind:extra={item}  />  
         <TrPropNumber title="y"  bind:extra={item}  />  
         
-        <!-- <TrText title="font" bind:extra={item.extra} />   -->
+        <TrText title="font" bind:extra={item} />  
        
         
         

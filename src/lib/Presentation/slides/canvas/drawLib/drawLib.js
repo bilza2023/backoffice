@@ -120,7 +120,6 @@ circle(x, y, radius, color = 'black', fill = false, startingAngle = 0, endingAng
 
 ellipse(x, y, radiusX, radiusY, color = 'black', fill = false, rotation = 0, startAngle = 0, endAngle = Math.PI * 2,lineWidth=1, dash = 0, gap = 0,globalAlpha) {
 
-    debugger;
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;
@@ -292,10 +291,9 @@ shape(points, color = 'white', closed = true) {
 /////////////////////===TEXT PARA=====//////////////////////
 ////////////////////////////////////////////////////////////
 text(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadowOffsetY = 0, shadowBlur = 4, shadowColor = 'gray',globalAlpha = 1) {
-    // debugger;
-    this.ctx.save(); // Save the current context state
+    debugger;
+    this.ctx.save(); 
 
-    // Set shadow properties
     this.ctx.shadowOffsetX = shadowOffsetX;
     this.ctx.shadowOffsetY = shadowOffsetY;
     this.ctx.shadowBlur = shadowBlur;

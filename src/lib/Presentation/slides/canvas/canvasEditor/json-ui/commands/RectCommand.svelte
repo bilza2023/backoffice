@@ -5,7 +5,6 @@ import ShadowCommands from "./ShadowCommands.svelte";
 import GapDashCommands from "./GapDashCommands.svelte";   
 
 import TrPropNumber from "../commonCommands/TrPropNumber.svelte";
-import TrTf from "./TrTf.svelte";   
 import TrPropBoolean from "../commonCommands/TrPropBoolean.svelte";   
     
 export let item;
@@ -18,8 +17,8 @@ export let item;
         
         <TrPropNumber title="x" bind:extra={item}  />  
         <TrPropNumber title="y"  bind:extra={item}  />  
-        <TrPropNumber title="width"  bind:extra={item}  />  
-        <TrPropNumber title="height"  bind:extra={item}  />  
+        <TrPropNumber title="width"  bind:extra={item}  min="1" max="500" />  
+        <TrPropNumber title="height"  bind:extra={item} min="1" max="500" />  
         <TrPropNumber title="lineWidth"  bind:extra={item}  />  
         
         <TrPropBoolean title="filled"  bind:extra={item}  />  
