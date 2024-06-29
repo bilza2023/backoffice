@@ -34,10 +34,10 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addDot(items)} icon={Icons.DOT} title="Dot" />
     <SmallBtnToolbar clk={()=>addRepeatDot(items)} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
     <SmallBtnToolbar clk={()=>addRepeatText(items)} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" />
-    <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" />
+    <!-- <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" /> -->
     <SmallBtnToolbar clk={()=>addAngleSymbol(items)} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
-    <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" />
+    <!-- <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" /> -->
     <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
     <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" />
     <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" />

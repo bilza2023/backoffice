@@ -1,5 +1,6 @@
 //@ts-nocheck
 import {getNewItem} from '$lib/Presentation';
+// getProp creates prop for any type number , boolean , string
 import getProp from '../getProp';
 /**
  *31-may-2024 
@@ -157,10 +158,10 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
     const obj = {
           "x": getProp(5),
           "y": getProp(5),
-          "label": "label",
-          "dot_width": 10,
-          "text_color": "yellowbezier",
-          "text_size": 24,
+          "label": getProp("label"),
+          "dot_width": getProp(10),
+          "text_color": getProp("yellowbezier"),
+          "text_size": getProp(24),
           "fill": getProp(true),
           };
           addNewItem(addReqExtraFields(obj,"dot","red"),items); 
@@ -188,16 +189,17 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
     };
     addNewItem(addReqExtraFields(obj,"polygon","red"),items); 
   }
+
   function addTri(items){
     const obj ={
-              "x1": 6,
-              "y1": 2,
-              "x2": 1,
-              "y2": 10,
-              "x3": 11,
-              "y3": 10,
+              "x1": getProp(6),
+              "y1": getProp(2),
+              "x2": getProp(1),
+              "y2": getProp(10),
+              "x3": getProp(11),
+              "y3": getProp(10),
               "lineWidth": getProp(2),
-              "filled": false,
+              "filled": getProp(false),
     };
     addNewItem(addReqExtraFields(obj,"triangle","red"),items); 
   }
@@ -205,18 +207,19 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
 
   function addRay(items){
     const obj ={
-              "x0": 2,
-              "y0": 2,
-              "x1": 8,
-              "y1": 8,
-              "lineWidth": getProp(2),
-              "arrowWidth": 8,
-              "arrowHeight": 12,
+              "x0":           getProp(2),
+              "y0":           getProp(2),
+              "x1":           getProp(8),
+              "y1":           getProp(8),
+              "lineWidth":    getProp(2),
+              "arrowWidth":   getProp(8),
+              "arrowHeight":  getProp(12),
               "startArrow": true,
               "endArrow": true,
     };
     addNewItem(addReqExtraFields(obj,"ray","yellow"),items); 
   }
+
   function addRepeatDot(items){
     const obj ={
       "numberOfDots": 5,
@@ -231,10 +234,10 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   function addRepeatText(items){
     const obj ={
       "textArray":  "1,2,3,4",
-      "initialX":   4,
-      "initialY":   4,
-      "xFactor":    4,
-      "yFactor":    0,
+      "initialX":   getProp(4),
+      "initialY":   getProp(4),
+      "xFactor":    getProp(4),
+      "yFactor":    getProp(0),
       "font":       "20px Arial"
     };
     addNewItem(addReqExtraFields(obj,"repeatText","red"),items); 

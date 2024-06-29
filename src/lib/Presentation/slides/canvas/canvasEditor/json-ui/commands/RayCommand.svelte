@@ -9,27 +9,25 @@ import TrNo from "./TrNo.svelte";
 import TrText from "./TrText.svelte";   
 import TrColor from "./TrColor.svelte";   
 import TrTf from "./TrTf.svelte";   
-import TrPropNumber from "../commonCommands/TrPropNumber.svelte";   
+import TrPropNumber from "../commonCommands/TrPropNumber.svelte";
+import TrPropBoolean from "../commonCommands/TrPropBoolean.svelte";      
     export let item;
 </script>
 
 <div class="flex flex-col w-full">
-    <table class="border-collapse border-2 border-white">
+<table class="border-collapse border-2 border-white">
         
 
-<TrNo       title="x0"             bind:extra={item} />
-<TrNo       title="y0"             bind:extra={item} />
-<TrNo       title="x1"             bind:extra={item} />
-<TrNo       title="y1"             bind:extra={item} />
-<TrPropNumber title="lineWidth"    bind:extra={item}  />  
-<!-- <TrNo       title="lineWidth"      bind:extra={item} /> -->
-<TrNo       title="arrowWidth"     bind:extra={item} />
-<TrNo       title="arrowHeight"    bind:extra={item} />
+<TrPropNumber       title="x0"             bind:extra={item} />
+<TrPropNumber       title="y0"             bind:extra={item} />
+<TrPropNumber       title="x1"             bind:extra={item} />
+<TrPropNumber       title="y1"             bind:extra={item} />
+<TrPropNumber       title="lineWidth"      bind:extra={item}  />  
+<TrPropNumber       title="arrowWidth"     bind:extra={item} />
+<TrPropNumber       title="arrowHeight"    bind:extra={item} />
 
-
-
-<!-- <TrTf title="startArrow"      bind:itemFiled={item.startArrow} /> -->
-<!-- <TrTf title="endArrow"      bind:itemFiled={item.endArrow} /> -->
+<TrTf       title="startArrow"    bind:extra={item} />
+<TrTf       title="endArrow"    bind:extra={item} />
 
 
 <GapDashCommands bind:item={item}/>

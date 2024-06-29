@@ -74,13 +74,8 @@ import TrTf from "./TrTf.svelte";
         <TrPropNumber title="dy"  bind:extra={item}  />  
         
         <TrNo title="wFactor"   bind:extra={item} />
+        <TrNo title="hFactor"   bind:extra={item} />
         
-        <tr>
-            <td class="border border-white p-1">H-Factor</td>
-            <td class="border border-white p-1">
-                <input type="number" bind:value={item.hFactor} class="bg-gray-900 text-white p-1"  min=0 max=10 step="0.1">
-            </td>
-        </tr>
        
 <CommonCommands  bind:item={item}/>
     </table>

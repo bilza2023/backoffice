@@ -35,7 +35,7 @@ import TrTf from "./TrTf.svelte";
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <tr>
+        <!-- <tr>
             <td class="border border-white p-1">Templates</td>
             <td class="border border-white p-1">
                 <select on:change={applyTemplate} class="bg-gray-900 text-white p-1">
@@ -44,17 +44,17 @@ import TrTf from "./TrTf.svelte";
                     <option value="right">Right</option>
                 </select>
             </td>
-        </tr>
+        </tr> -->
 
         
-        <TrNo title="X"             bind:itemFiled={item.x}/>
-        <TrNo title="Y"             bind:itemFiled={item.y}/>
-        <TrNo title="Radius"        bind:itemFiled={item.radius}/>
-        <TrNo title="Ticks"         bind:itemFiled={item.ticks}/>
-        <TrNo title="Start Angle"   bind:itemFiled={item.startAngle}/>
-        <TrNo title="End Angle"     bind:itemFiled={item.endAngle}/>
-        <TrNo title="Line Width"    bind:itemFiled={item.lineWidth}/>
-        <TrTf title="Show Origin"   bind:itemFiled={item.showOrigin}/>
+        <TrNo title="x"             bind:extra={item}/>
+        <TrNo title="y"             bind:extra={item} />
+        <TrNo title="radius"        bind:extra={item} />
+        <TrNo title="ticks"         bind:extra={item} />
+        <TrNo title="startAngle"   bind:extra={item} />
+        <TrNo title="endAngle"     bind:extra={item} />
+        <TrNo title="lineWidth"    bind:extra={item} />
+        <TrTf title="showOrigin"   bind:extra={item} />
         
 
         <CommonCommands  bind:item={item}/>

@@ -6,48 +6,48 @@
  */ 
 
 export default class DrawLib {
-    constructor(canvas, ctx) {
-      this.ctx = ctx;
-      this.canvas = canvas;
-      this._backgroundColor = 'white'; // Default background color
-      this._width = canvas.width;
-      this._height = canvas.height;
-    }
-  
-    get backgroundColor() {
-      return this._backgroundColor;
-    }
-  
-    set backgroundColor(color) {
-      this._backgroundColor = color;
-      this.ctx.fillStyle = color;
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    }
+constructor(canvas, ctx) {
+    this.ctx = ctx;
+    this.canvas = canvas;
+    this._backgroundColor = 'white'; // Default background color
+    this._width = canvas.width;
+    this._height = canvas.height;
+}
 
-    get width() {
-      return this._width;
-    }
+get backgroundColor() {
+    return this._backgroundColor;
+}
 
-    set width(value) {
-      this._width = value;
-      this.canvas.width = value;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.backgroundColor = this.backgroundColor; // Redraw background
-    }
+set backgroundColor(color) {
+    this._backgroundColor = color;
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+}
 
-    get height() {
-      return this._height;
-    }
+get width() {
+    return this._width;
+}
 
-    set height(value) {
-      this._height = value;
-      this.canvas.height = value;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.backgroundColor = this.backgroundColor; // Redraw background
-    }
+set width(value) {
+    this._width = value;
+    this.canvas.width = value;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.backgroundColor = this.backgroundColor; // Redraw background
+}
+
+get height() {
+    return this._height;
+}
+
+set height(value) {
+    this._height = value;
+    this.canvas.height = value;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.backgroundColor = this.backgroundColor; // Redraw background
+}
 
  //  rect     
- rect(x, y, width, height, color = 'white', filled = true, dash = 0, gap = 0,lineWidth=1,globalAlpha=1) {
+rect(x, y, width, height, color = 'white', filled = true, dash = 0, gap = 0,lineWidth=1,globalAlpha=1) {
     this.ctx.save(); // Save the current context state
     this.ctx.lineWidth = lineWidth;
     this.ctx.globalAlpha = globalAlpha; // Set the global alpha
@@ -176,10 +176,13 @@ polygon(points, color = 'black', filled = true, dash = 0, gap = 0,lineWidth=1) {
     
     this.ctx.restore(); // Restore the context state
 }
-triangle(x1, y1, x2, y2, x3, y3, color = 'black', filled = true, lineWidth = 2, dash = 0, gap = 0) {
+
+triangle(x1, y1, x2, y2, x3, y3, color = 'black', filled = true, lineWidth = 2, dash = 0, gap = 0,globalAlpha=1) {
+    // debugger;
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;
+    this.ctx.globalAlpha = globalAlpha;
     this.ctx.strokeStyle = color;
 
     if (dash === 0 && gap === 0) {
@@ -203,7 +206,8 @@ triangle(x1, y1, x2, y2, x3, y3, color = 'black', filled = true, lineWidth = 2, 
     this.ctx.restore(); // Restore the context state
 }
 
-ray(x0, y0, x1, y1, lineColor = 'black', lineWidth = 2, arrowWidth = 5, arrowHeight = 8, startArrow = true, endArrow = true, dash = 0, gap = 0) {
+ray(x0, y0, x1, y1, lineColor = 'black', lineWidth = 2, arrowWidth = 5, arrowHeight = 8, startArrow = true, endArrow = true, dash = 0, gap = 0,globalAlpha=1) {
+    // debugger; 
     this.ctx.save(); // Save the current context state
     var dx = x1 - x0;
     var dy = y1 - y0;
@@ -211,6 +215,7 @@ ray(x0, y0, x1, y1, lineColor = 'black', lineWidth = 2, arrowWidth = 5, arrowHei
     var length = Math.sqrt(dx * dx + dy * dy);
 
     this.ctx.lineWidth = lineWidth;
+    this.ctx.globalAlpha = globalAlpha;
     this.ctx.strokeStyle = lineColor;
 
     if (dash === 0 && gap === 0) {
@@ -224,11 +229,13 @@ ray(x0, y0, x1, y1, lineColor = 'black', lineWidth = 2, arrowWidth = 5, arrowHei
     this.ctx.beginPath();
     this.ctx.moveTo(0, 0);
     this.ctx.lineTo(length, 0);
+
     if (startArrow) {
         this.ctx.moveTo(arrowHeight, -arrowWidth);
         this.ctx.lineTo(0, 0);
         this.ctx.lineTo(arrowHeight, arrowWidth);
     }
+
     if (endArrow) {
         this.ctx.moveTo(length - arrowHeight, -arrowWidth);
         this.ctx.lineTo(length, 0);
@@ -259,39 +266,40 @@ shape(points, color = 'white', closed = true) {
     }
 
     this.ctx.fill();
-   }
-   bezier(x, y, x1, y1, x2, y2, color = "red", lineWidth = 1, globalAlpha = 1, showHandle = false, dash = 0, gap = 0) {
-    this.ctx.save(); // Save the current context state
+}
 
-    this.ctx.lineWidth = lineWidth;
-    this.ctx.strokeStyle = color;
-    this.ctx.globalAlpha = globalAlpha;
+bezier(x, y, x1, y1, x2, y2, color = "red", lineWidth = 1, globalAlpha = 1, showHandle = false, dash = 0, gap = 0) {
+this.ctx.save(); // Save the current context state
 
-    if (dash === 0 && gap === 0) {
-        this.ctx.setLineDash([]); // Set line dash pattern
-    } else {
-        this.ctx.setLineDash([dash, gap]); // Set line dash pattern
-    }
+this.ctx.lineWidth = lineWidth;
+this.ctx.strokeStyle = color;
+this.ctx.globalAlpha = globalAlpha;
 
-    this.ctx.beginPath();
-    this.ctx.moveTo(x, y);
-    this.ctx.bezierCurveTo(x1, y1, x2, y2, x2, y2); // Use x2, y2 as control point
-    this.ctx.stroke();
+if (dash === 0 && gap === 0) {
+    this.ctx.setLineDash([]); // Set line dash pattern
+} else {
+    this.ctx.setLineDash([dash, gap]); // Set line dash pattern
+}
 
-    if (showHandle) {
-        this.ctx.fillStyle = 'yellow'; // Handle color
-        this.ctx.fillRect(x1 - 2, y1 - 2, 4, 4); // Adjust handle size
-        // this.ctx.fillRect(x2 - 2, y2 - 2, 4, 4); // Adjust handle size
-    }
+this.ctx.beginPath();
+this.ctx.moveTo(x, y);
+this.ctx.bezierCurveTo(x1, y1, x2, y2, x2, y2); // Use x2, y2 as control point
+this.ctx.stroke();
 
-    this.ctx.restore(); // Restore the context state
+if (showHandle) {
+    this.ctx.fillStyle = 'yellow'; // Handle color
+    this.ctx.fillRect(x1 - 2, y1 - 2, 4, 4); // Adjust handle size
+    // this.ctx.fillRect(x2 - 2, y2 - 2, 4, 4); // Adjust handle size
+}
+
+this.ctx.restore(); // Restore the context state
 }
 
 ////////////////////////////////////////////////////////////
 /////////////////////===TEXT PARA=====//////////////////////
 ////////////////////////////////////////////////////////////
 text(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadowOffsetY = 0, shadowBlur = 4, shadowColor = 'gray',globalAlpha = 1) {
-    debugger;
+    
     this.ctx.save(); 
 
     this.ctx.shadowOffsetX = shadowOffsetX;
@@ -344,61 +352,61 @@ para(text, x, y, color = 'black', font = '12px Arial', shadowOffsetX = 0, shadow
 
 //////////////////////////////////////////////////////////////
 
+// Image drawing method
+image(image, x, y, width, height,globalAlpha=1) {
+    // debugger;
+    this.ctx.save(); // Save the current context state
+    this.ctx.globalAlpha = globalAlpha; // Set the global alpha
+    this.ctx.drawImage(image, x, y, width, height);
+    this.ctx.restore();
+}
 
-    // Image drawing method
-    image(image, x, y, width, height,globalAlpha=1) {
-        this.ctx.save(); // Save the current context state
-        this.ctx.globalAlpha = globalAlpha; // Set the global alpha
-        this.ctx.drawImage(image, x, y, width, height);
-        this.ctx.restore();
+// Clear canvas method
+clear(backgroundColor='gray') {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = backgroundColor; 
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height); 
+}
+    
+
+// Gradient drawing method (Linear Gradient)
+linearGradient(x1, y1, x2, y2, colorStops) {
+    const gradient = this.ctx.createLinearGradient(x1, y1, x2, y2);
+    for (const [stop, color] of colorStops) {
+        gradient.addColorStop(stop, color);
+    }
+    this.ctx.fillStyle = gradient;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+}
+
+grid(cellWidth = 100, cellHeight = 100, lineWidth = 2, lineColor = 'black') {
+    this.ctx.save(); // Save the current context state
+
+    // Adjust canvas settings for sharp lines
+    this.ctx.translate(0.5, 0.5);
+    this.ctx.imageSmoothingEnabled = false;
+
+    this.ctx.strokeStyle = lineColor;
+    this.ctx.lineWidth = lineWidth;
+
+    // Draw vertical lines
+    for (let x = cellWidth; x < this.canvas.width; x += cellWidth) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(x, 0);
+        this.ctx.lineTo(x, this.canvas.height);
+        this.ctx.stroke();
     }
 
-    // Clear canvas method
-    clear(backgroundColor='gray') {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = backgroundColor; 
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height); 
-    }
-    
-
-    // Gradient drawing method (Linear Gradient)
-    linearGradient(x1, y1, x2, y2, colorStops) {
-        const gradient = this.ctx.createLinearGradient(x1, y1, x2, y2);
-        for (const [stop, color] of colorStops) {
-            gradient.addColorStop(stop, color);
-        }
-        this.ctx.fillStyle = gradient;
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    // Draw horizontal lines
+    for (let y = cellHeight; y < this.canvas.height; y += cellHeight) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, y);
+        this.ctx.lineTo(this.canvas.width, y);
+        this.ctx.stroke();
     }
 
-    grid(cellWidth = 100, cellHeight = 100, lineWidth = 2, lineColor = 'black') {
-        this.ctx.save(); // Save the current context state
-    
-        // Adjust canvas settings for sharp lines
-        this.ctx.translate(0.5, 0.5);
-        this.ctx.imageSmoothingEnabled = false;
-    
-        this.ctx.strokeStyle = lineColor;
-        this.ctx.lineWidth = lineWidth;
-    
-        // Draw vertical lines
-        for (let x = cellWidth; x < this.canvas.width; x += cellWidth) {
-            this.ctx.beginPath();
-            this.ctx.moveTo(x, 0);
-            this.ctx.lineTo(x, this.canvas.height);
-            this.ctx.stroke();
-        }
-    
-        // Draw horizontal lines
-        for (let y = cellHeight; y < this.canvas.height; y += cellHeight) {
-            this.ctx.beginPath();
-            this.ctx.moveTo(0, y);
-            this.ctx.lineTo(this.canvas.width, y);
-            this.ctx.stroke();
-        }
-    
-        this.ctx.restore(); // Restore the context state
-    }
+    this.ctx.restore(); // Restore the context state
+}
 
 //gridDot
 gridDot(cellWidth = 100, cellHeight = 100, dotSize = 2, dotColor = 'black') {
@@ -415,18 +423,19 @@ gridDot(cellWidth = 100, cellHeight = 100, dotSize = 2, dotColor = 'black') {
     }
 
 
-dot(x, y,label = '',dot_width = 10,text_size=16 ,dot_color = 'red', text_color = 'black') {
-    // Draw the small circle
-    this.circle(x, y, dot_width / 2, dot_color, true);
-
-    // Draw the label text below the circle
+dot(x, y,label = '',dot_width = 10,text_size=16 ,color = 'red', text_color = 'black',globalAlpha=1) {
+// debugger;
+    this.ctx.save(); 
+    this.ctx.globalAlpha = globalAlpha;
+    //  debugger;
+    this.circle(x, y, dot_width / 2, color, true);
     this.text(label, parseInt(x)  - parseInt(dot_width / 2), parseInt(y) + parseInt(dot_width*2), text_color, `${text_size}px Arial` );
+
+    this.ctx.restore(); // Restore the context state
 }
 
-////===Extended Methods Section
-// Inside the DrawLib class
-
-repeatText(textArray, initialX, initialY, xFactor = 50, yFactor = 0,color = 'white', font = '20px Arial') {
+repeatText(textArray, initialX=0, initialY=0, xFactor = 50, yFactor = 0,color = 'white', font = '20px Arial') {
+    // debugger;
     let currentX = initialX;
     let currentY = initialY;
 
@@ -546,8 +555,8 @@ sprite(sprite,item) {
         sprite.selectedData.sy,
         sprite.selectedData.sw,
         sprite.selectedData.sh,
-        item.dx,
-        item.dy,
+        item.x,
+        item.y,
         sprite.selectedData.sw * Math.abs(item.wFactor),
         sprite.selectedData.sh * Math.abs(item.hFactor)
     );
