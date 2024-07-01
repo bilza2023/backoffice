@@ -172,23 +172,17 @@ onMount(async ()=>{
    const data = await resp.json();
    item =  data.item;
    slides = item.slides;
-  //  debugger;
-   console.log("before fix" , slides);
-   fix(slides);
-   console.log("after fix" , slides);
-
+  
   filename = item.filename;
   
   
   soundFile =  SOUND_FILE_PATH + item.filename + '.opus';
 
 
-//  }
   if (slides.length > 0){
     currentSlideIndex = 0;
     currentSlide = slides[0]
-
-    
+   
     }
 
   }

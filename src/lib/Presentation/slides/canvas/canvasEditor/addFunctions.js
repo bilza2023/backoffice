@@ -1,13 +1,12 @@
 //@ts-nocheck
 import {getNewItem} from '$lib/Presentation';
-// getProp creates prop for any type number , boolean , string
+// getProp creates prop for any type number , boolean , string , we do not need seperate property class for int , string etc
 import getProp from '../getProp';
 /**
  *31-may-2024 
 * addNewItem is different from getNewItem. In Presentation lib every slide basically has its content placed in "items". we use "getNewItem" to get a generic Presentation item for a slide and then using  addNewItem(data) assign the data to the newly created item.extra.
 
 * We can write any number of consumer functions  (like addEllipse,addCircle etc)for addNewItem(data) and it will create a blank item and assign item.extra to data. 
-*
 *
 */
 

@@ -149,26 +149,33 @@ function updateTimeDiff() {
 }
 async function loadSound() {
   try {
-  // debugger;
-  
-  
     sound = new Howl({
       src: [soundFile],
       volume: 1.0,
       html5: true,
       onload: function () {
         maxSliderValue = sound.duration();
-        console.log("sound loaded..");
+        console.log("Sound loaded..");
       },
       onloaderror: function (id, error) {
-        // console.error("Error loading sound:", error);
         state = 'error';
+        console.error("Error loading sound:", error);
       },
+      onprogress: function () {
+        const buffered = sound.buffered();
+        if (buffered.length) {
+          const percentLoaded = (buffered[0].end / sound.duration()) * 100;
+          // console.log(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
+          toast.push(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
+        }
+      }
     });
   } catch (e) {
-    toast.push('failed to load sound');
+    toast.push('Failed to load sound');
+    console.error(e);
   }
 }
+
 function setCurrentSlide(){
 //  debugger;
 const r = sound.seek();
@@ -189,6 +196,7 @@ function showToolbar(){
   } 
   
 }
+
 </script> 
 
 
