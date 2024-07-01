@@ -10,12 +10,13 @@ import getProp from '../getProp';
 *
 *
 */
-   function addNewItem(data,items){
-    const newItem = getNewItem();
-    newItem.extra = data;      
-    items.unshift(newItem);      
-    items = [...items];
-  }
+
+function addNewItem(data,items){
+  const newItem = getNewItem();
+  newItem.extra = data;      
+  items.unshift(newItem);      
+  items = [...items];
+}
 
 function randNo(length=8){
     const digits = '0123456789';
@@ -249,8 +250,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
       "x": getProp(4),
       "y": getProp(4),
       "font": "20px Arial",
-     "lineHeightOffset" : 0,
-     "xOffset"        : 0,
+      "lineHeightOffset" : 0,
+      "xOffset"        : 0,
   };
   addNewItem(addReqExtraFields(obj,"para","red"),items); 
   }

@@ -8,6 +8,9 @@
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
   import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
+
+  import fix from "./fix.js";
+
   import {SOUND_FILE_PATH} from "$lib/util";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
@@ -163,13 +166,17 @@ onMount(async ()=>{
    filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
    const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
- 
+   
  if (resp.ok){
    
    const data = await resp.json();
    item =  data.item;
    slides = item.slides;
-   
+  //  debugger;
+   console.log("before fix" , slides);
+   fix(slides);
+   console.log("after fix" , slides);
+
   filename = item.filename;
   
   

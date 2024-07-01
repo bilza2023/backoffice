@@ -66,10 +66,10 @@ export default class DrawLibInterpretor {
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
     
+
             const extra = item.extra;
-        
+            
             if(extra.showAt === undefined || extra.showAt === null){ 
-                debugger;
                 extra.showAt = 0;
             }
 
@@ -283,7 +283,7 @@ export default class DrawLibInterpretor {
                     }
                     break;
                 case 'ray':          
-                // debugger;        
+                // debugger;      
                     this.drawLib.ray(
                         this.addXfactor(this.getX(getVal(currentTime , extra.x0) )), 
                         this.getY(getVal(currentTime , extra.y0)),
@@ -319,7 +319,8 @@ export default class DrawLibInterpretor {
                 
                     break;
                 case 'repeatText':
-                    let wordsArray = extra.textArray.split(",");
+                    debugger;
+                    let wordsArray = extra.textArray.initialValue.split(",");
                   
                     this.drawLib.repeatText(
                         wordsArray,
@@ -335,9 +336,17 @@ export default class DrawLibInterpretor {
                     
                     break;
                 case 'repeatDot':
-                    
+                    debugger;
                    
-                    this.drawLib.repeatDot(extra.numberOfDots, this.addXfactor(parseInt(this.getX(extra.initialX))),parseInt(this.getY(extra.initialY)), parseInt(this.getX(extra.xFactor)), parseInt(this.getY(extra.yFactor)), extra.width, extra.color);
+                    this.drawLib.repeatDot(
+                        extra.numberOfDots, 
+                        this.addXfactor(parseInt(this.getX(extra.initialX))),
+                        parseInt(this.getY(extra.initialY)), 
+                        parseInt(this.getX(extra.xFactor)), 
+                        parseInt(this.getY(extra.yFactor)), 
+                        extra.width, 
+                        getVal(currentTime , extra.color),
+                    );
                     
                     break;
                 case 'regularStar':
@@ -371,10 +380,6 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(extra.points, extra.color, extra.filled,extra.lineWidth);
                     break;
                 case 'image':
-                    // debugger;
-                    // for (let i = 0; i < playerImages.length; i++) {
-                    //     const playerImage = playerImages[i];
-                    //     if(playerImage.id == item._id){
                             this.drawLib.image(
                             extra.image, 
                             this.addXfactor(this.getX(extra.x)), 
@@ -383,8 +388,6 @@ export default class DrawLibInterpretor {
                             this.getX(extra.height),
                             extra.globalAlpha
                             );
-                        // }
-                    // }
                     break;
                 case 'sprite':
                     // debugger;

@@ -5,7 +5,7 @@
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
     
-    import fix from './fix';
+    import fix from '../../../../../routes/editor/fix';
 
     export let spriteImgArray;
     export let bgImages;
