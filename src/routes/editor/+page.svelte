@@ -172,19 +172,16 @@ onMount(async ()=>{
    const data = await resp.json();
    item =  data.item;
    slides = item.slides;
-  
+  //////////////=========================
   filename = item.filename;
-  
-  
   soundFile =  SOUND_FILE_PATH + item.filename + '.opus';
-
-
+ 
   if (slides.length > 0){
     currentSlideIndex = 0;
     currentSlide = slides[0]
    
     }
-
+    fix(slides);
   }
 
 else {throw new Error('Failed to load');}
