@@ -1,9 +1,9 @@
 <script>
     //@ts-nocheck
     import { onMount } from 'svelte';
-    import { API_URL, ajaxPost } from '$lib/util';
-    
+    import { API_URL, ajaxPost , toast } from '$lib/util';
     export let items = [];
+    import {AreYouSure} from "$lib/cmp";
     let selectedGroup = null;
     let groups = [];
 
@@ -26,6 +26,14 @@
         selectedGroup = groups.find(group => group._id === selectedId);
     }
 
+async function del(){
+    debugger;
+    const resp = await ajaxPost( `${API_URL}/group/delete` , { "id" : selectedGroup._id } );
+    if(resp.ok){
+    toast.push('deleted...');}
+    else {toast.push('failed to delete');
+    }
+}
     function add() {
         if (selectedGroup) {
             for (let i = 0; i < selectedGroup.items.length; i++) {
@@ -39,7 +47,7 @@
         }
     }
 </script>
-
+<h1 class="p-1 m-1 bg-gray-900 rounded-md">Premade Items</h1>
 {#if groups.length > 0}
     <div class="flex flex-col w-full">
         <table class="border-collapse border-2 border-white">
@@ -63,5 +71,10 @@
         </div>
         
         <button on:click={add} class="p-1 m-1 bg-green-900 text-white px-8 rounded-md">Add</button>
+        <br/>
+        <br/>
+        <button on:click={del} class="text-xs p-1 m-1 bg-orange-600 text-white px-8 rounded-md">
+            Del
+        </button>
     {/if}
 {/if}

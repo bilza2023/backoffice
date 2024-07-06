@@ -1,7 +1,6 @@
 <script>
 //@ts-nocheck
 export let deleteFn;
-export let index=0;
 export let triggerTime = 1000;
 
 let trigger = false;

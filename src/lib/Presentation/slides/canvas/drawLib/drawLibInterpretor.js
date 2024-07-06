@@ -319,7 +319,7 @@ export default class DrawLibInterpretor {
                 
                     break;
                 case 'repeatText':
-                    debugger;
+                    
                     let wordsArray = extra.textArray.initialValue.split(",");
                   
                     this.drawLib.repeatText(
@@ -336,8 +336,6 @@ export default class DrawLibInterpretor {
                     
                     break;
                 case 'repeatDot':
-                    debugger;
-                   
                     this.drawLib.repeatDot(
                         extra.numberOfDots, 
                         this.addXfactor(parseInt(this.getX(extra.initialX))),
@@ -356,8 +354,6 @@ export default class DrawLibInterpretor {
                     this.drawLib.regularPolygon(extra.x, extra.y, extra.radius, extra.sides, extra.color, extra.filled);
                     break;
                 case 'triangle':
-                
-                // debugger;
                     this.drawLib.triangle(
                         this.addXfactor(this.getX(getVal(currentTime , extra.x1))), 
                         this.getY(getVal(currentTime , extra.y1)),
@@ -380,13 +376,14 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(extra.points, extra.color, extra.filled,extra.lineWidth);
                     break;
                 case 'image':
+                    // debugger;
                             this.drawLib.image(
                             extra.image, 
                             this.addXfactor(this.getX(extra.x)), 
                             this.getY(extra.y),
                             this.getX(extra.width), 
                             this.getX(extra.height),
-                            extra.globalAlpha
+                            getVal(currentTime , extra.globalAlpha)
                             );
                     break;
                 case 'sprite':

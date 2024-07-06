@@ -11,6 +11,7 @@ export default function fix(slides){
         
     }
 }
+
  function fix2(items){
 
     for (let i = 0; i < items.length; i++) {
