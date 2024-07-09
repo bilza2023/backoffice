@@ -8,6 +8,7 @@
   export let isPlaying;
   export let isPaused;
   export let setVolume;
+  export let soundLoaded;
 function home(){
 stop();
 goto('/');
@@ -20,6 +21,9 @@ goto('/');
 <button class="p-1 rounded-sm bg-green-700 text-white text-sm" 
   style='background-color:#065d7f' on:click={home}>{Icons.HOUSE}</button>
 
+<!-- //////////////////////////////////   -->
+{#if soundLoaded}
+<!-- //////////////////////////////////   -->
     {#if isPlaying}
         {#if isPaused}
         <button class="p-1 rounded-sm bg-green-700 text-white text-sm " 
@@ -29,9 +33,15 @@ goto('/');
         on:click={pause} style='background-color:#00A6ED'> || </button>
       {/if}
    {:else}
-   <button class="p-1 rounded-sm bg-green-700 text-white text-sm " 
+    <button class="p-1 rounded-sm bg-green-700 text-white text-sm " 
     on:click={start} style='background-color:#00A6ED '>▶ </button>
     {/if}
+<!-- ///////////////////////////////////////////// -->
+{:else}
+<button class="p-1  bg-orange-700 text-yellow-500 text-xs rounded-md" 
+ style='background-color:#00A6ED '>loading..</button>
+{/if}
+<!-- ///////////////////////////////////////////// -->
 
     <button class="p-1 rounded-sm bg-red-800 text-white text-sm " 
     on:click={stop}>■ </button>

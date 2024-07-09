@@ -95,15 +95,7 @@ function gameloop(){
     setCurrentSlide();
 }
 
-// function hydrate(){
-// start();
-//  hydrateInterval =  setInterval(stopHydrate,2000);
-// }
-// function stopHydrate(){
-//     clearInterval(hydrateInterval);
-//     stop();
-//     pulse = 0;
-// }
+
 function start(){
     interval= setInterval(gameloop,1000);
 }

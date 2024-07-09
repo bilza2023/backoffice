@@ -5,8 +5,6 @@
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     export let currentTime;
     
-    import fix from '../../../../../routes/editor/fix';
-
     export let spriteImgArray;
     export let bgImages;
     
@@ -42,10 +40,6 @@ function gameLoop(){
 }    
 //////////////////////////////////
 
-// $: {
-//   items;
-//   fix(items);
-// }
 
 async function init(){
   if(canvas){

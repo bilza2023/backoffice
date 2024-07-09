@@ -14,11 +14,12 @@
     export let slides: any[];
     export let pulse: number;
     export let setPulse: (value: number) => void;
-  </script>
+    export let soundLoaded;
+    </script>
   
   <div class='toolbar-wrapper' in:fade={{ delay: 300 }} out:fade={{ delay: 300 }}>
     <div class='toolbar-content flex justify-left'>
-      <PlayButtons {start} {stop}  {pause} {isPlaying} {isPaused} {setVolume}/>
+      <PlayButtons {start} {stop}  {pause} {isPlaying} {isPaused} {setVolume} {soundLoaded}/>
   
       {#if currentSlide}
         <Slider {slides} {pulse} {setPulse}/>

@@ -28,7 +28,6 @@ let state='loading';
 let currentSlide = null;
 let questionData;
 let showToolbarBool = false;
-let soundLoaded = false;
 ////////////////////////////////////////////////////////
 onMount(async ()=>{  
 filename = new URLSearchParams(location.search).get("filename");
@@ -48,6 +47,9 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
  if (questionData){
     slides = questionData.slides;
     soundFile =  SOUND_FILE_PATH + questionData.filename + '.opus';
+
+
+
 
   fixEndTime(slides); ///check why i need this?
   getStopTime(slides);
@@ -151,7 +153,6 @@ async function loadSound() {
       html5: true,
       onload: function () {
         maxSliderValue = sound.duration();
-        soundLoaded = true;
         console.log("Sound loaded..");
       },
       onloaderror: function (id, error) {
@@ -162,8 +163,8 @@ async function loadSound() {
         const buffered = sound.buffered();
         if (buffered.length) {
           const percentLoaded = (buffered[0].end / sound.duration()) * 100;
-          console.log(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
-          // toast.push(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
+          // console.log(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
+          toast.push(`Sound loaded: ${percentLoaded.toFixed(2)}%`);
         }
       }
     });
@@ -202,7 +203,7 @@ style='position: fixed; top: 0;' on:mousemove={showToolbar} >
 
   {#if showToolbarBool}
   
-    <Toolbar {start} {stop}  {pause} {isPlaying} {isPaused} {setVolume} {currentSlide} {slides} {pulse} {setPulse} {soundLoaded}/>
+    <Toolbar {start} {stop}  {pause} {isPlaying} {isPaused} {setVolume} {currentSlide} {slides} {pulse} {setPulse}/>
   
   {/if}
 
