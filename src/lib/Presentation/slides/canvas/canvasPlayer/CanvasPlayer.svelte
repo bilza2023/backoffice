@@ -18,7 +18,7 @@
 
 function gameLoop(){
     try {
-      // items = dummyData;
+      
       if (items){
         //This extra is slide extra
         drawLibInterpretor.showGrid = extra.showGrid;
@@ -50,6 +50,8 @@ async function init(){
       
     ////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
+    //--- here is diagrams should be added to the items.
+    
     ////////////////////////////////////////////////////////////////////////
     drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
   }

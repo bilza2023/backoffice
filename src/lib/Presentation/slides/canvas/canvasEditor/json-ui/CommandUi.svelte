@@ -106,9 +106,6 @@ import { onMount, onDestroy } from "svelte";
     <LineCommand bind:item={item.extra} />
     {/if}
    
-    {#if item.extra.command === 'sysImage'}
-    <SysImgCommand bind:item={item.extra} />
-    {/if}
 
     {/if}
 </div>

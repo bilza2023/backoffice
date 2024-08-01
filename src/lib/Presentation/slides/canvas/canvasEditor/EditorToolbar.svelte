@@ -7,9 +7,9 @@
     export let pasteItem;
     import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage} from "./addFunctions";
 
-    let groupDiv = false;
+    // let groupDiv = false;
 
-    function showGroup(){groupDiv = !groupDiv;}
+    // function showGroup(){groupDiv = !groupDiv;}
 
 /////////////////////////////////////////
 export let toggleShowCanvas;
@@ -37,14 +37,15 @@ export let toggleShowCanvas;
     <!-- <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" /> -->
     <SmallBtnToolbar clk={()=>addAngleSymbol(items)} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
-    <!-- <SmallBtnToolbar clk={()=>addSysImage(items)} icon={Icons.TV} title="SysImage" /> -->
+    
+    
     <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
-    <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" />
+    <!-- <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" /> -->
     <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" />
 </div>
-
+<!-- 
 {#if groupDiv}
 
     <Groupdiv {items}/>
 
-{/if}
+{/if} -->

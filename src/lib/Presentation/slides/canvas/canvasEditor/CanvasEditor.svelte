@@ -7,6 +7,7 @@ import CanvasPlayer from '../canvasPlayer/CanvasPlayer.svelte';
 import SelectItemMenu from './json-ui/SelectItemMenu.svelte';  
 import CommandUi from './json-ui/CommandUi.svelte';  
 import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
+import Groupdiv from "./Groupdiv.svelte";
 import { toast } from "@zerodevx/svelte-toast";
    
 export let items;
@@ -143,6 +144,5 @@ bind:items={items}
           
 </div>
 </div>
-
 </div><!--the editor top level div-->
 {/if}

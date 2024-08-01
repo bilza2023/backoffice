@@ -41,6 +41,7 @@ export default class DrawLibInterpretor {
     
     interpret(items,currentTime=0,extra,playerImages) {
         
+       
         //--keep 
         if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}
 
@@ -65,7 +66,7 @@ export default class DrawLibInterpretor {
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
-    
+                
 
             const extra = item.extra;
             
