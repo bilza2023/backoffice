@@ -276,6 +276,7 @@ img.onload = () => {
               "image": img,
               "x": 0,
               "y": 0,
+              "ext": 'jpg',
               "width": 40,
               "height": 15,
             };

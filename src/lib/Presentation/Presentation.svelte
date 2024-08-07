@@ -107,6 +107,7 @@ $:{
     loadImages();
 }
 let playerImages = [];
+
 async function loadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -121,22 +122,21 @@ async function loadImages() {
   
   for (let i = 0; i < currentSlide.items.length; i++) {
     const item = currentSlide.items[i];
+
     if (item.extra.command == 'image') {
       try {
-        
-        const url = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/'+ item.extra.src +'.jpg';
-        const img = await loadImage( url);
-        playerImages.push({ image: img, src: img.src , id : item._id });
+          const url = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/'+ item.extra.src + '.' + item.extra.ext;
+          const img = await loadImage( url);
+          item.extra.image = img;
+          
       } catch (err) {
         console.error('Error loading image:', err);
       }
     }
-    // console.log("playerImages",playerImages);
   }
 }
+
 </script>
-<!-- <a href="system_images/bg_images/white_mat.jpg">ss</a> -->
-<!-- TblStr -->
 {#if currentSlide.type == "TblStr"}
     {#if displayMode}
         <TblStr

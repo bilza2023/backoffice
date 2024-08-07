@@ -41,7 +41,6 @@ export default class DrawLibInterpretor {
     
     interpret(items,currentTime=0,extra,playerImages) {
         
-       
         //--keep 
         if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}
 
@@ -377,7 +376,6 @@ export default class DrawLibInterpretor {
                     this.drawLib.polygon(extra.points, extra.color, extra.filled,extra.lineWidth);
                     break;
                 case 'image':
-                    // debugger;
                             this.drawLib.image(
                             extra.image, 
                             this.addXfactor(this.getX(extra.x)), 

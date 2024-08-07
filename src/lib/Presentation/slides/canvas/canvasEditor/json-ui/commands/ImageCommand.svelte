@@ -11,16 +11,17 @@ import TrText from "./TrText.svelte";
 import TrTf from "./TrTf.svelte";  
 
 export let item;
-let ext = 'jpg';
+// let ext = 'jpg';
 
 function setExt(extension){
-    ext = extension;
+    item.ext = extension;
     srcChanged();
 }
 
 async    function srcChanged(){
 const c = new Image();
-c.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/' + item.src + '.' + ext;
+c.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/' + item.src + '.' + item.ext;
+// debugger;
 
         c.onload = () => {
             item.image = c;
@@ -46,8 +47,8 @@ c.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/' + item.sr
 <tr class='text-center'>
     <td class="border border-white p-1">Ext</td>
     <td class="flex justify-center">
-        <button class= {`px-2 m-1 rounded-md text-white ${ext === 'jpg' ? 'bg-green-700' : 'bg-gray-700'}`} on:click={()=>setExt('jpg')}>jpg</button>
-        <button class= {`px-2 m-1 rounded-md text-white ${ext === 'png' ? 'bg-green-700' : 'bg-gray-700'}`}  on:click={()=>setExt('png')}>png</button>
+        <button class= {`px-2 m-1 rounded-md text-white ${item.ext === 'jpg' ? 'bg-green-700' : 'bg-gray-700'}`} on:click={()=>setExt('jpg')}>jpg</button>
+        <button class= {`px-2 m-1 rounded-md text-white ${item.ext === 'png' ? 'bg-green-700' : 'bg-gray-700'}`}  on:click={()=>setExt('png')}>png</button>
     </td>
 </tr>
         

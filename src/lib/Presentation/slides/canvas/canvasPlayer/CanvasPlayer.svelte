@@ -27,7 +27,6 @@ function gameLoop(){
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
-      
         drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
@@ -47,12 +46,10 @@ async function init(){
     //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
       ////////////////////////////////////////////////////////////////////////
-      
     ////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////// 
     ////////////////////////////////////////////////////////////////////////
-    //--- here is diagrams should be added to the items.
-    
-    ////////////////////////////////////////////////////////////////////////
+    debugger;
     drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
   }
   interval = setInterval(gameLoop,20);
