@@ -7,12 +7,11 @@
     
     export let spriteImgArray;
     export let bgImages;
-    
+     
     let canvas;
     let ctx;
     export let extra;
     export let items;
-    export let playerImages;
     
     let orignalExtra;
 
@@ -20,14 +19,14 @@ function gameLoop(){
     try {
       
       if (items){
-        //This extra is slide extra
+        //This extra is slide extra------yesss....!!!!
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
-        drawLibInterpretor.interpret(items,currentTime,extra,playerImages);
+        drawLibInterpretor.interpret(items,currentTime,extra);
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
@@ -45,12 +44,11 @@ async function init(){
     if(interval){clearInterval(interval);}
     //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
-      ////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////// 
-    ////////////////////////////////////////////////////////////////////////
-    debugger;
-    drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra.backgroundColor,extra.canvasWidth,extra.canvasHeight,extra.cellWidth,extra.cellHeight,extra.xFactor,spriteImgArray,bgImages);
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////// 
+  ////////////////////////////////////////////////////////////////////////
+  drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra,spriteImgArray,bgImages);
   }
   interval = setInterval(gameLoop,20);
 }

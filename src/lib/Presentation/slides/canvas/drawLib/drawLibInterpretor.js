@@ -4,16 +4,16 @@ import DrawLib from "./drawLib";
 import getVal from "../getVal"; 
 /////////////////////////////////////////////////////////////
 export default class DrawLibInterpretor {
-    constructor(canvas, ctx,backgroundColor = '#051905',width=1000,height=360,cellWidth=25,cellHeight=25,xFactor=0,spriteImgArray,bgImages) {
+    constructor(canvas, ctx,extra,spriteImgArray,bgImages) {
         this.img = null;
         this.drawLib = new DrawLib(canvas, ctx);
-        this.drawLib.width = width;
-        this.drawLib.height = height;
-        this.drawLib.backgroundColor = backgroundColor;
+        this.drawLib.width = extra.canvasWidth;
+        this.drawLib.height = extra.canvasHeight;
+        this.drawLib.backgroundColor = extra.backgroundColor;
         
-        this.cellWidth = cellWidth;
-        this.cellHeight = cellHeight;
-        this.xFactor = xFactor;
+        this.cellWidth = extra.cellWidth;
+        this.cellHeight = extra.cellHeight;
+        this.xFactor = extra.xFactor;
         this.showGrid = false;
         this.gridLineWidth = 1;
         this.gridLineColor = 'white';
@@ -39,7 +39,7 @@ export default class DrawLibInterpretor {
         this.drawLib.text(txt, x,y,font_color , font);
     }
     
-    interpret(items,currentTime=0,extra,playerImages) {
+    interpret(items,currentTime=0,extra) {
         
         //--keep 
         if(!extra.bgGlobalAlpha){extra.extra.bgGlobalAlpha=1;}

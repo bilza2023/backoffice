@@ -95,10 +95,9 @@ bgImages.push({"name" : P + "blue_waves.jpg" , "img" : blue_waves});
 const wall = new Image(); wall.src = P + "wall.jpg";
 bgImages.push({"name" : P + "wall.jpg" , "img" : wall});
 
-
-
-
-
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 ready = true;
 }) ; 
 
@@ -106,7 +105,6 @@ $:{
     currentSlide;
     loadImages();
 }
-let playerImages = [];
 
 async function loadImage(src) {
   return new Promise((resolve, reject) => {
@@ -118,7 +116,6 @@ async function loadImage(src) {
 }
 
 async function loadImages() {
-  playerImages = [];
   
   for (let i = 0; i < currentSlide.items.length; i++) {
     const item = currentSlide.items[i];
@@ -205,7 +202,7 @@ async function loadImages() {
             extra={currentSlide.extra}
             {spriteImgArray}
             {bgImages}
-            {playerImages}
+            
         />
     {:else}
         <CanvasEditor
@@ -217,7 +214,7 @@ async function loadImages() {
             endTime={currentSlide.endTime}
             {spriteImgArray}
             {bgImages}
-            {playerImages}
+            
         />
     {/if}
 {/if}
