@@ -87,14 +87,9 @@ onDestroy(() => {
 let mouseX=0;
 let mouseY=0;
 
-let oldMouseX = null;
-let oldMouseY = null;
-
-let isDragging = false;
-
 let selectedItem=null;
-
 let handleObjects = [];
+
 
 function selectItem(item){
     selectedItem = item;
@@ -150,12 +145,9 @@ function handleMouseMove(e) {
     handleObjects[2].updateXY(selectedItem.extra.x.initialValue, 
     selectedItem.extra.y.initialValue );
     
-    oldMouseX = mouseX;
-    oldMouseY = mouseY;
 }
 
 function handleMouseDown(e) {
-    if (!selectedItem) return;
     setMousePosition(e);
 
     for (let i = 0; i < handleObjects.length; i++) {
@@ -173,18 +165,11 @@ function handleMouseUp(e) {
         handleObject.mouseUp(mouseX, mouseY);
                     
     }
-    if (isDragging) {
-        // If we were dragging, just end the drag operation
-        oldMouseX = null;
-        oldMouseY = null;
-        isDragging = false;  // 
-    }
-    // We don't need to else { handleClick(e); } here
+ 
 }
 
 function handleClick(e){
-    if (isDragging) { return;}
-
+   
     setMousePosition(e);
     // debugger;
     for (let i = 0; i < items.length; i++) {
