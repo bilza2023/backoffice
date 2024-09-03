@@ -110,6 +110,13 @@ function selectItem(item){
             20,20); 
             handleObjects.push(w);
 
+            let h = new AdderHandle('height','height','red',
+            selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
+            selectedItem.extra.y.initialValue  + selectedItem.extra.height.initialValue -20,
+            20,20); 
+            h.lookingforX = false;
+            handleObjects.push(h);
+
 
             handles = [];
             // add 3 empty objects 1 for drag , widen and stretch
@@ -175,9 +182,13 @@ function handleMouseMove(e) {
     for (let i = 0; i < handleObjects.length; i++) {
         const handleObject = handleObjects[i];
         handleObject.update(selectedItem,mouseX, mouseY);
-        handleObject.updateXY(selectedItem,mouseX, mouseY);
-                    
+        
     }
+    handleObjects[0].updateXY(selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20, 
+    selectedItem.extra.y.initialValue);
+
+    handleObjects[1].updateXY(selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20, 
+    selectedItem.extra.y.initialValue + +  selectedItem.extra.height.initialValue -20);
     
     // if (state == "drag") {
     //     const item = items[0];

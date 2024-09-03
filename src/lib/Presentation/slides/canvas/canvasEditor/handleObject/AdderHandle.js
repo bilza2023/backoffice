@@ -6,6 +6,8 @@ export default class AdderHandle {
       this.property = property;
       this.name = name;
       this.color = color;
+
+      this.lookingforX = true;
       this.x = x;
       this.y = y;
 
@@ -37,9 +39,9 @@ export default class AdderHandle {
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
-    updateXY(item, mouseX, mouseY){
-        this.x = item.extra.x.initialValue +  item.extra.width.initialValue -20 ;
-        this.y =             item.extra.y.initialValue;
+    updateXY(x,y){
+        this.x = x ;
+        this.y =   y;
     }
 
     update(item, mouseX, mouseY) {
@@ -51,10 +53,14 @@ export default class AdderHandle {
             return;
         }
         
-        const delta = mouseX - this.oldX;
-        const change = delta > 0 ? 8 : -8;
+        let delta;
+        if (this.lookingforX ){
+            delta = mouseX - this.oldX;
+        }else {
+            delta = mouseY - this.oldY;
+        }
         
-        item.extra[this.property].initialValue = Math.max(1, item.extra[this.property].initialValue + change);
+        item.extra[this.property].initialValue +=  delta;
         
         this.oldX = mouseX;
         this.oldY = mouseY;
