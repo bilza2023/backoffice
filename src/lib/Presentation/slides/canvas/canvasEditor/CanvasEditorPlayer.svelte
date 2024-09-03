@@ -6,6 +6,7 @@
     import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
     import AdderHandle from './handleObject/AdderHandle';
+    import DraggerHandle from './handleObject/DraggerHandle';
   import { HandleObject } from "./handleObject/HandleObject";
 
     export let currentTime;
@@ -116,26 +117,12 @@ function selectItem(item){
             20,20); 
             h.lookingforX = false;
             handleObjects.push(h);
-
-
-            handles = [];
-            // add 3 empty objects 1 for drag , widen and stretch
-            handles.push({width:20,height:20});handles.push({width:20,height:20});handles.push({width:20,height:20});
-
-            handles[0].name = 'drag' ;
-            handles[0].color = 'brown';
-            handles[0].x = selectedItem.extra.x.initialValue - 20 ;
-            handles[0].y = selectedItem.extra.y.initialValue  ;
-
-            handles[1].name = 'widen';
-            handles[1].color = 'pink';
-            handles[1].x = selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue ;
-            handles[1].y = selectedItem.extra.y.initialValue  ;
-
-            handles[2].name = 'stretch';
-            handles[2].color = 'gray';
-            handles[2].x = item.extra.x.initialValue +  item.extra.width.initialValue ;
-            handles[2].y = item.extra.y.initialValue  -20 ;
+           
+            let d = new DraggerHandle('red',
+            selectedItem.extra.x.initialValue  ,
+            selectedItem.extra.y.initialValue,
+            20,20); 
+            handleObjects.push(d);
 
 }
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
@@ -188,7 +175,10 @@ function handleMouseMove(e) {
     selectedItem.extra.y.initialValue);
 
     handleObjects[1].updateXY(selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20, 
-    selectedItem.extra.y.initialValue + +  selectedItem.extra.height.initialValue -20);
+    selectedItem.extra.y.initialValue  +  selectedItem.extra.height.initialValue -20);
+    
+    handleObjects[2].updateXY(selectedItem.extra.x.initialValue, 
+    selectedItem.extra.y.initialValue );
     
     // if (state == "drag") {
     //     const item = items[0];
@@ -215,7 +205,7 @@ function handleMouseMove(e) {
 
 function handleMouseDown(e) {
     if (!selectedItem) return;
-    
+    // debugger;
     setMousePosition(e);
 
     for (let i = 0; i < handleObjects.length; i++) {
