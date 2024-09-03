@@ -8,6 +8,11 @@ export default class AdderHandle {
       this.color = color;
       this.x = x;
       this.y = y;
+
+      this.isSelected = false;
+
+      this.oldX = null;
+      this.oldY = null;
       this.width = width;
       this.height = height;
     }
@@ -17,20 +22,44 @@ export default class AdderHandle {
              mouseY >= this.y && mouseY <= this.y + this.height;
     }
   
+    mouseDown(mouseX, mouseY){
+        if (this.isHit(mouseX, mouseY)){
+            this.isSelected = true; 
+        }else {
+            this.isSelected = false; 
+        }
+    }
+    mouseUp(mouseX, mouseY){
+        this.isSelected = false; 
+    }
     draw(ctx) {
       ctx.fillStyle = this.color;
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
-    updateXY(x,y){
+    updateXY(item, mouseX, mouseY){
+        this.x = item.extra.x.initialValue +  item.extra.width.initialValue -20 ;
+        this.y =             item.extra.y.initialValue;
+    }
 
-        this.x = x;
-        this.y = y;
+    update(item, mouseX, mouseY) {
+        if(!this.isSelected) {return;}
+
+        if (this.oldX == null || this.oldY == null) {
+            this.oldX = mouseX;
+            this.oldY = mouseY;
+            return;
+        }
+        
+        const delta = mouseX - this.oldX;
+        const change = delta > 0 ? 8 : -8;
+        
+        item.extra[this.property].initialValue = Math.max(1, item.extra[this.property].initialValue + change);
+        
+        this.oldX = mouseX;
+        this.oldY = mouseY;
     }
-    update(item, dx, dy) {
-        const delta = this.property === 'width' ? dx : dy;
-        item.extra[this.property].initialValue = Math.max(1, item.extra[this.property].initialValue + delta);
-    }
+    
   }
  
 //     update(item, mouseX, mouseY) {

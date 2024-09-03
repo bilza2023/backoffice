@@ -6,6 +6,7 @@
     import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
     import AdderHandle from './handleObject/AdderHandle';
+  import { HandleObject } from "./handleObject/HandleObject";
 
     export let currentTime;
      
@@ -34,8 +35,13 @@ function gameLoop(){
         drawLibInterpretor.interpret(items,currentTime,extra);
 
         if(selectedItem){
-                drawLibInterpretor.drawHandles(handles);
-                    widthHandle.draw(ctx);
+                // drawLibInterpretor.drawHandles(handles);
+
+                for (let i = 0; i < handleObjects.length; i++) {
+                    const handleObject = handleObjects[i];
+                    handleObject.draw(ctx);
+                    
+                }
         }
 
         ///////////////
@@ -89,13 +95,40 @@ let state = null; //can be drag , widen , stretch
 let selectedItem=null;
 
 let handles = null;
+let handleObjects = [];
 
-let widthHandle = new AdderHandle('width','width','red',0,0,20,20);
 
 
 
 function selectItem(item){
+    selectedItem = item;
+            handleObjects = [];
 
+            let w = new AdderHandle('width','width','red',
+            selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
+            selectedItem.extra.y.initialValue  ,
+            20,20); 
+            handleObjects.push(w);
+
+
+            handles = [];
+            // add 3 empty objects 1 for drag , widen and stretch
+            handles.push({width:20,height:20});handles.push({width:20,height:20});handles.push({width:20,height:20});
+
+            handles[0].name = 'drag' ;
+            handles[0].color = 'brown';
+            handles[0].x = selectedItem.extra.x.initialValue - 20 ;
+            handles[0].y = selectedItem.extra.y.initialValue  ;
+
+            handles[1].name = 'widen';
+            handles[1].color = 'pink';
+            handles[1].x = selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue ;
+            handles[1].y = selectedItem.extra.y.initialValue  ;
+
+            handles[2].name = 'stretch';
+            handles[2].color = 'gray';
+            handles[2].x = item.extra.x.initialValue +  item.extra.width.initialValue ;
+            handles[2].y = item.extra.y.initialValue  -20 ;
 
 }
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
@@ -139,25 +172,32 @@ function handleMouseMove(e) {
 
     setMousePosition(e);
 
-    if (state == "drag") {
-        const item = items[0];
-        item.extra.x.initialValue = mouseX;
-        item.extra.y.initialValue = mouseY;
-
-        // Update handle positions during drag
-        handles[0].x = item.extra.x.initialValue - 20;
-        handles[0].y = item.extra.y.initialValue;
- 
-        handles[1].x = item.extra.x.initialValue + item.extra.width.initialValue;
-        handles[1].y = item.extra.y.initialValue;
- 
-        handles[2].x = item.extra.x.initialValue + item.extra.width.initialValue;
-        handles[2].y = item.extra.y.initialValue - 20;
+    for (let i = 0; i < handleObjects.length; i++) {
+        const handleObject = handleObjects[i];
+        handleObject.update(selectedItem,mouseX, mouseY);
+        handleObject.updateXY(selectedItem,mouseX, mouseY);
+                    
     }
     
-    if (state == "widen" || state ==  "stretch" ) {
-        updateSizeBasedOnMouseMove(selectedItem);
-    }
+    // if (state == "drag") {
+    //     const item = items[0];
+    //     item.extra.x.initialValue = mouseX;
+    //     item.extra.y.initialValue = mouseY;
+
+    //     // Update handle positions during drag
+    //     handles[0].x = item.extra.x.initialValue - 20;
+    //     handles[0].y = item.extra.y.initialValue;
+ 
+    //     handles[1].x = item.extra.x.initialValue + item.extra.width.initialValue;
+    //     handles[1].y = item.extra.y.initialValue;
+ 
+    //     handles[2].x = item.extra.x.initialValue + item.extra.width.initialValue;
+    //     handles[2].y = item.extra.y.initialValue - 20;
+    // }
+    
+    // if (state == "widen" || state ==  "stretch" ) {
+    //     updateSizeBasedOnMouseMove(selectedItem);
+    // }
     oldMouseX = mouseX;
     oldMouseY = mouseY;
 }
@@ -166,6 +206,13 @@ function handleMouseDown(e) {
     if (!selectedItem) return;
     
     setMousePosition(e);
+
+    for (let i = 0; i < handleObjects.length; i++) {
+        const handleObject = handleObjects[i];
+        handleObject.mouseDown(mouseX, mouseY);
+                    
+    }
+
     let handleName = checkHandles(handles, mouseX, mouseY);
 
     switch (handleName) {
@@ -183,6 +230,12 @@ function handleMouseDown(e) {
 }
 
 function handleMouseUp(e) {
+
+    for (let i = 0; i < handleObjects.length; i++) {
+        const handleObject = handleObjects[i];
+        handleObject.mouseUp(mouseX, mouseY);
+                    
+    }
     if (isDragging) {
         // If we were dragging, just end the drag operation
         state = null;
@@ -206,30 +259,9 @@ function handleClick(e){
         mouseX,mouseY);
 
         if(isHitResult){
-            // console.log("hit===>" , isHitResult);
-            selectedItem = item;
-            handles = [];
-            // add 3 empty objects 1 for drag , widen and stretch
-            handles.push({width:20,height:20});handles.push({width:20,height:20});handles.push({width:20,height:20});
-
-            handles[0].name = 'drag' ;
-            handles[0].color = 'brown';
-            handles[0].x = selectedItem.extra.x.initialValue - 20 ;
-            handles[0].y = selectedItem.extra.y.initialValue  ;
-
-            handles[1].name = 'widen';
-            handles[1].color = 'pink';
-            handles[1].x = selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue ;
-            handles[1].y = selectedItem.extra.y.initialValue  ;
-
-            handles[2].name = 'stretch';
-            handles[2].color = 'gray';
-            handles[2].x = item.extra.x.initialValue +  item.extra.width.initialValue ;
-            handles[2].y = item.extra.y.initialValue  -20 ;
+            selectItem(item);
             return; //must
         }
-        
-
     }
 ///THIS IS THE PROD BRANCH
     //un-select 
