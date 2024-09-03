@@ -81,9 +81,7 @@ let mouseY=0;
 let oldMouseX = null;
 let oldMouseY = null;
 
-// let drag=false;
-// let widen=false;
-// let stretch=false;
+let isDragging = false;
 
 let state = null; //can be drag , widen , stretch
 let selectedItem=null;
@@ -100,22 +98,15 @@ function setMousePosition(e){
 }
 
 function updateSizeBasedOnMouseMove(item) {
-    if (oldMouseX !== null) {
-        if (mouseX > oldMouseX) {
-            item.extra.width.initialValue += 4; // Moving right
-        } else if (mouseX < oldMouseX && item.extra.width.initialValue > 1) {
-            item.extra.width.initialValue -= 4; // Moving left
-        }
-    }
+    const dx = mouseX - oldMouseX;
+    const dy = mouseY - oldMouseY;
 
-    if (oldMouseY !== null) {
-        if (mouseY > oldMouseY) {
-            item.extra.height.initialValue += 4; // Moving down
-        } else if (mouseY < oldMouseY && item.extra.height.initialValue > 1) {
-            item.extra.height.initialValue -= 4; // Moving up
-        }
-    }
+    if (state === "widen") {
+        item.extra.width.initialValue = Math.max(1, item.extra.width.initialValue + dx);
 
+    } else if (state === "stretch") {
+        item.extra.height.initialValue = Math.max(1, item.extra.height.initialValue + dy);
+    }
     handles[1].x = item.extra.x.initialValue + item.extra.width.initialValue;
     handles[1].y = item.extra.y.initialValue;
     handles[2].x = item.extra.x.initialValue + item.extra.width.initialValue;
@@ -124,6 +115,8 @@ function updateSizeBasedOnMouseMove(item) {
     oldMouseX = mouseX;
     oldMouseY = mouseY;
 }
+
+
 function handleMouseMove(e) {
     if(!selectedItem){return;}
 
@@ -148,45 +141,44 @@ function handleMouseMove(e) {
     if (state == "widen" || state ==  "stretch" ) {
         updateSizeBasedOnMouseMove(selectedItem);
     }
+    oldMouseX = mouseX;
+    oldMouseY = mouseY;
 }
 
-function handleMouseDown(e){
-    //////////////--important
-    if(!selectedItem){return; }
+function handleMouseDown(e) {
+    if (!selectedItem) return;
     
-    setMousePosition(e)
-    const item = items[0];
-    const isHitResult = isHit(item.extra.x.initialValue,item.extra.y.initialValue,40,40,mouseX,mouseY);
-    // console.log("isHitResult" ,isHitResult);
-
-    let handleName = checkHandles(handles,mouseX,mouseY);
-
+    setMousePosition(e);
+    let handleName = checkHandles(handles, mouseX, mouseY);
 
     switch (handleName) {
-        
         case 'drag':
-        state = "drag"
-            break;
         case 'widen':
-        state = "widen"    
-        break;
         case 'stretch':
-        state = "stretch"    
+             state = handleName;
+            isDragging = true;
+            oldMouseX = mouseX;
+            oldMouseY = mouseY;
             break;
-    
         default:
             break;
     }
 }
 
-function handleMouseUp(e){
-    state = null;
-    oldMouseX = null;
-    oldMouseY = null;
-    
+function handleMouseUp(e) {
+    if (isDragging) {
+        // If we were dragging, just end the drag operation
+        state = null;
+        oldMouseX = null;
+        oldMouseY = null;
+        isDragging = false;  // Reset the dragging state
+    }
+    // We don't need to else { handleClick(e); } here
 }
 
 function handleClick(e){
+    if (isDragging) { return;}
+
     setMousePosition(e);
     // debugger;
     for (let i = 0; i < items.length; i++) {
