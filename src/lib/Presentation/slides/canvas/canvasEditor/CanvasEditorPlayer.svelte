@@ -5,6 +5,7 @@
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
+    import AdderHandle from './handleObject/AdderHandle';
 
     export let currentTime;
      
@@ -34,6 +35,7 @@ function gameLoop(){
 
         if(selectedItem){
                 drawLibInterpretor.drawHandles(handles);
+                    widthHandle.draw(ctx);
         }
 
         ///////////////
@@ -87,6 +89,15 @@ let state = null; //can be drag , widen , stretch
 let selectedItem=null;
 
 let handles = null;
+
+let widthHandle = new AdderHandle('width','width','red',0,0,20,20);
+
+
+
+function selectItem(item){
+
+
+}
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
 function setMousePosition(e){
     const rect = canvas.getBoundingClientRect();
@@ -107,6 +118,12 @@ function updateSizeBasedOnMouseMove(item) {
     } else if (state === "stretch") {
         item.extra.height.initialValue = Math.max(1, item.extra.height.initialValue + dy);
     }
+
+    widthHandle.updateXY(
+        item.extra.x.initialValue + item.extra.width.initialValue,
+        item.extra.y.initialValue
+    );
+
     handles[1].x = item.extra.x.initialValue + item.extra.width.initialValue;
     handles[1].y = item.extra.y.initialValue;
     handles[2].x = item.extra.x.initialValue + item.extra.width.initialValue;
