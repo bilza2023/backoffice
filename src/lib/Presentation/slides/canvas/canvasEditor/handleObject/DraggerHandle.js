@@ -21,14 +21,14 @@ export default class DraggerHandle {
              mouseY >= this.y && mouseY <= this.y + this.height;
     }
   
-    mouseDown(mouseX, mouseY){
+    selectIfHit(mouseX, mouseY){
         if (this.isHit(mouseX, mouseY)){
             this.isSelected = true; 
         }else {
             this.isSelected = false; 
         }
     }
-    mouseUp(mouseX, mouseY){
+    markIsSelectedFalse(){
         this.isSelected = false; 
     }
     draw(ctx) {

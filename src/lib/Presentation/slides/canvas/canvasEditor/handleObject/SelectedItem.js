@@ -42,7 +42,7 @@ export default class SelectedItem {
     this.updateHandlePositions();
 }
 
-
+//--this will be seperate
 updateHandlePositions() {
     const { x, y, width, height } = this.itemData.extra;
     
@@ -71,25 +71,21 @@ updateHandlePositions() {
         
     }
  }
- mouseUp(mouseX, mouseY){
+ markIsSelectedFalse(){
 
     for (let i = 0; i < this.handleObjects.length; i++) {
         const handleObject = this.handleObjects[i];
-            handleObject.mouseUp(mouseX, mouseY);
-                    
+            handleObject.markIsSelectedFalse();
     }
  }
- mouseDown(mouseX, mouseY){
+ selectHandlesIfHit(mouseX, mouseY){
 
     for (let i = 0; i < this.handleObjects.length; i++) {
         const handleObject = this.handleObjects[i];
-        handleObject.mouseDown(mouseX, mouseY);
-                    
+        handleObject.selectIfHit(mouseX, mouseY);
     }
+
  }
  
-mouseMove(mouseX, mouseY) {
-    this.updateHandlePositions();
-}
 
 }

@@ -24,7 +24,7 @@ export default class AdderHandle {
              mouseY >= this.y && mouseY <= this.y + this.height;
     }
   
-    mouseDown(mouseX, mouseY){
+    selectIfHit(mouseX, mouseY){
         if (this.isHit(mouseX, mouseY)){
             this.isSelected = true; 
         }else {
@@ -43,7 +43,9 @@ export default class AdderHandle {
         this.x = x ;
         this.y =   y;
     }
-
+    markIsSelectedFalse(){
+        this.isSelected = false; 
+    }
     update(item, mouseX, mouseY) {
         if (!this.isSelected) return;
 

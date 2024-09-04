@@ -90,28 +90,6 @@ let handleObjects = [];
 
 function selectItem(item){
     selectedItem = new SelectedItem(item);
-    // selectedItem = item;
-    //         handleObjects = [];
-
-    //         let w = new AdderHandle('width','width','red',
-    //         selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
-    //         selectedItem.extra.y.initialValue  ,
-    //         20,20); 
-    //         handleObjects.push(w);
-
-    //         let h = new AdderHandle('height','height','red',
-    //         selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
-    //         selectedItem.extra.y.initialValue  + selectedItem.extra.height.initialValue -20,
-    //         20,20); 
-    //         h.lookingforX = false;
-    //         handleObjects.push(h);
-           
-    //         let d = new DraggerHandle('red',
-    //         selectedItem.extra.x.initialValue  ,
-    //         selectedItem.extra.y.initialValue,
-    //         20,20); 
-    //         handleObjects.push(d);
-
 }
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
 function setMousePosition(e){
@@ -123,27 +101,23 @@ function setMousePosition(e){
     mouseY = Math.round((e.clientY - rect.top) * scaleY);
 }
 
-
-
 function handleMouseMove(e) {
-        if (!selectedItem) return;
-
-        setMousePosition(e);
-
-        selectedItem.update(mouseX, mouseY);
-        selectedItem.mouseMove(mouseX, mouseY);
+  if (!selectedItem) return;
+  setMousePosition(e);
+  //update the item and update the handles as per that
+  selectedItem.update(mouseX, mouseY);
 }
 
 function handleMouseDown(e) {
-        if (!selectedItem) return;
-        setMousePosition(e);
-        selectedItem.mouseDown(mouseX, mouseY);
+  if (!selectedItem) return;
+  setMousePosition(e);
+  selectedItem.selectHandlesIfHit(mouseX, mouseY);
 }
 
 function handleMouseUp(e) {
         if (!selectedItem) return;
         setMousePosition(e);
-        selectedItem.mouseUp(mouseX, mouseY);
+        selectedItem.markIsSelectedFalse();
 }
 //......................................
 function handleClick(e){
