@@ -28,7 +28,7 @@ export default class Handle {
       ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
-  //to update its own x and y
+  //to update its own x and y--it updates itsself and  not the item .. item is edited in upper level
   updateXY(x, y) {
       this.x = x;
       this.y = y;

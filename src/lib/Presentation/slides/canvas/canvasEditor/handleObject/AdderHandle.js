@@ -2,10 +2,9 @@
 import Handle from './Handle';
 
 export default class AdderHandle extends Handle {
-    constructor(property, name, color, x, y, width, height) {
+    constructor(property, x, y, width=20, height=20,color='red') {
         super(color, x, y, width, height);
         this.property = property;
-        this.name = name;
         this.lookingforX = true;
         this.oldX = null;
         this.oldY = null;

@@ -1,7 +1,6 @@
 
 //@ts-nocheck
-import AdderHandle from './AdderHandle';
-import DraggerHandle from './DraggerHandle';
+import AdderHandle from './handleObject/AdderHandle';
 
 
 
@@ -10,30 +9,9 @@ export default class SelectedItem {
  constructor(itemData){
         this.itemData = itemData;
         this.handleObjects = [];
-        this.loadHandles();
  }
 //****************************************************************** */
- loadHandles(){
-
-        let w = new AdderHandle('width','width','red',
-        this.itemData.extra.x.initialValue +  this.itemData.extra.width.initialValue -20 ,
-        this.itemData.extra.y.initialValue  ,
-        20,20); 
-        this.handleObjects.push(w);
-
-        let h = new AdderHandle('height','height','red',
-        this.itemData.extra.x.initialValue +  this.itemData.extra.width.initialValue -20 ,
-        this.itemData.extra.y.initialValue  + this.itemData.extra.height.initialValue -20,
-        20,20); 
-        h.lookingforX = false;
-        this.handleObjects.push(h);
-       
-        let d = new DraggerHandle('red',
-        this.itemData.extra.x.initialValue  ,
-        this.itemData.extra.y.initialValue,
-        20,20); 
-        this.handleObjects.push(d);
- }
+ 
  update(mouseX, mouseY) {
     for (let i = 0; i < this.handleObjects.length; i++) {
         const obj = this.handleObjects[i];

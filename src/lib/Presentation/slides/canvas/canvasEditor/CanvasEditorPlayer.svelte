@@ -1,13 +1,14 @@
 <script>
     //@ts-nocheck
     import {onMount} from "$lib/util";
+    import getSelectedItem from "./getSelectedItem";
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
     import AdderHandle from './handleObject/AdderHandle';
     import DraggerHandle from './handleObject/DraggerHandle';
-    import SelectedItem from "./handleObject/SelectedItem";
+    
     export let currentTime;
      
     export let spriteImgArray;
@@ -88,9 +89,6 @@ let selectedItem=null;
 let handleObjects = [];
 
 
-function selectItem(item){
-    selectedItem = new SelectedItem(item);
-}
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
 function setMousePosition(e){
     const rect = canvas.getBoundingClientRect();
@@ -132,7 +130,7 @@ function handleClick(e){
         mouseX,mouseY);
 
         if(isHitResult){
-            selectItem(item);
+          selectedItem = getSelectedItem(item);
             return; //must
         }
     }
