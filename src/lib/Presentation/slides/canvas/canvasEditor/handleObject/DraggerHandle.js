@@ -1,56 +1,18 @@
-
 //@ts-nocheck
+import Handle from './Handle';
 
-export default class DraggerHandle {
+export default class DraggerHandle extends Handle {
     constructor(color, x, y, width, height) {
-      this.color = color;
-
-      this.x = x;
-      this.y = y;
-
-      this.isSelected = false;
-
-      this.oldX = null;
-      this.oldY = null;
-      this.width = width;
-      this.height = height;
-    }
-  
-    isHit(mouseX, mouseY) {
-      return mouseX >= this.x && mouseX <= this.x + this.width &&
-             mouseY >= this.y && mouseY <= this.y + this.height;
-    }
-  
-    selectIfHit(mouseX, mouseY){
-        if (this.isHit(mouseX, mouseY)){
-            this.isSelected = true; 
-        }else {
-            this.isSelected = false; 
-        }
-    }
-    markIsSelectedFalse(){
-        this.isSelected = false; 
-    }
-    draw(ctx) {
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+        super(color, x, y, width, height);
     }
 
-    updateXY(x,y){
-        this.x = x ;
-        this.y =   y;
-    }
-   update(item, mouseX, mouseY) {
+    update(item, mouseX, mouseY) {
         if (!this.isSelected) return;
-        
+
         item.extra.x.initialValue = mouseX - this.width / 2;
         item.extra.y.initialValue = mouseY - this.height / 2;
+
+        // TODO: Consider checking if the new position differs significantly from the current one
+        // before updating the item's coordinates for better performance.
     }
-    
-  }
- 
-//     update(item, mouseX, mouseY) {
-//       item.extra[this.property].initialValue = this.property === 'x' ? mouseX : mouseY;
-//     }
-//   }
-  
+}

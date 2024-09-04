@@ -12,7 +12,7 @@ export default class SelectedItem {
         this.handleObjects = [];
         this.loadHandles();
  }
-
+//****************************************************************** */
  loadHandles(){
 
         let w = new AdderHandle('width','width','red',
@@ -37,12 +37,13 @@ export default class SelectedItem {
  update(mouseX, mouseY) {
     for (let i = 0; i < this.handleObjects.length; i++) {
         const obj = this.handleObjects[i];
+//****************************************************************** *        
         obj.update(this.itemData, mouseX, mouseY);
     }
     this.updateHandlePositions();
 }
 
-//--this will be seperate
+//****************************************************************** *
 updateHandlePositions() {
     const { x, y, width, height } = this.itemData.extra;
     
@@ -62,20 +63,12 @@ updateHandlePositions() {
         
     }
  }
- 
- updateXY(mouseX, mouseY){
-    
-    for (let i = 0; i < this.handleObjects.length; i++) {
-        const obj = this.handleObjects[i];
-        obj.updateXY(mouseX, mouseY);
-        
-    }
- }
- markIsSelectedFalse(){
+
+ deselect(){
 
     for (let i = 0; i < this.handleObjects.length; i++) {
         const handleObject = this.handleObjects[i];
-            handleObject.markIsSelectedFalse();
+            handleObject.deselect();
     }
  }
  selectHandlesIfHit(mouseX, mouseY){

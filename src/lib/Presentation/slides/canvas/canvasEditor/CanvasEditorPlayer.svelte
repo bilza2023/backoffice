@@ -117,7 +117,7 @@ function handleMouseDown(e) {
 function handleMouseUp(e) {
         if (!selectedItem) return;
         setMousePosition(e);
-        selectedItem.markIsSelectedFalse();
+        selectedItem.deselect();
 }
 //......................................
 function handleClick(e){
