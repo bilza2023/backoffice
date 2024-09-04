@@ -45,7 +45,7 @@ export default class AdderHandle {
     }
 
     update(item, mouseX, mouseY) {
-        if(!this.isSelected) {return;}
+        if (!this.isSelected) return;
 
         if (this.oldX == null || this.oldY == null) {
             this.oldX = mouseX;
@@ -53,20 +53,16 @@ export default class AdderHandle {
             return;
         }
         
-        let delta;
-        if (this.lookingforX ){
-            delta = mouseX - this.oldX;
-        }else {
-            delta = mouseY - this.oldY;
-        }
+        let delta = this.lookingforX ? mouseX - this.oldX : mouseY - this.oldY;
         
-        item.extra[this.property].initialValue +=  delta;
+        item.extra[this.property].initialValue += delta;
         
         this.oldX = mouseX;
         this.oldY = mouseY;
     }
+
     
-  }
+}
  
 //     update(item, mouseX, mouseY) {
 //       item.extra[this.property].initialValue = this.property === 'x' ? mouseX : mouseY;

@@ -40,12 +40,11 @@ export default class DraggerHandle {
         this.x = x ;
         this.y =   y;
     }
-
-    update(item, mouseX, mouseY) {
-        if(!this.isSelected) {return;}
+   update(item, mouseX, mouseY) {
+        if (!this.isSelected) return;
         
-        item.extra.x.initialValue =  mouseX;
-        item.extra.y.initialValue =  mouseY;
+        item.extra.x.initialValue = mouseX - this.width / 2;
+        item.extra.y.initialValue = mouseY - this.height / 2;
     }
     
   }

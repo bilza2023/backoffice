@@ -7,8 +7,7 @@
     import checkHandles from './fn/checkHandles.js';
     import AdderHandle from './handleObject/AdderHandle';
     import DraggerHandle from './handleObject/DraggerHandle';
-  import { HandleObject } from "./handleObject/HandleObject";
-
+    import SelectedItem from "./handleObject/SelectedItem";
     export let currentTime;
      
     export let spriteImgArray;
@@ -36,13 +35,9 @@ function gameLoop(){
         drawLibInterpretor.interpret(items,currentTime,extra);
 
         if(selectedItem){
-                // drawLibInterpretor.drawHandles(handles);
 
-                for (let i = 0; i < handleObjects.length; i++) {
-                    const handleObject = handleObjects[i];
-                    handleObject.draw(ctx);
-                    
-                }
+              selectedItem.drawHandles(ctx);
+
         }
 
         ///////////////
@@ -84,6 +79,8 @@ onDestroy(() => {
 });
 
 ///////////////////////////////////////////////////////UI-MOUSE-INTERACTION SECTION
+///////////////////////////////////////////////////////UI-MOUSE-INTERACTION SECTION
+///////////////////////////////////////////////////////UI-MOUSE-INTERACTION SECTION
 let mouseX=0;
 let mouseY=0;
 
@@ -92,27 +89,28 @@ let handleObjects = [];
 
 
 function selectItem(item){
-    selectedItem = item;
-            handleObjects = [];
+    selectedItem = new SelectedItem(item);
+    // selectedItem = item;
+    //         handleObjects = [];
 
-            let w = new AdderHandle('width','width','red',
-            selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
-            selectedItem.extra.y.initialValue  ,
-            20,20); 
-            handleObjects.push(w);
+    //         let w = new AdderHandle('width','width','red',
+    //         selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
+    //         selectedItem.extra.y.initialValue  ,
+    //         20,20); 
+    //         handleObjects.push(w);
 
-            let h = new AdderHandle('height','height','red',
-            selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
-            selectedItem.extra.y.initialValue  + selectedItem.extra.height.initialValue -20,
-            20,20); 
-            h.lookingforX = false;
-            handleObjects.push(h);
+    //         let h = new AdderHandle('height','height','red',
+    //         selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20 ,
+    //         selectedItem.extra.y.initialValue  + selectedItem.extra.height.initialValue -20,
+    //         20,20); 
+    //         h.lookingforX = false;
+    //         handleObjects.push(h);
            
-            let d = new DraggerHandle('red',
-            selectedItem.extra.x.initialValue  ,
-            selectedItem.extra.y.initialValue,
-            20,20); 
-            handleObjects.push(d);
+    //         let d = new DraggerHandle('red',
+    //         selectedItem.extra.x.initialValue  ,
+    //         selectedItem.extra.y.initialValue,
+    //         20,20); 
+    //         handleObjects.push(d);
 
 }
 //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY 
@@ -126,50 +124,30 @@ function setMousePosition(e){
 }
 
 
+
 function handleMouseMove(e) {
-    if(!selectedItem){return;}
+        if (!selectedItem) return;
 
-    setMousePosition(e);
+        setMousePosition(e);
 
-    for (let i = 0; i < handleObjects.length; i++) {
-        const handleObject = handleObjects[i];
-        handleObject.update(selectedItem,mouseX, mouseY);
-        
-    }
-    handleObjects[0].updateXY(selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20, 
-    selectedItem.extra.y.initialValue);
-
-    handleObjects[1].updateXY(selectedItem.extra.x.initialValue +  selectedItem.extra.width.initialValue -20, 
-    selectedItem.extra.y.initialValue  +  selectedItem.extra.height.initialValue -20);
-    
-    handleObjects[2].updateXY(selectedItem.extra.x.initialValue, 
-    selectedItem.extra.y.initialValue );
-    
+        selectedItem.update(mouseX, mouseY);
+        selectedItem.mouseMove(mouseX, mouseY);
 }
 
 function handleMouseDown(e) {
-    setMousePosition(e);
-
-    for (let i = 0; i < handleObjects.length; i++) {
-        const handleObject = handleObjects[i];
-        handleObject.mouseDown(mouseX, mouseY);
-                    
-    }
-
+        if (!selectedItem) return;
+        setMousePosition(e);
+        selectedItem.mouseDown(mouseX, mouseY);
 }
 
 function handleMouseUp(e) {
-
-    for (let i = 0; i < handleObjects.length; i++) {
-        const handleObject = handleObjects[i];
-        handleObject.mouseUp(mouseX, mouseY);
-                    
-    }
- 
+        if (!selectedItem) return;
+        setMousePosition(e);
+        selectedItem.mouseUp(mouseX, mouseY);
 }
-
+//......................................
 function handleClick(e){
-   
+  
     setMousePosition(e);
     // debugger;
     for (let i = 0; i < items.length; i++) {
