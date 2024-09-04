@@ -399,10 +399,10 @@ export default class DrawLibInterpretor {
                 case 'image':
                             this.drawLib.image(
                             extra.image, 
-                            this.addXfactor(this.getX(extra.x)), 
-                            this.getY(extra.y),
-                            this.getX(extra.width), 
-                            this.getX(extra.height),
+                            this.addXfactor(extra.x), 
+                            extra.y,
+                            extra.width, 
+                            extra.height,
                             getVal(currentTime , extra.globalAlpha)
                             );
                     break;

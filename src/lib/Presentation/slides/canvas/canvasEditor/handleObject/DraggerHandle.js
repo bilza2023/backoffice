@@ -16,11 +16,12 @@ export default class DraggerHandle extends Handle {
 
     update(item, mouseX, mouseY) {
         if (!this.isSelected) return;
+        this.updateFunction(item, mouseX, mouseY);
 
+    }
+    updateFunction(item, mouseX, mouseY){
         item.extra[this.termForX].initialValue = mouseX - this.width / 2;
         item.extra[this.termForY].initialValue = mouseY - this.height / 2;
-
-        // TODO: Consider checking if the new position differs significantly from the current one
-        // before updating the item's coordinates for better performance.
+        
     }
 }

@@ -2,19 +2,22 @@
 //@ts-nocheck
 
 // import SelectedItem from "./SelectedItem";
-import DraggerHandle from './handleObject/DraggerHandle';
-import AdderHandle from './handleObject/AdderHandle';
-import RectangleObject from './componentObjects/RectangleObject';
+import DraggerHandle from '../handleObject/DraggerHandle';
+import AdderHandle from '../handleObject/AdderHandle';
+import RectangleObject from './RectangleObject';
+import ImageObject from './ImageObject';
 
 export default function itemToObject(item){
     let selectedItem;
-    let lookFor = item.itemData.extra.command;
+    let lookFor = item.extra.command;
 
 switch (lookFor) {
     case 'rect':
-    // case 'image':
-        // debugger;
     selectedItem = new RectangleObject(item);
+    break;
+    
+    case 'image':
+    selectedItem = new ImageObject(item);
     break;
 
     default:

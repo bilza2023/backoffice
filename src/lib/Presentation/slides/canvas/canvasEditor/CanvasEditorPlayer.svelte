@@ -1,15 +1,13 @@
 <script>
     //@ts-nocheck
     import {onMount} from "$lib/util";
-    import getSelectedItem from "./getSelectedItem";
+    // import getSelectedItem from "./getSelectedItem";
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
-    import isHit from './fn/isHit.js';
+    // import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
-    // import AdderHandle from './handleObject/AdderHandle';
-    // import DraggerHandle from './handleObject/DraggerHandle';
     import RectangleObject from "./componentObjects/RectangleObject";
-    import itemToObject from "./itemToObject";
+    import itemToObject from "./componentObjects/itemToObject";
     
     export let currentTime;
      
@@ -65,11 +63,11 @@ async function init(){
   ////////////////////////////////////////////////////////////////////////
   for (let i = 0; i < items.length; i++) {
     const item =   items[i];
-    if (item.extra.command == 'rect'){
-      let r = new RectangleObject(item);
-      itemObjects.push(r);
+    const itemObj = itemToObject(item);
+    if (itemObj){
+      itemObjects.push(itemObj);
     }
-    
+  
   }
   //////////////////////////////////////////////////////////////////////// 
   ////////////////////////////////////////////////////////////////////////
@@ -131,11 +129,12 @@ function handleMouseUp(e) {
 //......................................
 function handleClick(e){
   
+  
     setMousePosition(e);
     for (let i = 0; i < itemObjects.length; i++) {
         const item = itemObjects[i];
-        
-        if(item.isHit(mouseX,mouseY)){
+        const ishit  = item.isHit(mouseX,mouseY);
+        if(ishit){
           selectedItem = item;
             return; //must
         }

@@ -274,11 +274,11 @@ img.onload = () => {
             const obj ={
               "src": 'wood',
               "image": img,
-              "x": 0,
-              "y": 0,
+              "x": 50,
+              "y": 50,
               "ext": 'jpg',
-              "width": 40,
-              "height": 15,
+              "width": 200,
+              "height": 200,
             };
           addNewItem(addReqExtraFields(obj,"image"),items);
         };

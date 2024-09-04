@@ -10,10 +10,15 @@ export default class AdderHandle extends Handle {
         this.oldY = null;
     }
 
-  
+
+    
 
     update(item, mouseX, mouseY) {
         if (!this.isSelected) return;
+        this.updateFunction(item, mouseX, mouseY);
+
+    }
+    updateFunction(item, mouseX, mouseY){
 
         if (this.oldX == null || this.oldY == null) {
             this.oldX = mouseX;
