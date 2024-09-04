@@ -6,8 +6,10 @@
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
     import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
-    import AdderHandle from './handleObject/AdderHandle';
-    import DraggerHandle from './handleObject/DraggerHandle';
+    // import AdderHandle from './handleObject/AdderHandle';
+    // import DraggerHandle from './handleObject/DraggerHandle';
+    import RectangleObject from "./componentObjects/RectangleObject";
+    import itemToObject from "./itemToObject";
     
     export let currentTime;
      
@@ -61,6 +63,14 @@ async function init(){
     ctx = canvas.getContext('2d');
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
+  for (let i = 0; i < items.length; i++) {
+    const item =   items[i];
+    if (item.extra.command == 'rect'){
+      let r = new RectangleObject(item);
+      itemObjects.push(r);
+    }
+    
+  }
   //////////////////////////////////////////////////////////////////////// 
   ////////////////////////////////////////////////////////////////////////
   drawLibInterpretor = new DrawLibInterpretor(canvas, ctx,extra,spriteImgArray,bgImages);
@@ -85,6 +95,7 @@ onDestroy(() => {
 let mouseX=0;
 let mouseY=0;
 
+let itemObjects= [];
 let selectedItem=null;
 let handleObjects = [];
 
@@ -121,16 +132,11 @@ function handleMouseUp(e) {
 function handleClick(e){
   
     setMousePosition(e);
-    // debugger;
-    for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        const isHitResult = isHit(item.extra.x.initialValue , item.extra.y.initialValue ,
-        item.extra.width.initialValue,
-        item.extra.height.initialValue,
-        mouseX,mouseY);
-
-        if(isHitResult){
-          selectedItem = getSelectedItem(item);
+    for (let i = 0; i < itemObjects.length; i++) {
+        const item = itemObjects[i];
+        
+        if(item.isHit(mouseX,mouseY)){
+          selectedItem = item;
             return; //must
         }
     }

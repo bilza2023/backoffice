@@ -6,9 +6,9 @@ import DraggerHandle from './handleObject/DraggerHandle';
 import AdderHandle from './handleObject/AdderHandle';
 import RectangleObject from './componentObjects/RectangleObject';
 
-export default function getSelectedItem(item){
+export default function itemToObject(item){
     let selectedItem;
-    let lookFor = item.extra.command;
+    let lookFor = item.itemData.extra.command;
 
 switch (lookFor) {
     case 'rect':
