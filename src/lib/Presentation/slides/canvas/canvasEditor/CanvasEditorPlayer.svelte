@@ -132,24 +132,27 @@ function handleMouseUp(e) {
 }
 //......................................
 function handleClick(e){
-  
-    setMousePosition(e);
-    //itemObjects
-    let found = false;
-    for (let i = 0; i < itemObjects.length; i++) {
-        const item = itemObjects[i];
-        const ishit  = item.isHit(mouseX,mouseY);
-        if(ishit){
-          selectedItem = item;
-          found = true;
-            return; //must
-        }
-    }
-    if(found == false){
-      selectedItem = null; //if no item found
-    }
-    
+  selectedItem =  itemObjects[0];
 }
+
+// function handleClick(e){
+//     setMousePosition(e);
+//     //itemObjects
+//     let found = false;
+//     for (let i = 0; i < itemObjects.length; i++) {
+//         const item = itemObjects[i];
+//         const ishit  = item.isHit(mouseX,mouseY);
+//         if(ishit){
+//           selectedItem = item;
+//           found = true;
+//             return; //must
+//         }
+//     }
+//     if(found == false){
+//       selectedItem = null; //if no item found
+//     }
+    
+// }
 
 </script>
 

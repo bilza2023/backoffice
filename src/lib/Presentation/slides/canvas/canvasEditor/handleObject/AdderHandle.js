@@ -20,7 +20,7 @@ export default class AdderHandle extends Handle {
 
     } 
     updateFunction(item, mouseX, mouseY){
-
+// debugger;
         if (this.oldX == null || this.oldY == null) {
             this.oldX = mouseX;
             this.oldY = mouseY;
@@ -32,7 +32,7 @@ export default class AdderHandle extends Handle {
         if(this.useInitialValue){
             item.extra[this.property].initialValue += delta;
             }else {
-            item.extra[this.property].initialValue += delta;
+            item.extra[this.property] += delta;
             }
         
 

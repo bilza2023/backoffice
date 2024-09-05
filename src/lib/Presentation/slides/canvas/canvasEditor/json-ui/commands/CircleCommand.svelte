@@ -14,8 +14,8 @@ import TrTf from "./TrTf.svelte";
 <div class="flex flex-col w-full">
     <table class="border-collapse border-2 border-white">
         
-        <TrPropNumber title="x"  bind:extra={item} min=0 max=25 />  
-        <TrPropNumber title="y"  bind:extra={item} min=0 max=25 />  
+        <TrPropNumber title="x"  bind:extra={item} min=0 max=1000 />  
+        <TrPropNumber title="y"  bind:extra={item} min=0 max=500 />  
         <TrPropNumber title="radius"  bind:extra={item} min=0 max=500 />  
         <TrPropNumber title="startAngle"  bind:extra={item} min=0 max=25 />  
         <TrPropNumber title="endAngle"  bind:extra={item} min=0 max=25 />  

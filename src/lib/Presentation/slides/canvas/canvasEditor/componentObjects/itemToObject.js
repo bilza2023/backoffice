@@ -7,11 +7,12 @@ import AdderHandle from '../handleObject/AdderHandle';
 import RectangleObject from './RectangleObject';
 import ImageObject from './ImageObject';
 import LineObject from './LineObject';
+import CircleObject from './CircleObject';
 
 export default function itemToObject(item){
     let selectedItem;
     let lookFor = item.extra.command;
-
+    
 switch (lookFor) {
     case 'rect':
     selectedItem = new RectangleObject(item);
@@ -21,8 +22,8 @@ switch (lookFor) {
     selectedItem = new ImageObject(item);
     break;
     
-    case 'line':
-    selectedItem = new LineObject(item);
+    case 'circle':
+    selectedItem = new CircleObject(item);
     break;
 
     default:

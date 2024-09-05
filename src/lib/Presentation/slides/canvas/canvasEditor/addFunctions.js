@@ -113,8 +113,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   }
   function addCircle(items){
     const obj = {
-      "x": getProp(5),
-      "y": getProp(5),
+      "x": getProp(100),
+      "y": getProp(150),
       "radius": getProp(100),
       "startAngle": getProp(0) ,
       "endAngle": getProp(360) ,

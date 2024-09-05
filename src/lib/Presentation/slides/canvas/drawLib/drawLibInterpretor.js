@@ -193,10 +193,11 @@ export default class DrawLibInterpretor {
                 }
                     break;
                 case 'circle':
-                   
+
                         this.drawLib.circle(
-                            this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                            this.getY(getVal(currentTime , extra.y)),
+                            this.addXfactor(getVal(currentTime , extra.x)), 
+                            
+                            getVal(currentTime , extra.y),
                             
                             getVal(currentTime , extra.radius),
                             getVal(currentTime , extra.color),

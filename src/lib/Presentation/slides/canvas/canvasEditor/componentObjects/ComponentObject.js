@@ -25,16 +25,7 @@ export default class ComponentObject {
 
 //****************************************************************** *
 updateHandlePositions() {
-    const { x, y, width, height } = this.itemData.extra;
-    
-    // Update width handle
-    this.handleObjects[0].updateXY(x.initialValue + width.initialValue - 20, y.initialValue);
-    
-    // Update height handle
-    this.handleObjects[1].updateXY(x.initialValue + width.initialValue - 20, y.initialValue + height.initialValue - 20);
-    
-    // Update dragger handle
-    this.handleObjects[2].updateXY(x.initialValue, y.initialValue);
+
 }
 
  drawHandles(ctx){
