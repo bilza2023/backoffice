@@ -4,11 +4,13 @@
     // import getSelectedItem from "./getSelectedItem";
     import { onDestroy } from 'svelte';
     import DrawLibInterpretor from '../drawLib/drawLibInterpretor';
-    // import isHit from './fn/isHit.js';
     import checkHandles from './fn/checkHandles.js';
     import RectangleObject from "./componentObjects/RectangleObject";
     import itemToObject from "./componentObjects/itemToObject";
+  import DraggerHandle from "./handleObject/DraggerHandle.svelte";
     
+  import setHandlesForEachItem from "./handleObject/setHandlesForEachItem";
+
     export let currentTime;
      
     export let spriteImgArray;
@@ -34,7 +36,7 @@ function gameLoop(){
         drawLibInterpretor.cellHeight =  extra.cellHeight;
 ///////////////////////////////////
         drawLibInterpretor.interpret(items,currentTime,extra);
-
+        
         if(selectedItem){
 
               selectedItem.drawHandles(ctx);
@@ -60,6 +62,8 @@ async function init(){
     //////////////////////////////////////////////
     ctx = canvas.getContext('2d');
   ////////////////////////////////////////////////////////////////////////
+  // itemsStore.set(items);
+  // console.log("itemsStore" , $itemsStore);
   ////////////////////////////////////////////////////////////////////////
   for (let i = 0; i < items.length; i++) {
     const item =   items[i];
@@ -129,19 +133,21 @@ function handleMouseUp(e) {
 //......................................
 function handleClick(e){
   
-  // debugger;
     setMousePosition(e);
+    //itemObjects
+    let found = false;
     for (let i = 0; i < itemObjects.length; i++) {
         const item = itemObjects[i];
         const ishit  = item.isHit(mouseX,mouseY);
         if(ishit){
           selectedItem = item;
+          found = true;
             return; //must
         }
     }
-///THIS IS THE PROD BRANCH
-    //un-select 
-    selectedItem = null; //if no item found
+    if(found == false){
+      selectedItem = null; //if no item found
+    }
     
 }
 
@@ -160,7 +166,7 @@ function handleClick(e){
   ></canvas>
   
 </div>
-
+<DraggerHandle />
 <div class="text-xs">x:{mouseX} y:{mouseY}</div>
 
 

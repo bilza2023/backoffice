@@ -7,21 +7,29 @@ import Handle from './Handle';
  * There was an idea that it should demand from every item to have fields x and y also if there is some item with term for x = x0 etc that will also need to replace it in database
  * I have decided to keep it such (take in term for x and y) since there can be many types of items and some may not have the concept of x and y.
  */
+
 export default class DraggerHandle extends Handle {
     constructor(x, y, width=20, height=20,color='red', termForX = 'x' , termForY = 'y') {
         super(color, x, y, width, height);
+
         this.termForX = termForX;
         this.termForY = termForY;
     }
 
     update(item, mouseX, mouseY) {
         if (!this.isSelected) return;
-        this.updateFunction(item, mouseX, mouseY);
 
-    }
-    updateFunction(item, mouseX, mouseY){
+        if(this.useInitialValue){
+        // in dragger you always set x and y ( in this case termForX and Y)
         item.extra[this.termForX].initialValue = mouseX - this.width / 2;
         item.extra[this.termForY].initialValue = mouseY - this.height / 2;
+        }else {
+        // in dragger you always set x and y ( in this case termForX and Y)
+        item.extra[this.termForX] = mouseX - this.width / 2;
+        item.extra[this.termForY] = mouseY - this.height / 2;
+        }
         
+
     }
+ 
 }

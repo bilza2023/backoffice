@@ -9,7 +9,7 @@ export default class ComponentObject {
  constructor(itemData){
         this.itemData = itemData;
         this.handleObjects = [];
-        this.loadHandles();
+        this.loadHandles(); 
  }
  loadHandles(){} //child objects will use it
 //****************************************************************** */
@@ -36,6 +36,7 @@ updateHandlePositions() {
     // Update dragger handle
     this.handleObjects[2].updateXY(x.initialValue, y.initialValue);
 }
+
  drawHandles(ctx){
     for (let i = 0; i < this.handleObjects.length; i++) {
         const obj = this.handleObjects[i];

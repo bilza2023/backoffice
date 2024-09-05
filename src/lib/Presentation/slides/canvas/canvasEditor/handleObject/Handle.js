@@ -6,6 +6,7 @@ export default class Handle {
       this.x = x;
       this.y = y;
       this.width = width;
+      this.useInitialValue = true; //some x and y or props are animated to need initial value
       this.height = height;
       this.isSelected = false;
   }
@@ -14,11 +15,11 @@ export default class Handle {
       return mouseX >= this.x && mouseX <= this.x + this.width &&
              mouseY >= this.y && mouseY <= this.y + this.height;
   }
-
+//--mouse down
   selectIfHit(mouseX, mouseY) {
       this.isSelected = this.isHit(mouseX, mouseY);
   }
-
+//--mouse up
   deselect() {
       this.isSelected = false;
   }
@@ -33,4 +34,5 @@ export default class Handle {
       this.x = x;
       this.y = y;
   }
+  update(item, mouseX, mouseY) {} ///for child objects to fill
 }

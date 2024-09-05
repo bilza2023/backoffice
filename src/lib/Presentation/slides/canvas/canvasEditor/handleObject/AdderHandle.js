@@ -5,6 +5,7 @@ export default class AdderHandle extends Handle {
     constructor(property, x, y, width=20, height=20,color='red') {
         super(color, x, y, width, height);
         this.property = property;
+        //which mouse move to take into account x or y ? lookingforX
         this.lookingforX = true;
         this.oldX = null;
         this.oldY = null;
@@ -17,7 +18,7 @@ export default class AdderHandle extends Handle {
         if (!this.isSelected) return;
         this.updateFunction(item, mouseX, mouseY);
 
-    }
+    } 
     updateFunction(item, mouseX, mouseY){
 
         if (this.oldX == null || this.oldY == null) {
@@ -27,7 +28,13 @@ export default class AdderHandle extends Handle {
         }
 
         let delta = this.lookingforX ? mouseX - this.oldX : mouseY - this.oldY;
-        item.extra[this.property].initialValue += delta;
+
+        if(this.useInitialValue){
+            item.extra[this.property].initialValue += delta;
+            }else {
+            item.extra[this.property].initialValue += delta;
+            }
+        
 
         this.oldX = mouseX;
         this.oldY = mouseY;
