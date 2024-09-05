@@ -14,6 +14,7 @@ export default class ImageObject extends ComponentObject {
             this.itemData.extra.x +  this.itemData.extra.width -20 ,
             this.itemData.extra.y); 
 
+            w.useInitialValue = false; // important
             w.updateFunction = function (item, mouseX, mouseY){
                 if (this.oldX == null || this.oldY == null) {
                     this.oldX = mouseX;
@@ -48,8 +49,9 @@ export default class ImageObject extends ComponentObject {
             let d = new DraggerHandle(
             this.itemData.extra.x  ,
             this.itemData.extra.y,
-            ); 
+            );
 
+            d.useInitialValue = false; // important
             d.updateFunction = function(item, mouseX, mouseY){
                 item.extra[this.termForX] = mouseX - this.width / 2;
                 item.extra[this.termForY] = mouseY - this.height / 2;
