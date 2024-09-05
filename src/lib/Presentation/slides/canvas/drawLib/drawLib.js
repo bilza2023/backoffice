@@ -72,7 +72,8 @@ rect(x, y, width, height, color = 'white', filled = true, dash = 0, gap = 0,line
 
 
 line(x1, y1, x2, y2, color = 'black', lineWidth = 1, dash = 0, gap = 0,globalAlpha=1) {
-    // debugger;
+    
+    
     this.ctx.save(); // Save the current context state
     
     this.ctx.lineWidth = lineWidth;

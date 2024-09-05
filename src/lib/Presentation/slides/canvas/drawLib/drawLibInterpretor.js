@@ -142,13 +142,13 @@ export default class DrawLibInterpretor {
 
                     break;
                 case 'line':
-                    // debugger;
+                    
                 this.drawLib.line(
-                    this.addXfactor(this.getX(getVal(currentTime , extra.x1) )), 
-                    this.getY(getVal(currentTime , extra.y1)),
+                    this.addXfactor(getVal(currentTime , extra.x1 )), 
+                    getVal(currentTime , extra.y1),
 
-                    this.addXfactor(this.getX(getVal(currentTime , extra.x2) )), 
-                    this.getY(getVal(currentTime , extra.y2)),                     
+                    this.addXfactor(getVal(currentTime , extra.x2 )), 
+                    getVal(currentTime , extra.y2),                     
                     getVal(currentTime , extra.color),
                     
                     getVal(currentTime , extra.lineWidth),

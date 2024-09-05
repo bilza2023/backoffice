@@ -129,7 +129,7 @@ function handleMouseUp(e) {
 //......................................
 function handleClick(e){
   
-  
+  // debugger;
     setMousePosition(e);
     for (let i = 0; i < itemObjects.length; i++) {
         const item = itemObjects[i];

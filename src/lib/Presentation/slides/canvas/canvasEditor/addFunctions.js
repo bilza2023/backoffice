@@ -55,10 +55,10 @@ function addReqExtraFields(obj,command,color="black"){
 
 function addLine(items){
   const obj ={
-            "x1": getProp(2),
-            "y1": getProp(2),
-            "x2": getProp(8),
-            "y2": getProp(8),
+            "x1": getProp(20),
+            "y1": getProp(10),
+            "x2": getProp(500),
+            "y2": getProp(200),
             "lineWidth": getProp(2),              
   };
   addNewItem(addReqExtraFields(obj,"line","red"),items); 

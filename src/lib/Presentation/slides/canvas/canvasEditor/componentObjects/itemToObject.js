@@ -6,6 +6,7 @@ import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import RectangleObject from './RectangleObject';
 import ImageObject from './ImageObject';
+import LineObject from './LineObject';
 
 export default function itemToObject(item){
     let selectedItem;
@@ -18,6 +19,10 @@ switch (lookFor) {
     
     case 'image':
     selectedItem = new ImageObject(item);
+    break;
+    
+    case 'line':
+    selectedItem = new LineObject(item);
     break;
 
     default:
