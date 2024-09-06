@@ -38,7 +38,6 @@ function gameLoop(){
         drawLibInterpretor.interpret(items,currentTime,extra);
         
         if(selectedItem){
-          // debugger;
           selectedItem.drawHandles(ctx);
          }
 ///////////////////////////////////////////////////////////////////////////

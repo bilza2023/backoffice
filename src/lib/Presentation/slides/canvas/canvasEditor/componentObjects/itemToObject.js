@@ -16,6 +16,7 @@ import AngleObject from './AngleObject';
 import SpriteObject from './SpriteObject';
 import DotObject from './DotObject';
 import RDotObject from './RDotObject';
+import RTextObject from './RTextObject';
 
 
 export default function itemToObject(item){
@@ -23,6 +24,10 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+
+    case 'repeatText':
+    selectedItem = new RTextObject(item);
+    break;
 
     case 'repeatDot':
     selectedItem = new RDotObject(item);

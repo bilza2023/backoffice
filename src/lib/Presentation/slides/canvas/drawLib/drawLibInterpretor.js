@@ -320,17 +320,17 @@ export default class DrawLibInterpretor {
                 
                     break;
                 case 'repeatText':
-                    
+                    // debugger;
                     let wordsArray = extra.textArray.initialValue.split(",");
                   
                     this.drawLib.repeatText(
                         wordsArray,
                         
-                        this.addXfactor(this.getX(getVal(currentTime , extra.initialX) )), 
-                        this.getY(getVal(currentTime , extra.initialY)),
+                        getVal(currentTime , extra.initialX), 
+                        getVal(currentTime , extra.initialY),
                         
-                        (getVal(currentTime , extra.xFactor) * this.cellWidth), 
-                        (getVal(currentTime , extra.yFactor) * this.cellHeight), 
+                        (getVal(currentTime , extra.xFactor) ), 
+                        (getVal(currentTime , extra.yFactor) ), 
                         getVal(currentTime , extra.color), 
                         extra.font
                     );    

@@ -235,9 +235,9 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   function addRepeatText(items){
     const obj ={
       "textArray":  "1,2,3,4",
-      "initialX":   getProp(4),
-      "initialY":   getProp(4),
-      "xFactor":    getProp(4),
+      "initialX":   getProp(100),
+      "initialY":   getProp(100),
+      "xFactor":    getProp(30),
       "yFactor":    getProp(0),
       "font":       "20px Arial"
     };
