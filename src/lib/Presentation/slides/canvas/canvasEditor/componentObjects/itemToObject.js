@@ -9,6 +9,7 @@ import ImageObject from './ImageObject';
 import LineObject from './LineObject';
 import CircleObject from './CircleObject';
 import RayObject from './RayObject';
+import EllipseObject from './EllipseObject';
 
 
 export default function itemToObject(item){
@@ -16,6 +17,10 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+    case 'ellipse':
+    selectedItem = new EllipseObject(item);
+    break;
+
     case 'ray':
     selectedItem = new RayObject(item);
     break;

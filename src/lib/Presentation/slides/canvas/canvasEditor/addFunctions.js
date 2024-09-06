@@ -97,8 +97,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
 }
  function addEllipse(items){
   const obj = { 
-    "x":          getProp(15),
-    "y":          getProp(7),
+    "x":          getProp(200),
+    "y":          getProp(200),
     "radiusX":    getProp(50),
     "radiusY":    getProp(100),
     "rotation":   getProp(0),

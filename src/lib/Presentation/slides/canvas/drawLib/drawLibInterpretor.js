@@ -194,8 +194,8 @@ export default class DrawLibInterpretor {
                     break;
                 case 'ellipse':
                     this.drawLib.ellipse(
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                        this.getY(getVal(currentTime , extra.y)),
+                        getVal(currentTime , extra.x), 
+                        getVal(currentTime , extra.y),
                         
                         getVal(currentTime , extra.radiusX),
                         getVal(currentTime , extra.radiusY),
