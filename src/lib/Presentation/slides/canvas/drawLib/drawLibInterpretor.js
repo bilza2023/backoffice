@@ -144,10 +144,10 @@ export default class DrawLibInterpretor {
                 case 'line':
                     
                 this.drawLib.line(
-                    this.addXfactor(getVal(currentTime , extra.x1 )), 
+                    getVal(currentTime , extra.x1 ), 
                     getVal(currentTime , extra.y1),
 
-                    this.addXfactor(getVal(currentTime , extra.x2 )), 
+                    getVal(currentTime , extra.x2 ), 
                     getVal(currentTime , extra.y2),                     
                     getVal(currentTime , extra.color),
                     

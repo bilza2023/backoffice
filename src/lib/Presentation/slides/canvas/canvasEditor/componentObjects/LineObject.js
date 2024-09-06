@@ -10,46 +10,60 @@ export default class LineObject extends ComponentObject {
     }
 
     loadHandles(){
-        // 15,15 is width and height x1,y1 are termForX , termForY
-        let d = new DraggerHandle(
-            this.itemData.extra.x  ,
-            this.itemData.extra.y,
-            15,15,
-            'x1','y1'
-            ); 
+        
+        // let widthAdder = new AdderHandle(this.itemData,'width'); 
+        //     // no initialValue
+        //     widthAdder.getX = function(){
+        //         return this.itemData.extra.x + this.itemData.extra.width -20;
+        //     }
+        //     widthAdder.getY = function(){
+        //         return this.itemData.extra.y;
+        //     }
+        //     widthAdder.useInitialValue = false;
 
-            d.updateFunction = function(item, mouseX, mouseY){
-                debugger;
-                item.extra[this.termForX].initialValue = mouseX;
-                item.extra[this.termForY].initialValue = mouseY;
-                
+        //     this.handleObjects.push(widthAdder);
+////////////////////////////////////////////////////////////////////////////
+
+            // let heightAdder = new AdderHandle(this.itemData,'height'); 
+
+            // heightAdder.getX = function(){
+            //     return this.itemData.extra.x +  this.itemData.extra.width -20;
+            // }
+            // heightAdder.getY = function(){
+            //     return this.itemData.extra.y  + this.itemData.extra.height -20;
+            // }
+            // heightAdder.useInitialValue = false;
+            // heightAdder.lookingforX = false;
+
+            // this.handleObjects.push(heightAdder);
+/////////////////////////////////////////////////////////////////////////////    
+            //    debugger;
+            let draggerHandle = new DraggerHandle(this.itemData,'x1' ,'y1'); 
+            draggerHandle.useInitialValue = true; //since its prop
+            draggerHandle.color = 'blue'; 
+//--every Component-object can have different x and y e.g x1 x0 etc 
+            draggerHandle.getX = function(){
+                return this.itemData.extra.x1.initialValue;
             }
-            this.handleObjects.push(d);    
+
+            draggerHandle.getY = function(){
+                return  this.itemData.extra.y1.initialValue;
+            }
+            this.handleObjects.push(draggerHandle);    
+///////////////////////////////////////////////////////////////////////////////////////          
+            let draggerHandle2 = new DraggerHandle(this.itemData,'x2' ,'y2'); 
+            draggerHandle2.useInitialValue = true; //since its prop
+            draggerHandle2.color = 'blue'; //since its prop
+//--every Component-object can have different x and y e.g x1 x0 etc 
+            draggerHandle2.getX = function(){
+                return this.itemData.extra.x2.initialValue;
+            }
+
+            draggerHandle2.getY = function(){
+                return  this.itemData.extra.y2.initialValue;
+            }
+            this.handleObjects.push(draggerHandle2);    
     }
-    width(){
-        return Math.abs( this.itemData.extra.x1.initialValue - this.itemData.extra.x2.initialValue );
-     }
-     height(){
-        return Math.abs( this.itemData.extra.y1.initialValue - this.itemData.extra.y2.initialValue );
-     }
-     getX(){
-        return this.itemData.extra.x1.initialValue;
-     }
-     
-     getY(){
-        return this.itemData.extra.y1.initialValue;
-     }
+
     
-    updateHandlePositions  (){
-        // const { x, y, width, height } = this.itemData.extra;
-        // Update width handle
-        this.handleObjects[0].updateXY(this.getX() , this.getY());
-        
-        // // Update height handle
-        // this.handleObjects[1].updateXY(this.getX() + this.width() - 20, 
-        // this.getY() + this.height() - 20);
-        
-        // // Update dragger handle
-        // this.handleObjects[2].updateXY( this.getX(), this.getY());
-    } 
 }//class

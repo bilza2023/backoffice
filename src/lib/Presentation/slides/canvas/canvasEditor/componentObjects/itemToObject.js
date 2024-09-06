@@ -9,11 +9,15 @@ import ImageObject from './ImageObject';
 import LineObject from './LineObject';
 import CircleObject from './CircleObject';
 
+
 export default function itemToObject(item){
     let selectedItem;
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+    case 'line':
+    selectedItem = new LineObject(item);
+    break;
     case 'rect':
     selectedItem = new RectangleObject(item);
     break;
