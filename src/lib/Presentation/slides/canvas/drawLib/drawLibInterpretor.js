@@ -339,10 +339,10 @@ export default class DrawLibInterpretor {
                 case 'repeatDot':
                     this.drawLib.repeatDot(
                         extra.numberOfDots, 
-                        this.addXfactor(parseInt(this.getX(extra.initialX))),
-                        parseInt(this.getY(extra.initialY)), 
-                        parseInt(this.getX(extra.xFactor)), 
-                        parseInt(this.getY(extra.yFactor)), 
+                        extra.initialX,
+                        extra.initialY, 
+                        extra.xFactor, 
+                        extra.yFactor, 
                         extra.width, 
                         getVal(currentTime , extra.color),
                     );

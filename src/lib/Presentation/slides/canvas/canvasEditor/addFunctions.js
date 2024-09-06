@@ -224,9 +224,9 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   function addRepeatDot(items){
     const obj ={
       "numberOfDots": 5,
-      "initialX": 1,
-      "initialY": 1,
-      "xFactor": 1,
+      "initialX": 100,
+      "initialY": 100,
+      "xFactor": 30,
       "yFactor": 0,
       "width": 5,
     };
