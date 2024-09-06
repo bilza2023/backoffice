@@ -12,6 +12,7 @@ import RayObject from './RayObject';
 import EllipseObject from './EllipseObject';
 import TextObject from './TextObject';
 import TriangleObject from './TriangleObject';
+import ParaObject from './ParaObject';
 
 
 export default function itemToObject(item){
@@ -19,6 +20,9 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+    case 'para':
+    selectedItem = new ParaObject(item);
+    break;
     case 'triangle':
     selectedItem = new TriangleObject(item);
     break;

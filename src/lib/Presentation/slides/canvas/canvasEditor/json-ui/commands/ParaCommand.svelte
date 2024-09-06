@@ -4,7 +4,7 @@ import CommonCommands from "./CommonCommands.svelte";
 import ShadowCommands from "./ShadowCommands.svelte";   
 
 import TrNoWithSet from "./TrNoWithSet.svelte";   
-import TrStrWithSet from "./TrStrWithSet.svelte";   
+import TrStrWithSet from "./TrStrWithSet.svelte";    
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   
 import TrTextArea from "./TrTextArea.svelte";   
@@ -35,7 +35,7 @@ import TrPropText from "../commonCommands/TrPropText.svelte";
         <TrPropNumber title="x" bind:extra={item}  />  
         <TrPropNumber title="y"  bind:extra={item}  /> 
 
-        <TrText title="font" bind:extra={item} />  
+        <TrPropNumber title="fontSize" bind:extra={item} /> 
        
 
 

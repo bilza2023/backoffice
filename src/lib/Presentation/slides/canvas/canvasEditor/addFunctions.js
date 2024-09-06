@@ -250,6 +250,7 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
       "x": getProp(4),
       "y": getProp(4),
       "font": "20px Arial",
+      "fontSize": getProp(20),
       "lineHeightOffset" : 0,
       "xOffset"        : 0,
   };

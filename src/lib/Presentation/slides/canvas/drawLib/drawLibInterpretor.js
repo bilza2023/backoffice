@@ -234,11 +234,11 @@ export default class DrawLibInterpretor {
                     // debuggerP;
                     this.drawLib.para(
                         extra.text, 
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                        this.getY(getVal(currentTime , extra.y)),
+                        getVal(currentTime , extra.x) , 
+                        getVal(currentTime , extra.y),
 
                         getVal(currentTime , extra.color), 
-                        extra.font,
+                        extra.fontSize.initialValue + 'px Arial',
                         extra.shadowOffsetX,
                         extra.shadowOffsetY,
                         extra.shadowBlur,
