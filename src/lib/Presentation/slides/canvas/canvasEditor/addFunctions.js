@@ -91,6 +91,7 @@ function addText(items){
     "text": getProp("Hello"),
     "x": getProp(4),
     "y": getProp(4),
+    "fontSize": getProp(20),
     "font": "20px Arial",
   };
 addNewItem(addReqExtraFields(obj,"text","black"),items); 
@@ -192,12 +193,12 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
 
   function addTri(items){
     const obj ={
-              "x1": getProp(6),
-              "y1": getProp(2),
-              "x2": getProp(1),
-              "y2": getProp(10),
-              "x3": getProp(11),
-              "y3": getProp(10),
+              "x1": getProp(100),
+              "y1": getProp(100),
+              "x2": getProp(50),
+              "y2": getProp(200),
+              "x3": getProp(200),
+              "y3": getProp(200),
               "lineWidth": getProp(2),
               "filled": getProp(false),
     };

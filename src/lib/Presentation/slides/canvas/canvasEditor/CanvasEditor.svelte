@@ -7,7 +7,6 @@ import CanvasEditorPlayer from './CanvasEditorPlayer.svelte';
 import SelectItemMenu from './json-ui/SelectItemMenu.svelte';   
 import CommandUi from './json-ui/CommandUi.svelte';  
 import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
-import Groupdiv from "./Groupdiv.svelte";
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
 

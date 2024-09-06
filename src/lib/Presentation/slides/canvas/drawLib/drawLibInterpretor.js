@@ -214,13 +214,13 @@ export default class DrawLibInterpretor {
                     
                     break;
                 case 'text':
-                   
+                //    debugger;
                     this.drawLib.text(
                         getVal(currentTime ,extra.text),
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                        this.getY(getVal(currentTime , extra.y)),
+                        getVal(currentTime , extra.x) , 
+                        getVal(currentTime , extra.y),
                         getVal(currentTime , extra.color), 
-                        extra.font,
+                        extra.fontSize.initialValue + 'px Arial',
                         extra.shadowOffsetX,
                         extra.shadowOffsetY,
                         extra.shadowBlur,
@@ -356,12 +356,13 @@ export default class DrawLibInterpretor {
                     break;
                 case 'triangle':
                     this.drawLib.triangle(
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x1))), 
-                        this.getY(getVal(currentTime , extra.y1)),
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x2))), 
-                        this.getY(getVal(currentTime , extra.y2)),
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x3))), 
-                        this.getY(getVal(currentTime , extra.y3)),
+                        
+                        getVal(currentTime , extra.x1), 
+                        getVal(currentTime , extra.y1),
+                        getVal(currentTime , extra.x2), 
+                        getVal(currentTime , extra.y2),
+                        getVal(currentTime , extra.x3), 
+                        getVal(currentTime , extra.y3),
 
                         getVal(currentTime , extra.color),
                         getVal(currentTime , extra.filled),

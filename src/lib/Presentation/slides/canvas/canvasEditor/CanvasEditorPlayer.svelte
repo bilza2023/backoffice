@@ -7,7 +7,6 @@
     import checkHandles from './fn/checkHandles.js';
     import RectangleObject from "./componentObjects/RectangleObject";
     import itemToObject from "./componentObjects/itemToObject";
-  import DraggerHandle from "./handleObject/DraggerHandle.svelte";
     
   import setHandlesForEachItem from "./handleObject/setHandlesForEachItem";
 
@@ -169,7 +168,6 @@ function handleClick(e){
   ></canvas>
   
 </div>
-<DraggerHandle />
 <div class="text-xs">x:{mouseX} y:{mouseY}</div>
 
 

@@ -10,6 +10,8 @@ import LineObject from './LineObject';
 import CircleObject from './CircleObject';
 import RayObject from './RayObject';
 import EllipseObject from './EllipseObject';
+import TextObject from './TextObject';
+import TriangleObject from './TriangleObject';
 
 
 export default function itemToObject(item){
@@ -17,6 +19,13 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+    case 'triangle':
+    selectedItem = new TriangleObject(item);
+    break;
+    case 'text':
+    selectedItem = new TextObject(item);
+    break;
+
     case 'ellipse':
     selectedItem = new EllipseObject(item);
     break;

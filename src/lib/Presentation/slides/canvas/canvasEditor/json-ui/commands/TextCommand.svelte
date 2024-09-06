@@ -81,18 +81,7 @@ function action(e){
 
 <div class="flex flex-col w-full ">
     <table class="border-collapse border-2 border-white">
-<!--             
-        <tr>
-            <td class="border border-white p-1">Templates</td>
-            <td class="border border-white p-1">
-                <select on:change={applyTemplate} class="bg-gray-900 text-white p-1">
-                    <option value="none">None</option>
-                    <option value="taleem">taleem</option>
-                    <option value="title">Title</option>
-                    <option value="jt">JT</option>
-                </select>
-            </td>
-        </tr> -->
+
  
         <tr>
             <td class="border border-white p-1">Add Icon</td>
@@ -105,7 +94,7 @@ function action(e){
         <TrPropNumber title="x"  bind:extra={item}  />  
         <TrPropNumber title="y"  bind:extra={item}  />  
         
-        <TrText title="font" bind:extra={item} />  
+        <TrPropNumber title="fontSize" bind:extra={item} />  
        
         
         
