@@ -10,35 +10,45 @@ export default class RectangleObject extends ComponentObject {
     }
 
     loadHandles(){
-        let w = new AdderHandle('width',
-            this.itemData.extra.x.initialValue +  this.itemData.extra.width.initialValue -20 ,
-            this.itemData.extra.y.initialValue); 
-            this.handleObjects.push(w);
-    
-            let h = new AdderHandle('height',
-            this.itemData.extra.x.initialValue +  this.itemData.extra.width.initialValue -20 ,
-            this.itemData.extra.y.initialValue  + this.itemData.extra.height.initialValue -20,);
-    
-            h.lookingforX = false;
-            this.handleObjects.push(h);
-           
-            let d = new DraggerHandle(
-            this.itemData.extra.x.initialValue  ,
-            this.itemData.extra.y.initialValue,
-            ); 
-            this.handleObjects.push(d);    
+        
+        let widthAdder = new AdderHandle(this.itemData,'width'); 
+
+            widthAdder.getX = function(){
+                return this.itemData.extra.x.initialValue + this.itemData.extra.width.initialValue -20;
+            }
+            widthAdder.getY = function(){
+                return this.itemData.extra.y.initialValue;
+            }
+            widthAdder.useInitialValue = true;
+
+            this.handleObjects.push(widthAdder);
+////////////////////////////////////////////////////////////////////////////
+
+            let heightAdder = new AdderHandle(this.itemData,'height'); 
+
+            heightAdder.getX = function(){
+                return this.itemData.extra.x.initialValue +  this.itemData.extra.width.initialValue -20;
+            }
+            heightAdder.getY = function(){
+                return this.itemData.extra.y.initialValue  + this.itemData.extra.height.initialValue -20;
+            }
+            heightAdder.useInitialValue = true;
+            heightAdder.lookingforX = false;
+
+            this.handleObjects.push(heightAdder);
+/////////////////////////////////////////////////////////////////////////////    
+            //    debugger;
+            let draggerHandle = new DraggerHandle(this.itemData); 
+//--every Component-object can have different x and y e.g x1 x0 etc 
+            draggerHandle.getX = function(){
+                return this.itemData.extra.x.initialValue;
+            }
+
+            draggerHandle.getY = function(){
+                return  this.itemData.extra.y.initialValue;
+            }
+            this.handleObjects.push(draggerHandle);    
     }
 
-    updateHandlePositions  (){
-        const { x, y, width, height } = this.itemData.extra;
-        
-        // Update width handle
-        this.handleObjects[0].updateXY(x.initialValue + width.initialValue - 20, y.initialValue);
-        
-        // Update height handle
-        this.handleObjects[1].updateXY(x.initialValue + width.initialValue - 20, y.initialValue + height.initialValue - 20);
-        
-        // Update dragger handle
-        this.handleObjects[2].updateXY(x.initialValue, y.initialValue);
-    } 
+    
 }//class

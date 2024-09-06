@@ -1,19 +1,54 @@
 //@ts-nocheck
+/**
+ * 6-Sep-2024
+ * Handle represents a handle on canvas used to edit items.
+ * Base Class: has further child classes
+ *   - Dragger: Edits the item's x and y values.
+ *   - Adder: Edits a specific property of the item (e.g., width, opacity, etc).
+ * 
+ * Main Tasks
+ * ==========
+ * - Handle edits the item properties it's assigned to.
+ * - Handle also updates its own location to stay in sync with the item.
+ * 
+ * Component Object Usage
+ * ======================
+ * Methods for using Handle in Component Object:
+ *  - loadHandles: Loads any combination of Dragger and Adder into the Component Object.
+ *  - drawHandles: Calls the draw method for all loaded handles.
+ *  - update: Main function:
+ *      - `selectedItem.update` is called in mouse-move, triggered every time an item is 
+ *          selected and the mouse moves.
+ *      - Component Object calls the update method of each handle.
+ *      - Handle's update method:
+ *          1. Checks if `isSelected`.
+ *          2. Calls `updateFunction` (filled by child classes like Adder and Dragger).
+ * --Addition :
+ * - Updates- just like Component Object needs getX and getY we also need toadd these in handle and give itemData as starting data. since handles x and y is derived from the item so it makes no sense to update handle location every time THIS IS JUST A FUNCTION  let it get recalculated each time. So now i do not need update handle position functions since "draw" uses functions for x and y
+ * Future Addition:
+ *  - Scaler: Edits both width and height, but requires adding a scaler function in the Component Object.
+ */
 
 export default class Handle {
-  constructor(color, x, y, width, height) {
-      this.color = color;
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.useInitialValue = true; //some x and y or props are animated to need initial value
-      this.height = height;
+
+  constructor(itemData) {
+
+      this.itemData  = itemData;
+      this.color = 'red';
+      this.width = 20;
+      this.height = 20;
+//some x and y or props are animated to need initial value
+      this.useInitialValue = true; 
       this.isSelected = false;
   }
 
+  //Perfect no need to change-- the problem is in item isHit the isHit of a handle is very clear
   isHit(mouseX, mouseY) {
-      return mouseX >= this.x && mouseX <= this.x + this.width &&
-             mouseY >= this.y && mouseY <= this.y + this.height;
+    // debugger;
+    let x = this.getX();
+    let y = this.getY();
+      return mouseX >= x && mouseX <= x + this.width &&
+             mouseY >= y && mouseY <= y + this.height;
   }
 //--mouse down
   selectIfHit(mouseX, mouseY) {
@@ -26,13 +61,23 @@ export default class Handle {
 
   draw(ctx) {
       ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.getX(), this.getY(), this.width, this.height);
   }
 
-  //to update its own x and y--it updates itsself and  not the item .. item is edited in upper level
-  updateXY(x, y) {
-      this.x = x;
-      this.y = y;
-  }
-  update(item, mouseX, mouseY) {} ///for child objects to fill
+  update(item, mouseX, mouseY) {
+    if (!this.isSelected) return;
+    this.updateFunction(item, mouseX, mouseY);
+} 
+updateFunction(item, mouseX, mouseY){
+  //implement this in child classes
+}
+
+getX(){
+// child classes will write their own x and y using this method and this.itemData
+}
+
+getY(){
+// child classes will write their own x and y using this method and this.itemData
+}
+
 }

@@ -9,16 +9,15 @@ import Handle from './Handle';
  */
 
 export default class DraggerHandle extends Handle {
-    constructor(x, y, width=20, height=20,color='red', termForX = 'x' , termForY = 'y') {
-        super(color, x, y, width, height);
+    constructor(itemData, termForX = 'x' , termForY = 'y') {
+        super(itemData);
 
         this.termForX = termForX;
         this.termForY = termForY;
     }
 
-    update(item, mouseX, mouseY) {
-        if (!this.isSelected) return;
-
+    updateFunction(item, mouseX, mouseY) {
+     
         if(this.useInitialValue){
         // in dragger you always set x and y ( in this case termForX and Y)
         item.extra[this.termForX].initialValue = mouseX - this.width / 2;
@@ -29,7 +28,6 @@ export default class DraggerHandle extends Handle {
         item.extra[this.termForY] = mouseY - this.height / 2;
         }
         
-
     }
  
 }

@@ -15,17 +15,11 @@ export default class ComponentObject {
 //****************************************************************** */
  
  update(mouseX, mouseY) {
+   // debugger;
     for (let i = 0; i < this.handleObjects.length; i++) {
         const obj = this.handleObjects[i];
-//****************************************************************** *        
         obj.update(this.itemData, mouseX, mouseY);
     }
-    this.updateHandlePositions();
-}
-
-//****************************************************************** *
-updateHandlePositions() {
-
 }
 
  drawHandles(ctx){
@@ -51,6 +45,7 @@ updateHandlePositions() {
     }
 
  }
+ //comp object also has width height x,y for its on isHit
  width(){
     return this.itemData.extra.width.initialValue;
  }

@@ -34,16 +34,13 @@ function gameLoop(){
         drawLibInterpretor.gridLineColor =  extra.gridLineColor;
         drawLibInterpretor.cellWidth =  extra.cellWidth;
         drawLibInterpretor.cellHeight =  extra.cellHeight;
-///////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////        
         drawLibInterpretor.interpret(items,currentTime,extra);
         
-        if(selectedItem){
+        if(selectedItem){ selectedItem.drawHandles(ctx); }
+///////////////////////////////////////////////////////////////////////////
 
-              selectedItem.drawHandles(ctx);
-
-        }
-
-        ///////////////
       } else {
         drawLibInterpretor.jsonError('Invalid JSON or missing payload field');
       }
