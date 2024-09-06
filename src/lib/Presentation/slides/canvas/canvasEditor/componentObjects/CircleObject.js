@@ -10,44 +10,33 @@ export default class CircleObject extends ComponentObject {
     }
 
     loadHandles(){
-        // debugger;
-        let w = new AdderHandle('radius',
-            this.itemData.extra.x.initialValue +  this.itemData.extra.radius.initialValue  ,
-            this.itemData.extra.y.initialValue);
-            w.color = "green"; 
-            this.handleObjects.push(w);
-    
-            
-            let d = new DraggerHandle(
-            this.itemData.extra.x.initialValue  ,
-            this.itemData.extra.y.initialValue,
-            ); 
+        
+        let widthAdder = new AdderHandle(this.itemData,'radius'); 
 
-            this.handleObjects.push(d);    
+            widthAdder.color = 'green';
+            widthAdder.getX = function(){
+                return this.itemData.extra.x.initialValue + this.itemData.extra.radius.initialValue ;
+            }
+            widthAdder.getY = function(){
+                return this.itemData.extra.y.initialValue;
+            }
+            widthAdder.useInitialValue = true;
+
+            this.handleObjects.push(widthAdder);
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////    
+            //    debugger;
+            let draggerHandle = new DraggerHandle(this.itemData); 
+//--every Component-object can have different x and y e.g x1 x0 etc 
+            draggerHandle.getX = function(){
+                return this.itemData.extra.x.initialValue;
+            }
+
+            draggerHandle.getY = function(){
+                return  this.itemData.extra.y.initialValue;
+            }
+            this.handleObjects.push(draggerHandle);    
     }
 
-    updateHandlePositions  (){
-        const { x, y, width, height } = this.itemData.extra;
-        
-        this.handleObjects[0].updateXY(x.initialValue -10, y.initialValue-10);
-        
-        this.handleObjects[1].updateXY(
-            this.itemData.extra.x.initialValue +  this.itemData.extra.radius.initialValue,
-            this.itemData.extra.y.initialValue);
-        
-    } 
-    width(){
-        return this.itemData.extra.radius.initialValue;
-     }
-     height(){
-        return this.itemData.extra.radius.initialValue;
-     }
-     getX(){
-        return this.itemData.extra.x.initialValue;
-     }
-     
-     getY(){
-        return this.itemData.extra.y.initialValue;
-     }
     
 }//class
