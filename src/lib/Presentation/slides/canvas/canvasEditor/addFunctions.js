@@ -207,10 +207,10 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
 
   function addRay(items){
     const obj ={
-              "x0":           getProp(2),
-              "y0":           getProp(2),
-              "x1":           getProp(8),
-              "y1":           getProp(8),
+              "x0":           getProp(100),
+              "y0":           getProp(100),
+              "x1":           getProp(800),
+              "y1":           getProp(300),
               "lineWidth":    getProp(2),
               "arrowWidth":   getProp(8),
               "arrowHeight":  getProp(12),

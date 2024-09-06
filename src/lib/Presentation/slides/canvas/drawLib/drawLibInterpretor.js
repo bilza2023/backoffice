@@ -78,28 +78,7 @@ export default class DrawLibInterpretor {
                 case 'grid':
                     break;
                 case 'rect':
-                    // debugger;
-                    // this.drawLib.rect(
-                    //     this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                    //     this.getY(getVal(currentTime , extra.y)),
-                        
-                    //     getVal(currentTime , extra.width), 
-                    //     getVal(currentTime , extra.height),
-                         
-                    //     getVal(currentTime , extra.color),
-                        
-                    //     getVal(currentTime , extra.filled),
-                        
-                    //     getVal(currentTime , extra.dash),
-                        
-                    //     getVal(currentTime , extra.gap),
-                        
-                    //     getVal(currentTime , extra.lineWidth),
 
-                    //     getVal(currentTime , extra.globalAlpha),
-                    
-                    // );
-                    // debugger;
                     this.drawLib.rect(
                         this.addXfactor(getVal(currentTime , extra.x) ), 
                         getVal(currentTime , extra.y),
@@ -307,10 +286,10 @@ export default class DrawLibInterpretor {
                 case 'ray':          
                 // debugger;      
                     this.drawLib.ray(
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x0) )), 
-                        this.getY(getVal(currentTime , extra.y0)),
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x1) )), 
-                        this.getY(getVal(currentTime , extra.y1)),
+                        getVal(currentTime , extra.x0), 
+                        getVal(currentTime , extra.y0),
+                        getVal(currentTime , extra.x1), 
+                        getVal(currentTime , extra.y1),
 
                         getVal(currentTime , extra.color),
                         getVal(currentTime , extra.lineWidth),

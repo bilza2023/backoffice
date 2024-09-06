@@ -8,6 +8,7 @@ import RectangleObject from './RectangleObject';
 import ImageObject from './ImageObject';
 import LineObject from './LineObject';
 import CircleObject from './CircleObject';
+import RayObject from './RayObject';
 
 
 export default function itemToObject(item){
@@ -15,6 +16,9 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+    case 'ray':
+    selectedItem = new RayObject(item);
+    break;
     case 'line':
     selectedItem = new LineObject(item);
     break;
