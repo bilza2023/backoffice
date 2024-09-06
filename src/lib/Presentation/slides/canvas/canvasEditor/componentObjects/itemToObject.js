@@ -1,7 +1,6 @@
 
 //@ts-nocheck
 
-// import SelectedItem from "./SelectedItem";
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import RectangleObject from './RectangleObject';
@@ -14,6 +13,8 @@ import TextObject from './TextObject';
 import TriangleObject from './TriangleObject';
 import ParaObject from './ParaObject';
 import AngleObject from './AngleObject';
+import SpriteObject from './SpriteObject';
+import DotObject from './DotObject';
 
 
 export default function itemToObject(item){
@@ -22,8 +23,15 @@ export default function itemToObject(item){
     
 switch (lookFor) {
 
+    case 'dot':
+    selectedItem = new DotObject(item);
+    break;
     case 'angleSymbol':
     selectedItem = new AngleObject(item);
+    break;
+
+    case 'sprite':
+    selectedItem = new SpriteObject(item);
     break;
 
     case 'para':

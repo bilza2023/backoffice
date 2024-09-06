@@ -294,8 +294,8 @@ img.onload = () => {
       "sheetItem": "student_w_tablet",
       "dx": getProp(0),
       "dy": getProp(0),
-      "wFactor" : 1,
-      "hFactor" : 1,
+      "wFactor" : 0.5,
+      "hFactor" : 0.5,
     };
   addNewItem(addReqExtraFields(obj,"sprite","red"),items); 
   }

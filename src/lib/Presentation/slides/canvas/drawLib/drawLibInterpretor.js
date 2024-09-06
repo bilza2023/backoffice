@@ -306,8 +306,8 @@ export default class DrawLibInterpretor {
                     break;
                 case 'dot':
                     this.drawLib.dot(
-                        this.addXfactor(this.getX(getVal(currentTime , extra.x) )), 
-                        this.getY(getVal(currentTime , extra.y)),
+                        getVal(currentTime , extra.x), 
+                        getVal(currentTime , extra.y),
                         
                         getVal(currentTime , extra.label), 
                         getVal(currentTime , extra.dot_width), 
@@ -402,12 +402,10 @@ export default class DrawLibInterpretor {
                     sprite.applyItem(extra.sheetItem);
                     if (!sprite.selectedData){console.warn("sheetItem not found");break;}        
 
-                   
-                        
                         // const newItem = JSON.parse(JSON.stringify(extra));
 
-                        extra.x =this.addXfactor(this.getX(getVal(currentTime , extra.dx) )), 
-                        extra.y =this.getY(getVal(currentTime , extra.dy)),
+                        extra.x =getVal(currentTime , extra.dx) , 
+                        extra.y =getVal(currentTime , extra.dy),
 
                         this.drawLib.sprite(sprite,extra);
                         
