@@ -143,8 +143,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   //-----not implemented
   function addAngleSymbol(items){
     const obj = {
-          "x": 20,
-          "y": 9,
+          "x": 100,
+          "y": 100,
           "radius": 25,
           "ticks": 3,
           "startAngle": -90,

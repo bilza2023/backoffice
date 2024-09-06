@@ -13,6 +13,7 @@ import EllipseObject from './EllipseObject';
 import TextObject from './TextObject';
 import TriangleObject from './TriangleObject';
 import ParaObject from './ParaObject';
+import AngleObject from './AngleObject';
 
 
 export default function itemToObject(item){
@@ -20,12 +21,19 @@ export default function itemToObject(item){
     let lookFor = item.extra.command;
     
 switch (lookFor) {
+
+    case 'angleSymbol':
+    selectedItem = new AngleObject(item);
+    break;
+
     case 'para':
     selectedItem = new ParaObject(item);
     break;
+
     case 'triangle':
     selectedItem = new TriangleObject(item);
     break;
+
     case 'text':
     selectedItem = new TextObject(item);
     break;
@@ -40,6 +48,7 @@ switch (lookFor) {
     case 'line':
     selectedItem = new LineObject(item);
     break;
+
     case 'rect':
     selectedItem = new RectangleObject(item);
     break;

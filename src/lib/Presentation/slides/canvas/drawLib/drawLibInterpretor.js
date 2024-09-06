@@ -80,7 +80,7 @@ export default class DrawLibInterpretor {
                 case 'rect':
 
                     this.drawLib.rect(
-                        this.addXfactor(getVal(currentTime , extra.x) ), 
+                        getVal(currentTime , extra.x), 
                         getVal(currentTime , extra.y),
                         
                         getVal(currentTime , extra.width), 
@@ -255,8 +255,8 @@ export default class DrawLibInterpretor {
                     const end_angle_rads_angleSymbol = extra.endAngle * (Math.PI / 180);
 
                         this.drawLib.drawAngleSymbol(
-                            this.addXfactor(this.getX(extra.x)), 
-                            this.getY(extra.y),
+                            extra.x, 
+                            extra.y,
                             extra.radius, 
                             extra.ticks, 
                             st_angle_rads_angleSymbol, 
