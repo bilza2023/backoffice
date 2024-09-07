@@ -108,7 +108,7 @@
 
   let itemObjects = [];
 
-  S: {
+  $: {
     items;
     debugger;
     if(itemObjects){
@@ -116,7 +116,6 @@
     }
   }
   let selectedItem = null;
-  let handleObjects = [];
 
   //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY
   function setMousePosition(e) {

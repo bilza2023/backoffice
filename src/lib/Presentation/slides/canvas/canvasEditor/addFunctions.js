@@ -89,8 +89,8 @@ function addRect(items){
 function addText(items){
   const obj ={
     "text": getProp("Hello"),
-    "x": getProp(4),
-    "y": getProp(4),
+    "x": getProp(100),
+    "y": getProp(100),
     "fontSize": getProp(20),
     "font": "20px Arial",
   };
