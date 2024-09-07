@@ -19,6 +19,7 @@ export default class AdderHandle extends Handle {
         this.lookingforX = true;
         this.oldX = null;
         this.oldY = null;
+        this.icon = '👑';
     }
 
 

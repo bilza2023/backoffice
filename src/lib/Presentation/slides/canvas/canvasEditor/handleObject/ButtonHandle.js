@@ -9,6 +9,7 @@ export default class ButtonHandle extends Handle {
     constructor(itemData ,fnList) {
         super(itemData);
         this.fnList = fnList;
+        this.icon = '🪙';
     }
 
     isHit(mouseX, mouseY) {

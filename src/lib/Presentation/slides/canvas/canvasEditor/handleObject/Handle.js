@@ -38,6 +38,7 @@ export default class Handle {
       this.color = 'red';
       this.width = 20;
       this.height = 20;
+      this.icon = "\u2605";
 //some x and y or props are animated to need initial value
       this.useInitialValue = true; 
       this.isSelected = false;
@@ -61,9 +62,22 @@ export default class Handle {
   }
 
   draw(ctx) {
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.getX(), this.getY(), this.width, this.height);
-  }
+    // Draw the rectangle
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.getX(), this.getY(), this.width, this.height);
+
+    // Set font and size for the icon
+    ctx.font = "15px Arial";
+
+    // Calculate center of the rectangle
+    const iconWidth = ctx.measureText(this.icon).width;
+    const iconX = this.getX() + (this.width - iconWidth) / 2;
+    const iconY = this.getY() + this.height / 2 + 7; // Adjust Y based on font size
+
+    // Draw the icon in the center of the rectangle
+    ctx.fillText(this.icon, iconX, iconY);
+}
+
 
   update(item, mouseX, mouseY) {
     if (!this.isSelected) return;

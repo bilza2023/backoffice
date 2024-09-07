@@ -15,7 +15,7 @@ export default class RDotObject extends ComponentObject {
 ////////////////////////////////////////////////////////////////////////////
         let widthAdder = new AdderHandle(this.itemData,'xFactor'); 
 
-            widthAdder.color = 'pink';
+            widthAdder.color = 'black';
             widthAdder.getX = function(){
                 return this.itemData.extra.initialX - 30;
             }
@@ -28,7 +28,7 @@ export default class RDotObject extends ComponentObject {
 ////////////////////////////////////////////////////////////////////////////
 let second = new AdderHandle(this.itemData,'yFactor'); 
 
-second.color = '#e2db9a';
+second.color = 'black';
 second.getX = function(){
     return this.itemData.extra.initialX - 30;
 }

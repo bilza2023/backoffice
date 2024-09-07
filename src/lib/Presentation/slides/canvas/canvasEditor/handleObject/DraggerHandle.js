@@ -11,7 +11,8 @@ import Handle from './Handle';
 export default class DraggerHandle extends Handle {
     constructor(itemData, termForX = 'x' , termForY = 'y') {
         super(itemData);
-
+        this.icon = '🛵';    
+        this.color = 'black';
         this.termForX = termForX;
         this.termForY = termForY;
     }
