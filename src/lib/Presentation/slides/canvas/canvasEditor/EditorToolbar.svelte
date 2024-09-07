@@ -42,7 +42,7 @@ export let toggleShowCanvas;
         
         <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
             <!-- <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" /> -->
-            <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" />
+            <!-- <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" /> -->
             
 <SmallBtnToolbar clk={()=>showSaveSlideTemplateDialogue = !showSaveSlideTemplateDialogue} icon={Icons.SAVE} title="Make Template" />
     

@@ -53,5 +53,36 @@ this.handleObjects.push(second);
             this.handleObjects.push(draggerHandle);    
     }
 
+    ////////////////////////////
     
+    
+     getX(){
+        return this.itemData.extra.initialX.initialValue;
+     }
+     
+     getY(){
+        return this.itemData.extra.initialY.initialValue;
+     }
+    
+     getHitAreaRadius() {
+        // Base the hit area radius on font size and text length
+        const baseRadius = 20;
+        const textLength = 5;
+        return baseRadius + (textLength * 2); // Adjust this formula as needed
+    }
+    
+    isHit(mouseX, mouseY) {
+        const centerX = this.getX();
+        const centerY = this.getY();
+        const radius = this.getHitAreaRadius();
+    
+        // Calculate the distance between the mouse click and the text origin
+        const distance = Math.sqrt(
+            Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+        );
+    
+        // Check if the distance is less than or equal to the hit area radius
+        return distance <= radius;
+    }
+    ////////////////////////////
 }//class

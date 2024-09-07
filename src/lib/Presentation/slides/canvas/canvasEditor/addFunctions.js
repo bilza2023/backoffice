@@ -150,7 +150,7 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
           "startAngle": -90,
           "endAngle" : 0,
           "lineWidth" : 1,
-          "showOrigin" : false,
+          "showOrigin" : true,
           };
           addNewItem(addReqExtraFields(obj,"angleSymbol","red"),items); 
   }
@@ -292,8 +292,8 @@ img.onload = () => {
       "spriteId": "000",
       "sheet": "students",
       "sheetItem": "student_w_tablet",
-      "dx": getProp(0),
-      "dy": getProp(0),
+      "dx": getProp(100),
+      "dy": getProp(100),
       "wFactor" : 0.5,
       "hFactor" : 0.5,
     };

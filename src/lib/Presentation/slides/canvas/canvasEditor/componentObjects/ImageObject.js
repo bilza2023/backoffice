@@ -12,9 +12,10 @@ export default class ImageObject extends ComponentObject {
     loadHandles(){
         
         let widthAdder = new AdderHandle(this.itemData,'width'); 
-            // no initialValue
+        widthAdder.color = 'silver';    
+        // no initialValue
             widthAdder.getX = function(){
-                return this.itemData.extra.x + this.itemData.extra.width -20;
+                return this.itemData.extra.x + this.itemData.extra.width ;
             }
             widthAdder.getY = function(){
                 return this.itemData.extra.y;
@@ -25,9 +26,9 @@ export default class ImageObject extends ComponentObject {
 ////////////////////////////////////////////////////////////////////////////
 
             let heightAdder = new AdderHandle(this.itemData,'height'); 
-
+            heightAdder.color = 'silver'; 
             heightAdder.getX = function(){
-                return this.itemData.extra.x +  this.itemData.extra.width -20;
+                return this.itemData.extra.x +  this.itemData.extra.width;
             }
             heightAdder.getY = function(){
                 return this.itemData.extra.y  + this.itemData.extra.height -20;
@@ -40,9 +41,10 @@ export default class ImageObject extends ComponentObject {
             //    debugger;
             let draggerHandle = new DraggerHandle(this.itemData); 
             draggerHandle.useInitialValue = false;
+            draggerHandle.color = 'silver'; 
 //--every Component-object can have different x and y e.g x1 x0 etc 
             draggerHandle.getX = function(){
-                return this.itemData.extra.x;
+                return this.itemData.extra.x -20;
             }
 
             draggerHandle.getY = function(){
@@ -50,6 +52,33 @@ export default class ImageObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle);    
     }
+///////////////////////////////////////////////////
+////////////////////////////////////////////////////
 
+width(){
+    return this.itemData.extra.width;
+ }
+ height(){
+    return this.itemData.extra.height;
+ }
+ getX(){
+    return this.itemData.extra.x;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y;
+ }
+
+ isHit(mouseX , mouseY){
+
+    return (
+        mouseX  >= this.getX() &&
+        mouseX  <= this.getX() + this.width() &&
+        mouseY  >= this.getY() &&
+        mouseY  <= this.getY() + this.height()
+    );
+
+}
+///////////////////////////////////////////////////
     
 }//class

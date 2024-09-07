@@ -37,6 +37,29 @@ export default class SpriteObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle);    
     }
+/////////////////////////////////
+////////////////////////////////////////////////////
 
+ getX(){
+    return this.itemData.extra.x.initialValue;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y.initialValue;
+ }
+
+
+ isHit(mouseX, mouseY) {
+    const hitMargin = 40;
+
+    return (
+        mouseX >= this.itemData.extra.dx.initialValue - hitMargin &&
+        mouseX <= this.itemData.extra.dx.initialValue + hitMargin &&
+        mouseY >= this.itemData.extra.dy.initialValue - hitMargin &&
+        mouseY <= this.itemData.extra.dy.initialValue + hitMargin
+    );
+}
+
+/////////////////////////////////
     
 }//class

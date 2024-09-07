@@ -79,6 +79,16 @@ this.handleObjects.push(handle3);
             }
             this.handleObjects.push(draggerHandle);    
     }
-
+    isHit(mouseX, mouseY) {
+        const hitMargin = 20;
+    
+        return (
+            mouseX >= this.itemData.extra.x - hitMargin &&
+            mouseX <= this.itemData.extra.x + hitMargin &&
+            mouseY >= this.itemData.extra.y - hitMargin &&
+            mouseY <= this.itemData.extra.y + hitMargin
+        );
+    }
+    
     
 }//class
