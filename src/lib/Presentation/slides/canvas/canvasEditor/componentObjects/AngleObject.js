@@ -2,6 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
 export default class AngleObject extends ComponentObject {

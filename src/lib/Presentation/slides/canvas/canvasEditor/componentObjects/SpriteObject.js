@@ -2,6 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
 export default class SpriteObject extends ComponentObject {
@@ -9,20 +10,22 @@ export default class SpriteObject extends ComponentObject {
         super(itemData , fnList);
     }
 
-    loadHandles(){
-        
-        // let widthAdder = new AdderHandle(this.itemData,'fontSize'); 
+loadHandles(){
+////////////////////////////////////////////////////////////////////////
+let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
-        //     widthAdder.color = 'pink';
-        //     widthAdder.getX = function(){
-        //         return this.itemData.extra.x.initialValue - 15;
-        //     }
-        //     widthAdder.getY = function(){
-        //         return this.itemData.extra.y.initialValue + 15;
-        //     }
-        //     widthAdder.useInitialValue = true;
+btnHandle.color = 'silver';
 
-        //     this.handleObjects.push(widthAdder);
+btnHandle.getX = function(){
+    return this.itemData.extra.dx.initialValue - 15;
+}
+
+btnHandle.getY = function(){
+    return this.itemData.extra.dy.initialValue + 15;
+}
+btnHandle.useInitialValue = true;
+
+this.handleObjects.push(btnHandle);        
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;

@@ -2,7 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
-
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 export default class ImageObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -10,7 +10,20 @@ export default class ImageObject extends ComponentObject {
     }
 
     loadHandles(){
-        
+////////////////////////////////////////////////////////////////////////
+let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
+
+            btnHandle.color = 'silver';
+            btnHandle.getX = function(){
+                return this.itemData.extra.x - 20;
+            }
+            btnHandle.getY = function(){
+                return this.itemData.extra.y + 25;
+            }
+            btnHandle.useInitialValue = false;
+
+            this.handleObjects.push(btnHandle);        
+////////////////////////////////////////////////////////////////////////                
         let widthAdder = new AdderHandle(this.itemData,'width'); 
         widthAdder.color = 'silver';    
         // no initialValue

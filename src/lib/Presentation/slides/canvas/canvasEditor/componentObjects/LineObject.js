@@ -2,7 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
-
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 export default class LineObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -11,31 +11,22 @@ export default class LineObject extends ComponentObject {
 
     loadHandles(){
         
-        // let widthAdder = new AdderHandle(this.itemData,'width'); 
-        //     // no initialValue
-        //     widthAdder.getX = function(){
-        //         return this.itemData.extra.x + this.itemData.extra.width -20;
-        //     }
-        //     widthAdder.getY = function(){
-        //         return this.itemData.extra.y;
-        //     }
-        //     widthAdder.useInitialValue = false;
-
-        //     this.handleObjects.push(widthAdder);
+     
+        
 ////////////////////////////////////////////////////////////////////////////
+let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
-            // let heightAdder = new AdderHandle(this.itemData,'height'); 
+            btnHandle.color = 'silver';
+            btnHandle.getX = function(){
+                return this.itemData.extra.x1.initialValue ;
+            }
+            btnHandle.getY = function(){
+                return this.itemData.extra.y1.initialValue + 25;
+            }
+            btnHandle.useInitialValue = true;
 
-            // heightAdder.getX = function(){
-            //     return this.itemData.extra.x +  this.itemData.extra.width -20;
-            // }
-            // heightAdder.getY = function(){
-            //     return this.itemData.extra.y  + this.itemData.extra.height -20;
-            // }
-            // heightAdder.useInitialValue = false;
-            // heightAdder.lookingforX = false;
-
-            // this.handleObjects.push(heightAdder);
+            this.handleObjects.push(btnHandle);  
+           
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;
             let draggerHandle = new DraggerHandle(this.itemData,'x1' ,'y1'); 

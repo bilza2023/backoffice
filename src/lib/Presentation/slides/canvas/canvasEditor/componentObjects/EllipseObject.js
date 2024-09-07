@@ -2,6 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
 export default class EllipseObject extends ComponentObject {
@@ -10,7 +11,21 @@ export default class EllipseObject extends ComponentObject {
     }
 
     loadHandles(){
-        
+   ////////////////////////////////////////////////////////////////////////////
+   let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
+
+   btnHandle.color = 'silver';
+   btnHandle.getX = function(){
+    return this.itemData.extra.x.initialValue + this.itemData.extra.radiusX.initialValue ;
+   }
+   btnHandle.getY = function(){
+       return this.itemData.extra.y.initialValue+ 25;
+   }
+   btnHandle.useInitialValue = true;
+   
+   this.handleObjects.push(btnHandle);  
+   
+   /////////////////////////////////////////////////////////////////////////////            
         let widthAdder2 = new AdderHandle(this.itemData,'radiusY'); 
 
             widthAdder2.color = 'green';

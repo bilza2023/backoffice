@@ -2,15 +2,30 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
-export default class SpriteObject extends ComponentObject {
+export default class DotObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
     }
 
     loadHandles(){
-      
+////////////////////////////////////////////////////////////////////////////
+let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
+
+btnHandle.color = 'silver';
+btnHandle.getX = function(){
+    return this.itemData.extra.x.initialValue ;
+}
+btnHandle.getY = function(){
+    return this.itemData.extra.y.initialValue + 25;
+}
+btnHandle.useInitialValue = true;
+
+this.handleObjects.push(btnHandle);  
+
+/////////////////////////////////////////////////////////////////////////////          
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;

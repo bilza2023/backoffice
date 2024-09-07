@@ -2,14 +2,29 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
-export default class LineObject extends ComponentObject {
+export default class TriangleObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
     }
 
     loadHandles(){
+   ////////////////////////////////////////////////////////////////////////////
+   let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
+
+   btnHandle.color = 'silver';
+   btnHandle.getX = function(){
+    return this.itemData.extra.x1.initialValue ;
+   }
+   btnHandle.getY = function(){
+       return this.itemData.extra.y1.initialValue - 25;
+   }
+   btnHandle.useInitialValue = true;
+   
+   this.handleObjects.push(btnHandle);  
+   
        
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;

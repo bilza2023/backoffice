@@ -11,7 +11,18 @@ export default class RTextObject extends ComponentObject {
 
     loadHandles(){
         
+        let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
+        btnHandle.color = 'silver';
+        btnHandle.getX = function(){
+            return this.itemData.extra.x.initialValue - 20;
+        }
+        btnHandle.getY = function(){
+            return this.itemData.extra.y.initialValue + 25;
+        }
+        btnHandle.useInitialValue = true;
+
+        this.handleObjects.push(btnHandle);  
 ////////////////////////////////////////////////////////////////////////////
         let widthAdder = new AdderHandle(this.itemData,'xFactor'); 
 
