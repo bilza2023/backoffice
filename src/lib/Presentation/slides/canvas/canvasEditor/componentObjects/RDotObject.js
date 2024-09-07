@@ -52,6 +52,21 @@ this.handleObjects.push(second);
             }
             this.handleObjects.push(draggerHandle);    
     }
+///////////////////////////////////////////////
+width(){
+    return (this.itemData.extra.width *  this.itemData.extra.numberOfDots);
+ }
+ height(){
+    return (this.itemData.extra.width *  this.itemData.extra.numberOfDots);
+ }
+ getX(){
+    return this.itemData.extra.initialX;
+ }
+ 
+ getY(){
+    return this.itemData.extra.initialY;
+ }
 
+///////////////////////////////////////////////
     
 }//class

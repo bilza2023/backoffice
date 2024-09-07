@@ -157,8 +157,8 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   
   function addDot(items){
     const obj = {
-          "x": getProp(5),
-          "y": getProp(5),
+          "x": getProp(100),
+          "y": getProp(100),
           "label": getProp("label"),
           "dot_width": getProp(10),
           "text_color": getProp("yellowbezier"),

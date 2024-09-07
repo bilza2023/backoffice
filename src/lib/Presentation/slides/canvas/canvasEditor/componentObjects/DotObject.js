@@ -10,19 +10,7 @@ export default class SpriteObject extends ComponentObject {
     }
 
     loadHandles(){
-        
-        // let widthAdder = new AdderHandle(this.itemData,'fontSize'); 
-
-        //     widthAdder.color = 'pink';
-        //     widthAdder.getX = function(){
-        //         return this.itemData.extra.x.initialValue - 15;
-        //     }
-        //     widthAdder.getY = function(){
-        //         return this.itemData.extra.y.initialValue + 15;
-        //     }
-        //     widthAdder.useInitialValue = true;
-
-        //     this.handleObjects.push(widthAdder);
+      
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;
@@ -37,6 +25,26 @@ export default class SpriteObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle);    
     }
+////////////////////////////////////////////////////////////
+// dot_width
+////////////////////////////////////////////////////
 
+width(){
+    return this.itemData.extra.x.initialValue + (this.itemData.extra.dot_width.initialValue *  1.5);
+ }
+ height(){
+    return this.itemData.extra.x.initialValue + (this.itemData.extra.dot_width.initialValue *  1.5);
+ }
+ getX(){
+    return this.itemData.extra.x.initialValue;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y.initialValue;
+ }
+
+
+ 
+////////////////////////////////////////////////////////////
     
 }//class
