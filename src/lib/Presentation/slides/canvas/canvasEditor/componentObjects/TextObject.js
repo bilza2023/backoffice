@@ -38,5 +38,42 @@ export default class TextObject extends ComponentObject {
             this.handleObjects.push(draggerHandle);    
     }
 
+
+    ////////////////////////////////////////////////////
+
+width(){
+    return this.itemData.extra.width.initialValue;
+ }
+ height(){
+    return this.itemData.extra.height.initialValue;
+ }
+ getX(){
+    return this.itemData.extra.x.initialValue;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y.initialValue;
+ }
+
+ getHitAreaRadius() {
+    // Base the hit area radius on font size and text length
+    const baseRadius = this.itemData.extra.fontSize.initialValue / 2;
+    const textLength = this.itemData.extra.text.initialValue.length;
+    return baseRadius + (textLength * 2); // Adjust this formula as needed
+}
+
+isHit(mouseX, mouseY) {
+    const centerX = this.getX();
+    const centerY = this.getY();
+    const radius = this.getHitAreaRadius();
+
+    // Calculate the distance between the mouse click and the text origin
+    const distance = Math.sqrt(
+        Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+    );
+
+    // Check if the distance is less than or equal to the hit area radius
+    return distance <= radius;
+}
     
 }//class

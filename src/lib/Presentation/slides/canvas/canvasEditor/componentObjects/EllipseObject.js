@@ -52,6 +52,34 @@ export default class EllipseObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle);    
     }
+    ////////////////////////////////////////////////////
+    width(){
+        return this.itemData.extra.radiusX.initialValue * 2;
+     }
+     height(){
+        return this.itemData.extra.radiusY.initialValue * 2;
+     }
+     getX(){
+        return this.itemData.extra.x.initialValue;
+     }
+     
+     getY(){
+        return this.itemData.extra.y.initialValue;
+     }
+
+     isHit(mouseX, mouseY) {
+        const centerX = this.getX();
+        const centerY = this.getY();
+        const radiusX = this.itemData.extra.radiusX.initialValue;
+        const radiusY = this.itemData.extra.radiusY.initialValue;
+
+        // Calculate the normalized distance
+        const normalizedX = (mouseX - centerX) / radiusX;
+        const normalizedY = (mouseY - centerY) / radiusY;
+
+        // Check if the normalized distance is less than or equal to 1
+        return (normalizedX * normalizedX + normalizedY * normalizedY) <= 1;
+    }
 
     
 }//class

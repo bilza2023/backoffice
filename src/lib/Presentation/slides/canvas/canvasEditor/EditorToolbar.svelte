@@ -25,7 +25,7 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={()=>addCircle(items)} icon={Icons.CIRCLE} title="Circle" />
     <SmallBtnToolbar clk={()=>addEllipse(items)} icon={Icons.ELLIPSE} title="Ellipse" />
     <SmallBtnToolbar clk={()=>addRect(items)} icon={Icons.RECTANGLE} title="Rect" />
-    <SmallBtnToolbar clk={()=>addBezier(items)} icon={Icons.BAZIER} title="Bezier" />
+    <!-- <SmallBtnToolbar clk={()=>addBezier(items)} icon={Icons.BAZIER} title="Bezier" /> -->
     <SmallBtnToolbar clk={()=>addText(items)} icon={Icons.TEXT} title="Text" />
     <SmallBtnToolbar clk={()=>addPara(items)} icon={Icons.TEMPLATE} title="Para" />
 

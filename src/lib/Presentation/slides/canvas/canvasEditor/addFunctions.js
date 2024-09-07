@@ -77,8 +77,8 @@ function addLines(items){
 function addRect(items){
   // debugger;
     const obj = {
-          "x": getProp(5),
-          "y": getProp(5),
+          "x": getProp(100),
+          "y": getProp(100),
           "width": getProp(100),
           "height": getProp(100),
           "filled": getProp(false),
@@ -246,13 +246,13 @@ addNewItem(addReqExtraFields(obj,"text","black"),items);
   
   function addPara(items){
     const obj ={
-      "text": "Hello",
-      "x": getProp(4),
-      "y": getProp(4),
+      "text": "Hello \n Hello \n Hello",
+      "x": getProp(100),
+      "y": getProp(100),
       "font": "20px Arial",
       "fontSize": getProp(20),
-      "lineHeightOffset" : 0,
-      "xOffset"        : 0,
+      "lineHeightOffset" : 10,
+      "xOffset"        : 10,
   };
   addNewItem(addReqExtraFields(obj,"para","red"),items); 
   }

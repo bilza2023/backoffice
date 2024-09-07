@@ -37,6 +37,32 @@ export default class CircleObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle);    
     }
+////////////////////////////////////////////////////////////////////
+width(){
+    return this.itemData.extra.radius.initialValue * 2;
+ }
+ height(){
+    return this.itemData.extra.radius.initialValue * 2;
+ }
+ getX(){
+    return this.itemData.extra.x.initialValue;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y.initialValue;
+ }
+////////////////////////////////////////////////////////////////////
+isHit(mouseX, mouseY) {
+    const centerX = this.getX();
+    const centerY = this.getY();
+    const radius = this.itemData.extra.radius.initialValue;
 
-    
+    // Calculate the distance between the mouse click and the center of the circle
+    const distance = Math.sqrt(
+        Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+    );
+
+    // Check if the distance is less than or equal to the radius
+    return distance <= radius;
+}
 }//class

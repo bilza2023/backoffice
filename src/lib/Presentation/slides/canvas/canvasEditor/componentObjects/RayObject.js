@@ -10,38 +10,13 @@ export default class LineObject extends ComponentObject {
     }
 
     loadHandles(){
-        
-        // let widthAdder = new AdderHandle(this.itemData,'width'); 
-        //     // no initialValue
-        //     widthAdder.getX = function(){
-        //         return this.itemData.extra.x + this.itemData.extra.width -20;
-        //     }
-        //     widthAdder.getY = function(){
-        //         return this.itemData.extra.y;
-        //     }
-        //     widthAdder.useInitialValue = false;
-
-        //     this.handleObjects.push(widthAdder);
-////////////////////////////////////////////////////////////////////////////
-
-            // let heightAdder = new AdderHandle(this.itemData,'height'); 
-
-            // heightAdder.getX = function(){
-            //     return this.itemData.extra.x +  this.itemData.extra.width -20;
-            // }
-            // heightAdder.getY = function(){
-            //     return this.itemData.extra.y  + this.itemData.extra.height -20;
-            // }
-            // heightAdder.useInitialValue = false;
-            // heightAdder.lookingforX = false;
-
-            // this.handleObjects.push(heightAdder);
+   
 /////////////////////////////////////////////////////////////////////////////    
             //    debugger;
             let draggerHandle = new DraggerHandle(this.itemData,'x0' ,'y0'); 
             draggerHandle.useInitialValue = true; //since its prop
-            draggerHandle.color = 'blue'; 
-//--every Component-object can have different x and y e.g x1 x0 etc 
+            draggerHandle.color = 'silver'; 
+//--every Component-object can have different x and y e.g x0 x0 etc 
             draggerHandle.getX = function(){
                 return this.itemData.extra.x0.initialValue;
             }
@@ -54,7 +29,7 @@ export default class LineObject extends ComponentObject {
             let draggerHandle2 = new DraggerHandle(this.itemData,'x1' ,'y1'); 
             draggerHandle2.useInitialValue = true; //since its prop
             draggerHandle2.color = 'blue'; //since its prop
-//--every Component-object can have different x and y e.g x1 x0 etc 
+//--every Component-object can have different x and y e.g x0 x0 etc 
             draggerHandle2.getX = function(){
                 return this.itemData.extra.x1.initialValue;
             }
@@ -64,6 +39,42 @@ export default class LineObject extends ComponentObject {
             }
             this.handleObjects.push(draggerHandle2);    
     }
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+width(){
+    // debugger;
+let left = Math.min(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+let top = Math.min(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+let right = Math.max(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+let bottom = Math.max(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+return Math.abs(right - left);
+ }
+ height(){
+    let left = Math.min(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+    let top = Math.min(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+    let right = Math.max(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+    let bottom = Math.max(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+    return Math.abs(bottom - top);    
+ }
+ getX(){
+    return this.itemData.extra.x0.initialValue;
+ }
+ 
+ getY(){
+    return this.itemData.extra.y0.initialValue;
+ }
+////////////////////////////////////////////////////////////////////
+isHit(mouseX , mouseY){
+    let left = Math.min(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+    let top = Math.min(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+    let right = Math.max(this.itemData.extra.x0.initialValue, this.itemData.extra.x1.initialValue);
+    let bottom = Math.max(this.itemData.extra.y0.initialValue, this.itemData.extra.y1.initialValue);
+    return mouseX >= left && mouseX <= right && mouseY >= top && mouseY <= bottom;
+}
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
     
 }//class

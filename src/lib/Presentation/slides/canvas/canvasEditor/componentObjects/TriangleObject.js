@@ -59,5 +59,46 @@ export default class LineObject extends ComponentObject {
             
     }
 
+   
+     getX(){
+        return this.itemData.extra.x.initialValue;
+     }
+     
+     getY(){
+        return this.itemData.extra.y.initialValue;
+     }
+    
+     isHit(mouseX, mouseY) {
+        const x1 = this.itemData.extra.x1.initialValue;
+        const y1 = this.itemData.extra.y1.initialValue;
+        const x2 = this.itemData.extra.x2.initialValue;
+        const y2 = this.itemData.extra.y2.initialValue;
+        const x3 = this.itemData.extra.x3.initialValue;
+        const y3 = this.itemData.extra.y3.initialValue;
+    
+        // Helper function to calculate the area of a triangle
+        const area = (x1, y1, x2, y2, x3, y3) => {
+            return Math.abs((x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2.0);
+        };
+    
+        // Calculate area of the full triangle (x1, y1), (x2, y2), (x3, y3)
+        const A = area(x1, y1, x2, y2, x3, y3);
+    
+        // Calculate area of sub-triangle (mouseX, mouseY), (x2, y2), (x3, y3)
+        const A1 = area(mouseX, mouseY, x2, y2, x3, y3);
+    
+        // Calculate area of sub-triangle (x1, y1), (mouseX, mouseY), (x3, y3)
+        const A2 = area(x1, y1, mouseX, mouseY, x3, y3);
+    
+        // Calculate area of sub-triangle (x1, y1), (x2, y2), (mouseX, mouseY)
+        const A3 = area(x1, y1, x2, y2, mouseX, mouseY);
+    
+        // Check if sum of A1, A2 and A3 is same as A
+        return (A === A1 + A2 + A3);
+    }
+    
+    
+    
+
     
 }//class
