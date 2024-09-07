@@ -1,8 +1,6 @@
 
 //@ts-nocheck
 
-import DraggerHandle from '../handleObject/DraggerHandle';
-import AdderHandle from '../handleObject/AdderHandle';
 import RectangleObject from './RectangleObject';
 import ImageObject from './ImageObject';
 import LineObject from './LineObject';
@@ -19,64 +17,64 @@ import RDotObject from './RDotObject';
 import RTextObject from './RTextObject';
 
 
-export default function itemToObject(item){
+export default function itemToObject(item,fnList={}){
     let selectedItem;
     let lookFor = item.extra.command;
     
 switch (lookFor) {
 
     case 'repeatText':
-    selectedItem = new RTextObject(item);
+    selectedItem = new RTextObject(item , fnList );
     break;
 
     case 'repeatDot':
-    selectedItem = new RDotObject(item);
+    selectedItem = new RDotObject(item , fnList );
     break;
 
     case 'dot':
-    selectedItem = new DotObject(item);
+    selectedItem = new DotObject(item , fnList );
     break;
     case 'angleSymbol':
-    selectedItem = new AngleObject(item);
+    selectedItem = new AngleObject(item , fnList );
     break;
 
     case 'sprite':
-    selectedItem = new SpriteObject(item);
+    selectedItem = new SpriteObject(item , fnList );
     break;
 
     case 'para':
-    selectedItem = new ParaObject(item);
+    selectedItem = new ParaObject(item , fnList );
     break;
 
     case 'triangle':
-    selectedItem = new TriangleObject(item);
+    selectedItem = new TriangleObject(item , fnList );
     break;
 
     case 'text':
-    selectedItem = new TextObject(item);
+    selectedItem = new TextObject(item , fnList );
     break;
 
     case 'ellipse':
-    selectedItem = new EllipseObject(item);
+    selectedItem = new EllipseObject(item , fnList );
     break;
 
     case 'ray':
-    selectedItem = new RayObject(item);
+    selectedItem = new RayObject(item , fnList );
     break;
     case 'line':
-    selectedItem = new LineObject(item);
+    selectedItem = new LineObject(item , fnList );
     break;
 
     case 'rect':
-    selectedItem = new RectangleObject(item);
+    selectedItem = new RectangleObject(item , fnList );
     break;
     
     case 'image':
-    selectedItem = new ImageObject(item);
+    selectedItem = new ImageObject(item , fnList );
     break;
     
     case 'circle':
-    selectedItem = new CircleObject(item);
+    selectedItem = new CircleObject(item , fnList );
     break;
 
     default:
@@ -88,45 +86,4 @@ switch (lookFor) {
 return selectedItem; 
 }
 
-
-
 ///////////////////////////////////////////////////////////////////////////
-
-
-// function selectedItem_XYWH(item){
- 
-//     let selectedItem = new SelectedItem(item);
-//         // debugger;
-//         let w = new AdderHandle('width',
-//             item.extra.x.initialValue +  item.extra.width.initialValue -20 ,
-//             item.extra.y.initialValue); 
-//             selectedItem.handleObjects.push(w);
-    
-//             let h = new AdderHandle('height',
-//             item.extra.x.initialValue +  item.extra.width.initialValue -20 ,
-//             item.extra.y.initialValue  + item.extra.height.initialValue -20,);
-    
-//             h.lookingforX = false;
-//             selectedItem.handleObjects.push(h);
-           
-//             let d = new DraggerHandle(
-//             item.extra.x.initialValue  ,
-//             item.extra.y.initialValue,
-//             ); 
-//             selectedItem.handleObjects.push(d);    
-
-//     selectedItem.updateHandlePositions = function (){
-//         const { x, y, width, height } = this.itemData.extra;
-        
-//         // Update width handle
-//         this.handleObjects[0].updateXY(x.initialValue + width.initialValue - 20, y.initialValue);
-        
-//         // Update height handle
-//         this.handleObjects[1].updateXY(x.initialValue + width.initialValue - 20, y.initialValue + height.initialValue - 20);
-        
-//         // Update dragger handle
-//         this.handleObjects[2].updateXY(x.initialValue, y.initialValue);
-//     } 
-    
-// return selectedItem; ///imp
-// }//selectedItem4Rec

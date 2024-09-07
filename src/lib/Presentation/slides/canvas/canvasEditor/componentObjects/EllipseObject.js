@@ -1,12 +1,12 @@
-//@ts-nocheck
+ //@ts-nocheck
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 
 
 export default class EllipseObject extends ComponentObject {
-    constructor(itemData) {
-        super(itemData);
+    constructor(itemData , fnList) {
+        super(itemData , fnList);
     }
 
     loadHandles(){

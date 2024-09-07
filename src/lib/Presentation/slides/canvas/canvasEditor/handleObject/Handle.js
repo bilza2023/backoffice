@@ -31,9 +31,10 @@
 
 export default class Handle {
 
-  constructor(itemData) {
+  constructor(itemData,fnList) {
 
       this.itemData  = itemData;
+      this.fnList  = fnList;
       this.color = 'red';
       this.width = 20;
       this.height = 20;

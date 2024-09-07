@@ -2,16 +2,31 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
+import ButtonHandle from '../handleObject/ButtonHandle';
 
 
 export default class TextObject extends ComponentObject {
-    constructor(itemData) {
-        super(itemData);
+    constructor(itemData , fnList) {
+        super(itemData , fnList);
     }
 
     loadHandles(){
-        
-        let widthAdder = new AdderHandle(this.itemData,'fontSize'); 
+        // debugger;
+        let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
+
+            btnHandle.color = 'brown';
+            btnHandle.getX = function(){
+                return this.itemData.extra.x.initialValue - 15;
+            }
+            btnHandle.getY = function(){
+                return this.itemData.extra.y.initialValue + 45;
+            }
+            btnHandle.useInitialValue = true;
+
+            this.handleObjects.push(btnHandle);
+
+////////////////////////////////////////////////////////////////////////////////        
+            let widthAdder = new AdderHandle(this.itemData,'fontSize'); 
 
             widthAdder.color = 'pink';
             widthAdder.getX = function(){

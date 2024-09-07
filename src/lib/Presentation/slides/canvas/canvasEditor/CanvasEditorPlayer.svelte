@@ -14,6 +14,8 @@
 
   export let spriteImgArray;
   export let bgImages;
+  export let cloneComponent;
+  export let del;
 
   let canvas;
   let ctx;
@@ -47,12 +49,15 @@
     }
   }
   //////////////////////////////////
-
+let fnList = {
+  cloneComponent,
+  del
+}
 
   function updateItemObjects() {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      const itemObj = itemToObject(item);
+      const itemObj = itemToObject(item , fnList);
       if (itemObj) {
         itemObjects.push(itemObj);
       }
@@ -67,17 +72,7 @@
       //////////////////////////////////////////////
       ctx = canvas.getContext("2d");
       ////////////////////////////////////////////////////////////////////////
-      // itemsStore.set(items);
-      // console.log("itemsStore" , $itemsStore);
-      ////////////////////////////////////////////////////////////////////////
-      // for (let i = 0; i < items.length; i++) {
-      //   const item =   items[i];
-      //   const itemObj = itemToObject(item);
-      //   if (itemObj){
-      //     itemObjects.push(itemObj);
-      //   }
       updateItemObjects();
-      ////////////////////////////////////////////////////////////////////////
       ////////////////////////////////////////////////////////////////////////
       drawLibInterpretor = new DrawLibInterpretor(
         canvas,
@@ -110,7 +105,6 @@
 
   $: {
     items;
-    debugger;
     if(itemObjects){
       updateItemObjects();
     }

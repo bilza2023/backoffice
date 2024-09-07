@@ -5,8 +5,8 @@ import AdderHandle from '../handleObject/AdderHandle';
 
 
 export default class ParaObject extends ComponentObject {
-    constructor(itemData) {
-        super(itemData);
+    constructor(itemData , fnList) {
+        super(itemData , fnList);
     }
 
     loadHandles(){

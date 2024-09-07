@@ -10,6 +10,7 @@ import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
 
+
 export let items;
 export let extra;
 export let currentTime;
@@ -78,7 +79,8 @@ function pasteItem() {
     toast.push("no copied item found");
   }
 }
-
+//--7-sep-2024 we are inside Presentation module this there is just one slide at a time . There are no more slides so the "items" are what we have to display on canvas (and not some upper level items).
+// --7-sep-2024 Here the items are a data structure inside CanvasEditorPlayer they become ComponentObjects. 
 function clone(index) {
   // debugger;
   if (index >= 0 && index < items.length) {
@@ -86,6 +88,13 @@ function clone(index) {
       items.unshift(clonedItem);
       items = [...items];
   }
+}
+function cloneComponent(itemData) {
+  // debugger;
+      const clonedItem = JSON.parse(JSON.stringify(itemData));
+      delete clonedItem._id; ///===> 
+      items.unshift(clonedItem);
+      items = [...items];
 }
 
 function del(index) {
@@ -123,7 +132,7 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
   <SaveSlideTemplate  {saveCurrentSlideAsSlideTemplate}/>
 {/if}
 
-  <CanvasEditorPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {playerImages}/>
+  <CanvasEditorPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {playerImages} {cloneComponent} {del}/>
    
   <!-- slider for current slide time -->
     <div class="w-full">

@@ -5,8 +5,8 @@ import AdderHandle from '../handleObject/AdderHandle';
 
 
 export default class SpriteObject extends ComponentObject {
-    constructor(itemData) {
-        super(itemData);
+    constructor(itemData , fnList) {
+        super(itemData , fnList);
     }
 
     loadHandles(){
@@ -43,6 +43,27 @@ width(){
     return this.itemData.extra.y.initialValue;
  }
 
+
+ getHitAreaRadius() {
+    // Base the hit area radius on font size and text length
+    const baseRadius = 20;
+    const textLength = 10;
+    return baseRadius + (textLength * 2); // Adjust this formula as needed
+}
+
+isHit(mouseX, mouseY) {
+    const centerX = this.getX();
+    const centerY = this.getY();
+    const radius = this.getHitAreaRadius();
+
+    // Calculate the distance between the mouse click and the text origin
+    const distance = Math.sqrt(
+        Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+    );
+
+    // Check if the distance is less than or equal to the hit area radius
+    return distance <= radius;
+}
 
  
 ////////////////////////////////////////////////////////////

@@ -6,8 +6,9 @@ import AdderHandle from '../handleObject/AdderHandle';
 
 export default class ComponentObject {
 
- constructor(itemData){
+ constructor(itemData,fnList){
         this.itemData = itemData;
+        this.fnList = fnList;
         this.handleObjects = [];
         this.loadHandles(); 
  }
