@@ -14,7 +14,6 @@ export default class TextObject extends ComponentObject {
         // debugger;
         let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
-            btnHandle.color = 'brown';
             btnHandle.getX = function(){
                 return this.itemData.extra.x.initialValue - 15;
             }

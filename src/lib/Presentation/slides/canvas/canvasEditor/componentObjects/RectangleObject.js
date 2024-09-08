@@ -14,7 +14,6 @@ export default class RectangleObject extends ComponentObject {
 ////////////////////////////////////////////////////////////////////////
 let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
-            btnHandle.color = 'silver';
             btnHandle.getX = function(){
                 return this.itemData.extra.x.initialValue - 20;
             }

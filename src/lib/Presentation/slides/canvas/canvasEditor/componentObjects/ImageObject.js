@@ -13,7 +13,6 @@ export default class ImageObject extends ComponentObject {
 ////////////////////////////////////////////////////////////////////////
 let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 
-            btnHandle.color = 'silver';
             btnHandle.getX = function(){
                 return this.itemData.extra.x - 20;
             }
