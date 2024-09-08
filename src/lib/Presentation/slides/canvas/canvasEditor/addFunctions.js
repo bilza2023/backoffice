@@ -75,7 +75,7 @@ function addLines(items){
 }
 
 function addRect(items){
-  // debugger;
+  debugger;
     const obj = {
           "x": getProp(100),
           "y": getProp(100),

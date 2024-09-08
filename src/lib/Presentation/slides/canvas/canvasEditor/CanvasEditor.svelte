@@ -9,9 +9,52 @@ import CommandUi from './json-ui/CommandUi.svelte';
 import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
-  import SelectedItem from "./SelectedItem";
+// import SelectedItem from "./SelectedItem";
+////////////////////////////////////////////////////////////////////////
+import itemToObject from "./componentObjects/itemToObject";
 
+let itemObjects = [];
+let selectedItem = null;
 
+$: {
+  items;
+    if(items.length > 0){
+      itemObjects = [];
+      updateItemObjects();
+    }
+  }
+  let fnList = {
+  cloneComponent,
+  del
+}
+  function updateItemObjects() {
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const itemObj = itemToObject(item , fnList);
+      if (itemObj) {
+        itemObjects.push(itemObj);
+      }
+    }
+  }
+
+  function handleClickParent(e,mouseX, mouseY) {
+    // debugger;
+   
+    let found = false;
+    for (let i = 0; i < itemObjects.length; i++) {
+      const item = itemObjects[i];
+      const ishit = item.isHit(mouseX, mouseY);
+      if (ishit) {
+        selectedItem = item;
+        found = true;
+        return; //must
+      }
+    }
+    if (found == false) {
+      selectedItem = null; //if no item found
+    }
+  }
+ //////////////////////////////////////////////////////////////// 
 export let items;
 export let extra;
 export let currentTime;
@@ -42,7 +85,7 @@ function toggleShowCanvas(){
 
 
 function moveUp(index) {
-  debugger;
+  // debugger;
   if (index > 0 && index < items.length) {
       const item = items.splice(index, 1)[0];
       items.splice(index - 1, 0, item);
@@ -133,7 +176,7 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
   <SaveSlideTemplate  {saveCurrentSlideAsSlideTemplate}/>
 {/if}
 
-  <CanvasEditorPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {playerImages} {cloneComponent} {del}/>
+  <CanvasEditorPlayer {items} {extra} {currentTime} {ignoreShowAt} {spriteImgArray} {bgImages} {playerImages} {handleClickParent} {itemObjects} {selectedItem}/>
    
   <!-- slider for current slide time -->
     <div class="w-full">
@@ -153,8 +196,8 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
               <!-- <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/> -->
               
               {#if selectedItem}
-              <CommandUi  selectedItem={selectedItem}  {redraw}/>
-              <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+              <!-- <CommandUi  {selectedItem}  {redraw} {updateItemObjects}/> -->
+              <!-- <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/> -->
               {/if }
 
           {:else if showSideBar==1}

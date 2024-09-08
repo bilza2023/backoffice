@@ -1,7 +1,7 @@
 
 //@ts-nocheck
 import AdderHandle from '../handleObject/AdderHandle';
-
+import getVal from "../../getVal"; 
 
 
 export default class ComponentObject {
@@ -14,7 +14,9 @@ export default class ComponentObject {
  }
  loadHandles(){} //child objects will use it
 //****************************************************************** */
- 
+draw(drawLib,currentTime){
+   console.log("ComponentObject draw");
+}
  update(mouseX, mouseY) {
    // debugger;
     for (let i = 0; i < this.handleObjects.length; i++) {

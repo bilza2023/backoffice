@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class RectangleObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -116,7 +116,28 @@ let btnHandle = new ButtonHandle(this.itemData,this.fnList);
             this.handleObjects.push(draggerHandle);    
     }
 ////////////////////////////////////////////////////
+draw(drawLib,currentTime){
+    drawLib.rect(
+                        getVal(currentTime , this.itemData.extra.x), 
+                        getVal(currentTime , this.itemData.extra.y),
+                        
+                        getVal(currentTime , this.itemData.extra.width), 
+                        getVal(currentTime , this.itemData.extra.height),
+                         
+                        getVal(currentTime , this.itemData.extra.color),
+                        
+                        getVal(currentTime , this.itemData.extra.filled),
+                        
+                        getVal(currentTime , this.itemData.extra.dash),
+                        
+                        getVal(currentTime , this.itemData.extra.gap),
+                        
+                        getVal(currentTime , this.itemData.extra.lineWidth),
 
+                        getVal(currentTime , this.itemData.extra.globalAlpha),
+                    
+            );
+ }
 width(){
     return this.itemData.extra.width.initialValue;
  }

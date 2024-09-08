@@ -9,24 +9,26 @@
   import itemToObject from "./componentObjects/itemToObject";
 
   import setHandlesForEachItem from "./handleObject/setHandlesForEachItem";
-
+  import DrawLib from "../drawLib/drawLib";
   export let currentTime;
 
   export let spriteImgArray;
+  export let handleClickParent;
   export let bgImages;
-  export let cloneComponent;
-  export let del;
 
   let canvas;
   let ctx;
   export let extra;
-  export let items;
+  export let itemObjects;
+  export let selectedItem;
 
   let orignalExtra;
-
+ let drawLib;
   function gameLoop() {
     try {
-      if (items) {
+
+      if (itemObjects) {
+        
         //This extra is slide extra------yesss....!!!!
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
@@ -35,34 +37,28 @@
         drawLibInterpretor.cellHeight = extra.cellHeight;
 
         ///////////////////////////////////////////////////////////////////////////
-        drawLibInterpretor.interpret(items, currentTime, extra);
-
-        if (selectedItem) {
+        
+        drawLibInterpretor.interpret(currentTime, extra);
+        
+        for (let i = 0; i < itemObjects.length; i++) {
+          const item = itemObjects[i];
+          item.draw(drawLib,currentTime, extra);
+  
+        }
+        ///////////////////////////////////////////////////
+        // debugger;
+        if(selectedItem){
           selectedItem.drawHandles(ctx);
         }
-        ///////////////////////////////////////////////////////////////////////////
-      } else {
-        drawLibInterpretor.jsonError("Invalid JSON or missing payload field");
       }
+      
     } catch (error) {
       drawLibInterpretor.jsonError();
     }
   }
   //////////////////////////////////
-let fnList = {
-  cloneComponent,
-  del
-}
 
-  function updateItemObjects() {
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-      const itemObj = itemToObject(item , fnList);
-      if (itemObj) {
-        itemObjects.push(itemObj);
-      }
-    }
-  }
+
 
   async function init() {
     if (canvas) {
@@ -72,7 +68,7 @@ let fnList = {
       //////////////////////////////////////////////
       ctx = canvas.getContext("2d");
       ////////////////////////////////////////////////////////////////////////
-      updateItemObjects();
+      drawLib = new DrawLib(canvas,ctx);
       ////////////////////////////////////////////////////////////////////////
       drawLibInterpretor = new DrawLibInterpretor(
         canvas,
@@ -101,15 +97,7 @@ let fnList = {
   let mouseX = 0;
   let mouseY = 0;
 
-  let itemObjects = [];
-
-  $: {
-    items;
-    if(itemObjects){
-      updateItemObjects();
-    }
-  }
-  let selectedItem = null;
+  
 
   //--get canvas x,y from mouse x,y. rename setMousePosition to setCanvasXY
   function setMousePosition(e) {
@@ -139,28 +127,12 @@ let fnList = {
     setMousePosition(e);
     selectedItem.deselect();
   }
-  //......................................
-  // function handleClick(e){
-  //   selectedItem =  itemObjects[0];
-  // }
-
   function handleClick(e) {
     setMousePosition(e);
-    //itemObjects
-    let found = false;
-    for (let i = 0; i < itemObjects.length; i++) {
-      const item = itemObjects[i];
-      const ishit = item.isHit(mouseX, mouseY);
-      if (ishit) {
-        selectedItem = item;
-        found = true;
-        return; //must
-      }
-    }
-    if (found == false) {
-      selectedItem = null; //if no item found
-    }
+    handleClickParent(e,mouseX, mouseY)
   }
+ 
+ 
 </script>
 
 <div class="flex justify-center w-full">
