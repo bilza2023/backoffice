@@ -8,9 +8,61 @@ import ButtonHandle from '../handleObject/ButtonHandle';
 export default class RectangleObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+////////////////////////////////////////////////////////////
+        this. dialogueBox = [
+    {
+      componentName: 'TrPropNumber',
+      title: 'x',
+      props: {}
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'y',
+      props: {}
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'width',
+      props: {
+        min: '1',
+        max: '500'
+      }
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'height',
+      props: {
+        min: '1',
+        max: '500'
+      }
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'lineWidth',
+      props: {}
+    },
+    {
+      componentName: 'TrPropBoolean',
+      title: 'filled',
+      props: {}
+    },
+    {
+      componentName: 'GapDashCommands',
+      props: {}
+    },
+    {
+      componentName: 'CommonCommands',
+      props: {}
+    },
+    {
+      componentName: 'ShadowCommands',
+      props: {}
+    }
+  ];
+////////////////////////////////////////////////////////////
     }
 
-    loadHandles(){
+loadHandles(){
 ////////////////////////////////////////////////////////////////////////
 let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
 

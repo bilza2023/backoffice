@@ -9,6 +9,7 @@ import CommandUi from './json-ui/CommandUi.svelte';
 import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
+  import SelectedItem from "./SelectedItem";
 
 
 export let items;
@@ -149,8 +150,13 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
   
           {#if showSideBar==0}
               <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
-              <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/>
+              <!-- <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/> -->
+              
+              {#if selectedItem}
+              <CommandUi  selectedItem={selectedItem}  {redraw}/>
               <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+              {/if }
+
           {:else if showSideBar==1}
             <CanvasCommand  bind:extra={extra}   />
           {:else if showSideBar==2}
