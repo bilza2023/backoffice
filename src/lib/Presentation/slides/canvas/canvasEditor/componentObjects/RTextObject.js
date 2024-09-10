@@ -95,65 +95,60 @@ export default class RTextObject extends ComponentObject {
           
     }
 
-    loadHandles(){
-        
-        let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
-
-        btnHandle.color = 'silver';
-        btnHandle.getX = function(){
-            return this.itemData.extra.x.initialValue - 20;
-        }
-        btnHandle.getY = function(){
-            return this.itemData.extra.y.initialValue + 25;
-        }
-        btnHandle.useInitialValue = true;
-
-        this.handleObjects.push(btnHandle);  
-////////////////////////////////////////////////////////////////////////////
-        let widthAdder = new AdderHandle(this.itemData,'xFactor'); 
-
-            widthAdder.color = 'pink';
-            widthAdder.getX = function(){
-                return this.itemData.extra.initialX.initialValue - 30;
-            }
-            widthAdder.getY = function(){
-                return this.itemData.extra.initialY.initialValue + 15;
-            }
-            widthAdder.useInitialValue = true;
-
-            this.handleObjects.push(widthAdder);
-////////////////////////////////////////////////////////////////////////////
-let second = new AdderHandle(this.itemData,'yFactor'); 
-
-second.color = '#e2db9a';
-second.getX = function(){
-    return this.itemData.extra.initialX.initialValue - 30;
-}
-second.getY = function(){
-    return this.itemData.extra.initialY.initialValue + 40;
-}
-second.useInitialValue = true;
-
-this.handleObjects.push(second);
-/////////////////////////////////////////////////////////////////////////////    
-            //    debugger;
-            let draggerHandle = new DraggerHandle(this.itemData,'initialX' ,'initialY'); 
-            draggerHandle.useInitialValue = true;
-//--every Component-object can have different x and y e.g x1 x0 etc 
-            draggerHandle.getX = function(){
-                return this.itemData.extra.initialX.initialValue -30;
-            }
-
-            draggerHandle.getY = function(){
-                return  this.itemData.extra.initialY.initialValue -10;
-            }
-            this.handleObjects.push(draggerHandle);    
-    }
+    loadHandles() {
+      // Button Handle
+      let btnHandle = new ButtonHandle(this.itemData, this.fnList);
+      btnHandle.color = 'silver';
+      btnHandle.getX = function() {
+          return this.itemData.extra.initialX.initialValue - 20;
+      };
+      btnHandle.getY = function() {
+          return this.itemData.extra.initialY.initialValue + 75;
+      };
+      btnHandle.useInitialValue = true;
+      this.handleObjects.push(btnHandle);
+  
+      // xFactor Adder Handle
+      let widthAdder = new AdderHandle(this.itemData, 'xFactor');
+      widthAdder.color = 'pink';
+      widthAdder.getX = function() {
+          return this.itemData.extra.initialX.initialValue - 20;
+      };
+      widthAdder.getY = function() {
+          return this.itemData.extra.initialY.initialValue + 25;
+      };
+      widthAdder.useInitialValue = true;
+      this.handleObjects.push(widthAdder);
+  
+      // Y Factor Adder Handle
+      let second = new AdderHandle(this.itemData, 'yFactor');
+      second.color = '#e2db9a';
+      second.getX = function() {
+          return this.itemData.extra.initialX.initialValue - 20;
+      };
+      second.getY = function() {
+          return this.itemData.extra.initialY.initialValue + 50;
+      };
+      second.useInitialValue = true;
+      this.handleObjects.push(second);
+  
+      // Dragger Handle
+      let draggerHandle = new DraggerHandle(this.itemData, 'initialX', 'initialY');
+      draggerHandle.useInitialValue = true;
+      draggerHandle.getX = function() {
+          return this.itemData.extra.initialX.initialValue - 20;
+      };
+      draggerHandle.getY = function() {
+          return this.itemData.extra.initialY.initialValue;
+      };
+      this.handleObjects.push(draggerHandle);
+  }
+  
 
     ////////////////////////////
     draw(drawLib,currentTime){ 
         // debugger;
-        let wordsArray = this.itemData.extra.textArray.split(",");
+        let wordsArray = this.itemData.extra.textArray.initialValue.split(",");
         
         drawLib.repeatText(
             wordsArray,

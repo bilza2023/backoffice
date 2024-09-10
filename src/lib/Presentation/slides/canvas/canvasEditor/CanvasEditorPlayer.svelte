@@ -27,7 +27,6 @@
   function gameLoop() {
     try {
       if (itemObjects) {
-        
         //This extra is slide extra------yesss....!!!!
         drawLibInterpretor.showGrid = extra.showGrid;
         drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
@@ -38,10 +37,14 @@
         ///////////////////////////////////////////////////////////////////////////
         
         drawLibInterpretor.interpret(currentTime, extra);
-        
         for (let i = 0; i < itemObjects.length; i++) {
           const item = itemObjects[i];
-          item.draw(drawLib,currentTime, extra);
+
+            // if (selectedItem && item.itemData.extra.command == 'repeatText'){
+            //       debugger;   
+            // }
+          
+            item.draw(drawLib,currentTime, extra);
   
         }
         ///////////////////////////////////////////////////
