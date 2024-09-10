@@ -46,18 +46,64 @@ export default class RectangleObject extends ComponentObject {
       title: 'filled',
       props: {}
     },
+    //CommonCommands
     {
-      componentName: 'GapDashCommands',
+      componentName: 'TrText',
+      title: 'name',
       props: {}
     },
     {
-      componentName: 'CommonCommands',
+      componentName: 'TrPropColor',
+      title: 'color',
       props: {}
     },
     {
-      componentName: 'ShadowCommands',
+      componentName: 'TrNo',
+      title: 'showAt',
       props: {}
-    }
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'globalAlpha',
+      props: {
+        min: '0.0',
+        max: '1.0',
+        step: '0.1'
+      }
+    },
+    //gap-dash
+    {
+      componentName: 'TrPropNumber',
+      title: 'dash',
+      props: {}
+    },
+    {
+      componentName: 'TrPropNumber',
+      title: 'gap',
+      props: {}
+    },
+  //shadow
+    {
+      componentName: 'TrNo',
+      title: 'shadowOffsetX',
+      props: {}
+    },
+    {
+      componentName: 'TrNo',
+      title: 'shadowOffsetY',
+      props: {}
+    },
+    {
+      componentName: 'TrNo',
+      title: 'shadowBlur',
+      props: {}
+    },
+    {
+      componentName: 'TrColor',
+      title: 'shadowColor',
+      props: {}
+    },
+
   ];
 ////////////////////////////////////////////////////////////
     }

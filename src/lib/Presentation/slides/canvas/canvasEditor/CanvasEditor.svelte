@@ -4,9 +4,9 @@ import CanvasCommand from "./json-ui/commands/CanvasCommand.svelte";
 import EditorToolbar from './EditorToolbar.svelte';
 import Toolbar from "./json-ui/Toolbar.svelte";
 import CanvasEditorPlayer from './CanvasEditorPlayer.svelte';  
-import SelectItemMenu from './json-ui/SelectItemMenu.svelte';   
-import CommandUi from './json-ui/CommandUi.svelte';  
-import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
+// import SelectItemMenu from './json-ui/SelectItemMenu.svelte';   
+import CommandUi from './dialogueBoxModule/CommandUi.svelte';  
+// import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
 import {getNewItem} from '$lib/Presentation';
@@ -202,20 +202,20 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
 <div class='w-25 max-w-[25%] min-w-[25%]  bg-stone-600 rounded-md p-2'>
           
   
-          {#if showSideBar==0}
-              <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/>
+          <!-- {#if showSideBar==0} -->
+              <!-- <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/> -->
               <!-- <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/> -->
               
-              {#if selectedItem}
-              <!-- <CommandUi  {selectedItem}  {redraw} {updateItemObjects}/> -->
+              <CommandUi  bind:selectedItem={selectedItem} />
+              <!-- {#if selectedItem} -->
               <!-- <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/> -->
-              {/if }
+              <!-- {/if } -->
 
-          {:else if showSideBar==1}
-            <CanvasCommand  bind:extra={extra}   />
-          {:else if showSideBar==2}
-            <PremadeCommad  bind:items={items}   />
-          {/if}
+          <!-- {:else if showSideBar==1} -->
+            <!-- <CanvasCommand  bind:extra={extra}   /> -->
+          <!-- {:else if showSideBar==2} -->
+            <!-- <PremadeCommad  bind:items={items}   /> -->
+          <!-- {/if} -->
           
 </div>
 </div>

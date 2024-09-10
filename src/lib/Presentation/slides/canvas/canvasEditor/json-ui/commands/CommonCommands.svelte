@@ -24,9 +24,9 @@ import TrNoWithSet from "./TrNoWithSet.svelte";
 
         <TrPropColor  title="color"  bind:extra={item}   />
         
-        <TrNo title="showAt"  bind:extra={item}/>
+        <!-- <TrNo title="showAt"  bind:extra={item}/> -->
         
-        <TrPropNumber title="globalAlpha" bind:extra={item} min=0 max=1 step="0.1"/>  
+        <!-- <TrPropNumber title="globalAlpha" bind:extra={item} min=0 max=1 step="0.1"/>   -->
 
      
 
