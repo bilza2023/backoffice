@@ -25,6 +25,7 @@ export default function itemToObject(item,fnList={},spriteImgArray=[]){
 switch (lookFor) {
 
     case 'repeatText':
+        // debugger;
     selectedItem = new RTextObject(item , fnList );
     break;
 

@@ -42,7 +42,7 @@ function addReqExtraFields(obj,command,color="black"){
 ////////======Add Functions 
 //////////////////////////////////
 
-function addLine(items){
+function addLine( ){
   const obj ={
             "x1": getProp(20),
             "y1": getProp(10),
@@ -53,7 +53,7 @@ function addLine(items){
   return  addReqExtraFields(obj,"line","red"); 
 }
 
-function addLines(items){
+function addLines( ){
   const obj ={
             "x": 3,
             "y": 3,
@@ -63,7 +63,7 @@ function addLines(items){
   return  addReqExtraFields(obj,"lines","yellow") 
 }
 
-function addRect(items){
+function addRect( ){
     const obj = {
           "x": getProp(100),
           "y": getProp(100),
@@ -74,7 +74,7 @@ function addRect(items){
           };
           return  addReqExtraFields(obj,"rect","red") 
   }
-function addText(items){
+function addText( ){
   const obj ={
     "text": getProp("Hello"),
     "x": getProp(100),
@@ -84,7 +84,7 @@ function addText(items){
   };
 return  addReqExtraFields(obj,"text","black") 
 }
- function addEllipse(items){
+ function addEllipse( ){
   const obj = { 
     "x":          getProp(200),
     "y":          getProp(200),
@@ -100,7 +100,7 @@ return  addReqExtraFields(obj,"text","black")
 
     return  addReqExtraFields(obj,"ellipse","red")
   }
-  function addCircle(items){
+  function addCircle( ){
     const obj = {
       "x": getProp(100),
       "y": getProp(150),
@@ -113,7 +113,7 @@ return  addReqExtraFields(obj,"text","black")
     return  addReqExtraFields(obj,"circle","red")
   }
   //-----not implemented
-  function addBezier(items){
+  function addBezier( ){
     // debugger;
     const obj = {
           "x":  3,
@@ -129,7 +129,7 @@ return  addReqExtraFields(obj,"text","black")
     
   }
   //-----not implemented
-  function addAngleSymbol(items){
+  function addAngleSymbol( ){
     const obj = {
           "x": 100,
           "y": 100,
@@ -143,7 +143,7 @@ return  addReqExtraFields(obj,"text","black")
           return  addReqExtraFields(obj,"angleSymbol","red") 
   }
   
-  function addDot(items){
+  function addDot( ){
     const obj = {
           "x": getProp(100),
           "y": getProp(100),
@@ -156,7 +156,7 @@ return  addReqExtraFields(obj,"text","black")
           return  addReqExtraFields(obj,"dot","red") 
   }
   
-  function addGrid(items){ //one grid allowed
+  function addGrid( ){ //one grid allowed
     if(gridCommandExists()){
     toast.push("Grid already exists");
     return;
@@ -170,7 +170,7 @@ return  addReqExtraFields(obj,"text","black")
           return  addReqExtraFields(obj,"grid","red") 
   }
   
-  function addPolygon(items){
+  function addPolygon( ){
     const obj ={
       "points": [100,100,150,200,10,100],
               "filled": false,
@@ -179,7 +179,7 @@ return  addReqExtraFields(obj,"text","black")
     return  addReqExtraFields(obj,"polygon","red") 
   }
 
-  function addTri(items){
+  function addTri( ){
     const obj ={
               "x1": getProp(100),
               "y1": getProp(100),
@@ -194,7 +194,7 @@ return  addReqExtraFields(obj,"text","black")
   }
  
 
-  function addRay(items){
+  function addRay( ){
     const obj ={
               "x0":           getProp(100),
               "y0":           getProp(100),
@@ -209,7 +209,7 @@ return  addReqExtraFields(obj,"text","black")
     return  addReqExtraFields(obj,"ray","yellow") 
   }
 
-  function addRepeatDot(items){
+  function addRepeatDot( ){
     const obj ={
       "numberOfDots": 5,
       "initialX": 100,
@@ -220,7 +220,7 @@ return  addReqExtraFields(obj,"text","black")
     };
     return  addReqExtraFields(obj,"repeatDot","yellow") 
   }
-  function addRepeatText(items){
+  function addRepeatText( ){
     const obj ={
       "textArray":  "1,2,3,4",
       "initialX":   getProp(100),
@@ -232,7 +232,7 @@ return  addReqExtraFields(obj,"text","black")
     return  addReqExtraFields(obj,"repeatText","red"); 
   }
   
-  function addPara(items){
+  function addPara( ){
     const obj ={
       "text": "Hello \n Hello \n Hello",
       "x": getProp(100),
@@ -245,7 +245,7 @@ return  addReqExtraFields(obj,"text","black")
   return  addReqExtraFields(obj,"para","red"); 
   }
   
-  function addSysImage(items){
+  function addSysImage( ){
     const obj ={
       "src": "system_images/gen/wood.jpg",
       "x": getProp(1),
@@ -274,7 +274,7 @@ return  addReqExtraFields(obj,"text","black")
       // };
     
   }
-  function addSprite(items){
+  function addSprite( ){
     // debugger;
     const obj ={
       "spriteId": "000",

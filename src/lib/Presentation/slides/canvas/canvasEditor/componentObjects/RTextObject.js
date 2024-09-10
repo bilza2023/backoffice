@@ -148,7 +148,7 @@ export default class RTextObject extends ComponentObject {
     ////////////////////////////
     draw(drawLib,currentTime){ 
         // debugger;
-        let wordsArray = this.itemData.extra.textArray.initialValue.split(",");
+        let wordsArray = this.itemData.extra.textArray.split(",");
         
         drawLib.repeatText(
             wordsArray,

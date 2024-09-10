@@ -40,9 +40,9 @@
         for (let i = 0; i < itemObjects.length; i++) {
           const item = itemObjects[i];
 
-            // if (selectedItem && item.itemData.extra.command == 'repeatText'){
-            //       debugger;   
-            // }
+          // debugger;   
+            if (selectedItem && item.itemData.extra.command == 'repeatText'){
+            }
           
             item.draw(drawLib,currentTime, extra);
   
