@@ -9,7 +9,7 @@ export default class RectangleObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
 ////////////////////////////////////////////////////////////
-        this. dialogueBox = [
+        this.dialogueBox = [
     {
       componentName: 'TrPropNumber',
       title: 'x',

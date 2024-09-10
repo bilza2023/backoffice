@@ -8,6 +8,106 @@ import getVal from "../../getVal";
 export default class TriangleObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+        this.dialogueBox = [
+            {
+              componentName: 'TrPropNumber',
+              title: 'x1',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'y1',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'x2',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'y2',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'x3',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'y3',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'lineWidth',
+              props: {}
+            },
+            {
+              componentName: 'TrPropBoolean',
+              title: 'filled',
+              props: {}
+            },
+            // GapDashCommands
+            {
+              componentName: 'TrPropNumber',
+              title: 'dash',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'gap',
+              props: {}
+            },
+            // CommonCommands
+            {
+              componentName: 'TrText',
+              title: 'name',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'color',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'showAt',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'globalAlpha',
+              props: {
+                min: '0.0',
+                max: '1.0',
+                step: '0.1'
+              }
+            },
+            // ShadowCommands
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetX',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetY',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'shadowBlur',
+              props: {}
+            },
+            {
+              componentName: 'TrColor',
+              title: 'shadowColor',
+              props: {}
+            }
+          ];
+          
     }
 
     loadHandles(){

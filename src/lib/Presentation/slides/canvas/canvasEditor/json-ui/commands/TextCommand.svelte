@@ -6,9 +6,9 @@ import UTFDD from "./UTFDD.svelte";
 import CommonCommands from "./CommonCommands.svelte";   
 
 
-import TrNoWithSet from "./TrNoWithSet.svelte";   
-import TrStrWithSet from "./TrStrWithSet.svelte";   
-import ShadowCommands from "./ShadowCommands.svelte";   
+// import TrNoWithSet from "./TrNoWithSet.svelte";   
+// import TrStrWithSet from "./TrStrWithSet.svelte";   
+// import ShadowCommands from "./ShadowCommands.svelte";   
 
 import TrText from "./TrText.svelte";   
 import TrPropText from "../commonCommands/TrPropText.svelte";
@@ -98,8 +98,6 @@ function action(e){
        
         
         
-<CommonCommands  bind:item={item} />
-<ShadowCommands  bind:item={item} />
     </table>
 </div>
 

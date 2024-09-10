@@ -8,6 +8,95 @@ import getVal from "../../getVal";
 export default class AngleObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+        this.dialogueBox = [
+            {
+              componentName: 'TrNo',
+              title: 'x',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'y',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'radius',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'ticks',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'startAngle',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'endAngle',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'lineWidth',
+              props: {}
+            },
+            {
+              componentName: 'TrTf',
+              title: 'showOrigin',
+              props: {}
+            },
+            // CommonCommands
+            {
+              componentName: 'TrText',
+              title: 'name',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'color',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'showAt',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'globalAlpha',
+              props: {
+                min: '0.0',
+                max: '1.0',
+                step: '0.1'
+              }
+            },
+            // ShadowCommands
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetX',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetY',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'shadowBlur',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'shadowColor',
+              props: {}
+            }
+          ];
+          
     }
 
     loadHandles(){

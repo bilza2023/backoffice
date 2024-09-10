@@ -8,6 +8,64 @@ import getVal from "../../getVal";
 export default class DotObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+        this.dialogueBox = [
+            {
+              componentName: 'TrPropNumber',
+              title: 'x',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'y',
+              props: {}
+            },
+            {
+              componentName: 'TrPropText',
+              title: 'label',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'dot_width',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'text_color',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'text_size',
+              props: {}
+            },
+            // CommonCommands
+            {
+              componentName: 'TrText',
+              title: 'name',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'color',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'showAt',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'globalAlpha',
+              props: {
+                min: '0.0',
+                max: '1.0',
+                step: '0.1'
+              }
+            }
+          ];
+          
     }
 
     loadHandles(){

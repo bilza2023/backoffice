@@ -7,6 +7,85 @@ import getVal from "../../getVal";
 export default class RDotObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+        this.dialogueBox = [
+            {
+              componentName: 'TrNo',
+              title: 'numberOfDots',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'initialX',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'initialY',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'xFactor',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'yFactor',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'width',
+              props: {}
+            },
+            // CommonCommands
+            {
+              componentName: 'TrText',
+              title: 'name',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'color',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'showAt',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'globalAlpha',
+              props: {
+                min: '0.0',
+                max: '1.0',
+                step: '0.1'
+              }
+            },
+            // ShadowCommands
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetX',
+              props: {}
+            },
+            {
+              componentName: 'TrNo',
+              title: 'shadowOffsetY',
+              props: {}
+            },
+            {
+              componentName: 'TrPropNumber',
+              title: 'shadowBlur',
+              props: {}
+            },
+            {
+              componentName: 'TrPropColor',
+              title: 'shadowColor',
+              props: {}
+            }
+          ];
+          
     }
 
     loadHandles(){
