@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class CircleObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -48,6 +48,25 @@ export default class CircleObject extends ComponentObject {
                 return  this.itemData.extra.y.initialValue;
             }
             this.handleObjects.push(draggerHandle);    
+    }
+    draw(drawLib,currentTime){
+    drawLib.circle(
+      getVal(currentTime , this.itemData.extra.x ), 
+      
+      getVal(currentTime , this.itemData.extra.y ),
+      
+      getVal(currentTime , this.itemData.extra.radius ),
+      getVal(currentTime , this.itemData.extra.color ),
+      getVal(currentTime , this.itemData.extra.fill ),
+      (getVal(currentTime , this.itemData.extra.startAngle ) * (Math.PI / 180)),
+      (getVal(currentTime , this.itemData.extra.endAngle ) * (Math.PI / 180)),
+      
+      getVal(currentTime , this.itemData.extra.dash ),
+      getVal(currentTime , this.itemData.extra.gap ),
+      getVal(currentTime , this.itemData.extra.lineWidth),
+      getVal(currentTime , this.itemData.extra.globalAlpha )
+      
+                        );
     }
 ////////////////////////////////////////////////////////////////////
 width(){

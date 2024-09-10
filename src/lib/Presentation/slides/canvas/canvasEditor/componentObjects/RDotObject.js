@@ -2,7 +2,7 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
-
+import getVal from "../../getVal";
 
 export default class RDotObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -51,6 +51,17 @@ this.handleObjects.push(second);
                 return  this.itemData.extra.initialY -10;
             }
             this.handleObjects.push(draggerHandle);    
+    }
+    draw(drawLib,currentTime){ 
+                        drawLib.repeatDot(
+                        this.itemData.extra.numberOfDots, 
+                        this.itemData.extra.initialX,
+                        this.itemData.extra.initialY, 
+                        this.itemData.extra.xFactor, 
+                        this.itemData.extra.yFactor, 
+                        this.itemData.extra.width, 
+                        getVal(currentTime , this.itemData.extra.color),
+                    );
     }
 ///////////////////////////////////////////////
 width(){

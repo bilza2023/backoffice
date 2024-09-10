@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class ParaObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -63,6 +63,23 @@ this.handleObjects.push(lineHeightOffsetHandle);
                 return  this.itemData.extra.y.initialValue -10;
             }
             this.handleObjects.push(draggerHandle);    
+    }
+    draw(drawLib,currentTime){ 
+        drawLib.para(
+            this.itemData.extra.text, 
+        getVal(currentTime , this.itemData.extra.x) , 
+        getVal(currentTime , this.itemData.extra.y),
+
+        getVal(currentTime , this.itemData.extra.color), 
+        this.itemData.extra.fontSize.initialValue + 'px Arial',
+        this.itemData.extra.shadowOffsetX,
+        this.itemData.extra.shadowOffsetY,
+        this.itemData.extra.shadowBlur,
+        this.itemData.extra.shadowColor,
+        getVal(currentTime , this.itemData.extra.globalAlpha), 
+        this.itemData.extra.lineHeightOffset,
+        this.itemData.extra.xOffset
+    );       
     }
     // width(){
     //     return this.itemData.extra.width.initialValue;

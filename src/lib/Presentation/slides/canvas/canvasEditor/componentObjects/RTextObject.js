@@ -2,7 +2,8 @@
 import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
-
+import ButtonHandle from '../handleObject/ButtonHandle';
+import getVal from "../../getVal";
 
 export default class RTextObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -65,7 +66,22 @@ this.handleObjects.push(second);
     }
 
     ////////////////////////////
-    
+    draw(drawLib,currentTime){ 
+        // debugger;
+        let wordsArray = this.itemData.extra.textArray.split(",");
+        
+        drawLib.repeatText(
+            wordsArray,
+            
+            getVal(currentTime , this.itemData.extra.initialX), 
+            getVal(currentTime , this.itemData.extra.initialY),
+            
+            (getVal(currentTime , this.itemData.extra.xFactor) ), 
+            (getVal(currentTime , this.itemData.extra.yFactor) ), 
+            getVal(currentTime , this.itemData.extra.color), 
+            this.itemData.extra.font
+        );    
+    }
     
      getX(){
         return this.itemData.extra.initialX.initialValue;

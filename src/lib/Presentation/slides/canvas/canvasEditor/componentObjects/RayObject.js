@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 ///////////////////////////////////////////////////
 export default class LineObject extends ComponentObject {
@@ -54,6 +54,25 @@ this.handleObjects.push(btnHandle);
                 return  this.itemData.extra.y1.initialValue;
             }
             this.handleObjects.push(draggerHandle2);    
+    }
+    draw(drawLib,currentTime){ 
+        drawLib.ray(
+                getVal(currentTime , this.itemData.extra.x0), 
+                getVal(currentTime , this.itemData.extra.y0),
+                getVal(currentTime , this.itemData.extra.x1), 
+                getVal(currentTime , this.itemData.extra.y1),
+
+                getVal(currentTime , this.itemData.extra.color),
+                getVal(currentTime , this.itemData.extra.lineWidth),
+                
+                getVal(currentTime , this.itemData.extra.arrowWidth),
+                getVal(currentTime , this.itemData.extra.arrowHeight),
+                this.itemData.extra.startArrow,
+                this.itemData.extra.endArrow,
+                getVal(currentTime , this.itemData.extra.dash),
+                getVal(currentTime , this.itemData.extra.gap),
+                getVal(currentTime , this.itemData.extra.globalAlpha),
+                        );   
     }
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////

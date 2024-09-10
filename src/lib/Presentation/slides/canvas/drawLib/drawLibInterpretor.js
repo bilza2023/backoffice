@@ -98,9 +98,7 @@ export default class DrawLibInterpretor {
         //             }
 
         //             break;
-        //         case 'line':
-                    
-        //         this.
+       
 
         //             break;
         //         case 'lines':
@@ -136,101 +134,12 @@ export default class DrawLibInterpretor {
         //             y1 = y2;
         //         }
         //             break;
-        //         case 'circle':
 
-        //                 this.drawLib.circle(
-        //                     this.addXfactor(getVal(currentTime , extra.x)), 
-                            
-        //                     getVal(currentTime , extra.y),
-                            
-        //                     getVal(currentTime , extra.radius),
-        //                     getVal(currentTime , extra.color),
-        //                     getVal(currentTime , extra.fill),
-        //                     (getVal(currentTime , extra.startAngle) * (Math.PI / 180)),
-        //                     (getVal(currentTime , extra.endAngle) * (Math.PI / 180)),
-                            
-        //                     getVal(currentTime , extra.dash),
-        //                     getVal(currentTime , extra.gap),
-        //                     getVal(currentTime , extra.lineWidth),
-        //                     getVal(currentTime , extra.globalAlpha)
-                            
-        //                 );
+     
 
-        //             break;
-        //         case 'ellipse':
-        //             this.drawLib.ellipse(
-        //                 getVal(currentTime , extra.x), 
-        //                 getVal(currentTime , extra.y),
-                        
-        //                 getVal(currentTime , extra.radiusX),
-        //                 getVal(currentTime , extra.radiusY),
-        //                 getVal(currentTime , extra.color),
-        //                 getVal(currentTime , extra.fill),
-
-        //                 getVal(currentTime , extra.rotation) * (Math.PI / 180),
-        //                 getVal(currentTime , extra.startAngle) * (Math.PI / 180),
-        //                 getVal(currentTime , extra.endAngle) * (Math.PI / 180),
-
-        //                 getVal(currentTime , extra.lineWidth),
-        //                 getVal(currentTime , extra.dash),
-        //                 getVal(currentTime , extra.gap),
-        //                 getVal(currentTime , extra.globalAlpha)
-        //             );
                     
         //             break;
-        //         case 'text':
-        //         //    debugger;
-        //             this.drawLib.text(
-        //                 getVal(currentTime ,extra.text),
-        //                 getVal(currentTime , extra.x) , 
-        //                 getVal(currentTime , extra.y),
-        //                 getVal(currentTime , extra.color), 
-        //                 extra.fontSize.initialValue + 'px Arial',
-        //                 extra.shadowOffsetX,
-        //                 extra.shadowOffsetY,
-        //                 extra.shadowBlur,
-        //                 extra.shadowColor,
-
-        //                 getVal(currentTime , extra.globalAlpha)
-        //             );    
-                
-        //             break;
-        //         case 'para':
-        //             // debuggerP;
-        //             this.drawLib.para(
-        //                 extra.text, 
-        //                 getVal(currentTime , extra.x) , 
-        //                 getVal(currentTime , extra.y),
-
-        //                 getVal(currentTime , extra.color), 
-        //                 extra.fontSize.initialValue + 'px Arial',
-        //                 extra.shadowOffsetX,
-        //                 extra.shadowOffsetY,
-        //                 extra.shadowBlur,
-        //                 extra.shadowColor,
-        //                 getVal(currentTime , extra.globalAlpha), 
-        //                 extra.lineHeightOffset,
-        //                 extra.xOffset
-        //             );    
-                    
-        //             break;
-        //         case 'angleSymbol':
-        //             // debugger;
-        //             const st_angle_rads_angleSymbol = extra.startAngle * (Math.PI / 180);
-        //             const end_angle_rads_angleSymbol = extra.endAngle * (Math.PI / 180);
-
-        //                 this.drawLib.drawAngleSymbol(
-        //                     extra.x, 
-        //                     extra.y,
-        //                     extra.radius, 
-        //                     extra.ticks, 
-        //                     st_angle_rads_angleSymbol, 
-        //                     end_angle_rads_angleSymbol, 
-        //                     getVal(currentTime , extra.color),
-        //                     extra.lineWidth,
-        //                     extra.showOrigin
-        //                 );
-        //             break;
+     
         //         case 'clear':
         //             this.drawLib.clear();
         //             break;
@@ -248,143 +157,22 @@ export default class DrawLibInterpretor {
         //             this.drawLib.bezier(this.addXfactor(this.getX(extra.x)), this.getY(extra.y), this.addXfactor(this.getX(extra.x1)), this.getY(extra.y1), this.addXfactor(this.getX(extra.x2)), this.getY(extra.y2), extra.color, extra.lineWidth, extra.globalAlpha, extra.showHandle, extra.dash, extra.gap);     
         //             }
         //             break;
-        //         case 'ray':          
-        //         // debugger;      
-        //             this.drawLib.ray(
-        //                 getVal(currentTime , extra.x0), 
-        //                 getVal(currentTime , extra.y0),
-        //                 getVal(currentTime , extra.x1), 
-        //                 getVal(currentTime , extra.y1),
-
-        //                 getVal(currentTime , extra.color),
-        //                 getVal(currentTime , extra.lineWidth),
-                        
-        //                 getVal(currentTime , extra.arrowWidth),
-        //                 getVal(currentTime , extra.arrowHeight),
-        //                 extra.startArrow,
-        //                 extra.endArrow,
-        //                 getVal(currentTime , extra.dash),
-        //                 getVal(currentTime , extra.gap),
-        //                 getVal(currentTime , extra.globalAlpha),
-        //             );     
-                    
-        //             break;
-        //         case 'dot':
-        //             this.drawLib.dot(
-        //                 getVal(currentTime , extra.x), 
-        //                 getVal(currentTime , extra.y),
-                        
-        //                 getVal(currentTime , extra.label), 
-        //                 getVal(currentTime , extra.dot_width), 
-        //                 getVal(currentTime , extra.text_size), 
-
-        //                 getVal(currentTime , extra.color), 
-        //                 getVal(currentTime , extra.text_color), 
-        //                 getVal(currentTime , extra.globalAlpha) 
-        //                 );    
-                
-        //             break;
-        //         case 'repeatText':
-        //             // debugger;
-        //             let wordsArray = extra.textArray.initialValue.split(",");
-                  
-        //             this.drawLib.repeatText(
-        //                 wordsArray,
-                        
-        //                 getVal(currentTime , extra.initialX), 
-        //                 getVal(currentTime , extra.initialY),
-                        
-        //                 (getVal(currentTime , extra.xFactor) ), 
-        //                 (getVal(currentTime , extra.yFactor) ), 
-        //                 getVal(currentTime , extra.color), 
-        //                 extra.font
-        //             );    
-                    
-        //             break;
-        //         case 'repeatDot':
-        //             this.drawLib.repeatDot(
-        //                 extra.numberOfDots, 
-        //                 extra.initialX,
-        //                 extra.initialY, 
-        //                 extra.xFactor, 
-        //                 extra.yFactor, 
-        //                 extra.width, 
-        //                 getVal(currentTime , extra.color),
-        //             );
-                    
-        //             break;
+     
+        
         //         case 'regularStar':
         //             this.drawLib.regularStar(extra.x, extra.y, extra.outerRadius, extra.innerRadius, extra.points, extra.color, extra.filled);
         //             break;
         //         case 'regularPolygon':
         //             this.drawLib.regularPolygon(extra.x, extra.y, extra.radius, extra.sides, extra.color, extra.filled);
         //             break;
-        //         case 'triangle':
-        //             this.drawLib.triangle(
-                        
-        //                 getVal(currentTime , extra.x1), 
-        //                 getVal(currentTime , extra.y1),
-        //                 getVal(currentTime , extra.x2), 
-        //                 getVal(currentTime , extra.y2),
-        //                 getVal(currentTime , extra.x3), 
-        //                 getVal(currentTime , extra.y3),
-
-        //                 getVal(currentTime , extra.color),
-        //                 getVal(currentTime , extra.filled),
-        //                 getVal(currentTime , extra.lineWidth),
-        //                 getVal(currentTime , extra.dash),
-        //                 getVal(currentTime , extra.gap),
-        //                 getVal(currentTime , extra.globalAlpha)
-        //             );    
-                    
-        //             break;
         //         case 'polygon':
         //             // debugger;
         //             this.drawLib.polygon(extra.points, extra.color, extra.filled,extra.lineWidth);
         //             break;
         //         case 'image':
-        //                     this.drawLib.image(
-        //                     extra.image, 
-        //                     this.addXfactor(extra.x), 
-        //                     extra.y,
-        //                     extra.width, 
-        //                     extra.height,
-        //                     getVal(currentTime , extra.globalAlpha)
-        //                     );
+        //                  
         //             break;
-        //         case 'sprite':
-        //             // debugger;
-        //             try{
-        //                     let sprite;
-        //                     for (let i = 0; i < this.spriteImgArray.length; i++) {
-        //                         const element = this.spriteImgArray[i];
-        //                         if(element.name == extra.sheet){
-        //                             sprite = element;
-        //                             break;
-        //                         }
-        //                     }
-        //             if(!sprite){throw Error("Sprite not found");}                            
-        //             sprite.applyItem(extra.sheetItem);
-        //             if (!sprite.selectedData){console.warn("sheetItem not found");break;}        
-
-        //                 // const newItem = JSON.parse(JSON.stringify(extra));
-
-        //                 extra.x =getVal(currentTime , extra.dx) , 
-        //                 extra.y =getVal(currentTime , extra.dy),
-
-        //                 this.drawLib.sprite(sprite,extra);
-                        
-                    
-        //             break;
-        //             }catch(e){
-        //                 break;
-        //             }
-        //         default:
-        //             this.drawLib.text(`Unsupported command: ${extra.command}`, 200,200, 'red', '25px Arial');
-        //             break;
-        //     }
-        // }// if showAt
-        // }
+      
 
     }
     drawHandles(handles){

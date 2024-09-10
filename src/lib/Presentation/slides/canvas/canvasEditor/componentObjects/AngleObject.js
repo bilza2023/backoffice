@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class AngleObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -79,6 +79,22 @@ this.handleObjects.push(handle3);
                 return  this.itemData.extra.y -10; //no initialValue
             }
             this.handleObjects.push(draggerHandle);    
+    }
+    draw(drawLib,currentTime){ 
+        const st_angle_rads_angleSymbol = this.itemData.extra.startAngle * (Math.PI / 180);
+        const end_angle_rads_angleSymbol = this.itemData.extra.endAngle * (Math.PI / 180);
+
+            drawLib.drawAngleSymbol(
+                this.itemData.extra.x, 
+                this.itemData.extra.y,
+                this.itemData.extra.radius, 
+                this.itemData.extra.ticks, 
+                st_angle_rads_angleSymbol, 
+                end_angle_rads_angleSymbol, 
+                getVal(currentTime , this.itemData.extra.color),
+                this.itemData.extra.lineWidth,
+                this.itemData.extra.showOrigin
+            );
     }
     isHit(mouseX, mouseY) {
         const hitMargin = 20;

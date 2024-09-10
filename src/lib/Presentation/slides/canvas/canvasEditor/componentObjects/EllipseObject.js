@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class EllipseObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -65,6 +65,27 @@ export default class EllipseObject extends ComponentObject {
                 return  this.itemData.extra.y.initialValue;
             }
             this.handleObjects.push(draggerHandle);    
+    }
+    draw(drawLib,currentTime){ 
+        // debugger;
+                       drawLib.ellipse(
+                        getVal(currentTime , this.itemData.extra.x), 
+                        getVal(currentTime , this.itemData.extra.y),
+                        
+                        getVal(currentTime , this.itemData.extra.radiusX),
+                        getVal(currentTime , this.itemData.extra.radiusY),
+                        getVal(currentTime , this.itemData.extra.color),
+                        getVal(currentTime , this.itemData.extra.fill),
+
+                        getVal(currentTime , this.itemData.extra.rotation) * (Math.PI / 180),
+                        getVal(currentTime , this.itemData.extra.startAngle) * (Math.PI / 180),
+                        getVal(currentTime , this.itemData.extra.endAngle) * (Math.PI / 180),
+
+                        getVal(currentTime , this.itemData.extra.lineWidth),
+                        getVal(currentTime , this.itemData.extra.dash),
+                        getVal(currentTime , this.itemData.extra.gap),
+                        getVal(currentTime , this.itemData.extra.globalAlpha)
+                    );
     }
     ////////////////////////////////////////////////////
     width(){

@@ -9,18 +9,9 @@ import CommandUi from './json-ui/CommandUi.svelte';
 import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
-import {getNewItem} from '$lib/Presentation';
-import itemToObject from "./componentObjects/itemToObject";
+// import SelectedItem from "./SelectedItem";
 ////////////////////////////////////////////////////////////////////////
-
-
-function addNewItem(newItemExtraFn){
-  const newItemExtra = newItemExtraFn();
-  const newItem = getNewItem();
-  newItem.extra = newItemExtra;      
-  items.unshift(newItem);      
-  items = [...items];
-}
+import itemToObject from "./componentObjects/itemToObject";
 
 let itemObjects = [];
 let selectedItem = null;
@@ -39,7 +30,7 @@ $: {
   function updateItemObjects() {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      const itemObj = itemToObject(item , fnList,spriteImgArray);
+      const itemObj = itemToObject(item , fnList);
       if (itemObj) {
         itemObjects.push(itemObj);
       }
@@ -175,7 +166,6 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
 {toggleIgnoreShowAt}
 {ignoreShowAt}
 {pasteItem}
-{addNewItem}
 /> 
      
 <!-- ////////////////////////////////////////////////////////  --> 

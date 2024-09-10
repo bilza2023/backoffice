@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class TriangleObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -74,7 +74,24 @@ export default class TriangleObject extends ComponentObject {
             
     }
 
-   
+    draw(drawLib,currentTime){ 
+                        drawLib.triangle(
+                        
+                        getVal(currentTime , this.itemData.extra.x1), 
+                        getVal(currentTime , this.itemData.extra.y1),
+                        getVal(currentTime , this.itemData.extra.x2), 
+                        getVal(currentTime , this.itemData.extra.y2),
+                        getVal(currentTime , this.itemData.extra.x3), 
+                        getVal(currentTime , this.itemData.extra.y3),
+
+                        getVal(currentTime , this.itemData.extra.color),
+                        getVal(currentTime , this.itemData.extra.filled),
+                        getVal(currentTime , this.itemData.extra.lineWidth),
+                        getVal(currentTime , this.itemData.extra.dash),
+                        getVal(currentTime , this.itemData.extra.gap),
+                        getVal(currentTime , this.itemData.extra.globalAlpha)
+                    );    
+    }
      getX(){
         return this.itemData.extra.x.initialValue;
      }

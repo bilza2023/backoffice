@@ -3,6 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
+import getVal from "../../getVal";
 
 export default class ImageObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -65,6 +66,17 @@ let btnHandle = new ButtonHandle(this.itemData,this.fnList);
             this.handleObjects.push(draggerHandle);    
     }
 ///////////////////////////////////////////////////
+draw(drawLib,currentTime){ 
+    debugger;
+    drawLib.image(
+        this.itemData.extra.image, 
+        this.itemData.extra.x, 
+        this.itemData.extra.y,
+        this.itemData.extra.width, 
+        this.itemData.extra.height,
+        getVal(currentTime , this.itemData.extra.globalAlpha)
+        );
+}
 ////////////////////////////////////////////////////
 
 width(){

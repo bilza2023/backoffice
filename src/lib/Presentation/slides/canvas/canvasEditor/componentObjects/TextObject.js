@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class TextObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -52,7 +52,21 @@ export default class TextObject extends ComponentObject {
             this.handleObjects.push(draggerHandle);    
     }
 
-
+    draw(drawLib,currentTime){ 
+        drawLib.text(
+                            getVal(currentTime ,this.itemData.extra.text),
+                            getVal(currentTime , this.itemData.extra.x) , 
+                            getVal(currentTime , this.itemData.extra.y),
+                            getVal(currentTime , this.itemData.extra.color), 
+                            this.itemData.extra.fontSize.initialValue + 'px Arial',
+                            this.itemData.extra.shadowOffsetX,
+                            this.itemData.extra.shadowOffsetY,
+                            this.itemData.extra.shadowBlur,
+                            this.itemData.extra.shadowColor,
+    
+                            getVal(currentTime , this.itemData.extra.globalAlpha)
+                        );   
+    }
     ////////////////////////////////////////////////////
 
 width(){

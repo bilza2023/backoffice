@@ -17,7 +17,7 @@ import RDotObject from './RDotObject';
 import RTextObject from './RTextObject';
 
 
-export default function itemToObject(item,fnList={}){
+export default function itemToObject(item,fnList={},spriteImgArray=[]){
     let selectedItem;
     let lookFor = item.extra.command;
     
@@ -39,7 +39,7 @@ switch (lookFor) {
     break;
 
     case 'sprite':
-    selectedItem = new SpriteObject(item , fnList );
+    selectedItem = new SpriteObject(item , fnList,spriteImgArray );
     break;
 
     case 'para':

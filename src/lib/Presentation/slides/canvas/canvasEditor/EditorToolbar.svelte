@@ -14,6 +14,7 @@
 
 /////////////////////////////////////////
 export let toggleShowCanvas;
+export let addNewItem;
 
 </script>
 
@@ -21,26 +22,26 @@ export let toggleShowCanvas;
     <SmallBtnToolbar clk={toggleShowCanvas} icon={Icons.CANVAS} title="Canvas" />
 
     <!-- Core methods -->
-    <SmallBtnToolbar clk={()=>addLine(items)} icon={Icons.LINE} title="Line" />
-    <SmallBtnToolbar clk={()=>addCircle(items)} icon={Icons.CIRCLE} title="Circle" />
-    <SmallBtnToolbar clk={()=>addEllipse(items)} icon={Icons.ELLIPSE} title="Ellipse" />
-    <SmallBtnToolbar clk={()=>addRect(items)} icon={Icons.RECTANGLE} title="Rect" />
+    <SmallBtnToolbar clk={()=>addNewItem(addLine)} icon={Icons.LINE} title="Line" />
+    <SmallBtnToolbar clk={()=>addNewItem(addCircle)} icon={Icons.CIRCLE} title="Circle" />
+    <SmallBtnToolbar clk={()=>addNewItem(addEllipse)} icon={Icons.ELLIPSE} title="Ellipse" />
+    <SmallBtnToolbar clk={()=>addNewItem(addRect)} icon={Icons.RECTANGLE} title="Rect" />
     <!-- <SmallBtnToolbar clk={()=>addBezier(items)} icon={Icons.BAZIER} title="Bezier" /> -->
-    <SmallBtnToolbar clk={()=>addText(items)} icon={Icons.TEXT} title="Text" />
-    <SmallBtnToolbar clk={()=>addPara(items)} icon={Icons.TEMPLATE} title="Para" />
+    <SmallBtnToolbar clk={()=>addNewItem(addText)} icon={Icons.TEXT} title="Text" />
+    <SmallBtnToolbar clk={()=>addNewItem(addPara)} icon={Icons.TEMPLATE} title="Para" />
 
     <!-- Extended from Core -->
-    <SmallBtnToolbar clk={()=>addTri(items)} icon={Icons.TRIANGE} title="Tri" />
-    <SmallBtnToolbar clk={()=>addRay(items)} icon={Icons.SUNRISE} title="Ray" />
-    <SmallBtnToolbar clk={()=>addDot(items)} icon={Icons.DOT} title="Dot" />
-    <SmallBtnToolbar clk={()=>addRepeatDot(items)} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
-    <SmallBtnToolbar clk={()=>addRepeatText(items)} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" />
+    <SmallBtnToolbar clk={()=>addNewItem(addTri)} icon={Icons.TRIANGE} title="Tri" />
+    <SmallBtnToolbar clk={()=>addNewItem(addRay)} icon={Icons.SUNRISE} title="Ray" />
+    <SmallBtnToolbar clk={()=>addNewItem(addDot)} icon={Icons.DOT} title="Dot" />
+    <SmallBtnToolbar clk={()=>addNewItem(addRepeatDot)} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
+    <SmallBtnToolbar clk={()=>addNewItem(addRepeatText)} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" />
     <!-- <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" /> -->
-    <SmallBtnToolbar clk={()=>addAngleSymbol(items)} icon={Icons.ANGLE} title="Angle" />
-    <SmallBtnToolbar clk={()=>addSprite(items)} icon={Icons.SPRITE} title="Sprite" />
+    <SmallBtnToolbar clk={()=>addNewItem(addAngleSymbol)} icon={Icons.ANGLE} title="Angle" />
+    <SmallBtnToolbar clk={()=>addNewItem(addSprite)} icon={Icons.SPRITE} title="Sprite" />
         
         
-        <SmallBtnToolbar clk={()=>addImage(items)} icon={Icons.MAP} title="Image" />
+        <SmallBtnToolbar clk={()=>addNewItem(addImage)} icon={Icons.MAP} title="Image" />
             <!-- <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" /> -->
             <!-- <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" /> -->
             

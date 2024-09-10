@@ -3,7 +3,7 @@ import ComponentObject from './ComponentObject';
 import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
-
+import getVal from "../../getVal";
 
 export default class DotObject extends ComponentObject {
     constructor(itemData , fnList) {
@@ -40,7 +40,20 @@ this.handleObjects.push(btnHandle);
             this.handleObjects.push(draggerHandle);    
     }
 ////////////////////////////////////////////////////////////
-// dot_width
+draw(drawLib,currentTime){ 
+                    drawLib.dot(
+                        getVal(currentTime , this.itemData.extra.x), 
+                        getVal(currentTime , this.itemData.extra.y),
+                        
+                        getVal(currentTime , this.itemData.extra.label), 
+                        getVal(currentTime , this.itemData.extra.dot_width), 
+                        getVal(currentTime , this.itemData.extra.text_size), 
+
+                        getVal(currentTime , this.itemData.extra.color), 
+                        getVal(currentTime , this.itemData.extra.text_color), 
+                        getVal(currentTime , this.itemData.extra.globalAlpha) 
+                        );    
+}
 ////////////////////////////////////////////////////
 
 width(){

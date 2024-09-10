@@ -26,6 +26,7 @@
  let drawLib;
   function gameLoop() {
     try {
+
       if (itemObjects) {
         
         //This extra is slide extra------yesss....!!!!
@@ -82,7 +83,7 @@
   //////////////////////////////////
   let interval;
   let drawLibInterpretor;
- 
+
   onMount(async () => {
     await init();
   });
