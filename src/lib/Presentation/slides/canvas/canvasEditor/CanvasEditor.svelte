@@ -56,12 +56,14 @@ $: {
       const ishit = item.isHit(mouseX, mouseY);
       if (ishit) {
         selectedItem = item;
+        itemIndexInRightBar = i; //this is for dialogue-box end Toolbar for items 
         found = true;
         return; //must
       }
     }
     if (found == false) {
       selectedItem = null; //if no item found
+      itemIndexInRightBar = null;
     }
   }
  //////////////////////////////////////////////////////////////// 
@@ -76,7 +78,7 @@ export let playerImages;
 export let saveCurrentSlideAsSlideTemplate;
 
   
-let itemIndexInRightBar =0;
+let itemIndexInRightBar =null;
 let showSideBar = 0;
 let ignoreShowAt =true;
 let slideImages = [];
@@ -206,10 +208,11 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
               <!-- <SelectItemMenu {items} bind:itemIndexInRightBar={itemIndexInRightBar}/> -->
               <!-- <CommandUi  bind:item={items[itemIndexInRightBar]}  {redraw}/> -->
               
-              <CommandUi  bind:selectedItem={selectedItem} />
               <!-- {#if selectedItem} -->
-              <!-- <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/> -->
-              <!-- {/if } -->
+              {#if itemIndexInRightBar!==null}
+              <Toolbar  index={itemIndexInRightBar}  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+              {/if }
+              <CommandUi  bind:selectedItem={selectedItem} />
 
           <!-- {:else if showSideBar==1} -->
             <!-- <CanvasCommand  bind:extra={extra}   /> -->

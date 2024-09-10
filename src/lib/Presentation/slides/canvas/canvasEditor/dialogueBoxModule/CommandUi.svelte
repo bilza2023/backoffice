@@ -18,7 +18,7 @@
 
 {#if selectedItem}
     <div class="p-4 bg-gray-800 rounded-lg shadow-md">
-        <h1 class="text-xl font-bold mb-4 text-white">Selected Item</h1>
+        <h6 class='text-sm'>{selectedItem.itemData.extra.name}</h6>
         <div class="overflow-x-auto">
             <table class="min-w-full table-auto border-collapse border border-gray-600 bg-gray-700 rounded-lg">
                 <tbody>
