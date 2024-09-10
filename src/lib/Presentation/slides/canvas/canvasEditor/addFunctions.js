@@ -256,22 +256,22 @@ return  addReqExtraFields(obj,"text","black")
   return  addReqExtraFields(obj,"sysImage") ;
   }
   
-  async function addImage(items){
-const img = new Image();
-img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
+ function addImage(){
+// const img = new Image();
+// img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
 
-img.onload = () => {
+// img.onload = () => {
             const obj ={
               "src": 'wood',
-              "image": img,
+              "image": null,
               "x": 50,
               "y": 50,
               "ext": 'jpg',
               "width": 200,
               "height": 200,
             };
-          return  addReqExtraFields(obj,"image");
-        };
+  return  addReqExtraFields(obj,"image");
+      // };
     
   }
   function addSprite(items){

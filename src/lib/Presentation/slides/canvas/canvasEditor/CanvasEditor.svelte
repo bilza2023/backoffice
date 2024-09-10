@@ -15,6 +15,7 @@ import itemToObject from "./componentObjects/itemToObject";
 
 
 function addNewItem(newItemExtraFn){
+  // debugger;
   const newItemExtra = newItemExtraFn();
   const newItem = getNewItem();
   newItem.extra = newItemExtra;      

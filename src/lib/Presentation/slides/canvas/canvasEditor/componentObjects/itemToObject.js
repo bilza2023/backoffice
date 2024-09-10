@@ -18,6 +18,7 @@ import RTextObject from './RTextObject';
 
 
 export default function itemToObject(item,fnList={},spriteImgArray=[]){
+
     let selectedItem;
     let lookFor = item.extra.command;
     
@@ -70,6 +71,7 @@ switch (lookFor) {
     break;
     
     case 'image':
+        
     selectedItem = new ImageObject(item , fnList );
     break;
     

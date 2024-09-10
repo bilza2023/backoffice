@@ -8,8 +8,22 @@ import getVal from "../../getVal";
 export default class ImageObject extends ComponentObject {
     constructor(itemData , fnList) {
         super(itemData , fnList);
+        if (this.itemData.extra && this.itemData.extra.image == null){
+            this.loadImage();        
+        }
     }
-
+    loadImage() {
+        const img = new Image();
+        img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
+    
+        img.onload = () => {
+          this.itemData.extra.image = img;
+        };
+    
+        img.onerror = () => {
+          console.error('Image failed to load');
+        };
+      }
     loadHandles(){
 ////////////////////////////////////////////////////////////////////////
 let btnHandle = new ButtonHandle(this.itemData,this.fnList); 
@@ -67,7 +81,8 @@ let btnHandle = new ButtonHandle(this.itemData,this.fnList);
     }
 ///////////////////////////////////////////////////
 draw(drawLib,currentTime){ 
-    debugger;
+    // debugger;
+    if (!this.itemData.extra.image  || this.itemData.extra.image == null) {return;} 
     drawLib.image(
         this.itemData.extra.image, 
         this.itemData.extra.x, 
