@@ -41,7 +41,7 @@ let itemObjects = [];
       const item = items[i];
       const itemObj = itemToObject(item , fnList,spriteImgArray);
       if (itemObj) {
-        itemObjects.push(itemObj);
+        itemObjects.push(itemObj);    
       }
     }
   }
