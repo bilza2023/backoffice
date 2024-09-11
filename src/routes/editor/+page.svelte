@@ -268,14 +268,14 @@ onMount(async ()=>{
 
   
 ///*******************************--upgrade to version 0.1*/
-if(item.version == null){
-  for (let i = 0; i < item.slides.length; i++) {
-    
-    const slide =   item.slides[i];
-    await version0_1Upgrade(slide);
-  }
+  if(!item.adminComments || !item.adminComments == 'fixed'){
+    for (let i = 0; i < item.slides.length; i++) {
+      const slide =   item.slides[i];
+      await version0_1Upgrade(slide);
+    }
   item.version = '0.1'; //--very important
-}
+  item.adminComments = 'fixed'; //--very important
+ }
 ////*****************************************************************/
 
    slides = item.slides;

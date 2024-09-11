@@ -72,11 +72,13 @@ async function save(e,question){
                         &nbsp;&nbsp; {getStatusIcon(question.status)}</div>
             
                         
-                    {#if question.status !== 'final' }
+                    <!-- {#if question.status !== 'final' } -->
+
+                    
                     <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
                         <a href= {`/editor?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
                     </div>
-                    {/if}
+                    <!-- {/if} -->
         
                     {#if question.status !== 'empty' }
                         <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
