@@ -35,7 +35,7 @@ export let addNewItem;
     <SmallBtnToolbar clk={()=>addNewItem(addRay)} icon={Icons.SUNRISE} title="Ray" />
     <SmallBtnToolbar clk={()=>addNewItem(addDot)} icon={Icons.DOT} title="Dot" />
     <SmallBtnToolbar clk={()=>addNewItem(addRepeatDot)} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
-    <SmallBtnToolbar clk={()=>{addNewItem(addRepeatText)}} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" />
+    <!-- <SmallBtnToolbar clk={()=>{addNewItem(addRepeatText)}} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" /> -->
     <!-- <SmallBtnToolbar clk={()=>addLines(items)} icon={Icons.RULER} title="Lines" /> -->
     <SmallBtnToolbar clk={()=>addNewItem(addAngleSymbol)} icon={Icons.ANGLE} title="Angle" />
     <SmallBtnToolbar clk={()=>addNewItem(addSprite)} icon={Icons.SPRITE} title="Sprite" />
