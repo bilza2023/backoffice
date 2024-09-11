@@ -29,7 +29,10 @@ let currentTime=0;
 let slideTemplateCollection=[];
 let showSlideTemplateBrowser = false;
 ///////////////////////////////////////////////////////////  
-
+$:{
+  currentSlide;
+  // debugger; //del me
+}
 function convertToUrlFriendlyName(name) {
             const urlFriendlyName = name.replace(/\s+/g, '_');
             const sanitizedUrlFriendlyName = urlFriendlyName.replace(/[^\w\d_]/g, '');
@@ -263,17 +266,17 @@ onMount(async ()=>{
    const data = await resp.json();
    item =  data.item;
 
-  //  debugger;
+  
 ///*******************************--upgrade to version 0.1*/
 if(item.version == null){
   for (let i = 0; i < item.slides.length; i++) {
+    
     const slide =   item.slides[i];
     await version0_1Upgrade(slide);
   }
   item.version = '0.1'; //--very important
 }
 ////*****************************************************************/
-
 
    slides = item.slides;
   //////////////=========================

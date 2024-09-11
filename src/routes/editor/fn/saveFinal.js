@@ -4,6 +4,7 @@ import {toast,API_URL,ajaxPost} from '$lib/util';
 
 
 export default async function saveFinal(slides,tcode,id,item){
+  throw new Error("Not permitted to save");
 debugger;  
 //--first slide start time = 0;
 if (slides && slides.length > 0){
