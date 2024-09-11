@@ -35,7 +35,6 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
   if (resp.ok){
     const data = await resp.json();
     let questionData = data.item;
-     
     presentationObj = new PresentationObj(questionData ,
     `${SOUND_FILE_PATH}${questionData.filename}.opus`);
     

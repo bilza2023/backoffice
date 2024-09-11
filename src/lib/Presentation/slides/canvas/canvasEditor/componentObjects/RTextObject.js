@@ -10,7 +10,7 @@ export default class RTextObject extends ComponentObject {
         super(itemData , fnList);
         this.dialogueBox = [
             {
-              componentName: 'TrText',
+              componentName: 'TrPropText',
               title: 'textArray',
               props: {}
             },
@@ -148,7 +148,7 @@ export default class RTextObject extends ComponentObject {
     ////////////////////////////
     draw(drawLib,currentTime){ 
         // debugger;
-        let wordsArray = this.itemData.extra.textArray.split(",");
+        let wordsArray = this.itemData.extra.textArray.initialValue. split(",");
         
         drawLib.repeatText(
             wordsArray,

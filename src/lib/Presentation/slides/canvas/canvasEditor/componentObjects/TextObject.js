@@ -4,10 +4,13 @@ import DraggerHandle from '../handleObject/DraggerHandle';
 import AdderHandle from '../handleObject/AdderHandle';
 import ButtonHandle from '../handleObject/ButtonHandle';
 import getVal from "../../getVal";
+import getProp from '../../getProp';
+import version0_1Upgrade from '../../../../../../routes/editor/v0.1Upgrade/version0_1Upgrade';
 
 export default class TextObject extends ComponentObject {
     constructor(itemData , fnList) {
-        super(itemData , fnList);
+      super(itemData , fnList);
+        
         this.dialogueBox = [
           
             
@@ -135,6 +138,10 @@ export default class TextObject extends ComponentObject {
     }
 
     draw(drawLib,currentTime){ 
+
+
+// font size was added later
+      
         drawLib.text(
                             getVal(currentTime ,this.itemData.extra.text),
                             getVal(currentTime , this.itemData.extra.x) , 

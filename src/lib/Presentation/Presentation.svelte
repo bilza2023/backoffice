@@ -30,7 +30,6 @@
 
 $:{
     currentSlide;
-    // console.log("currentSlide" , currentSlide);
     inspect(currentSlide);
 }   
 

@@ -10,7 +10,7 @@
   import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
   import TemplatesDlg from './TemplatesDlg.svelte';
   import fix from "./fix.js";
-
+import version0_1Upgrade from "./v0.1Upgrade/version0_1Upgrade"
   import {SOUND_FILE_PATH} from "$lib/util";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
@@ -178,7 +178,7 @@ try {
    
       
     }
-console.log("saveCurrentSlideAsSlideTemplate",name,description);
+// console.log("saveCurrentSlideAsSlideTemplate",name,description);
 }
 
 /////////////////////////////////////////////////// 
@@ -262,6 +262,19 @@ onMount(async ()=>{
    
    const data = await resp.json();
    item =  data.item;
+
+  //  debugger;
+///*******************************--upgrade to version 0.1*/
+if(item.version == null){
+  for (let i = 0; i < item.slides.length; i++) {
+    const slide =   item.slides[i];
+    await version0_1Upgrade(slide);
+  }
+  item.version = '0.1'; //--very important
+}
+////*****************************************************************/
+
+
    slides = item.slides;
   //////////////=========================
   filename = item.filename;

@@ -8,6 +8,7 @@
     import TrPropNumber from "./TrPropNumber.svelte";
     import TrTf from "./TrTf.svelte";
     import TrColor from "./TrColor.svelte";
+    import TrPropText from "./TrPropText.svelte";
 
     export let selectedItem;
 
@@ -27,6 +28,12 @@
                             <td class="p-1 text-white text-sm">
                                 {#if dialogueItem.componentName === 'TrPropNumber'}
                                     <TrPropNumber 
+                                        bind:extra={selectedItem.itemData.extra}
+                                        title={dialogueItem.title}
+                                        {...dialogueItem.props}
+                                    />
+                                {:else if dialogueItem.componentName === 'TrPropText'}
+                                    <TrPropText 
                                         bind:extra={selectedItem.itemData.extra}
                                         title={dialogueItem.title}
                                         {...dialogueItem.props}
