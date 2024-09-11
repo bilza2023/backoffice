@@ -40,7 +40,7 @@ let itemObjects = [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const itemObj = itemToObject(item , fnList,spriteImgArray);
-      if (itemObj) {
+      if (itemObj) {    
         itemObjects.push(itemObj);    
       }
     }
