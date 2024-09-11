@@ -1,3 +1,18 @@
+Requirement : Write me a svelte reactive statement / function that on every change of selectedItem updated the  selectedItemIndex variable.
+
+
+some thing like 
+let selectedItemIndex = null;
+$:{
+    selectedItem;
+    selectedItemIndex = ...
+}
+
+
+Explanation: in my svelte component i have "items" array which i convert to itemsObjects array of objects (convert data into objects in updateItemObjects) since that is better for editing however to delete, clone etc i still need selectedItemIndex since "items" is the "main source of truth"
+
+
+Code
 <script>
 //@ts-nocheck
 import CanvasCommand from "./json-ui/commands/CanvasCommand.svelte";  
@@ -58,7 +73,8 @@ $: {
       const item = itemObjects[i];
       const ishit = item.isHit(mouseX, mouseY);
       if (ishit) {
-        selectedItem = item;
+        setSelectedItem(i);
+        // selectedItem = item;
         found = true;
         return; //must
       }
@@ -86,6 +102,9 @@ let ignoreShowAt =true;
 let slideImages = [];
 let showSaveSlideTemplateDialogue = false;
 
+// we need selectedItemIndex since we have to delete , moveup etc the items and not the itemsOBjects aaray thus we need the index. this must always be set when selectedItem is set, thats why we must just set selectedItem in one place setSelectedItem
+let selectedItemIndex = null;
+
 function toggleIgnoreShowAt(){
   ignoreShowAt = !ignoreShowAt;
 }
@@ -98,9 +117,8 @@ function toggleShowCanvas(){
 }
 
 
-function moveUp() {
+function moveUp(index) {
   // debugger;
-  let index = itemObjects.findIndex( e => e === selectedItem);
   if (index > 0 && index < items.length) {
       const item = items.splice(index, 1)[0];
       items.splice(index - 1, 0, item);
@@ -108,8 +126,8 @@ function moveUp() {
   }
 }
 
-function moveDown() {
-  let index = itemObjects.findIndex( e => e === selectedItem);
+function moveDown(index) {
+  // debugger;
   if (index >= 0 && index < items.length - 1) {
       const item = items[index];
       items.splice(index, 1);
@@ -119,9 +137,8 @@ function moveDown() {
 }
 
 
-function copyItem() {
+function copyItem(index) {
   // debugger;
-  let index = itemObjects.findIndex( e => e === selectedItem);
   if (index >= 0 && index < items.length) {
       localStorage.setItem("copiedItem" , JSON.stringify(items[index]));
       toast.push("item copied");
@@ -141,9 +158,8 @@ function pasteItem() {
 }
 //--7-sep-2024 we are inside Presentation module this there is just one slide at a time . There are no more slides so the "items" are what we have to display on canvas (and not some upper level items).
 // --7-sep-2024 Here the items are a data structure inside CanvasEditorPlayer they become ComponentObjects. 
-function clone() {
+function clone(index) {
   // debugger;
-  let index = itemObjects.findIndex( e => e === selectedItem);
   if (index >= 0 && index < items.length) {
       const clonedItem = JSON.parse(JSON.stringify(items[index]));
       items.unshift(clonedItem);
@@ -157,12 +173,20 @@ function cloneComponent(itemData) {
       items.unshift(clonedItem);
       items = [...items];
 }
-
 function del() {
-  // debugger;
- let index = itemObjects.findIndex( e => e === selectedItem);
-    items.splice(index, 1);
-    items = [...items];
+  if(!selectedItem){
+    toast.push("No Selected item");
+    return;
+  }
+  const index = itemObjects.findIndex(item => item === selectedItem);
+  
+  if (index !== -1) {
+    itemObjects.splice(index, 1);
+    // items = [...items];
+    toast.push("Item deleted");
+  } else {
+    toast.push("Item not found");
+  }
 }
 
 function redraw(){items = [...items];}
@@ -212,7 +236,7 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
           
               <SelectItemMenu {itemObjects} {selectedItem} {setSelectedItem}/>
               {#if selectedItem !== null}
-              <Toolbar  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+              <Toolbar   {moveUp} {moveDown} {del}  {clone} {copyItem}/>
               {/if}
               <CommandUi  bind:selectedItem={selectedItem} />
 

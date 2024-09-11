@@ -43,7 +43,7 @@ export let addNewItem;
         
         <SmallBtnToolbar clk={()=>addNewItem(addImage)} icon={Icons.MAP} title="Image" />
             <!-- <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" /> -->
-            <!-- <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste" /> -->
+            <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste Item" />
             
 <SmallBtnToolbar clk={()=>showSaveSlideTemplateDialogue = !showSaveSlideTemplateDialogue} icon={Icons.SAVE} title="Make Template" />
     
