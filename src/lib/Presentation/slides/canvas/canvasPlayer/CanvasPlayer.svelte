@@ -25,18 +25,20 @@
 /////////////////////////////////////////////////////////
 let itemObjects = [];
 
-// $: {
-//   items;
-//     if(items.length > 0){
-//       itemObjects = [];
-//       updateItemObjects();
-//     }
-//   }
+$: {
+  items;
+  
+    if(items.length > 0){
+      itemObjects = [];
+      updateItemObjects();
+    }
+  }
   let fnList = {
   // cloneComponent,
   // del
 }
   function updateItemObjects() {
+    itemObjects = [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const itemObj = itemToObject(item , fnList,spriteImgArray);

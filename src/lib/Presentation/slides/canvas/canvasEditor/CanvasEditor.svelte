@@ -27,8 +27,9 @@ let selectedItem = null;
 
 $: {
   items;
+  // debugger;
+  itemObjects = [];
     if(items.length > 0){
-      itemObjects = [];
       updateItemObjects();
     }
   }
@@ -37,6 +38,7 @@ $: {
   del
 }
   function updateItemObjects() {
+    debugger;
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const itemObj = itemToObject(item , fnList,spriteImgArray);
