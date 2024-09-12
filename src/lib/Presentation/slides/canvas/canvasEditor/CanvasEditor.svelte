@@ -211,14 +211,19 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
  
 <!-- div for json-ui -->
 <div class='w-25 max-w-[25%] min-w-[25%]  bg-stone-600 rounded-md p-2'>
-          
-              <SelectItemMenu {itemObjects} {selectedItem} {setSelectedItem}/>
-              {#if selectedItem !== null}
-              <Toolbar  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
-              {/if}
-              <CommandUi  bind:selectedItem={selectedItem} />
 
+              {#if selectedItem !== null}
+
+              <SelectItemMenu {itemObjects} {selectedItem} {setSelectedItem}/>
+              <Toolbar  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+              <CommandUi  bind:selectedItem={selectedItem} />              
+              {:else}
+              <CanvasCommand  {extra} />
+              {/if}
 </div>
+
+
+
 </div>
 </div><!--the editor top level div-->
 {/if}
