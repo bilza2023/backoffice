@@ -214,8 +214,10 @@ bind:showSaveSlideTemplateDialogue ={showSaveSlideTemplateDialogue}
               {#if selectedItem !== null}
 
               <SelectItemMenu {itemObjects} {selectedItem} {setSelectedItem}/>
-              <Toolbar  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
-              <CommandUi  bind:selectedItem={selectedItem} />              
+              <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                <Toolbar  {moveUp} {moveDown} {del}  {clone} {copyItem}/>
+                <CommandUi  bind:selectedItem={selectedItem} />   
+              </div>           
               {:else}
               <CanvasCommand  {extra} />
               {/if}

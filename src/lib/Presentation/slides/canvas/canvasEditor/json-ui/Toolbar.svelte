@@ -10,7 +10,7 @@ import Icons from "../../../../icons";
 
 </script>
 
-<div class="flex w-full justify-around bg-gray-900 text-white  rounded-md">
+<div class="flex w-full justify-around  text-white  ">
 
     <div class="flex  justify-end  gap-1">
     

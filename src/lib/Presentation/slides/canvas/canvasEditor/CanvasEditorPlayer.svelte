@@ -42,11 +42,10 @@
 
     for (let i = 0; i < itemObjects.length; i++) {
         const item = itemObjects[i];
-        // if(i == 6){debugger;}
-        if (selectedItem && item.itemData.extra.command === 'repeatText') {
-            // Add logic for 'repeatText' if needed
+      
+        if(item.isVisible(currentTime)){
+          item.draw(drawLib, currentTime, extra);
         }
-        item.draw(drawLib, currentTime, extra);
     }
 
         ///////////////////////////////////////////////////

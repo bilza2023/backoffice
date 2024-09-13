@@ -10,6 +10,7 @@ export default class SpriteObject extends ComponentObject {
         super(itemData , fnList);
         this.spriteImgArray = spriteImgArray;
         this.dialogueBox = [
+           
             {
               componentName: 'TrPropNumber',
               title: 'dx',

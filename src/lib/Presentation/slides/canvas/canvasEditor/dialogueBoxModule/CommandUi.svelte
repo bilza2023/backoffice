@@ -9,6 +9,7 @@
     import TrTf from "./TrTf.svelte";
     import TrColor from "./TrColor.svelte";
     import TrPropText from "./TrPropText.svelte";
+    import SpriteDD from "./sprite/SpriteDD.svelte";
 
     export let selectedItem;
 
@@ -18,8 +19,7 @@
 </script>
 
 {#if selectedItem}
-    <div class="p-4 bg-gray-800 rounded-lg shadow-md">
-        <h6 class='text-sm'>{selectedItem.itemData.extra.name}</h6>
+    <div class="">
         <div class="overflow-x-auto">
             <table class="min-w-full table-auto border-collapse border border-gray-600 bg-gray-700 rounded-lg">
                 <tbody>
@@ -28,6 +28,12 @@
                             <td class="p-1 text-white text-sm">
                                 {#if dialogueItem.componentName === 'TrPropNumber'}
                                     <TrPropNumber 
+                                        bind:extra={selectedItem.itemData.extra}
+                                        title={dialogueItem.title}
+                                        {...dialogueItem.props}
+                                    />
+                                {:else if dialogueItem.componentName === 'SpriteDD'}
+                                    <SpriteDD 
                                         bind:extra={selectedItem.itemData.extra}
                                         title={dialogueItem.title}
                                         {...dialogueItem.props}
