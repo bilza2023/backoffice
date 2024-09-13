@@ -10,7 +10,7 @@ export default class SpriteObject extends ComponentObject {
         super(itemData , fnList);
         this.spriteImgArray = spriteImgArray;
         this.dialogueBox = [
-           
+            
             {
               componentName: 'TrPropNumber',
               title: 'dx',
@@ -110,6 +110,7 @@ export default class SpriteObject extends ComponentObject {
     }
 
     draw(drawLib, currentTime) { 
+      // debugger;
         try {
             let sprite;
             for (let i = 0; i < this.spriteImgArray.length; i++) {

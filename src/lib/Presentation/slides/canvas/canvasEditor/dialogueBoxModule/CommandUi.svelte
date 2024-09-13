@@ -23,6 +23,13 @@
         <div class="overflow-x-auto">
             <table class="min-w-full table-auto border-collapse border border-gray-600 bg-gray-700 rounded-lg">
                 <tbody>
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+{#if selectedItem.itemData.extra.command === 'sprite'} 
+<tr><td><SpriteDD bind:extra={selectedItem.itemData.extra}/></td></tr>
+{/if}
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+
+
                     {#each selectedItem.dialogueBox as dialogueItem}
                         <tr class="border-b border-gray-600">
                             <td class="p-1 text-white text-sm">
@@ -35,8 +42,6 @@
                                 {:else if dialogueItem.componentName === 'SpriteDD'}
                                     <SpriteDD 
                                         bind:extra={selectedItem.itemData.extra}
-                                        title={dialogueItem.title}
-                                        {...dialogueItem.props}
                                     />
                                 {:else if dialogueItem.componentName === 'TrPropText'}
                                     <TrPropText 

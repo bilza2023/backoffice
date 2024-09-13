@@ -13,22 +13,22 @@ import TrTf from "./TrTf.svelte";
     export let item;
     export let redraw;
 
-    function handleSheetChange(event) {
-    item.sheet = event.target.value;
-    if(item.sheet == 'students'){
-        item.sheetItem = "student_w_tablet";
-    }
-    if(item.sheet == 'figs'){
-        item.sheetItem = "flower1";
-    }
-    if(item.sheet == 'alphabets'){
-        item.sheetItem = "A";
-    }
-    if(item.sheet == 'people'){
-        item.sheetItem = "man_tblt_stndg";
-    }
-    // You can add more logic here if needed
-  }
+//     function handleSheetChange(event) {
+//     item.sheet = event.target.value;
+//     if(item.sheet == 'students'){
+//         item.sheetItem = "student_w_tablet";
+//     }
+//     if(item.sheet == 'figs'){
+//         item.sheetItem = "flower1";
+//     }
+//     if(item.sheet == 'alphabets'){
+//         item.sheetItem = "A";
+//     }
+//     if(item.sheet == 'people'){
+//         item.sheetItem = "man_tblt_stndg";
+//     }
+//     // You can add more logic here if needed
+//   }
     function action(e){
         addUTFIcon(e,item);
         redraw();
