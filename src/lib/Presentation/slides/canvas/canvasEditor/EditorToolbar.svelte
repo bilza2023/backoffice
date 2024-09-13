@@ -6,7 +6,7 @@
     export let items;
     export let pasteItem;
     export let showSaveSlideTemplateDialogue;
-    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage} from "./addFunctions";
+    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage,addIcon} from "./addFunctions";
 
     // let groupDiv = false;
 
@@ -33,6 +33,9 @@ export let addNewItem;
     <!-- Extended from Core -->
     <SmallBtnToolbar clk={()=>addNewItem(addTri)} icon={Icons.TRIANGE} title="Tri" />
     <SmallBtnToolbar clk={()=>addNewItem(addRay)} icon={Icons.SUNRISE} title="Ray" />
+    
+        <SmallBtnToolbar clk={()=>addNewItem(addIcon)} icon='🦏' title="Icon" />
+
     <SmallBtnToolbar clk={()=>addNewItem(addDot)} icon={Icons.DOT} title="Dot" />
     <SmallBtnToolbar clk={()=>addNewItem(addRepeatDot)} icon={`${Icons.DOT}${Icons.DOT}`} title="R-Dot" />
     <!-- <SmallBtnToolbar clk={()=>{addNewItem(addRepeatText)}} icon={`${Icons.TEXT2}${Icons.TEXT2}`} title="R-Text" /> -->

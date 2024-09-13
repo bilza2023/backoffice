@@ -155,6 +155,23 @@ return  addReqExtraFields(obj,"text","black")
           };
           return  addReqExtraFields(obj,"dot","red") 
   }
+  function addIcon( ){
+    const obj = {
+        "text": getProp("This is Heading"),
+          "x": getProp(100),
+          "y": getProp(100),
+          "fontSize": getProp(28),
+          "fontFamily": 'Arial',
+          "iconSize": getProp(100),
+          "icon": '🦏',
+          "fill": getProp(true),
+          "showBg": true,
+          "iconOnTop": true,
+          "bgColor": getProp('gray'),
+
+          };
+          return  addReqExtraFields(obj,"icon","red") 
+  }
   
   function addGrid( ){ //one grid allowed
     if(gridCommandExists()){
@@ -311,7 +328,8 @@ export {
                 addText,
                 addSprite,
                 addSysImage,
-                addImage
+                addImage,
+                addIcon
  }
 
  ////////////////////////////////////////////////////////////////

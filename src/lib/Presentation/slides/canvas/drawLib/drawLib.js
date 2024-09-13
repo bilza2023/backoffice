@@ -460,9 +460,41 @@ repeatDot(numberOfDots = 10, initialX=0, initialY=0, xFactor = 50, yFactor = 0, 
         currentY += yFactor;
     }
 }
+// Add this method to your DrawLib class
 
- // Method to draw a shape from an array of x, y pairs
+roundRect(x, y, width, height, radius, color = 'black', filled = false, lineWidth = 1, dash = 0, gap = 0, globalAlpha = 1) {
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.moveTo(x + radius, y);
+    this.ctx.lineTo(x + width - radius, y);
+    this.ctx.arcTo(x + width, y, x + width, y + radius, radius);
+    this.ctx.lineTo(x + width, y + height - radius);
+    this.ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+    this.ctx.lineTo(x + radius, y + height);
+    this.ctx.arcTo(x, y + height, x, y + height - radius, radius);
+    this.ctx.lineTo(x, y + radius);
+    this.ctx.arcTo(x, y, x + radius, y, radius);
+    this.ctx.closePath();
 
+    this.ctx.globalAlpha = globalAlpha;
+    this.ctx.lineWidth = lineWidth;
+
+    if (dash === 0 && gap === 0) {
+        this.ctx.setLineDash([]);
+    } else {
+        this.ctx.setLineDash([dash, gap]);
+    }
+
+    if (filled) {
+        this.ctx.fillStyle = color;
+        this.ctx.fill();
+    } else {
+        this.ctx.strokeStyle = color;
+        this.ctx.stroke();
+    }
+
+    this.ctx.restore();
+}
 regularPolygon(x, y, radius, sides, color = 'black', filled = true) {
     const points = [];
     for (let i = 0; i < sides; i++) {

@@ -16,6 +16,8 @@ import DotObject from './DotObject';
 import RDotObject from './RDotObject';
 import RTextObject from './RTextObject';
 
+import IconObject from './IconObject';
+
 
 export default function itemToObject(item,fnList={},spriteImgArray=[]){
 
@@ -25,7 +27,6 @@ export default function itemToObject(item,fnList={},spriteImgArray=[]){
 switch (lookFor) {
 
     case 'repeatText':
-        // debugger;
     selectedItem = new RTextObject(item , fnList );
     break;
 
@@ -33,6 +34,10 @@ switch (lookFor) {
     selectedItem = new RDotObject(item , fnList );
     break;
 
+    case 'icon':
+    selectedItem = new IconObject(item , fnList );
+    break;
+   
     case 'dot':
     selectedItem = new DotObject(item , fnList );
     break;
