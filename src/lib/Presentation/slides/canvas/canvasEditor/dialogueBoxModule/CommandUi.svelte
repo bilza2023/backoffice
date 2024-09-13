@@ -9,6 +9,7 @@
     import TrTf from "./TrTf.svelte";
     import TrColor from "./TrColor.svelte";
     import TrPropText from "./TrPropText.svelte";
+    import TrTextArea from "./TrTextArea.svelte";
     import SpriteDD from "./sprite/SpriteDD.svelte";
 
     export let selectedItem;
@@ -45,6 +46,12 @@
                                     />
                                 {:else if dialogueItem.componentName === 'TrPropText'}
                                     <TrPropText 
+                                        bind:extra={selectedItem.itemData.extra}
+                                        title={dialogueItem.title}
+                                        {...dialogueItem.props}
+                                    />
+                                {:else if dialogueItem.componentName === 'TrTextArea'}
+                                    <TrTextArea 
                                         bind:extra={selectedItem.itemData.extra}
                                         title={dialogueItem.title}
                                         {...dialogueItem.props}
