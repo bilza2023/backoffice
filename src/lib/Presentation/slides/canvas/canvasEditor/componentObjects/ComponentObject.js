@@ -2,11 +2,13 @@
 //@ts-nocheck
 import AdderHandle from '../handleObject/AdderHandle';
 import getVal from "../../getVal"; 
+import { e } from 'mathjs';
 
 
 export default class ComponentObject {
 
  constructor(itemData,fnList){
+   
         this.itemData = itemData;
         this.fnList = fnList;
         this.handleObjects = [];
@@ -14,6 +16,19 @@ export default class ComponentObject {
  }
  loadHandles(){} //child objects will use it
 //****************************************************************** */
+
+isVisible(currentTime){
+   if(!this.itemData.extra.showAt){
+      // this.itemData.extra.showAt = 0; //no need to edit data here this function is just for checking showAt
+      return true;
+   }else {
+      if( currentTime >= this.itemData.extra.showAt ){
+         return true;
+      }else {
+         return false;
+      }
+   }
+}
 draw(drawLib,currentTime){
    console.log("ComponentObject draw");
 }
@@ -73,4 +88,6 @@ draw(drawLib,currentTime){
       );
   
  }
-}
+
+}//componentn class
+

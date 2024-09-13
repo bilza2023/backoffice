@@ -38,7 +38,6 @@ $: {
   del
 }
   function updateItemObjects() {
-    debugger;
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const itemObj = itemToObject(item , fnList,spriteImgArray);

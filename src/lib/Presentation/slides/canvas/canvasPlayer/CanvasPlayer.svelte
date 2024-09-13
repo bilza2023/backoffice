@@ -49,33 +49,47 @@ $: {
   }
 
 /////////////////////////////////////////////////////////   
-    function gameLoop() {
-      try {
-        if (itemObjects) {
-          
-          //This extra is slide extra------yesss....!!!!
-          drawLibInterpretor.showGrid = extra.showGrid;
-          drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
-          drawLibInterpretor.gridLineColor = extra.gridLineColor;
-          drawLibInterpretor.cellWidth = extra.cellWidth;
-          drawLibInterpretor.cellHeight = extra.cellHeight;
-  
-          ///////////////////////////////////////////////////////////////////////////
-          
-          drawLibInterpretor.interpret(currentTime, extra);
-          
-          for (let i = 0; i < itemObjects.length; i++) {
-            const item = itemObjects[i];
-            item.draw(drawLib,currentTime, extra);
-    
+function gameLoop() {
+  try {
+    if (itemObjects) {
+      //This extra is slide extra------yesss....!!!!
+      drawLibInterpretor.showGrid = extra.showGrid;
+      drawLibInterpretor.gridLineWidth = extra.gridLineWidth;
+      drawLibInterpretor.gridLineColor = extra.gridLineColor;
+      drawLibInterpretor.cellWidth = extra.cellWidth;
+      drawLibInterpretor.cellHeight = extra.cellHeight;
+
+      ///////////////////////////////////////////////////////////////////////////
+      
+      drawLibInterpretor.interpret(currentTime, extra);
+      
+      for (let i = 0; i < itemObjects.length; i++) {
+        const item = itemObjects[i];
+        try {
+          if(item.isVisible(currentTime)){
+          item.draw(drawLib, currentTime, extra);
           }
-         
+        } catch (itemError) {
+          console.error(`Error drawing item at index ${i}:`, itemError);
+          console.error('Item object:', item);
+          // Continue to the next item
         }
-        
-      } catch (error) {
-        drawLibInterpretor.jsonError();
       }
     }
+  } catch (error) {
+    console.error('Error in gameLoop:', error);
+    console.error('Error stack trace:', error.stack);
+    // Log additional context if available
+    if (itemObjects) {
+      console.error('Number of itemObjects:', itemObjects.length);
+    }
+    if (extra) {
+      console.error('Extra object:', extra);
+    }
+    // Don't call drawLibInterpretor.jsonError() here to avoid quitting
+  }
+  
+}
     //////////////////////////////////
   
   
