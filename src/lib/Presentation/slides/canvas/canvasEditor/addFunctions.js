@@ -161,12 +161,13 @@ return  addReqExtraFields(obj,"text","black")
           "x": getProp(100),
           "y": getProp(100),
           "fontSize": getProp(28),
-          "fontFamily": 'Arial',
           "iconSize": getProp(100),
+          "fontFamily": 'Arial',
           "icon": '🦏',
-          "fill": getProp(true),
-          "showBg": true,
+          "showBg": false,
           "iconOnTop": true,
+          "iconErrorX": 0,
+          "iconErrorY": 0,
           "bgColor": getProp('gray'),
 
           };

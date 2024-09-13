@@ -27,7 +27,7 @@ let selectedItem = null;
 
 $: {
   items;
-  // debugger;
+  // 
   itemObjects = [];
     if(items.length > 0){
       updateItemObjects();
