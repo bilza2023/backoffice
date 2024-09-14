@@ -62,7 +62,7 @@ function gameLoop() {
       ///////////////////////////////////////////////////////////////////////////
       
       drawLibInterpretor.interpret(currentTime, extra);
-      
+    //  debugger;      
       for (let i = 0; i < itemObjects.length; i++) {
         const item = itemObjects[i];
         try {

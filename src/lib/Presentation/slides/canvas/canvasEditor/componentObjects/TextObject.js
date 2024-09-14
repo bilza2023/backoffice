@@ -141,7 +141,6 @@ export default class TextObject extends ComponentObject {
 
 
 // font size was added later
-      
         drawLib.text(
                             getVal(currentTime ,this.itemData.extra.text),
                             getVal(currentTime , this.itemData.extra.x) , 
