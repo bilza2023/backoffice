@@ -6,7 +6,7 @@ export let title;
 //////////////////////////////////
 
 export let min=0;
-export let max=100;
+export let max=1000;
 export let step=1;
 
 let show = false;

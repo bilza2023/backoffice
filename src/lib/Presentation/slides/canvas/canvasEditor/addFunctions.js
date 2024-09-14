@@ -295,7 +295,7 @@ return  addReqExtraFields(obj,"text","black")
  function addImage2(){
 
             const obj ={
-              "src": 'wood',
+              "src": '',
               "image": null,
 //--source              
               "sx": getProp(0),

@@ -126,8 +126,11 @@ export default class Image2Object extends ComponentObject {
         
     }
     loadImage() {
+        if(!this.itemData.extra.src || this.itemData.extra.src === '' ){return;}
         const img = new Image();
-        img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/wood.jpg';
+        img.src = 'https://taleem-media.blr1.cdn.digitaloceanspaces.com/bucket/'
+        + this.itemData.extra.src + '.' + this.itemData.extra.ext;
+        ;
     
         img.onload = () => {
           this.itemData.extra.image = img;
@@ -196,6 +199,9 @@ let btnHandle = new ButtonHandle(this.itemData,this.fnList);
     }
 ///////////////////////////////////////////////////
 draw(drawLib,currentTime){ 
+    if(! this.itemData.extra.image){
+        drawLib.text("failed to load image" , this.itemData.extra.sx.initialValue, this.itemData.extra.sy.initialValue,"red");
+    }
     // debugger;
     drawLib.ctx.drawImage(
         this.itemData.extra.image,

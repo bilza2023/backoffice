@@ -128,8 +128,9 @@ async function loadImages() {
           const img = await loadImage( url);
           item.extra.image = img;
           
-      } catch (err) {
-        console.error('Error loading image:', err);
+      }   catch (err) {
+        // console.error('Error loading image:', err);
+        // do nothing 
       }
     }
   }
