@@ -100,6 +100,21 @@ return  addReqExtraFields(obj,"text","black")
 
     return  addReqExtraFields(obj,"ellipse","red")
   }
+  function addPieChart( ){
+    const obj = {
+      "x": getProp(100),
+      "y": getProp(150),
+      "radius": getProp(100),
+      "data": `
+      [
+        { "title": "A", "percent": 30, "color": "red" },
+        { "title": "B", "percent": 50, "color": "blue" },
+        { "title": "C", "percent": 20, "color": "green" }
+    ]
+      `,
+      };
+    return  addReqExtraFields(obj,"piechart","red")
+  }
   function addCircle( ){
     const obj = {
       "x": getProp(100),
@@ -353,7 +368,8 @@ export {
                 addSysImage,
                 addImage,
                 addIcon,
-                addImage2
+                addImage2,
+                addPieChart
  }
 
  ////////////////////////////////////////////////////////////////

@@ -6,7 +6,7 @@
     export let items;
     export let pasteItem;
     export let showSaveSlideTemplateDialogue;
-    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage,addIcon,addImage2} from "./addFunctions";
+    import { addEllipse,addCircle,addBezier,addRect,addAngleSymbol,addDot,addGrid,addPolygon,addTri,addLines,addLine,addRay,addRepeatDot,addRepeatText,addPara,addText,addSprite,addSysImage,addImage,addIcon,addImage2,addPieChart} from "./addFunctions";
 
     // let groupDiv = false;
 
@@ -46,6 +46,7 @@ export let addNewItem;
         
         <SmallBtnToolbar clk={()=>addNewItem(addImage)} icon={Icons.MAP} title="Image" />
         <SmallBtnToolbar clk={()=>addNewItem(addImage2)} icon={Icons.MAP} title="Image2" />
+        <SmallBtnToolbar clk={()=>addNewItem(addPieChart)} icon={Icons.PIZZA} title="Pie" />
             <!-- <SmallBtnToolbar clk={showGroup} icon={Icons.MAGICWAND} title="Group" /> -->
             <SmallBtnToolbar clk={pasteItem} icon={Icons.PALETTE} title="Paste Item" />
             

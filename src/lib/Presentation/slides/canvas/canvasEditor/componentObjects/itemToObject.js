@@ -18,6 +18,7 @@ import RTextObject from './RTextObject';
 
 import IconObject from './IconObject';
 import Image2Object from './Image2Object';
+import PieChartObject from './PieChartObject';
 
 
 export default function itemToObject(item,fnList={},spriteImgArray=[]){
@@ -27,6 +28,9 @@ export default function itemToObject(item,fnList={},spriteImgArray=[]){
     
 switch (lookFor) {
 
+    case 'piechart':
+    selectedItem = new PieChartObject(item , fnList );
+    break;
     case 'repeatText':
     selectedItem = new RTextObject(item , fnList );
     break;

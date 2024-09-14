@@ -595,19 +595,32 @@ sprite(sprite,item) {
         sprite.selectedData.sh * Math.abs(item.hFactor) //height on source image
     );
 }
-// sprite2(img,sx,sy,sw,sh,dx,dy,dWidth,dHeight) {
-//     // debugger;
-//     this.ctx.drawImage(img,
-//         sx, //x on source image
-//         sy, //y on source image
-//         sw, //width on source image
-//         sh, //height on source image
-//         dx,//x on destination image
-//         dy,//y on destination image
-//         dWidth, //width on source image
-//         dHeight //height on source image
-//     );
-// }
+pieChart(centerX , centerY,radius, pies, options = { drawLabelsOutside: false }) {
+    
+    let startAngle = 0;
+
+    pies.forEach(pie => {
+        // Draw pie slice
+        const endAngle = startAngle + (pie.percent / 100) * 2 * Math.PI;
+        this.ctx.beginPath();
+        this.ctx.moveTo(centerX, centerY);
+        this.ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        this.ctx.closePath();
+        this.ctx.fillStyle = pie.color || '#000'; // default color
+        this.ctx.fill();
+
+        // Draw pie title
+        const midAngle = startAngle + (endAngle - startAngle) / 2;
+        const textX = centerX + Math.cos(midAngle) * (options.drawLabelsOutside ? radius + 20 : radius / 2);
+        const textY = centerY + Math.sin(midAngle) * (options.drawLabelsOutside ? radius + 20 : radius / 2);
+
+        this.ctx.fillStyle = '#000'; // default text color
+        this.ctx.font = '14px Arial';
+        this.ctx.fillText(pie.title, textX, textY);
+
+        startAngle = endAngle; // update startAngle for next pie
+    });
+}
 
 bgImage(image,bgGlobalAlpha=1) {
     this.ctx.globalAlpha = bgGlobalAlpha;    
