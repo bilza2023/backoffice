@@ -585,16 +585,29 @@ drawPerpendSymbol(x, y, x1, y1, x2, y2, lineWidth = 1, color = 'black') {
 sprite(sprite,item) {
     // debugger;
     this.ctx.drawImage(sprite.img,
-        sprite.selectedData.sx,
-        sprite.selectedData.sy,
-        sprite.selectedData.sw,
-        sprite.selectedData.sh,
-        item.x,
-        item.y,
-        sprite.selectedData.sw * Math.abs(item.wFactor),
-        sprite.selectedData.sh * Math.abs(item.hFactor)
+        sprite.selectedData.sx, //x on source image
+        sprite.selectedData.sy, //y on source image
+        sprite.selectedData.sw, //width on source image
+        sprite.selectedData.sh, //height on source image
+        item.x,//x on destination image
+        item.y,//y on destination image
+        sprite.selectedData.sw * Math.abs(item.wFactor), //width on source image
+        sprite.selectedData.sh * Math.abs(item.hFactor) //height on source image
     );
 }
+// sprite2(img,sx,sy,sw,sh,dx,dy,dWidth,dHeight) {
+//     // debugger;
+//     this.ctx.drawImage(img,
+//         sx, //x on source image
+//         sy, //y on source image
+//         sw, //width on source image
+//         sh, //height on source image
+//         dx,//x on destination image
+//         dy,//y on destination image
+//         dWidth, //width on source image
+//         dHeight //height on source image
+//     );
+// }
 
 bgImage(image,bgGlobalAlpha=1) {
     this.ctx.globalAlpha = bgGlobalAlpha;    

@@ -120,7 +120,9 @@ export default class SpriteObject extends ComponentObject {
                     break;
                 }
             }
-            if(!sprite) { throw Error("Sprite not found"); }                            
+            if(!sprite) { throw Error("Sprite not found"); }  
+            
+/////////////////////////////////////////////////////////////////                                      
             sprite.applyItem(this.itemData.extra.sheetItem);
             if (!sprite.selectedData) { console.warn("sheetItem not found"); return; }
 

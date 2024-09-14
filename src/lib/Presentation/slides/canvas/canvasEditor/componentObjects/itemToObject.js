@@ -17,6 +17,7 @@ import RDotObject from './RDotObject';
 import RTextObject from './RTextObject';
 
 import IconObject from './IconObject';
+import Image2Object from './Image2Object';
 
 
 export default function itemToObject(item,fnList={},spriteImgArray=[]){
@@ -76,9 +77,12 @@ switch (lookFor) {
     selectedItem = new RectangleObject(item , fnList );
     break;
     
-    case 'image':
-        
+    case 'image':    
     selectedItem = new ImageObject(item , fnList );
+    break;
+    
+    case 'image2':    
+    selectedItem = new Image2Object(item , fnList );
     break;
     
     case 'circle':

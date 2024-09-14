@@ -21,7 +21,7 @@
 
     export let currentSlide;
     export let currentTime;
-    export let saveCurrentSlideAsSlideTemplate;
+    export let saveCurrentSlideAsSlideTemplate;//??
     export let tcode = "fbise9math";
     export let setPulse = () => {};
     export let displayMode = true;
@@ -102,6 +102,7 @@ ready = true;
 }) ; 
 
 $:{
+//--14 sep 2024 :: so every time a slide changes we load the images required by it. We go over each item and if that item is "command.image" we load the inage in it    
     currentSlide;
     loadImages();
 }
@@ -115,6 +116,7 @@ async function loadImage(src) {
   });
 }
 
+// We go over each item and if that item is "command.image" we load the inage in it
 async function loadImages() {
   
   for (let i = 0; i < currentSlide.items.length; i++) {

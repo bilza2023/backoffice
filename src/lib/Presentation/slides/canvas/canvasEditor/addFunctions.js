@@ -292,6 +292,28 @@ return  addReqExtraFields(obj,"text","black")
       // };
     
   }
+ function addImage2(){
+
+            const obj ={
+              "src": 'wood',
+              "image": null,
+//--source              
+              "sx": getProp(0),
+              "sy": getProp(0),
+              "sw": getProp(100),
+              "sh": getProp(50),
+//--destination 
+              "dx": getProp(10),
+              "dy": getProp(10),
+              "width":  getProp(100),
+              "height": getProp(50),
+
+              "ext": 'jpg',
+            };
+  return  addReqExtraFields(obj,"image2");
+      // };
+    
+  }
   function addSprite( ){
     // debugger;
     const obj ={
@@ -330,7 +352,8 @@ export {
                 addSprite,
                 addSysImage,
                 addImage,
-                addIcon
+                addIcon,
+                addImage2
  }
 
  ////////////////////////////////////////////////////////////////
