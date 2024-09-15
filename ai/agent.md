@@ -1,17 +1,9 @@
-
-Look at this data structure in detail
-//// ignore the getProp function
-
   const obj = {
     x: getProp(100),
     y: getProp(100),
-    drawBorder: getProp(true),
-    fill: getProp(true),
-    color: getProp('red'),
-    fillBg: getProp(true),
-    bgColor: getProp('lightgray'),
     width:  getProp(300),
     height: getProp(200),
+    
     lines: [ // they are actually vertices
         {x: 0, y: 35},    // Start at left, 35% down
         {x: 70, y: 35},   // Line to 70% across (top of stem)
@@ -21,15 +13,24 @@ Look at this data structure in detail
         {x: 70, y: 65},   // Back to stem
         {x: 0, y: 65},    // Bottom of stem
         {x: 0, y: 35}     // Close the shape
+   
     ]
-  };  
+  }; 
+///////////////////////////////////////////  
+
+Above is an object structure that i use to draw a set of lines in a rectangle using relative spaces.
+
+The x,y are the draw rectangle origin
+the width and height is the rectangle width and height
+the lines array in collection of vertices on which the line is to be drawn.
 
 
+///====
  The important thing is that the x and y in "lines" array 
     {x:0,y,10}
-do not show the number of px at which they are to be drawn 
-RAHTER    
-the show the percent of x and y at which they should be drawn 
+does not show the number of pixels at which they are to be drawn 
+BUT
+ show the percent of x and y at which they should be drawn 
 
 for example
         {x:10,y,10}
@@ -44,4 +45,25 @@ Second Important Point
 Always check that the  lines array should form a closed shape so that it can be filled. write a seperate function for checking. 
 
 
-////
+Please generate more items for me
+
+for example here is an example of a simple sword 
+
+case 'sword' :
+// Sword
+extra.lines = [
+    {x: 45, y: 0}, {x: 55, y: 0}, {x: 55, y: 60}, 
+    {x: 65, y: 60}, {x: 65, y: 80}, {x: 55, y: 80}, 
+    {x: 55, y: 100}, {x: 45, y: 100}, {x: 45, y: 80}, 
+    {x: 35, y: 80}, {x: 35, y: 60}, {x: 45, y: 60}, 
+    {x: 45, y: 0}
+];
+break;
+
+and here is its option
+<option value="sword">Sword</option>
+
+
+please create more such items for me
+
+give all the extra.line in switch statement format like above and also give "options"
