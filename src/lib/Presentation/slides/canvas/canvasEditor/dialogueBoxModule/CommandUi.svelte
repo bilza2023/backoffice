@@ -12,6 +12,7 @@
     import TrTextArea from "./TrTextArea.svelte";
     import SpriteDD from "./sprite/SpriteDD.svelte";
     import IconDD from "./icon/IconDD.svelte";
+    import LinesDD from "./lines/LinesDD.svelte";
 
     export let selectedItem;
 
@@ -32,6 +33,10 @@
 
 {#if selectedItem.itemData.extra.command === 'icon'} 
 <tr><td><IconDD bind:extra={selectedItem.itemData.extra}/></td></tr>
+{/if}
+
+{#if selectedItem.itemData.extra.command === 'lines'} 
+<tr><td><LinesDD bind:extra={selectedItem.itemData.extra}/></td></tr>
 {/if}
 <!-- //////////////////////////////////////////////////////////////////////////////// -->
 

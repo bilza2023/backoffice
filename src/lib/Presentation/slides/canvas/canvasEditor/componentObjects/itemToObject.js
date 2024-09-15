@@ -19,6 +19,7 @@ import RTextObject from './RTextObject';
 import IconObject from './IconObject';
 import Image2Object from './Image2Object';
 import PieChartObject from './PieChartObject';
+import LinesObject from './LinesObject';
 
 
 export default function itemToObject(item,fnList={},spriteImgArray=[]){
@@ -75,6 +76,10 @@ switch (lookFor) {
     break;
     case 'line':
     selectedItem = new LineObject(item , fnList );
+    break;
+    
+    case 'lines':
+    selectedItem = new LinesObject(item , fnList );
     break;
 
     case 'rect':

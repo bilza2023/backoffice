@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Arrow Drawing - Improved</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="400"></canvas>
+
+    <script>
+        function drawShape(ctx, item) {
+            const { x, y, width, height, drawBorder, fill, color, fillBg, bgColor, lines } = item;
+
+            const percentToPixel = (percent, dimension) => Math.round((percent / 100) * dimension);
+
+            if (!isShapeClosed(lines)) {
+                console.error("The shape is not closed. Unable to fill.");
+                return;
+            }
+
+            ctx.save();
+
+            if (fillBg) {
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(x, y, width, height);
+            }
+
+            ctx.beginPath();
+
+            const startX = x + percentToPixel(lines[0].x, width);
+            const startY = y + percentToPixel(lines[0].y, height);
+            ctx.moveTo(startX, startY);
+
+            for (let i = 1; i < lines.length; i++) {
+                const lineX = x + percentToPixel(lines[i].x, width);
+                const lineY = y + percentToPixel(lines[i].y, height);
+                ctx.lineTo(lineX, lineY);
+            }
+
+            ctx.closePath();
+
+            if (fill) {
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+
+            if (drawBorder) {
+                ctx.strokeStyle = 'black';
+                ctx.stroke();
+            }
+
+            if (drawBorder) {
+                ctx.strokeStyle = 'blue';
+                ctx.strokeRect(x, y, width, height);
+            }
+
+            ctx.restore();
+        }
+
+        function isShapeClosed(lines) {
+            if (lines.length < 3) return false;
+            
+            const firstPoint = lines[0];
+            const lastPoint = lines[lines.length - 1];
+            
+            return (firstPoint.x === lastPoint.x && firstPoint.y === lastPoint.y);
+        }
+
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const item = {
+            x: 100,
+            y: 100,
+            drawBorder: true,
+            fill: true,
+            color: 'red',
+            fillBg: true,
+            bgColor: 'lightgray',
+            width: 300,
+            height: 200,
+            lines: [
+                {x: 0, y: 35},    // Start at left, 35% down
+                {x: 70, y: 35},   // Line to 70% across (top of stem)
+                {x: 70, y: 20},   // Up to 20% height (start of arrowhead)
+                {x: 100, y: 50},  // Diagonal to arrow tip
+                {x: 70, y: 80},   // Diagonal down (bottom of arrowhead)
+                {x: 70, y: 65},   // Back to stem
+                {x: 0, y: 65},    // Bottom of stem
+                {x: 0, y: 35}     // Close the shape
+            ]
+        };
+
+        drawShape(ctx, item);
+    </script>
+</body>
+</html>

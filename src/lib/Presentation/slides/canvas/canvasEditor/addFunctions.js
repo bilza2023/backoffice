@@ -54,12 +54,28 @@ function addLine( ){
 }
 
 function addLines( ){
-  const obj ={
-            "x": 3,
-            "y": 3,
-            "arr": "2,0,0,-1,3,2,-3,2,0,-1,-2,0,0,-2",
-            "lineWidth": getProp(1),
-  };
+  const obj = {
+    x: getProp(100),
+    y: getProp(100),
+    drawBorder: getProp(false),
+    fill: getProp(true),
+    color: getProp('yellow'),
+    fillBg: getProp(false),
+    bgColor: getProp('red'),
+    width:  getProp(300),
+    height: getProp(200),
+    lines: [ // they are actually vertices
+        {x: 0, y: 35},    // Start at left, 35% down
+        {x: 70, y: 35},   // Line to 70% across (top of stem)
+        {x: 70, y: 20},   // Up to 20% height (start of arrowhead)
+        {x: 100, y: 50},  // Diagonal to arrow tip
+        {x: 70, y: 80},   // Diagonal down (bottom of arrowhead)
+        {x: 70, y: 65},   // Back to stem
+        {x: 0, y: 65},    // Bottom of stem
+        {x: 0, y: 35}     // Close the shape
+   
+    ]
+  };  
   return  addReqExtraFields(obj,"lines","yellow") 
 }
 
