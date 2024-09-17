@@ -59,12 +59,12 @@ export default function getNewSlide(type) {
         canvasHeight : 360,
         cellHeight : 25,
         cellWidth : 25,
-        bgImg : null,
+        bgImg : 'system_images/bg_images/black_mat.jpg',
         bgGlobalAlpha : 1,
         xFactor : 0,
         yFactor : 0,
         ///////////////////
-        showGrid : true,
+        showGrid : false,
         gridLineWidth : 1,
         gridLineColor : 'gray'
     }

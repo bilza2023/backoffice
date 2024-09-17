@@ -1,11 +1,26 @@
 <script>
     //@ts-nocheck
+
 import Toolbar from "./Toolbar.svelte";
-import { API_URL,toast,Icons,ajaxPost } from '$lib/util';
+import { API_URL,toast,Icons,ajaxPost,browser } from '$lib/util';
 import Summary from "./Summary.svelte";
-
+import Canvas from "./Canvas.svelte";
+import DashboardClass from "./DashboardClass";
 let selectedTcode = 'fbise9math';
-
+let show =0;
+let dashboardClass = null;
+$: {
+    selectedTcode;
+    if (browser) {
+       let questions = JSON.parse(localStorage.getItem(selectedTcode + "_questions"));
+       let downloadTime = localStorage.getItem(`${selectedTcode}_download_time`);    
+                if(!questions || !downloadTime){
+                  throw new Error("no data found");
+                }else {
+      dashboardClass = new DashboardClass(selectedTcode,questions,downloadTime);
+                }
+    }
+}
 async function download(){
     try{
 
@@ -32,15 +47,21 @@ async function download(){
 
   
 </script>
+{#if dashboardClass}
+<div class="w-full min-h-screen   bg-gray-800 text-white text-lg">
+<Toolbar {download} bind:selectedTcode={selectedTcode} bind:show={show}/>
+<h1 class="w-full p-2 text-xl text-center">{selectedTcode}</h1>
 
-<div class="w-full min-h-screen   bg-gray-800 text-white text-lg ">
+{#if show ==0}
+<Summary {dashboardClass}/>
+{/if}
 
-    <Toolbar {download} bind:selectedTcode={selectedTcode}/>
-
-    
-<h1>{selectedTcode}</h1>
-
-<Summary {selectedTcode}/>
+{#if show ==1}
+<Canvas {dashboardClass}/>
+{/if}
 
 
-</div> 
+
+
+</div>
+{/if}

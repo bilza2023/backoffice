@@ -1,42 +1,39 @@
 <script>
     //@ts-nocheck
 
-    import {browser } from '$lib/util';
-export let selectedTcode;
-let data = null;
-let questions = [];
-// onMount(async () => {
-// // debugger;
-    
-// });
-$: {
-    selectedTcode;
-    if (browser) {
-        const storedValue = localStorage.getItem(`${selectedTcode}_download_time`);
-        if (storedValue) {
-            let storedTime = JSON.parse(storedValue);
-            let currentTime = Date.now();
-            let timeDifferenceMs = currentTime - storedTime;
-            let timeDifferenceHours = (timeDifferenceMs / (1000 * 3600)).toFixed(2);
-            console.log("Time difference in hours:", timeDifferenceHours);
-            data = timeDifferenceHours;
-        } else {
-            console.log("No stored value found for", selectedTcode);
-            // Handle the case when there's no stored value
-        }
-    }
+export let dashboardClass;
 
-    if(browser){
-        questions = JSON.parse(localStorage.getItem(`${selectedTcode}_questions`));
-    }
-}
 </script>
 
 
 
-<div class="flex flex-col justify-center">
-<h1>This data is {data} hours old</h1>
-<h1>Number of Questions: {questions.length}</h1>
+<div class="flex flex-col bg-gray-900 mx-10 p-4 rounded-md  justify-center">
+
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+       This data is {dashboardClass.getDownloadTime()} hours old
+   </div> 
+
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+    Number of Questions: {dashboardClass.length()}
+   </div> 
+
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+    Canvas slides: {dashboardClass.countSlideType('canvas')}
+   </div> 
+   
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+    Eq slides: {dashboardClass.countSlideType('Eqs')}
+   </div> 
+
+
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+    Grid slides: {dashboardClass.countSlideType('grid')}
+   </div> 
+
+   <div class="p-2 m-2 rounded-md bg-blue-900">
+    Table slides: {dashboardClass.countSlideType('TblStr')}
+   </div>
+
 
 
 </div>
