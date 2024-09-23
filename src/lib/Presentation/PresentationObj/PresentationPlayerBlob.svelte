@@ -6,6 +6,7 @@
 /**
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
  24-Aug 2024 amen to that!!
+ 23-sep-2024 : seperate how i get the data from player
 */
 import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '$lib/util'
 import { Presentation} from '$lib/Presentation';
@@ -13,12 +14,13 @@ import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
 import Toolbar from './toolbar/Toolbar.svelte';
 import {SOUND_FILE_PATH} from "$lib/util";
-// import {PresentationObj} from "$lib/Presentation";
-import PresentationObjUrl from "./PresentationObjUrl";
+
+import PresentationObjBlob from "./PresentationObjBlob";
+import audioData from './fbise9math2024_ch_1_ex_1.1_q_1.js'; // Import the base64 audio data
 
 
-let filename;
-let tcode;
+
+
 
 let ready=false;
 let showToolbarBool = false;
@@ -26,19 +28,13 @@ let presentationObj;
 //--pulse is local here not in PresentationObj there we have sound
 let pulse = 0;
 let currentSlide;
+
+export let questionData;
+export let tcode;
 ////////////////////////////////////////////////////////
 onMount(async ()=>{  
-filename = new URLSearchParams(location.search).get("filename");
-tcode = new URLSearchParams(location.search).get("tcode");
-////////////////////////
-const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
 
-  if (resp.ok){
-    const data = await resp.json();
-    // debugger;
-    let questionData = data.item;
-    presentationObj = new PresentationObjUrl(questionData ,
-    `${SOUND_FILE_PATH}${questionData.filename}.opus`);
+    presentationObj = new PresentationObjBlob(questionData,audioData);
     
     await presentationObj.loadSound();
     await presentationObj.inspector.fixEqEndTime();
@@ -46,15 +42,8 @@ const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename
     
     currentSlide = presentationObj.getCurrentSlide();
 
-    // console.log("presentationObj" , presentationObj );
-
     ready=true;
  
- }else {
-    toast.push("failed to load");
- } 
- //////////////////////////////////////////
-  // debugger;
  
 });
 

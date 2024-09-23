@@ -5,6 +5,7 @@ export default class DashboardClass{
     constructor(tcode,questions,downloadTime){
         this.tcode = tcode;
         this.questions = questions;
+        this.downloadTime = downloadTime;
 
     }
 
