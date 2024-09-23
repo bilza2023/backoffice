@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
     import { onMount } from 'svelte';
-    import { API_URL, ajaxPost , toast } from '$lib/util';
+    import { API_URL, ajaxPost , toast } from '../../../../../util';
     export let items = [];
     import {AreYouSure} from "sveltetools_bils/src/cmp";
     let selectedGroup = null;

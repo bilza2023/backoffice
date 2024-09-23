@@ -1,5 +1,5 @@
 //@ts-nocheck
-import {getNewItem} from '$lib/Presentation';
+import {getNewItem} from '../../../index.js';
 // getProp creates prop for any type number , boolean , string , we do not need seperate property class for int , string etc
 import getProp from '../getProp';
 /**

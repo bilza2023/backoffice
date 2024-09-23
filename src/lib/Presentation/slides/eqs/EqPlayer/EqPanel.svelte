@@ -3,7 +3,6 @@
 </svelte:head>
 <script>
 //@ts-nocheck
-// import { onMount } from '$lib/util';
  import { afterUpdate } from 'svelte';
 import CodeTxt from './CodeTxt.svelte';
 

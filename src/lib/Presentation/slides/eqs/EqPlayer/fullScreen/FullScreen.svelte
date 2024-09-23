@@ -1,7 +1,7 @@
 <script>
 //@ts-nocheck
 // import HdgImg from "./HdgImg.svelte";
-import {onMount} from '$lib/util';
+import {onMount} from 'svelte';
 import FullScreenPanel from './FullScreenPanel.svelte'; 
 // import {currentEqStore} from "../store";
 

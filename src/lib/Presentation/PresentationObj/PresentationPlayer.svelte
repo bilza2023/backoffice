@@ -14,7 +14,7 @@ import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
 import Toolbar from './toolbar/Toolbar.svelte';
 import {SOUND_FILE_PATH} from "../util";
-// import {PresentationObj} from "$lib/Presentation";
+
 import PresentationObjUrl from "./PresentationObjUrl";
 
 

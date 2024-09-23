@@ -1,10 +1,10 @@
 <script>
 //@ts-nocheck
-import {ThemeDD} from '$lib/Presentation';
+// import {ThemeDD} from '';
 export let start;
 export let stop;
 export let pulse;
-export let callback;
+// export let callback;
 
 </script>
 
@@ -15,4 +15,4 @@ export let callback;
 
 
 
-<ThemeDD  {callback}/>
+<!-- <ThemeDD  {callback}/> -->

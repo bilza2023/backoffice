@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {Icons,onMount} from '$lib/util';
+import {Icons,onMount} from '../../../../../util';
 // import {HdgWithIcon} from 'sveltetools_bils/src/cmp';
 
 export let fs;

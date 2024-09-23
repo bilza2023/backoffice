@@ -1,6 +1,5 @@
 <script>
 //@ts-nocheck
-// import {toast} from '$lib/util';
 import Toolbar from './Toolbar.svelte';
 import Row from './Row.svelte';
 
