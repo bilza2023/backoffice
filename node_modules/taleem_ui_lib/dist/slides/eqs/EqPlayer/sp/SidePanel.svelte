@@ -1,6 +1,6 @@
 <script>
 //@ts-nocheck
-import {onMount} from '$lib/util';
+import {onMount} from 'svelte';
 import ImgCodeTxt from "./ImgCodeTxt.svelte";
 
 export let items;

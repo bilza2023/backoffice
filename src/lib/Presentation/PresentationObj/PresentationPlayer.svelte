@@ -7,12 +7,13 @@
  6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
  24-Aug 2024 amen to that!!
 */
-import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '$lib/util'
-import { Presentation} from '$lib/Presentation';
+import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '../util'
+
+import Presentation from '../Presentation.svelte';
 import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
 import Toolbar from './toolbar/Toolbar.svelte';
-import {SOUND_FILE_PATH} from "$lib/util";
+import {SOUND_FILE_PATH} from "../util";
 // import {PresentationObj} from "$lib/Presentation";
 import PresentationObjUrl from "./PresentationObjUrl";
 

@@ -1,6 +1,6 @@
 <script>
     //@ts-nocheck
-    import { Icons } from "$lib/util";   
+    import { Icons } from "../../../util";   
     import { SmallBtnToolbar } from "sveltetools_bils/src/cmp"; 
     import Groupdiv from "./Groupdiv.svelte"; 
     export let items;

@@ -1,6 +1,6 @@
 <script lang="ts">
     //@ts-nocheck
-    import { Icons ,goto} from '$lib/util';
+    import { Icons ,goto} from '../../util';
     import PlayButtons from './PlayButtons.svelte';
     import Slider from './Slider.svelte';
     import { fade } from 'svelte/transition';

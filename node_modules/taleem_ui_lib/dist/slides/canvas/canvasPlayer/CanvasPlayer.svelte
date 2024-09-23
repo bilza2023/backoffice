@@ -1,7 +1,6 @@
 <script>
     //@ts-nocheck
-    import { onMount } from "$lib/util";
-    import { onDestroy } from "svelte";
+    import { onMount,onDestroy } from "svelte";
     import DrawLibInterpretor from "../drawLib/drawLibInterpretor";
     import DrawLib from "../drawLib/drawLib";
     import itemToObject from "../canvasEditor/componentObjects/itemToObject";

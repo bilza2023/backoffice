@@ -9,7 +9,7 @@ import CommandUi from './dialogueBoxModule/CommandUi.svelte';
 // import PremadeCommad from './json-ui/commands/PremadeCommad.svelte';  
 import { toast } from "@zerodevx/svelte-toast";
 import SaveSlideTemplate from './SaveSlideTemplate.svelte'   
-import {getNewItem} from '$lib/Presentation';
+import {getNewItem} from '../../../index.js';
 import itemToObject from "./componentObjects/itemToObject";
 ////////////////////////////////////////////////////////////////////////
 

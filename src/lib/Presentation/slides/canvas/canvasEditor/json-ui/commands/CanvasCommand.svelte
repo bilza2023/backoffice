@@ -1,6 +1,6 @@
 <script>
     //@ts-nocheck
-    import {Icons} from '$lib/util';
+    import {Icons} from '../../../../../util';
     import CommonCommands from "./CommonCommands.svelte";   
 import TrNo from "./TrNo.svelte";   
 import TrText from "./TrText.svelte";   

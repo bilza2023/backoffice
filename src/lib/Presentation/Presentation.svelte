@@ -1,6 +1,6 @@
 <script>
     //@ts-nocheck
-    import { onMount } from "$lib/util";
+    import { onMount } from 'svelte';
     import TblStr from "./slides/TblStr.svelte";
     import TblStrEd from "./slides/TblStrEd.svelte";
     import EqPlayer from "./slides/eqs/EqPlayer/EqPlayer.svelte";

@@ -1,6 +1,6 @@
 <script>
   //@ts-nocheck
-  import { Icons ,goto} from '$lib/util';
+  import { Icons ,goto} from '../../util';
   // presentationObj.soundLoaded and
   // presentationObj.isPlaying 
   export let start;

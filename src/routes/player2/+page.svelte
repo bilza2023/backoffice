@@ -1,7 +1,7 @@
 <script>
   //@ts-nocheck
 
-  import {PresentationPlayer} from "$lib/Presentation";
+  import {PresentationPlayer} from "taleem_ui_lib";
 </script>
 
 

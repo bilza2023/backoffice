@@ -8,12 +8,12 @@
  24-Aug 2024 amen to that!!
  23-sep-2024 : seperate how i get the data from player
 */
-import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '$lib/util'
-import { Presentation} from '$lib/Presentation';
+import {onMount,toast,RESOURCE_URL,API_URL, ajaxPost } from '../util';
+import Presentation from '../Presentation.svelte';
 import { fade } from 'svelte/transition';
 import { Howl } from 'howler';
 import Toolbar from './toolbar/Toolbar.svelte';
-import {SOUND_FILE_PATH} from "$lib/util";
+import {SOUND_FILE_PATH} from "../util";
 
 import PresentationObjBlob from "./PresentationObjBlob";
 import audioData from './fbise9math2024_ch_1_ex_1.1_q_1.js'; // Import the base64 audio data

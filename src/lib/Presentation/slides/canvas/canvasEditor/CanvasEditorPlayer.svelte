@@ -1,6 +1,6 @@
 <script>
   //@ts-nocheck
-  import { onMount } from "$lib/util";
+  import { onMount } from "../../../util";
   // import getSelectedItem from "./getSelectedItem";
   import { onDestroy } from "svelte";
   import DrawLibInterpretor from "../drawLib/drawLibInterpretor";

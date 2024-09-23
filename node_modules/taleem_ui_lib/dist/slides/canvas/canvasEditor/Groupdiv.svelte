@@ -1,6 +1,6 @@
 <script>
     //@ts-nocheck
-    import {ajaxPost,API_URL,toast} from "$lib/util";
+    import {ajaxPost,API_URL,toast} from "../../../util";
     export let items;
     let groupItems = [];
     let selectedItem = '';
