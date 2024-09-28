@@ -33,6 +33,7 @@ $:{
 }
 async function init(){
     ready = false;
+    debugger;
         //tcodeObj is local
         let tcodeObj = await AppConsts.getTcode(tcode);
     //tcode must have 1 chapter. every chap must have atleast 1 ex

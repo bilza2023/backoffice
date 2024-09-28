@@ -1,13 +1,14 @@
 <script>
 //@ts-nocheck  
+
 import { Card, BtnWIconSm, PageWrapper, HdgWithIcon } from 'sveltetools_bils/src/cmp';
 
 import { API_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
 import Nav from '$lib/appComp/Nav.svelte';
 import {testFunction,AppConsts} from "taleemtools";
 
-// import {MyComponent} from  'sveltetools_bils';
-// const CardComponent = cmp.Card;
+
+
 let isLogin = false;
 let isAdmin = false;
 onMount(async () => {
@@ -66,6 +67,7 @@ onMount(async () => {
   </div>
  <div class="w-3/12">
   <Card  url="/syllabusByChapter" title="9 Math By Chapter"/>
+  
   </div>
 </div>
 </PageWrapper>
