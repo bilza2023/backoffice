@@ -33,7 +33,7 @@ $:{
 }
 async function init(){
     ready = false;
-    debugger;
+    // debugger;
         //tcodeObj is local
         let tcodeObj = await AppConsts.getTcode(tcode);
     //tcode must have 1 chapter. every chap must have atleast 1 ex
@@ -52,7 +52,7 @@ function convertToUrlFriendlyName(name) {
 }
 // G1Th@b2024!#
 async function addQuestion(){
- debugger;
+//  debugger;
 if(!tcode || tcode == null || tcode == undefined){
     toast.push("missing tcode");
     return;
