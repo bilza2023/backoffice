@@ -147,7 +147,7 @@ async function  deleteSlideTemplate(id){
  catch (error) {
       console.error(error);
    
-      
+        //...........................
     }
 }
 ///////////////////////////////////////////////
