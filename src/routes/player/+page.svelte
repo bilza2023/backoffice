@@ -12,6 +12,7 @@ import {browser,onMount,ajaxPost,toast,API_URL} from '$lib/util';
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
 import {Presentation}  from '$lib/Presentation';
+import {db}  from '$lib/ajax';
 
 import PlayButtons from './PlayButtons.svelte';
 // import readSlides from '$lib/tdf/readSlides';
@@ -36,16 +37,17 @@ let soundFile;
 let filename;
 
 onMount(async ()=>{  
-//  id = new URLSearchParams(location.search).get("id");
+ id = new URLSearchParams(location.search).get("id");
  filename = new URLSearchParams(location.search).get("filename");
  tcode = new URLSearchParams(location.search).get("tcode");
- const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
+//  const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
 
+   const resp = await db.tcode.getOne(id);
 
  if (resp.ok){
-  const data = await resp.json();
+    // debugger;
+    const question = await resp.json();
   
- const question = data.item;
     slides = question.slides;
     getStopTime(slides);
     currentSlide = slides[0];

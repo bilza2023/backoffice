@@ -44,7 +44,7 @@ async function save(){
   if (item.name && item.name !== ''){
     item.name = convertToUrlFriendlyName(item.name);
   }   
-  //must add tcode
+  // debugger;
   item.tcode = tcode;
  saveFinal(slides,tcode,id,item);
 } 
@@ -246,17 +246,12 @@ function copySlide(){
 onMount(async ()=>{
   try {
    id = new URLSearchParams(location.search).get("id");
-   filename = new URLSearchParams(location.search).get("filename");
-   tcode = new URLSearchParams(location.search).get("tcode");
-  //  const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
    const resp = await db.tcode.getOne(id);
    
  if (resp.ok){
-   
    item = await resp.json();
-  //  item =  data.item;
-
-  
+   filename = item.filename;
+   tcode = item.tcode;
 ///*******************************--upgrade to version 0.1*/
   if(!item.adminComments || !item.adminComments == 'fixed'){
     for (let i = 0; i < item.slides.length; i++) {
@@ -267,9 +262,7 @@ onMount(async ()=>{
   item.adminComments = 'fixed'; //--very important
  }
 ////*****************************************************************/
-
    slides = item.slides;
-  //////////////=========================
   filename = item.filename;
   soundFile =  SOUND_FILE_PATH + item.filename + '.opus';
  

@@ -76,7 +76,7 @@ async function save(e,question){
 
                     
                     <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                        <a href= {`/editor?tcode=${tcode}&filename=${question.filename}&id=${question._id}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
+                        <a href= {`/editor?id=${question._id}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
                     </div>
                     <!-- {/if} -->
         

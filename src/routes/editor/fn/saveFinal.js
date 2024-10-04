@@ -1,11 +1,13 @@
 //@ts-nocheck
 // import stringify from "./stringify";
-import {toast,API_URL,ajaxPost} from '$lib/util';
+import {toast} from '$lib/util';
+import {db} from '$lib/ajax';
 
 
 export default async function saveFinal(slides,tcode,id,item){
   // throw new Error("Not permitted to save");
 //--first slide start time = 0;
+
 if (slides && slides.length > 0){
   slides[0].startTime = 0;
   updateSlideStartTimes(slides);
@@ -13,12 +15,13 @@ if (slides && slides.length > 0){
 
 const question = item;
 question.slides = slides;
-///////////////////////////////////////////////////////////////////
-  const resp = await ajaxPost( `${API_URL}/tcode/update` , { 	question } );
+
+  const resp = await db.tcode.update(question._id, question);
 
   if(resp.ok){
-    toast.push('saved');}
-    else {toast.push('failed to saved');
+    toast.push('saved');
+  }else {
+    toast.push('failed to saved');
   }
 }
 
