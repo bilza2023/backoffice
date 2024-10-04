@@ -12,6 +12,7 @@
   import fix from "./fix.js";
 import version0_1Upgrade from "./v0.1Upgrade/version0_1Upgrade"
   import {SOUND_FILE_PATH} from "$lib/util";
+  import {db} from "$lib/ajax";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
  let currentSlideIndex;
@@ -257,14 +258,16 @@ function copySlide(){
 
 onMount(async ()=>{
   try {
+   id = new URLSearchParams(location.search).get("id");
    filename = new URLSearchParams(location.search).get("filename");
    tcode = new URLSearchParams(location.search).get("tcode");
-   const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
+  //  const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
+   const resp = await db.tcode.getOne(id);
    
  if (resp.ok){
    
-   const data = await resp.json();
-   item =  data.item;
+   item = await resp.json();
+  //  item =  data.item;
 
   
 ///*******************************--upgrade to version 0.1*/

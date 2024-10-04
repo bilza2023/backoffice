@@ -76,20 +76,20 @@ async function save(e,question){
 
                     
                     <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                        <a href= {`/editor?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
+                        <a href= {`/editor?tcode=${tcode}&filename=${question.filename}&id=${question._id}`} target="_blank">{Icons.HAMMER_AND_WRENCH}</a>
                     </div>
                     <!-- {/if} -->
         
                     {#if question.status !== 'empty' }
                         <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                        <a href= {`/player?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.START}</a>
+                        <a href= {`/player?tcode=${tcode}&filename=${question.filename}&id=${question._id}`} target="_blank">{Icons.START}</a>
                         </div>
                     {/if}
                     
     
                     {#if question.status !== 'empty' }
                     <div class="bg-gray-800 rounded-md m-1 p-1 text-xs px-2">
-                    <a href= {`/player2?tcode=${tcode}&filename=${question.filename}`} target="_blank">{Icons.COMPUTER}</a>
+                    <a href= {`/player2?tcode=${tcode}&filename=${question.filename}&id=${question._id}`} target="_blank">{Icons.COMPUTER}</a>
                     </div>
                     {/if}
     
