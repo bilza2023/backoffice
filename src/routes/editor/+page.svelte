@@ -84,7 +84,7 @@ async function moveUp(index) {
     const tempEndTime = slides[index].endTime;
     slides[index].endTime = slides[index - 1].endTime;
     slides[index - 1].endTime = tempEndTime;
-
+    ajax
     setCurrentSlideIndex(index - 1);
   }
 }
