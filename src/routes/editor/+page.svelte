@@ -102,15 +102,12 @@ slides = [...slides];
 /////////////////////////////////////////////////// 
 async function getSlideTemplates(){
   try {
-   const resp = await ajaxPost( `${API_URL}/slideTemplate/get` , { });
+  //  const resp = await ajaxPost( `${API_URL}/slideTemplate/get` , { });
+   const resp = await  db.slideTemplate.get();
    
     if (resp.ok){
-      const data = await resp.json();
-      const datadata = data.data;
-      slideTemplateCollection = data.data.slides;
-      // debugger;
-       console.log("slideTemplates loaded");
-      
+      const incomming = await resp.json();
+      slideTemplateCollection = incomming.data;
       }
 
 }catch(e){
@@ -132,18 +129,13 @@ const st = getNewStartTime();
 async function  deleteSlideTemplate(id){
   
   try {
-   const resp = await ajaxPost( `${API_URL}/slideTemplate/delete` , { id});
+  //  const resp = await ajaxPost( `${API_URL}/slideTemplate/delete` , { id});
+   const resp = await db.slideTemplate.delete(id);
    
  if (resp.ok){
-   
-   const data = await resp.json();
-   if(data.ok){
     toast.push("Slide Template has been deleted");
     showSlideTemplateBrowser=false;
    }
-
-  }
-
  } 
  catch (error) {
       console.error(error);
@@ -160,21 +152,16 @@ newCurrentSlide.startTime = 0;
 newCurrentSlide.endTime = 10;
 ////save to database
 try {
-   const resp = await ajaxPost( `${API_URL}/slideTemplate/create` , { 
+   const resp = await db.slideTemplate.create({ 
     name , 
     description ,
-     slide : newCurrentSlide
+    slide : newCurrentSlide
     });
    
- if (resp.ok){
-   
-   const data = await resp.json();
-   item =  data.item;
-   if(item){
-    toast.push("Current slide has been saved as template");
-   }
-  //  console.log("item",item);
-  }
+    if (resp.ok){
+      item = await resp.json();
+        toast.push("Current slide has been saved as template");
+      }
 
  } 
  catch (error) {
