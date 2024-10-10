@@ -1,19 +1,21 @@
 <script>
 //@ts-nocheck
-import { toast,API_URL,ajaxPost } from "$lib/util";
+import { toast} from "$lib/util";
 import TcodeDd from "./TcodeDD.svelte";
 let id;
 let forced=false;
 let classNo =9;
 let tcode='fbise10math';
+import { db } from "$lib/ajax";
 
 async function deleteQuestion(){
-  debugger;
-  if(!tcode || tcode == null || tcode == undefined){
-    toast.push("missing tcode");
-    return;
-}
-  const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ id,forced });
+//   debugger;
+//   if(!tcode || tcode == null || tcode == undefined){
+//     toast.push("missing tcode");
+//     return;
+// }
+//   const response = await ajaxPost(`${API_URL}/tcode/delete` ,{ id,forced });
+  const response = await await db.tcode.delete(id);
 
     if (response.ok) {
         const data = await response.json();
