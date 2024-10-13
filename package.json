@@ -28,6 +28,7 @@
 		"mathjs": "^13.2.0",
 		"svelte-katex": "^0.1.2",
 		"sveltetools_bils": "^0.0.3",
+		"taleempresentation": "^0.0.3",
 		"taleemtools": "^1.0.5"
 	}
 }
