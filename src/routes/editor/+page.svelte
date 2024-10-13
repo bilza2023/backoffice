@@ -2,7 +2,9 @@
   //@ts-nocheck
   import { onMount,ajaxPost ,API_URL,toast} from '$lib/util';
   import Toolbar from './toolbar/Toolbar.svelte';
-  import {Presentation,getNewSlide,getNewItem}  from '$lib/Presentation';
+  import {Presentation,getNewSlide,getNewItem,PresentationModeEditor}  from '$lib/Presentation';
+
+  
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
   import CommentsBox from './CommentsBox.svelte';
@@ -323,7 +325,7 @@ else {throw new Error('Failed to load');}
       {/if} 
     
       <div class={`p-2 ml-1 min-h-screen text-center ${showSidePanel ? "w-11/12" : "w-full"}`}>
-        <Presentation {currentSlide} displayMode={false} currentTime={currentTime} tcode={tcode}  {saveCurrentSlideAsSlideTemplate}/>
+        <PresentationModeEditor {currentSlide} displayMode={false} currentTime={currentTime} tcode={tcode}  {saveCurrentSlideAsSlideTemplate}/>
 
     
         <br>

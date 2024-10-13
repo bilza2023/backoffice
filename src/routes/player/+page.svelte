@@ -11,7 +11,7 @@ import {browser,onMount,ajaxPost,toast,API_URL} from '$lib/util';
 
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
-import {Presentation}  from '$lib/Presentation';
+import {PresentationModeUi}  from '$lib/Presentation';
 import {db}  from '$lib/ajax';
 
 import PlayButtons from './PlayButtons.svelte';
@@ -133,7 +133,7 @@ function setCurrentSlide(){
 
 {#if currentSlide}
 
-    <Presentation {currentSlide} {theme}   currentTime={pulse} {setPulse} {tcode}/>
+    <PresentationModeUi {currentSlide} {theme}   currentTime={pulse} {setPulse} {tcode}/>
  
  {/if}
 
