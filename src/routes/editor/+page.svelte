@@ -14,7 +14,7 @@
   // import fix from "./fix.js";
 import version0_1Upgrade from "./v0.1Upgrade/version0_1Upgrade"
   import {SOUND_FILE_PATH} from "$lib/util";
-  import {db} from "$lib/ajax";
+  import {db} from "$lib/db";
 ///////////////////////////////////////////////////////////  
  let showEditDlg=false;
  let currentSlideIndex;

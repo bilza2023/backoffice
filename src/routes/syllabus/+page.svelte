@@ -3,8 +3,8 @@
   import { PageWrapper,HdgWithIcon } from 'sveltetools_bils/src/cmp';
   import { API_URL,onMount,toast,Icons,goto,checkToken,checkAdminToken,ajaxPost } from '$lib/util';
 
-  import {db} from "$lib/ajax";
-  
+  import {db} from "$lib/db";
+
   import Nav from '$lib/appComp/Nav.svelte';
   
   
@@ -19,9 +19,10 @@
   
 onMount(async () => {
 try{
-    // debugger;
-    tcode = new URLSearchParams(location.search).get("tcode");
-
+  tcode = new URLSearchParams(location.search).get("tcode");
+  
+  debugger;
+    // const resp = await tcodeAjax.get(`limit=1500&tcode=${tcode}&fields=-slides`);
     const resp = await db.tcode.get(`limit=1500&tcode=${tcode}&fields=-slides`);
 
 /////////////////////    

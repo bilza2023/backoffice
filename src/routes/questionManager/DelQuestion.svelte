@@ -6,7 +6,7 @@ let id;
 let forced=false;
 let classNo =9;
 let tcode='fbise10math';
-import { db } from "$lib/ajax";
+import { db } from "$lib/db";
 
 async function deleteQuestion(){
 //   debugger;

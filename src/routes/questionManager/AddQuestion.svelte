@@ -5,7 +5,7 @@
     import TcodeLis from "./TcodeList.svelte";
     import ChaptersDD from './ChaptersDD.svelte';
     import { AppConsts } from "taleemtools";
-    import { db } from "$lib/ajax";
+    import { db } from "$lib/db";
     
     let tcode = 'fbise9math';
     let chapters;

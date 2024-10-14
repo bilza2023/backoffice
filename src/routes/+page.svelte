@@ -5,7 +5,7 @@
     
     import { API_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
     import Nav from '$lib/appComp/Nav.svelte';
-    import {testFunction,AppConsts} from "taleemtools";
+    import {AppConsts} from "taleemtools";
     
     
     

@@ -2,6 +2,7 @@
 	"name": "backoffice",
 	"version": "0.0.2",
 	"private": true,
+	"type" : "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -22,13 +23,13 @@
 		"tailwindcss": "^3.4.9",
 		"vite": "^5.0.3"
 	},
-	"type": "module",
 	"dependencies": {
 		"howler": "^2.2.4",
 		"mathjs": "^13.2.0",
+		"simplerestclient2": "^1.0.5",
 		"svelte-katex": "^0.1.2",
 		"sveltetools_bils": "^0.0.3",
 		"taleempresentation": "^0.0.6",
-		"taleemtools": "^1.0.5"
+		"taleemtools": "^1.0.7"
 	}
 }

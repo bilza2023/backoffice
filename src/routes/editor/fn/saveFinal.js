@@ -1,7 +1,7 @@
 //@ts-nocheck
 // import stringify from "./stringify";
 import {toast} from '$lib/util';
-import {db} from '$lib/ajax';
+import {db} from '$lib/db';
 
 
 export default async function saveFinal(slides,tcode,id,item){
