@@ -2,16 +2,16 @@
   //@ts-nocheck
   import { onMount,ajaxPost ,API_URL,toast} from '$lib/util';
   import Toolbar from './toolbar/Toolbar.svelte';
-  import {Presentation,getNewSlide,getNewItem,PresentationModeEditor}  from '$lib/Presentation';
+  import {Presentation,getNewSlide,getNewItem,PresentationModeEditor}  from 'taleempresentation';
 
   
   import saveFinal from './fn/saveFinal';
   import LeftPanel from './LeftPanel.svelte';
   import CommentsBox from './CommentsBox.svelte';
   import EditDlg from './EditDlg.svelte';
-  import getTemplateItemsNextra from "$lib/Presentation/slides/canvas/template_slides/getTemplateItemsNextra";
+  
   import TemplatesDlg from './TemplatesDlg.svelte';
-  import fix from "./fix.js";
+  // import fix from "./fix.js";
 import version0_1Upgrade from "./v0.1Upgrade/version0_1Upgrade"
   import {SOUND_FILE_PATH} from "$lib/util";
   import {db} from "$lib/ajax";
@@ -197,23 +197,23 @@ function getNewStartTime(){
  }
 }
 
-async function addTemplate(template_name){
-/////////--addNewSlide ---seq
-const st = getNewStartTime();
- const newSlide = getNewSlide('canvas');
- newSlide.startTime = st;
- newSlide.endTime = st+10;
- //....
- let items_extra = getTemplateItemsNextra(template_name);
- newSlide.items = items_extra.items;
- newSlide.extra = items_extra.extra;
- //....
- slides = [...slides, newSlide];
- setCurrentSlideIndex(slides.length-1);
- currentSlide = slides[currentSlideIndex];
- show = false;
- ////////////////////////
-}
+// async function addTemplate(template_name){
+// /////////--addNewSlide ---seq
+// const st = getNewStartTime();
+//  const newSlide = getNewSlide('canvas');
+//  newSlide.startTime = st;
+//  newSlide.endTime = st+10;
+//  //....
+//  let items_extra = getTemplateItemsNextra(template_name);
+//  newSlide.items = items_extra.items;
+//  newSlide.extra = items_extra.extra;
+//  //....
+//  slides = [...slides, newSlide];
+//  setCurrentSlideIndex(slides.length-1);
+//  currentSlide = slides[currentSlideIndex];
+//  show = false;
+//  ////////////////////////
+// }
 
 async function  addNew(slideType){
   const st = getNewStartTime();
@@ -273,7 +273,7 @@ onMount(async ()=>{
     currentSlide = slides[0]
    
     }
-    fix(slides);
+    // fix(slides);
     getSlideTemplates(); // do not wait;
   }
 
@@ -296,7 +296,7 @@ else {throw new Error('Failed to load');}
  {#if item }
     <Toolbar bind:slides={slides} {id} {addNew} {currentSlideIndex} {delCurSlide} {save} bind:showSidePanel={showSidePanel} bind:show={show}
     {setCurrentSlideIndex}  bind:item={item}  {soundFile}  bind:currentTime={currentTime} {tcode} bind:showEditDlg={showEditDlg} {duplicateCurrentSlide} {pasteSlide} {copySlide}
-    {addTemplate}
+   
     bind:showSlideTemplateBrowser={showSlideTemplateBrowser}
     />  
 {/if}

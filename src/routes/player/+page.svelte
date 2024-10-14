@@ -11,7 +11,7 @@ import {browser,onMount,ajaxPost,toast,API_URL} from '$lib/util';
 
 //import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
 
-import {PresentationModeUi}  from '$lib/Presentation';
+import {PresentationModeUi}  from 'taleempresentation';
 import {db}  from '$lib/ajax';
 
 import PlayButtons from './PlayButtons.svelte';

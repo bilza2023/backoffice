@@ -5,7 +5,7 @@
     import { API_URL, onMount,toast,Icons,goto,checkToken,checkAdminToken} from '$lib/util';
     import Nav from '$lib/appComp/Nav.svelte';
     import {testFunction,AppConsts} from "taleemtools";
-    import PresentationPlayerBlob from '$lib/Presentation/PresentationObj/PresentationPlayerBlob.svelte';
+    import PresentationPlayerBlob from 'taleempresentation';
     let isLogin = false;
     let isAdmin = false;
     // import * as Popover from "$lib/components/ui/popover"; 
