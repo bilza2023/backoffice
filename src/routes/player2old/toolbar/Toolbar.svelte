@@ -53,7 +53,7 @@ goto('/');
       style='background-color:#065d7f' on:click={home}>{Icons.HOUSE}</button>
     
 <!-- //////////////////////////////////   -->
-{#if ready } 
+<!-- {#if ready }  -->
 <!-- //////////////////////////////////   -->
       <button class="p-1 rounded-sm bg-green-700 text-white text-sm " 
       on:click={start} style='background-color:#00A6ED '>▶ </button>
@@ -66,10 +66,10 @@ goto('/');
         on:click={stop}>■ </button>
 
 <!-- ///////////////////////////////////////////// -->
-{:else} 
+<!-- {:else} 
 <button class="p-1  bg-orange-700 text-yellow-500 text-xs rounded-md" 
   style='background-color:#00A6ED '>loading..</button>
-{/if} 
+{/if}  -->
 <!-- ///////////////////////////////////////////// -->
     
 <input type="range" min="0" max="1" step='0.1' value="0.8" on:input={(e)=>setVolume(e.target.value)} />
