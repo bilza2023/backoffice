@@ -1,6 +1,6 @@
 <script>
   //@ts-nocheck
-  import { onMount,ajaxPost ,API_URL,toast} from '$lib/util';
+  import { onMount,toast} from '$lib/util';
   import Toolbar from './toolbar/Toolbar.svelte';
   import {Presentation,getNewSlide,getNewItem,PresentationModeEditor}  from 'taleempresentation';
 

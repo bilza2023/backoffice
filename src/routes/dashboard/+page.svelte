@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     //@ts-nocheck
 
 import Toolbar from "./Toolbar.svelte";
@@ -64,4 +64,4 @@ async function download(){
 
 
 </div>
-{/if}
+{/if} -->

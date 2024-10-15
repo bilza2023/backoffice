@@ -1,10 +1,10 @@
 <script>
     //@ts-nocheck
     import { Card } from 'sveltetools_bils/src/cmp';
-    import {Icons,toast,ajaxPost,API_URL ,onMount} from '$lib/util';
+    import {Icons,toast ,onMount} from '$lib/util';
     import FilterByStatusBar from "./FilterByStatusBar.svelte";
     import  QuestionsFlexBox from "./QuestionsFlexBox.svelte";
-
+    import {db} from "$lib/db";
     export let tcode;
     export let questions;
     
@@ -29,7 +29,7 @@
 async function save(e,question){
     question.sortOrder = e.target.value;
 
-  const resp = await ajaxPost( `${API_URL}/tcode/update` , { 	question } );
+  const resp = await db.tcode.update( question._id ,  	question  );
     if(resp.ok){
         resort();
     toast.push('saved');}

@@ -1,140 +1,80 @@
+
 <svelte:head>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
 </svelte:head>
 <script>
-//@ts-nocheck
-/**
- 6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
- 23-Aug-2024 (after 10 months)
+
+//@ts-nocheck 
+/** 6-Nov-2023 : If the core data-structure of a software is decided the software is decided.
+ 24-Aug 2024 amen to that!!
 */
-import {browser,onMount,ajaxPost,toast,API_URL} from '$lib/util';
 
-//import { themes} from '../../../node_modules/taleem_ui_lib/dist/index.js';
+import { toast } from '@zerodevx/svelte-toast';
+import { onMount } from 'svelte';
+import { fade } from 'svelte/transition';
+import {db} from "$lib/db";
 
-import {PresentationModeUi}  from 'taleempresentation';
-import {db}  from '$lib/db';
-
-import PlayButtons from './PlayButtons.svelte';
-// import readSlides from '$lib/tdf/readSlides';
-import Slider from './Slider.svelte';
-
-let slides;
-let id;
-let tcode;
-let theme =  {
-    description     : '',
-    primaryColor    : '#BC6C25',
-    secondaryColor  : '#DDA15E',
-    backgroundColor : '#FEFAE0',
-    textColor       : '#283618',
-    highlightColor  : '#606C38',
-
-};
-let hydrateInterval=null;
-let stopTime = null;
-let soundFile;
+import {PlayerToolbar,PresentationObjNS,PresentationModeUi} from "taleempresentation";
 
 let filename;
+let presentationObj;
+let pulse = 0;
 
+let ready=false;
+let showToolbarBool = false;
+let interval;
+////////////////////////////////////////////////////////
 onMount(async ()=>{  
- id = new URLSearchParams(location.search).get("id");
- filename = new URLSearchParams(location.search).get("filename");
- tcode = new URLSearchParams(location.search).get("tcode");
-//  const resp = await ajaxPost( `${API_URL}/tcode/getByFilename` , { tcode,filename});
+  filename = new URLSearchParams(location.search).get("filename");
+  //---DB access
+  const resp = await db.tcode.get(`filename=${filename}`)
 
-   const resp = await db.tcode.getOne(id);
+  if (resp.ok){
+    const incomming = await resp.json();
+    let questionData = incomming.data[0]; //get data out
 
- if (resp.ok){
-    // debugger;
-    const question = await resp.json();
-  
-    slides = question.slides;
-    getStopTime(slides);
-    currentSlide = slides[0];
+    presentationObj = new PresentationObjNS(questionData);
+    await presentationObj.init();
     
-} else {
-    throw new Error('Failed to load');}
-  
-
-// hydrate();
+    ready=true; 
+ }else {
+    toast.push("failed to load");
+ } 
 });
-
-async function   getStopTime(slides){
- if(slides.length > 0){
-    if (slides[slides.length -1].endTime 
-    && slides[slides.length -1].endTime > 0 ){
-        stopTime = slides[slides.length -1].endTime;
-        }else {
-        stopTime = 600;
-    }
- }
-}
-
-let interval=null;
-let pulse=0;
-let currentSlide = null;
-
-function setPulse(time){
-pulse = time;
-// if(pulse > stopTime){stop();return;}
-setCurrentSlide();
-}
-function applyTheme(themeKey){
-// debugger;
-theme = {
-        description     : '',
-        primaryColor    : '#BC6C25',
-        secondaryColor  : '#DDA15E',
-        backgroundColor : '#FEFAE0',
-        textColor       : '#283618',
-        highlightColor  : '#606C38',
-
-    };
-// console.log(theme);
+////////////////////////////////////////////
+function start(){
+    interval = setInterval(gameloop , 500);
 }
 function gameloop(){
-    pulse++;
-    if(pulse > stopTime){stop();return;}
-    setCurrentSlide();
+   pulse = Math.floor(presentationObj.pulse());
 }
-
-
-function start(){
-    interval= setInterval(gameloop,1000);
-}
-
 function stop(){
-    clearInterval(interval);
-    pulse = 0;
+  clearInterval(interval);
 }
-
-function setCurrentSlide(){
-//  debugger;
- for (let i = 0; i < slides.length; i++) {
- const slide = slides[i];
-        if (pulse >= slide.startTime && pulse < slide.endTime ){
-       currentSlide = slide ;
-        return; 
-        }
- }
+function setPulse(value){
+  presentationObj.setPulse(value);
+}
+////////////////////////////////////////////
+function showToolbar(){
+  if (showToolbarBool == false){
+    showToolbarBool = true;  
+    setTimeout(() => {
+    showToolbarBool = false;
+  }, 5000);
+  } 
 }
 </script> 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div class='bg-gray-800 text-white w-full min-h-screen' 
+style='position: fixed; top: 0;' on:mousemove={showToolbar} >
 
-<div class='bg-gray-800 text-white w-full min-h-screen' style='position: fixed; top: 0;'>
-
-<div class='flex justify-start sticky top-0 w-full p-1 m-0 bg-gray-700'>
-<PlayButtons   {start} {stop} callback={applyTheme} />
-
-{#if currentSlide}
-<Slider  {slides} {pulse} {setPulse}/>
-{/if}
-
-</div>
-
-{#if currentSlide}
-
-    <PresentationModeUi {currentSlide} {theme}   currentTime={pulse} {setPulse} {tcode}/>
- 
- {/if}
-
+      {#if showToolbarBool && presentationObj}
+<PlayerToolbar {presentationObj} {pulse} 
+preStart={start} preStop={stop}  setPulse={setPulse} />
+      {/if}
+<div >
+    <PresentationModeUi {presentationObj} {pulse} currentTime={pulse} />
+</div> 
 </div><!--page wrapper-->
+
+

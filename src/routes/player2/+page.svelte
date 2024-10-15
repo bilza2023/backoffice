@@ -9,9 +9,9 @@
 import { toast } from '@zerodevx/svelte-toast';
 import { onMount } from 'svelte';
 import { fade } from 'svelte/transition';
+import {PlayerToolbar,PresentationObjUrl,PresentationModeUi} from 'taleempresentation';
 import {db} from "$lib/db";
 
-import {PlayerToolbar,PresentationObjUrl,PresentationModeUi} from "taleempresentation";
 
 let filename;
 let presentationObj;
