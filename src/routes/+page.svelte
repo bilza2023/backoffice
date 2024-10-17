@@ -55,6 +55,10 @@
       
     {/each}
     
+    <!-- /////////////////////// -->
+    <a href={`/book?tcode=fbise9math`}> <img class="p-2  border-2 border-white rounded-md" 
+      src= {`/system_images/gen/fbise9math.png`} alt="" /></a>
+    <!-- /////////////////////// -->
     </div>
     </div>
     {/if}
