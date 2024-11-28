@@ -29,7 +29,7 @@
 		"simplerestclient2": "^1.0.5",
 		"svelte-katex": "^0.1.2",
 		"sveltetools_bils": "^0.0.3",
-		"taleempresentation": "^0.3.10",
+		"taleempresentation": "^0.4.0",
 		"taleemtools": "^1.0.7"
 	}
 }
