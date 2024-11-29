@@ -2,7 +2,7 @@
   import { Editor } from "taleempresentation";
   import audioData from "./audioData.js";
   
-  import {upgrade} from "$lib/upgrade/upgrade.js";
+  // import {upgrade} from "$lib/upgrade/upgrade.js";
 
 import {SOUND_FILE_PATH,onMount} from "$lib/util";
 import Toolbar from "./toolbar/Toolbar.svelte";
@@ -21,7 +21,7 @@ import Toolbar from "./toolbar/Toolbar.svelte";
    const item = await resp.json();
    slides = item.slides;
    soundFilePath =  SOUND_FILE_PATH + item.filename + '.opus'; 
-   slides = await upgrade(slides);
+  //  slides = await upgrade(slides);
    
  }else {throw new Error('Failed to load');}
    
@@ -33,19 +33,25 @@ import Toolbar from "./toolbar/Toolbar.svelte";
 
 </script>
 
-<div class="w-full bg-gray-800">
+<div class="w-full ">
 
 {#if slides}
 <Toolbar  bind:showEditorToolbar={showEditorToolbar}/>
-
   <Editor
     isBlob={false}
     showToolbar={showEditorToolbar}
     {slides}
-    audioData={soundFilePath}
+    audioData={"https://taleem-media.blr1.cdn.digitaloceanspaces.com/sound/fbise9math2024_ch_1_ex_1.1_q_3_pt_4.opus"}
    
   />
-
 {/if}
 
 </div>
+
+
+<style>
+  :global(textarea) {
+    background-color: #71767c;
+    color: white;
+  }
+</style>
