@@ -20,11 +20,7 @@
 onMount(async () => {
 try{
   tcode = new URLSearchParams(location.search).get("tcode");
-  
-  debugger;
-    // const resp = await tcodeAjax.get(`limit=1500&tcode=${tcode}&fields=-slides`);
-    const resp = await db.tcode.get(`limit=1500&tcode=${tcode}&fields=-slides`);
-
+  const resp = await db.tcode.get(`limit=1500&tcode=${tcode}&fields=-slides`);
 /////////////////////    
     if (resp){
       const incomming = await resp.json();
@@ -58,8 +54,6 @@ try{
   
   <SyllabusComp  {questions} {tcode} uiMode={false}/>
   {/if}
-  
-  <!-- <HdgWithIcon>{`Chapter Total: ${chapterTotalQuestions}`}</HdgWithIcon> -->
   
   <br>
   <br>

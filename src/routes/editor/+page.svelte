@@ -1,12 +1,13 @@
 <script>
   import { Editor } from "taleempresentation";
   import audioData from "./audioData.js";
+  import saveFinal from './fn/saveFinal';
   
-  // import {upgrade} from "$lib/upgrade/upgrade.js";
-
+  
 import {SOUND_FILE_PATH,onMount} from "$lib/util";
 import Toolbar from "./toolbar/Toolbar.svelte";
   import {db} from "$lib/db";
+  let item =null;
   let showEditorToolbar=true;
   let slides;
   let id;
@@ -18,11 +19,10 @@ import Toolbar from "./toolbar/Toolbar.svelte";
    const resp = await db.tcode.getOne(id);
    
  if (resp.ok){
-   const item = await resp.json();
+   item = await resp.json();
    slides = item.slides;
    soundFilePath =  SOUND_FILE_PATH + item.filename + '.opus'; 
-  //  slides = await upgrade(slides);
-   
+
  }else {throw new Error('Failed to load');}
    
  } catch (error) {
@@ -31,12 +31,25 @@ import Toolbar from "./toolbar/Toolbar.svelte";
     
 });
 
+function convertToUrlFriendlyName(name) {
+            const urlFriendlyName = name.replace(/\s+/g, '_');
+            const sanitizedUrlFriendlyName = urlFriendlyName.replace(/[^\w\d_]/g, '');
+            return sanitizedUrlFriendlyName;
+}
+async function save(){
+  if (item.name && item.name !== ''){
+    item.name = convertToUrlFriendlyName(item.name);
+  }   
+  // debugger;
+  // item.tcode = tcode;
+ saveFinal(slides,item.tcode,item._id,item);
+} 
 </script>
 
 <div class="w-full ">
 
 {#if slides}
-<Toolbar  bind:showEditorToolbar={showEditorToolbar}/>
+<Toolbar  bind:showEditorToolbar={showEditorToolbar} {save} />
   <Editor
     isBlob={false}
     showToolbar={showEditorToolbar}
